@@ -1,0 +1,9 @@
+
+syntax: glob
+
+syntax: regexp
+^\.git/
+
+subinclude:HouseholdAccountsCore/.hgignore
+subinclude:HouseholdAccountsView/.hgignore
+
