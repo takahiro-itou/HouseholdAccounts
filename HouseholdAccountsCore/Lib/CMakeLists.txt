@@ -11,3 +11,6 @@ Set (LIBRARIES_TARGET_PREFIX)
 ##    サブディレクトリの追加。
 ##
 
+Add_SubDirectory (.Config)
+Add_SubDirectory (Common)
+
