@@ -8,7 +8,7 @@
 ##
 
 MODULE_DIR_NAME         =  Common
-SUBDIRS                 =  .
+SUBDIRS                 =  .  Tests
 
 include  $(top_srcdir)/.M4/Makefile.DirList.inc
 

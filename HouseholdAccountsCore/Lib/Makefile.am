@@ -5,7 +5,7 @@
 
 SUBLIBS                 =  Common
 
-SUBDIRS                 =  .Config  $(SUBLIBS)  .
+SUBDIRS                 =  Tests  .Config  $(SUBLIBS)  .
 
 ##
 ##    List of Installs.
