@@ -1,0 +1,7 @@
+
+syntax: glob
+
+syntax: regexp
+^\.Config/
+^\.M4/InitAutoMake.m4$
+
