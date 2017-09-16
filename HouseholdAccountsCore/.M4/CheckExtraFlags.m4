@@ -27,15 +27,13 @@ AC_TRY_COMPILE(
     [[myac_cf_]m4_bpatsubst([$2],-,_)[_enabled='TRUE']],
     [[myac_cf_]m4_bpatsubst([$2],-,_)[_enabled='FALSE']])
 [if test "x${myac_cf_]m4_bpatsubst([$2],-,_)[_enabled}y" = "xTRUEy" ; then]
-    [CFLAGS="${saved_CFLAGS}"]
-    [CXXFLAGS="${saved_CXXFLAGS}"]
     $1[="${]$1[}  ]$3["]
     AC_MSG_RESULT([Accept])
 [else]
-    [CFLAGS="${saved_CFLAGS}"]
-    [CXXFLAGS="${saved_CXXFLAGS}"]
     AC_MSG_RESULT([Reject])
 [fi]
+[CFLAGS="${saved_CFLAGS}"]
+[CXXFLAGS="${saved_CXXFLAGS}"]
 ])dnl   End of AC_DEFUN(MYAC_CHECK_EXTRA_COMPILER_OPTION)
 dnl
 dnl----------------------------------------------------------------
@@ -68,13 +66,12 @@ AC_TRY_LINK(
     [[myac_lf_]m4_bpatsubst([$2],-,_)[_enabled='TRUE']],
     [[myac_lf_]m4_bpatsubst([$2],-,_)[_enabled='FALSE']])
 [if test "x${myac_lf_]m4_bpatsubst([$2],-,_)[_enabled}y" = "xTRUEy" ; then]
-    [LDFLAGS="${saved_LDFLAGS}"]
     $1[="${]$1[} ]$3["]
     AC_MSG_RESULT([Accept])
 [else]
-    [LDFLAGS="${saved_LDFLAGS}"]
     AC_MSG_RESULT([Reject])
 [fi]
+[LDFLAGS="${saved_LDFLAGS}"]
 ])dnl   End of AC_DEFUN(MYAC_CHECK_EXTRA_LINKER_OPTION)
 dnl
 
