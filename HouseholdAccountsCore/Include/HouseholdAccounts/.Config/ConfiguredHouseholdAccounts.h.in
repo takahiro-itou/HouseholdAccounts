@@ -27,16 +27,17 @@
 **/
 
 #define     HOUSEHOLD_ACCOUNTS_CNF_NS               \
-    HOUSEHOLD_ACCOUNTS_CNF_NAMESPACE@
+    @HOUSEHOLD_ACCOUNTS_CNF_NAMESPACE@
 
 /**
 **    名前空間。
 **/
 
-#define     HOUSEHOLD_ACCOUNTS_NAMESPACE            HACCOUNTS_CNF_NS
+#define     HOUSEHOLD_ACCOUNTS_NAMESPACE            \
+    HOUSEHOLD_ACCOUNTS_CNF_NS
 
 #define     HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN      \
-    namespace  HACCOUNTS_CNF_NS  {
+    namespace  HOUSEHOLD_ACCOUNTS_CNF_NS  {
 
 #define     HOUSEHOLD_ACCOUNTS_NAMESPACE_END        \
     }
