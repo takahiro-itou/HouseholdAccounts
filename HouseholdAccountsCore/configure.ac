@@ -141,6 +141,11 @@ dnl
 dnl   Test Festures.
 dnl
 
+AC_CONFIG_FILES([
+    Lib/Common/Tests/Makefile
+    Lib/Tests/Makefile
+])
+
 dnl
 dnl   指定したファイルを生成する。
 dnl
