@@ -48,6 +48,8 @@ Set (INCLUDE_BINARY_DIR    "${INCTOP_BINARY_DIR}/${INCPKG_DIR_NAME}")
 
 Include (${COMMON_CMAKE_DIR}/EnableCxx11.cmake)
 
+Include (${COMMON_CMAKE_DIR}/CheckOverride.cmake)
+
 ##
 ##    Project Name Space.
 ##

@@ -104,6 +104,7 @@ dnl   Check Extra Compiler/Linker Options.
 dnl
 
 m4_include([.M4/EnableCxx11.m4])
+m4_include([.M4/CheckOverride.m4])
 
 dnl----------------------------------------------------------------
 dnl
