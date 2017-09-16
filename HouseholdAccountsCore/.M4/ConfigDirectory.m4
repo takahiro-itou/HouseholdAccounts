@@ -17,7 +17,27 @@ dnl    インストール先を変更。
 [libdir='${exec_prefix}/][$1][']
 dnl    変数定義。
 LIBTOP_DIR_NAME=[$1]
-AC_SUBST(INCTOP_DIR_NAME)
+AC_SUBST(LIBTOP_DIR_NAME)
+])dnl   End of AC_DEFUN(MYAC_CUSTOMIZE_LIBRARY_DIR)
+dnl
+dnl----------------------------------------------------------------
+dnl
+dnl   関数：MYAC_CUSTOMIZE_BINARY_DIR
+dnl
+dnl   概要：バイナリを配置するディレクトリを設定する。
+dnl   引数：
+dnl     -  $1   バイナリ・トップ・ディレクトリ名。
+dnl   機能：バイナリのインストール先を設定する。
+dnl         また、変数 BINTOP_DIR_NAMME が設定される。
+dnl   効果：以下の変数が設定される：
+dnl     -   BINTOP_DIR_NAME
+dnl
+AC_DEFUN([MYAC_CUSTOMIZE_BINARY_DIR],[
+dnl    インストール先を変更。
+[bindir='${exec_prefix}/][$1][']
+dnl    変数定義。
+BINTOP_DIR_NAME=[$1]
+AC_SUBST(BINTOP_DIR_NAME)
 ])dnl   End of AC_DEFUN(MYAC_CUSTOMIZE_LIBRARY_DIR)
 dnl
 dnl----------------------------------------------------------------
