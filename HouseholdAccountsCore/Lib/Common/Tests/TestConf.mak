@@ -5,6 +5,7 @@
 
 EXTRATESTS              =
 TESTS                   =  \
+        HouseholdAccountsSettingsTest  \
         ${EXTRATESTS}
 ##
 ##    Test Configurations.
@@ -28,4 +29,6 @@ TEST_LDFLAGS_COMMON         +=
 ##
 ##    Test Programs.
 ##
+
+HouseholdAccountsSettingsTest_SOURCES  =  HouseholdAccountsSettingsTest.cpp
 
