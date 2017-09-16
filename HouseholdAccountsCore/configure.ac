@@ -106,6 +106,7 @@ dnl
 m4_include([.M4/EnableCxx11.m4])
 
 m4_include([.M4/CheckConstExpr.m4])
+m4_include([.M4/CheckNullPtr.m4])
 m4_include([.M4/CheckOverride.m4])
 
 dnl----------------------------------------------------------------
