@@ -1,0 +1,44 @@
+//  -*-  coding: utf-8; mode: c++  -*-  //
+/*************************************************************************
+**                                                                      **
+**                  ---  Household Accounts Core.  ---                  **
+**                                                                      **
+**          Copyright (C), 2017-2017, Takahiro Itou                     **
+**          All Rights Reserved.                                        **
+**                                                                      **
+*************************************************************************/
+
+/**
+**      スクリプトによる設定値が書き込まれるヘッダファイル。
+**
+**      @file       .Config/ConfiguredHouseholdAccounts.h.in
+**/
+
+#if !defined( HACCOUNTS_CONFIG_INCLUDED_CONFIGURED_HOUSEHOLD_ACCOUNTS_H )
+#    define   HACCOUNTS_CONFIG_INCLUDED_CONFIGURED_HOUSEHOLD_ACCOUNTS_H
+
+//========================================================================
+//
+//    Name Space.
+//
+
+/**
+**    スクリプトによって設定された名前空間。
+**/
+
+#define     HOUSEHOLD_ACCOUNTS_CNF_NS               \
+    HOUSEHOLD_ACCOUNTS_CNF_NAMESPACE@
+
+/**
+**    名前空間。
+**/
+
+#define     HOUSEHOLD_ACCOUNTS_NAMESPACE            HACCOUNTS_CNF_NS
+
+#define     HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN      \
+    namespace  HACCOUNTS_CNF_NS  {
+
+#define     HOUSEHOLD_ACCOUNTS_NAMESPACE_END        \
+    }
+
+#endif
