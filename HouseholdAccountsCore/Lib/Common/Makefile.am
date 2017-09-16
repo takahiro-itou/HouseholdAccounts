@@ -28,6 +28,7 @@ LIBRARY_INSTANTIATIONS      =
 LIBRARY_INLINE_FILES        =
 
 DIST_NOINST_DATA_FILES      =  \
+        CMakeLists.txt              \
         ${EXTRA_NOINST_DATA_FILES}
 
 DIST_NOINST_HEADER_FILES    =  \
