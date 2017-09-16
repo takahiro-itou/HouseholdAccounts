@@ -8,5 +8,6 @@
 ##
 
 dist_noinst_DATA    =  \
-    BuildLibraryCommon.cmake
+    BuildLibraryCommon.cmake  \
+    FindCppUnit.cmake
 
