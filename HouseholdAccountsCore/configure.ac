@@ -39,6 +39,7 @@ dnl   プロジェクトの基本設定。
 dnl
 
 AC_CONFIG_SRCDIR([Makefile.am])
+AC_LANG_CPLUSPLUS
 
 dnl
 dnl   デフォルトのコンパイルオプション
