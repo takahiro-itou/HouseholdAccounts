@@ -30,3 +30,10 @@ Set (INCLIB_HEADER_FILES
 
 Include (${COMMON_CMAKE_DIR}/BuildLibraryCommon.cmake)
 
+##----------------------------------------------------------------
+##
+##    テストの設定。
+##
+
+Add_SubDirectory (Tests)
+

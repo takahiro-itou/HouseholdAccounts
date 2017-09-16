@@ -41,7 +41,7 @@ include  $(srcdir)/TestConf.mak
 ##    Append Test Configurations.
 ##
 
-DIST_NOINST_DATA_FILES      +=  CMakeLists.txt
+DIST_NOINST_DATA_FILES      +=  CMakeLists.txt  TestConf.cmake
 DIST_NOINST_HEADER_FILES    +=
 EXTRA_TEST_DRIVERS          +=
 LIBRARY_TEST_DRIVERS        +=  ${DRIVER_BINARY_DIR}/libTestDriver.a
