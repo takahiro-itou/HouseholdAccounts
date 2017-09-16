@@ -37,6 +37,9 @@ AM_LDFLAGS              =  -L${LIBTOP_BINARY_DIR}
 bin_PROGRAMS            =  \
         BookViewer
 
+dist_noinst_DATA        =  \
+        CMakeLists.txt
+
 ##
 ##    Build Executables.
 ##
