@@ -40,6 +40,33 @@ dnl
 
 AC_CONFIG_SRCDIR([Makefile.am])
 
+dnl
+dnl   デフォルトのコンパイルオプション
+dnl
+
+: ${CFLAGS:='-O0  -g  -D_DEBUG'}
+: ${CXXFLAGS:='-O0  -g  -D_DEBUG'}
+
+CFLAGS="${CFLAGS}  -std=c++11  -Wall"
+CXXFLAGS="${CXXFLAGS}  -std=c++11  -Wall  -Weffc++"
+
+dnl
+dnl   Project Name Space.
+dnl
+
+HOUSEHOLD_ACCOUNTS_CNF_NAMESPACE=HouseholdAccounts
+AC_SUBST(HOUSEHOLD_ACCOUNTS_CNF_NAMESPACE)
+
+dnl----------------------------------------------------------------
+dnl
+dnl   ディレクトリ名。
+dnl
+
+m4_include([.M4/ConfigDirectory.m4])
+
+MYAC_CUSTOMIZE_LIBRARY_DIR([Lib])
+MYAC_CUSTOMIZE_INCLUDE_DIR([Include], [HouseholdAccounts])
+
 dnl----------------------------------------------------------------
 dnl
 dnl   ビルド環境の検査。
