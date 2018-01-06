@@ -23,6 +23,9 @@ Partial Class MainView
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dlgColor = New System.Windows.Forms.ColorDialog()
+        Me.dlgOpen = New System.Windows.Forms.OpenFileDialog()
+        Me.dlgSave = New System.Windows.Forms.SaveFileDialog()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -33,6 +36,10 @@ Partial Class MainView
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(240, 150)
         Me.DataGridView1.TabIndex = 0
+        '
+        'dlgOpen
+        '
+        Me.dlgOpen.FileName = "OpenFileDialog1"
         '
         'MainView
         '
@@ -47,5 +54,8 @@ Partial Class MainView
 
     End Sub
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents dlgColor As System.Windows.Forms.ColorDialog
+    Friend WithEvents dlgOpen As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents dlgSave As System.Windows.Forms.SaveFileDialog
 
 End Class
