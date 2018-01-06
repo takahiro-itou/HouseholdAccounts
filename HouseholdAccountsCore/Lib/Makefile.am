@@ -3,7 +3,7 @@
 ##    List of Directories.
 ##
 
-SUBLIBS                 =  Common  Documents
+SUBLIBS                 =  Common  Documents  FileFormat
 
 SUBDIRS                 =  Tests  .Config  $(SUBLIBS)  .
 
