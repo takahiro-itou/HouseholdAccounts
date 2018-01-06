@@ -17,9 +17,11 @@ Set (INCLIB_BINARY_DIR     "${INCLUDE_BINARY_DIR}/${MODULE_DIR_NAME}")
 ##
 
 Set (LIBRARY_SOURCE_FILES
+        BookFile.cpp
 )
 
 Set (INCLIB_HEADER_FILES
+        ${INCLIB_SOURCE_DIR}/BookFile.h
 )
 
 ##----------------------------------------------------------------
