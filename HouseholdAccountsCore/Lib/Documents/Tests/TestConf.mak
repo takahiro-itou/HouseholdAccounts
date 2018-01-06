@@ -5,6 +5,7 @@
 
 EXTRATESTS              =
 TESTS                   =  \
+        BookDocumentTest   \
         ${EXTRATESTS}
 ##
 ##    Test Configurations.
@@ -29,4 +30,5 @@ TEST_LDFLAGS_COMMON         +=
 ##    Test Programs.
 ##
 
+BookDocumentTest_SOURCES  =  BookDocumentTest.cpp
 
