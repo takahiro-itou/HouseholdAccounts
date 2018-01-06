@@ -59,10 +59,10 @@ fi
 if [ -d  Lib/${testcommondir}/Tests ] ; then
     (cd  Lib/${testcommondir}/Tests  \
       &&  ${RM_F}  Makefile.am       \
-      &&  ${LN_S}  ../../Tests/.TestsCommon/Makefile.am)
+      &&  ${LN_H}  ../../Tests/.TestsCommon/Makefile.am)
     (cd  Lib/${testcommondir}/Tests  \
       &&  ${RM_F}  CMakeLists.txt    \
-      &&  ${LN_S}  ../../Tests/.TestsCommon/CMakeLists.txt)
+      &&  ${LN_H}  ../../Tests/.TestsCommon/CMakeLists.txt)
 fi
 
 for  dir  in  Common  ; do
