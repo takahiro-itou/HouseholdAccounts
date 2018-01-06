@@ -26,6 +26,7 @@ Partial Class MainView
         Me.dlgColor = New System.Windows.Forms.ColorDialog()
         Me.dlgOpen = New System.Windows.Forms.OpenFileDialog()
         Me.dlgSave = New System.Windows.Forms.SaveFileDialog()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -41,11 +42,21 @@ Partial Class MainView
         '
         Me.dlgOpen.FileName = "OpenFileDialog1"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(12, 213)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'MainView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(292, 273)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "MainView"
         Me.Text = "Form1"
@@ -57,5 +68,6 @@ Partial Class MainView
     Friend WithEvents dlgColor As System.Windows.Forms.ColorDialog
     Friend WithEvents dlgOpen As System.Windows.Forms.OpenFileDialog
     Friend WithEvents dlgSave As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class

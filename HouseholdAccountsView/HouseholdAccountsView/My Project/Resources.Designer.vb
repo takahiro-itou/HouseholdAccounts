@@ -63,6 +63,36 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         '''</summary>
+        Friend ReadOnly Property AccountBook() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("AccountBook", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        '''</summary>
+        Friend ReadOnly Property ClosedFolder() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ClosedFolder", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        '''</summary>
+        Friend ReadOnly Property Leaf() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Leaf", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        '''</summary>
         Friend ReadOnly Property OpenFolder() As System.Drawing.Icon
             Get
                 Dim obj As Object = ResourceManager.GetObject("OpenFolder", resourceCulture)
