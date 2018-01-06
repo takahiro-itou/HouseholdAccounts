@@ -5,12 +5,14 @@
 
 EXTRATESTS              =
 TESTS                   =  \
+        BookFileTest       \
         ${EXTRATESTS}
+
 ##
 ##    Test Configurations.
 ##
 
-TARGET_TESTEE_LIBRARY       +=
+TARGET_TESTEE_LIBRARY       +=  ../libhacFileFormat.a
 
 DIST_NOINST_DATA_FILES      +=
 DIST_NOINST_HEADER_FILES    +=
@@ -29,4 +31,5 @@ TEST_LDFLAGS_COMMON         +=
 ##    Test Programs.
 ##
 
+BookFileTest_SOURCES  =  BookFileTest.cpp
 
