@@ -41,6 +41,12 @@ Set (LIBTOP_BINARY_DIR     "${PROJECT_BINARY_DIR}/${LIBTOP_DIR_NAME}")
 Set (INCLUDE_SOURCE_DIR    "${INCTOP_SOURCE_DIR}/${INCPKG_DIR_NAME}")
 Set (INCLUDE_BINARY_DIR    "${INCTOP_BINARY_DIR}/${INCPKG_DIR_NAME}")
 
+##
+##    ターゲット名
+##
+
+Set (LIBRARIES_TARGET_PREFIX    hac)
+
 ##----------------------------------------------------------------
 ##
 ##    ビルド環境の検査。

@@ -139,6 +139,8 @@ AC_CONFIG_FILES([
     Lib/Makefile
     Lib/.Config/Makefile
     Lib/Common/Makefile
+    Lib/Documents/Makefile
+    Lib/FileFormat/Makefile
 ])
 
 AC_CONFIG_FILES([
@@ -151,6 +153,8 @@ dnl
 
 AC_CONFIG_FILES([
     Lib/Common/Tests/Makefile
+    Lib/Documents/Tests/Makefile
+    Lib/FileFormat/Tests/Makefile
     Lib/Tests/Makefile
 ])
 
