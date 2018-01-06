@@ -1,0 +1,6 @@
+
+syntax: glob
+ipch/
+
+syntax: regexp
+
