@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Common">
+      <UniqueIdentifier>{91199b76-4f43-45a4-9f65-c829f582ae5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Documents">
+      <UniqueIdentifier>{65df1ba1-b37e-452d-a846-b8ecf1a94a45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FileFormat">
+      <UniqueIdentifier>{d5b8740a-4656-42c0-8955-b81f4652156d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common">
+      <UniqueIdentifier>{e7436e7f-c1b0-4777-8737-aedba59c2515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Documents">
+      <UniqueIdentifier>{ae79ec88-6397-4054-ac0d-3f0fb77f5172}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileFormat">
+      <UniqueIdentifier>{58b6fcc8-2f51-4075-a0c5-76a7e25d5fff}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\HouseholdAccountsCore\Lib\Documents\BookDocument.cpp">
+      <Filter>Source Files\Documents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\HouseholdAccountsCore\Lib\FileFormat\BookFile.cpp">
+      <Filter>Source Files\FileFormat</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\HouseholdAccountsCore\Include\HouseholdAccounts\Documents\BookDocument.h">
+      <Filter>Header Files\Documents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HouseholdAccountsCore\Include\HouseholdAccounts\FileFormat\BookFile.h">
+      <Filter>Header Files\FileFormat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\HouseholdAccountsCore\Include\HouseholdAccounts\Common\HouseholdAccountsSettings.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

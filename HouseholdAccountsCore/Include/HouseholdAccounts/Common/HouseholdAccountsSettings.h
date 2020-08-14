@@ -18,7 +18,11 @@
 #    define   HACCOUNTS_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H
 
 //  スクリプトによる設定値が書き込まれたヘッダを読み込む。  //
-#include    "HouseholdAccounts/.Config/ConfiguredHouseholdAccounts.h"
+#if defined( HOUSEHOLDACCOUNTS_USE_PRE_CONFIGURED_MSVC )
+#    include    "HouseholdAccounts/.Config/PreConfigHouseholdAccounts.msvc.h"
+#else
+#    include    "HouseholdAccounts/.Config/ConfiguredHouseholdAccounts.h"
+#endif
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
