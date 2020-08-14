@@ -36,21 +36,21 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\HouseholdAccountsCore\Lib\Documents\BookDocument.cpp">
+    <ClCompile Include="..\..\Core\Lib\Documents\BookDocument.cpp">
       <Filter>Source Files\Documents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\HouseholdAccountsCore\Lib\FileFormat\BookFile.cpp">
+    <ClCompile Include="..\..\Core\Lib\FileFormat\BookFile.cpp">
       <Filter>Source Files\FileFormat</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\HouseholdAccountsCore\Include\HouseholdAccounts\Documents\BookDocument.h">
+    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Documents\BookDocument.h">
       <Filter>Header Files\Documents</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HouseholdAccountsCore\Include\HouseholdAccounts\FileFormat\BookFile.h">
+    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\FileFormat\BookFile.h">
       <Filter>Header Files\FileFormat</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\HouseholdAccountsCore\Include\HouseholdAccounts\Common\HouseholdAccountsSettings.h">
+    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Common\HouseholdAccountsSettings.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
   </ItemGroup>
