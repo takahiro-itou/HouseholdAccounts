@@ -1,19 +1,19 @@
 ========================================================================
-    STATIC LIBRARY : HouseholdAccountsCore Project Overview
+    STATIC LIBRARY : Core Project Overview
 ========================================================================
 
-AppWizard has created this HouseholdAccountsCore library project for you.
+AppWizard has created this Core library project for you.
 
 No source files were created as part of your project.
 
 
-HouseholdAccountsCore.vcxproj
+Core.vcxproj
     This is the main project file for VC++ projects generated using an Application Wizard.
     It contains information about the version of Visual C++ that generated the file, and
     information about the platforms, configurations, and project features selected with the
     Application Wizard.
 
-HouseholdAccountsCore.vcxproj.filters
+Core.vcxproj.filters
     This is the filters file for VC++ projects generated using an Application Wizard. 
     It contains information about the association between the files in your project 
     and the filters. This association is used in the IDE to show grouping of files with

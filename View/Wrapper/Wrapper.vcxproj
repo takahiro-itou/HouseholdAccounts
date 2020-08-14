@@ -22,7 +22,7 @@
     <ProjectGuid>{0F54DE1C-F5E7-434B-BEA2-82C246BD4DA4}</ProjectGuid>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>HouseholdAccountsWrapper</RootNamespace>
+    <RootNamespace>Wrapper</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
