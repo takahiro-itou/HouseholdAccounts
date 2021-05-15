@@ -20,6 +20,8 @@ Set (LIBRARY_SOURCE_FILES
 )
 
 Set (INCLIB_HEADER_FILES
+        ${INCLIB_SOURCE_DIR}/AccountsTypes.h
+        ${INCLIB_SOURCE_DIR}/BookInterface.h
         ${INCLIB_SOURCE_DIR}/HouseholdAccountsSettings.h
 )
 

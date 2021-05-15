@@ -35,6 +35,8 @@ DIST_NOINST_HEADER_FILES    =  \
         ${EXTRA_NOINST_HEADER_FILES}
 
 INCLIB_HEADER_FILES         =  \
+        ${INCLIB_SOURCE_DIR}/AccountsTypes.h              \
+        ${INCLIB_SOURCE_DIR}/BookInterface.h              \
         ${INCLIB_SOURCE_DIR}/HouseholdAccountsSettings.h  \
         ${EXTRA_LIBRARY_HEADER_FILES}
 
