@@ -32,43 +32,43 @@
 
 ##  ターゲットの名前。
 
-Set (MODULE_TARGET_NAME  "${LIBRARIES_TARGET_PREFIX}${MODULE_TITLE}")
+set(MODULE_TARGET_NAME  "${LIBRARIES_TARGET_PREFIX}${MODULE_TITLE}")
 
 ##  ソースファイルの有無を確認する。
 
-If ( NOT ( "${LIBRARY_SOURCE_FILES}" STREQUAL "" ) )
+If ( NOT("${LIBRARY_SOURCE_FILES}" STREQUAL "") )
     ##  通常通りライブラリファイルを生成する。
-    Add_Library (${PROJECT_NAME}-${MODULE_TARGET_NAME}
+    add_library(${PROJECT_NAME}-${MODULE_TARGET_NAME}
             ${LIBRARY_SOURCE_FILES})
 
     ##  出力するファイル名。
     If ( "${MODULE_OUTPUT_NAME}" STREQUAL "" )
-        Set (LIBRARY_OUTPUT_NAME
+        set(LIBRARY_OUTPUT_NAME
                 ${LIBRARIES_NAME_PREFIX}${MODULE_TARGET_NAME}
         )
     Else  ()
-        Set (LIBRARY_OUTPUT_NAME
+        set(LIBRARY_OUTPUT_NAME
                 ${LIBRARIES_NAME_PREFIX}${MODULE_OUTPUT_NAME}
         )
-    Endif ()
+    EndIf ()
 
-    Set_Property (TARGET   ${PROJECT_NAME}-${MODULE_TARGET_NAME}
-            PROPERTY       OUTPUT_NAME
+    set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
+            PROPERTY        OUTPUT_NAME
             ${LIBRARY_OUTPUT_NAME}
     )
-    Set_Property (TARGET   ${PROJECT_NAME}-${MODULE_TARGET_NAME}
-            PROPERTY       OUTPUT_NAME_DEBUG
+    set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
+            PROPERTY        OUTPUT_NAME_DEBUG
             ${LIBRARY_OUTPUT_NAME}${OUTPUT_DEBUG_SUFFIX}
     )
-    Set_Property (TARGET   ${PROJECT_NAME}-${MODULE_TARGET_NAME}
-            PROPERTY       OUTPUT_NAME_RELEASE
+    set_property (TARGET    ${PROJECT_NAME}-${MODULE_TARGET_NAME}
+            PROPERTY        OUTPUT_NAME_RELEASE
             ${LIBRARY_OUTPUT_NAME}${OUTPUT_RELEASE_SUFFIX}
     )
 
 Else  ()
     ##  ヘッダのみのインターフェイスライブラリ。
-    Add_Library (${PROJECT_NAME}-${MODULE_TARGET_NAME}  INTERFACE)
-Endif ()
+    add_library(${PROJECT_NAME}-${MODULE_TARGET_NAME}   INTERFACE)
+EndIf ()
 
 ##----------------------------------------------------------------
 ##
@@ -76,18 +76,18 @@ Endif ()
 ##
 
 If ( NOT ( "${MODULE_NEEDS_LIBRARIES}" STREQUAL "" ) )
-    Target_Link_Libraries (
+    target_link_libraries(
             ${PROJECT_NAME}-${MODULE_TARGET_NAME}
             ${MODULE_NEEDS_LIBRARIES}
     )
-Endif ()
+EndIf ()
 
 ##----------------------------------------------------------------
 ##
 ##    インクルードディレクトリを設定する。
 ##
 
-Set_Property (TARGET  ${PROJECT_NAME}-${MODULE_TARGET_NAME}
+set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
         APPEND  PROPERTY   INTERFACE_INCLUDE_DIRECTORIES
         $<BUILD_INTERFACE:${INCTOP_SOURCE_DIR}>
         $<INSTALL_INTERFACE:${INCTOP_DIR_NAME}>
@@ -101,16 +101,16 @@ Set_Property (TARGET  ${PROJECT_NAME}-${MODULE_TARGET_NAME}
 
 ##  ヘッダファイルをインストールする。
 
-Install (FILES         ${INCLIB_HEADER_FILES}
-        DESTINATION    ${PACKAGE_INCLUDE_DIR}/${MODULE_DIR_NAME}
+install(FILES           ${INCLIB_HEADER_FILES}
+        DESTINATION     ${PACKAGE_INCLUDE_DIR}/${MODULE_DIR_NAME}
 )
 
 ##  ライブラリファイルをインストールする。
 
-Install (TARGETS   ${PROJECT_NAME}-${MODULE_TARGET_NAME}
-        EXPORT     ${PROJECT_NAME}-${MODULE_TITLE}-Export
-        ARCHIVE    DESTINATION  ${LIBTOP_DIR_NAME}/${MODULE_DIR_NAME}
-        LIBRARY    DESTINATION  ${LIBTOP_DIR_NAME}/${MODULE_DIR_NAME}
+install(TARGETS     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
+        EXPORT      ${PROJECT_NAME}-${MODULE_TITLE}-Export
+        ARCHIVE     DESTINATION  ${LIBTOP_DIR_NAME}/${MODULE_DIR_NAME}
+        LIBRARY     DESTINATION  ${LIBTOP_DIR_NAME}/${MODULE_DIR_NAME}
 )
 
 ##----------------------------------------------------------------
@@ -120,17 +120,15 @@ Install (TARGETS   ${PROJECT_NAME}-${MODULE_TARGET_NAME}
 
 ##  インストールツリー向けのエクスポート。
 
-Install (EXPORT        ${PROJECT_NAME}-${MODULE_TITLE}-Export
-        FILE           ${PROJECT_NAME}-${MODULE_TITLE}-Export.cmake
-        DESTINATION    ${LIBTOP_DIR_NAME}/${MODULE_DIR_NAME}
+install(EXPORT          ${PROJECT_NAME}-${MODULE_TITLE}-Export
+        FILE            ${PROJECT_NAME}-${MODULE_TITLE}-Export.cmake
+        DESTINATION     ${LIBTOP_DIR_NAME}/${MODULE_DIR_NAME}
         EXPORT_LINK_INTERFACE_LIBRARIES
 )
 
 ##  ビルドツリー向けのエクスポート。
 
-Export  (TARGETS       ${PROJECT_NAME}-${MODULE_TARGET_NAME}
-        EXPORT         ${PROJECT_NAME}-${MODULE_TITLE}-BuildTree-Export
-        FILE           ${PROJECT_NAME}-${MODULE_TITLE}-Export.cmake
-        EXPORT_LINK_INTERFACE_LIBRARIES
+export(
+    TARGETS     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
+    FILE        ${PROJECT_NAME}-${MODULE_TITLE}-BuildTree-Export.cmake
 )
-
