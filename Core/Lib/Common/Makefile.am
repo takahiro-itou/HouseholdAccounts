@@ -22,7 +22,7 @@ EXTRA_NOINST_DATA_FILES     =
 EXTRA_NOINST_HEADER_FILES   =
 
 LIBRARY_SOURCE_FILES        =  \
-        TextParser.coo                 \
+        TextParser.cpp                 \
         ${EXTRA_LIBRARY_SOURCE_FILES}
 
 LIBRARY_INSTANTIATIONS      =
@@ -55,7 +55,7 @@ LIBRARY_COMPILE_SRCFILES    =  \
 ##    List of Libraries.
 ##
 
-STATIC_LIBRARIES_LIST   =
+STATIC_LIBRARIES_LIST   =  libhacCommon.a
 SHARED_LIBRARIES_LIST   =
 
 ##
@@ -80,4 +80,6 @@ include  $(top_srcdir)/.M4/Makefile.Install.inc
 ##
 ##    Build Libraries.
 ##
+
+libhacCommon_a_SOURCES      =  ${LIBRARY_SOURCE_FILES}
 
