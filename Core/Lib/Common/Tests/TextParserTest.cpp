@@ -13,28 +13,29 @@
 *************************************************************************/
 
 /**
-**      An Implementation of Test Case 'HouseholdAccountsSettings'.
+**      An Implementation of Test Case 'TextParser'.
 **
-**      @file       Common/Tests/HouseholdAccountsSettingsTest.cpp
+**      @file       Common/Tests/TextParserTest.cpp
 **/
 
 #include    "TestDriver.h"
-#include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
+#include    "HouseholdAccounts/Common/TextParser.h"
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
+namespace  Common  {
 
 //========================================================================
 //
-//    HouseholdAccountsSettingsTest  class.
+//    TextParserTest  class.
 //
 /**
-**    クラス HouseholdAccountsSettings  の単体テスト。
+**    クラス TextParser の単体テスト。
 **/
 
-class  HouseholdAccountsSettingsTest : public  TestFixture
+class  TextParserTest : public  TestFixture
 {
-    CPPUNIT_TEST_SUITE(HouseholdAccountsSettingsTest);
-    CPPUNIT_TEST(testNameSpace);
+    CPPUNIT_TEST_SUITE(TextParserTest);
+    CPPUNIT_TEST(testTextParser);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -42,21 +43,24 @@ public:
     virtual  void   tearDown()  override    { }
 
 private:
-    void  testNameSpace();
+    void  testTextParser();
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION( HouseholdAccountsSettingsTest );
+CPPUNIT_TEST_SUITE_REGISTRATION( TextParserTest );
 
 //========================================================================
 //
 //    Tests.
 //
 
-void  HouseholdAccountsSettingsTest::testNameSpace()
+void  TextParserTest::testTextParser()
 {
+    TextParser  parser;
     return;
 }
 
+
+}   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 //========================================================================
