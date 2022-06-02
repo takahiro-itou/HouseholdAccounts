@@ -22,6 +22,7 @@ EXTRA_NOINST_DATA_FILES     =
 EXTRA_NOINST_HEADER_FILES   =
 
 LIBRARY_SOURCE_FILES        =  \
+        TextParser.coo                 \
         ${EXTRA_LIBRARY_SOURCE_FILES}
 
 LIBRARY_INSTANTIATIONS      =
@@ -38,6 +39,7 @@ INCLIB_HEADER_FILES         =  \
         ${INCLIB_SOURCE_DIR}/AccountsTypes.h              \
         ${INCLIB_SOURCE_DIR}/BookInterface.h              \
         ${INCLIB_SOURCE_DIR}/HouseholdAccountsSettings.h  \
+        ${INCLIB_SOURCE_DIR}/TextParser.h                 \
         ${EXTRA_LIBRARY_HEADER_FILES}
 
 INCLIB_NODIST_HEADER_FILES  =

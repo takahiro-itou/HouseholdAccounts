@@ -79,30 +79,6 @@ TextParser::~TextParser()
 //    Public Member Functions.
 //
 
-//----------------------------------------------------------------
-//    データをテキストストリームから読み込む。
-//
-
-ErrCode
-BookFile::readFromTextStream(
-        std::istream            &inStr,
-        Documents::BookDocument *ptrDoc)
-{
-    return ( ERR_FAILURE );
-}
-
-//----------------------------------------------------------------
-//    データをテキストストリームに書き込む。
-//
-
-ErrCode
-BookFile::saveToTextStream(
-        const   Documents::BookDocument &objDoc,
-        std::ostream                    &outStr)
-{
-    return ( ERR_FAILURE );
-}
-
 //========================================================================
 //
 //    Protected Member Functions.
@@ -113,5 +89,5 @@ BookFile::saveToTextStream(
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  FileFormat
+}   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
