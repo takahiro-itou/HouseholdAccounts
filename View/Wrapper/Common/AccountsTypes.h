@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2021, Takahiro Itou                     **
+**          Copyright (C), 2017-2022, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -13,23 +13,24 @@
 *************************************************************************/
 
 /**
-**      プロジェクトの設定。
+**      Type Definitions.
 **
-**      @file       Common/HouseholdAccountsSettings.h
+**      @file       Common/AccountsTypes.h
 **/
 
-#if !defined( HACCOUNTS_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H )
-#    define   HACCOUNTS_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H
+#pragma     once
 
-//  スクリプトによる設定値が書き込まれたヘッダを読み込む。  //
-#if defined( HOUSEHOLDACCOUNTS_USE_PRE_CONFIGURED_MSVC )
-#    include    "HouseholdAccounts/.Config/PreConfigHouseholdAccounts.msvc.h"
-#else
-#    include    "HouseholdAccounts/.Config/ConfiguredHouseholdAccounts.h"
-#endif
+#include    "HouseholdAccounts/Common/AccountsTypes.h"
 
-HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
+namespace  AccountsWrapper  {
 
-HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+public  enum class  ErrCode
+{
+    ERR_SUCCESS             = HouseholdAccounts::ERR_SUCCESS,
+    ERR_FAILURE             = HouseholdAccounts::ERR_FAILURE,
+    ERR_FILE_OPEN_ERROR     = HouseholdAccounts::ERR_FILE_OPEN_ERROR,
+    ERR_FILE_IO_ERROR       = HouseholdAccounts::ERR_FILE_IO_ERROR,
+    ERR_INDEX_OUT_OF_RANGE  = HouseholdAccounts::ERR_INDEX_OUT_OF_RANGE
+};
 
-#endif
+}   //  End of namespace  AccountsWrapper

@@ -4,23 +4,23 @@
 ##    モジュールの設定。
 ##
 
-Set (MODULE_DIR_NAME       "TestDriver")
-Set (MODULE_OUTPUT_NAME    "TestDriver")
-Set (MODULE_TITLE          "TestDriver")
+set(MODULE_DIR_NAME         "TestDriver")
+set(MODULE_OUTPUT_NAME      "TestDriver")
+set(MODULE_TITLE            "TestDriver")
 
-Set (INCLIB_SOURCE_DIR     "${INCLUDE_SOURCE_DIR}/${MODULE_DIR_NAME}")
-Set (INCLIB_BINARY_DIR     "${INCLUDE_BINARY_DIR}/${MODULE_DIR_NAME}")
+set(INCLIB_SOURCE_DIR       "${INCLUDE_SOURCE_DIR}/${MODULE_DIR_NAME}")
+set(INCLIB_BINARY_DIR       "${INCLUDE_BINARY_DIR}/${MODULE_DIR_NAME}")
 
 ##----------------------------------------------------------------
 ##
 ##    ソースファイルとヘッダファイルのリスト。
 ##
 
-Set (LIBRARY_SOURCE_FILES
+set(LIBRARY_SOURCE_FILES
         TestDriver.cpp
 )
 
-Set (INCLIB_HEADER_FILES
+set(INCLIB_HEADER_FILES
 )
 
 ##----------------------------------------------------------------
@@ -28,13 +28,17 @@ Set (INCLIB_HEADER_FILES
 ##    ビルドとインストールの設定。
 ##
 
-If ( CPPUNIT_FOUND )
-    Include_Directories ("${CPPUNIT_INCLUDE_DIR}")
-    Link_Libraries      ("${CPPUNIT_LIBRARIES}")
-    Set (CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}  -DHAVE_CPPUNIT=1")
-Else  ()
-    Set (CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}  -DHAVE_CPPUNIT=0")
-Endif ()
-
 Include (${COMMON_CMAKE_DIR}/BuildLibraryCommon.cmake)
 
+set(TEST_DRIVER_MODULE  "${PROJECT_NAME}-${MODULE_TARGET_NAME}")
+message(STATUS  "TEST_DRIVER_MODULE = ${TEST_DRIVER_MODULE}")
+
+If ( TARGET  CPPUNIT::CPPUNIT )
+    target_link_libraries(${TEST_DRIVER_MODULE}     CPPUNIT::CPPUNIT)
+    message(STATUS  "Target CPPUNIT::CPPUNIT is defined.")
+Else  ()
+    target_compile_definitions(
+        ${TEST_DRIVER_MODULE}   PUBLIC  HAVE_CPPUNIT=0
+    )
+    message(WARNING "Target CPPUNIT::CPPUNIT is NOT defined.")
+EndIf ()

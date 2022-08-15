@@ -13,22 +13,22 @@
 *************************************************************************/
 
 /**
-**      An Implementation of BookFile class.
+**      An Implementation of TextParser class.
 **
-**      @file       FileFormat/BookFile.cpp
+**      @file       Common/TextParser.cpp
 **/
 
-#include    "HouseholdAccounts/FileFormat/BookFile.h"
+#include    "HouseholdAccounts/Common/TextParser.h"
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  FileFormat  {
+namespace  Common  {
 
 namespace  {
 }   //  End of (Unnamed) namespace.
 
 //========================================================================
 //
-//    BookFile  class.
+//    TextParser  class.
 //
 
 //========================================================================
@@ -41,7 +41,7 @@ namespace  {
 //  （デフォルトコンストラクタ）。
 //
 
-BookFile::BookFile()
+TextParser::TextParser()
 {
 }
 
@@ -50,7 +50,7 @@ BookFile::BookFile()
 //  （デストラクタ）。
 //
 
-BookFile::~BookFile()
+TextParser::~TextParser()
 {
 }
 
@@ -79,30 +79,6 @@ BookFile::~BookFile()
 //    Public Member Functions.
 //
 
-//----------------------------------------------------------------
-//    データをテキストストリームから読み込む。
-//
-
-ErrCode
-BookFile::readFromTextStream(
-        std::istream            &inStr,
-        Documents::BookDocument *ptrDoc)
-{
-    return ( ERR_FAILURE );
-}
-
-//----------------------------------------------------------------
-//    データをテキストストリームに書き込む。
-//
-
-ErrCode
-BookFile::saveToTextStream(
-        const   Documents::BookDocument &objDoc,
-        std::ostream                    &outStr)
-{
-    return ( ERR_FAILURE );
-}
-
 //========================================================================
 //
 //    Protected Member Functions.
@@ -113,5 +89,5 @@ BookFile::saveToTextStream(
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  FileFormat
+}   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END

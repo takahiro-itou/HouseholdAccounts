@@ -1,7 +1,7 @@
 
 Include (CheckCXXSourceCompiles)
 
-Check_CXX_Source_Compiles (
+check_cxx_source_compiles (
    "constexpr  int  a = 0;
     int main () {
         return ( a );
@@ -9,8 +9,7 @@ Check_CXX_Source_Compiles (
     CMAKE_CHECK_CXX_CONSTEXPR_ENABLED
 )
 If ( CMAKE_CHECK_CXX_CONSTEXPR_ENABLED )
-    Set (CONFIG_CHECK_CXX_CONSTEXPR_ENABLED  1)
+    set(CONFIG_CHECK_CXX_CONSTEXPR_ENABLED  1)
 Else  ()
-    Set (CONFIG_CHECK_CXX_CONSTEXPR_ENABLED  0)
+    set(CONFIG_CHECK_CXX_CONSTEXPR_ENABLED  0)
 EndIf ()
-

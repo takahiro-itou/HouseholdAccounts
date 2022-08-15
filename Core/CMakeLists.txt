@@ -78,7 +78,11 @@ Include_Directories ("${PROJECT_BINARY_DIR}/Include")
 ##    外部ライブラリ。
 ##
 
-Include (${COMMON_CMAKE_DIR}/FindCppUnit.cmake)
+set(CMAKE_MODULE_PATH
+    ${CMAKE_MODULE_PATH}  ${COMMON_CMAKE_DIR}/Modules
+)
+
+Find_Package (CppUnit)
 
 ##----------------------------------------------------------------
 ##

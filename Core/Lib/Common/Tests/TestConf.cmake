@@ -4,8 +4,14 @@
 ##    テストの設定。
 ##
 
-Add_Test (NAME  HouseholdAccountsSettingsTest
-    COMMAND  $<TARGET_FILE:HouseholdAccountsSettingsTest>
+add_test(
+    NAME        HouseholdAccountsSettingsTest
+    COMMAND     $<TARGET_FILE:HouseholdAccountsSettingsTest>
+)
+
+add_test(
+    NAME        TextParserTest
+    COMMAND     $<TARGET_FILE:TextParserTest>
 )
 
 ##----------------------------------------------------------------
@@ -13,5 +19,10 @@ Add_Test (NAME  HouseholdAccountsSettingsTest
 ##    テストプログラムのビルド。
 ##
 
-Add_Executable (HouseholdAccountsSettingsTest  HouseholdAccountsSettingsTest.cpp)
+add_executable(
+    HouseholdAccountsSettingsTest
+    HouseholdAccountsSettingsTest.cpp
+)
+
+add_executable(TextParserTest      TextParserTest.cpp)
 

@@ -13,46 +13,58 @@
 *************************************************************************/
 
 /**
-**      An Implementation of BookFile class.
+**      An Interface of TextParser class.
 **
-**      @file       FileFormat/BookFile.cpp
+**      @file       Common/TextParser.h
 **/
 
-#include    "HouseholdAccounts/FileFormat/BookFile.h"
+#if !defined( HACCOUNTS_COMMON_INCLUDED_TEXT_PARSER_H )
+#    define   HACCOUNTS_COMMON_INCLUDED_TEXT_PARSER_H
+
+#include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  FileFormat  {
+namespace  Common  {
 
-namespace  {
-}   //  End of (Unnamed) namespace.
+//  クラスの前方宣言。  //
+
 
 //========================================================================
 //
-//    BookFile  class.
+//    TextParser  class.
 //
+/**
+**
+**/
+
+class  TextParser
+{
+
+//========================================================================
+//
+//    Internal Type Definitions.
+//
+public:
 
 //========================================================================
 //
 //    Constructor(s) and Destructor.
 //
+public:
 
-//----------------------------------------------------------------
-//    インスタンスを初期化する
-//  （デフォルトコンストラクタ）。
-//
+    //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （デフォルトコンストラクタ）。
+    **
+    **/
+    TextParser();
 
-BookFile::BookFile()
-{
-}
-
-//----------------------------------------------------------------
-//    インスタンスを破棄する
-//  （デストラクタ）。
-//
-
-BookFile::~BookFile()
-{
-}
+    //----------------------------------------------------------------
+    /**   インスタンスを破棄する
+    **  （デストラクタ）。
+    **
+    **/
+    virtual  ~TextParser();
 
 //========================================================================
 //
@@ -79,30 +91,6 @@ BookFile::~BookFile()
 //    Public Member Functions.
 //
 
-//----------------------------------------------------------------
-//    データをテキストストリームから読み込む。
-//
-
-ErrCode
-BookFile::readFromTextStream(
-        std::istream            &inStr,
-        Documents::BookDocument *ptrDoc)
-{
-    return ( ERR_FAILURE );
-}
-
-//----------------------------------------------------------------
-//    データをテキストストリームに書き込む。
-//
-
-ErrCode
-BookFile::saveToTextStream(
-        const   Documents::BookDocument &objDoc,
-        std::ostream                    &outStr)
-{
-    return ( ERR_FAILURE );
-}
-
 //========================================================================
 //
 //    Protected Member Functions.
@@ -113,5 +101,21 @@ BookFile::saveToTextStream(
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  FileFormat
+//========================================================================
+//
+//    Member Variables.
+//
+
+//========================================================================
+//
+//    Other Features.
+//
+public:
+    //  テストクラス。  //
+    friend  class   TextParserTest;
+};
+
+}   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+
+#endif
