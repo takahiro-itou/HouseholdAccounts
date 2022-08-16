@@ -149,7 +149,7 @@
     <ClCompile Include="..\Wrapper\HouseholdAccountsWrapper.cpp" />
     <ClCompile Include="..\Wrapper\PreCompile.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
-      <PrecompiledHeaderFile>..\Wrapper\PreCompile.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>PreCompile.h</PrecompiledHeaderFile>
     </ClCompile>
   </ItemGroup>
 
