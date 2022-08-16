@@ -1,5 +1,11 @@
 
 Debug/
 Release/
+bin/
 ipch/
+obj/
+
+/.vs/
+/*.sdf
+/*.suo
 
