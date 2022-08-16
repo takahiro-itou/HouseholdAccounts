@@ -21,10 +21,10 @@
   </ItemGroup>
 
   <PropertyGroup Label="Globals">
-    <Keyword>ManagedCProj</Keyword>
-    <ProjectGuid>{0F54DE1C-F5E7-434B-BEA2-82C246BD4DA4}</ProjectGuid>
+    <Keyword>NetCoreCProj</Keyword>
+    <ProjectGuid>{0C7FBBA6-D412-4C45-8B87-186C1D74BA77}</ProjectGuid>
     <RootNamespace>Wrapper</RootNamespace>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFramework>net6.0</TargetFramework>
     <VCProjectVersion>17.0</VCProjectVersion>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -52,6 +52,8 @@
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
   </ImportGroup>
 
   <ImportGroup Label="PropertySheets">
