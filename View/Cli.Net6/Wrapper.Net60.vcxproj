@@ -133,12 +133,6 @@
   </ItemDefinitionGroup>
 
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h" />
     <ClInclude Include="..\Wrapper\resource.h" />
     <ClInclude Include="..\Wrapper\PreCompile.h" />
