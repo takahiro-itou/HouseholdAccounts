@@ -158,33 +158,38 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
+
   <ItemGroup>
-    <ClInclude Include="HouseholdAccountsWrapper.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="PreCompile.h" />
+    <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h" />
+    <ClInclude Include="..\Wrapper\resource.h" />
+    <ClInclude Include="..\Wrapper\PreCompile.h" />
   </ItemGroup>
+
   <ItemGroup>
-    <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="HouseholdAccountsWrapper.cpp" />
-    <ClCompile Include="PreCompile.cpp">
+    <ClCompile Include="..\Wrapper\AssemblyInfo.cpp" />
+    <ClCompile Include="..\Wrapper\HouseholdAccountsWrapper.cpp" />
+    <ClCompile Include="..\Wrapper\PreCompile.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile>..\Wrapper\PreCompile.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PreCompile.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PreCompile.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">PreCompile.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PreCompile.h</PrecompiledHeaderFile>
     </ClCompile>
   </ItemGroup>
+
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
+    <Text Include="..\Wrapper\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="app.rc" />
+    <ResourceCompile Include="..\Wrapper\app.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="app.ico" />
+    <Image Include="..\Wrapper\app.ico" />
   </ItemGroup>
 
   <ItemGroup>
