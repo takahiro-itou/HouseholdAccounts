@@ -2,7 +2,13 @@
 syntax: glob
 Debug/
 Release/
+bin/
 ipch/
+obj/
+
+*.sdf
+*.suo
 
 syntax: regexp
+^.vs/
 

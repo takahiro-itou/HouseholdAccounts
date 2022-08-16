@@ -1,4 +1,4 @@
-﻿//  -*-  coding: utf-8-with-signature;  mode: c++  -*-  //
+﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
