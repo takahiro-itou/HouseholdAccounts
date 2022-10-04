@@ -22,7 +22,7 @@
 
   <PropertyGroup Label="Globals">
     <Keyword>ManagedCProj</Keyword>
-    <ProjectGuid>{0F54DE1C-F5E7-434B-BEA2-82C246BD4DA4}</ProjectGuid>
+    <ProjectGuid>{4E90FA41-1BB3-45CA-8FB1-45A39EA26F84}</ProjectGuid>
     <RootNamespace>Wrapper</RootNamespace>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <VCProjectVersion>17.0</VCProjectVersion>
