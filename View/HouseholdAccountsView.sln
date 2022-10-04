@@ -9,7 +9,7 @@ EndProject
 
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wrapper.Net48", "Cli.Net4.8\Wrapper.Net48.vcxproj", "{0F54DE1C-F5E7-434B-BEA2-82C246BD4DA4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wrapper.Net60", "Cli.Net6\Wrapper.Net60.vcxproj", "{0C7FBBA6-D412-4C45-8B87-186C1D74BA77}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wrapper.Net60", "Cli.Net6.0\Wrapper.Net60.vcxproj", "{0C7FBBA6-D412-4C45-8B87-186C1D74BA77}"
 EndProject
 
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "View", "View\View.vbproj", "{F4E91BBA-C13A-473A-B339-85624BDAC3DB}"

@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' ">
-    <ProjectReference Include="..\Cli.Net6\Wrapper.Net60.vcxproj" />
+    <ProjectReference Include="..\Cli.Net6.0\Wrapper.Net60.vcxproj" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
     <ProjectReference Include="..\Cli.Net4.8\Wrapper.Net48.vcxproj" />
