@@ -159,7 +159,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">
-      <Project>{4e010888-bf38-456d-aacc-49e0ca10ad3f}</Project>
+      <Project>{71b84818-fb3f-487f-869e-ff1736a1a73a}</Project>
     </ProjectReference>
   </ItemGroup>
 
