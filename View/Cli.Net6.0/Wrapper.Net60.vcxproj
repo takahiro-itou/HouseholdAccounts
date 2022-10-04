@@ -22,7 +22,7 @@
 
   <PropertyGroup Label="Globals">
     <Keyword>NetCoreCProj</Keyword>
-    <ProjectGuid>{0C7FBBA6-D412-4C45-8B87-186C1D74BA77}</ProjectGuid>
+    <ProjectGuid>{5DF2990C-04C6-4EBA-B481-200E41CE91C3}</ProjectGuid>
     <RootNamespace>Wrapper</RootNamespace>
     <TargetFramework>net6.0</TargetFramework>
     <VCProjectVersion>17.0</VCProjectVersion>
