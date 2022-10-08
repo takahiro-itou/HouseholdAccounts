@@ -59,6 +59,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainView</value>
   </data>
@@ -76,6 +80,56 @@
   </metadata>
   <data name="$this.Text" xml:space="preserve">
     <value>MainView</value>
+  </data>
+
+  <data name="&gt;&gt;dgvBalance.Name" xml:space="preserve">
+    <value>dgvBalance</value>
+  </data>
+  <data name="&gt;&gt;dgvBalance.Parent" xml:space="preserve">
+    <value>splContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;dgvBalance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvBalance.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dgvBalance.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvBalance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dgvBalance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>800, 90</value>
+  </data>
+  <data name="dgvBalance.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+
+  <data name="&gt;&gt;dgvTotal.Name" xml:space="preserve">
+    <value>dgvTotal</value>
+  </data>
+  <data name="&gt;&gt;dgvTotal.Parent" xml:space="preserve">
+    <value>splContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;dgvTotal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvTotal.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dgvTotal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvTotal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="dgvTotal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>800, 266</value>
+  </data>
+  <data name="dgvTotal.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
 
   <metadata name="dlgColor.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
