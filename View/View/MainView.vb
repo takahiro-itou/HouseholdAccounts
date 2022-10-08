@@ -1,63 +1,28 @@
 ﻿Public Class MainView
 
-    ''================================================================================
-    ''    ウィンドウを初期位置に移動する。
-    ''================================================================================
-    Private Sub MoveWindowToStartPosition()
-        Dim fx As Integer = My.Settings.WindowLeft
-        Dim fy As Integer = My.Settings.WindowTop
-        Dim fw As Integer = My.Settings.WindowWidth
-        Dim fh As Integer = My.Settings.WindowHeight
+Private Const INI_SEC_MAIN_VIEW As String = "MainView"
 
-        Dim sc As System.Windows.Forms.Screen = System.Windows.Forms.Screen.FromControl(Me)
-        Dim sx As Integer = sc.Bounds.Left
-        Dim sy As Integer = sc.Bounds.Top
+''------------------------------------------------------------------------
+''    フォームを閉じる時に現在位置等を保存する。
+''------------------------------------------------------------------------
+Private Sub MainView_FormClosing(sender As Object, e As FormClosingEventArgs) _
+        Handles Me.FormClosing
 
-        If (fw < 0) Then
-            fw = 640
-        End If
-        If (fh < 0) Then
-            fh = 480
-        End If
-        If (fx + fw < sx) Or (fx + fw > sc.Bounds.Right) Then
-            ' ウィンドウが画面からはみ出す場合は、画面中央に移動させる。 '
-            fx = sx + (sc.Bounds.Width - fw) \ 2
-        End If
-        If (fy + fh < sy) Or (fy + fh >= sc.Bounds.Bottom) Then
-            ' ウィンドウが画面からはみ出す場合は、画面中央に移動させる。 '
-            fy = sy + (sc.Bounds.Height - fh) \ 2
-        End If
+    saveWindowPrefs(g_iniFileName, INI_SEC_MAIN_VIEW, Me)
 
-        Me.Bounds = New Rectangle(fx, fy, fw, fh)
-        Me.WindowState = My.Settings.WindowState
-    End Sub
+End Sub
 
-    ''================================================================================
-    ''    ウィンドウの現在位置を保存する。
-    ''================================================================================
-    Private Sub SaveWindowPrefs()
-        With My.Settings
-            If Me.WindowState = FormWindowState.Normal Then
-                .WindowLeft = Me.Left
-                .WindowTop = Me.Top
-                .WindowWidth = Me.Width
-                .WindowHeight = Me.Height
-            End If
-            .WindowState = Me.WindowState
+''------------------------------------------------------------------------
+''    フォームのロードイベントハンドラ。
+''------------------------------------------------------------------------
+Private Sub MainView_Load(sender As Object, e As EventArgs) Handles _
+            MyBase.Load
 
-            .Save()
-        End With
-    End Sub
+    g_appPath = getAppPath()
+    g_iniFileName = g_appPath & "\ApplicationSettings.ini"
 
-    Private Sub MainView_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
-    End Sub
+    moveWindowToStartPosition(g_iniFileName, INI_SEC_MAIN_VIEW, Me, Nothing)
 
-    Private Sub MainView_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        SaveWindowPrefs()
-    End Sub
-
-    Private Sub MainView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MoveWindowToStartPosition()
-    End Sub
+End Sub
 
 End Class
