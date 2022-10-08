@@ -131,7 +131,7 @@
 
   <ItemGroup>
     <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h" />
-    <ClInclude Include="..\Wrapper\resource.h" />
+    <ClInclude Include="..\Wrapper\Resource.h" />
     <ClInclude Include="..\Wrapper\PreCompile.h" />
   </ItemGroup>
 
@@ -140,7 +140,6 @@
     <ClCompile Include="..\Wrapper\HouseholdAccountsWrapper.cpp" />
     <ClCompile Include="..\Wrapper\PreCompile.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
-      <PrecompiledHeaderFile>PreCompile.h</PrecompiledHeaderFile>
     </ClCompile>
   </ItemGroup>
 
