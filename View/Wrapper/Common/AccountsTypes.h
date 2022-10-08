@@ -1,7 +1,7 @@
-﻿//  -*-  coding: utf-8-with-signature;  mode: c++  -*-  //
+﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
-**                  ---  Household Accounts Core.  ---                  **
+**              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
 **          Copyright (C), 2017-2022, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
