@@ -132,14 +132,32 @@
     <value>0</value>
   </data>
 
+  <data name="&gt;&gt;dlgFont.Name" xml:space="preserve">
+    <value>dlgFont</value>
+  </data>
+  <data name="&gt;&gt;dlgFont.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FontDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="dlgFont.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>121, 17</value>
   </metadata>
 
+  <data name="&gt;&gt;dlgOpen.Name" xml:space="preserve">
+    <value>dlgOpen</value>
+  </data>
+  <data name="&gt;&gt;dlgOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="dlgOpen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>215, 17</value>
   </metadata>
 
+  <data name="&gt;&gt;dlgSave.Name" xml:space="preserve">
+    <value>dlgSave</value>
+  </data>
+  <data name="&gt;&gt;dlgSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="dlgSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>314, 17</value>
   </metadata>
@@ -147,6 +165,92 @@
   <metadata name="mnuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+
+  <data name="&gt;&gt;pnlView.Name" xml:space="preserve">
+    <value>pnlView</value>
+  </data>
+  <data name="&gt;&gt;pnlView.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pnlView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="pnlView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 68</value>
+  </data>
+  <data name="pnlView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>800, 360</value>
+  </data>
+  <data name="pnlView.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+
+  <data name="&gt;&gt;splContainer.Name" xml:space="preserve">
+    <value>splContainer</value>
+  </data>
+  <data name="&gt;&gt;splContainer.Panel1.Name" xml:space="preserve">
+    <value>splContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splContainer.Panel1.Parent" xml:space="preserve">
+    <value>splContainer</value>
+  </data>
+  <data name="&gt;&gt;splContainer.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splContainer.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splContainer.Panel2.Name" xml:space="preserve">
+    <value>splContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splContainer.Panel2.Parent" xml:space="preserve">
+    <value>splContainer</value>
+  </data>
+  <data name="&gt;&gt;splContainer.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splContainer.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;splContainer.Parent" xml:space="preserve">
+    <value>pnlView</value>
+  </data>
+  <data name="&gt;&gt;splContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splContainer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="splContainer.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="splContainer.Panel1MinSize" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <data name="splContainer.Panel2MinSize" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <data name="splContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>800, 360</value>
+  </data>
+  <data name="splContainer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>266</value>
+  </data>
+  <data name="splContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
 
   <metadata name="stbMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>501, 17</value>
