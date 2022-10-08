@@ -1,9 +1,8 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MainView
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -14,60 +13,210 @@ Partial Class MainView
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.dlgColor = New System.Windows.Forms.ColorDialog()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainView))
+
+        Me.mnuMain = New System.Windows.Forms.MenuStrip()
+        Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuFileNew = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuFileOpen = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuFileSep1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuFileSave = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuFileSaveAs = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuFileSep2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuFileExit = New System.Windows.Forms.ToolStripMenuItem()
+
+        Me.dlgFont = New System.Windows.Forms.FontDialog()
         Me.dlgOpen = New System.Windows.Forms.OpenFileDialog()
         Me.dlgSave = New System.Windows.Forms.SaveFileDialog()
-        Me.Button1 = New System.Windows.Forms.Button()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tlbMain = New System.Windows.Forms.ToolStrip()
+        Me.stbMain = New System.Windows.Forms.StatusStrip()
+
+        Me.pnlView = New System.Windows.Forms.Panel()
+        Me.splContainer = New System.Windows.Forms.SplitContainer()
+        Me.dgvTotal = New System.Windows.Forms.DataGridView()
+        Me.dgvBalance = New System.Windows.Forms.DataGridView()
+
+        Me.mnuMain.SuspendLayout()
+        Me.pnlView.SuspendLayout()
+        CType(Me.splContainer, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.splContainer.Panel1.SuspendLayout()
+        Me.splContainer.Panel2.SuspendLayout()
+        Me.splContainer.SuspendLayout()
+        CType(Me.dgvTotal, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvBalance, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+
         '
-        'DataGridView1
+        'mnuMain
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(240, 150)
-        Me.DataGridView1.TabIndex = 0
+        resources.ApplyResources(Me.mnuMain, "mnuMain")
+        Me.mnuMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFile})
+        Me.mnuMain.Name = "mnuMain"
+        '
+        'mnuFile
+        '
+        resources.ApplyResources(Me.mnuFile, "mnuFile")
+        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFileNew, Me.mnuFileOpen, Me.mnuFileSep1, Me.mnuFileSave, Me.mnuFileSaveAs, Me.mnuFileSep2, Me.mnuFileExit})
+        Me.mnuFile.Name = "mnuFile"
+        '
+        'mnuFileNew
+        '
+        resources.ApplyResources(Me.mnuFileNew, "mnuFileNew")
+        Me.mnuFileNew.Name = "mnuFileNew"
+        '
+        'mnuFileOpen
+        '
+        resources.ApplyResources(Me.mnuFileOpen, "mnuFileOpen")
+        Me.mnuFileOpen.Name = "mnuFileOpen"
+        '
+        'mnuFileSep1
+        '
+        resources.ApplyResources(Me.mnuFileSep1, "mnuFileSep1")
+        Me.mnuFileSep1.Name = "mnuFileSep1"
+        '
+        'mnuFileSave
+        '
+        resources.ApplyResources(Me.mnuFileSave, "mnuFileSave")
+        Me.mnuFileSave.Name = "mnuFileSave"
+        '
+        'mnuFileSaveAs
+        '
+        resources.ApplyResources(Me.mnuFileSaveAs, "mnuFileSaveAs")
+        Me.mnuFileSaveAs.Name = "mnuFileSaveAs"
+        '
+        'mnuFileSep2
+        '
+        resources.ApplyResources(Me.mnuFileSep2, "mnuFileSep2")
+        Me.mnuFileSep2.Name = "mnuFileSep2"
+        '
+        'mnuFileExit
+        '
+        resources.ApplyResources(Me.mnuFileExit, "mnuFileExit")
+        Me.mnuFileExit.Name = "mnuFileExit"
+
         '
         'dlgOpen
         '
         Me.dlgOpen.FileName = "OpenFileDialog1"
+        resources.ApplyResources(Me.dlgOpen, "dlgOpen")
         '
-        'Button1
+        'dlgSave
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 213)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.dlgSave, "dlgSave")
+
+        '
+        'tlbMain
+        '
+        resources.ApplyResources(Me.tlbMain, "tlbMain")
+        Me.tlbMain.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.tlbMain.Name = "tlbMain"
+        '
+        'stbMain
+        '
+        resources.ApplyResources(Me.stbMain, "stbMain")
+        Me.stbMain.Name = "stbMain"
+
+        '
+        'pnlView
+        '
+        resources.ApplyResources(Me.pnlView, "pnlView")
+        Me.pnlView.Controls.Add(Me.splContainer)
+        Me.pnlView.Name = "pnlView"
+
+        '
+        'splContainer
+        '
+        resources.ApplyResources(Me.splContainer, "splContainer")
+        Me.splContainer.Name = "splContainer"
+        '
+        'splContainer.Panel1
+        '
+        resources.ApplyResources(Me.splContainer.Panel1, "splContainer.Panel1")
+        Me.splContainer.Panel1.Controls.Add(Me.dgvTotal)
+        '
+        'splContainer.Panel2
+        '
+        resources.ApplyResources(Me.splContainer.Panel2, "splContainer.Panel2")
+        Me.splContainer.Panel2.Controls.Add(Me.dgvBalance)
+
+        '
+        'dgvTotal
+        '
+        resources.ApplyResources(Me.dgvTotal, "dgvTotal")
+        Me.dgvTotal.AllowUserToAddRows = False
+        Me.dgvTotal.AllowUserToDeleteRows = False
+        Me.dgvTotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgvTotal.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
+        Me.dgvTotal.MultiSelect = False
+        Me.dgvTotal.Name = "dgvTotal"
+        Me.dgvTotal.ReadOnly = True
+        Me.dgvTotal.RowHeadersVisible = False
+        Me.dgvTotal.RowTemplate.Height = 25
+        Me.dgvTotal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+
+        '
+        'dgvBalance
+        '
+        resources.ApplyResources(Me.dgvBalance, "dgvBalance")
+        Me.dgvBalance.AllowUserToAddRows = False
+        Me.dgvBalance.AllowUserToResizeRows = False
+        Me.dgvBalance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgvBalance.MultiSelect = False
+        Me.dgvBalance.Name = "dgvBalance"
+        Me.dgvBalance.ReadOnly = True
+        Me.dgvBalance.RowHeadersVisible = False
+        Me.dgvBalance.RowTemplate.Height = 25
+        Me.dgvBalance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+
         '
         'MainView
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(292, 273)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.DataGridView1)
+        resources.ApplyResources(Me, "$this")
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.Controls.Add(Me.pnlView)
+        Me.Controls.Add(Me.stbMain)
+        Me.Controls.Add(Me.tlbMain)
+        Me.Controls.Add(Me.mnuMain)
+        Me.MainMenuStrip = Me.mnuMain
         Me.Name = "MainView"
-        Me.Text = "Form1"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+
+        Me.mnuMain.ResumeLayout(False)
+        Me.mnuMain.PerformLayout()
+        Me.pnlView.ResumeLayout(False)
+        Me.splContainer.Panel1.ResumeLayout(False)
+        Me.splContainer.Panel2.ResumeLayout(False)
+        CType(Me.splContainer, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.splContainer.ResumeLayout(False)
+        CType(Me.dgvTotal, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvBalance, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents dlgColor As System.Windows.Forms.ColorDialog
-    Friend WithEvents dlgOpen As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents dlgSave As System.Windows.Forms.SaveFileDialog
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+
+    Friend WithEvents dgvTotal As DataGridView
+    Friend WithEvents dgvBalance As DataGridView
+    Friend WithEvents dlgFont As FontDialog
+    Friend WithEvents dlgOpen As OpenFileDialog
+    Friend WithEvents dlgSave As SaveFileDialog
+
+    Friend WithEvents mnuMain As MenuStrip
+    Friend WithEvents mnuFile As ToolStripMenuItem
+    Friend WithEvents mnuFileNew As ToolStripMenuItem
+    Friend WithEvents mnuFileOpen As ToolStripMenuItem
+    Friend WithEvents mnuFileSep1 As ToolStripSeparator
+    Friend WithEvents mnuFileSave As ToolStripMenuItem
+    Friend WithEvents mnuFileSaveAs As ToolStripMenuItem
+    Friend WithEvents mnuFileSep2 As ToolStripSeparator
+    Friend WithEvents mnuFileExit As ToolStripMenuItem
+
+    Friend WithEvents pnlView As Panel
+    Friend WithEvents splContainer As SplitContainer
+    Friend WithEvents stbMain As StatusStrip
+    Friend WithEvents tlbMain As ToolStrip
 
 End Class
