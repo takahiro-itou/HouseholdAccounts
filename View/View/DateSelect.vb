@@ -13,4 +13,22 @@
 
 Public Class DateSelect
 
+Private m_selectedDate As System.DateTime
+
+''========================================================================
+Public Function getSelectedDate() As System.DateTime
+''--------------------------------------------------------------------
+''    選択した日付を取得する。
+''--------------------------------------------------------------------
+    getSelectedDate = m_selectedDate
+End Function
+
+''========================================================================
+Public Sub selectDate(ByVal valDate As System.DateTime)
+''--------------------------------------------------------------------
+''    指定した日付を選択する。
+''--------------------------------------------------------------------
+    mncDate.SelectionStart = valDate
+End Sub
+
 End Class
