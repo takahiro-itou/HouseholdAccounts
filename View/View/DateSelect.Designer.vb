@@ -36,6 +36,7 @@ Partial Class DateSelect
         '
         resources.ApplyResources(Me.btnOK, "btnOK")
         Me.btnOK.Name = "btnOK"
+        Me.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.btnOK.UseVisualStyleBackColor = True
 
         '
@@ -43,13 +44,14 @@ Partial Class DateSelect
         '
         resources.ApplyResources(Me.btnCancel, "btnCancel")
         Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnCancel.UseVisualStyleBackColor = True
 
         '
         'DateSelect
         '
-        Me.AcceptButton = Me.btnOK
         resources.ApplyResources(Me, "$this")
+        Me.AcceptButton = Me.btnOK
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.CancelButton = Me.btnCancel
         Me.Controls.Add(Me.btnCancel)
