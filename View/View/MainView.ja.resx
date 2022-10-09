@@ -65,6 +65,20 @@
     <value>家計簿</value>
   </data>
 
+  <data name="mnuEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 20</value>
+  </data>
+  <data name="mnuEdit.Text" xml:space="preserve">
+    <value>編集(&amp;E)</value>
+  </data>
+
+  <data name="mnuEditMove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 22</value>
+  </data>
+  <data name="mnuEditMove.Text" xml:space="preserve">
+    <value>指定した日付に移動(&amp;M)</value>
+  </data>
+
   <data name="mnuFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 20</value>
   </data>
@@ -112,6 +126,28 @@
   </data>
   <data name="mnuFileSep2.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 6</value>
+  </data>
+
+  <data name="mnuOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="mnuOptions.Text" xml:space="preserve">
+    <value>オプション(&amp;O)</value>
+  </data>
+
+  <data name="mnuView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 20</value>
+  </data>
+  <data name="mnuView.Text" xml:space="preserve">
+    <value>表示(&amp;V)</value>
+  </data>
+
+  <data name="mnuViewStatusBar.Text" xml:space="preserve">
+    <value>ステータスバー(&amp;S)</value>
+  </data>
+
+  <data name="mnuViewToolBar.Text" xml:space="preserve">
+    <value>ツールバー(&amp;T)</value>
   </data>
 
 </root>
