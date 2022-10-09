@@ -32,6 +32,15 @@ Public Sub selectDate(ByVal valDate As System.DateTime)
 End Sub
 
 ''========================================================================
+Private Sub btnOK_Click(sender As Object, e As EventArgs) _
+    Handles btnOK.Click
+''--------------------------------------------------------------------
+''    「OK」ボタンのクリックイベントハンドラ。
+''--------------------------------------------------------------------
+    Me.m_selectedDate = mncDate.SelectionStart
+End Sub
+
+''========================================================================
 Private Sub mncDate_DateChanged(sender As Object, e As DateRangeEventArgs) _
     Handles mncDate.DateChanged
 ''--------------------------------------------------------------------
