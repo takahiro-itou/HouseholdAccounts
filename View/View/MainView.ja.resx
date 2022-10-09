@@ -73,45 +73,45 @@
   </data>
 
   <data name="mnuFileExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="mnuFileExit.Text" xml:space="preserve">
     <value>終了(&amp;X)</value>
   </data>
 
   <data name="mnuFileNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="mnuFileNew.Text" xml:space="preserve">
     <value>新規作成(&amp;N)</value>
   </data>
 
   <data name="mnuFileOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="mnuFileOpen.Text" xml:space="preserve">
-    <value>開く(&amp;O)</value>
+    <value>開く(&amp;O) ...</value>
   </data>
 
   <data name="mnuFileSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="mnuFileSave.Text" xml:space="preserve">
     <value>上書き保存(&amp;S)</value>
   </data>
 
   <data name="mnuFileSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="mnuFileSaveAs.Text" xml:space="preserve">
-    <value>名前を付けて保存(&amp;A)</value>
+    <value>名前を付けて保存(&amp;A) ...</value>
   </data>
 
   <data name="mnuFileSep1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 6</value>
+    <value>257, 6</value>
   </data>
   <data name="mnuFileSep2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 6</value>
+    <value>257, 6</value>
   </data>
 
 </root>
