@@ -48,10 +48,19 @@ Private Sub mnuEditMove_Click(sender As Object, e As EventArgs) _
 ''    メニュー「編集」－「指定した日付に移動」
 ''--------------------------------------------------------------------
 Dim frmDate As DateSelect
+Dim dlgAns As System.Windows.Forms.DialogResult
+Dim selDate As System.DateTime
 
     frmDate = New DateSelect()
     With frmDate
-        .ShowDialog(Me)
+        dlgAns = .ShowDialog(Me)
+
+        If (dlgAns = System.Windows.Forms.DialogResult.Cancel) Then
+            MessageBox.Show("キャンセルされました。")
+        Else
+            selDate = .getSelectedDate()
+            MessageBox.Show("日付" & selDate & "が選択されました。")
+        End If
 
         .Dispose()
     End With
