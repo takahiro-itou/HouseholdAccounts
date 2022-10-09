@@ -3,15 +3,15 @@ Module AppCommon
 Public g_appPath As String
 Public g_iniFileName As String
 
-''------------------------------------------------------------------------
-''    ウィンドウを初期位置に移動する。
-''------------------------------------------------------------------------
+''========================================================================
 Public Sub moveWindowToStartPosition(
         ByVal iniFileName As String,
         ByVal iniSecName As String,
         ByRef targetForm As System.Windows.Forms.Form,
         ByRef ownerForm As System.Windows.Forms.Form)
-
+''--------------------------------------------------------------------
+''    ウィンドウを初期位置に移動する。
+''--------------------------------------------------------------------
 Dim fx As Integer, fy As Integer, fw As Integer, fh As Integer
 Dim bx As Integer, by As Integer, bw As Integer, bh As Integer
 Dim sc As System.Windows.Forms.Screen
@@ -61,13 +61,14 @@ Dim sr As Integer, sb As Integer
 
 End Sub
 
-''------------------------------------------------------------------------
-''    ウィンドウの現在位置を保存する。
-''------------------------------------------------------------------------
+''========================================================================
 Public Sub saveWindowPrefs(
         ByVal iniFileName As String,
         ByVal iniSecName As String,
         ByRef sourceForm As System.Windows.Forms.Form)
+''--------------------------------------------------------------------
+''    ウィンドウの現在位置を保存する。
+''--------------------------------------------------------------------
 
     With sourceForm
         saveSettingINI(iniFileName, iniSecName, "Left", .Left)

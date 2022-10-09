@@ -26,25 +26,26 @@ Public Function WritePrivateProfileString(
             ByVal lpFileName As String) As Integer
 End Function
 
-''------------------------------------------------------------------------
-''    アプリケーションの実行ディレクトリを取得する。
-''------------------------------------------------------------------------
+''========================================================================
 Public Function getAppPath() As String
+''--------------------------------------------------------------------
+''    アプリケーションの実行ディレクトリを取得する。
+''--------------------------------------------------------------------
 
     getAppPath = System.IO.Path.GetDirectoryName(
         System.Reflection.Assembly.GetExecutingAssembly().Location)
 
 End Function
 
-''------------------------------------------------------------------------
-''    初期化ファイル（.INIファイル）から設定を読み込む。
-''------------------------------------------------------------------------
+''========================================================================
 Public Function getSettingINI(
             ByVal fileName As String,
             ByVal strSection As String,
             ByVal strKey As String,
             ByVal strDefault As String) As String
-
+''--------------------------------------------------------------------
+''    初期化ファイル（.INIファイル）から設定を読み込む。
+''--------------------------------------------------------------------
 Dim retVal As Integer
 Dim strBuf As System.Text.StringBuilder
 
@@ -56,15 +57,15 @@ Dim strBuf As System.Text.StringBuilder
 
 End Function
 
-''------------------------------------------------------------------------
-''    初期化ファイル（.INIファイル）に設定を書き込む。
-''------------------------------------------------------------------------
+''========================================================================
 Public Sub saveSettingINI(
             ByVal fileName As String,
             ByVal strSection As String,
             ByVal strKey As String,
             ByVal strData As String)
-
+''--------------------------------------------------------------------
+''    初期化ファイル（.INIファイル）に設定を書き込む。
+''--------------------------------------------------------------------
 Dim retVal As Integer
 
     retVal = WritePrivateProfileString(strSection, strKey, strData, fileName)
