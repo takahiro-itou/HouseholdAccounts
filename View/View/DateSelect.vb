@@ -32,8 +32,8 @@ Public Sub selectDate(ByVal valDate As System.DateTime)
 End Sub
 
 ''========================================================================
-Private Sub mnvDate_DateChanged(sender As Object, e As DateRangeEventArgs) _
-    Handles mnvDate.DateChanged
+Private Sub mncDate_DateChanged(sender As Object, e As DateRangeEventArgs) _
+    Handles mncDate.DateChanged
 ''--------------------------------------------------------------------
 ''    カレンダーの日付クリックイベントハンドラ。
 ''--------------------------------------------------------------------
