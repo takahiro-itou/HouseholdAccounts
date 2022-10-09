@@ -34,6 +34,14 @@ Private Sub mnuEditMove_Click(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    メニュー「編集」－「指定した日付に移動」
 ''--------------------------------------------------------------------
+Dim frmDate As DateSelect
+
+    frmDate = New DateSelect()
+    With frmDate
+        .ShowDialog(Me)
+
+        .Dispose()
+    End With
 
 End Sub
 
