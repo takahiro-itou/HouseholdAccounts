@@ -28,6 +28,12 @@ Partial Class MainView
         Me.mnuFileSaveAs = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFileSep2 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuFileExit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuEdit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuEditMove = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuView = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuViewToolBar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuViewStatusBar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuOptions = New System.Windows.Forms.ToolStripMenuItem()
 
         Me.dlgFont = New System.Windows.Forms.FontDialog()
         Me.dlgOpen = New System.Windows.Forms.OpenFileDialog()
@@ -54,7 +60,7 @@ Partial Class MainView
         'mnuMain
         '
         resources.ApplyResources(Me.mnuMain, "mnuMain")
-        Me.mnuMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFile})
+        Me.mnuMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFile, Me.mnuEdit, Me.mnuView, Me.mnuOptions})
         Me.mnuMain.Name = "mnuMain"
         '
         'mnuFile
@@ -97,6 +103,38 @@ Partial Class MainView
         '
         resources.ApplyResources(Me.mnuFileExit, "mnuFileExit")
         Me.mnuFileExit.Name = "mnuFileExit"
+        '
+        'mnuEdit
+        '
+        resources.ApplyResources(Me.mnuEdit, "mnuEdit")
+        Me.mnuEdit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuEditMove})
+        Me.mnuEdit.Name = "mnuEdit"
+        '
+        'mnuEditMove
+        '
+        resources.ApplyResources(Me.mnuEditMove, "mnuEditMove")
+        Me.mnuEditMove.Name = "mnuEditMove"
+        '
+        'mnuView
+        '
+        resources.ApplyResources(Me.mnuView, "mnuView")
+        Me.mnuView.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuViewToolBar, Me.mnuViewStatusBar})
+        Me.mnuView.Name = "mnuView"
+        '
+        'mnuViewToolBar
+        '
+        resources.ApplyResources(Me.mnuViewToolBar, "mnuViewToolBar")
+        Me.mnuViewToolBar.Name = "mnuViewToolBar"
+        '
+        'mnuViewStatusBar
+        '
+        resources.ApplyResources(Me.mnuViewStatusBar, "mnuViewStatusBar")
+        Me.mnuViewStatusBar.Name = "mnuViewStatusBar"
+        '
+        'mnuOptions
+        '
+        resources.ApplyResources(Me.mnuOptions, "mnuOptions")
+        Me.mnuOptions.Name = "mnuOptions"
 
         '
         'dlgOpen
@@ -204,6 +242,11 @@ Partial Class MainView
     Friend WithEvents dlgOpen As OpenFileDialog
     Friend WithEvents dlgSave As SaveFileDialog
 
+    Friend WithEvents pnlView As Panel
+    Friend WithEvents splContainer As SplitContainer
+    Friend WithEvents stbMain As StatusStrip
+    Friend WithEvents tlbMain As ToolStrip
+
     Friend WithEvents mnuMain As MenuStrip
     Friend WithEvents mnuFile As ToolStripMenuItem
     Friend WithEvents mnuFileNew As ToolStripMenuItem
@@ -213,10 +256,11 @@ Partial Class MainView
     Friend WithEvents mnuFileSaveAs As ToolStripMenuItem
     Friend WithEvents mnuFileSep2 As ToolStripSeparator
     Friend WithEvents mnuFileExit As ToolStripMenuItem
-
-    Friend WithEvents pnlView As Panel
-    Friend WithEvents splContainer As SplitContainer
-    Friend WithEvents stbMain As StatusStrip
-    Friend WithEvents tlbMain As ToolStrip
+    Friend WithEvents mnuEdit As ToolStripMenuItem
+    Friend WithEvents mnuEditMove As ToolStripMenuItem
+    Friend WithEvents mnuView As ToolStripMenuItem
+    Friend WithEvents mnuViewToolBar As ToolStripMenuItem
+    Friend WithEvents mnuViewStatusBar As ToolStripMenuItem
+    Friend WithEvents mnuOptions As ToolStripMenuItem
 
 End Class
