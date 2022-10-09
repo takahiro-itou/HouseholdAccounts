@@ -63,6 +63,9 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainView</value>
   </data>
@@ -75,9 +78,6 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>ＭＳ ゴシック, 9pt</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="$this.Text" xml:space="preserve">
     <value>MainView</value>
   </data>
@@ -132,35 +132,35 @@
     <value>0</value>
   </data>
 
+  <metadata name="dlgFont.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>121, 17</value>
+  </metadata>
   <data name="&gt;&gt;dlgFont.Name" xml:space="preserve">
     <value>dlgFont</value>
   </data>
   <data name="&gt;&gt;dlgFont.Type" xml:space="preserve">
     <value>System.Windows.Forms.FontDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="dlgFont.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>121, 17</value>
-  </metadata>
 
+  <metadata name="dlgOpen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>215, 17</value>
+  </metadata>
   <data name="&gt;&gt;dlgOpen.Name" xml:space="preserve">
     <value>dlgOpen</value>
   </data>
   <data name="&gt;&gt;dlgOpen.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="dlgOpen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>215, 17</value>
-  </metadata>
 
+  <metadata name="dlgSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>314, 17</value>
+  </metadata>
   <data name="&gt;&gt;dlgSave.Name" xml:space="preserve">
     <value>dlgSave</value>
   </data>
   <data name="&gt;&gt;dlgSave.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="dlgSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>314, 17</value>
-  </metadata>
 
   <data name="&gt;&gt;mnuFile.Name" xml:space="preserve">
     <value>mnuFile</value>
@@ -181,11 +181,11 @@
   <data name="&gt;&gt;mnuFileExit.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="mnuFileExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 22</value>
-  </data>
   <data name="mnuFileExit.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Alt+F4</value>
+  </data>
+  <data name="mnuFileExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
   </data>
   <data name="mnuFileExit.Text" xml:space="preserve">
     <value>E&amp;xit</value>
@@ -275,6 +275,9 @@
     <value>194, 6</value>
   </data>
 
+  <metadata name="mnuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="&gt;&gt;mnuMain.Name" xml:space="preserve">
     <value>mnuMain</value>
   </data>
@@ -299,9 +302,6 @@
   <data name="mnuMain.Text" xml:space="preserve">
     <value>MenuStrip1</value>
   </data>
-  <metadata name="mnuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 
   <data name="&gt;&gt;pnlView.Name" xml:space="preserve">
     <value>pnlView</value>
