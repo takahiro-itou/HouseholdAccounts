@@ -7,11 +7,10 @@
       net6.0-windows;
       net48;
     </TargetFrameworks>
-    <StartupObject>View.My.MyApplication</StartupObject>
+    <StartupObject>Sub Main</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
-    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
-    <Platforms>AnyCPU;x64;Win32</Platforms>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' ">
-    <ProjectReference Include="..\Cli.Net6\Wrapper.Net60.vcxproj" />
+    <ProjectReference Include="..\Cli.Net6.0\Wrapper.Net60.vcxproj" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
     <ProjectReference Include="..\Cli.Net4.8\Wrapper.Net48.vcxproj" />

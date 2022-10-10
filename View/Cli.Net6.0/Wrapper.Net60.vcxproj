@@ -22,7 +22,7 @@
 
   <PropertyGroup Label="Globals">
     <Keyword>NetCoreCProj</Keyword>
-    <ProjectGuid>{0C7FBBA6-D412-4C45-8B87-186C1D74BA77}</ProjectGuid>
+    <ProjectGuid>{5DF2990C-04C6-4EBA-B481-200E41CE91C3}</ProjectGuid>
     <RootNamespace>Wrapper</RootNamespace>
     <TargetFramework>net6.0</TargetFramework>
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -33,7 +33,7 @@
 
   <PropertyGroup Label="Configuration">
     <CharacterSet>Unicode</CharacterSet>
-    <CLRSupport>true</CLRSupport>
+    <CLRSupport>NetCore</CLRSupport>
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
@@ -71,7 +71,6 @@
   <PropertyGroup Label="UserMacros" />
 
   <PropertyGroup>
-    <LinkIncremental>true</LinkIncremental>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
@@ -81,7 +80,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -103,7 +102,6 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;HOUSEHOLDACCOUNTS_USE_PRE_CONFIGURED_MSVC;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -118,7 +116,6 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;HOUSEHOLDACCOUNTS_USE_PRE_CONFIGURED_MSVC;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -134,7 +131,7 @@
 
   <ItemGroup>
     <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h" />
-    <ClInclude Include="..\Wrapper\resource.h" />
+    <ClInclude Include="..\Wrapper\Resource.h" />
     <ClInclude Include="..\Wrapper\PreCompile.h" />
   </ItemGroup>
 
@@ -143,7 +140,6 @@
     <ClCompile Include="..\Wrapper\HouseholdAccountsWrapper.cpp" />
     <ClCompile Include="..\Wrapper\PreCompile.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
-      <PrecompiledHeaderFile>PreCompile.h</PrecompiledHeaderFile>
     </ClCompile>
   </ItemGroup>
 
@@ -159,7 +155,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">
-      <Project>{4e010888-bf38-456d-aacc-49e0ca10ad3f}</Project>
+      <Project>{71b84818-fb3f-487f-869e-ff1736a1a73a}</Project>
     </ProjectReference>
   </ItemGroup>
 
