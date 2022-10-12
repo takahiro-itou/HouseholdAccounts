@@ -192,4 +192,35 @@ Dim strCheck As String
     InsertStringToTable = lngIndex
 End Function
 
+Public Function ReadStringTable(ByRef utStringTable As tStringTable, _
+    ByVal lngFileNumber As Long) As Long
+'---------------------------------------------------------------------
+'ファイルから、文字列テーブルを読み込む
+'[OUT] utStringTable: 文字列テーブル
+'[ IN] lngFileNumber: ファイル番号
+'[RET] Long
+'---------------------------------------------------------------------
+End Function
+
+Public Sub SortStringTable(ByRef utStringTable As tStringTable)
+'---------------------------------------------------------------------
+'文字列テーブルを昇順にソートする
+'[I/O] utStringTable: 文字列テーブル
+'---------------------------------------------------------------------
+
+    With utStringTable
+    End With
+End Sub
+
+Public Function WriteStringTable(ByRef utStringTable As tStringTable, _
+    ByVal lngFileNumber As Long) As Long
+'---------------------------------------------------------------------
+'ファイルに、文字列テーブルを書き込む
+'[ IN] utStringTable: 文字列テーブル
+'[ IN] lngFileNumber: ファイル番号
+'[RET] Long
+'  書き込んだバイト数
+'---------------------------------------------------------------------
+End Function
+
 End Module
