@@ -148,9 +148,9 @@ End Structure
 '項目毎の詳細集計結果
 Public Structure tBookItemDetailCounts
     '日週月毎の集計、一年間の合計金額
-    Public nDayTotal(0 To MAXDAYS - 1) As Long     '日毎の合計金額：378 日
-    Public nWeekTotal(0 To MAXWEEKS - 1) As Long   '週毎の合計金額：54週
-    Public nMonthTotal(0 To MAXMONTH) As Long      '月毎の合計金額：12ヶ月
+    Public nDayTotal() As Long     '日毎の合計金額：378 日
+    Public nWeekTotal() As Long   '週毎の合計金額：54週
+    Public nMonthTotal() As Long      '月毎の合計金額：12ヶ月
 End Structure
 
 End Module
