@@ -200,6 +200,7 @@ Public Function ReadStringTable(ByRef utStringTable As tStringTable, _
 '[ IN] lngFileNumber: ファイル番号
 '[RET] Long
 '---------------------------------------------------------------------
+
 End Function
 
 Public Sub SortStringTable(ByRef utStringTable As tStringTable)
@@ -221,6 +222,26 @@ Public Function WriteStringTable(ByRef utStringTable As tStringTable, _
 '[RET] Long
 '  書き込んだバイト数
 '---------------------------------------------------------------------
+End Function
+
+Public Function TestStringTable(ByRef lpTable As tStringTable) As Boolean
+'---------------------------------------------------------------------
+'---------------------------------------------------------------------
+Dim i As Long
+Dim j0 As Long, j1 As Long
+
+    For i = 1 To lpTable.nNumEntry - 1
+        j0 = lpTable.nSortIndex(i - 1)
+        j1 = lpTable.nSortIndex(i)
+
+        If lpTable.sTableEntries(j0) >= lpTable.sTableEntries(j1) Then
+            Debug.Print "NumEntry=", lpTable.nNumEntry
+            TestStringTable = False
+            Exit Function
+        End If
+    Next i
+
+    TestStringTable = True
 End Function
 
 End Module
