@@ -235,7 +235,7 @@ Dim j0 As Long, j1 As Long
         j1 = lpTable.nSortIndex(i)
 
         If lpTable.sTableEntries(j0) >= lpTable.sTableEntries(j1) Then
-            Debug.Print "NumEntry=", lpTable.nNumEntry
+            Debug.Print("NumEntry=", lpTable.nNumEntry)
             TestStringTable = False
             Exit Function
         End If
