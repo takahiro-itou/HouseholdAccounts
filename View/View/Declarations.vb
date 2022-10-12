@@ -204,4 +204,41 @@ Public Structure tAnnualRecords
     Public utDayRecords() As tOneDayReceipts       'その年の各日のレコード
 End Structure
 
+'*****************************************************************************
+'
+'家計簿一冊
+'
+
+Public Structure tAccountBook
+    Public bEnabled As Boolean                         '家計簿データが有効か
+
+    'ファイル情報
+    Public sTempFileDir As String                      'テンポラリファイルのディレクトリ
+
+    'データに使用されている文字列テーブル
+    Public utSettingsStringTable As tStringTable       '設定データ用文字列テーブル
+    Public utRecordsStringTable As tStringTable        'レコード用文字列テーブル
+
+    '開始年月日
+    Public nStartYear As Long                          '開始西暦年
+    Public nStartDayIndex As Long                      '開始日(オフセット付、元日からの日数)
+    Public nNumYears As Long                           'データの存在する年数
+    Public utStartDate As tParsedDate
+
+    '項目データと年間レコード
+    Public utBookItems As tBookItems
+    Public nCurrentYear As Long                    '一年分ずつバッファに記憶する
+    Public nNumWeeks As Long                       'この年の週数
+    Public utAnnualRecords As tAnnualRecords       'この年のレコード
+
+    'その他の情報
+    Public nStartWeekday As Long                   '本年の元日の曜日(0=日,6=土)
+    Public nPreviousDays As Long                   'レコード内に本年分の前に去年分が何日分入っているか
+End Structure
+
+'*****************************************************************************
+'
+'表に関する情報
+'
+
 End Module
