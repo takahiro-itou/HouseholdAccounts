@@ -153,4 +153,55 @@ Public Structure tBookItemDetailCounts
     Public nMonthTotal() As Long      '月毎の合計金額：12ヶ月
 End Structure
 
+'*****************************************************************************
+'
+'１回の買い物(レシート１枚)の情報
+'
+
+'１個の商品
+Public Structure tGoods
+    Public nRootItemType As Long           'ルートの項目インデックス
+    Public nItemType As Long               '項目インデックス
+    Public nGoodsNameID As Long            '商品名のID(文字列テーブル内のインデックス)
+    Public sGoodsName As String            '商品名
+    Public nUnitPrice As Long              '単価
+    Public nQuantity As Long               '数量
+    Public nSubTotal As Long               '小計
+    Public nReserved0 As Long              '予約
+End Structure
+
+'１回の買い物(レシート１枚)
+Public Structure tReceipt
+    Public nFlags As Long                  'フラグ
+    Public nNumGoods As Long               '購入した商品の数
+    Public utGoods() As tGoods             '購入した商品のデータ
+    Public nSubTotal As Long               '小計
+    Public nInsideTax As Long              '内税
+    Public nOutsideTax As Long             '外税
+    Public nTotal As Long                  '合計
+    Public nInsideTaxItemType As Long      '内税を加える項目インデックス
+    Public nOutsideTaxItemType As Long     '外税を加える項目インデックス
+    Public nReserved0 As Long              '予約
+    Public nReserved1 As Long              '予約
+End Structure
+
+'１日の買い物
+Public Structure tOneDayReceipts
+    Public nDate As Long               '日付
+    Public nNumReceipt As Long         'レシートの枚数
+    Public utReceipts() As tReceipt    '各レシート
+End Structure
+
+'１年分 のデータ
+Public Structure tAnnualRecords
+    Public nItemBufferSize As Long
+
+    '各項目ごとの集計データ
+    Public utItemAnnualCounts() As tBookItemAnnualCounts
+    Public utItemDetailCounts() As tBookItemDetailCounts
+
+    'レシートデータ
+    Public utDayRecords() As tOneDayReceipts       'その年の各日のレコード
+End Structure
+
 End Module
