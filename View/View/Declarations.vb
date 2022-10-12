@@ -106,4 +106,31 @@ Public Const COLBUDGETBALANCE As Long = NUMDAYSPERWEEK + EXTRACOLUMN_BUDGETBALAN
 Public Const STARTOFEXTRACOL As Long = NUMDAYSPERWEEK
 Public Const BOOKNUMCOLUMNS As Long = BOOKFIXEDCOLS + COLBUDGETBALANCE + 1
 
+'*****************************************************************************
+'
+'家計簿内の各項目、口座(現金残高を含む)
+'
+
+'データ項目
+Public Structure tBookItemEntry
+    Public nParentHandle As Long               '親項目のハンドル
+    Public nItemNameID As Long                 '項目名のID(文字列テーブル内のインデックス)
+    Public sItemName As String                 '項目名
+    Public nSubItemCount As Long               'サブ項目数
+    Public nSubItems() As Long                 'サブ項目のハンドル(インデックス)
+    Public nStartDate As Long                  '開始年月日(残高の項目のみ)
+    Public nStartBalance As Long               '開始時の残高(残高の項目のみ)
+End Structure
+
+'項目一覧
+Public Structure tBookItems
+    Public nItemBufferSize As Long                 '項目用バッファサイズ
+    Public nRegisteredItemCount As Long            '登録済み項目数
+    Public nRootItemCount As Long                  'ルートになる項目の数
+    Public nFlags() As Long                        '項目のフラグ
+    Public utItemEntries() As tBookItemEntry       '項目データ
+    Public nInnerTaxItemHandle As Long             '「内税」項目のハンドル
+    Public nOuterTaxItemHandle As Long             '「外税」項目のハンドル
+End Structure
+
 End Module
