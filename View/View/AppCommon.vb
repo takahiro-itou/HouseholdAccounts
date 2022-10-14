@@ -16,6 +16,27 @@ Module AppCommon
 Public g_appPath As String
 Public g_iniFileName As String
 
+Public Enum eWeekday
+    ewdSunday = 0
+    ewdMonday = 1
+    ewdTuesday = 2
+    ewdWednesday = 3
+    ewdThursday = 4
+    ewdFriday = 5
+    ewdSaturday = 6
+End Enum
+
+Public Structure tParsedDate
+    Public nYear As Long           '西暦年
+    Public nMonth As Long          '月
+    Public nDay As Long            '日
+    Public nDayInYear As Long      'その年で何日目か。つまり、元日からの経過日数（元日を０）
+    Public nDayOffset As Long      '元日の前に何日分のデータがあるか＝１週間の端数処理
+    Public nDayIndex As Long       'その日が去年の端数を含むデータ内で何番目か
+    Public nWeek As Long           '何週目
+    Public nWeekday As eWeekday    '曜日
+End Structure
+
 ''========================================================================
 Public Sub moveWindowToStartPosition(
         ByVal iniFileName As String,
