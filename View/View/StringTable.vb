@@ -222,6 +222,60 @@ Public Function WriteStringTable(ByRef utStringTable As tStringTable, _
 '[RET] Long
 '  書き込んだバイト数
 '---------------------------------------------------------------------
+Dim i As Long, lngCount As Long
+Dim lngSorted As Long, lngIndex As Long
+Dim lngFlags As Long, lngLength As Long, lngRecordSize As Long
+Dim lngFirstPos As Long, lngEndPos As Long
+Dim strTemp As String
+Dim bytBuffer() As Byte
+
+    '現在の位置を保存しておく
+    lngFirstPos = Seek(lngFileNumber) - 1
+
+    With utStringTable
+        lngCount = .nNumEntry
+        lngSorted = .nSorted
+        lngLength = 0
+
+        Put #lngFileNumber, , lngCount
+        Put #lngFileNumber, , lngSorted
+        Put #lngFileNumber, , lngLength     '予約
+        Put #lngFileNumber, , lngLength     '予約
+
+        'ソートインデックステーブルを書き込む
+        If (lngSorted <> STRINGSORTNONE) Then
+            Put #lngFileNumber, , .nSortIndex()
+        End If
+
+        For i = 0 To lngCount - 1
+            lngFlags = .nEntryFlags(i)
+            lngIndex = .nSortIndex(i)
+            strTemp = .sTableEntries(i)
+
+            ReDim bytBuffer(0 To 255)
+            lngLength = StringToByte(strTemp, bytBuffer(), 0, 255, False)
+            If (lngLength And 1) Then lngLength = lngLength + 1
+
+            lngRecordSize = (lngLength + 8 + 15) And &H7FFFFFF0
+            lngLength = lngRecordSize - 8
+
+            ReDim Preserve bytBuffer(0 To lngLength - 1)
+
+            Put #lngFileNumber, , lngFlags
+            Put #lngFileNumber, , lngLength
+            Put #lngFileNumber, , bytBuffer()
+        Next i
+    End With
+
+    'アライメント調整
+    lngCount = Seek(lngFileNumber) - 1
+    lngEndPos = (lngCount + 256) And &H7FFFFF00
+    lngLength = lngEndPos - lngCount
+    ReDim bytBuffer(0 To lngLength - 1)
+    Put #lngFileNumber, , bytBuffer()
+
+    '書き込んだバイト数を返す
+    WriteStringTable = (lngEndPos - lngFirstPos)
 End Function
 
 Public Function TestStringTable(ByRef lpTable As tStringTable) As Boolean
