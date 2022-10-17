@@ -214,7 +214,7 @@ Public Sub SortStringTable(ByRef utStringTable As tStringTable)
 End Sub
 
 Public Function WriteStringTable(ByRef utStringTable As tStringTable, _
-    ByVal lngFileNumber As Long) As Long
+    ByVal lngFileNumber As Integer) As Long
 '---------------------------------------------------------------------
 'ファイルに、文字列テーブルを書き込む
 '[ IN] utStringTable: 文字列テーブル
@@ -237,14 +237,14 @@ Dim bytBuffer() As Byte
         lngSorted = .nSorted
         lngLength = 0
 
-        Put #lngFileNumber, , lngCount
-        Put #lngFileNumber, , lngSorted
-        Put #lngFileNumber, , lngLength     '予約
-        Put #lngFileNumber, , lngLength     '予約
+        FilePut(lngFileNumber, lngCount)
+        FilePut(lngFileNumber, lngSorted)
+        FilePut(lngFileNumber, lngLength)     '予約
+        FilePut(lngFileNumber, lngLength)     '予約
 
         'ソートインデックステーブルを書き込む
         If (lngSorted <> STRINGSORTNONE) Then
-            Put #lngFileNumber, , .nSortIndex()
+            FilePut(lngFileNumber, .nSortIndex)
         End If
 
         For i = 0 To lngCount - 1
@@ -253,7 +253,7 @@ Dim bytBuffer() As Byte
             strTemp = .sTableEntries(i)
 
             ReDim bytBuffer(0 To 255)
-            lngLength = StringToByte(strTemp, bytBuffer(), 0, 255, False)
+            ' lngLength = StringToByte(strTemp, bytBuffer(), 0, 255, False)
             If (lngLength And 1) Then lngLength = lngLength + 1
 
             lngRecordSize = (lngLength + 8 + 15) And &H7FFFFFF0
@@ -261,9 +261,9 @@ Dim bytBuffer() As Byte
 
             ReDim Preserve bytBuffer(0 To lngLength - 1)
 
-            Put #lngFileNumber, , lngFlags
-            Put #lngFileNumber, , lngLength
-            Put #lngFileNumber, , bytBuffer()
+            FilePut(lngFileNumber, lngFlags)
+            FilePut(lngFileNumber, lngLength)
+            FilePut(lngFileNumber, bytBuffer)
         Next i
     End With
 
@@ -272,7 +272,7 @@ Dim bytBuffer() As Byte
     lngEndPos = (lngCount + 256) And &H7FFFFF00
     lngLength = lngEndPos - lngCount
     ReDim bytBuffer(0 To lngLength - 1)
-    Put #lngFileNumber, , bytBuffer()
+    FilePut(lngFileNumber, bytBuffer)
 
     '書き込んだバイト数を返す
     WriteStringTable = (lngEndPos - lngFirstPos)
