@@ -31,15 +31,10 @@ Dim lpTemp() As Byte
 Dim strText As String
 
     '指定された範囲を文字列に変換する
-    If lngStart = 0 Then
-        lpTemp() = lpBuffer()
-        ReDim Preserve lpTemp(0 To lngEnd)
-    Else
-        ReDim lpTemp(lngStart To lngEnd)
-        For i = lngStart To lngEnd
-            lpTemp(i) = lpBuffer(i)
-        Next i
-    End If
+    ReDim lpTemp(lngEnd - lngStart + 1)
+    For i = lngStart To lngEnd
+        lpTemp(i - lngStart) = lpBuffer(i)
+    Next i
     strText = System.Text.Encoding.GetEncoding("utf8").GetString(lpTemp)
 
     'NULL終端文字で文字列を切る
