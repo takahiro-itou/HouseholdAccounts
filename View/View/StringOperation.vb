@@ -48,4 +48,41 @@ Dim strText As String
     ByteToString = strText
 End Function
 
+Public Function StringToByte(ByVal strText As String, _
+    ByRef lpBuf() As Byte, ByVal lngStart, ByVal lngEnd As Long, _
+    Optional ByVal blnAllocBuffer As Boolean = False) As Long
+'---------------------------------------------------------------------
+'文字列をバイト列に変換する
+'[ IN] strText       : 文字列
+'[OUT] lpBuf()       : 変換結果を格納するバッファ
+'[ IN] lngStart      : 格納を開始する位置(配列のインデックス)
+'[ IN] lngEnd        : 格納を終了する位置(配列のインデックス)
+'[ IN] blnAllocBuffer: Trueならバッファの確保を関数内で行う
+'[RET] Long          : 変換後のサイズをバイト単位で返す
+'[ACT]
+'  余ったバイトは、0で埋められる。
+'---------------------------------------------------------------------
+Dim i As Long
+Dim lpTemp() As Byte
+Dim lngTempStart As Long
+Dim lngSize As Long
+
+    lpTemp() = StrConv(strText, vbFromUnicode)
+    lngTempStart = LBound(lpTemp)
+    lngSize = UBound(lpTemp) - lngTempStart + 1
+
+    If blnAllocBuffer Then
+        ReDim Preserve lpBuf(lngStart To lngEnd)
+    End If
+
+    If (lngEnd - lngStart + 1) < lngSize Then
+        lngSize = lngEnd - lngStart + 1
+    End If
+
+    For i = 0 To lngSize - 1
+        lpBuf(lngStart + i) = lpTemp(lngTempStart + i)
+    Next i
+    StringToByte = lngSize
+End Function
+
 End Module
