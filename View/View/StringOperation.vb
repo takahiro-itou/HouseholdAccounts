@@ -49,7 +49,7 @@ Dim strText As String
 End Function
 
 Public Function StringToByte(ByVal strText As String, _
-    ByRef lpBuf() As Byte, ByVal lngStart, ByVal lngEnd As Long, _
+    ByRef lpBuf() As Byte, ByVal lngStart As Long, ByVal lngEnd As Long, _
     Optional ByVal blnAllocBuffer As Boolean = False) As Long
 '---------------------------------------------------------------------
 '文字列をバイト列に変換する
@@ -67,22 +67,28 @@ Dim lpTemp() As Byte
 Dim lngTempStart As Long
 Dim lngSize As Long
 
-    lpTemp() = StrConv(strText, vbFromUnicode)
+    lpTemp = System.Text.Encoding.GetEncoding("utf8").GetBytes(strText)
     lngTempStart = LBound(lpTemp)
     lngSize = UBound(lpTemp) - lngTempStart + 1
 
     If blnAllocBuffer Then
-        ReDim Preserve lpBuf(lngStart To lngEnd)
+        ReDim Preserve lpBuf(lngEnd)
     End If
 
     If (lngEnd - lngStart + 1) < lngSize Then
         lngSize = lngEnd - lngStart + 1
     End If
 
+    For i = lngStart To lngEnd
+        lpBuf(i) = 0
+    Next i
+
     For i = 0 To lngSize - 1
         lpBuf(lngStart + i) = lpTemp(lngTempStart + i)
     Next i
+
     StringToByte = lngSize
+
 End Function
 
 End Module
