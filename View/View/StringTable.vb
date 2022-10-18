@@ -253,7 +253,7 @@ Dim bytBuffer() As Byte
             strTemp = .sTableEntries(i)
 
             ReDim bytBuffer(0 To 255)
-            ' lngLength = StringToByte(strTemp, bytBuffer(), 0, 255, False)
+            lngLength = StringToByte(strTemp, bytBuffer, 0, 255, False)
             If (lngLength And 1) Then lngLength = lngLength + 1
 
             lngRecordSize = (lngLength + 8 + 15) And &H7FFFFFF0
