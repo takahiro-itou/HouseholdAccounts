@@ -26,24 +26,23 @@ Public Function ByteToString(ByRef lpBuffer() As Byte, _
 '  lngStartからlngEnd までの範囲を
 '(システムで使用している文字コードで)文字列に変換する。
 '---------------------------------------------------------------------
-Dim i As Long
+Dim i As Long, cnvlastIndex As Long
+Dim c As Byte
 Dim lpTemp() As Byte
 Dim strText As String
 
     '指定された範囲を文字列に変換する
-    ReDim lpTemp(lngEnd - lngStart + 1)
-    For i = lngStart To lngEnd
-        lpTemp(i - lngStart) = lpBuffer(i)
+    cnvLastIndex = lngEnd - lngStart + 1
+    ReDim lpTemp(cnvLastIndex)
+    For i = 0 To cnvLastIndex
+        c = lpBuffer(i + lngStart)
+        If (blnNullTerm) And (c = 0) And (i > 0) Then
+            ReDim Preserve lpTemp(i - 1)
+            Exit For
+        End If
+        lpTemp(i) = c
     Next i
     strText = System.Text.Encoding.GetEncoding("utf8").GetString(lpTemp)
-
-    'NULL終端文字で文字列を切る
-    If blnNullTerm Then
-        i = InStr(strText, vbNullChar)
-        If (i > 0) Then
-            strText = Left$(strText, i - 1)
-        End If
-    End If
 
     '変換結果を返す
     ByteToString = strText
