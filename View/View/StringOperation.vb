@@ -40,7 +40,7 @@ Dim strText As String
             lpTemp(i) = lpBuffer(i)
         Next i
     End If
-    strText = StrConv(lpTemp(), vbUnicode)
+    strText = System.Text.Encoding.GetEncoding("utf8").GetString(lpTemp)
 
     'NULL終端文字で文字列を切る
     If blnNullTerm Then
