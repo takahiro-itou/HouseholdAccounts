@@ -235,11 +235,11 @@ Dim bytBuffer() As Byte
             ReDim bytBuffer(0 To lngLength - 1)
             FileGet(lngFileNumber, bytBuffer)
 
-            strTemp = ByteToString(bytBuffer(), 0, lngLength - 1, True)
+            strTemp = ByteToString(bytBuffer, 0, lngLength - 1, True)
 
             If (lngSorted = STRINGSORTNONE) Then
                 'データがソートされていない場合は、基本挿入法を使う
-                InsertStringToTable utStringTable, strTemp
+                InsertStringToTable(utStringTable, strTemp)
             Else
                 'データがソートされている場合は、単純に最後に追加していく
                 .sTableEntries(i) = strTemp
@@ -252,8 +252,8 @@ Dim bytBuffer() As Byte
     End With
 
     If (TestStringTable(utStringTable) = False) Then
-        MsgBox "文字列テーブルが正しくソートされていません。" & vbCrLf & "ソートしなおします。"
-        SortStringTable utStringTable
+        MessageBox.Show("文字列テーブルが正しくソートされていません。" & vbCrLf & "ソートしなおします。")
+        SortStringTable(utStringTable)
     End If
 
     'アライメント調整
