@@ -203,8 +203,12 @@ Public Function ReadStringTable(ByRef utStringTable As tStringTable, _
 Dim i As Long, lngCount As Long
 Dim lngSorted As Long, lngIndex As Long
 Dim lngFlags As Long, lngLength As Long
+Dim lngFirstPos As Long, lngEndPos As Long
 Dim strTemp As String
 Dim bytBuffer() As Byte
+
+    '現在の位置を保存しておく
+    lngFirstPos = Seek(lngFileNumber) - 1
 
     'データの個数とソート状態を読み込む
     FileGet(lngFileNumber, lngCount)
@@ -258,10 +262,13 @@ Dim bytBuffer() As Byte
 
     'アライメント調整
     lngCount = Seek(lngFileNumber) - 1
-    lngLength = (lngCount + 64) And &H7FFFFFC0
-    lngLength = lngLength - lngCount
+    lngEndPos = (lngCount + 64) And &H7FFFFFC0
+    lngLength = lngEndPos - lngCount
     ReDim bytBuffer(0 To lngLength - 1)
     FileGet(lngFileNumber, bytBuffer)
+
+    '読み込んだバイト数を返す
+    ReadStringTable = (lngEndPos - lngFirstPos)
 End Function
 
 Public Sub SortStringTable(ByRef utStringTable As tStringTable)
