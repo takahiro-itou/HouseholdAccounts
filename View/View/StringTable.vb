@@ -200,7 +200,68 @@ Public Function ReadStringTable(ByRef utStringTable As tStringTable, _
 '[ IN] lngFileNumber: ファイル番号
 '[RET] Long
 '---------------------------------------------------------------------
+Dim i As Long, lngCount As Long
+Dim lngSorted As Long, lngIndex As Long
+Dim lngFlags As Long, lngLength As Long
+Dim strTemp As String
+Dim bytBuffer() As Byte
 
+    'データの個数とソート状態を読み込む
+    Get #lngFileNumber, , lngCount
+    Get #lngFileNumber, , lngSorted
+    Get #lngFileNumber, , lngFlags      '予約
+    Get #lngFileNumber, , lngFlags      '予約
+
+    With utStringTable
+        .nTableBufferSize = (lngCount + 15) And &H7FFFFFF0
+        .nNumEntry = 0
+        .nSorted = lngSorted
+
+        If (.nTableBufferSize > 0) Then
+            ReDim .nEntryFlags(0 To .nTableBufferSize - 1)
+            ReDim .sTableEntries(0 To .nTableBufferSize - 1)
+            ReDim .nSortIndex(0 To .nTableBufferSize - 1)
+        End If
+
+        'ソートインデックステーブルを読み込む
+        If (lngSorted <> STRINGSORTNONE) And (.nTableBufferSize > 0) Then
+            Get #lngFileNumber, , .nSortIndex()
+        End If
+
+        '各レコードを読み込む
+        For i = 0 To lngCount - 1
+            Get #lngFileNumber, , lngFlags
+            Get #lngFileNumber, , lngLength
+            ReDim bytBuffer(0 To lngLength - 1)
+            Get #lngFileNumber, , bytBuffer()
+
+            strTemp = ByteToString(bytBuffer(), 0, lngLength - 1, True)
+
+            If (lngSorted = STRINGSORTNONE) Then
+                'データがソートされていない場合は、基本挿入法を使う
+                InsertStringToTable utStringTable, strTemp
+            Else
+                'データがソートされている場合は、単純に最後に追加していく
+                .sTableEntries(i) = strTemp
+            End If
+            .nEntryFlags(i) = lngFlags
+        Next i
+
+        .nNumEntry = lngCount
+        .nSorted = STRINGSORTASCENDING
+    End With
+
+    If (TestStringTable(utStringTable) = False) Then
+        MsgBox "文字列テーブルが正しくソートされていません。" & vbCrLf & "ソートしなおします。"
+        SortStringTable utStringTable
+    End If
+
+    'アライメント調整
+    lngCount = Seek(lngFileNumber) - 1
+    lngLength = (lngCount + 64) And &H7FFFFFC0
+    lngLength = lngLength - lngCount
+    ReDim bytBuffer(0 To lngLength - 1)
+    Get #lngFileNumber, , bytBuffer()
 End Function
 
 Public Sub SortStringTable(ByRef utStringTable As tStringTable)
