@@ -193,7 +193,7 @@ Dim strCheck As String
 End Function
 
 Public Function ReadStringTable(ByRef utStringTable As tStringTable, _
-    ByVal lngFileNumber As Long) As Long
+    ByVal lngFileNumber As Integer) As Long
 '---------------------------------------------------------------------
 'ファイルから、文字列テーブルを読み込む
 '[OUT] utStringTable: 文字列テーブル
@@ -207,10 +207,10 @@ Dim strTemp As String
 Dim bytBuffer() As Byte
 
     'データの個数とソート状態を読み込む
-    Get #lngFileNumber, , lngCount
-    Get #lngFileNumber, , lngSorted
-    Get #lngFileNumber, , lngFlags      '予約
-    Get #lngFileNumber, , lngFlags      '予約
+    FileGet(lngFileNumber, lngCount)
+    FileGet(lngFileNumber, lngSorted)
+    FileGet(lngFileNumber, lngFlags)      '予約
+    FileGet(lngFileNumber, lngFlags)      '予約
 
     With utStringTable
         .nTableBufferSize = (lngCount + 15) And &H7FFFFFF0
@@ -225,15 +225,15 @@ Dim bytBuffer() As Byte
 
         'ソートインデックステーブルを読み込む
         If (lngSorted <> STRINGSORTNONE) And (.nTableBufferSize > 0) Then
-            Get #lngFileNumber, , .nSortIndex()
+            FileGet(lngFileNumber, .nSortIndex)
         End If
 
         '各レコードを読み込む
         For i = 0 To lngCount - 1
-            Get #lngFileNumber, , lngFlags
-            Get #lngFileNumber, , lngLength
+            FileGet(lngFileNumber, lngFlags)
+            FileGet(lngFileNumber, lngLength)
             ReDim bytBuffer(0 To lngLength - 1)
-            Get #lngFileNumber, , bytBuffer()
+            FileGet(lngFileNumber, bytBuffer)
 
             strTemp = ByteToString(bytBuffer(), 0, lngLength - 1, True)
 
@@ -261,7 +261,7 @@ Dim bytBuffer() As Byte
     lngLength = (lngCount + 64) And &H7FFFFFC0
     lngLength = lngLength - lngCount
     ReDim bytBuffer(0 To lngLength - 1)
-    Get #lngFileNumber, , bytBuffer()
+    FileGet(lngFileNumber, bytBuffer)
 End Function
 
 Public Sub SortStringTable(ByRef utStringTable As tStringTable)
