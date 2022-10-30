@@ -201,7 +201,7 @@ Public Function ReadStringTable(ByRef utStringTable As tStringTable, _
 '[RET] Long
 '---------------------------------------------------------------------
 Dim i As Long, lngCount As Long
-Dim lngSorted As Long, lngIndex As Long
+Dim lngSorted As Long
 Dim lngFlags As Long, lngLength As Long
 Dim lngFirstPos As Long, lngEndPos As Long
 Dim strTemp As String
