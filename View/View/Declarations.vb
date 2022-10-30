@@ -290,4 +290,26 @@ Public Structure tUserInterface
     Public nCurrentMouseY As Long
 End Structure
 
+Public Structure tBookView
+    Public utAccountBook As tAccountBook
+    Public utUserInterface As tUserInterface
+    Public oBookForm As Form
+
+    Public nNumWeeks As Long
+
+    '家計簿の状態
+    Public bBackupedBookFile As Boolean        'ファイルを一度バックアップしたか
+    Public sCurrentBookFile As String          '現在使用中の家計簿ファイル
+    Public bModifyCurrentBook As Boolean       '現在の家計簿ファイルを更新したか
+
+    'ウィンドウキャプション
+    Public sWindowCaption As String
+    Public sNoNameCaption As String
+    Public sModifyCaption As String
+
+    'ツールバー、ステータスバー
+    Public bShowStatusBar As Boolean
+    Public bShowToolBar As Boolean
+End Structure
+
 End Module
