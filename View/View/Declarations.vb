@@ -241,4 +241,53 @@ End Structure
 '表に関する情報
 '
 
+'*****************************************************************************
+'
+'表示設定
+'
+
+Public Structure tUserInterface
+    '家計簿の表を表示する領域
+    Public oBookPicture As PictureBox
+    Public oCanvasPicture As PictureBox
+    Public oCellPicture As PictureBox
+    Public oIconsPicture As PictureBox
+
+    Public nLeftMargin As Long
+    Public nTopMargin As Long
+    Public nBookWidth As Long
+    Public nBookHeight As Long
+
+    Public nCellWidth As Long
+    Public nCellHeight As Long
+    Public nColumnsInSheet As Long
+    Public nRowsInSheet As Long
+
+    Public nCharWidth As Long                          '固定フォントで一文字当たりの幅
+    Public nCharHeight As Long                         '固定フォントで一文字あたりの高さ
+
+    '現在画面に表示している内容
+    Public nCurrentYear As Long
+    Public nCurrentWeek As Long
+    Public sTableCaption As String                     'テーブルキャプション
+    Public nNowShowingItemCount As Long                '現在画面に表示している項目数
+    Public nNowShowingItems() As Long                  '現在画面に表示している項目
+    Public utNowShowingDates() As tParsedDate          '現在画面に表示している列項目(日付)
+
+    'スクロール範囲と位置
+    Public oBookHScrollBar As HScrollBar
+    Public oBookVScrollBar As VScrollBar
+    Public nMaxHScrollBar As Long
+    Public nMaxVScrollBar As Long
+    Public nLeftCol As Long
+    Public nTopRow As Long
+
+    'ステータスバー
+    Public oInfoStatusBar As System.Windows.Forms.StatusStrip
+
+    'マウス
+    Public nCurrentMouseX As Long
+    Public nCurrentMouseY As Long
+End Structure
+
 End Module
