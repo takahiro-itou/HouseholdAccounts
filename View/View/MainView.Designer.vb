@@ -166,6 +166,7 @@ Partial Class MainView
         resources.ApplyResources(Me.pnlView, "pnlView")
         Me.pnlView.Controls.Add(Me.splContainer)
         Me.pnlView.Name = "pnlView"
+        Me.pnlView.Visible = False
 
         '
         'splContainer

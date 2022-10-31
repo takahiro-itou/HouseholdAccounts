@@ -400,10 +400,10 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="picBook.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 68</value>
+    <value>8, 68</value>
   </data>
   <data name="picBook.Size" type="System.Drawing.Size, System.Drawing">
-    <value>800, 360</value>
+    <value>784, 344</value>
   </data>
   <data name="picBook.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
