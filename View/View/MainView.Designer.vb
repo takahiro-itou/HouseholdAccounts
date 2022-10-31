@@ -217,6 +217,7 @@ Partial Class MainView
         '
         resources.ApplyResources(Me.picBook, "picBook")
         Me.picBook.Name = "picBook"
+        Me.picBook.BackColor = System.Drawing.SystemColors.Window
         Me.picBook.TabStop = False
 
         '
