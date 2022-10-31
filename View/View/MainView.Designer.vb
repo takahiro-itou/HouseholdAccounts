@@ -45,6 +45,7 @@ Partial Class MainView
         Me.splContainer = New System.Windows.Forms.SplitContainer()
         Me.dgvTotal = New System.Windows.Forms.DataGridView()
         Me.dgvBalance = New System.Windows.Forms.DataGridView()
+        Me.picBook = New System.Windows.Forms.PictureBox()
 
         Me.mnuMain.SuspendLayout()
         Me.pnlView.SuspendLayout()
@@ -54,6 +55,7 @@ Partial Class MainView
         Me.splContainer.SuspendLayout()
         CType(Me.dgvTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvBalance, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picBook, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
 
         '
@@ -238,6 +240,7 @@ Partial Class MainView
         Me.splContainer.ResumeLayout(False)
         CType(Me.dgvTotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvBalance, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picBook, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
