@@ -211,6 +211,13 @@ Partial Class MainView
         Me.dgvBalance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
 
         '
+        'picBook
+        '
+        resources.ApplyResources(Me.picBook, "picBook")
+        Me.picBook.Name = "picBook"
+        Me.picBook.TabStop = False
+
+        '
         'MainView
         '
         resources.ApplyResources(Me, "$this")
@@ -242,6 +249,7 @@ Partial Class MainView
     Friend WithEvents dlgOpen As OpenFileDialog
     Friend WithEvents dlgSave As SaveFileDialog
 
+    Friend WithEvents picBook As PictureBox
     Friend WithEvents pnlView As Panel
     Friend WithEvents splContainer As SplitContainer
     Friend WithEvents stbMain As StatusStrip
