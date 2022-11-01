@@ -39,6 +39,17 @@ Private Sub MainView_Load(sender As Object, e As EventArgs) _
 
     moveWindowToStartPosition(g_iniFileName, INI_SEC_MAIN_VIEW, Me, Nothing)
 
+    If picBook.Image Is Nothing Then
+        picBook.Image = New System.Drawing.Bitmap(200, 100)
+    End If
+    Dim g As Graphics = Graphics.FromImage(picBook.Image)
+
+    g.FillRectangle(Brushes.Black, g.VisibleClipBounds)
+    g.DrawString(DateTime.Now.ToLongTimeString(), _
+        SystemFonts.DefaultFont, Brushes.White, 10, 10)
+    g.Dispose()
+    picBook.Invalidate()
+
 End Sub
 
 ''========================================================================
