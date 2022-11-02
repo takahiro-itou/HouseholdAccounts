@@ -74,6 +74,24 @@ Dim lngCellWidth As Long, lngCellHeight As Long
     SetScrollRange(utUI)
 End Sub
 
+Public Sub CleanupUserInterface(ByRef utUI As tUserInterface)
+'---------------------------------------------------------------------
+'ユーザーインターフェイスのクリーンナップ
+'[I/O] utUI: ユーザーインターフェイス
+'[RET] なし
+'---------------------------------------------------------------------
+
+    With utUI
+        .oBookPicture = Nothing
+        .oCanvasPicture = Nothing
+        .oCellPicture = Nothing
+        .oIconsPicture = Nothing
+        .oBookHScrollBar = Nothing
+        .oBookVScrollBar = Nothing
+    End With
+
+End Sub
+
 Public Sub SetScrollRange(ByRef utUI As tUserInterface)
 '---------------------------------------------------------------------
 'スクロールの範囲を決定する
