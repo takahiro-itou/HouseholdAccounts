@@ -51,8 +51,8 @@ Dim lngCellWidth As Long, lngCellHeight As Long
         'マージンと表示領域を計算する
         .nLeftMargin = .nCharWidth
         .nTopMargin = .nCharHeight
-        .nBookWidth = .oBookPicture.ScaleWidth - .nLeftMargin * 2
-        .nBookHeight = .oBookPicture.ScaleHeight - .nTopMargin * 2
+        .nBookWidth = .oBookPicture.Width - .nLeftMargin * 2
+        .nBookHeight = .oBookPicture.Height - .nTopMargin * 2
 
         '一画面にどれだけ入るか計算する
         .nColumnsInSheet = .nBookWidth \ .nCellWidth
@@ -60,8 +60,8 @@ Dim lngCellWidth As Long, lngCellHeight As Long
 
         'ピクチャボックスのサイズを変更する
         With .oCellPicture
-            .Width = lngCellWidth * glngTwipsPerPixelX * 4
-            .Height = lngCellHeight * glngTwipsPerPixelY * 4
+            .Width = lngCellWidth * 4
+            .Height = lngCellHeight * 4
         End With
 
         With .oCanvasPicture
@@ -94,8 +94,8 @@ Dim lngNowShowingRows As Long
                 .Value = 0
                 .Enabled = False
             Else
-                .Min = 0
-                .Max = (BOOKNUMCOLUMNS - lngColumnsInSheet)
+                .Minimum = 0
+                .Maximum = (BOOKNUMCOLUMNS - lngColumnsInSheet)
                 .Enabled = True
             End If
         End With
@@ -105,8 +105,8 @@ Dim lngNowShowingRows As Long
                 .Value = 0
                 .Enabled = False
             Else
-                .Min = 0
-                .Max = (lngNowShowingRows - lngRowsInSheet + BOOKFIXEDROWS)
+                .Minimum = 0
+                .Maximum = (lngNowShowingRows - lngRowsInSheet + BOOKFIXEDROWS)
                 .Enabled = True
             End If
         End With
