@@ -71,7 +71,46 @@ Dim lngCellWidth As Long, lngCellHeight As Long
     End With
 
     'スクロールバーの範囲を設定する
-    SetScrollRange utUI
+    SetScrollRange(utUI)
+End Sub
+
+Public Sub SetScrollRange(ByRef utUI As tUserInterface)
+'---------------------------------------------------------------------
+'スクロールの範囲を決定する
+'[I/O] utUI: ユーザーインターフェイス
+'[RET] なし
+'---------------------------------------------------------------------
+Dim lngColumnsInSheet As Long
+Dim lngRowsInSheet As Long
+Dim lngNowShowingRows As Long
+
+    With utUI
+        lngColumnsInSheet = .nColumnsInSheet
+        lngRowsInSheet = .nRowsInSheet
+        lngNowShowingRows = .nNowShowingItemCount
+
+        With .oBookHScrollBar
+            If (lngColumnsInSheet >= BOOKNUMCOLUMNS) Then
+                .Value = 0
+                .Enabled = False
+            Else
+                .Min = 0
+                .Max = (BOOKNUMCOLUMNS - lngColumnsInSheet)
+                .Enabled = True
+            End If
+        End With
+
+        With .oBookVScrollBar
+            If (lngRowsInSheet - BOOKFIXEDROWS >= lngNowShowingRows) Then
+                .Value = 0
+                .Enabled = False
+            Else
+                .Min = 0
+                .Max = (lngNowShowingRows - lngRowsInSheet + BOOKFIXEDROWS)
+                .Enabled = True
+            End If
+        End With
+    End With
 End Sub
 
 End Module
