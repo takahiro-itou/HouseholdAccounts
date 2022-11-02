@@ -16,6 +16,12 @@ Module AppCommon
 Public g_appPath As String
 Public g_iniFileName As String
 
+'解像度
+Public glngScreenWidth As Integer
+Public glngScreenHeight As Integer
+Public glngTwipsPerPixelX As Integer
+Public glngTwipsPerPixelY As Integer
+
 Public Enum eWeekday
     ewdSunday = 0
     ewdMonday = 1
