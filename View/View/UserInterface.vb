@@ -166,8 +166,12 @@ Dim lngDestX As Long, lngDestY As Long, lngSrcX As Long
 Dim lngWidth As Long, lngHeight As Long
 Dim lngTextAreaLeft As Long, lngTextAreaWidth As Long
 Dim lngTextWidth As Long
-Dim hCellPictureDC As Long, lngResult As Long
+Dim hCanvasDC As IntPtr, hCellDC As IntPtr, hIconsDC As Intptr
+Dim hOldObj As IntPtr
+Dim lngResult As Long
 Dim CurrentX As Integer, CurrentY As Integer
+Dim grpCanvas As System.Drawing.Graphics
+Dim grpCell As System.Drawing.graphics
 
     If (lngMultiCols <= 0) Then lngMultiCols = 1
     If (lngMultiRows <= 0) Then lngMultiRows = 1
@@ -183,36 +187,44 @@ Dim CurrentX As Integer, CurrentY As Integer
             lngTextAreaWidth = lngWidth - (lngLeftMargin + lngRightMargin + 16) - .nCharWidth * 2
         End If
 
-        If .oCellPicture.Image Is Nothing Then
-            .oCellPicture.Image = New System.Drawing.Bitmap(200, 100)
+        If .imgCell Is Nothing Then
+            .imgCell = New System.Drawing.Bitmap(200, 100)
         End If
-        Dim g As Graphics = Graphics.FromImage(.oCellPicture.Image)
-        g.FillRectangle(Brushes.White, g.VisibleClipBounds)
+        grpCell = Graphics.FromImage(.imgCell)
+        grpCell.FillRectangle(Brushes.White, grpCell.VisibleClipBounds)
 
-        Dim b As New SolidBrush(Color.FromArgb(255, 255, 255))  '=lngBGColor
-        g.FillRectangle(b, 0, 0, lngWidth, lngHeight)
-        b.Dispose()
+        Dim brushBG As New SolidBrush(lngBGColor)
+        grpCell.FillRectangle(brushBG, 0, 0, lngWidth, lngHeight)
+        brushBG.Dispose()
 
         Dim p As New Pen(Color.Black, 1)
-        g.DrawRectangle(p, 0, 0, lngWidth, lngHeight)
+        grpCell.DrawRectangle(p, 0, 0, lngWidth, lngHeight)
 
-        hCellPictureDC = g.GetHdc()
+        grpCanvas = System.Drawing.Graphics.FromImage(.imgCanvas)
+        hCanvasDC = grpCanvas.GetHdc()
 
-        Dim gIcons As Graphics = Graphics.FromImage(.oIconsPicture.Image)
+        hCellDC = grpCell.GetHdc()
+
+        hIconsDC = CreateCompatibleDC(hCellDC)
+        hOldObj = SelectObject(hIconsDC, .imgIcons.GetHbitmap())
+
         'アイコンを表示する
         If (lngIcon >= 0) Then
             lngSrcX = lngIcon * 16
             lngDestY = (lngHeight - 16) \ 2
 
-            lngResult = BitBlt(hCellPictureDC, lngLeftMargin, lngDestY, 16, 16, _
-                    gIcons.GetHdc(), lngSrcX, 16, SRCAND)
-            lngResult = BitBlt(hCellPictureDC, lngLeftMargin, lngDestY, 16, 16, _
-                    gIcons.GetHdc(), lngSrcX, 0, SRCPAINT)
+            lngResult = BitBlt(hCellDC, lngLeftMargin, lngDestY, 16, 16, _
+                    hIconsDC, lngSrcX, 16, SRCAND)
+            lngResult = BitBlt(hCellDC, lngLeftMargin, lngDestY, 16, 16, _
+                    hIconsDC, lngSrcX, 0, SRCPAINT)
         End If
+
+        SelectObject(hIconsDC, hOldObj)
+        DeleteDC(hIconsDC)
 
         '文字を表示する
         With .oCellPicture
-            lngTextWidth = g.MeasureString(strText, .Font).Width
+            lngTextWidth = grpCell.MeasureString(strText, .Font).Width
 
             If (lngArrangeCol = ACLEFT) Then
                 CurrentX = lngTextAreaLeft
@@ -224,17 +236,21 @@ Dim CurrentX As Integer, CurrentY As Integer
             CurrentY = (lngHeight - utUI.nCharHeight) \ 2
             .ForeColor = lngTextColor
         End With
-        g.DrawString(strText, SystemFonts.DefaultFont, Brushes.Black,
-                     CurrentX, CurrentY)
+        grpCell.DrawString(strText, SystemFonts.DefaultFont, Brushes.Black,
+                           CurrentX, CurrentY)
 
         lngDestX = lngCol * utUI.nCellWidth
         lngDestY = lngRow * utUI.nCellHeight
-        Dim gCanvas As Graphics = Graphics.FromImage(.oCanvasPicture.Image)
-        lngResult = BitBlt(gCanvas.GetHdc(), lngDestX, lngDestY, _
-                lngWidth + 1, lngHeight + 1, hCellPictureDC, 0, 0, SRCCOPY)
-        gCanvas.Dispose()
-        g.Dispose()
+        lngResult = BitBlt(hCanvasDC, lngDestX, lngDestY, _
+                lngWidth + 1, lngHeight + 1, hCellDC, 0, 0, SRCCOPY)
+
+        grpCell.ReleaseHdc(hCellDC)
+        grpCanvas.ReleaseHdc(hCanvasDC)
+
+        grpCell.Dispose()
+        grpCanvas.Dispose()
     End With
+
 End Sub
 
 End Module

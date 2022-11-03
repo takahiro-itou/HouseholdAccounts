@@ -253,6 +253,7 @@ Public Structure tUserInterface
     Public oCellPicture As PictureBox
     Public oIconsPicture As PictureBox
 
+    Public grpBook As System.Drawing.Graphics
     Public imgCanvas As System.Drawing.Bitmap
     Public imgCell As System.Drawing.Bitmap
     Public imgIcons As System.Drawing.Bitmap
