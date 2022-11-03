@@ -253,6 +253,10 @@ Public Structure tUserInterface
     Public oCellPicture As PictureBox
     Public oIconsPicture As PictureBox
 
+    Public imgCanvas As System.Drawing.Bitmap
+    Public imgCell As System.Drawing.Bitmap
+    Public imgIcons As System.Drawing.Bitmap
+
     Public nLeftMargin As Long
     Public nTopMargin As Long
     Public nBookWidth As Long
