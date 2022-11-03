@@ -141,10 +141,11 @@ Private Sub UserInterfaceDrawCell(ByRef utUI As tUserInterface, _
     ByVal lngLeftMargin As Long, ByVal lngRightMargin As Long, _
     ByVal strText As String, _
     ByVal lngArrangeCol As Long, ByVal lngIcon As Long, _
-    Optional ByVal lngMultiCols As Long = 1, Optional ByVal lngMultiRows As Long = 1, _
-    Optional ByVal lngBGColor As OLE_COLOR = &HFFFFFF, _
-    Optional ByVal lngBorderColor As OLE_COLOR = &H0&, _
-    Optional ByVal lngTextColor As OLE_COLOR = &H0&)
+    ByVal lngBGColor As Color, _
+    ByVal lngBorderColor As Color, _
+    ByVal lngTextColor As Color, _
+    Optional ByVal lngMultiCols As Long = 1, _
+    Optional ByVal lngMultiRows As Long = 1)
 '---------------------------------------------------------------------
 '一つのセルを描画する
 '[ IN] utUI          : ユーザーインターフェイスデータ
@@ -166,6 +167,7 @@ Dim lngWidth As Long, lngHeight As Long
 Dim lngTextAreaLeft As Long, lngTextAreaWidth As Long
 Dim lngTextWidth As Long
 Dim hCellPictureDC As Long, lngResult As Long
+Dim CurrentX As Integer, CurrentY As Integer
 
     If (lngMultiCols <= 0) Then lngMultiCols = 1
     If (lngMultiRows <= 0) Then lngMultiRows = 1
@@ -181,38 +183,57 @@ Dim hCellPictureDC As Long, lngResult As Long
             lngTextAreaWidth = lngWidth - (lngLeftMargin + lngRightMargin + 16) - .nCharWidth * 2
         End If
 
-        .oCellPicture.Cls
-        .oCellPicture.Line (0, 0)-(lngWidth, lngHeight), lngBGColor, BF
-        .oCellPicture.Line (0, 0)-(lngWidth, lngHeight), lngBorderColor, B
-        hCellPictureDC = .oCellPicture.hDC
+        If .oCellPicture.Image Is Nothing Then
+            .oCellPicture.Image = New System.Drawing.Bitmap(200, 100)
+        End If
+        Dim g As Graphics = Graphics.FromImage(.oCellPicture.Image)
+        g.FillRectangle(Brushes.White, g.VisibleClipBounds)
 
+        Dim b As New SolidBrush(Color.FromArgb(255, 255, 255))  '=lngBGColor
+        g.FillRectangle(b, 0, 0, lngWidth, lngHeight)
+        b.Dispose()
+
+        Dim p As New Pen(Color.Black, 1)
+        g.DrawRectangle(p, 0, 0, lngWidth, lngHeight)
+
+        hCellPictureDC = g.GetHdc()
+
+        Dim gIcons As Graphics = Graphics.FromImage(.oIconsPicture.Image)
         'アイコンを表示する
         If (lngIcon >= 0) Then
             lngSrcX = lngIcon * 16
             lngDestY = (lngHeight - 16) \ 2
 
-            lngResult = BitBlt(hCellPictureDC, lngLeftMargin, lngDestY, 16, 16, .oIconsPicture.hDC, lngSrcX, 16, SRCAND)
-            lngResult = BitBlt(hCellPictureDC, lngLeftMargin, lngDestY, 16, 16, .oIconsPicture.hDC, lngSrcX, 0, SRCPAINT)
+            lngResult = BitBlt(hCellPictureDC, lngLeftMargin, lngDestY, 16, 16, _
+                    gIcons.GetHdc(), lngSrcX, 16, SRCAND)
+            lngResult = BitBlt(hCellPictureDC, lngLeftMargin, lngDestY, 16, 16, _
+                    gIcons.GetHdc(), lngSrcX, 0, SRCPAINT)
         End If
 
         '文字を表示する
         With .oCellPicture
-            lngTextWidth = .TextWidth(strText)
+            lngTextWidth = g.MeasureString(strText, .Font).Width
+
             If (lngArrangeCol = ACLEFT) Then
-                .CurrentX = lngTextAreaLeft
+                CurrentX = lngTextAreaLeft
             ElseIf (lngArrangeCol = ACRIGHT) Then
-                .CurrentX = lngTextAreaLeft + (lngTextAreaWidth - lngTextWidth)
+                CurrentX = lngTextAreaLeft + (lngTextAreaWidth - lngTextWidth)
             Else
-                .CurrentX = lngTextAreaLeft + (lngTextAreaWidth - lngTextWidth) \ 2
+                CurrentX = lngTextAreaLeft + (lngTextAreaWidth - lngTextWidth) \ 2
             End If
-            .CurrentY = (lngHeight - utUI.nCharHeight) \ 2
+            CurrentY = (lngHeight - utUI.nCharHeight) \ 2
             .ForeColor = lngTextColor
         End With
-        .oCellPicture.Print strText
+        g.DrawString(strText, SystemFonts.DefaultFont, Brushes.Black,
+                     CurrentX, CurrentY)
 
         lngDestX = lngCol * utUI.nCellWidth
         lngDestY = lngRow * utUI.nCellHeight
-        lngResult = BitBlt(.oCanvasPicture.hDC, lngDestX, lngDestY, lngWidth + 1, lngHeight + 1, hCellPictureDC, 0, 0, SRCCOPY)
+        Dim gCanvas As Graphics = Graphics.FromImage(.oCanvasPicture.Image)
+        lngResult = BitBlt(gCanvas.GetHdc(), lngDestX, lngDestY, _
+                lngWidth + 1, lngHeight + 1, hCellPictureDC, 0, 0, SRCCOPY)
+        gCanvas.Dispose()
+        g.Dispose()
     End With
 End Sub
 
