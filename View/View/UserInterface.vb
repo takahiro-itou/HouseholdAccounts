@@ -136,6 +136,35 @@ End Sub
 'プライベートプロシージャ
 '
 
+Private Sub DrawSprite( _
+        ByRef imgIcons As System.Drawing.Bitmap, _
+        ByRef hdcDest As IntPtr, _
+        ByVal destX As Integer, _
+        ByVal destY As Integer, _
+        ByVal srcX As Integer, _
+        ByVal srcY As Integer, _
+        Optional ByVal iconWidth As Integer = 16, _
+        Optional ByVal iconHeight As Integer = 16)
+''--------------------------------------------------------------------
+''    スプライトを描画する。
+''--------------------------------------------------------------------
+Dim hdcIcons As IntPtr
+Dim hOldObj As IntPtr
+Dim iResult As Integer
+
+    hdcIcons = CreateCompatibleDC(hdcDest)
+    hOldObj = SelectObject(hdcIcons, imgIcons.GetHbitmap())
+
+    iResult = BitBlt(hdcDest, destX, destY, iconWidth, iconHeight,
+            hdcIcons, srcX, srcY + iconHeight, SRCAND)
+    iResult = BitBlt(hdcDest, destX, destY, iconWidth, iconHeight,
+            hdcIcons, srcX, srcY, SRCPAINT)
+
+    SelectObject(hdcIcons, hOldObj)
+    DeleteDC(hdcIcons)
+
+End Sub
+
 Private Sub UserInterfaceDrawCell(ByRef utUI As tUserInterface, _
     ByVal lngCol As Long, ByVal lngRow As Long, _
     ByVal lngLeftMargin As Long, ByVal lngRightMargin As Long, _
@@ -205,22 +234,15 @@ Dim grpCell As System.Drawing.graphics
 
         hCellDC = grpCell.GetHdc()
 
-        hIconsDC = CreateCompatibleDC(hCellDC)
-        hOldObj = SelectObject(hIconsDC, .imgIcons.GetHbitmap())
-
         'アイコンを表示する
         If (lngIcon >= 0) Then
             lngSrcX = lngIcon * 16
             lngDestY = (lngHeight - 16) \ 2
 
-            lngResult = BitBlt(hCellDC, lngLeftMargin, lngDestY, 16, 16, _
-                    hIconsDC, lngSrcX, 16, SRCAND)
-            lngResult = BitBlt(hCellDC, lngLeftMargin, lngDestY, 16, 16, _
-                    hIconsDC, lngSrcX, 0, SRCPAINT)
+            DrawSprite(
+                    .imgIcons, hCellDC, lngLeftMargin, lngDestY,
+                    lngSrcX, 0, 16, 16)
         End If
-
-        SelectObject(hIconsDC, hOldObj)
-        DeleteDC(hIconsDC)
 
         '文字を表示する
         With .oCellPicture
