@@ -23,7 +23,7 @@ Public Function AnnualRecordGetItemDayTotal( _
 '[RET] Long
 '  １日の合計金額
 '---------------------------------------------------------------------
-Dim lngTotal As Long
+Dim lngTotal As Integer
 
     With utRecord
         lngTotal = .utItemDetailCounts(lngItemIndex).nDayTotal(lngDate)
@@ -42,7 +42,7 @@ Public Function AnnualRecordGetItemMonthTotal( _
 '[RET] Long
 '  １ヶ月の合計金額
 '---------------------------------------------------------------------
-Dim lngTotal As Long
+Dim lngTotal As Integer
 
     With utRecord
         If (lngItemIndex < MAXITEMS) Then
@@ -52,6 +52,29 @@ Dim lngTotal As Long
         End If
     End With
     AnnualRecordGetItemMonthTotal = lngTotal
+End Function
+
+Public Function AnnualRecordGetItemWeekTotal( _
+    ByRef utRecord As tAnnualRecords, _
+    ByVal lngItemIndex As Integer, ByVal lngWeek As Integer) As Integer
+'---------------------------------------------------------------------
+'項目の１週間の合計金額を返す
+'[ IN] utRecord    : 年間レコード
+'[ IN] lngItemIndex: 項目インデックス
+'[ IN] lngWeek     : 週
+'[RET] Long
+'  １週間の合計金額
+'---------------------------------------------------------------------
+Dim lngTotal As Integer
+
+    With utRecord
+        If (lngItemIndex < MAXITEMS) Then
+            lngTotal = .utItemDetailCounts(lngItemIndex).nWeekTotal(lngWeek)
+        Else
+            lngTotal = 0
+        End If
+    End With
+    AnnualRecordGetItemWeekTotal = lngTotal
 End Function
 
 End Module
