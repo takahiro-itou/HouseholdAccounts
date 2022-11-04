@@ -195,12 +195,13 @@ Dim lngDestX As Long, lngDestY As Long, lngSrcX As Long
 Dim lngWidth As Long, lngHeight As Long
 Dim lngTextAreaLeft As Long, lngTextAreaWidth As Long
 Dim lngTextWidth As Long
-Dim hCanvasDC As IntPtr, hCellDC As IntPtr, hIconsDC As Intptr
+Dim hCellDC As IntPtr, hIconsDC As Intptr
 Dim hOldObj As IntPtr
 Dim lngResult As Long
 Dim CurrentX As Integer, CurrentY As Integer
 Dim grpCanvas As System.Drawing.Graphics
 Dim grpCell As System.Drawing.graphics
+Dim rectSrc As System.Drawing.Rectangle
 
     If (lngMultiCols <= 0) Then lngMultiCols = 1
     If (lngMultiRows <= 0) Then lngMultiRows = 1
@@ -219,6 +220,8 @@ Dim grpCell As System.Drawing.graphics
         If .imgCell Is Nothing Then
             .imgCell = New System.Drawing.Bitmap(200, 100)
         End If
+        grpCanvas = System.Drawing.Graphics.FromImage(.imgCanvas)
+
         grpCell = Graphics.FromImage(.imgCell)
         grpCell.FillRectangle(Brushes.White, grpCell.VisibleClipBounds)
 
@@ -229,20 +232,18 @@ Dim grpCell As System.Drawing.graphics
         Dim p As New Pen(Color.Black, 1)
         grpCell.DrawRectangle(p, 0, 0, lngWidth, lngHeight)
 
-        grpCanvas = System.Drawing.Graphics.FromImage(.imgCanvas)
-        hCanvasDC = grpCanvas.GetHdc()
-
-        hCellDC = grpCell.GetHdc()
-
         'アイコンを表示する
         If (lngIcon >= 0) Then
+            hCellDC = grpCell.GetHdc()
             lngSrcX = lngIcon * 16
             lngDestY = (lngHeight - 16) \ 2
 
             DrawSprite(
                     .imgIcons, hCellDC, lngLeftMargin, lngDestY,
                     lngSrcX, 0, 16, 16)
+            grpCell.ReleaseHdc(hCellDC)
         End If
+
 
         '文字を表示する
         With .oCellPicture
@@ -258,18 +259,19 @@ Dim grpCell As System.Drawing.graphics
             CurrentY = (lngHeight - utUI.nCharHeight) \ 2
             .ForeColor = lngTextColor
         End With
-        grpCell.DrawString(strText, SystemFonts.DefaultFont, Brushes.Black,
-                           CurrentX, CurrentY)
+        grpCell.DrawString(
+                strText, SystemFonts.DefaultFont, Brushes.Black,
+                CurrentX, CurrentY)
+        grpCell.Dispose()
 
         lngDestX = lngCol * utUI.nCellWidth
         lngDestY = lngRow * utUI.nCellHeight
-        lngResult = BitBlt(hCanvasDC, lngDestX, lngDestY, _
-                lngWidth + 1, lngHeight + 1, hCellDC, 0, 0, SRCCOPY)
+        rectSrc = New System.Drawing.Rectangle(
+                0, 0, lngWidth + 1, lngHeight + 1)
+        grpCanvas.DrawImage(
+                .imgCell, lngDestX, lngDestY,
+                rectSrc, GraphicsUnit.Pixel)
 
-        grpCell.ReleaseHdc(hCellDC)
-        grpCanvas.ReleaseHdc(hCanvasDC)
-
-        grpCell.Dispose()
         grpCanvas.Dispose()
     End With
 
