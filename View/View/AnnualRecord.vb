@@ -77,4 +77,23 @@ Dim lngTotal As Integer
     AnnualRecordGetItemWeekTotal = lngTotal
 End Function
 
+Public Function AnnualRecordGetItemYearTotal( _
+    ByRef utRecord As tAnnualRecords, _
+    ByVal lngItemIndex As Integer, ByVal lngYearIndex As Integer) As Integer
+'---------------------------------------------------------------------
+'項目の１年間の合計金額を返す
+'[ IN] utRecord    : 年間レコード
+'[ IN] lngItemIndex: 項目インデックス
+'[ IN] lngYear     : 西暦年
+'[RET] Long
+'  １年間の合計金額
+'---------------------------------------------------------------------
+Dim lngTotal As Integer
+
+    With utRecord
+        lngTotal = .utItemAnnualCounts(lngItemIndex).nYearTotal(lngYearIndex)
+    End With
+    AnnualRecordGetItemYearTotal = lngTotal
+End Function
+
 End Module
