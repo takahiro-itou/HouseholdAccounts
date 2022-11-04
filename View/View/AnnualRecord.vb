@@ -31,4 +31,27 @@ Dim lngTotal As Long
     AnnualRecordGetItemDayTotal = lngTotal
 End Function
 
+Public Function AnnualRecordGetItemMonthTotal( _
+    ByRef utRecord As tAnnualRecords, _
+    ByVal lngItemIndex As Integer, ByVal lngMonth As Integer) As Integer
+'---------------------------------------------------------------------
+'項目の１ヶ月の合計金額を返す
+'[ IN] utRecord    : 年間レコード
+'[ IN] lngItemIndex: 項目インデックス
+'[ IN] lngMonth    : 月
+'[RET] Long
+'  １ヶ月の合計金額
+'---------------------------------------------------------------------
+Dim lngTotal As Long
+
+    With utRecord
+        If (lngItemIndex < MAXITEMS) Then
+            lngTotal = .utItemDetailCounts(lngItemIndex).nMonthTotal(lngMonth)
+        Else
+            lngTotal = 0
+        End If
+    End With
+    AnnualRecordGetItemMonthTotal = lngTotal
+End Function
+
 End Module
