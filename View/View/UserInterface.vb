@@ -195,9 +195,7 @@ Dim lngDestX As Long, lngDestY As Long, lngSrcX As Long
 Dim lngWidth As Long, lngHeight As Long
 Dim lngTextAreaLeft As Long, lngTextAreaWidth As Long
 Dim lngTextWidth As Long
-Dim hCellDC As IntPtr, hIconsDC As Intptr
-Dim hOldObj As IntPtr
-Dim lngResult As Long
+Dim hCellDC As IntPtr
 Dim CurrentX As Integer, CurrentY As Integer
 Dim grpCanvas As System.Drawing.Graphics
 Dim grpCell As System.Drawing.graphics
