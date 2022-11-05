@@ -53,10 +53,24 @@ Public Function BookItemGetItemExpanded(ByRef utBookItems As tBookItems, _
 '  True  = サブ項目も表示する
 '  False = この項目まで表示して、サブ項目は表示しない
 '---------------------------------------------------------------------
-Dim lngFlags As Long
+Dim lngFlags As Integer
 
     lngFlags = utBookItems.nFlags(lngItemIndex)
     BookItemGetItemExpanded = (lngFlags And ITEM_FLAG_EXPANDED)
+End Function
+
+Public Function BookItemGetItemFlags(ByRef utBookItems As tBookItems, _
+    ByVal lngItemIndex As Integer) As Long
+'---------------------------------------------------------------------
+'項目のフラグを得る
+'[ IN] utBookItems : 項目一覧データ
+'[ IN] lngItemIndex: 項目番号
+'[RET] Long
+'---------------------------------------------------------------------
+Dim lngFlags As Integer
+
+    lngFlags = utBookItems.nFlags(lngItemIndex)
+    BookItemGetItemFlags = lngFlags
 End Function
 
 Public Function BookItemGetItemName(ByRef utBookItems As tBookItems, _
@@ -100,7 +114,7 @@ Dim lngParentHandle As Integer
     BookItemGetItemType = lngType
 End Function
 
-Public Function BookItemGetRegisteredItemCount(ByRef utBookItems As tBookItems) As Long
+Public Function BookItemGetRegisteredItemCount(ByRef utBookItems As tBookItems) As Integer
 '---------------------------------------------------------------------
 '使用済みの項目数を返す
 '[ IN] utBookItems : 項目一覧データ
