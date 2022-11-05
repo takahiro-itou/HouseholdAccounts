@@ -107,6 +107,23 @@ Dim lngWeekday As Integer
     GetWeekday = (lngWeekday Mod 7)
 End Function
 
+Public Function IsUruuYear(ByVal lngYear As Integer) As Integer
+'---------------------------------------------------------------------
+'指定した西暦年が閏年かどうかを判定する
+'[ IN] lngYear : 西暦年
+'[RET] Long
+'  閏年であれば 1を、平年であれば 0を返す
+'---------------------------------------------------------------------
+
+    If ((lngYear Mod 4) <> 0) Then
+        IsUruuYear = 0
+    ElseIf ((lngYear Mod 100) = 0) And ((lngYear Mod 400) <> 0) Then
+        IsUruuYear = 0
+    Else
+        IsUruuYear = 1
+    End If
+End Function
+
 ''========================================================================
 Public Sub moveWindowToStartPosition(
         ByVal iniFileName As String,
