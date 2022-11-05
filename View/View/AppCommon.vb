@@ -77,6 +77,32 @@ Public Function CompareDates( _
     CompareDates = 0
 End Function
 
+Public Function GetWeekday( _
+    ByVal lngYear As Integer, _
+    ByVal lngMonth As Integer, _
+    ByVal lngDay As Integer) As eWeekday
+'---------------------------------------------------------------------
+'指定した日付（西暦年・月・日）から曜日を得る
+'[ IN] lngYear : 西暦年
+'[ IN] lngMonth: 月
+'[ IN] lngDay  : 日
+'[RET] Long
+'  0=日,1=月,...,6=土
+'---------------------------------------------------------------------
+Dim lngWeekday As Integer
+
+    'ツエラーの公式
+    If (lngMonth <= 2) Then
+        lngMonth = lngMonth + 12
+        lngYear = lngYear - 1
+    End If
+
+    lngWeekday = (lngYear + (lngYear \ 4) - (lngYear \ 100) + (lngYear \ 400))
+    lngWeekday = lngWeekday + ((lngMonth * 13 + 8) \ 5) + lngDay
+
+    GetWeekday = (lngWeekday Mod 7)
+End Function
+
 ''========================================================================
 Public Sub moveWindowToStartPosition(
         ByVal iniFileName As String,
