@@ -303,14 +303,11 @@ Private Sub UserInterfaceShowData(ByRef utUI As tUserInterface, _
 '  ピクチャーボックスの指定位置に、
 '家計簿の内容のlngRootItem で示されるノードのアイテムを描画する。
 '---------------------------------------------------------------------
-Dim i As Integer, X As Integer
-Dim lngDestY As Integer
+Dim X As Integer
 Dim lngType As Integer
 Dim lngYearIndex As Integer, lngDate As Integer, lngDayTotal As Integer
 Dim lngWeekTotal As Integer, lngMonthTotal As Integer, lngYearTotal As Integer
 Dim strText As String
-Dim lngTopMargin As Integer
-Dim lngSrcDC As IntPtr, lngBltResult As Integer
 Dim lngTextColor As Color, lngCellColor As Color
 Dim utDate As tParsedDate
 
