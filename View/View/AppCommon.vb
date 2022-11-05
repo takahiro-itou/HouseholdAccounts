@@ -147,6 +147,48 @@ Dim lngTempDay As Integer, lngUruu As Integer
     End With
 End Sub
 
+Public Function GetDayInYear(ByVal lngYear As Integer,
+        ByVal lngMonth As Integer, ByVal lngDay As Integer) As Integer
+'---------------------------------------------------------------------
+'元日から数えて何日目であるかを返す。
+'[ IN] lngYear : 西暦年
+'[ IN] lngMonth: 月
+'[ IN] lngDay  : 日
+'[RET] Long
+'  元日を０とする、元日からの経過日数
+'---------------------------------------------------------------------
+Dim lngTemp As Integer
+
+    lngTemp = IsUruuYear(lngYear)
+    GetDayInYear = glngFirstDayTable(lngTemp, lngMonth) + (lngDay - 1)
+End Function
+
+Public Function GetDayStringFromInfo(ByRef utDayInfo As tParsedDate,
+        ByVal blnYear As Boolean, ByVal blnWeekday As Boolean) As String
+'---------------------------------------------------------------------
+'日付情報から、日付を表す文字列を得る
+'[ IN] utDayInfo : 日付情報
+'[ IN] blnYear   : Trueならば西暦年も加える
+'[ IN] blnWeekday: Trueならば曜日も加える
+'[RET] String
+'  日付を表す文字列
+'[ACT]
+'  文字列の書式は、[yy/]mm/dd[(weekday)]
+'---------------------------------------------------------------------
+Dim strTemp As String
+
+    With utDayInfo
+        strTemp = .nMonth & "/" & .nDay
+        If (blnYear) Then
+            strTemp = .nYear & "/" & strTemp
+        End If
+        If (blnWeekday) Then
+            strTemp = strTemp & "(" & gstrWeekdayName(.nWeekday) & ")"
+        End If
+    End With
+    GetDayStringFromInfo = strTemp
+End Function
+
 Public Function GetWeekday( _
     ByVal lngYear As Integer, _
     ByVal lngMonth As Integer, _
