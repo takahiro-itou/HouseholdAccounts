@@ -43,6 +43,10 @@ Public Structure tParsedDate
     Public nWeekday As eWeekday    '曜日
 End Structure
 
+Public glngFirstDayTable() As Integer   '各月の一日が元日から数えて何日目か。(元日を０とする)
+Public gstrMonthName() As String
+Public gstrWeekdayName() As String
+
 Public Function CompareDates( _
     ByVal lngYear1 As Integer, ByVal lngDayIndex1 As Integer, _
     ByVal lngYear2 As Integer, ByVal lngDayIndex2 As Integer) As Integer
