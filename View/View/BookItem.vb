@@ -137,4 +137,67 @@ Public Function BookItemGetRegisteredItemCount(ByRef utBookItems As tBookItems) 
     BookItemGetRegisteredItemCount = utBookItems.nRegisteredItemCount
 End Function
 
+Public Function BookItemGetRootItemCount(
+        ByRef utBookItems As tBookItems) As Integer
+'---------------------------------------------------------------------
+'ルートにある項目数を返す
+'[ IN] utBookItems : 項目一覧データ
+'[RET] Long
+'---------------------------------------------------------------------
+    BookItemGetRootItemCount = utBookItems.nRootItemCount
+End Function
+
+Public Function BookItemGetRootItemHandle(ByRef utBookItems As tBookItems, _
+    ByVal lngItemIndex As Integer) As Integer
+'---------------------------------------------------------------------
+'項目のルート項目のハンドルを返す
+'lngItemIndexがルート項目を示している場合は、それ自身を返す
+'[I/O] utBookItems : 項目一覧データ
+'[ IN] lngItemIndex: 項目番号
+'[RET] Long
+'---------------------------------------------------------------------
+Dim lngParentHandle As Integer
+
+    With utBookItems
+        lngParentHandle = .utItemEntries(lngItemIndex).nParentHandle
+
+        Do While (lngParentHandle >= 0)
+            lngItemIndex = lngParentHandle
+            lngParentHandle = .utItemEntries(lngItemIndex).nParentHandle
+        Loop
+    End With
+
+    BookItemGetRootItemHandle = lngItemIndex
+End Function
+
+Public Function BookItemGetSubItemCount(ByRef utBookItems As tBookItems, _
+    ByVal lngItemIndex As Integer) As Integer
+'---------------------------------------------------------------------
+'項目が持つサブ項目の個数を返す
+'[ IN] utBookItems : 項目一覧データ
+'[ IN] lngItemIndex: 項目番号
+'[RET] Long
+'---------------------------------------------------------------------
+Dim lngCount As Integer
+
+    lngCount = utBookItems.utItemEntries(lngItemIndex).nSubItemCount
+    BookItemGetSubItemCount = lngCount
+End Function
+
+Public Function BookItemGetSubItemHandle(ByRef utBookItems As tBookItems, _
+        ByVal lngItemIndex As Integer,
+        ByVal lngSubItemIndex As Integer) As Integer
+'---------------------------------------------------------------------
+'項目が持つサブ項目のハンドルを返す
+'[ IN] utBookItems     : 項目一覧データ
+'[ IN] lngItemIndex    : 項目番号
+'[ IN] lngSubItemIndex : サブ項目の番号
+'[RET] Long
+'---------------------------------------------------------------------
+Dim lngSubItemHandle As Integer
+
+    lngSubItemHandle = utBookItems.utItemEntries(lngItemIndex).nSubItems(lngSubItemIndex)
+    BookItemGetSubItemHandle = lngSubItemHandle
+End Function
+
 End Module
