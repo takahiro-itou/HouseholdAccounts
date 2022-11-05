@@ -426,4 +426,96 @@ Dim utDate As tParsedDate
 
 End Sub
 
+Private Function UserInterfaceShowItem(ByRef utUI As tUserInterface, _
+        ByRef utBook As tAccountBook, _
+        ByVal lngDepth As Integer, ByVal lngTop As Integer,
+        ByVal lngRootItem As Integer,
+        ByVal lngYear As Integer, ByVal lngMonth As Integer,
+        ByVal lngWeek As Integer) As Integer
+'---------------------------------------------------------------------
+'項目を表示する
+'[ IN] utUI        :
+'[ IN] utBook      :
+'[ IN] lngDepth    :
+'[ IN] lngTop      :
+'[ IN] lngRootItem :
+'[ IN] lngYear     :
+'[ IN] lngMonth    :
+'[ IN] lngWeek     :
+'[RET] Long
+'  表示した項目の数
+'[ACT]
+'  ピクチャーボックスの指定位置に、
+'家計簿の内容のlngRootItem で示されるノード以下のアイテムを描画する。
+'---------------------------------------------------------------------
+Dim i As Integer
+Dim lngType As Integer, lngCount As Integer, lngSubItem As Integer
+Dim lngInc As Integer, lngResult As Integer
+Dim lngIcon As Integer
+Dim lngColor As Color
+Dim strName As String
+Dim blnExpand As Boolean
+
+    With utBook
+        strName = BookItemGetItemName(.utBookItems, lngRootItem)
+        lngType = BookItemGetItemType(.utBookItems, lngRootItem)
+        blnExpand = BookItemGetItemExpanded(.utBookItems, lngRootItem)
+        lngCount = BookItemGetSubItemCount(.utBookItems, lngRootItem)
+    End With
+
+    '表示する背景色を決定する
+    If (lngDepth = 0) Then
+        lngColor = BOOKBGTOTALSCOLOR
+    ElseIf ((lngCount = 0) And (lngDepth >= 2)) Then
+        lngColor = BOOKBGLEAFSCOLOR
+    Else
+        lngColor = BOOKBGNORMALSCOLOR
+    End If
+
+    '左端の列に表示するアイコンを決定する
+    If (lngCount = 0) Then
+        lngIcon = 0
+    Else
+        If (blnExpand = False) Then
+            lngIcon = 1
+        Else
+            lngIcon = 2
+        End If
+    End If
+
+    'この項目を表示する
+    lngResult = 1
+    If (lngType = ITEM_FLAG_BALANCE) Then
+        '残高
+        UserInterfaceShowData utUI, utBook, _
+            lngDepth, lngIcon, ACRIGHT, BOOKBGFIXEDROWSCOLOR, BOOKBGTOTALSCOLOR, _
+            lngTop, lngRootItem, strName, lngYear, lngMonth, lngWeek
+    Else
+        '通常の項目
+        UserInterfaceShowData utUI, utBook, _
+            lngDepth, lngIcon, ACLEFT, BOOKBGFIXEDCOLSCOLOR, lngColor, _
+            lngTop, lngRootItem, strName, lngYear, lngMonth, lngWeek
+    End If
+
+    With utUI
+        .nNowShowingItems(.nNowShowingItemCount) = lngRootItem
+        .nNowShowingItemCount = .nNowShowingItemCount + 1
+    End With
+
+    If (blnExpand) Then
+        'この項目を展開し、サブアイテムも表示する
+        lngTop = lngTop + 1
+        For i = 0 To lngCount - 1
+            lngSubItem = BookItemGetSubItemHandle(utBook.utBookItems, lngRootItem, i)
+            lngInc = UserInterfaceShowItem(utUI, utBook, _
+               lngDepth + 1, lngTop, lngSubItem, lngYear, lngMonth, lngWeek)
+            lngTop = lngTop + lngInc
+            lngResult = lngResult + lngInc
+        Next i
+    End If
+
+    '表示した項目数を返す
+    UserInterfaceShowItem = lngResult
+End Function
+
 End Module
