@@ -131,6 +131,115 @@ Dim lngNowShowingRows As Long
     End With
 End Sub
 
+Public Sub UpdateBook(ByRef utUI As tUserInterface,
+        ByRef utBook As tAccountBook,
+        ByVal lngYear As Integer, ByVal lngWeek As Integer)
+'---------------------------------------------------------------------
+'指定したピクチャーボックスに家計簿の内容を描画する
+'[I/O] utUI    : ユーザーインターフェイス
+'[ IN] utBook  : 家計簿データ
+'[ IN] lngYear : 表示する西暦年
+'[ IN] lngWeek : 表示する週
+'[RET] なし
+'---------------------------------------------------------------------
+Dim i As Integer, X As Integer
+Dim lngItemCount As Integer, lngRootItemCount As Integer
+Dim lngBalanceCount As Integer, lngRootBalanceCount As Integer
+Dim lngCurTop As Integer, lngInc As Integer
+Dim lngMonth As Integer
+Dim strTemp As String
+Dim strText As String
+Dim utDayInfo As tParsedDate
+
+    '描画するデータ(年／週)を記録する
+    With utUI
+        If (lngYear < 0) Then lngYear = .nCurrentYear Else .nCurrentYear = lngYear
+        If (lngWeek < 0) Then lngWeek = .nCurrentWeek Else .nCurrentWeek = lngWeek
+    End With
+
+    '家計簿オブジェクトの状態をチェックする
+    If (IsAccountBookEnabled(utBook) = False) Then Exit Sub
+
+    'データの個数をチェックする
+    With utBook
+        lngItemCount = BookItemGetRegisteredItemCount(.utBookItems)
+        lngRootItemCount = BookItemGetRootItemCount(.utBookItems)
+    End With
+
+    With utUI
+        .nNowShowingItemCount = 0
+        ReDim .nNowShowingItems(0 To lngItemCount + lngBalanceCount - 1)
+        ReDim .utNowShowingDates(0 To NUMDAYSPERWEEK - 1)
+
+        'ターゲットに描かれている内容をクリアする
+        .oCanvasPicture.Cls
+    End With
+
+    '表示する最初の日付を取得して、何月分かを調べる
+    GetDayFromIndex utDayInfo, lngYear, (lngWeek * 7), -1
+    lngMonth = utDayInfo.nMonth
+
+    'タイトル表示
+    strTemp = WriteVariablesInString(utUI.sTableCaption, lngYear, lngWeek, lngMonth, 0)
+    UserInterfaceDrawCell utUI, _
+        0, 0, 0, 0, strTemp, ACCENTER, -1, _
+        2, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+
+    For X = 0 To 6
+        GetDayFromIndex utDayInfo, lngYear, (lngWeek * 7) + X, -1
+        strTemp = GetDayStringFromInfo(utDayInfo, False, True)
+        utUI.utNowShowingDates(X) = utDayInfo
+        UserInterfaceDrawCell utUI, _
+            X + BOOKFIXEDCOLS, 0, 0, 0, strTemp, ACCENTER, -1, _
+            1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+    Next X
+
+    '週計
+    strTemp = gstrExtraColumnName(EXTRACOLUMN_WEEKTOTAL)
+    strText = WriteVariablesInString(strTemp, lngYear, lngWeek, lngMonth, 0)
+    UserInterfaceDrawCell utUI, _
+        COLWEEKTOTAL + BOOKFIXEDCOLS, 0, 0, 0, strText, ACCENTER, -1, _
+        1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+    '月計
+    strTemp = gstrExtraColumnName(EXTRACOLUMN_MONTHTOTAL)
+    strText = WriteVariablesInString(strTemp, lngYear, lngWeek, lngMonth, 0)
+    UserInterfaceDrawCell utUI, _
+        COLMONTHTOTAL + BOOKFIXEDCOLS, 0, 0, 0, strText, ACCENTER, -1, _
+        1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+    '年計
+    strTemp = gstrExtraColumnName(EXTRACOLUMN_YEARTOTAL)
+    strText = WriteVariablesInString(strTemp, lngYear, lngWeek, lngMonth, 0)
+    UserInterfaceDrawCell utUI, _
+        COLYEARTOTAL + BOOKFIXEDCOLS, 0, 0, 0, strText, ACCENTER, -1, _
+        1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+    '予算
+    strTemp = gstrExtraColumnName(EXTRACOLUMN_BUDGETOFMONTH)
+    strText = WriteVariablesInString(strTemp, lngYear, lngWeek, lngMonth, 0)
+    UserInterfaceDrawCell utUI, _
+        COLBUDGETOFMONTH + BOOKFIXEDCOLS, 0, 0, 0, strText, ACCENTER, -1, _
+        1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+    '予算残高
+    strTemp = gstrExtraColumnName(EXTRACOLUMN_BUDGETBALANCE)
+    strText = WriteVariablesInString(strTemp, lngYear, lngWeek, lngMonth, 0)
+    UserInterfaceDrawCell utUI, _
+        COLBUDGETBALANCE + BOOKFIXEDCOLS, 0, 0, 0, strText, ACCENTER, -1, _
+        1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+
+    lngCurTop = 1
+    For i = 0 To lngRootItemCount - 1
+        lngInc = UserInterfaceShowItem(utUI, utBook, _
+            0, lngCurTop, i, lngYear, lngMonth, lngWeek)
+        lngCurTop = lngCurTop + lngInc
+    Next i
+
+    '現金残高
+    For i = 0 To lngRootBalanceCount - 1
+        lngInc = UserInterfaceShowItem(utUI, utBook, _
+            0, lngCurTop, i + MAXITEMS, lngYear, lngMonth, lngWeek)
+        lngCurTop = lngCurTop + lngInc
+    Next i
+End Sub
+
 '=========================================================================
 '
 'プライベートプロシージャ
