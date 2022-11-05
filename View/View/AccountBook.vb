@@ -14,6 +14,20 @@ Module AccountBook
 
 Public gutTempBook As tAccountBook
 
+Public Function IsAccountBookEnabled(ByRef utBook As tAccountBook) As Boolean
+'---------------------------------------------------------------------
+'家計簿データが有効なデータかどうか判断する
+'[ IN] utBook : 家計簿データ
+'[RET] Boolean
+'  有効ならTrue, 無効なら False
+'[ACT]
+'  初期化されていない状態などは無効なデータである。
+'  新規作成、ロードなどを行って、家計簿の処理ができる状態に
+'移行していれば有効なデータである。
+'---------------------------------------------------------------------
+    IsAccountBookEnabled = utBook.bEnabled
+End Function
+
 Public Function IsDayBeforeStart(ByRef utBook As tAccountBook, _
     ByVal lngYear As Integer, ByVal lngDayIndex As Integer) As Boolean
 '---------------------------------------------------------------------
