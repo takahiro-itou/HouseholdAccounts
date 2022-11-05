@@ -114,6 +114,20 @@ Dim lngParentHandle As Integer
     BookItemGetItemType = lngType
 End Function
 
+Public Function BookItemGetParentItemHandle(ByRef utBookItems As tBookItems, _
+    ByVal lngItemIndex As Integer) As Integer
+'---------------------------------------------------------------------
+'項目の親項目のハンドルを返す
+'[ IN] utBookItems : 項目一覧データ
+'[ IN] lngItemIndex: 項目番号
+'[RET] Long
+'---------------------------------------------------------------------
+Dim lngParentHandle As Integer
+
+    lngParentHandle = utBookItems.utItemEntries(lngItemIndex).nParentHandle
+    BookItemGetParentItemHandle = lngParentHandle
+End Function
+
 Public Function BookItemGetRegisteredItemCount(ByRef utBookItems As tBookItems) As Integer
 '---------------------------------------------------------------------
 '使用済みの項目数を返す
