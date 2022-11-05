@@ -150,6 +150,7 @@ Dim lngMonth As Integer
 Dim strTemp As String
 Dim strText As String
 Dim utDayInfo As tParsedDate
+Dim colorText As Color = Color.Black
 
     '描画するデータ(年／週)を記録する
     With utUI
@@ -172,7 +173,9 @@ Dim utDayInfo As tParsedDate
         ReDim .utNowShowingDates(0 To NUMDAYSPERWEEK - 1)
 
         'ターゲットに描かれている内容をクリアする
-        .oCanvasPicture.Cls
+        Dim g As Graphics = Graphics.FromImage(.oCanvasPicture.Image)
+        g.Clear(Color.White)
+        g.Dispose()
     End With
 
     '表示する最初の日付を取得して、何月分かを調べる
@@ -183,7 +186,9 @@ Dim utDayInfo As tParsedDate
     strTemp = WriteVariablesInString(utUI.sTableCaption, lngYear, lngWeek, lngMonth, 0)
     UserInterfaceDrawCell(utUI,
             0, 0, 0, 0, strTemp, ACCENTER, -1,
-            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            Color.FromArgb(BOOKBGFIXEDROWSCOLOR),
+            Color.FromArgb(BOOKLINECOLOR),
+            colorText,
             2, 1)
 
     For X = 0 To 6
@@ -192,7 +197,9 @@ Dim utDayInfo As tParsedDate
         utUI.utNowShowingDates(X) = utDayInfo
         UserInterfaceDrawCell(utUI,
                 X + BOOKFIXEDCOLS, 0, 0, 0, strTemp, ACCENTER, -1, _
-                BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+                Color.FromArgb(BOOKBGFIXEDROWSCOLOR),
+                Color.FromArgb(BOOKLINECOLOR),
+                colorText,
                 1, 1)
     Next X
 
@@ -202,7 +209,9 @@ Dim utDayInfo As tParsedDate
     UserInterfaceDrawCell(utUI,
             COLWEEKTOTAL + BOOKFIXEDCOLS, 0, 0, 0,
             strText, ACCENTER, -1,
-            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            Color.FromArgb(BOOKBGFIXEDROWSCOLOR),
+            Color.FromArgb(BOOKLINECOLOR),
+            colorText,
             1, 1)
 
     '月計
@@ -211,7 +220,9 @@ Dim utDayInfo As tParsedDate
     UserInterfaceDrawCell(utUI,
             COLMONTHTOTAL + BOOKFIXEDCOLS, 0, 0, 0,
             strText, ACCENTER, -1,
-            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            Color.FromArgb(BOOKBGFIXEDROWSCOLOR),
+            Color.FromArgb(BOOKLINECOLOR),
+            colorText,
             1, 1)
 
     '年計
@@ -220,7 +231,9 @@ Dim utDayInfo As tParsedDate
     UserInterfaceDrawCell(utUI,
             COLYEARTOTAL + BOOKFIXEDCOLS, 0, 0, 0,
             strText, ACCENTER, -1,
-            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            Color.FromArgb(BOOKBGFIXEDROWSCOLOR),
+            Color.FromArgb(BOOKLINECOLOR),
+            colorText,
             1, 1)
 
     '予算
@@ -229,7 +242,9 @@ Dim utDayInfo As tParsedDate
     UserInterfaceDrawCell(utUI,
             COLBUDGETOFMONTH + BOOKFIXEDCOLS, 0, 0, 0,
             strText, ACCENTER, -1,
-            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            Color.FromArgb(BOOKBGFIXEDROWSCOLOR),
+            Color.FromArgb(BOOKLINECOLOR),
+            colorText,
             1, 1)
 
     '予算残高
@@ -238,7 +253,9 @@ Dim utDayInfo As tParsedDate
     UserInterfaceDrawCell(utUI,
             COLBUDGETBALANCE + BOOKFIXEDCOLS, 0, 0, 0,
             strText, ACCENTER, -1,
-            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            Color.FromArgb(BOOKBGFIXEDROWSCOLOR),
+            Color.FromArgb(BOOKLINECOLOR),
+            colorText,
             1, 1)
 
     lngCurTop = 1
