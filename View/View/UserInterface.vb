@@ -465,11 +465,11 @@ Dim blnExpand As Boolean
 
     '表示する背景色を決定する
     If (lngDepth = 0) Then
-        lngColor = BOOKBGTOTALSCOLOR
+        lngColor = Color.FromArgb(BOOKBGTOTALSCOLOR)
     ElseIf ((lngCount = 0) And (lngDepth >= 2)) Then
-        lngColor = BOOKBGLEAFSCOLOR
+        lngColor = Color.FromArgb(BOOKBGLEAFSCOLOR)
     Else
-        lngColor = BOOKBGNORMALSCOLOR
+        lngColor = Color.FromArgb(BOOKBGNORMALSCOLOR)
     End If
 
     '左端の列に表示するアイコンを決定する
@@ -487,14 +487,17 @@ Dim blnExpand As Boolean
     lngResult = 1
     If (lngType = ITEM_FLAG_BALANCE) Then
         '残高
-        UserInterfaceShowData utUI, utBook, _
-            lngDepth, lngIcon, ACRIGHT, BOOKBGFIXEDROWSCOLOR, BOOKBGTOTALSCOLOR, _
-            lngTop, lngRootItem, strName, lngYear, lngMonth, lngWeek
+        UserInterfaceShowData(utUI, utBook,
+            lngDepth, lngIcon, ACRIGHT,
+            Color.FromArgb(BOOKBGFIXEDROWSCOLOR),
+            Color.FromArgb(BOOKBGTOTALSCOLOR),
+            lngTop, lngRootItem, strName, lngYear, lngMonth, lngWeek)
     Else
         '通常の項目
-        UserInterfaceShowData utUI, utBook, _
-            lngDepth, lngIcon, ACLEFT, BOOKBGFIXEDCOLSCOLOR, lngColor, _
-            lngTop, lngRootItem, strName, lngYear, lngMonth, lngWeek
+        UserInterfaceShowData(utUI, utBook,
+            lngDepth, lngIcon, ACLEFT,
+            Color.FromArgb(BOOKBGFIXEDCOLSCOLOR), lngColor,
+            lngTop, lngRootItem, strName, lngYear, lngMonth, lngWeek)
     End If
 
     With utUI
