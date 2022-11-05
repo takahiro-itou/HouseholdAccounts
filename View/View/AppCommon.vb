@@ -173,6 +173,55 @@ Dim lngWeekday As Integer
     GetWeekday = (lngWeekday Mod 7)
 End Function
 
+Public Sub initializeTables()
+''--------------------------------------------------------------------
+''    必要なテーブルを初期化する。
+''--------------------------------------------------------------------
+
+    ReDim glngFirstDayTable(0 To 1, 0 To MAXMONTH + 1)
+    glngFirstDayTable(0, 1) = 0
+    glngFirstDayTable(0, 2) = 31
+    glngFirstDayTable(0, 3) = 59
+    glngFirstDayTable(0, 4) = 90
+    glngFirstDayTable(0, 5) = 120
+    glngFirstDayTable(0, 6) = 151
+    glngFirstDayTable(0, 7) = 181
+    glngFirstDayTable(0, 8) = 212
+    glngFirstDayTable(0, 9) = 243
+    glngFirstDayTable(0, 10) = 273
+    glngFirstDayTable(0, 11) = 304
+    glngFirstDayTable(0, 12) = 334
+    glngFirstDayTable(0, 13) = 365
+
+    glngFirstDayTable(1, 1) = 0
+    glngFirstDayTable(1, 2) = 31
+    For i = 3 To MAXMONTH + 1
+        glngFirstDayTable(1, i) = glngFirstDayTable(0, i) + 1
+    Next i
+
+    ReDim gstrMonthName(0 To 12)
+    For i = 1 To 12
+        gstrMonthName(i) = i & "月"
+    Next i
+
+    ReDim gstrWeekdayName(0 To 6)
+    gstrWeekdayName(0) = "日"
+    gstrWeekdayName(1) = "月"
+    gstrWeekdayName(2) = "火"
+    gstrWeekdayName(3) = "水"
+    gstrWeekdayName(4) = "木"
+    gstrWeekdayName(5) = "金"
+    gstrWeekdayName(6) = "土"
+
+    ReDim gstrExtraColumnName(0 To NUMBEROFEXTRACOLUMNS - 1)
+    gstrExtraColumnName(EXTRACOLUMN_WEEKTOTAL) = "週計"
+    gstrExtraColumnName(EXTRACOLUMN_MONTHTOTAL) = "<month>月計"
+    gstrExtraColumnName(EXTRACOLUMN_YEARTOTAL) = "<year>年計"
+    gstrExtraColumnName(EXTRACOLUMN_BUDGETOFMONTH) = "予算"
+    gstrExtraColumnName(EXTRACOLUMN_BUDGETBALANCE) = "予算残高"
+
+End Sub
+
 Public Function IsUruuYear(ByVal lngYear As Integer) As Integer
 '---------------------------------------------------------------------
 '指定した西暦年が閏年かどうかを判定する
