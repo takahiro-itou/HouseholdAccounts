@@ -166,15 +166,15 @@ Dim iResult As Integer
 End Sub
 
 Private Sub UserInterfaceDrawCell(ByRef utUI As tUserInterface, _
-    ByVal lngCol As Long, ByVal lngRow As Long, _
-    ByVal lngLeftMargin As Long, ByVal lngRightMargin As Long, _
+    ByVal lngCol As Integer, ByVal lngRow As Integer, _
+    ByVal lngLeftMargin As Integer, ByVal lngRightMargin As Integer, _
     ByVal strText As String, _
-    ByVal lngArrangeCol As Long, ByVal lngIcon As Long, _
+    ByVal lngArrangeCol As Integer, ByVal lngIcon As Integer, _
     ByVal lngBGColor As Color, _
     ByVal lngBorderColor As Color, _
     ByVal lngTextColor As Color, _
-    Optional ByVal lngMultiCols As Long = 1, _
-    Optional ByVal lngMultiRows As Long = 1)
+    Optional ByVal lngMultiCols As Integer = 1, _
+    Optional ByVal lngMultiRows As Integer = 1)
 '---------------------------------------------------------------------
 '一つのセルを描画する
 '[ IN] utUI          : ユーザーインターフェイスデータ
@@ -191,10 +191,10 @@ Private Sub UserInterfaceDrawCell(ByRef utUI As tUserInterface, _
 '[ IN] lngTextColor  : テキストの色
 '[RET] なし
 '---------------------------------------------------------------------
-Dim lngDestX As Long, lngDestY As Long, lngSrcX As Long
-Dim lngWidth As Long, lngHeight As Long
-Dim lngTextAreaLeft As Long, lngTextAreaWidth As Long
-Dim lngTextWidth As Long
+Dim lngDestX As Integer, lngDestY As Integer, lngSrcX As Integer
+Dim lngWidth As Integer, lngHeight As Integer
+Dim lngTextAreaLeft As Integer, lngTextAreaWidth As Integer
+Dim lngTextWidth As Integer
 Dim hCellDC As IntPtr
 Dim CurrentX As Integer, CurrentY As Integer
 Dim grpCanvas As System.Drawing.Graphics
@@ -315,9 +315,12 @@ Dim lngTextColor As Color, lngCellColor As Color
 Dim utDate As tParsedDate
 
     'この項目以下の合計を表示する
-    UserInterfaceDrawCell utUI, _
-        0, lngTop, lngDepth * 8, 0, strItemName, lngFixedColArrange, lngFixedColIcon, _
-        2, 1, lngBGFixedColsColor, BOOKLINECOLOR, NORMALTEXTCOLOR
+    UserInterfaceDrawCell(utUI, _
+            0, lngTop, lngDepth * 8, 0, strItemName,
+            lngFixedColArrange, lngFixedColIcon,
+            lngBGFixedColsColor,
+            Color.FromArgb(BOOKLINECOLOR), Color.FromArgb(NORMALTEXTCOLOR),
+            2, 1)
 
     With utBook
         lngYearIndex = lngYear - .nStartYear
@@ -327,18 +330,18 @@ Dim utDate As tParsedDate
 
             If (IsDayBeforeStart(utBook, lngYear, lngDate)) Then
                 '開始日より前
-                lngCellColor = BOOKBGREADONLYCELLSCOLOR
-                lngTextColor = READONLYTEXTCOLOR
+                lngCellColor = Color.FromArgb(BOOKBGREADONLYCELLSCOLOR)
+                lngTextColor = Color.FromArgb(READONLYTEXTCOLOR)
                 strText = ""
             Else
-                GetDayFromIndex utDate, lngYear, lngDate, -1
+                GetDayFromIndex(utDate, lngYear, lngDate, -1)
                 If (utDate.nYear <> lngYear) Then
                     '去年の残り、又は、来年へのはみ出し
-                    lngCellColor = BOOKBGREADONLYCELLSCOLOR
-                    lngTextColor = READONLYTEXTCOLOR
+                    lngCellColor = Color.FromArgb(BOOKBGREADONLYCELLSCOLOR)
+                    lngTextColor = Color.FromArgb(READONLYTEXTCOLOR)
                 Else
                     lngCellColor = lngBGColor
-                    lngTextColor = NORMALTEXTCOLOR
+                    lngTextColor = Color.FromArgb(NORMALTEXTCOLOR)
                 End If
 
                 lngDayTotal = AnnualRecordGetItemDayTotal(.utAnnualRecords, lngRootItem, lngDate)
@@ -349,9 +352,11 @@ Dim utDate As tParsedDate
                 End If
             End If
 
-            UserInterfaceDrawCell utUI, _
-                X + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
-                1, 1, lngCellColor, BOOKLINECOLOR, lngTextColor
+            UserInterfaceDrawCell(utUI, _
+                    X + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
+                    lngCellColor, Color.FromArgb(BOOKLINECOLOR),
+                    lngTextColor,
+                    1, 1)
         Next X
 
         lngType = BookItemGetItemType(.utBookItems, lngRootItem)
@@ -366,37 +371,62 @@ Dim utDate As tParsedDate
     Else
         strText = Format$(lngWeekTotal, "#,##0")
     End If
-    UserInterfaceDrawCell utUI, _
-        COLWEEKTOTAL + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
-         1, 1, BOOKBGTOTALSCOLOR, BOOKLINECOLOR, NORMALTEXTCOLOR
+    UserInterfaceDrawCell(utUI, _
+            COLWEEKTOTAL + BOOKFIXEDCOLS, lngTop, 0, 0,
+            strText, ACRIGHT, -1, _
+            Color.FromArgb(BOOKBGTOTALSCOLOR),
+            Color.FromArgb(BOOKLINECOLOR),
+            Color.FromArgb(NORMALTEXTCOLOR),
+            1, 1)
+
     '月計
     If (lngType = ITEM_FLAG_BALANCE) Or (lngMonthTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngMonthTotal, "#,##0")
     End If
-    UserInterfaceDrawCell utUI, _
-        COLMONTHTOTAL + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
-        1, 1, BOOKBGTOTALSCOLOR, BOOKLINECOLOR, NORMALTEXTCOLOR
+    UserInterfaceDrawCell(utUI, _
+            COLMONTHTOTAL + BOOKFIXEDCOLS, lngTop, 0, 0,
+            strText, ACRIGHT, -1,
+            Color.FromArgb(BOOKBGTOTALSCOLOR),
+            Color.FromArgb(BOOKLINECOLOR),
+            Color.FromArgb(NORMALTEXTCOLOR),
+            1, 1)
+
     '年計
     If (lngType = ITEM_FLAG_BALANCE) Or (lngYearTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngYearTotal, "#,##0")
     End If
-    UserInterfaceDrawCell utUI, _
-        COLYEARTOTAL + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
-        1, 1, BOOKBGTOTALSCOLOR, BOOKLINECOLOR, NORMALTEXTCOLOR
+    UserInterfaceDrawCell(utUI, _
+            COLYEARTOTAL + BOOKFIXEDCOLS, lngTop, 0, 0,
+            strText, ACRIGHT, -1, _
+            Color.FromArgb(BOOKBGTOTALSCOLOR),
+            Color.FromArgb(BOOKLINECOLOR),
+            Color.FromArgb(NORMALTEXTCOLOR),
+            1, 1)
+
     '予算
     strText = ""
-    UserInterfaceDrawCell utUI, _
-        COLBUDGETOFMONTH + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
-        1, 1, BOOKBGTOTALSCOLOR, BOOKLINECOLOR, NORMALTEXTCOLOR
+    UserInterfaceDrawCell(utUI, _
+            COLBUDGETOFMONTH + BOOKFIXEDCOLS, lngTop, 0, 0,
+            strText, ACRIGHT, -1,
+            Color.FromArgb(BOOKBGTOTALSCOLOR),
+            Color.FromArgb(BOOKLINECOLOR),
+            Color.FromArgb(NORMALTEXTCOLOR),
+            1, 1)
+
     '予算残高
     strText = ""
-    UserInterfaceDrawCell utUI, _
-        COLBUDGETBALANCE + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
-        1, 1, BOOKBGTOTALSCOLOR, BOOKLINECOLOR, NORMALTEXTCOLOR
+    UserInterfaceDrawCell(utUI, _
+            COLBUDGETBALANCE + BOOKFIXEDCOLS, lngTop, 0, 0,
+            strText, ACRIGHT, -1,
+            Color.FromArgb(BOOKBGTOTALSCOLOR),
+            Color.FromArgb(BOOKLINECOLOR),
+            Color.FromArgb(NORMALTEXTCOLOR),
+            1, 1)
+
 End Sub
 
 End Module
