@@ -275,4 +275,128 @@ Dim rectSrc As System.Drawing.Rectangle
 
 End Sub
 
+Private Sub UserInterfaceShowData(ByRef utUI As tUserInterface, _
+    ByRef utBook As tAccountBook, ByVal lngDepth As Integer, _
+    ByVal lngFixedColIcon As Integer, ByVal lngFixedColArrange As Integer, _
+    ByVal lngBGFixedColsColor As Color, ByVal lngBGColor As Color, _
+    ByVal lngTop As Integer, ByVal lngRootItem As Integer, _
+    ByVal strItemName As String, _
+    ByVal lngYear As Integer, ByVal lngMonth As Integer, _
+    ByVal lngWeek As Integer)
+'---------------------------------------------------------------------
+'データを表示する
+'[ IN] utUI                :
+'[ IN] utBook              :
+'[ IN] lngDepth            :
+'[ IN] lngFixedColIcon     :
+'[ IN] lngFixedColArrange  :
+'[ IN] lngFixedColsBGColor :
+'[ IN] lngBGColor          :
+'[ IN] lngTop              :
+'[ IN] lngRootItem         :
+'[ IN] strItemName         :
+'[ IN] lngYear             :
+'[ IN] lngMonth            :
+'[ IN] lngWeek             :
+'[RET] なし
+'[ACT]
+'  ピクチャーボックスの指定位置に、
+'家計簿の内容のlngRootItem で示されるノードのアイテムを描画する。
+'---------------------------------------------------------------------
+Dim i As Integer, X As Integer
+Dim lngDestY As Integer
+Dim lngType As Integer
+Dim lngYearIndex As Integer, lngDate As Integer, lngDayTotal As Integer
+Dim lngWeekTotal As Integer, lngMonthTotal As Integer, lngYearTotal As Integer
+Dim strText As String
+Dim lngTopMargin As Integer
+Dim lngSrcDC As IntPtr, lngBltResult As Integer
+Dim lngTextColor As Color, lngCellColor As Color
+Dim utDate As tParsedDate
+
+    'この項目以下の合計を表示する
+    UserInterfaceDrawCell utUI, _
+        0, lngTop, lngDepth * 8, 0, strItemName, lngFixedColArrange, lngFixedColIcon, _
+        2, 1, lngBGFixedColsColor, BOOKLINECOLOR, NORMALTEXTCOLOR
+
+    With utBook
+        lngYearIndex = lngYear - .nStartYear
+
+        For X = 0 To 6
+            lngDate = (lngWeek * NUMDAYSPERWEEK) + X
+
+            If (IsDayBeforeStart(utBook, lngYear, lngDate)) Then
+                '開始日より前
+                lngCellColor = BOOKBGREADONLYCELLSCOLOR
+                lngTextColor = READONLYTEXTCOLOR
+                strText = ""
+            Else
+                GetDayFromIndex utDate, lngYear, lngDate, -1
+                If (utDate.nYear <> lngYear) Then
+                    '去年の残り、又は、来年へのはみ出し
+                    lngCellColor = BOOKBGREADONLYCELLSCOLOR
+                    lngTextColor = READONLYTEXTCOLOR
+                Else
+                    lngCellColor = lngBGColor
+                    lngTextColor = NORMALTEXTCOLOR
+                End If
+
+                lngDayTotal = AnnualRecordGetItemDayTotal(.utAnnualRecords, lngRootItem, lngDate)
+                If (lngDayTotal = 0) Then
+                    strText = ""
+                Else
+                    strText = Format$(AnnualRecordGetItemDayTotal(.utAnnualRecords, lngRootItem, lngDate), "#,##0")
+                End If
+            End If
+
+            UserInterfaceDrawCell utUI, _
+                X + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
+                1, 1, lngCellColor, BOOKLINECOLOR, lngTextColor
+        Next X
+
+        lngType = BookItemGetItemType(.utBookItems, lngRootItem)
+        lngWeekTotal = AnnualRecordGetItemWeekTotal(.utAnnualRecords, lngRootItem, lngWeek)
+        lngMonthTotal = AnnualRecordGetItemMonthTotal(.utAnnualRecords, lngRootItem, lngMonth)
+        lngYearTotal = AnnualRecordGetItemYearTotal(.utAnnualRecords, lngRootItem, lngYearIndex)
+    End With
+
+    '週計
+    If (lngType = ITEM_FLAG_BALANCE) Or (lngWeekTotal = 0) Then
+        strText = ""
+    Else
+        strText = Format$(lngWeekTotal, "#,##0")
+    End If
+    UserInterfaceDrawCell utUI, _
+        COLWEEKTOTAL + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
+         1, 1, BOOKBGTOTALSCOLOR, BOOKLINECOLOR, NORMALTEXTCOLOR
+    '月計
+    If (lngType = ITEM_FLAG_BALANCE) Or (lngMonthTotal = 0) Then
+        strText = ""
+    Else
+        strText = Format$(lngMonthTotal, "#,##0")
+    End If
+    UserInterfaceDrawCell utUI, _
+        COLMONTHTOTAL + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
+        1, 1, BOOKBGTOTALSCOLOR, BOOKLINECOLOR, NORMALTEXTCOLOR
+    '年計
+    If (lngType = ITEM_FLAG_BALANCE) Or (lngYearTotal = 0) Then
+        strText = ""
+    Else
+        strText = Format$(lngYearTotal, "#,##0")
+    End If
+    UserInterfaceDrawCell utUI, _
+        COLYEARTOTAL + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
+        1, 1, BOOKBGTOTALSCOLOR, BOOKLINECOLOR, NORMALTEXTCOLOR
+    '予算
+    strText = ""
+    UserInterfaceDrawCell utUI, _
+        COLBUDGETOFMONTH + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
+        1, 1, BOOKBGTOTALSCOLOR, BOOKLINECOLOR, NORMALTEXTCOLOR
+    '予算残高
+    strText = ""
+    UserInterfaceDrawCell utUI, _
+        COLBUDGETBALANCE + BOOKFIXEDCOLS, lngTop, 0, 0, strText, ACRIGHT, -1, _
+        1, 1, BOOKBGTOTALSCOLOR, BOOKLINECOLOR, NORMALTEXTCOLOR
+End Sub
+
 End Module
