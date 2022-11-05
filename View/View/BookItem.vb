@@ -12,6 +12,27 @@ Module BookItem
 ' This file is written in 2006/09/23 - 2008/01/06
 '*****************************************************************************
 
+Public Sub BookItemExpandItem(ByRef utBookItems As tBookItems, _
+    ByVal lngItemIndex As Integer, ByVal blnExpanded As Boolean)
+'---------------------------------------------------------------------
+'指定した項目を展開したり、閉じたりする
+'[I/O] utBookItems : 項目一覧データ
+'[ IN] lngItemIndex: 項目番号
+'[ IN] blnExpanded : 展開、または折畳
+'          True  = サブ項目も表示する
+'          False = この項目まで表示して、サブ項目は表示しない
+'[RET] なし
+'---------------------------------------------------------------------
+
+    With utBookItems
+        If (blnExpanded) Then
+            .nFlags(lngItemIndex) = (.nFlags(lngItemIndex) Or ITEM_FLAG_EXPANDED)
+        Else
+            .nFlags(lngItemIndex) = (.nFlags(lngItemIndex) And (Not ITEM_FLAG_EXPANDED))
+        End If
+    End With
+End Sub
+
 Public Function BookItemGetItemExpanded(ByRef utBookItems As tBookItems, _
     ByVal lngItemIndex As Integer) As Boolean
 '---------------------------------------------------------------------
