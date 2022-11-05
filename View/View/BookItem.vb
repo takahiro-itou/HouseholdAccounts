@@ -12,6 +12,20 @@ Module BookItem
 ' This file is written in 2006/09/23 - 2008/01/06
 '*****************************************************************************
 
+Public Function BookItemGetItemName(ByRef utBookItems As tBookItems, _
+    ByVal lngItemIndex As Integer) As String
+'---------------------------------------------------------------------
+'項目の名前を得る
+'[ IN] utBookItems : 項目一覧データ
+'[ IN] lngItemIndex: 項目番号
+'[RET] String
+'---------------------------------------------------------------------
+Dim strName As String
+
+    strName = utBookItems.utItemEntries(lngItemIndex).sItemName
+    BookItemGetItemName = strName
+End Function
+
 Public Function BookItemGetItemType(ByRef utBookItems As tBookItems, _
     ByVal lngItemIndex As Integer) As Integer
 '---------------------------------------------------------------------
