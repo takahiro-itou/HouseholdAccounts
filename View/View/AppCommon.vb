@@ -33,13 +33,13 @@ Public Enum eWeekday
 End Enum
 
 Public Structure tParsedDate
-    Public nYear As Long           '西暦年
-    Public nMonth As Long          '月
-    Public nDay As Long            '日
-    Public nDayInYear As Long      'その年で何日目か。つまり、元日からの経過日数（元日を０）
-    Public nDayOffset As Long      '元日の前に何日分のデータがあるか＝１週間の端数処理
-    Public nDayIndex As Long       'その日が去年の端数を含むデータ内で何番目か
-    Public nWeek As Long           '何週目
+    Public nYear As Integer           '西暦年
+    Public nMonth As Integer          '月
+    Public nDay As Integer            '日
+    Public nDayInYear As Integer      'その年で何日目か。つまり、元日からの経過日数（元日を０）
+    Public nDayOffset As Integer      '元日の前に何日分のデータがあるか＝１週間の端数処理
+    Public nDayIndex As Integer       'その日が去年の端数を含むデータ内で何番目か
+    Public nWeek As Integer           '何週目
     Public nWeekday As eWeekday    '曜日
 End Structure
 
