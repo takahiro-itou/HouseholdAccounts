@@ -12,6 +12,22 @@ Module BookItem
 ' This file is written in 2006/09/23 - 2008/01/06
 '*****************************************************************************
 
+Public Function BookItemGetItemExpanded(ByRef utBookItems As tBookItems, _
+    ByVal lngItemIndex As Integer) As Boolean
+'---------------------------------------------------------------------
+'指定した項目が、展開されているかを返す
+'[ IN] utBookItems : 項目一覧データ
+'[ IN] lngItemIndex: 項目番号
+'[RET] Boolean
+'  True  = サブ項目も表示する
+'  False = この項目まで表示して、サブ項目は表示しない
+'---------------------------------------------------------------------
+Dim lngFlags As Long
+
+    lngFlags = utBookItems.nFlags(lngItemIndex)
+    BookItemGetItemExpanded = (lngFlags And ITEM_FLAG_EXPANDED)
+End Function
+
 Public Function BookItemGetItemName(ByRef utBookItems As tBookItems, _
     ByVal lngItemIndex As Integer) As String
 '---------------------------------------------------------------------
