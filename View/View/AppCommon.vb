@@ -315,4 +315,36 @@ Public Sub saveWindowPrefs(
 
 End Sub
 
+Public Function WriteVariablesInString(ByVal strText As String, _
+    ByVal lngYear As Long, ByVal lngWeek As Long, _
+    ByVal lngMonth As Long, ByVal lngDay As Long) As String
+'---------------------------------------------------------------------
+'文字列中にある変数(<と>でくくられた特別な名前の変数)に
+'値を書き込んで返す
+'[ IN] strText : 変数を含む文字列
+'[ IN] lngYear : 西暦年
+'[ IN] lngWeek : 週
+'[ IN] lngMonth: 月
+'[ IN] lngDay  : 日
+'[RET] String
+'  変数に値を書き込んだ文字列
+'---------------------------------------------------------------------
+Dim strNames(0 To 4) As String
+Dim strValues(0 To 4) As String
+
+    strNames(0) = "<year>"
+    strNames(1) = "<week>"
+    strNames(2) = "<month>"
+    strNames(3) = "<day>"
+    strNames(4) = "<monthname>"
+
+    strValues(0) = lngYear
+    strValues(1) = lngWeek
+    strValues(2) = lngMonth
+    strValues(3) = lngDay
+    strValues(4) = gstrMonthName(lngMonth)
+
+    WriteVariablesInString = ReplaceConstant(strText, strNames, strValues)
+End Function
+
 End Module
