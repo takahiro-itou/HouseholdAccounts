@@ -176,54 +176,70 @@ Dim utDayInfo As tParsedDate
     End With
 
     '表示する最初の日付を取得して、何月分かを調べる
-    GetDayFromIndex utDayInfo, lngYear, (lngWeek * 7), -1
+    GetDayFromIndex(utDayInfo, lngYear, (lngWeek * 7), -1)
     lngMonth = utDayInfo.nMonth
 
     'タイトル表示
     strTemp = WriteVariablesInString(utUI.sTableCaption, lngYear, lngWeek, lngMonth, 0)
-    UserInterfaceDrawCell utUI, _
-        0, 0, 0, 0, strTemp, ACCENTER, -1, _
-        2, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+    UserInterfaceDrawCell(utUI,
+            0, 0, 0, 0, strTemp, ACCENTER, -1,
+            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            2, 1)
 
     For X = 0 To 6
-        GetDayFromIndex utDayInfo, lngYear, (lngWeek * 7) + X, -1
+        GetDayFromIndex(utDayInfo, lngYear, (lngWeek * 7) + X, -1)
         strTemp = GetDayStringFromInfo(utDayInfo, False, True)
         utUI.utNowShowingDates(X) = utDayInfo
-        UserInterfaceDrawCell utUI, _
-            X + BOOKFIXEDCOLS, 0, 0, 0, strTemp, ACCENTER, -1, _
-            1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+        UserInterfaceDrawCell(utUI,
+                X + BOOKFIXEDCOLS, 0, 0, 0, strTemp, ACCENTER, -1, _
+                BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+                1, 1)
     Next X
 
     '週計
     strTemp = gstrExtraColumnName(EXTRACOLUMN_WEEKTOTAL)
     strText = WriteVariablesInString(strTemp, lngYear, lngWeek, lngMonth, 0)
-    UserInterfaceDrawCell utUI, _
-        COLWEEKTOTAL + BOOKFIXEDCOLS, 0, 0, 0, strText, ACCENTER, -1, _
-        1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+    UserInterfaceDrawCell(utUI,
+            COLWEEKTOTAL + BOOKFIXEDCOLS, 0, 0, 0,
+            strText, ACCENTER, -1,
+            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            1, 1)
+
     '月計
     strTemp = gstrExtraColumnName(EXTRACOLUMN_MONTHTOTAL)
     strText = WriteVariablesInString(strTemp, lngYear, lngWeek, lngMonth, 0)
-    UserInterfaceDrawCell utUI, _
-        COLMONTHTOTAL + BOOKFIXEDCOLS, 0, 0, 0, strText, ACCENTER, -1, _
-        1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+    UserInterfaceDrawCell(utUI,
+            COLMONTHTOTAL + BOOKFIXEDCOLS, 0, 0, 0,
+            strText, ACCENTER, -1,
+            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            1, 1)
+
     '年計
     strTemp = gstrExtraColumnName(EXTRACOLUMN_YEARTOTAL)
     strText = WriteVariablesInString(strTemp, lngYear, lngWeek, lngMonth, 0)
-    UserInterfaceDrawCell utUI, _
-        COLYEARTOTAL + BOOKFIXEDCOLS, 0, 0, 0, strText, ACCENTER, -1, _
-        1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+    UserInterfaceDrawCell(utUI,
+            COLYEARTOTAL + BOOKFIXEDCOLS, 0, 0, 0,
+            strText, ACCENTER, -1,
+            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            1, 1)
+
     '予算
     strTemp = gstrExtraColumnName(EXTRACOLUMN_BUDGETOFMONTH)
     strText = WriteVariablesInString(strTemp, lngYear, lngWeek, lngMonth, 0)
-    UserInterfaceDrawCell utUI, _
-        COLBUDGETOFMONTH + BOOKFIXEDCOLS, 0, 0, 0, strText, ACCENTER, -1, _
-        1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+    UserInterfaceDrawCell(utUI,
+            COLBUDGETOFMONTH + BOOKFIXEDCOLS, 0, 0, 0,
+            strText, ACCENTER, -1,
+            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            1, 1)
+
     '予算残高
     strTemp = gstrExtraColumnName(EXTRACOLUMN_BUDGETBALANCE)
     strText = WriteVariablesInString(strTemp, lngYear, lngWeek, lngMonth, 0)
-    UserInterfaceDrawCell utUI, _
-        COLBUDGETBALANCE + BOOKFIXEDCOLS, 0, 0, 0, strText, ACCENTER, -1, _
-        1, 1, BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR
+    UserInterfaceDrawCell(utUI,
+            COLBUDGETBALANCE + BOOKFIXEDCOLS, 0, 0, 0,
+            strText, ACCENTER, -1,
+            BOOKBGFIXEDROWSCOLOR, BOOKLINECOLOR,
+            1, 1)
 
     lngCurTop = 1
     For i = 0 To lngRootItemCount - 1
