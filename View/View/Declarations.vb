@@ -113,24 +113,24 @@ Public Const BOOKNUMCOLUMNS As Long = BOOKFIXEDCOLS + COLBUDGETBALANCE + 1
 
 'データ項目
 Public Structure tBookItemEntry
-    Public nParentHandle As Long               '親項目のハンドル
-    Public nItemNameID As Long                 '項目名のID(文字列テーブル内のインデックス)
+    Public nParentHandle As Integer               '親項目のハンドル
+    Public nItemNameID As Integer                 '項目名のID(文字列テーブル内のインデックス)
     Public sItemName As String                 '項目名
-    Public nSubItemCount As Long               'サブ項目数
-    Public nSubItems() As Long                 'サブ項目のハンドル(インデックス)
-    Public nStartDate As Long                  '開始年月日(残高の項目のみ)
-    Public nStartBalance As Long               '開始時の残高(残高の項目のみ)
+    Public nSubItemCount As Integer               'サブ項目数
+    Public nSubItems() As Integer                 'サブ項目のハンドル(インデックス)
+    Public nStartDate As Integer                  '開始年月日(残高の項目のみ)
+    Public nStartBalance As Integer               '開始時の残高(残高の項目のみ)
 End Structure
 
 '項目一覧
 Public Structure tBookItems
-    Public nItemBufferSize As Long                 '項目用バッファサイズ
-    Public nRegisteredItemCount As Long            '登録済み項目数
-    Public nRootItemCount As Long                  'ルートになる項目の数
-    Public nFlags() As Long                        '項目のフラグ
+    Public nItemBufferSize As Integer                '項目用バッファサイズ
+    Public nRegisteredItemCount As Integer            '登録済み項目数
+    Public nRootItemCount As Integer                  'ルートになる項目の数
+    Public nFlags() As Integer                       '項目のフラグ
     Public utItemEntries() As tBookItemEntry       '項目データ
-    Public nInnerTaxItemHandle As Long             '「内税」項目のハンドル
-    Public nOuterTaxItemHandle As Long             '「外税」項目のハンドル
+    Public nInnerTaxItemHandle As Integer             '「内税」項目のハンドル
+    Public nOuterTaxItemHandle As Integer            '「外税」項目のハンドル
 End Structure
 
 '*****************************************************************************
@@ -220,20 +220,20 @@ Public Structure tAccountBook
     Public utRecordsStringTable As tStringTable        'レコード用文字列テーブル
 
     '開始年月日
-    Public nStartYear As Long                          '開始西暦年
-    Public nStartDayIndex As Long                      '開始日(オフセット付、元日からの日数)
-    Public nNumYears As Long                           'データの存在する年数
+    Public nStartYear As Integer                          '開始西暦年
+    Public nStartDayIndex As Integer                      '開始日(オフセット付、元日からの日数)
+    Public nNumYears As Integer                           'データの存在する年数
     Public utStartDate As tParsedDate
 
     '項目データと年間レコード
     Public utBookItems As tBookItems
-    Public nCurrentYear As Long                    '一年分ずつバッファに記憶する
-    Public nNumWeeks As Long                       'この年の週数
+    Public nCurrentYear As Integer                    '一年分ずつバッファに記憶する
+    Public nNumWeeks As Integer                       'この年の週数
     Public utAnnualRecords As tAnnualRecords       'この年のレコード
 
     'その他の情報
-    Public nStartWeekday As Long                   '本年の元日の曜日(0=日,6=土)
-    Public nPreviousDays As Long                   'レコード内に本年分の前に去年分が何日分入っているか
+    Public nStartWeekday As Integer                   '本年の元日の曜日(0=日,6=土)
+    Public nPreviousDays As Integer                   'レコード内に本年分の前に去年分が何日分入っているか
 End Structure
 
 '*****************************************************************************
