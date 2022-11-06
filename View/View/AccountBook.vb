@@ -196,4 +196,135 @@ Dim blnResult As Boolean
     IsDayBeforeStart = blnResult
 End Function
 
+Public Function OpenAccountBook(ByRef utBook As tAccountBook, _
+    ByVal strFileName As String) As Boolean
+'---------------------------------------------------------------------
+'家計簿のデータファイルを開く
+'[OUT] utBook     : 家計簿データ
+'[ IN] strFileName: ファイル名
+'[RET] Boolean
+'  成功したらTrue, 失敗したら False
+'[ACT]
+'  ヘッダと、年毎にデータを分解して、テンポラリファイルに保存する。
+'---------------------------------------------------------------------
+Dim i As Integer, lngYear As Integer
+Dim lngPos As Integer, lngSize As Integer, lngReserved As Integer
+Dim lngHeaderSize As Integer
+Dim lngHeader() As Integer
+Dim bytBuffer() As Byte
+Dim lngReadFileNumber As Integer
+Dim lngTempFileNumber As Integer, lngIndexFileNumber As Integer
+Dim strTempDir As String
+Dim strTempFileName As String, strIndexFileName As String
+
+    '指定された入力ファイルが存在するか確認する
+    If (Dir$(strFileName) = "") Then
+        OpenAccountBook = False
+        Exit Function
+    End If
+
+    With utBook
+        'テンポラリファイルを置くディレクトリを決定する
+        strTempDir = gstrAppDir & "\Resource"
+        utBook.sTempFileDir = strTempDir
+
+        '入力ファイルを開く
+        lngReadFileNumber = FreeFile()
+        Open strFileName For Binary As #lngReadFileNumber
+
+        'インデックスファイルを開く
+        strIndexFileName = .sTempFileDir & "\.index"
+        lngIndexFileNumber = FreeFile()
+        Open strIndexFileName For Binary As #lngIndexFileNumber
+
+        'ヘッダ部分のテンポラリファイルを開く
+        strTempFileName = .sTempFileDir & "\.set"
+        lngTempFileNumber = FreeFile()
+        Open strTempFileName For Binary As #lngTempFileNumber
+
+        '入力ファイルのヘッダ部分を取り出す
+        ReDim lngHeader(0 To 63)
+        Get #lngReadFileNumber, 1, lngHeader()
+
+        'ヘッダの 6番目の項目(0x00000014)から、ヘッダと設定部分のデータサイズを得る
+        lngPos = 1
+        lngHeaderSize = lngHeader(5)
+        lngReserved = 0
+        Put #lngIndexFileNumber, 1, lngPos
+        Put #lngIndexFileNumber, 5, lngHeaderSize
+        Put #lngIndexFileNumber, 9, lngReserved
+        Put #lngIndexFileNumber, 13, lngReserved
+
+        'ヘッダと設定部分のデータを読み込んで、テンポラリファイルに書き込む
+        ReDim bytBuffer(0 To lngHeaderSize - 1)
+        Get #lngReadFileNumber, 1, bytBuffer()
+        Put #lngTempFileNumber, 1, bytBuffer()
+        Close #lngTempFileNumber
+
+        'ヘッダから、データの開始年と年数を読み出す
+        .nStartYear = lngHeader(16)
+        .nStartDayIndex = lngHeader(17)
+        .nNumYears = lngHeader(18)
+
+        '共通レコードのデータを読み込んで、テンポラリファイルに書き込む
+        Get #lngReadFileNumber, lngHeaderSize + 17, lngPos
+        Get #lngReadFileNumber, lngHeaderSize + 21, lngSize
+        lngReserved = 0
+        Put #lngIndexFileNumber, 17, lngPos
+        Put #lngIndexFileNumber, 21, lngSize
+        Put #lngIndexFileNumber, 25, lngReserved
+        Put #lngIndexFileNumber, 29, lngReserved
+
+        If (lngSize > 0) Then
+            ReDim bytBuffer(0 To lngSize - 1)
+            Get #lngReadFileNumber, lngPos + 1, bytBuffer()
+
+            strTempFileName = strTempDir & "\.common"
+            lngTempFileNumber = FreeFile()
+            Open strTempFileName For Binary As #lngTempFileNumber
+                Put #lngTempFileNumber, 1, bytBuffer()
+            Close #lngTempFileNumber
+        End If
+
+        'インデックスファイルに予約領域を作る
+        For i = 2 To 3
+            Put #lngIndexFileNumber, i * 16 + 1, lngReserved
+            Put #lngIndexFileNumber, i * 16 + 5, lngReserved
+            Put #lngIndexFileNumber, i * 16 + 9, lngReserved
+            Put #lngIndexFileNumber, i * 16 + 13, lngReserved
+        Next i
+
+        '各年のデータを読み込んで、テンポラリファイルに書き込む
+        For lngYear = 0 To .nNumYears - 1
+            'ヘッダと設定の直後から、インデックステーブルを読み出す
+            Get #lngReadFileNumber, lngYear * 16 + lngHeaderSize + 65, lngPos
+            Get #lngReadFileNumber, lngYear * 16 + lngHeaderSize + 69, lngSize
+            lngReserved = 0
+
+            Put #lngIndexFileNumber, lngYear * 16 + 65, lngPos
+            Put #lngIndexFileNumber, lngYear * 16 + 69, lngSize
+            Put #lngIndexFileNumber, lngYear * 16 + 73, lngReserved
+            Put #lngIndexFileNumber, lngYear * 16 + 77, lngReserved
+
+            'その年のデータを読み出す
+            ReDim bytBuffer(0 To lngSize - 1)
+            Get #lngReadFileNumber, lngPos + 1, bytBuffer()
+
+            'テンポラリファイルの名前を決定して、データを書き込む
+            strTempFileName = .sTempFileDir & "\." & Trim$(Str$(.nStartYear + lngYear))
+            lngTempFileNumber = FreeFile()
+            Open strTempFileName For Binary As #lngTempFileNumber
+                Put #lngTempFileNumber, 1, bytBuffer()
+            Close #lngTempFileNumber
+        Next lngYear
+    End With
+
+    'すべてのファイルを閉じる
+    Close #lngIndexFileNumber
+    Close #lngReadFileNumber
+
+    'ロード完了
+    OpenAccountBook = True
+End Function
+
 End Module
