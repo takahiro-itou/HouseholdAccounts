@@ -140,6 +140,26 @@ Public Function EnableAccountBook(ByRef utBook As tAccountBook, _
     EnableAccountBook = blnEnabled
 End Function
 
+Public Function GetAccountBookNumYears(ByRef utBook As tAccountBook) As Integer
+'---------------------------------------------------------------------
+'家計簿のデータが何年分あるかを返す
+'[ IN] utBook: 家計簿データ
+'[RET] Long
+'  データの年数
+'---------------------------------------------------------------------
+    GetAccountBookNumYears = utBook.nNumYears
+End Function
+
+Public Function GetAccountBookStartYear(ByRef utBook As tAccountBook) As Integer
+'---------------------------------------------------------------------
+'家計簿の開始年を返す
+'[ IN] utBook: 家計簿データ
+'[RET] Long
+'  開始西暦年
+'---------------------------------------------------------------------
+    GetAccountBookStartYear = utBook.nStartYear
+End Function
+
 Public Function IsAccountBookEnabled(ByRef utBook As tAccountBook) As Boolean
 '---------------------------------------------------------------------
 '家計簿データが有効なデータかどうか判断する
