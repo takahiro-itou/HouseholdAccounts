@@ -160,17 +160,25 @@ Dim lngWidth As Integer, lngHeight As Integer
 Dim lngShowX As Integer, lngShowY As Integer
 Dim lngSrcX As Integer, lngSrcY As Integer
 Dim lngResult As Integer
+Dim imgSrc As System.Drawing.Image
+Dim grpDest As Graphics, grpSrc As Graphics
+Dim rectSrc As System.Drawing.Rectangle
 
     '家計簿オブジェクトの状態をチェックする
     If (IsAccountBookEnabled(utBook) = False) Then
         With utUI
-            .oBookPicture.Cls
+             grpDest = Graphics.FromImage(.oBookPicture.Image)
+             grpDest.Clear(Color.White)
+             grpDest.Dispose()
+
             .oBookPicture.Refresh
         End With
         Exit Sub
     End If
 
     With utUI
+        imgSrc = .oBookPicture.Image
+
         '指定された左端の行、上端の列がマイナスであれば、
         'スクロールバーの現在の値にセットする
         If (lngLeftCol < 0) Then lngLeftCol = .oBookHScrollBar.Value
@@ -182,14 +190,18 @@ Dim lngResult As Integer
         lngSrcX = (lngLeftCol + BOOKFIXEDCOLS) * .nCellWidth
         lngSrcY = (lngTopRow + BOOKFIXEDROWS) * .nCellHeight
 
-        hSrcDC = .oCanvasPicture.hDC
+        grpSrc = Graphics.FromImage(.oCanvasPicture.Image)
+        ' hSrcDC = .oCanvasPicture.hDC
 
-        .oBookPicture.Cls
-        hDestDC = .oBookPicture.hDC
+        grpDest = Graphics.FromImage(.oBookPicture.Image)
+        grpDest.Clear(Color.White)
 
         '左上の固定行・固定列が交差する部分をコピーする
         lngWidth = .nCellWidth * BOOKFIXEDCOLS
         lngHeight = .nCellHeight * BOOKFIXEDROWS
+        rectSrc = New System.Drawing.Rectangle(0, 0, lngWidth, lngHeight)
+        grpDest.DrawImage(
+            imgSrc, .nLeftMargin, .nTopMargin, rectSrc, GraphicsUnit.Pixel)
         lngResult = BitBlt(hDestDC, .nLeftMargin, .nTopMargin, lngWidth, lngHeight, hSrcDC, 0, 0, SRCCOPY)
 
         '固定行をコピーする
@@ -250,8 +262,14 @@ Dim lngResult As Integer
         End If
 
         If ((lngLeft < .nBookWidth) And (lngTop < .nBookHeight)) Then
-            .oBookPicture.Line (lngLeft + 1, lngTop + 1)-Step(lngWidth - 2, lngHeight - 2), BOOKSELECTEDCOLOR, B
+           Dim p As New Pen(Color.FromArgb(BOOKSELECTEDCOLOR))
+           grpDest.DrawRectangle(p,
+                    lngLeft + 1, lngTop + 1,
+                    lngLeft + lngWidth - 1, lngTop + lngHeight - 1)
         End If
+
+        grpSrc.Dispose()
+        grpDest.Dispose()
 
         '更新する
         .oBookPicture.Refresh
@@ -535,7 +553,7 @@ Dim lngTextWidth As Integer
 Dim hCellDC As IntPtr
 Dim CurrentX As Integer, CurrentY As Integer
 Dim grpCanvas As System.Drawing.Graphics
-Dim grpCell As System.Drawing.graphics
+Dim grpCell As System.Drawing.Graphics
 Dim rectSrc As System.Drawing.Rectangle
 
     If (lngMultiCols <= 0) Then lngMultiCols = 1
