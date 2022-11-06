@@ -158,7 +158,6 @@ Dim lngLeft As Integer, lngTop As Integer
 Dim lngWidth As Integer, lngHeight As Integer
 Dim lngShowX As Integer, lngShowY As Integer
 Dim lngSrcX As Integer, lngSrcY As Integer
-Dim lngResult As Integer
 Dim imgSrc As System.Drawing.Image
 Dim grpDest As Graphics, grpSrc As Graphics
 Dim rectSrc As System.Drawing.Rectangle
