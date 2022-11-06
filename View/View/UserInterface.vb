@@ -92,6 +92,57 @@ Public Sub CleanupUserInterface(ByRef utUI As tUserInterface)
 
 End Sub
 
+Public Function ExecuteCellAction(ByRef utUI As tUserInterface, _
+    ByRef utBook As tAccountBook, ByVal lngX As Long, ByVal lngY As Long) As Boolean
+'---------------------------------------------------------------------
+'セルに対するアクションを実行する
+'[I/O] utUI    : ユーザーインターフェイス
+'[I/O] utBook  : 家計簿データ
+'[ IN] lngX    : 列番号
+'[ IN] lngY    : 行番号
+'[RET] Boolean
+'  何か変化が生じて画面を更新する必要があればTrue
+'---------------------------------------------------------------------
+Dim lngIndex As Long
+Dim blnExpand As Boolean
+Dim blnResult As Boolean
+
+    '家計簿オブジェクトの状態をチェックする
+    If (IsAccountBookEnabled(utBook) = False) Then
+        ExecuteCellAction = False
+        Exit Function
+    End If
+
+    '変化無し(戻り値=False)
+    blnResult = False
+
+    If (lngX < BOOKFIXEDCOLS) Then
+        If (lngY < BOOKFIXEDROWS) Then
+            '左上の、セル以外の部分は、何もしない
+            ExecuteCellAction = False
+            Exit Function
+        End If
+
+        '選択した項目を閉じたり、開いたりする
+        With utBook
+            lngIndex = utUI.nNowShowingItems(lngY - BOOKFIXEDROWS)
+            blnExpand = BookItemGetItemExpanded(.utBookItems, lngIndex)
+            BookItemExpandItem .utBookItems, lngIndex, Not (blnExpand)
+            blnResult = True
+        End With
+    End If
+
+    '何か変化があれば、表示を更新する
+    If (blnResult) Then
+        UpdateBook utUI, utBook, -1, -1
+        SetScrollRange utUI
+        RefreshBook utUI, utBook, -1, -1
+    End If
+
+    '何か変化があればTrueを返す
+    ExecuteCellAction = blnResult
+End Function
+
 Public Sub SetScrollRange(ByRef utUI As tUserInterface)
 '---------------------------------------------------------------------
 'スクロールの範囲を決定する
