@@ -127,6 +127,53 @@ Dim blnAddToParent As Boolean, blnAddToRoot As Boolean
     AddDataToItemTotal = blnAddToRoot
 End Function
 
+Public Sub CloseAccountBook(ByRef utBook As tAccountBook)
+'---------------------------------------------------------------------
+'家計簿のデータファイルを閉じる
+'[I/O] utBook: 家計簿データ
+'[RET] なし
+'[ACT]
+'  テンポラリファイルをすべて削除する
+'---------------------------------------------------------------------
+Dim lngYear As Integer
+Dim strTempDir As String
+Dim strTempFileName As String
+
+    With utBook
+        'テンポラリファイルの置かれているパスを取得する
+        strTempDir = .sTempFileDir
+
+        'ヘッダ
+        strTempFileName = strTempDir & "\.set"
+        If (Dir$(strTempFileName) <> "") Then
+            System.IO.File.Delete(strTempFileName)
+        End If
+
+        '共通レコード
+        strTempFileName = strTempDir & "\.common"
+        If (Dir$(strTempFileName) <> "") Then
+            System.IO.File.Delete(strTempFileName)
+        End If
+
+        '年毎のデータ
+        For lngYear = 0 To .nNumYears - 1
+            strTempFileName = strTempDir & "\." & Trim$(Str$(.nStartYear + lngYear))
+            If (Dir$(strTempFileName) <> "") Then
+                System.IO.File.Delete(strTempFileName)
+            End If
+        Next lngYear
+
+        '閉じる
+        .bEnabled = False
+    End With
+
+    'インデックスファイル
+    strTempFileName = strTempDir & "\.index"
+    If (Dir$(strTempFileName) <> "") Then
+        System.IO.File.Delete(strTempFileName)
+    End If
+End Sub
+
 Public Function EnableAccountBook(ByRef utBook As tAccountBook, _
     ByVal blnEnabled As Boolean) As Boolean
 '---------------------------------------------------------------------
