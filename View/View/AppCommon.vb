@@ -299,13 +299,13 @@ Dim lngTempFileNumber As Integer
     If (blnErase) Then
         If (Dir$(strTempPath) <> "") Then
             '既存のファイルを削除する
-            Kill strTempPath
+            System.IO.File.Delete(strTempPath)
         End If
     End If
 
     'ファイルを開く
     lngTempFileNumber = FreeFile()
-    Open strTempPath For Binary As #lngTempFileNumber
+    FileOpen(lngTempFileNumber, strTempPath, OpenMode.Binary)
 
     '開いたファイルのファイル番号を返す
     OpenTemporaryFile = lngTempFileNumber
