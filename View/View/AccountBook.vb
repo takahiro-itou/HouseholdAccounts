@@ -127,6 +127,19 @@ Dim blnAddToParent As Boolean, blnAddToRoot As Boolean
     AddDataToItemTotal = blnAddToRoot
 End Function
 
+Public Function EnableAccountBook(ByRef utBook As tAccountBook, _
+    ByVal blnEnabled As Boolean) As Boolean
+'---------------------------------------------------------------------
+'家計簿を有効／無効にする
+'[I/O] utBook    : 家計簿データ
+'[ IN] blnEnabled: Trueなら有効にし, False なら無効にする
+'[RET] Boolean
+'  変更後の状態をそのまま返す
+'---------------------------------------------------------------------
+    utBook.bEnabled = blnEnabled
+    EnableAccountBook = blnEnabled
+End Function
+
 Public Function IsAccountBookEnabled(ByRef utBook As tAccountBook) As Boolean
 '---------------------------------------------------------------------
 '家計簿データが有効なデータかどうか判断する
