@@ -26,7 +26,6 @@ Public Function AllocBookItems(ByRef utBook As tAccountBook, _
 '[RET] Long
 '  増えた部分の先頭のインデックス
 '---------------------------------------------------------------------
-Dim i As Integer
 Dim lngBufferSize As Integer
 Dim lngStartYear As Integer, lngNumYears As Integer
 Dim lngResult As Integer
@@ -60,7 +59,6 @@ Public Function BookItemAllocNewItem(ByRef utBook As tAccountBook) As Integer
 '  新しい項目用のハンドル
 '---------------------------------------------------------------------
 Dim i As Integer
-Dim lngBufferSize As Integer
 Dim lngResult As Integer
 
     With utBook
