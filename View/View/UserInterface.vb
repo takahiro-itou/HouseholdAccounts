@@ -278,6 +278,95 @@ Dim rectSrc As System.Drawing.Rectangle
     End With
 End Sub
 
+Public Sub SelectCell(ByRef utUI As tUserInterface, _
+        ByRef utBook As tAccountBook,
+        ByVal lngX As Integer, ByVal lngY As Integer)
+'---------------------------------------------------------------------
+'指定したセルを選択状態にする
+'[I/O] utUI  : ユーザーインターフェイス
+'[ IN] utBook: 家計簿データ
+'[ IN] lngX  : 行
+'[ IN] lngY  : 列
+'[RET] なし
+'---------------------------------------------------------------------
+Dim lngItemIndex As Integer, lngColumnIndex As Integer
+Dim lngYear As Integer, lngWeek As Integer, lngMonth As Integer
+Dim blnResult As Boolean
+Dim strTemp As String
+Dim strItemName As String, strColumnTitle As String
+Dim utDayInfo As tParsedDate
+
+    blnResult = False
+
+    '家計簿オブジェクトの状態をチェックする
+    If (IsAccountBookEnabled(utBook) = False) Then Exit Sub
+
+    With utUI
+        'カーソル位置を保存する
+        .nCurrentMouseX = lngX
+        .nCurrentMouseY = lngY
+
+        '現在のカーソル位置の日付を得る
+        lngYear = .nCurrentYear
+        lngWeek = .nCurrentWeek
+        GetDayFromIndex utDayInfo, lngYear, (lngWeek * 7), -1
+        lngMonth = utDayInfo.nMonth
+
+        'カーソルが画面外にはみ出す場合は、スクロールバーを調整する
+        If (lngX < BOOKFIXEDCOLS) Then
+        ElseIf (lngX < (.nLeftCol + BOOKFIXEDCOLS)) Then
+            .nLeftCol = lngX - BOOKFIXEDCOLS
+            blnResult = True
+        ElseIf (lngX >= (.nLeftCol + .nColumnsInSheet)) Then
+            .nLeftCol = lngX - .nColumnsInSheet + 1
+            blnResult = True
+        End If
+
+        If (lngY < BOOKFIXEDROWS) Then
+        ElseIf (lngY < (.nTopRow + BOOKFIXEDROWS)) Then
+            .nTopRow = lngY - BOOKFIXEDROWS
+            blnResult = True
+        ElseIf (lngY >= (.nTopRow + .nRowsInSheet)) Then
+            .nTopRow = lngY - .nRowsInSheet + 1
+            blnResult = True
+        End If
+        '選択したセルの項目インデックスと日付を得る
+        If (lngY < BOOKFIXEDROWS) Then
+            lngItemIndex = -1
+            strItemName = ""
+        Else
+            lngItemIndex = .nNowShowingItems(lngY - BOOKFIXEDROWS)
+            strItemName = BookItemGetItemName(utBook.utBookItems, lngItemIndex)
+        End If
+
+        If (lngX < BOOKFIXEDCOLS) Then
+            lngColumnIndex = -1
+            strTemp = ""
+        Else
+            lngColumnIndex = lngX - BOOKFIXEDCOLS
+            If (lngColumnIndex < STARTOFEXTRACOL) Then
+                strTemp = GetDayStringFromInfo(.utNowShowingDates(lngColumnIndex), True, True)
+            Else
+                strTemp = gstrExtraColumnName(lngColumnIndex - STARTOFEXTRACOL)
+            End If
+        End If
+        strColumnTitle = WriteVariablesInString(strTemp, lngYear, lngWeek, lngMonth, 0)
+
+        '選択したセルをステータスバーに表示する
+        If ((strColumnTitle = "") Or (strItemName = "")) Then
+            .oInfoStatusBar.Panels("sbpSubInfo").Text = strColumnTitle & strItemName
+        Else
+            .oInfoStatusBar.Panels("sbpSubInfo").Text = strColumnTitle & " , " & strItemName
+        End If
+
+        If (blnResult) Then
+            .oBookHScrollBar.Value = .nLeftCol
+            .oBookVScrollBar.Value = .nTopRow
+        End If
+    End With
+
+End Sub
+
 Public Sub SetScrollRange(ByRef utUI As tUserInterface)
 '---------------------------------------------------------------------
 'スクロールの範囲を決定する
