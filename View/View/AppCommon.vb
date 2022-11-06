@@ -281,6 +281,36 @@ Public Function IsUruuYear(ByVal lngYear As Integer) As Integer
     End If
 End Function
 
+Public Function OpenTemporaryFile(ByVal strTempPath As String, _
+    ByVal blnErase As Boolean) As Integer
+'---------------------------------------------------------------------
+'テンポラリファイルを開く
+'[ IN] strTempPath : テンポラリファイルのフルパス
+'[ IN] blnErase    : 既存のファイルを削除するか
+'[RET] Long
+'  ファイル番号を返す
+'  失敗した場合は-1を返す
+'[ACT]
+'  blnEraseにTrueを指定した時、
+'既にファイルが存在すれば、一度削除してから開きなおす。
+'---------------------------------------------------------------------
+Dim lngTempFileNumber As Integer
+
+    If (blnErase) Then
+        If (Dir$(strTempPath) <> "") Then
+            '既存のファイルを削除する
+            Kill strTempPath
+        End If
+    End If
+
+    'ファイルを開く
+    lngTempFileNumber = FreeFile()
+    Open strTempPath For Binary As #lngTempFileNumber
+
+    '開いたファイルのファイル番号を返す
+    OpenTemporaryFile = lngTempFileNumber
+End Function
+
 ''========================================================================
 Public Sub moveWindowToStartPosition(
         ByVal iniFileName As String,
