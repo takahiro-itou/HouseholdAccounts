@@ -14,6 +14,57 @@ Module AccountBook
 
 Public gutTempBook As tAccountBook
 
+Public Function AccountBookUpdateItemHandleInYearRecord(
+        ByRef lpBookItems As tBookItems,
+        ByRef lpNewIndex() As Integer,
+        ByRef utYearRecord As tAnnualRecords) As Integer
+'---------------------------------------------------------------------
+'家計簿の項目を並べ替えにあわせて、
+'指定された年のデータの、項目毎の集計データを並べなおし、
+'さらに全レシートの項目番号を設定しなおす。
+'lpBookItems 内の項目データは既に並べたなおした後の状態になっている必要がある
+'---------------------------------------------------------------------
+Dim i As Integer, lngNew As Integer, lngBufferSize As Integer
+Dim j As Integer, lngFlags As Integer, lngCount As Integer
+Dim lngDay As Integer
+Dim utAnnualCounts() As tBookItemAnnualCounts
+Dim utDetailCounts() As tBookItemDetailCounts
+
+    lngBufferSize = lpBookItems.nItemBufferSize
+
+    With utYearRecord
+        '項目毎の集計データを更新する
+'        utAnnualCounts() = .utItemAnnualCounts()
+        ' utDetailCounts() = .utItemDetailCounts()
+        For i = 0 To lngBufferSize - 1
+'            .utItemAnnualCounts(lngNew) = utAnnualCounts(i)
+            .utItemDetailCounts(lngNew) = utDetailCounts(i)
+        Next i
+
+        'レシートの項目番号を設定しなおす
+        For lngDay = 0 To MAXDAYS - 1
+        With .utDayRecords(lngDay)
+            For i = 0 To .nNumReceipt - 1
+            With .utReceipts(i)
+                lngFlags = .nFlags
+                lngCount = .nNumGoods
+                If (lngFlags <> RECEIPT_FLAG_NOTUSED) Then
+                    For j = 0 To lngCount - 1
+                    With .utGoods(j)
+                        lngNew = lpNewIndex(.nItemType)
+                        .nItemType = lngNew
+                        .nRootItemType = BookItemGetRootItemHandle(lpBookItems, lngNew)
+                    End With
+                    Next j
+                End If
+            End With
+            Next i
+        End With
+        Next lngDay
+    End With
+
+End Function
+
 Public Function IsAccountBookEnabled(ByRef utBook As tAccountBook) As Boolean
 '---------------------------------------------------------------------
 '家計簿データが有効なデータかどうか判断する
