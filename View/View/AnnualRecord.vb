@@ -207,7 +207,6 @@ Public Function WriteAnnualRecords(ByRef utRecord As tAnnualRecords,
 '[ACT]
 '  ファイルは予め開いて先頭位置にシークした状態でファイル番号を渡す
 '---------------------------------------------------------------------
-Dim i As Integer, j As Integer, lngCount As Integer
 Dim lngReserved As Integer
 Dim lngStartPos As Integer, lngEndPos As Integer
 Dim utTemp() As tBookItemAnnualCounts
@@ -227,7 +226,7 @@ Dim utTemp() As tBookItemAnnualCounts
         FilePut(lngFileNumber, lngReserved)
 
         '項目毎の年間集計データを書き込む
-        utTemp() = .utItemAnnualCounts()
+        utTemp = .utItemAnnualCounts.Clone
         ReDim Preserve utTemp(0 To lngItemBufferSize - 1)
         FilePut(lngFileNumber, utTemp)
     End With
