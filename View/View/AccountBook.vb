@@ -225,7 +225,7 @@ Dim strTempFileName As String, strIndexFileName As String
 
     With utBook
         'テンポラリファイルを置くディレクトリを決定する
-        strTempDir = gstrAppDir & "\Resource"
+        strTempDir = g_appPath & "\Resource"
         utBook.sTempFileDir = strTempDir
 
         '入力ファイルを開く
@@ -244,21 +244,21 @@ Dim strTempFileName As String, strIndexFileName As String
 
         '入力ファイルのヘッダ部分を取り出す
         ReDim lngHeader(0 To 63)
-        Get #lngReadFileNumber, 1, lngHeader()
+        FileGet(lngReadFileNumber, lngHeader, 1)
 
         'ヘッダの 6番目の項目(0x00000014)から、ヘッダと設定部分のデータサイズを得る
         lngPos = 1
         lngHeaderSize = lngHeader(5)
         lngReserved = 0
-        Put #lngIndexFileNumber, 1, lngPos
-        Put #lngIndexFileNumber, 5, lngHeaderSize
-        Put #lngIndexFileNumber, 9, lngReserved
-        Put #lngIndexFileNumber, 13, lngReserved
+        FilePut(lngIndexFileNumber, lngPos, 1)
+        FilePut(lngIndexFileNumber, lngHeaderSize, 5)
+        FilePut(lngIndexFileNumber, lngReserved, 9)
+        FilePut(lngIndexFileNumber, lngReserved, 13)
 
         'ヘッダと設定部分のデータを読み込んで、テンポラリファイルに書き込む
         ReDim bytBuffer(0 To lngHeaderSize - 1)
-        Get #lngReadFileNumber, 1, bytBuffer()
-        Put #lngTempFileNumber, 1, bytBuffer()
+        FileGet(lngReadFileNumber, bytBuffer, 1)
+        FilePut(lngTempFileNumber, bytBuffer, 1)
         FileClose(lngTempFileNumber)
 
         'ヘッダから、データの開始年と年数を読み出す
@@ -267,54 +267,54 @@ Dim strTempFileName As String, strIndexFileName As String
         .nNumYears = lngHeader(18)
 
         '共通レコードのデータを読み込んで、テンポラリファイルに書き込む
-        Get #lngReadFileNumber, lngHeaderSize + 17, lngPos
-        Get #lngReadFileNumber, lngHeaderSize + 21, lngSize
+        FileGet(lngReadFileNumber, lngPos, lngHeaderSize + 17)
+        FileGet(lngReadFileNumber, lngSize, lngHeaderSize + 21)
         lngReserved = 0
-        Put #lngIndexFileNumber, 17, lngPos
-        Put #lngIndexFileNumber, 21, lngSize
-        Put #lngIndexFileNumber, 25, lngReserved
-        Put #lngIndexFileNumber, 29, lngReserved
+        FilePut(lngIndexFileNumber, lngPos, 17)
+        FilePut(lngIndexFileNumber, lngSize, 21)
+        FilePut(lngIndexFileNumber, lngReserved, 25)
+        FilePut(lngIndexFileNumber, lngReserved, 29)
 
         If (lngSize > 0) Then
             ReDim bytBuffer(0 To lngSize - 1)
-            Get #lngReadFileNumber, lngPos + 1, bytBuffer()
+            FileGet(lngReadFileNumber, bytBuffer, lngPos + 1)
 
             strTempFileName = strTempDir & "\.common"
             lngTempFileNumber = FreeFile()
-            Open strTempFileName For Binary As #lngTempFileNumber
-                Put #lngTempFileNumber, 1, bytBuffer()
-            Close #lngTempFileNumber
+            FileOpen(lngTempFileNumber, strTempFileName, OpenMode.Binary)
+                FilePut(lngTempFileNumber, bytBuffer, 1)
+            FileClose(lngTempFileNumber)
         End If
 
         'インデックスファイルに予約領域を作る
         For i = 2 To 3
-            Put #lngIndexFileNumber, i * 16 + 1, lngReserved
-            Put #lngIndexFileNumber, i * 16 + 5, lngReserved
-            Put #lngIndexFileNumber, i * 16 + 9, lngReserved
-            Put #lngIndexFileNumber, i * 16 + 13, lngReserved
+            FilePut(lngIndexFileNumber, lngReserved, i * 16 + 1)
+            FilePut(lngIndexFileNumber, lngReserved, i * 16 + 5)
+            FilePut(lngIndexFileNumber, lngReserved, i * 16 + 9)
+            FilePut(lngIndexFileNumber, lngReserved, i * 16 + 13)
         Next i
 
         '各年のデータを読み込んで、テンポラリファイルに書き込む
         For lngYear = 0 To .nNumYears - 1
             'ヘッダと設定の直後から、インデックステーブルを読み出す
-            Get #lngReadFileNumber, lngYear * 16 + lngHeaderSize + 65, lngPos
-            Get #lngReadFileNumber, lngYear * 16 + lngHeaderSize + 69, lngSize
+            FileGet(lngReadFileNumber, lngPos, lngYear * 16 + lngHeaderSize + 65)
+            FileGet(lngReadFileNumber, lngSize, lngYear * 16 + lngHeaderSize + 69)
             lngReserved = 0
 
-            Put #lngIndexFileNumber, lngYear * 16 + 65, lngPos
-            Put #lngIndexFileNumber, lngYear * 16 + 69, lngSize
-            Put #lngIndexFileNumber, lngYear * 16 + 73, lngReserved
-            Put #lngIndexFileNumber, lngYear * 16 + 77, lngReserved
+            FilePut(lngIndexFileNumber, lngPos, lngYear * 16 + 65)
+            FilePut(lngIndexFileNumber, lngSize, lngYear * 16 + 69)
+            FilePut(lngIndexFileNumber, lngReserved, lngYear * 16 + 73)
+            FilePut(lngIndexFileNumber, lngReserved, lngYear * 16 + 77)
 
             'その年のデータを読み出す
             ReDim bytBuffer(0 To lngSize - 1)
-            Get #lngReadFileNumber, lngPos + 1, bytBuffer()
+            FileGet(lngReadFileNumber, bytBuffer, lngPos + 1)
 
             'テンポラリファイルの名前を決定して、データを書き込む
             strTempFileName = .sTempFileDir & "\." & Trim$(Str$(.nStartYear + lngYear))
             lngTempFileNumber = FreeFile()
             FileOpen(lngTempFileNumber, strTempFileName, OpenMode.Binary)
-                FilePut(lngTempFileNumber, 1, bytBuffer)
+                FilePut(lngTempFileNumber, bytBuffer, 1)
             FileClose(lngTempFileNumber)
         Next lngYear
     End With
