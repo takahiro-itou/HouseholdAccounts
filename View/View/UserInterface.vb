@@ -131,6 +131,35 @@ Dim lngNowShowingRows As Long
     End With
 End Sub
 
+Public Sub StartupUserInterface(ByRef utUI As tUserInterface, _
+    ByVal picBook As PictureBox, ByVal picCanvas As PictureBox, _
+    ByVal picCell As PictureBox, ByVal picIcons As PictureBox, _
+    ByVal hsbBook As HScrollBar, ByVal vsbBook As VScrollBar, _
+    ByVal stbInfo As System.Windows.Forms.StatusStrip)
+'---------------------------------------------------------------------
+'ユーザーインターフェイスのセットアップ
+'[OUT] utUI      : ユーザーインターフェイス
+'[ IN] picBook   : 家計簿を表示するメインのピクチャーボックス
+'[ IN] picCanvas : 家計簿全体を保持する作業用のピクチャーボックス
+'[ IN] picCell   : セルの内容を保持する作業用ピクチャーボックス
+'[ IN] picIcons  : アイコンを保持したピクチャーボックス
+'[ IN] hsbBook   : 表示範囲をコントロールする水平スクロールバー
+'[ IN] vsbBook   : 表示範囲をコントロールする垂直スクロールバー
+'[ IN] stbInfo   : 情報表示用のステータスバー
+'[RET] なし
+'---------------------------------------------------------------------
+
+    With utUI
+        .oBookPicture = picBook
+        .oCanvasPicture = picCanvas
+        .oCellPicture = picCell
+        .oIconsPicture = picIcons
+        .oBookHScrollBar = hsbBook
+        .oBookVScrollBar = vsbBook
+        .oInfoStatusBar = stbInfo
+    End With
+End Sub
+
 Public Sub UpdateBook(ByRef utUI As tUserInterface,
         ByRef utBook As tAccountBook,
         ByVal lngYear As Integer, ByVal lngWeek As Integer)
