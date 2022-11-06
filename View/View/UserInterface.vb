@@ -309,7 +309,7 @@ Dim utDayInfo As tParsedDate
         '現在のカーソル位置の日付を得る
         lngYear = .nCurrentYear
         lngWeek = .nCurrentWeek
-        GetDayFromIndex utDayInfo, lngYear, (lngWeek * 7), -1
+        GetDayFromIndex(utDayInfo, lngYear, (lngWeek * 7), -1)
         lngMonth = utDayInfo.nMonth
 
         'カーソルが画面外にはみ出す場合は、スクロールバーを調整する
@@ -354,9 +354,9 @@ Dim utDayInfo As tParsedDate
 
         '選択したセルをステータスバーに表示する
         If ((strColumnTitle = "") Or (strItemName = "")) Then
-            .oInfoStatusBar.Panels("sbpSubInfo").Text = strColumnTitle & strItemName
+            ' .oInfoStatusBar.Panels("sbpSubInfo").Text = strColumnTitle & strItemName
         Else
-            .oInfoStatusBar.Panels("sbpSubInfo").Text = strColumnTitle & " , " & strItemName
+            ' .oInfoStatusBar.Panels("sbpSubInfo").Text = strColumnTitle & " , " & strItemName
         End If
 
         If (blnResult) Then
