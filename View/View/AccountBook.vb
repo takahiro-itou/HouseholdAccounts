@@ -230,17 +230,17 @@ Dim strTempFileName As String, strIndexFileName As String
 
         '入力ファイルを開く
         lngReadFileNumber = FreeFile()
-        Open strFileName For Binary As #lngReadFileNumber
+        FileOpen(lngReadFileNumber, strFileName, OpenMode.Binary)
 
         'インデックスファイルを開く
         strIndexFileName = .sTempFileDir & "\.index"
         lngIndexFileNumber = FreeFile()
-        Open strIndexFileName For Binary As #lngIndexFileNumber
+        FileOpen(lngIndexFileNumber, strIndexFileName, OpenMode.Binary)
 
         'ヘッダ部分のテンポラリファイルを開く
         strTempFileName = .sTempFileDir & "\.set"
         lngTempFileNumber = FreeFile()
-        Open strTempFileName For Binary As #lngTempFileNumber
+        FileOpen(lngTempFileNumber, strTempFileName, OpenMode.Binary)
 
         '入力ファイルのヘッダ部分を取り出す
         ReDim lngHeader(0 To 63)
@@ -259,7 +259,7 @@ Dim strTempFileName As String, strIndexFileName As String
         ReDim bytBuffer(0 To lngHeaderSize - 1)
         Get #lngReadFileNumber, 1, bytBuffer()
         Put #lngTempFileNumber, 1, bytBuffer()
-        Close #lngTempFileNumber
+        FileClose(lngTempFileNumber)
 
         'ヘッダから、データの開始年と年数を読み出す
         .nStartYear = lngHeader(16)
@@ -313,15 +313,15 @@ Dim strTempFileName As String, strIndexFileName As String
             'テンポラリファイルの名前を決定して、データを書き込む
             strTempFileName = .sTempFileDir & "\." & Trim$(Str$(.nStartYear + lngYear))
             lngTempFileNumber = FreeFile()
-            Open strTempFileName For Binary As #lngTempFileNumber
-                Put #lngTempFileNumber, 1, bytBuffer()
-            Close #lngTempFileNumber
+            FileOpen(lngTempFileNumber, strTempFileName, OpenMode.Binary)
+                FilePut(lngTempFileNumber, 1, bytBuffer)
+            FileClose(lngTempFileNumber)
         Next lngYear
     End With
 
     'すべてのファイルを閉じる
-    Close #lngIndexFileNumber
-    Close #lngReadFileNumber
+    FileClose(lngIndexFileNumber)
+    FileClose(lngReadFileNumber)
 
     'ロード完了
     OpenAccountBook = True
