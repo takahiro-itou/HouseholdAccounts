@@ -154,7 +154,6 @@ Public Sub RefreshBook(ByRef utUI As tUserInterface, _
 '[ IN] lngTopRow : 一番上に表示される行
 '[RET] なし
 '---------------------------------------------------------------------
-Dim hDestDC As IntPtr, hSrcDC As IntPtr
 Dim lngLeft As Integer, lngTop As Integer
 Dim lngWidth As Integer, lngHeight As Integer
 Dim lngShowX As Integer, lngShowY As Integer
@@ -201,35 +200,39 @@ Dim rectSrc As System.Drawing.Rectangle
         lngHeight = .nCellHeight * BOOKFIXEDROWS
         rectSrc = New System.Drawing.Rectangle(0, 0, lngWidth, lngHeight)
         grpDest.DrawImage(
-            imgSrc, .nLeftMargin, .nTopMargin, rectSrc, GraphicsUnit.Pixel)
-        lngResult = BitBlt(hDestDC, .nLeftMargin, .nTopMargin, lngWidth, lngHeight, hSrcDC, 0, 0, SRCCOPY)
+             imgSrc, .nLeftMargin, .nTopMargin,
+             rectSrc, GraphicsUnit.Pixel)
 
         '固定行をコピーする
         lngLeft = .nCellWidth * BOOKFIXEDCOLS
         lngTop = 0
         lngWidth = .nBookWidth - lngLeft
         lngHeight = .nBookHeight
-        lngResult = BitBlt(hDestDC, _
-            lngLeft + .nLeftMargin, .nTopMargin, lngWidth, lngHeight, _
-            hSrcDC, lngSrcX, 0, SRCCOPY)
+        rectSrc = New System.Drawing.Rectangle(lngSrcX, 0, lngWidth, lngHeight)
+        grpDest.DrawImage(
+                imgSrc, lngLeft + .nLeftMargin, .nTopMargin,
+                rectSrc, GraphicsUnit.Pixel)
 
         '固定列をコピーする
         lngLeft = 0
         lngTop = .nCellHeight * BOOKFIXEDROWS
         lngWidth = .nBookWidth
         lngHeight = .nBookHeight - lngTop
-        lngResult = BitBlt(hDestDC, _
-            .nLeftMargin, lngTop + .nTopMargin, lngWidth, lngHeight, _
-            hSrcDC, 0, lngSrcY, SRCCOPY)
+        rectSrc = New System.Drawing.Rectangle(0, lngSrcY, lngWidth, lngHeight)
+        grpDest.DrawImage(
+                imgSrc, lngTop + .nTopMargin, lngWidth,
+                rectSrc, GraphicsUnit.Pixel)
 
         '残りの部分を表示する
         lngLeft = .nCellWidth * BOOKFIXEDCOLS
         lngTop = .nCellHeight * BOOKFIXEDROWS
         lngWidth = .nBookWidth - lngLeft
         lngHeight = .nBookHeight - lngTop
-        lngResult = BitBlt(hDestDC, _
-            lngLeft + .nLeftMargin, lngTop + .nTopMargin, lngWidth, lngHeight, _
-            hSrcDC, lngSrcX, lngSrcY, SRCCOPY)
+        rectSrc = New System.Drawing.Rectangle(
+                lngSrcX, lngSrcY, lngWidth, lngHeight)
+        grpDest.DrawImage(
+                imgSrc, lngLeft + .nLeftMargin, lngTop + .nTopMargin,
+                rectSrc, GraphicsUnit.Pixel)
 
         '選択しているセルを強調表示する
         lngShowX = .nCurrentMouseX - .nLeftCol
