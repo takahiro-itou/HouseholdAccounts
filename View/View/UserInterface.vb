@@ -143,6 +143,121 @@ Dim blnResult As Boolean
     ExecuteCellAction = blnResult
 End Function
 
+Public Sub RefreshBook(ByRef utUI As tUserInterface, _
+    ByRef utBook As tAccountBook, _
+    ByVal lngLeftCol As Integer, ByVal lngTopRow As Integer)
+'---------------------------------------------------------------------
+'家計簿の表示を更新する
+'[I/O] utUI      : ユーザーインターフェイス
+'[ IN] utBook    : 家計簿データ
+'[ IN] lngLeftCol: 一番左に表示される列
+'[ IN] lngTopRow : 一番上に表示される行
+'[RET] なし
+'---------------------------------------------------------------------
+Dim hDestDC As IntPtr, hSrcDC As IntPtr
+Dim lngLeft As Integer, lngTop As Integer
+Dim lngWidth As Integer, lngHeight As Integer
+Dim lngShowX As Integer, lngShowY As Integer
+Dim lngSrcX As Integer, lngSrcY As Integer
+Dim lngResult As Integer
+
+    '家計簿オブジェクトの状態をチェックする
+    If (IsAccountBookEnabled(utBook) = False) Then
+        With utUI
+            .oBookPicture.Cls
+            .oBookPicture.Refresh
+        End With
+        Exit Sub
+    End If
+
+    With utUI
+        '指定された左端の行、上端の列がマイナスであれば、
+        'スクロールバーの現在の値にセットする
+        If (lngLeftCol < 0) Then lngLeftCol = .oBookHScrollBar.Value
+        If (lngTopRow < 0) Then lngTopRow = .oBookVScrollBar.Value
+        .nLeftCol = lngLeftCol
+        .nTopRow = lngTopRow
+
+        'コピー元の座標を決定する
+        lngSrcX = (lngLeftCol + BOOKFIXEDCOLS) * .nCellWidth
+        lngSrcY = (lngTopRow + BOOKFIXEDROWS) * .nCellHeight
+
+        hSrcDC = .oCanvasPicture.hDC
+
+        .oBookPicture.Cls
+        hDestDC = .oBookPicture.hDC
+
+        '左上の固定行・固定列が交差する部分をコピーする
+        lngWidth = .nCellWidth * BOOKFIXEDCOLS
+        lngHeight = .nCellHeight * BOOKFIXEDROWS
+        lngResult = BitBlt(hDestDC, .nLeftMargin, .nTopMargin, lngWidth, lngHeight, hSrcDC, 0, 0, SRCCOPY)
+
+        '固定行をコピーする
+        lngLeft = .nCellWidth * BOOKFIXEDCOLS
+        lngTop = 0
+        lngWidth = .nBookWidth - lngLeft
+        lngHeight = .nBookHeight
+        lngResult = BitBlt(hDestDC, _
+            lngLeft + .nLeftMargin, .nTopMargin, lngWidth, lngHeight, _
+            hSrcDC, lngSrcX, 0, SRCCOPY)
+
+        '固定列をコピーする
+        lngLeft = 0
+        lngTop = .nCellHeight * BOOKFIXEDROWS
+        lngWidth = .nBookWidth
+        lngHeight = .nBookHeight - lngTop
+        lngResult = BitBlt(hDestDC, _
+            .nLeftMargin, lngTop + .nTopMargin, lngWidth, lngHeight, _
+            hSrcDC, 0, lngSrcY, SRCCOPY)
+
+        '残りの部分を表示する
+        lngLeft = .nCellWidth * BOOKFIXEDCOLS
+        lngTop = .nCellHeight * BOOKFIXEDROWS
+        lngWidth = .nBookWidth - lngLeft
+        lngHeight = .nBookHeight - lngTop
+        lngResult = BitBlt(hDestDC, _
+            lngLeft + .nLeftMargin, lngTop + .nTopMargin, lngWidth, lngHeight, _
+            hSrcDC, lngSrcX, lngSrcY, SRCCOPY)
+
+        '選択しているセルを強調表示する
+        lngShowX = .nCurrentMouseX - .nLeftCol
+        lngShowY = .nCurrentMouseY - .nTopRow
+
+        If (.nCurrentMouseX < BOOKFIXEDCOLS) Then
+            '固定列を選択
+            lngLeft = .nLeftMargin
+            lngWidth = .nCellWidth * BOOKFIXEDCOLS
+        ElseIf (lngShowX < BOOKFIXEDCOLS) Then
+            '画面外(左)、表示しない
+            lngLeft = .nBookWidth
+            lngWidth = 0
+        Else
+            lngLeft = (.nCellWidth * lngShowX) + .nLeftMargin
+            lngWidth = .nCellWidth
+        End If
+
+        If (.nCurrentMouseY < BOOKFIXEDROWS) Then
+            '固定行を選択
+            lngTop = .nTopMargin
+            lngHeight = .nCellHeight * BOOKFIXEDROWS
+        ElseIf (lngShowY < BOOKFIXEDROWS) Then
+            '画面外(上)、表示しない
+            lngTop = .nBookHeight
+            lngHeight = 0
+        Else
+            lngTop = (.nCellHeight * lngShowY) + .nTopMargin
+            lngHeight = .nCellHeight
+        End If
+
+        If ((lngLeft < .nBookWidth) And (lngTop < .nBookHeight)) Then
+            .oBookPicture.Line (lngLeft + 1, lngTop + 1)-Step(lngWidth - 2, lngHeight - 2), BOOKSELECTEDCOLOR, B
+        End If
+
+        '更新する
+        .oBookPicture.Refresh
+    End With
+End Sub
+
 Public Sub SetScrollRange(ByRef utUI As tUserInterface)
 '---------------------------------------------------------------------
 'スクロールの範囲を決定する
