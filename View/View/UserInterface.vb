@@ -127,16 +127,16 @@ Dim blnResult As Boolean
         With utBook
             lngIndex = utUI.nNowShowingItems(lngY - BOOKFIXEDROWS)
             blnExpand = BookItemGetItemExpanded(.utBookItems, lngIndex)
-            BookItemExpandItem .utBookItems, lngIndex, Not (blnExpand)
+            BookItemExpandItem(.utBookItems, lngIndex, Not (blnExpand))
             blnResult = True
         End With
     End If
 
     '何か変化があれば、表示を更新する
     If (blnResult) Then
-        UpdateBook utUI, utBook, -1, -1
-        SetScrollRange utUI
-        RefreshBook utUI, utBook, -1, -1
+        UpdateBook(utUI, utBook, -1, -1)
+        SetScrollRange(utUI)
+        RefreshBook(utUI, utBook, -1, -1)
     End If
 
     '何か変化があればTrueを返す
