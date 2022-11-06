@@ -216,20 +216,20 @@ Dim utTemp() As tBookItemAnnualCounts
     With utRecord
         '記録する年を書き込む
         lngReserved = 0
-        Put #lngFileNumber, lngStartPos + 1, lngReserved
+        FilePut(lngFileNumber, lngReserved, lngStartPos + 1)
 
         '項目数を書き込む
-        Put #lngFileNumber, , lngItemBufferSize
+        FilePut(lngFileNumber, lngItemBufferSize)
 
         '8Bytes予約
         lngReserved = 0
-        Put #lngFileNumber, , lngReserved
-        Put #lngFileNumber, , lngReserved
+        FilePut(lngFileNumber, lngReserved)
+        FilePut(lngFileNumber, lngReserved)
 
         '項目毎の年間集計データを書き込む
         utTemp() = .utItemAnnualCounts()
         ReDim Preserve utTemp(0 To lngItemBufferSize - 1)
-        Put #lngFileNumber, , utTemp()
+        FilePut(lngFileNumber, utTemp)
     End With
 
     '書き込んだバイト数を返す
