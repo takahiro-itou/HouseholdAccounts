@@ -27,7 +27,7 @@ Public Function AccountBookUpdateItemHandleInYearRecord(
 Dim i As Integer, lngNew As Integer, lngBufferSize As Integer
 Dim j As Integer, lngFlags As Integer, lngCount As Integer
 Dim lngDay As Integer
-Dim utAnnualCounts() As tBookItemAnnualCounts
+'Dim utAnnualCounts() As tBookItemAnnualCounts
 Dim utDetailCounts() As tBookItemDetailCounts
 
     lngBufferSize = lpBookItems.nItemBufferSize
@@ -35,7 +35,7 @@ Dim utDetailCounts() As tBookItemDetailCounts
     With utYearRecord
         '項目毎の集計データを更新する
 '        utAnnualCounts() = .utItemAnnualCounts()
-        ' utDetailCounts() = .utItemDetailCounts()
+        utDetailCounts = .utItemDetailCounts
         For i = 0 To lngBufferSize - 1
 '            .utItemAnnualCounts(lngNew) = utAnnualCounts(i)
             .utItemDetailCounts(lngNew) = utDetailCounts(i)
@@ -63,6 +63,7 @@ Dim utDetailCounts() As tBookItemDetailCounts
         Next lngDay
     End With
 
+    AccountBookUpdateItemHandleInYearRecord = 0
 End Function
 
 Public Function AddDataToItemTotal(ByRef utBook As tAccountBook,
