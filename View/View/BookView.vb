@@ -1,6 +1,6 @@
 Option Explicit
 
-Module Declarations
+Module BookView
 
 '*****************************************************************************
 ' AccountBook
@@ -24,7 +24,7 @@ Public Sub CleanupBookView(ByRef utBookView As tBookView)
 '[RET] なし
 '---------------------------------------------------------------------
     With utBookView
-        Set .oBookForm = Nothing
+        .oBookForm = Nothing
     End With
 End Sub
 
