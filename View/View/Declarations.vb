@@ -17,72 +17,72 @@ Module Declarations
 '項目用フラグ
 '
 
-Public Const ITEM_FLAG_TYPEMASK As Long = &HFF&
-Public Const ITEM_FLAG_NOTUSED As Long = 0          '未使用
-Public Const ITEM_FLAG_INHERIT As Long = 1          '親の設定を継承
-Public Const ITEM_FLAG_BALANCE As Long = 9          '残高表示
-Public Const ITEM_FLAG_INCOME As Long = 17          '収入
-Public Const ITEM_FLAG_OUTLAY As Long = 18          '支出
-Public Const ITEM_FLAG_BANK As Long = 25            '銀行口座
-Public Const ITEM_FLAG_BANK_WITHDRAW As Long = 26   '口座引出
-Public Const ITEM_FLAG_BANK_DEPOSIT As Long = 27    '口座入金
-Public Const ITEM_FLAG_BANK_TRANSFER As Long = 28   '口座振替
+Public Const ITEM_FLAG_TYPEMASK As Integer = &HFF&
+Public Const ITEM_FLAG_NOTUSED As Integer = 0          '未使用
+Public Const ITEM_FLAG_INHERIT As Integer = 1          '親の設定を継承
+Public Const ITEM_FLAG_BALANCE As Integer = 9          '残高表示
+Public Const ITEM_FLAG_INCOME As Integer = 17          '収入
+Public Const ITEM_FLAG_OUTLAY As Integer = 18          '支出
+Public Const ITEM_FLAG_BANK As Integer = 25            '銀行口座
+Public Const ITEM_FLAG_BANK_WITHDRAW As Integer = 26   '口座引出
+Public Const ITEM_FLAG_BANK_DEPOSIT As Integer = 27    '口座入金
+Public Const ITEM_FLAG_BANK_TRANSFER As Integer = 28   '口座振替
 
-Public Const ITEM_FLAG_EXPANDED As Long = &H100&
+Public Const ITEM_FLAG_EXPANDED As Integer = &H100&
 
-Public Const ITEM_FLAG_NOCOUNT_PARENT As Long = &H10000
-Public Const ITEM_FLAG_NOCOUNT_ROOT As Long = &H20000
-Public Const ITEM_FLAG_HIDDEN As Long = &H10000000
-Public Const ITEM_FLAG_UNERASABLE As Long = &H20000000
-Public Const ITEM_FLAG_READONLY As Long = &H40000000
+Public Const ITEM_FLAG_NOCOUNT_PARENT As Integer = &H10000
+Public Const ITEM_FLAG_NOCOUNT_ROOT As Integer = &H20000
+Public Const ITEM_FLAG_HIDDEN As Integer = &H10000000
+Public Const ITEM_FLAG_UNERASABLE As Integer = &H20000000
+Public Const ITEM_FLAG_READONLY As Integer = &H40000000
 
 '*****************************************************************************
 '
 'レシートデータ用フラグ
 '
 
-Public Const RECEIPT_FLAG_TYPEMASK As Long = &HFF&
-Public Const RECEIPT_FLAG_NOTUSED As Long = 0
-Public Const RECEIPT_FLAG_USED As Long = 1
+Public Const RECEIPT_FLAG_TYPEMASK As Integer = &HFF&
+Public Const RECEIPT_FLAG_NOTUSED As Integer = 0
+Public Const RECEIPT_FLAG_USED As Integer = 1
 
 '*****************************************************************************
 '
 '各データの最大個数
 '
 
-Public Const DAY_START As Long = 6
-Public Const MAXITEMS As Long = 65536       '家計簿に記録できる最大項目数
-Public Const MAXBALANCES As Long = 256      '家計簿に登録できる最大口座数
+Public Const DAY_START As Integer = 6
+Public Const MAXITEMS As Integer = 65536       '家計簿に記録できる最大項目数
+Public Const MAXBALANCES As Integer = 256      '家計簿に登録できる最大口座数
 
-Public Const MAXDAYS As Long = 378          '１年分の家計簿に記録する最大日数
-Public Const MAXWEEKS As Long = 54          '１年分の家計簿に記録する最大週数
-Public Const MAXMONTH As Long = 12          '１年分の家計簿に記録する最大月数
+Public Const MAXDAYS As Integer = 378          '１年分の家計簿に記録する最大日数
+Public Const MAXWEEKS As Integer = 54          '１年分の家計簿に記録する最大週数
+Public Const MAXMONTH As Integer = 12          '１年分の家計簿に記録する最大月数
 
 '*****************************************************************************
 '
 '表示関係
 '
 
-Public Const ACCENTER As Long = 0
-Public Const ACLEFT As Long = 1
-Public Const ACRIGHT As Long = 2
+Public Const ACCENTER As Integer = 0
+Public Const ACLEFT As Integer = 1
+Public Const ACRIGHT As Integer = 2
 
 '行や列の見出しなど
-Public Const NUMDAYSPERWEEK As Long = 7
+Public Const NUMDAYSPERWEEK As Integer = 7
 
-Public Const NUMBEROFEXTRACOLUMNS As Long = 5
-Public Const EXTRACOLUMN_WEEKTOTAL As Long = 0
-Public Const EXTRACOLUMN_MONTHTOTAL As Long = 1
-Public Const EXTRACOLUMN_YEARTOTAL As Long = 2
-Public Const EXTRACOLUMN_BUDGETOFMONTH As Long = 3
-Public Const EXTRACOLUMN_BUDGETBALANCE As Long = 4
+Public Const NUMBEROFEXTRACOLUMNS As Integer = 5
+Public Const EXTRACOLUMN_WEEKTOTAL As Integer = 0
+Public Const EXTRACOLUMN_MONTHTOTAL As Integer = 1
+Public Const EXTRACOLUMN_YEARTOTAL As Integer = 2
+Public Const EXTRACOLUMN_BUDGETOFMONTH As Integer = 3
+Public Const EXTRACOLUMN_BUDGETBALANCE As Integer = 4
 Public gstrExtraColumnName() As String
 
-Public Const BOOKFIXEDCOLS As Long = 2
-Public Const BOOKFIXEDROWS As Long = 1
+Public Const BOOKFIXEDCOLS As Integer = 2
+Public Const BOOKFIXEDROWS As Integer = 1
 
 '色
-'Private Const BOOKLINECOLOR As Long = &HC8D0D4
+'Private Const BOOKLINECOLOR As Integer = &HC8D0D4
 Public Const BOOKLINECOLOR As Integer = &H0
 
 Public Const BOOKBGFIXEDCOLSCOLOR As Integer = &HBAF0FE
@@ -97,14 +97,14 @@ Public Const NORMALTEXTCOLOR As Integer = &H0
 Public Const READONLYTEXTCOLOR As Integer = &H808080
 
 '列番号
-Public Const COLWEEKTOTAL As Long = NUMDAYSPERWEEK + EXTRACOLUMN_WEEKTOTAL
-Public Const COLMONTHTOTAL As Long = NUMDAYSPERWEEK + EXTRACOLUMN_MONTHTOTAL
-Public Const COLYEARTOTAL As Long = NUMDAYSPERWEEK + EXTRACOLUMN_YEARTOTAL
-Public Const COLBUDGETOFMONTH As Long = NUMDAYSPERWEEK + EXTRACOLUMN_BUDGETOFMONTH
-Public Const COLBUDGETBALANCE As Long = NUMDAYSPERWEEK + EXTRACOLUMN_BUDGETBALANCE
+Public Const COLWEEKTOTAL As Integer = NUMDAYSPERWEEK + EXTRACOLUMN_WEEKTOTAL
+Public Const COLMONTHTOTAL As Integer = NUMDAYSPERWEEK + EXTRACOLUMN_MONTHTOTAL
+Public Const COLYEARTOTAL As Integer = NUMDAYSPERWEEK + EXTRACOLUMN_YEARTOTAL
+Public Const COLBUDGETOFMONTH As Integer = NUMDAYSPERWEEK + EXTRACOLUMN_BUDGETOFMONTH
+Public Const COLBUDGETBALANCE As Integer = NUMDAYSPERWEEK + EXTRACOLUMN_BUDGETBALANCE
 
-Public Const STARTOFEXTRACOL As Long = NUMDAYSPERWEEK
-Public Const BOOKNUMCOLUMNS As Long = BOOKFIXEDCOLS + COLBUDGETBALANCE + 1
+Public Const STARTOFEXTRACOL As Integer = NUMDAYSPERWEEK
+Public Const BOOKNUMCOLUMNS As Integer = BOOKFIXEDCOLS + COLBUDGETBALANCE + 1
 
 '*****************************************************************************
 '
@@ -140,17 +140,17 @@ End Structure
 
 '項目毎の年間集計
 Public Structure tBookItemAnnualCounts
-    Public nStartValues() As Long                  '開始時の数値
-    Public nEndValues() As Long                    '終了時の数値
-    Public nYearTotal() As Long                    '各年の合計金額
+    Public nStartValues() As Integer                  '開始時の数値
+    Public nEndValues() As Integer                    '終了時の数値
+    Public nYearTotal() As Integer                    '各年の合計金額
 End Structure
 
 '項目毎の詳細集計結果
 Public Structure tBookItemDetailCounts
     '日週月毎の集計、一年間の合計金額
-    Public nDayTotal() As Long     '日毎の合計金額：378 日
-    Public nWeekTotal() As Long   '週毎の合計金額：54週
-    Public nMonthTotal() As Long      '月毎の合計金額：12ヶ月
+    Public nDayTotal() As Integer     '日毎の合計金額：378 日
+    Public nWeekTotal() As Integer   '週毎の合計金額：54週
+    Public nMonthTotal() As Integer      '月毎の合計金額：12ヶ月
 End Structure
 
 '*****************************************************************************
@@ -160,41 +160,41 @@ End Structure
 
 '１個の商品
 Public Structure tGoods
-    Public nRootItemType As Long           'ルートの項目インデックス
-    Public nItemType As Long               '項目インデックス
-    Public nGoodsNameID As Long            '商品名のID(文字列テーブル内のインデックス)
+    Public nRootItemType As Integer           'ルートの項目インデックス
+    Public nItemType As Integer               '項目インデックス
+    Public nGoodsNameID As Integer            '商品名のID(文字列テーブル内のインデックス)
     Public sGoodsName As String            '商品名
-    Public nUnitPrice As Long              '単価
-    Public nQuantity As Long               '数量
-    Public nSubTotal As Long               '小計
-    Public nReserved0 As Long              '予約
+    Public nUnitPrice As Integer              '単価
+    Public nQuantity As Integer               '数量
+    Public nSubTotal As Integer               '小計
+    Public nReserved0 As Integer              '予約
 End Structure
 
 '１回の買い物(レシート１枚)
 Public Structure tReceipt
-    Public nFlags As Long                  'フラグ
-    Public nNumGoods As Long               '購入した商品の数
+    Public nFlags As Integer                  'フラグ
+    Public nNumGoods As Integer               '購入した商品の数
     Public utGoods() As tGoods             '購入した商品のデータ
-    Public nSubTotal As Long               '小計
-    Public nInsideTax As Long              '内税
-    Public nOutsideTax As Long             '外税
-    Public nTotal As Long                  '合計
-    Public nInsideTaxItemType As Long      '内税を加える項目インデックス
-    Public nOutsideTaxItemType As Long     '外税を加える項目インデックス
-    Public nReserved0 As Long              '予約
-    Public nReserved1 As Long              '予約
+    Public nSubTotal As Integer               '小計
+    Public nInsideTax As Integer              '内税
+    Public nOutsideTax As Integer             '外税
+    Public nTotal As Integer                  '合計
+    Public nInsideTaxItemType As Integer      '内税を加える項目インデックス
+    Public nOutsideTaxItemType As Integer     '外税を加える項目インデックス
+    Public nReserved0 As Integer              '予約
+    Public nReserved1 As Integer              '予約
 End Structure
 
 '１日の買い物
 Public Structure tOneDayReceipts
-    Public nDate As Long               '日付
-    Public nNumReceipt As Long         'レシートの枚数
+    Public nDate As Integer               '日付
+    Public nNumReceipt As Integer         'レシートの枚数
     Public utReceipts() As tReceipt    '各レシート
 End Structure
 
 '１年分 のデータ
 Public Structure tAnnualRecords
-    Public nItemBufferSize As Long
+    Public nItemBufferSize As Integer
 
     '各項目ごとの集計データ
     Public utItemAnnualCounts() As tBookItemAnnualCounts
@@ -258,41 +258,41 @@ Public Structure tUserInterface
     Public imgCell As System.Drawing.Bitmap
     Public imgIcons As System.Drawing.Bitmap
 
-    Public nLeftMargin As Long
-    Public nTopMargin As Long
-    Public nBookWidth As Long
-    Public nBookHeight As Long
+    Public nLeftMargin As Integer
+    Public nTopMargin As Integer
+    Public nBookWidth As Integer
+    Public nBookHeight As integer
 
-    Public nCellWidth As Long
-    Public nCellHeight As Long
-    Public nColumnsInSheet As Long
-    Public nRowsInSheet As Long
+    Public nCellWidth As Integer
+    Public nCellHeight As Integer
+    Public nColumnsInSheet As Integer
+    Public nRowsInSheet As Integer
 
-    Public nCharWidth As Long                          '固定フォントで一文字当たりの幅
-    Public nCharHeight As Long                         '固定フォントで一文字あたりの高さ
+    Public nCharWidth As Integer                          '固定フォントで一文字当たりの幅
+    Public nCharHeight As Integer                         '固定フォントで一文字あたりの高さ
 
     '現在画面に表示している内容
-    Public nCurrentYear As Long
-    Public nCurrentWeek As Long
+    Public nCurrentYear As Integer
+    Public nCurrentWeek As Integer
     Public sTableCaption As String                     'テーブルキャプション
-    Public nNowShowingItemCount As Long                '現在画面に表示している項目数
-    Public nNowShowingItems() As Long                  '現在画面に表示している項目
+    Public nNowShowingItemCount As Integer                '現在画面に表示している項目数
+    Public nNowShowingItems() As Integer                  '現在画面に表示している項目
     Public utNowShowingDates() As tParsedDate          '現在画面に表示している列項目(日付)
 
     'スクロール範囲と位置
     Public oBookHScrollBar As HScrollBar
     Public oBookVScrollBar As VScrollBar
-    Public nMaxHScrollBar As Long
-    Public nMaxVScrollBar As Long
-    Public nLeftCol As Long
-    Public nTopRow As Long
+    Public nMaxHScrollBar As Integer
+    Public nMaxVScrollBar As Integer
+    Public nLeftCol As Integer
+    Public nTopRow As Integer
 
     'ステータスバー
     Public oInfoStatusBar As System.Windows.Forms.StatusStrip
 
     'マウス
-    Public nCurrentMouseX As Long
-    Public nCurrentMouseY As Long
+    Public nCurrentMouseX As Integer
+    Public nCurrentMouseY As Integer
 End Structure
 
 Public Structure tBookView
@@ -300,7 +300,7 @@ Public Structure tBookView
     Public utUserInterface As tUserInterface
     Public oBookForm As Form
 
-    Public nNumWeeks As Long
+    Public nNumWeeks As Integer
 
     '家計簿の状態
     Public bBackupedBookFile As Boolean        'ファイルを一度バックアップしたか
