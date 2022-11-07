@@ -133,4 +133,108 @@ Dim lngNewItemHandle As Integer
     InsertNewBookItem = lngNewItemHandle
 End Function
 
+Public Function ReadAccountBookSettings(
+        ByRef utBook As tAccountBook) As Boolean
+'---------------------------------------------------------------------
+'テンポラリファイル(.set)から、家計簿の設定を読み込む
+'[I/O] utBook : 家計簿データ
+'[RET] Boolean
+'  成功したらTrue, 失敗したら False
+'---------------------------------------------------------------------
+Dim i As Integer, lngItemCount As Integer, lngRootItemCount As Integer
+Dim lngBufferSize As Integer, lngResult As Integer
+Dim lngHandle As Integer, lngFlags As Integer
+Dim lngStartDate As Integer, lngStartBalance As Integer
+Dim lngNameID As Integer, lngReserved As Integer
+Dim lngHeader() As Integer
+Dim bytBuffer() As Byte
+Dim strTemp As String
+
+Dim lngStartPos As Integer
+Dim lngTablePos As Integer, lngTableSize As Integer
+Dim lngDataPos As Integer, lngDataSize As Integer
+Dim lngTempFileNumber As Integer
+Dim strTempDir As String, strTempFileName As String
+
+    With utBook
+        'テンポラリファイルを開く
+        strTempDir = .sTempFileDir
+        strTempFileName = strTempDir & "\.set"
+        lngTempFileNumber = OpenTemporaryFile(strTempFileName, False)
+
+        lngStartPos = 0
+
+        'ヘッダを読み込む
+        ReDim lngHeader(0 To 63)
+        Get #lngTempFileNumber, lngStartPos + 1, lngHeader()
+        lngTablePos = lngHeader(8)
+        lngTableSize = lngHeader(9)
+        lngDataPos = lngHeader(10)
+        lngDataSize = lngHeader(11)
+
+        .nStartYear = lngHeader(16)
+        .nStartDayIndex = lngHeader(17)
+        .nNumYears = lngHeader(18)
+        If ((.nStartYear > 0) And (.nNumYears > 0)) Then
+            GetDayFromIndex .utStartDate, .nStartYear, .nStartDayIndex, -1
+        End If
+
+        lngItemCount = lngHeader(32)
+        lngRootItemCount = lngHeader(33)
+
+        'バッファを確保する
+        AllocBookItems utBook, lngItemCount
+
+        With .utBookItems
+            .nRootItemCount = lngRootItemCount
+            .nRegisteredItemCount = lngRootItemCount
+            .nInnerTaxItemHandle = lngHeader(36)
+            .nOuterTaxItemHandle = lngHeader(37)
+        End With
+
+        'ヘッダ用の文字列テーブルを読み込む
+        Seek #lngTempFileNumber, lngStartPos + lngTablePos + 1
+        ReadStringTable .utSettingsStringTable, lngTempFileNumber
+
+        '項目データ
+        Seek #lngTempFileNumber, lngStartPos + lngDataPos + 1
+        For i = 0 To lngItemCount - 1
+            Get #lngTempFileNumber, , lngHandle
+            Get #lngTempFileNumber, , lngFlags
+            Get #lngTempFileNumber, , lngStartDate
+            Get #lngTempFileNumber, , lngStartBalance
+            Get #lngTempFileNumber, , lngNameID
+            Get #lngTempFileNumber, , lngReserved
+            Get #lngTempFileNumber, , lngReserved
+            Get #lngTempFileNumber, , lngReserved
+            strTemp = .utSettingsStringTable.sTableEntries(lngNameID)
+
+            If (i < lngRootItemCount) Then
+                With .utBookItems
+                    .nFlags(i) = lngFlags
+                    With .utItemEntries(i)
+                        .nParentHandle = -1
+                        .sItemName = strTemp
+                        .nSubItemCount = 0
+                        .nStartDate = lngStartDate
+                        .nStartBalance = lngStartBalance
+                    End With
+                End With
+            Else
+                lngResult = InsertNewBookItem(utBook, lngHandle, strTemp, lngFlags, lngStartDate, lngStartBalance)
+                If (lngResult <> i) Then
+                    MsgBox "エラー：追加されたサブアイテムのインデックスが一致しません。" & _
+                        vbCrLf & "インデックス：" & i & vbCrLf & "　　追加位置：" & lngResult
+                End If
+            End If
+        Next i
+    End With
+
+    'テンポラリファイルを閉じる
+    Close #lngTempFileNumber
+
+    '読み込み完了
+    ReadAccountBookSettings = True
+End Function
+
 End Module
