@@ -166,7 +166,7 @@ Dim strTempDir As String, strTempFileName As String
 
         'ヘッダを読み込む
         ReDim lngHeader(0 To 63)
-        Get #lngTempFileNumber, lngStartPos + 1, lngHeader()
+        FileGet(lngTempFileNumber, lngHeader, lngStartPos + 1)
         lngTablePos = lngHeader(8)
         lngTableSize = lngHeader(9)
         lngDataPos = lngHeader(10)
@@ -176,14 +176,14 @@ Dim strTempDir As String, strTempFileName As String
         .nStartDayIndex = lngHeader(17)
         .nNumYears = lngHeader(18)
         If ((.nStartYear > 0) And (.nNumYears > 0)) Then
-            GetDayFromIndex .utStartDate, .nStartYear, .nStartDayIndex, -1
+            GetDayFromIndex(.utStartDate, .nStartYear, .nStartDayIndex, -1)
         End If
 
         lngItemCount = lngHeader(32)
         lngRootItemCount = lngHeader(33)
 
         'バッファを確保する
-        AllocBookItems utBook, lngItemCount
+        AllocBookItems(utBook, lngItemCount)
 
         With .utBookItems
             .nRootItemCount = lngRootItemCount
@@ -193,20 +193,20 @@ Dim strTempDir As String, strTempFileName As String
         End With
 
         'ヘッダ用の文字列テーブルを読み込む
-        Seek #lngTempFileNumber, lngStartPos + lngTablePos + 1
-        ReadStringTable .utSettingsStringTable, lngTempFileNumber
+        Seek(lngTempFileNumber, lngStartPos + lngTablePos + 1)
+        ReadStringTable(.utSettingsStringTable, lngTempFileNumber)
 
         '項目データ
-        Seek #lngTempFileNumber, lngStartPos + lngDataPos + 1
+        Seek(lngTempFileNumber, lngStartPos + lngDataPos + 1)
         For i = 0 To lngItemCount - 1
-            Get #lngTempFileNumber, , lngHandle
-            Get #lngTempFileNumber, , lngFlags
-            Get #lngTempFileNumber, , lngStartDate
-            Get #lngTempFileNumber, , lngStartBalance
-            Get #lngTempFileNumber, , lngNameID
-            Get #lngTempFileNumber, , lngReserved
-            Get #lngTempFileNumber, , lngReserved
-            Get #lngTempFileNumber, , lngReserved
+            FileGet(lngTempFileNumber, lngHandle)
+            FileGet(lngTempFileNumber, lngFlags)
+            FileGet(lngTempFileNumber, lngStartDate)
+            FileGet(lngTempFileNumber, lngStartBalance)
+            FileGet(lngTempFileNumber, lngNameID)
+            FileGet(lngTempFileNumber, lngReserved)
+            FileGet(lngTempFileNumber, lngReserved)
+            FileGet(lngTempFileNumber, lngReserved)
             strTemp = .utSettingsStringTable.sTableEntries(lngNameID)
 
             If (i < lngRootItemCount) Then
@@ -223,15 +223,16 @@ Dim strTempDir As String, strTempFileName As String
             Else
                 lngResult = InsertNewBookItem(utBook, lngHandle, strTemp, lngFlags, lngStartDate, lngStartBalance)
                 If (lngResult <> i) Then
-                    MsgBox "エラー：追加されたサブアイテムのインデックスが一致しません。" & _
-                        vbCrLf & "インデックス：" & i & vbCrLf & "　　追加位置：" & lngResult
+                    MessageBox.Show("エラー：追加されたサブアイテムのインデックスが一致しません。" & _
+                        vbCrLf & "インデックス：" & i & vbCrLf & _
+                        "　　追加位置：" & lngResult)
                 End If
             End If
         Next i
     End With
 
     'テンポラリファイルを閉じる
-    Close #lngTempFileNumber
+    FileClose(lngTempFileNumber)
 
     '読み込み完了
     ReadAccountBookSettings = True
