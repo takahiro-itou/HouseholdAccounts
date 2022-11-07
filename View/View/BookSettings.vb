@@ -297,17 +297,17 @@ Dim blnResult As Boolean
 
         'ヘッダを書き込む
         lngStartPos = 0
-        Put #lngTempFileNumber, lngStartPos + 1, lngHeader()
+        FilePut(lngTempFileNumber, lngHeader, lngStartPos + 1)
 
         'ヘッダ用の文字列テーブルを書き込む
         lngTablePos = 256
-        Seek #lngTempFileNumber, lngStartPos + lngTablePos + 1
+        Seek(lngTempFileNumber, lngStartPos + lngTablePos + 1)
         lngTableSize = WriteStringTable(.utSettingsStringTable, lngTempFileNumber)
         lngDataPos = lngTablePos + lngTableSize
 
         '項目データ
         With .utBookItems
-            Seek #lngTempFileNumber, lngStartPos + lngDataPos + 1
+            Seek(lngTempFileNumber, lngStartPos + lngDataPos + 1)
             For i = 0 To lngItemCount - 1
                 lngFlags = .nFlags(i)
                 With .utItemEntries(i)
@@ -320,14 +320,14 @@ Dim blnResult As Boolean
 
                 lngNameID = FindString(utBook.utSettingsStringTable, strTemp)
 
-                Put #lngTempFileNumber, , lngHandle
-                Put #lngTempFileNumber, , lngFlags
-                Put #lngTempFileNumber, , lngStartDate
-                Put #lngTempFileNumber, , lngStartBalance
-                Put #lngTempFileNumber, , lngNameID
-                Put #lngTempFileNumber, , lngReserved
-                Put #lngTempFileNumber, , lngReserved
-                Put #lngTempFileNumber, , lngReserved
+                FilePut(lngTempFileNumber, lngHandle)
+                FilePut(lngTempFileNumber, lngFlags)
+                FilePut(lngTempFileNumber, lngStartDate)
+                FilePut(lngTempFileNumber, lngStartBalance)
+                FilePut(lngTempFileNumber, lngNameID)
+                FilePut(lngTempFileNumber, lngReserved)
+                FilePut(lngTempFileNumber, lngReserved)
+                FilePut(lngTempFileNumber, lngReserved)
             Next i
         End With
     End With
@@ -349,15 +349,15 @@ Dim blnResult As Boolean
     lngHeader(13) = 0
     lngHeader(14) = 0
     lngHeader(15) = 0
-    Put #lngTempFileNumber, lngStartPos + 1, lngHeader()
+    FilePut(lngTempFileNumber, lngHeader, lngStartPos + 1)
 
     'テンポラリファイルを閉じる
-    Close #lngTempFileNumber
+    FileClose(lngTempFileNumber)
 
     'インデックスファイルを更新する
     lngFileLen = FileLen(strTempFileName)
     If (lngEndPos <> lngFileLen) Then
-        MsgBox "設定の保存に失敗しました。"
+        MessageBox.Show("設定の保存に失敗しました。")
         blnResult = False
     Else
         blnResult = UpdateIndexFile(strTempDir, 0, -1, lngFileLen)
@@ -371,13 +371,13 @@ Dim blnResult As Boolean
         'インデックスファイルを開いて、書き込んだバイト数を保存する
         strIndexFileName = strTempDir & "\.index"
         lngIndexFileNumber = FreeFile()
-        Open strIndexFileName For Binary As #lngIndexFileNumber
+        FileOpen(lngIndexFileNumber, strIndexFileName, OpenMode.Binary)
     End With
 
-    Put #lngIndexFileNumber, 5, lngFileLen
+    FilePut(lngIndexFileNumber, lngFileLen, 5)
 
     'すべてのファイルを閉じる
-    Close #lngIndexFileNumber
+    FileClose(lngIndexFileNumber)
 
     '書き込み完了
     WriteAccountBookSettings = blnResult
