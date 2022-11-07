@@ -374,4 +374,24 @@ Dim strTempFileName As String, strIndexFileName As String
     OpenAccountBook = True
 End Function
 
+Public Function UpdateIndexFile(ByVal strTempDir As String, _
+        ByVal lngKey As Integer, ByVal lngPos As Integer,
+        ByVal lngSize As Integer) As Boolean
+'---------------------------------------------------------------------
+'インデックスファイルの一部を書き換える
+'[ IN] strTempDir: テンポラリファイルの格納されるディレクトリ
+'[ IN] lngKey    : インデックスデータのキー
+'[ IN] lngPos    : インデックステーブルに書き込む「位置」の値
+'[ IN] lngSize   : インデックステーブルに書き込む「サイズ」の値
+'[RET] Boolean
+'  成功したらTrue, 失敗したら False
+'[ACT]
+'  テンポラリディレクトリにある".index"ファイルを更新する
+'  指定されたキー(1レコード16Bytes)の、
+'位置(第 1フィールド)とサイズ(第 2フィールド)を指定した値で更新する
+'---------------------------------------------------------------------
+
+    UpdateIndexFile = True
+End Function
+
 End Module
