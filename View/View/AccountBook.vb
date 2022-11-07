@@ -127,6 +127,19 @@ Dim blnAddToParent As Boolean, blnAddToRoot As Boolean
     AddDataToItemTotal = blnAddToRoot
 End Function
 
+Public Function ChangeAccountBookYear(ByRef utBook As tAccountBook, _
+    ByVal lngNewYear As Long) As Long
+'---------------------------------------------------------------------
+'カレントの年を変更する
+'[I/O] utBook    : 家計簿データ
+'[ IN] lngNewYear: 西暦年
+'[RET] Long
+'  変更後の年の週数を返す
+'  変更に失敗した場合は-1を返す
+'---------------------------------------------------------------------
+    ChangeAccountBookYear = -1
+End Function
+
 Public Sub CloseAccountBook(ByRef utBook As tAccountBook)
 '---------------------------------------------------------------------
 '家計簿のデータファイルを閉じる
@@ -174,6 +187,17 @@ Dim strTempFileName As String
     End If
 End Sub
 
+Public Function CreateEmptyAccountBook(
+        ByRef utBook As tAccountBook) As Boolean
+'---------------------------------------------------------------------
+'家計簿の内容を初期状態にセットする
+'[OUT] utBook : 家計簿データ
+'[RET] Boolean
+'  成功したらTrue, 失敗したら False
+'---------------------------------------------------------------------
+    CreateEmptyAccountBook = False
+End Function
+
 Public Function EnableAccountBook(ByRef utBook As tAccountBook, _
     ByVal blnEnabled As Boolean) As Boolean
 '---------------------------------------------------------------------
@@ -187,7 +211,8 @@ Public Function EnableAccountBook(ByRef utBook As tAccountBook, _
     EnableAccountBook = blnEnabled
 End Function
 
-Public Function GetAccountBookNumYears(ByRef utBook As tAccountBook) As Integer
+Public Function GetAccountBookNumYears(
+        ByRef utBook As tAccountBook) As Integer
 '---------------------------------------------------------------------
 '家計簿のデータが何年分あるかを返す
 '[ IN] utBook: 家計簿データ
@@ -197,7 +222,8 @@ Public Function GetAccountBookNumYears(ByRef utBook As tAccountBook) As Integer
     GetAccountBookNumYears = utBook.nNumYears
 End Function
 
-Public Function GetAccountBookStartYear(ByRef utBook As tAccountBook) As Integer
+Public Function GetAccountBookStartYear(
+        ByRef utBook As tAccountBook) As Integer
 '---------------------------------------------------------------------
 '家計簿の開始年を返す
 '[ IN] utBook: 家計簿データ
@@ -374,6 +400,108 @@ Dim strTempFileName As String, strIndexFileName As String
     OpenAccountBook = True
 End Function
 
+Public Function PopAccountBook(ByRef utBook As tAccountBook) As Long
+'---------------------------------------------------------------------
+'一時変数の内容を、指定した家計簿データに転送する
+'[ IN] utBook: 家計簿データ
+'[RET] Long
+'  成功したら 1以上の整数
+'  失敗したら 0
+'---------------------------------------------------------------------
+
+    utBook = gutTempBook
+    PopAccountBook = 1
+End Function
+
+Public Function PushAccountBook(ByRef utBook As tAccountBook) As Long
+'---------------------------------------------------------------------
+'一時変数に、家計簿のコピーを書き込む
+'[ IN] utBook: 家計簿データ
+'[RET] Long
+'  成功したら 1以上の整数
+'  失敗したら 0
+'[VAR] gutTempBook : 一時変数。家計簿データのコピーが書き込まれる
+'---------------------------------------------------------------------
+
+    gutTempBook = utBook
+    PushAccountBook = 1
+End Function
+
+Public Function ReadAccountBookCommons(
+        ByRef utBook As tAccountBook) As Boolean
+'---------------------------------------------------------------------
+'テンポラリファイルから、家計簿の共通レコードを読み込む
+'[I/O] utBook : 家計簿データ
+'[RET] Boolean
+'  成功したらTrue, 失敗したら False
+'---------------------------------------------------------------------
+Dim lngTempFileNumber As Integer
+Dim strTempDir As String, strTempFileName As String
+
+    ReadAccountBookCommons = False
+End Function
+
+Public Function ReadAccountBookRecords(ByRef utBook As tAccountBook, _
+        ByVal lngYear As Integer) As Boolean
+'---------------------------------------------------------------------
+'テンポラリファイルから、家計簿の指定された年のデータを読み込む
+'[I/O] utBook : 家計簿データ
+'[ IN] lngYear: 西暦年
+'[RET] Boolean
+'  成功したらTrue, 失敗したら False
+'---------------------------------------------------------------------
+
+    ReadAccountBookRecords = True
+End Function
+
+Public Sub Recount(ByRef utBook As tAccountBook, ByVal lngYear As Integer)
+'---------------------------------------------------------------------
+'---------------------------------------------------------------------
+
+End Sub
+
+Public Function SaveAccountBook(ByRef utBook As tAccountBook,
+        ByVal strFileName As String) As Boolean
+'---------------------------------------------------------------------
+'家計簿のデータをファイルに保存する
+'[I/O] utBook     : 家計簿データ
+'[ IN] strFileName: ファイル名
+'[RET] Boolean
+'  成功したらTrue, 失敗したら False
+'[ACT]
+'  分解されて保存されているテンポラリファイルを連結して
+'指定されたファイル名で保存する。
+'---------------------------------------------------------------------
+
+    SaveAccountBook = True
+End Function
+
+Public Sub SetAccountBookStartDate(ByRef utBook As tAccountBook,
+        ByVal lngStartYear As Integer,
+        ByVal lngStartMonth As Integer,
+        ByVal lngStartDay As Integer)
+'---------------------------------------------------------------------
+'開始日を設定する
+'[I/O] utBook        : 家計簿データ
+'[ IN] lngStartYear  : 開始年
+'[ IN] lngStartMonth : 開始月
+'[ IN] lngStartDay   : 開始日
+'[RET] なし
+'---------------------------------------------------------------------
+
+End Sub
+
+Public Sub SetAccountBookNumYears(
+        ByRef utBook As tAccountBook, ByVal lngNumYears As Integer)
+'---------------------------------------------------------------------
+'データの年数を設定する
+'[I/O] utBook        : 家計簿データ
+'[ IN] lngNumYears   : 家計簿の年数
+'[RET] なし
+'---------------------------------------------------------------------
+
+End Sub
+
 Public Function UpdateIndexFile(ByVal strTempDir As String, _
         ByVal lngKey As Integer, ByVal lngPos As Integer,
         ByVal lngSize As Integer) As Boolean
@@ -392,6 +520,31 @@ Public Function UpdateIndexFile(ByVal strTempDir As String, _
 '---------------------------------------------------------------------
 
     UpdateIndexFile = True
+End Function
+
+Public Function WriteAccountBookCommons(
+        ByRef utBook As tAccountBook) As Boolean
+'---------------------------------------------------------------------
+'テンポラリファイルに、家計簿の共通レコードを書き込む
+'[ IN] utBook: 家計簿データ
+'[RET] Boolean
+'  成功したらTrue, 失敗したら False
+'---------------------------------------------------------------------
+
+    WriteAccountBookCommons = False
+End Function
+
+Public Function WriteAccountBookRecords(ByRef utBook As tAccountBook, _
+    ByVal lngYear As Long) As Boolean
+'---------------------------------------------------------------------
+'テンポラリファイルに、家計簿の指定された年のデータを書き込む
+'[ IN] utBook : 家計簿データ
+'[ IN] lngYear: 西暦年
+'[RET] Boolean
+'  成功したらTrue, 失敗したら False
+'---------------------------------------------------------------------
+
+    WriteAccountBookRecords = False
 End Function
 
 End Module
