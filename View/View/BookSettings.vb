@@ -142,12 +142,11 @@ Public Function ReadAccountBookSettings(
 '  成功したらTrue, 失敗したら False
 '---------------------------------------------------------------------
 Dim i As Integer, lngItemCount As Integer, lngRootItemCount As Integer
-Dim lngBufferSize As Integer, lngResult As Integer
+Dim lngResult As Integer
 Dim lngHandle As Integer, lngFlags As Integer
 Dim lngStartDate As Integer, lngStartBalance As Integer
 Dim lngNameID As Integer, lngReserved As Integer
 Dim lngHeader() As Integer
-Dim bytBuffer() As Byte
 Dim strTemp As String
 
 Dim lngStartPos As Integer
@@ -255,7 +254,6 @@ Dim lngTablePos As Integer, lngTableSize As Integer
 Dim lngDataPos As Integer, lngDataSize As Integer
 Dim lngHeader() As Integer
 Dim strTemp As String
-'Dim bytBuffer() As Byte
 Dim lngFileLen As Integer
 Dim lngTempFileNumber As Integer, lngIndexFileNumber As Integer
 Dim strTempDir As String
