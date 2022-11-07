@@ -77,4 +77,105 @@ Dim blnEnabled As Boolean
     End If
 End Sub
 
+Public Sub HandleKeyDownEvent(ByRef utBookView As tBookView,
+        ByVal lngKeyCode As Integer, ByVal lngShift As Integer)
+'---------------------------------------------------------------------
+'キーボードによる操作
+'[I/O] utBookView: 家計簿ビュー
+'[ IN] lngKeyCode: 押下したキーのキーコード
+'[ IN] lngShift  : 修飾キーの状態
+'[RET] なし
+'---------------------------------------------------------------------
+
+End Sub
+
+Public Sub HandleSheetDoubleClickEvent(ByRef utBookView As tBookView)
+'---------------------------------------------------------------------
+'セルをダブルクリックした時の処理
+'[I/O] utBookView: 家計簿ビュー
+'[RET] なし
+'---------------------------------------------------------------------
+
+End Sub
+
+Public Sub HandleSheetMouseDownEvent(ByRef utBookView As tBookView,
+       ByVal lngButton As Integer, ByVal lngShift As Integer,
+       ByVal lngX As Integer, ByVal lngY As Integer)
+'---------------------------------------------------------------------
+'マウスを押したセルを調べる
+'[I/O] utBookView: 家計簿ビュー
+'[ IN] lngButton : 押したマウスボタン
+'[ IN] lngShift  : 修飾キーの状態
+'[ IN] lngX      : マウスを押したときのカーソルの水平位置
+'[ IN] lngY      : マウスを押したときのカーソルの垂直位置
+'[RET] なし
+'---------------------------------------------------------------------
+
+End Sub
+
+Public Sub LoadFromFile(ByRef utBookView As tBookView,
+        ByVal strFileName As String)
+'---------------------------------------------------------------------
+'家計簿をファイルからロードする
+'[I/O] utBookView  : 家計簿ビュー
+'[ IN] strFileName : ファイル名
+'[RET] なし
+'---------------------------------------------------------------------
+
+End Sub
+
+Public Sub PostLoadingFile(ByRef utBookView As tBookView)
+'---------------------------------------------------------------------
+'ファイルをロードした後の処理をする
+'[I/O] utBookView: 家計簿ビュー
+'[RET] なし
+'[ACT]
+'  新規作成によって初期化データがロードされた場合も同様。
+'---------------------------------------------------------------------
+
+End Sub
+
+Public Sub SaveToFile(ByRef utBookView As tBookView,
+        ByVal strFileName As String)
+'---------------------------------------------------------------------
+'家計簿をファイルに保存する
+'[I/O] utBookView  : 家計簿ビュー
+'[ IN] strFileName : ファイル名
+'[RET] なし
+'---------------------------------------------------------------------
+
+End Sub
+
+Public Sub SetControlSize(ByRef utBookView As tBookView)
+'---------------------------------------------------------------------
+'フォーム上のコントロールのサイズを設定する
+'[I/O] utBookView: 家計簿ビュー
+'[RET] なし
+'---------------------------------------------------------------------
+
+End Sub
+
+Public Function StartupBookView(ByRef utBookView As tBookView,
+        ByVal objBookForm As MainView) As Boolean
+'---------------------------------------------------------------------
+'家計簿ビューのセットアップ
+'[OUT] utBookView  : 家計簿ビュー
+'[ IN] objBookForm : フォームオブジェクト
+'[RET] Boolean
+'  成功したらTrue, 失敗したら False
+'---------------------------------------------------------------------
+
+End Function
+
+Public Function UpdateWindowCaption(ByRef utBookView As tBookView)
+'---------------------------------------------------------------------
+'ウィンドウキャプションを更新する
+'[I/O] utBookView: 家計簿ビュー
+'[RET] なし
+'[ACT]
+'  現在作業しているファイルの名前と状態を表示する。
+'---------------------------------------------------------------------
+
+End Function
+
 End Module

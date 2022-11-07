@@ -200,4 +200,23 @@ Dim lngSubItemHandle As Integer
     BookItemGetSubItemHandle = lngSubItemHandle
 End Function
 
+Public Function BookItemRelocateItems(ByRef utBookItems As tBookItems,
+        ByRef lpNewIndex() As Integer) As Integer
+'---------------------------------------------------------------------
+'家計簿の項目を並べなおす
+'i 番目の項目を、lpNewIndex(i) で指定される位置に移動し、
+'それにあわせて、子ノードのnParentHandle を更新する
+'[I/O] utBookItems   : 項目一覧データ
+'[ IN] lngNewIndex() :
+'[RET] Long
+'          失敗すれば、負の整数
+'          成功すれば、+1
+'[ACT]
+'  この関数を呼び出して、項目を並べ替えた場合は、
+'年間項目データも更新すること
+'---------------------------------------------------------------------
+
+    BookItemRelocateItems = 1
+End Function
+
 End Module
