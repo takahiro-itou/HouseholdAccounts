@@ -238,4 +238,149 @@ Dim strTempDir As String, strTempFileName As String
     ReadAccountBookSettings = True
 End Function
 
+Public Function WriteAccountBookSettings(
+        ByRef utBook As tAccountBook) As Boolean
+'---------------------------------------------------------------------
+'テンポラリファイル(.set)に、家計簿の設定を書き込む
+'[ IN] utBook : 家計簿データ
+'[RET] Boolean
+'  成功したらTrue, 失敗したら False
+'---------------------------------------------------------------------
+Dim i As Integer, lngItemCount As Integer
+Dim lngHandle As Integer, lngFlags As Integer
+Dim lngStartDate As Integer, lngStartBalance As Integer
+Dim lngNameID As Integer, lngReserved As Integer
+Dim lngStartPos As Integer, lngEndPos As Integer
+Dim lngTablePos As Integer, lngTableSize As Integer
+Dim lngDataPos As Integer, lngDataSize As Integer
+Dim lngHeader() As Integer
+Dim strTemp As String
+'Dim bytBuffer() As Byte
+Dim lngFileLen As Integer
+Dim lngTempFileNumber As Integer, lngIndexFileNumber As Integer
+Dim strTempDir As String
+Dim strTempFileName As String, strIndexFileName As String
+Dim blnResult As Boolean
+
+    blnResult = True
+
+    'ヘッダを用意する
+    ReDim lngHeader(0 To 63)
+
+    lngHeader(0) = 0                '0
+    lngHeader(1) = &H1A444241       'シグネチャ:ABD^
+    lngHeader(2) = &H10000          'バージョン
+    lngHeader(3) = 0                '識別コード
+    lngHeader(63) = &HAA550000      'シグネチャ
+
+    With utBook
+        '開始日と年数をヘッダに書き込む
+        lngHeader(16) = .nStartYear
+        lngHeader(17) = .nStartDayIndex
+        lngHeader(18) = .nNumYears
+
+        '各データの件数をヘッダに書き込む
+        lngItemCount = BookItemGetRegisteredItemCount(.utBookItems)
+        lngHeader(32) = lngItemCount
+        lngHeader(33) = BookItemGetRootItemCount(.utBookItems)
+        With .utBookItems
+            lngHeader(36) = .nInnerTaxItemHandle
+            lngHeader(37) = .nOuterTaxItemHandle
+        End With
+
+        'テンポラリファイルのディレクトリを取得する
+        strTempDir = .sTempFileDir
+
+        'テンポラリファイルを開く
+        strTempFileName = strTempDir & "\.set"
+        lngTempFileNumber = OpenTemporaryFile(strTempFileName, True)
+
+        'ヘッダを書き込む
+        lngStartPos = 0
+        Put #lngTempFileNumber, lngStartPos + 1, lngHeader()
+
+        'ヘッダ用の文字列テーブルを書き込む
+        lngTablePos = 256
+        Seek #lngTempFileNumber, lngStartPos + lngTablePos + 1
+        lngTableSize = WriteStringTable(.utSettingsStringTable, lngTempFileNumber)
+        lngDataPos = lngTablePos + lngTableSize
+
+        '項目データ
+        With .utBookItems
+            Seek #lngTempFileNumber, lngStartPos + lngDataPos + 1
+            For i = 0 To lngItemCount - 1
+                lngFlags = .nFlags(i)
+                With .utItemEntries(i)
+                    lngHandle = .nParentHandle
+                    strTemp = .sItemName
+                    lngStartDate = .nStartDate
+                    lngStartBalance = .nStartBalance
+                    lngReserved = 0
+                End With
+
+                lngNameID = FindString(utBook.utSettingsStringTable, strTemp)
+
+                Put #lngTempFileNumber, , lngHandle
+                Put #lngTempFileNumber, , lngFlags
+                Put #lngTempFileNumber, , lngStartDate
+                Put #lngTempFileNumber, , lngStartBalance
+                Put #lngTempFileNumber, , lngNameID
+                Put #lngTempFileNumber, , lngReserved
+                Put #lngTempFileNumber, , lngReserved
+                Put #lngTempFileNumber, , lngReserved
+            Next i
+        End With
+    End With
+
+    '書き込んだバイト数をチェックする
+    lngEndPos = Seek(lngTempFileNumber) - 1
+    lngDataSize = lngEndPos - lngDataPos
+
+    'ヘッダの0x0010 - 0x002F にファイルやデータの位置とサイズを記録する
+    lngHeader(4) = 256                          'ヘッダサイズ
+    lngHeader(5) = lngEndPos - lngStartPos      'ファイルサイズ
+    lngHeader(6) = 0
+    lngHeader(7) = 0
+    lngHeader(8) = lngTablePos              '文字列テーブルの開始位置
+    lngHeader(9) = lngTableSize             '文字列テーブルのサイズ
+    lngHeader(10) = lngDataPos              'データの開始位置
+    lngHeader(11) = lngDataSize             'データのサイズ
+    lngHeader(12) = 0
+    lngHeader(13) = 0
+    lngHeader(14) = 0
+    lngHeader(15) = 0
+    Put #lngTempFileNumber, lngStartPos + 1, lngHeader()
+
+    'テンポラリファイルを閉じる
+    Close #lngTempFileNumber
+
+    'インデックスファイルを更新する
+    lngFileLen = FileLen(strTempFileName)
+    If (lngEndPos <> lngFileLen) Then
+        MsgBox "設定の保存に失敗しました。"
+        blnResult = False
+    Else
+        blnResult = UpdateIndexFile(strTempDir, 0, -1, lngFileLen)
+    End If
+
+    '書き込み完了
+    WriteAccountBookSettings = blnResult
+    Exit Function
+
+    With utBook
+        'インデックスファイルを開いて、書き込んだバイト数を保存する
+        strIndexFileName = strTempDir & "\.index"
+        lngIndexFileNumber = FreeFile()
+        Open strIndexFileName For Binary As #lngIndexFileNumber
+    End With
+
+    Put #lngIndexFileNumber, 5, lngFileLen
+
+    'すべてのファイルを閉じる
+    Close #lngIndexFileNumber
+
+    '書き込み完了
+    WriteAccountBookSettings = blnResult
+End Function
+
 End Module
