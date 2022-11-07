@@ -12,9 +12,9 @@ Module AnnualRecord
 ' This file is written in 2006/09/23 - 2008/01/09
 '*****************************************************************************
 
-Public Function AnnualRecordGetItemDayTotal( _
-    ByRef utRecord As tAnnualRecords, _
-    ByVal lngItemIndex As Integer, ByVal lngDate As Integer) As Integer
+Public Function AnnualRecordGetItemDayTotal(
+        ByRef utRecord As tAnnualRecords,
+        ByVal lngItemIndex As Integer, ByVal lngDate As Integer) As Integer
 '---------------------------------------------------------------------
 '項目の１日の合計金額を返す
 '[ IN] utRecord    : 年間レコード
@@ -31,9 +31,9 @@ Dim lngTotal As Integer
     AnnualRecordGetItemDayTotal = lngTotal
 End Function
 
-Public Function AnnualRecordGetItemMonthTotal( _
-    ByRef utRecord As tAnnualRecords, _
-    ByVal lngItemIndex As Integer, ByVal lngMonth As Integer) As Integer
+Public Function AnnualRecordGetItemMonthTotal(
+        ByRef utRecord As tAnnualRecords, _
+        ByVal lngItemIndex As Integer, ByVal lngMonth As Integer) As Integer
 '---------------------------------------------------------------------
 '項目の１ヶ月の合計金額を返す
 '[ IN] utRecord    : 年間レコード
@@ -54,9 +54,9 @@ Dim lngTotal As Integer
     AnnualRecordGetItemMonthTotal = lngTotal
 End Function
 
-Public Function AnnualRecordGetItemWeekTotal( _
-    ByRef utRecord As tAnnualRecords, _
-    ByVal lngItemIndex As Integer, ByVal lngWeek As Integer) As Integer
+Public Function AnnualRecordGetItemWeekTotal(
+        ByRef utRecord As tAnnualRecords,
+        ByVal lngItemIndex As Integer, ByVal lngWeek As Integer) As Integer
 '---------------------------------------------------------------------
 '項目の１週間の合計金額を返す
 '[ IN] utRecord    : 年間レコード
@@ -77,9 +77,10 @@ Dim lngTotal As Integer
     AnnualRecordGetItemWeekTotal = lngTotal
 End Function
 
-Public Function AnnualRecordGetItemYearTotal( _
-    ByRef utRecord As tAnnualRecords, _
-    ByVal lngItemIndex As Integer, ByVal lngYearIndex As Integer) As Integer
+Public Function AnnualRecordGetItemYearTotal(
+        ByRef utRecord As tAnnualRecords,
+        ByVal lngItemIndex As Integer,
+        ByVal lngYearIndex As Integer) As Integer
 '---------------------------------------------------------------------
 '項目の１年間の合計金額を返す
 '[ IN] utRecord    : 年間レコード
@@ -117,9 +118,11 @@ Dim lngStartPos As Integer, lngEndPos As Integer
     ReadAnnualRecords = (lngEndPos - lngStartPos)
 End Function
 
-Public Function ReallocAnnualRecordsBuffers(ByRef utRecord As tAnnualRecords,
+Public Function ReallocAnnualRecordsBuffers(
+        ByRef utRecord As tAnnualRecords,
         ByVal lngItemBufferSize As Integer,
-        ByVal lngStartYear As Integer, ByVal lngNumYears As Integer) As Boolean
+        ByVal lngStartYear As Integer,
+        ByVal lngNumYears As Integer) As Boolean
 '---------------------------------------------------------------------
 '年間レコード用のバッファを確保しなおす
 '[I/O] utRecord          : 年間レコード

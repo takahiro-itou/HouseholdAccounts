@@ -47,9 +47,43 @@ Public glngFirstDayTable(,) As Integer   '各月の一日が元日から数え�
 Public gstrMonthName() As String
 Public gstrWeekdayName() As String
 
-Public Function CompareDates( _
-    ByVal lngYear1 As Integer, ByVal lngDayIndex1 As Integer, _
-    ByVal lngYear2 As Integer, ByVal lngDayIndex2 As Integer) As Integer
+'=========================================================================
+'
+'パブリックプロシージャ
+'
+
+Public Sub ChangeFonts(ByRef objForm As Form,
+        ByVal strFontName As String, ByVal lngFontSize As Integer)
+'---------------------------------------------------------------------
+'指定したフォームのコントロールのフォントを変更する
+'変更されるのは、フォント名とフォントサイズのみ
+'---------------------------------------------------------------------
+
+End Sub
+
+Public Function ChangeFormLanguage(
+        ByRef objForm As Form, ByVal strLanguageFile As String) As String
+'---------------------------------------------------------------------
+'フォーム上のコントロールの言語を変更する
+'フォームのキャプションだけは変更しないで文字列を返す
+'（フォームのキャプションにはファイル名などの情報が入る可能性があるため）
+'---------------------------------------------------------------------
+Dim strCaption As String
+
+    ChangeFormLanguage = strCaption
+End Function
+
+Public Function ChangeLanguage(ByVal strLanguageFile As String) As Boolean
+'---------------------------------------------------------------------
+'使用言語を変更する
+'---------------------------------------------------------------------
+
+    ChangeLanguage = True
+End Function
+
+Public Function CompareDates(
+        ByVal lngYear1 As Integer, ByVal lngDayIndex1 As Integer,
+        ByVal lngYear2 As Integer, ByVal lngDayIndex2 As Integer) As Integer
 '---------------------------------------------------------------------
 '二つの日付を比較する
 '[ IN] lngYear1    :
@@ -81,10 +115,18 @@ Public Function CompareDates( _
     CompareDates = 0
 End Function
 
-Public Sub GetDayFromIndex( _
-    ByRef utDate As tParsedDate, _
-    ByVal lngYear As Integer, ByVal lngDayIndex As Integer, _
-    ByVal lngDayOffset As Integer)
+Public Sub ExitApplication()
+'---------------------------------------------------------------------
+'プログラムを終了する
+'[RET] なし
+'---------------------------------------------------------------------
+
+End Sub
+
+Public Sub GetDayFromIndex(
+        ByRef utDate As tParsedDate,
+        ByVal lngYear As Integer, ByVal lngDayIndex As Integer,
+        ByVal lngDayOffset As Integer)
 '---------------------------------------------------------------------
 '指定された日から、日付情報に分解する
 '[OUT] utDate      : 結果を格納する日付構造体
@@ -189,10 +231,10 @@ Dim strTemp As String
     GetDayStringFromInfo = strTemp
 End Function
 
-Public Function GetWeekday( _
-    ByVal lngYear As Integer, _
-    ByVal lngMonth As Integer, _
-    ByVal lngDay As Integer) As eWeekday
+Public Function GetWeekday(
+        ByVal lngYear As Integer,
+        ByVal lngMonth As Integer,
+        ByVal lngDay As Integer) As eWeekday
 '---------------------------------------------------------------------
 '指定した日付（西暦年・月・日）から曜日を得る
 '[ IN] lngYear : 西暦年
@@ -264,6 +306,32 @@ Public Sub initializeTables()
 
 End Sub
 
+Public Function IsLegalInputFileName(ByVal strFileName As String) As Boolean
+'---------------------------------------------------------------------
+'入力ファイル名が有効かどうか確認する
+'[ IN] strFileName : ファイル名
+'[RET] Boolean
+'  有効なファイル名ならばTrue, 無効なファイル名ならば False
+'[ACT]
+'  ユーザーの意思でResourceディレクトリからは読み込みできない
+'---------------------------------------------------------------------
+
+    IsLegalInputFileName = True
+End Function
+
+Public Function IsLegalOutputFileName(ByVal strFileName As String) As Boolean
+'---------------------------------------------------------------------
+'出力ファイル名が有効かどうか確認する
+'[ IN] strFileName : ファイル名
+'[RET] Boolean
+'  有効なファイル名ならばTrue, 無効なファイル名ならば False
+'[ACT]
+'  ユーザーの意思でResourceディレクトリには書き込みできない
+'---------------------------------------------------------------------
+
+    IsLegalOutputFileName = True
+End Function
+
 Public Function IsUruuYear(ByVal lngYear As Integer) As Integer
 '---------------------------------------------------------------------
 '指定した西暦年が閏年かどうかを判定する
@@ -310,6 +378,19 @@ Dim lngTempFileNumber As Integer
     '開いたファイルのファイル番号を返す
     OpenTemporaryFile = lngTempFileNumber
 End Function
+
+Public Sub ParseDate(ByVal lngDate As Long, ByRef utResult As tParsedDate)
+'---------------------------------------------------------------------
+'本ソフトで使われている日付の形式を解析して、
+'西暦年・月・日・週・曜日に分解する
+'[ IN] lngDate :
+'[OUT] utResult:
+'[RET] なし
+'[ACT]
+'  週は最初の週を０と数える
+'---------------------------------------------------------------------
+
+End Sub
 
 ''========================================================================
 Public Sub moveWindowToStartPosition(
