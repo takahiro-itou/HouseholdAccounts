@@ -176,7 +176,33 @@ Public Function UpdateWindowCaption(ByRef utBookView As tBookView)
 '[ACT]
 '  現在作業しているファイルの名前と状態を表示する。
 '---------------------------------------------------------------------
+Dim strTemp As String
+Dim strNames(0 To 2) As String
+Dim strValues(0 To 2) As String
 
+    strNames(0) = "<year>"
+    strNames(1) = "<filename>"
+    strNames(2) = "<modify>"
+
+    With utBookView
+        strValues(0) = .utUserInterface.nCurrentYear
+
+        If (.sCurrentBookFile = "") Then
+            strValues(1) = .sNoNameCaption
+        Else
+            strValues(1) = .sCurrentBookFile
+        End If
+
+        If (.bModifyCurrentBook) Then
+            strValues(2) = .sModifyCaption
+        Else
+            strValues(2) = ""
+        End If
+
+        strTemp = .sWindowCaption
+    End With
+
+    UpdateWindowCaption = ReplaceConstant(strTemp, strNames, strValues)
 End Function
 
 End Module
