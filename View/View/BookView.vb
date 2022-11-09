@@ -165,6 +165,7 @@ Public Function StartupBookView(ByRef utBookView As tBookView,
 '  成功したらTrue, 失敗したら False
 '---------------------------------------------------------------------
 
+    StartupBookView = True
 End Function
 
 Public Function UpdateWindowCaption(ByRef utBookView As tBookView)
