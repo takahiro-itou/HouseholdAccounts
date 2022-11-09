@@ -70,6 +70,7 @@ Public Function ChangeFormLanguage(
 '---------------------------------------------------------------------
 Dim strCaption As String
 
+    strCaption = ""
     ChangeFormLanguage = strCaption
 End Function
 

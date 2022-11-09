@@ -435,8 +435,6 @@ Public Function ReadAccountBookCommons(
 '[RET] Boolean
 '  成功したらTrue, 失敗したら False
 '---------------------------------------------------------------------
-Dim lngTempFileNumber As Integer
-Dim strTempDir As String, strTempFileName As String
 
     ReadAccountBookCommons = False
 End Function
