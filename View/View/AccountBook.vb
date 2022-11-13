@@ -935,7 +935,7 @@ Public Function WriteAccountBookCommons(
 '  成功したらTrue, 失敗したら False
 '---------------------------------------------------------------------
 Dim lngItemBufferSize As Integer
-Dim lngSize As Integer, lngFileLen As Integer
+Dim lngFileLen As Integer
 Dim lngTempFileNumber As Integer
 Dim strTempDir As String, strTempFileName As String
 
@@ -951,7 +951,7 @@ Dim strTempDir As String, strTempFileName As String
     End With
 
     'テンポラリファイルを閉じる
-    Close #lngTempFileNumber
+    FileClose(lngTempFileNumber)
 
     'インデックスファイルを更新する
     lngFileLen = FileLen(strTempFileName)
