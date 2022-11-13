@@ -127,8 +127,8 @@ Dim blnAddToParent As Boolean, blnAddToRoot As Boolean
     AddDataToItemTotal = blnAddToRoot
 End Function
 
-Public Function ChangeAccountBookYear(ByRef utBook As tAccountBook, _
-    ByVal lngNewYear As Long) As Long
+Public Function ChangeAccountBookYear(ByRef utBook As tAccountBook,
+        ByVal lngNewYear As Integer) As Long
 '---------------------------------------------------------------------
 'カレントの年を変更する
 '[I/O] utBook    : 家計簿データ
@@ -137,7 +137,66 @@ Public Function ChangeAccountBookYear(ByRef utBook As tAccountBook, _
 '  変更後の年の週数を返す
 '  変更に失敗した場合は-1を返す
 '---------------------------------------------------------------------
-    ChangeAccountBookYear = -1
+Dim lngLastDay As Integer
+Dim lngNumWeeks As Integer
+Dim lngCurrentYear As Integer
+Dim lngStartYear As Integer, lngNumYears As Integer
+Dim blnResult As Boolean
+
+    With utBook
+        lngCurrentYear = .nCurrentYear
+        lngStartYear = .nStartYear
+        lngNumYears = .nNumYears
+    End With
+
+    '開始日より前には移動できない
+    If (lngNewYear < lngStartYear) Then
+        ChangeAccountBookYear = -1
+        Exit Function
+    End If
+
+    '新しい年の週数を計算しておく
+    lngLastDay = GetDayInYear(lngNewYear, 12, 31) + GetWeekday(lngNewYear, 1, 1)
+    lngNumWeeks = (lngLastDay \ 7) + 1
+
+    If (lngNewYear = lngCurrentYear) Then
+        '週数だけ計算して結果を返す
+        utBook.nNumWeeks = lngNumWeeks
+        ChangeAccountBookYear = lngNumWeeks
+        Exit Function
+    End If
+
+    '現在の年のデータを書き込む
+    If ((lngStartYear <= lngCurrentYear) And _
+            (lngCurrentYear < lngStartYear + lngNumYears)) Then
+        blnResult = WriteAccountBookRecords(utBook, lngCurrentYear)
+        If (blnResult = False) Then
+            'セーブ失敗
+            ChangeAccountBookYear = -1
+            Exit Function
+        End If
+    End If
+
+    '新しい年のデータを読み込む
+    If (lngNewYear >= lngStartYear + lngNumYears) Then
+        lngNumYears = lngNewYear - lngStartYear + 1
+        ReallocAnnualRecordsBuffers utBook.utAnnualRecords, -1, lngStartYear, lngNumYears
+        utBook.nNumYears = lngNumYears
+    End If
+
+    blnResult = ReadAccountBookRecords(utBook, lngNewYear)
+    If (blnResult = False) Then
+        'ロード失敗
+        ChangeAccountBookYear = -1
+        Exit Function
+    End If
+
+    '現在操作中の年を新しい年に変更する
+    utBook.nCurrentYear = lngNewYear
+
+    '新しい年の週数を返す
+    utBook.nNumWeeks = lngNumWeeks
+    ChangeAccountBookYear = lngNumWeeks
 End Function
 
 Public Sub CloseAccountBook(ByRef utBook As tAccountBook)
