@@ -548,7 +548,6 @@ Public Sub Recount(ByRef utBook As tAccountBook, ByVal lngYear As Integer)
 '---------------------------------------------------------------------
 Dim i As Integer, lngItemBufferSize As Integer
 Dim lngYearIndex As Integer, lngDate As Integer
-Dim lngItemIndex As Integer
 Dim lngType As Integer, lngSubCount As Integer
 Dim lngValue As Integer
 Dim lngStartDayIndex As Integer, lngEndDayIndex As Integer
@@ -562,7 +561,7 @@ Dim blnResult As Boolean
         'すべての項目のフラグを取り出す
         With .utBookItems
             lngItemBufferSize = .nItemBufferSize
-            lngItemFlags() = .nFlags()
+            lngItemFlags = .nFlags
         End With
     End With
 
@@ -605,7 +604,7 @@ Dim blnResult As Boolean
                                 blnResult = AddDataToItemTotal(utBook, lngYearIndex, lngDate, i, lngValue)
                                 If (blnResult) Then
                                     '残高に加える
-                                    AddDataToItemTotal utBook, lngYearIndex, lngDate, 3, lngValue
+                                    AddDataToItemTotal(utBook, lngYearIndex, lngDate, 3, lngValue)
                                 End If
                             End If
                         ElseIf (lngType = ITEM_FLAG_OUTLAY) Or (lngType = ITEM_FLAG_BANK_DEPOSIT) Then
@@ -616,7 +615,7 @@ Dim blnResult As Boolean
                                 blnResult = AddDataToItemTotal(utBook, lngYearIndex, lngDate, i, lngValue)
                                 If (blnResult) Then
                                     '残高から引く
-                                    AddDataToItemTotal utBook, lngYearIndex, lngDate, 3, -lngValue
+                                    AddDataToItemTotal(utBook, lngYearIndex, lngDate, 3, -lngValue)
                                 End If
                             End If
                         End If
