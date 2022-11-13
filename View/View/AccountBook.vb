@@ -882,7 +882,6 @@ Public Function UpdateIndexFile(ByVal strTempDir As String, _
 '位置(第 1フィールド)とサイズ(第 2フィールド)を指定した値で更新する
 '---------------------------------------------------------------------
 Dim lngWritePos As Integer
-Dim lngReserved As Integer
 Dim lngIndexFileSize As Integer
 Dim lngFillLength As Integer
 Dim lngIndexFileNumber As Integer
@@ -898,22 +897,22 @@ Dim bytBuffer() As Byte
 
     'インデックスファイルを開く
     lngIndexFileNumber = FreeFile()
-    Open strIndexFileName For Binary As #lngIndexFileNumber
+    FileOpen(lngIndexFileNumber, strIndexFileName, OpenMode.Binary)
 
     '書き込む位置がファイルの終端を越えていれば
     'その直前まで０を埋める
     lngFillLength = (lngWritePos + 16) - lngIndexFileSize
     If (lngFillLength > 0) Then
         ReDim bytBuffer(0 To lngFillLength - 1)
-        Put #lngIndexFileNumber, lngIndexFileSize + 1, bytBuffer()
+        FilePut(lngIndexFileNumber, bytBuffer, lngIndexFileSize + 1)
     End If
 
     'データを更新する
     If (lngPos >= 0) Then
-        Put #lngIndexFileNumber, lngWritePos + 1, lngPos
+        FilePut(lngIndexFileNumber, lngPos, lngWritePos + 1)
     End If
     If (lngSize >= 0) Then
-        Put #lngIndexFileNumber, lngWritePos + 5, lngSize
+        FilePut(lngIndexFileNumber, lngSize, lngWritePos + 5)
     End If
 
 '    lngReserved = 0
@@ -921,7 +920,7 @@ Dim bytBuffer() As Byte
 '    Put #lngIndexFileNumber, lngWritePos + 13, lngReserved
 
     'インデックスファイルを閉じる
-    Close #lngIndexFileNumber
+    FileClose(lngIndexFileNumber)
 
     '更新完了
     UpdateIndexFile = True
