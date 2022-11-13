@@ -254,7 +254,16 @@ Public Function CreateEmptyAccountBook(
 '[RET] Boolean
 '  成功したらTrue, 失敗したら False
 '---------------------------------------------------------------------
-    CreateEmptyAccountBook = False
+Dim lngBufferSize As Integer
+Dim blnResult As Boolean
+
+    '空のデータをロードする
+    blnResult = OpenAccountBook(utBook, g_appPath & "\Resource\Empty.abd")
+    If (blnResult = True) Then
+        blnResult = ReadAccountBookSettings(utBook)
+    End If
+
+    CreateEmptyAccountBook = blnResult
 End Function
 
 Public Function EnableAccountBook(ByRef utBook As tAccountBook, _
