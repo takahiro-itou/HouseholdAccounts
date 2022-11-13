@@ -673,62 +673,62 @@ Dim strTempFileName As String, strIndexFileName As String
     '-------------------------------------------------------------
     '既にファイルがあれば、いったん削除する
     If (Dir$(strFileName) <> "") Then
-        Kill strFileName
+        System.IO.File.Delete(strFileName)
     End If
 
     '-------------------------------------------------------------
     '出力ファイルを開く
     lngWriteFileNumber = FreeFile()
-    Open strFileName For Binary As #lngWriteFileNumber
+    FileOpen(lngWriteFileNumber, strFileName, OpenMode.Binary)
 
     '-------------------------------------------------------------
     'インデックスファイルを開く
     strIndexFileName = strTempDir & "\.index"
     lngIndexFileNumber = FreeFile()
-    Open strIndexFileName For Binary As #lngIndexFileNumber
+    FileOpen(lngIndexFileNumber, strIndexFileName, OpenMode.Binary)
 
     '-------------------------------------------------------------
     'ヘッダ部分のテンポラリファイルを開く
     strTempFileName = strTempDir & "\.set"
     lngTempFileNumber = FreeFile()
-    Open strTempFileName For Binary As #lngTempFileNumber
+    FileOpen(lngTempFileNumber, strTempFileName, OpenMode.Binary)
 
     '-------------------------------------------------------------
     'ヘッダ部分を書き込む
     lngPos = 1
-    Get #lngIndexFileNumber, 5, lngHeaderSize
+    FileGet(lngIndexFileNumber, lngHeaderSize, 5)
     ReDim bytBuffer(0 To lngHeaderSize - 1)
-    Get #lngTempFileNumber, 1, bytBuffer()
-    Put #lngWriteFileNumber, 1, bytBuffer()
-    Close #lngTempFileNumber
+    FileGet(lngTempFileNumber, bytBuffer, 1)
+    FilePut(lngWriteFileNumber, bytBuffer, 1)
+    FileClose(lngTempFileNumber)
 
     '-------------------------------------------------------------
     'インデックステーブルを書き込む
     lngReserved = 0
-    Put #lngWriteFileNumber, (lngHeaderSize + 1), lngReserved
-    Put #lngWriteFileNumber, (lngHeaderSize + 5), lngReserved
-    Put #lngWriteFileNumber, (lngHeaderSize + 9), lngReserved
-    Put #lngWriteFileNumber, (lngHeaderSize + 13), lngReserved
+    FilePut(lngWriteFileNumber, lngReserved, (lngHeaderSize + 1))
+    FilePut(lngWriteFileNumber, lngReserved, (lngHeaderSize + 5))
+    FilePut(lngWriteFileNumber, lngReserved, (lngHeaderSize + 9))
+    FilePut(lngWriteFileNumber, lngReserved, (lngHeaderSize + 13))
 
     lngCommonRecordPos = lngHeaderSize + 64 + (lngNumYears * 16)
-    Get #lngIndexFileNumber, 21, lngCommonRecordSize
+    FileGet(lngIndexFileNumber, lngCommonRecordSize, 21)
     lngTailPos = lngCommonRecordPos + lngCommonRecordSize
     lngNextPos = (lngTailPos + 255) And &H7FFFFF00
     lngCommonRecordSkip = (lngNextPos - lngTailPos)
     lngReserved = 0
 
-    Put #lngWriteFileNumber, (lngHeaderSize + 17), lngCommonRecordPos
-    Put #lngWriteFileNumber, (lngHeaderSize + 21), lngCommonRecordSize
-    Put #lngWriteFileNumber, (lngHeaderSize + 25), lngCommonRecordSkip
-    Put #lngWriteFileNumber, (lngHeaderSize + 29), lngReserved
+    FilePut(lngWriteFileNumber, lngCommonRecordPos, (lngHeaderSize + 17))
+    FilePut(lngWriteFileNumber, lngCommonRecordSize, (lngHeaderSize + 21))
+    FilePut(lngWriteFileNumber, lngCommonRecordSkip, (lngHeaderSize + 25))
+    FilePut(lngWriteFileNumber, lngReserved, (lngHeaderSize + 29))
     lngPos = lngNextPos
 
     lngReserved = 0
     For i = 2 To 3
-        Put #lngWriteFileNumber, (lngHeaderSize + i * 16 + 1), lngReserved
-        Put #lngWriteFileNumber, (lngHeaderSize + i * 16 + 5), lngReserved
-        Put #lngWriteFileNumber, (lngHeaderSize + i * 16 + 9), lngReserved
-        Put #lngWriteFileNumber, (lngHeaderSize + i * 16 + 13), lngReserved
+        FilePut(lngWriteFileNumber, lngReserved, (lngHeaderSize + i * 16 + 1))
+        FilePut(lngWriteFileNumber, lngReserved, (lngHeaderSize + i * 16 + 5))
+        FilePut(lngWriteFileNumber, lngReserved, (lngHeaderSize + i * 16 + 9))
+        FilePut(lngWriteFileNumber, lngReserved, (lngHeaderSize + i * 16 + 13))
     Next i
 
     If (lngNumYears > 0) Then
@@ -738,7 +738,7 @@ Dim strTempFileName As String, strIndexFileName As String
     End If
 
     For lngYear = 0 To lngNumYears - 1
-        Get #lngIndexFileNumber, (lngYear * 16 + 69), lngSize
+        FileGet(lngIndexFileNumber, lngSize, (lngYear * 16 + 69))
 
         lngTailPos = lngPos + lngSize
         lngNextPos = (lngTailPos + 255) And &H7FFFFF00
@@ -748,10 +748,12 @@ Dim strTempFileName As String, strIndexFileName As String
         lngYearRecordSize(lngYear) = lngSize
         lngYearRecordSkip(lngYear) = lngSkipBytes
 
-        Put #lngWriteFileNumber, (lngYear * 16 + lngHeaderSize + 65), lngPos
-        Put #lngWriteFileNumber, (lngYear * 16 + lngHeaderSize + 69), lngSize
-        Put #lngWriteFileNumber, (lngYear * 16 + lngHeaderSize + 73), lngSkipBytes
-        Put #lngWriteFileNumber, (lngYear * 16 + lngHeaderSize + 77), lngReserved
+        FilePut(lngWriteFileNumber, lngPos, (lngYear * 16 + lngHeaderSize + 65))
+        FilePut(lngWriteFileNumber, lngSize, (lngYear * 16 + lngHeaderSize + 69))
+        FilePut(lngWriteFileNumber, lngSkipBytes,
+                (lngYear * 16 + lngHeaderSize + 73))
+        FilePut(lngWriteFileNumber, lngReserved,
+               (lngYear * 16 + lngHeaderSize + 77))
 
         lngPos = lngNextPos
     Next lngYear
@@ -765,18 +767,18 @@ Dim strTempFileName As String, strIndexFileName As String
     If (lngSize > 0) Then
         strTempFileName = strTempDir & "\.common"
         lngTempFileNumber = FreeFile()
-        Open strTempFileName For Binary As #lngTempFileNumber
+        FileOpen(lngTempFileNumber, strTempFileName, OpenMode.Binary)
 
         ReDim bytBuffer(0 To lngSize - 1)
-        Get #lngTempFileNumber, 1, bytBuffer()
-        Put #lngWriteFileNumber, lngPos + 1, bytBuffer()
+        FileGet(lngTempFileNumber, bytBuffer, 1)
+        FilePut(lngWriteFileNumber, bytBuffer, lngPos + 1)
 
-        Close #lngTempFileNumber
+        FileClose(lngTempFileNumber)
     End If
 
     If (lngSkipBytes > 0) Then
         ReDim bytBuffer(0 To lngSkipBytes - 1)
-        Put #lngWriteFileNumber, lngPos + lngSize + 1, bytBuffer()
+        FilePut(lngWriteFileNumber, bytBuffer, lngPos + lngSize + 1)
     End If
 
     '-------------------------------------------------------------
@@ -790,29 +792,29 @@ Dim strTempFileName As String, strIndexFileName As String
             'テンポラリファイルを開く
             strTempFileName = strTempDir & "\." & Trim$(Str$(lngStartYear + lngYear))
             lngTempFileNumber = FreeFile()
-            Open strTempFileName For Binary As #lngTempFileNumber
+            FileOpen(lngTempFileNumber, strTempFileName, OpenMode.Binary)
 
             'テンポラリファイルから、データを読み込む
             ReDim bytBuffer(0 To lngSize - 1)
-            Get #lngTempFileNumber, 1, bytBuffer()
+            FileGet(lngTempFileNumber, bytBuffer, 1)
 
             '出力ファイルの指定された位置に書き込む
-            Put #lngWriteFileNumber, lngPos + 1, bytBuffer()
+            FilePut(lngWriteFileNumber, bytBuffer, lngPos + 1)
 
             'テンポラリファイルを閉じる
-            Close #lngTempFileNumber
+            FileClose(lngTempFileNumber)
         End If
 
         '次のデータの開始位置まで、空のデータを埋める
         If (lngSkipBytes > 0) Then
             ReDim bytBuffer(0 To lngSkipBytes - 1)
-            Put #lngWriteFileNumber, lngPos + lngSize + 1, bytBuffer()
+            FilePut(lngWriteFileNumber, bytBuffer, lngPos + lngSize + 1)
         End If
     Next lngYear
 
     'すべてのファイルを閉じる
-    Close #lngWriteFileNumber
-    Close #lngIndexFileNumber
+    FileClose(lngWriteFileNumber)
+    FileClose(lngIndexFileNumber)
 
     'セーブ完了
     SaveAccountBook = True
