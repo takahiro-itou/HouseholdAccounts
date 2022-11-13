@@ -832,7 +832,18 @@ Public Sub SetAccountBookStartDate(ByRef utBook As tAccountBook,
 '[ IN] lngStartDay   : 開始日
 '[RET] なし
 '---------------------------------------------------------------------
+Dim lngDayIndex As Integer, lngDayOffset As Integer
 
+    lngDayOffset = GetWeekday(lngStartYear, 1, 1)
+    lngDayIndex = GetDayInYear(lngStartYear, lngStartMonth, lngStartDay)
+    lngDayIndex = lngDayIndex + lngDayOffset
+
+    With utBook
+        GetDayFromIndex .utStartDate, lngStartYear, lngDayIndex, lngDayOffset
+
+        .nStartYear = .utStartDate.nYear
+        .nStartDayIndex = lngDayIndex
+    End With
 End Sub
 
 Public Sub SetAccountBookNumYears(
