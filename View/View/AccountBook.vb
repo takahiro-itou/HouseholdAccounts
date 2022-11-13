@@ -516,7 +516,31 @@ Public Function ReadAccountBookRecords(ByRef utBook As tAccountBook, _
 '[RET] Boolean
 '  成功したらTrue, 失敗したら False
 '---------------------------------------------------------------------
+Dim lngYearIndex As Integer, lngSize As Integer
+Dim lngItemBufferSize As Integer
+Dim lngTempFileNumber As Integer
+Dim strTempFileName As String
 
+    lngYearIndex = lngYear - (utBook.nStartYear)
+    If (lngYearIndex < 0) Then
+        ReadAccountBookRecords = True
+        Exit Function
+    End If
+
+    With utBook
+        'テンポラリファイルを開く
+        strTempFileName = .sTempFileDir & "\." & Trim$(Str$(lngYear))
+        lngItemBufferSize = BookItemGetItemBufferSize(.utBookItems)
+        lngTempFileNumber = OpenTemporaryFile(strTempFileName, False)
+
+        'データを読み込む
+        lngSize = ReadAnnualRecords(.utAnnualRecords, lngTempFileNumber, lngItemBufferSize)
+    End With
+
+    'テンポラリファイルを閉じる
+    Close #lngTempFileNumber
+
+    '読み込み完了
     ReadAccountBookRecords = True
 End Function
 
