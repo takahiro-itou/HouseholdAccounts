@@ -969,9 +969,9 @@ Public Function WriteAccountBookRecords(ByRef utBook As tAccountBook, _
 '---------------------------------------------------------------------
 Dim lngYearIndex As Integer, lngSize As Integer, lngFileLen As Integer
 Dim lngItemBufferSize As Integer
-Dim lngTempFileNumber As Integer, lngIndexFileNumber As Integer
+Dim lngTempFileNumber As Integer
 Dim strTempDir As String
-Dim strTempFileName As String, strIndexFileName As String
+Dim strTempFileName As String
 Dim blnResult As Boolean
 
     lngYearIndex = lngYear - (utBook.nStartYear)
