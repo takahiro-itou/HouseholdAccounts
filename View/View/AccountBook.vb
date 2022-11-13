@@ -934,8 +934,28 @@ Public Function WriteAccountBookCommons(
 '[RET] Boolean
 '  成功したらTrue, 失敗したら False
 '---------------------------------------------------------------------
+Dim lngItemBufferSize As Integer
+Dim lngSize As Integer, lngFileLen As Integer
+Dim lngTempFileNumber As Integer
+Dim strTempDir As String, strTempFileName As String
 
-    WriteAccountBookCommons = False
+    With utBook
+        strTempDir = .sTempFileDir
+
+        'テンポラリファイルを開く
+        strTempFileName = strTempDir & "\.common"
+        lngItemBufferSize = BookItemGetItemBufferSize(.utBookItems)
+        lngTempFileNumber = OpenTemporaryFile(strTempFileName, True)
+
+        'データを書き込む
+    End With
+
+    'テンポラリファイルを閉じる
+    Close #lngTempFileNumber
+
+    'インデックスファイルを更新する
+    lngFileLen = FileLen(strTempFileName)
+    WriteAccountBookCommons = UpdateIndexFile(strTempDir, 1, -1, lngFileLen)
 End Function
 
 Public Function WriteAccountBookRecords(ByRef utBook As tAccountBook, _
