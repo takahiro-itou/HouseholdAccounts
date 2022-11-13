@@ -959,7 +959,7 @@ Dim strTempDir As String, strTempFileName As String
 End Function
 
 Public Function WriteAccountBookRecords(ByRef utBook As tAccountBook, _
-    ByVal lngYear As Long) As Boolean
+        ByVal lngYear As Integer) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイルに、家計簿の指定された年のデータを書き込む
 '[ IN] utBook : 家計簿データ
@@ -967,8 +967,47 @@ Public Function WriteAccountBookRecords(ByRef utBook As tAccountBook, _
 '[RET] Boolean
 '  成功したらTrue, 失敗したら False
 '---------------------------------------------------------------------
+Dim lngYearIndex As Integer, lngSize As Integer, lngFileLen As Integer
+Dim lngItemBufferSize As Integer
+Dim lngTempFileNumber As Integer, lngIndexFileNumber As Integer
+Dim strTempDir As String
+Dim strTempFileName As String, strIndexFileName As String
+Dim blnResult As Boolean
 
-    WriteAccountBookRecords = False
+    lngYearIndex = lngYear - (utBook.nStartYear)
+    If (lngYearIndex < 0) Then
+        WriteAccountBookRecords = True
+        Exit Function
+    End If
+
+    blnResult = True
+
+    With utBook
+        strTempDir = .sTempFileDir
+
+        'テンポラリファイルを開く
+        strTempFileName = strTempDir & "\." & Trim$(Str$(lngYear))
+        lngItemBufferSize = BookItemGetItemBufferSize(.utBookItems)
+        lngTempFileNumber = OpenTemporaryFile(strTempFileName, True)
+
+        'データを書き込む
+        lngSize = WriteAnnualRecords(.utAnnualRecords, lngTempFileNumber, lngItemBufferSize)
+    End With
+
+    'テンポラリファイルを閉じる
+    Close #lngTempFileNumber
+
+    'インデックスファイルを更新する
+    lngFileLen = FileLen(strTempFileName)
+    If (lngSize <> lngFileLen) Then
+        MsgBox "設定の保存に失敗しました。"
+        blnResult = False
+    Else
+        blnResult = UpdateIndexFile(strTempDir, lngYearIndex + 4, -1, lngFileLen)
+    End If
+
+    '書き込み完了
+    WriteAccountBookRecords = blnResult
 End Function
 
 End Module
