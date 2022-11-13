@@ -881,7 +881,49 @@ Public Function UpdateIndexFile(ByVal strTempDir As String, _
 '  指定されたキー(1レコード16Bytes)の、
 '位置(第 1フィールド)とサイズ(第 2フィールド)を指定した値で更新する
 '---------------------------------------------------------------------
+Dim lngWritePos As Integer
+Dim lngReserved As Integer
+Dim lngIndexFileSize As Integer
+Dim lngFillLength As Integer
+Dim lngIndexFileNumber As Integer
+Dim strIndexFileName As String
+Dim bytBuffer() As Byte
 
+    'インデックスファイルのファイルサイズを取得する
+    strIndexFileName = strTempDir & "\.index"
+    lngIndexFileSize = FileLen(strIndexFileName)
+
+    '書き込む位置を決定する
+    lngWritePos = lngKey * 16
+
+    'インデックスファイルを開く
+    lngIndexFileNumber = FreeFile()
+    Open strIndexFileName For Binary As #lngIndexFileNumber
+
+    '書き込む位置がファイルの終端を越えていれば
+    'その直前まで０を埋める
+    lngFillLength = (lngWritePos + 16) - lngIndexFileSize
+    If (lngFillLength > 0) Then
+        ReDim bytBuffer(0 To lngFillLength - 1)
+        Put #lngIndexFileNumber, lngIndexFileSize + 1, bytBuffer()
+    End If
+
+    'データを更新する
+    If (lngPos >= 0) Then
+        Put #lngIndexFileNumber, lngWritePos + 1, lngPos
+    End If
+    If (lngSize >= 0) Then
+        Put #lngIndexFileNumber, lngWritePos + 5, lngSize
+    End If
+
+'    lngReserved = 0
+'    Put #lngIndexFileNumber, lngWritePos + 9, lngReserved
+'    Put #lngIndexFileNumber, lngWritePos + 13, lngReserved
+
+    'インデックスファイルを閉じる
+    Close #lngIndexFileNumber
+
+    '更新完了
     UpdateIndexFile = True
 End Function
 
