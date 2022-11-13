@@ -995,7 +995,7 @@ Dim blnResult As Boolean
     End With
 
     'テンポラリファイルを閉じる
-    Close #lngTempFileNumber
+    FileClose(lngTempFileNumber)
 
     'インデックスファイルを更新する
     lngFileLen = FileLen(strTempFileName)
