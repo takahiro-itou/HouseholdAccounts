@@ -254,7 +254,6 @@ Public Function CreateEmptyAccountBook(
 '[RET] Boolean
 '  成功したらTrue, 失敗したら False
 '---------------------------------------------------------------------
-Dim lngBufferSize As Integer
 Dim blnResult As Boolean
 
     '空のデータをロードする
@@ -538,7 +537,7 @@ Dim strTempFileName As String
     End With
 
     'テンポラリファイルを閉じる
-    Close #lngTempFileNumber
+    FileClose(lngTempFileNumber)
 
     '読み込み完了
     ReadAccountBookRecords = True
