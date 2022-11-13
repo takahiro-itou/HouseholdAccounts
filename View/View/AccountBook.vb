@@ -546,7 +546,94 @@ End Function
 Public Sub Recount(ByRef utBook As tAccountBook, ByVal lngYear As Integer)
 '---------------------------------------------------------------------
 '---------------------------------------------------------------------
+Dim i As Integer, lngItemBufferSize As Integer
+Dim lngYearIndex As Integer, lngDate As Integer
+Dim lngItemIndex As Integer
+Dim lngType As Integer, lngSubCount As Integer
+Dim lngValue As Integer
+Dim lngStartDayIndex As Integer, lngEndDayIndex As Integer
+Dim lngItemFlags() As Integer
+Dim blnResult As Boolean
 
+    With utBook
+        .nCurrentYear = lngYear
+        lngYearIndex = lngYear - .nStartYear
+
+        'すべての項目のフラグを取り出す
+        With .utBookItems
+            lngItemBufferSize = .nItemBufferSize
+            lngItemFlags() = .nFlags()
+        End With
+    End With
+
+    '初期値を書き込む
+    With utBook.utAnnualRecords
+        For i = 0 To lngItemBufferSize - 1
+            If ((lngItemFlags(i) And ITEM_FLAG_TYPEMASK) = ITEM_FLAG_BALANCE) Then
+                .utItemDetailCounts(i).nDayTotal(0) = .utItemAnnualCounts(i).nStartValues(lngYearIndex)
+            End If
+        Next i
+
+        lngStartDayIndex = GetWeekday(lngYear, 1, 1)
+        lngEndDayIndex = GetDayInYear(lngYear, 12, 31) + lngStartDayIndex
+
+        'すべてのレシートを集計する
+        For lngDate = 0 To utBook.nNumWeeks * NUMDAYSPERWEEK - 1
+            'バッファをクリアする
+            For i = 0 To lngItemBufferSize - 1
+                If ((lngItemFlags(i) And ITEM_FLAG_TYPEMASK) = ITEM_FLAG_BALANCE) Then
+
+                Else
+                    .utItemDetailCounts(i).nDayTotal(lngDate) = 0
+                End If
+            Next i
+
+            If (IsDayBeforeStart(utBook, lngYear, lngDate)) Then
+
+            Else
+                'データを書き込む
+                For i = 0 To lngItemBufferSize - 1
+                    lngSubCount = utBook.utBookItems.utItemEntries(i).nSubItemCount
+                    If ((lngItemFlags(i) <> ITEM_FLAG_NOTUSED) And (lngSubCount = 0)) Then
+                        lngType = BookItemGetItemType(utBook.utBookItems, i)
+
+                        If (lngType = ITEM_FLAG_INCOME) Or (lngType = ITEM_FLAG_BANK_WITHDRAW) Then
+                            If (Int(Rnd * 100) < 25) Then
+                                lngValue = Int(Rnd * 11500)
+
+                                'このデータを加算する
+                                blnResult = AddDataToItemTotal(utBook, lngYearIndex, lngDate, i, lngValue)
+                                If (blnResult) Then
+                                    '残高に加える
+                                    AddDataToItemTotal utBook, lngYearIndex, lngDate, 3, lngValue
+                                End If
+                            End If
+                        ElseIf (lngType = ITEM_FLAG_OUTLAY) Or (lngType = ITEM_FLAG_BANK_DEPOSIT) Then
+                            If (Int(Rnd * 100) < 15) Then
+                                lngValue = Int(Rnd * 1000)
+
+                                'このデータを加算する
+                                blnResult = AddDataToItemTotal(utBook, lngYearIndex, lngDate, i, lngValue)
+                                If (blnResult) Then
+                                    '残高から引く
+                                    AddDataToItemTotal utBook, lngYearIndex, lngDate, 3, -lngValue
+                                End If
+                            End If
+                        End If
+                    End If
+                Next i
+            End If
+
+            'この日の残高を次の日の残高にコピーする
+            For i = 0 To lngItemBufferSize - 1
+                If ((lngItemFlags(i) And ITEM_FLAG_TYPEMASK) = ITEM_FLAG_BALANCE) Then
+                    With .utItemDetailCounts(i)
+                        .nDayTotal(lngDate + 1) = .nDayTotal(lngDate)
+                    End With
+                End If
+            Next i
+        Next lngDate
+    End With
 End Sub
 
 Public Function SaveAccountBook(ByRef utBook As tAccountBook,
