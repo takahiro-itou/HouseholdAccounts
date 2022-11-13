@@ -1000,7 +1000,7 @@ Dim blnResult As Boolean
     'インデックスファイルを更新する
     lngFileLen = FileLen(strTempFileName)
     If (lngSize <> lngFileLen) Then
-        MsgBox "設定の保存に失敗しました。"
+        MessageBox.Show("設定の保存に失敗しました。")
         blnResult = False
     Else
         blnResult = UpdateIndexFile(strTempDir, lngYearIndex + 4, -1, lngFileLen)
