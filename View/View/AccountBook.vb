@@ -652,7 +652,6 @@ Dim lngYear As Integer, lngNumYears As Integer, lngStartYear As Integer
 Dim lngPos As Integer, lngSize As Integer, lngReserved As Integer
 Dim lngTailPos As Integer, lngNextPos As Integer, lngSkipBytes As Integer
 Dim lngHeaderSize As Integer
-Dim lngHeader() As Integer
 Dim bytBuffer() As Byte
 Dim lngCommonRecordPos As Integer, lngYearRecordPos() As Integer
 Dim lngCommonRecordSize As Integer, lngYearRecordSize() As Integer
@@ -735,6 +734,10 @@ Dim strTempFileName As String, strIndexFileName As String
         ReDim lngYearRecordPos(0 To lngNumYears - 1)
         ReDim lngYearRecordSize(0 To lngNumYears - 1)
         ReDim lngYearRecordSkip(0 To lngNumYears - 1)
+    Else
+        ReDim lngYearRecordPos(0)
+        ReDim lngYearRecordSize(0)
+        ReDim lngYearRecordSkip(0)
     End If
 
     For lngYear = 0 To lngNumYears - 1
@@ -839,7 +842,7 @@ Dim lngDayIndex As Integer, lngDayOffset As Integer
     lngDayIndex = lngDayIndex + lngDayOffset
 
     With utBook
-        GetDayFromIndex .utStartDate, lngStartYear, lngDayIndex, lngDayOffset
+        GetDayFromIndex(.utStartDate, lngStartYear, lngDayIndex, lngDayOffset)
 
         .nStartYear = .utStartDate.nYear
         .nStartDayIndex = lngDayIndex
