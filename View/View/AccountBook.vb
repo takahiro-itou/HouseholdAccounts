@@ -180,7 +180,7 @@ Dim blnResult As Boolean
     '新しい年のデータを読み込む
     If (lngNewYear >= lngStartYear + lngNumYears) Then
         lngNumYears = lngNewYear - lngStartYear + 1
-        ReallocAnnualRecordsBuffers utBook.utAnnualRecords, -1, lngStartYear, lngNumYears
+        ReallocAnnualRecordsBuffers(utBook.utAnnualRecords, -1, lngStartYear, lngNumYears)
         utBook.nNumYears = lngNumYears
     End If
 
