@@ -858,6 +858,10 @@ Public Sub SetAccountBookNumYears(
 '[RET] なし
 '---------------------------------------------------------------------
 
+    With utBook
+        ReallocAnnualRecordsBuffers .utAnnualRecords, -1, .nStartYear, lngNumYears
+        .nNumYears = lngNumYears
+    End With
 End Sub
 
 Public Function UpdateIndexFile(ByVal strTempDir As String, _
