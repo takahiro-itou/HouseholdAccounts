@@ -859,7 +859,8 @@ Public Sub SetAccountBookNumYears(
 '---------------------------------------------------------------------
 
     With utBook
-        ReallocAnnualRecordsBuffers .utAnnualRecords, -1, .nStartYear, lngNumYears
+        ReallocAnnualRecordsBuffers(
+                .utAnnualRecords, -1, .nStartYear, lngNumYears)
         .nNumYears = lngNumYears
     End With
 End Sub
