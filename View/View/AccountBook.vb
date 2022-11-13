@@ -647,7 +647,174 @@ Public Function SaveAccountBook(ByRef utBook As tAccountBook,
 '  分解されて保存されているテンポラリファイルを連結して
 '指定されたファイル名で保存する。
 '---------------------------------------------------------------------
+Dim i As Integer
+Dim lngYear As Integer, lngNumYears As Integer, lngStartYear As Integer
+Dim lngPos As Integer, lngSize As Integer, lngReserved As Integer
+Dim lngTailPos As Integer, lngNextPos As Integer, lngSkipBytes As Integer
+Dim lngHeaderSize As Integer
+Dim lngHeader() As Integer
+Dim bytBuffer() As Byte
+Dim lngCommonRecordPos As Integer, lngYearRecordPos() As Integer
+Dim lngCommonRecordSize As Integer, lngYearRecordSize() As Integer
+Dim lngCommonRecordSkip As Integer, lngYearRecordSkip() As Integer
+Dim lngWriteFileNumber As Integer
+Dim lngTempFileNumber As Integer, lngIndexFileNumber As Integer
+Dim strTempDir As String
+Dim strTempFileName As String, strIndexFileName As String
 
+    '-------------------------------------------------------------
+    '家計簿データから必要なデータを取り出す
+    With utBook
+        strTempDir = .sTempFileDir
+        lngNumYears = .nNumYears
+        lngStartYear = .nStartYear
+    End With
+
+    '-------------------------------------------------------------
+    '既にファイルがあれば、いったん削除する
+    If (Dir$(strFileName) <> "") Then
+        Kill strFileName
+    End If
+
+    '-------------------------------------------------------------
+    '出力ファイルを開く
+    lngWriteFileNumber = FreeFile()
+    Open strFileName For Binary As #lngWriteFileNumber
+
+    '-------------------------------------------------------------
+    'インデックスファイルを開く
+    strIndexFileName = strTempDir & "\.index"
+    lngIndexFileNumber = FreeFile()
+    Open strIndexFileName For Binary As #lngIndexFileNumber
+
+    '-------------------------------------------------------------
+    'ヘッダ部分のテンポラリファイルを開く
+    strTempFileName = strTempDir & "\.set"
+    lngTempFileNumber = FreeFile()
+    Open strTempFileName For Binary As #lngTempFileNumber
+
+    '-------------------------------------------------------------
+    'ヘッダ部分を書き込む
+    lngPos = 1
+    Get #lngIndexFileNumber, 5, lngHeaderSize
+    ReDim bytBuffer(0 To lngHeaderSize - 1)
+    Get #lngTempFileNumber, 1, bytBuffer()
+    Put #lngWriteFileNumber, 1, bytBuffer()
+    Close #lngTempFileNumber
+
+    '-------------------------------------------------------------
+    'インデックステーブルを書き込む
+    lngReserved = 0
+    Put #lngWriteFileNumber, (lngHeaderSize + 1), lngReserved
+    Put #lngWriteFileNumber, (lngHeaderSize + 5), lngReserved
+    Put #lngWriteFileNumber, (lngHeaderSize + 9), lngReserved
+    Put #lngWriteFileNumber, (lngHeaderSize + 13), lngReserved
+
+    lngCommonRecordPos = lngHeaderSize + 64 + (lngNumYears * 16)
+    Get #lngIndexFileNumber, 21, lngCommonRecordSize
+    lngTailPos = lngCommonRecordPos + lngCommonRecordSize
+    lngNextPos = (lngTailPos + 255) And &H7FFFFF00
+    lngCommonRecordSkip = (lngNextPos - lngTailPos)
+    lngReserved = 0
+
+    Put #lngWriteFileNumber, (lngHeaderSize + 17), lngCommonRecordPos
+    Put #lngWriteFileNumber, (lngHeaderSize + 21), lngCommonRecordSize
+    Put #lngWriteFileNumber, (lngHeaderSize + 25), lngCommonRecordSkip
+    Put #lngWriteFileNumber, (lngHeaderSize + 29), lngReserved
+    lngPos = lngNextPos
+
+    lngReserved = 0
+    For i = 2 To 3
+        Put #lngWriteFileNumber, (lngHeaderSize + i * 16 + 1), lngReserved
+        Put #lngWriteFileNumber, (lngHeaderSize + i * 16 + 5), lngReserved
+        Put #lngWriteFileNumber, (lngHeaderSize + i * 16 + 9), lngReserved
+        Put #lngWriteFileNumber, (lngHeaderSize + i * 16 + 13), lngReserved
+    Next i
+
+    If (lngNumYears > 0) Then
+        ReDim lngYearRecordPos(0 To lngNumYears - 1)
+        ReDim lngYearRecordSize(0 To lngNumYears - 1)
+        ReDim lngYearRecordSkip(0 To lngNumYears - 1)
+    End If
+
+    For lngYear = 0 To lngNumYears - 1
+        Get #lngIndexFileNumber, (lngYear * 16 + 69), lngSize
+
+        lngTailPos = lngPos + lngSize
+        lngNextPos = (lngTailPos + 255) And &H7FFFFF00
+        lngSkipBytes = (lngNextPos - lngTailPos)
+
+        lngYearRecordPos(lngYear) = lngPos
+        lngYearRecordSize(lngYear) = lngSize
+        lngYearRecordSkip(lngYear) = lngSkipBytes
+
+        Put #lngWriteFileNumber, (lngYear * 16 + lngHeaderSize + 65), lngPos
+        Put #lngWriteFileNumber, (lngYear * 16 + lngHeaderSize + 69), lngSize
+        Put #lngWriteFileNumber, (lngYear * 16 + lngHeaderSize + 73), lngSkipBytes
+        Put #lngWriteFileNumber, (lngYear * 16 + lngHeaderSize + 77), lngReserved
+
+        lngPos = lngNextPos
+    Next lngYear
+
+    '-------------------------------------------------------------
+    '共通レコードを書き込む
+    lngPos = lngCommonRecordPos
+    lngSize = lngCommonRecordSize
+    lngSkipBytes = lngCommonRecordSkip
+
+    If (lngSize > 0) Then
+        strTempFileName = strTempDir & "\.common"
+        lngTempFileNumber = FreeFile()
+        Open strTempFileName For Binary As #lngTempFileNumber
+
+        ReDim bytBuffer(0 To lngSize - 1)
+        Get #lngTempFileNumber, 1, bytBuffer()
+        Put #lngWriteFileNumber, lngPos + 1, bytBuffer()
+
+        Close #lngTempFileNumber
+    End If
+
+    If (lngSkipBytes > 0) Then
+        ReDim bytBuffer(0 To lngSkipBytes - 1)
+        Put #lngWriteFileNumber, lngPos + lngSize + 1, bytBuffer()
+    End If
+
+    '-------------------------------------------------------------
+    '各年のデータを書き込む
+    For lngYear = 0 To lngNumYears - 1
+        lngPos = lngYearRecordPos(lngYear)
+        lngSize = lngYearRecordSize(lngYear)
+        lngSkipBytes = lngYearRecordSkip(lngYear)
+
+        If (lngSize > 0) Then
+            'テンポラリファイルを開く
+            strTempFileName = strTempDir & "\." & Trim$(Str$(lngStartYear + lngYear))
+            lngTempFileNumber = FreeFile()
+            Open strTempFileName For Binary As #lngTempFileNumber
+
+            'テンポラリファイルから、データを読み込む
+            ReDim bytBuffer(0 To lngSize - 1)
+            Get #lngTempFileNumber, 1, bytBuffer()
+
+            '出力ファイルの指定された位置に書き込む
+            Put #lngWriteFileNumber, lngPos + 1, bytBuffer()
+
+            'テンポラリファイルを閉じる
+            Close #lngTempFileNumber
+        End If
+
+        '次のデータの開始位置まで、空のデータを埋める
+        If (lngSkipBytes > 0) Then
+            ReDim bytBuffer(0 To lngSkipBytes - 1)
+            Put #lngWriteFileNumber, lngPos + lngSize + 1, bytBuffer()
+        End If
+    Next lngYear
+
+    'すべてのファイルを閉じる
+    Close #lngWriteFileNumber
+    Close #lngIndexFileNumber
+
+    'セーブ完了
     SaveAccountBook = True
 End Function
 
