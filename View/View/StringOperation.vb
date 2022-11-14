@@ -82,7 +82,7 @@ Public Function DeleteDirFromPath(ByVal strPath As String) As String
 '  返される結果には、拡張子も含むが、
 'ディレクトリの区切りを示す "\" は含まない。
 '---------------------------------------------------------------------
-Dim i As Long
+Dim i As Integer
 
     i = Len(strPath)
     For i = Len(strPath) To 1 Step -1
@@ -95,6 +95,29 @@ Dim i As Long
 
     '"\" が見つからないので、このフルパスはディレクトリ名を含んでいない
     DeleteDirFromPath = strPath
+End Function
+
+Public Function GetFileExt(ByVal strFileName As String) As String
+'---------------------------------------------------------------------
+'ファイルの拡張子を取得する
+'[ IN] strFileName: ファイル名
+'[RET] String     : 拡張子
+'[ACT]
+'  返される結果は、先頭の "." を含まない。
+'---------------------------------------------------------------------
+Dim i As Integer
+
+    i = Len(strFileName)
+    For i = Len(strFileName) To 1 Step -1
+        If Mid$(strFileName, i, 1) = "." Then
+            'この "." の後ろを取り出す
+            GetFileExt = Mid$(strFileName, i + 1)
+            Exit Function
+        End If
+    Next i
+
+    '. が見つからないので、このファイル名には拡張子がない
+    GetFileExt = ""
 End Function
 
 Public Function ReplaceConstant(ByVal strText As String, _
