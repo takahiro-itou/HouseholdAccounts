@@ -205,6 +205,43 @@ Dim strLeft As String
     GetFullPathName = strTemp
 End Function
 
+Public Function GetRelativePath(ByVal strPath As String,
+        ByVal strBaseDir As String) As String
+'---------------------------------------------------------------------
+'フルパスから、strBaseDirを基準とした、相対パスを取得する
+'[ IN] strPath   : フルパス
+'[ IN] strBaseDir: 基準となるディレクトリ名
+'[RET] String    : 相対パス
+'[ACT]
+'  フルパスstrPathを、strBaseDirからの相対パスに変換する。
+'---------------------------------------------------------------------
+Dim lngPos As Integer
+Dim strTemp As String
+Dim strBaseTemp As String
+Dim strNameTemp As String
+
+    If strBaseDir = "" Then
+        GetRelativePath = strPath
+    End If
+
+    strTemp = ""
+
+    lngPos = 0
+    Do While lngPos = 0
+        strBaseTemp = LCase$(strBaseDir)
+        strNameTemp = LCase$(strPath)
+        lngPos = InStr(strNameTemp, strBaseTemp)
+        If lngPos = 0 Then
+            strBaseDir = DeleteDirFromPath(strBaseDir)
+            strTemp = strTemp & "..\"
+        Else
+            strTemp = strTemp & Mid$(strPath, Len(strBaseDir) + 2)
+        End If
+    Loop
+
+    GetRelativePath = strTemp
+End Function
+
 Public Function ReplaceConstant(ByVal strText As String, _
     ByRef strConstName() As String, ByRef strConstValue() As String) As String
 '---------------------------------------------------------------------
