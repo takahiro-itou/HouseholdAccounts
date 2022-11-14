@@ -222,12 +222,6 @@ Dim lngFlags() As Integer
 Dim lngSubItems() As Integer, lngCheck() As Integer
 Dim utItems() As tBookItemEntry
 
-Dim lngDay As Integer
-Dim utGoodsRecord() As tGoods
-Dim lngDayTotal() As Integer, lngWeekTotal() As Integer
-Dim lngMonthTotal() As Integer, lngYearTotal() As Integer
-Dim lngDayBalance() As Integer
-
     lngItemBufferSize = utBookItems.nItemBufferSize
 
     '並び替える前に、並び替えのデータを検査する
