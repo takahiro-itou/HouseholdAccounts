@@ -163,6 +163,48 @@ Dim strTemp As String
     GetTitleFromPath = DeleteExtFromPath(strTemp)
 End Function
 
+Public Function GetFullPathName(ByVal strBaseDir As String,
+        ByVal strRelativePath As String) As String
+'---------------------------------------------------------------------
+'strBaseDirを基準とした、相対パスから、フルパスを取得する
+'[ IN] strBaseDir     : 基準となるディレクトリ名
+'[ IN] strRelativePath: strBaseDirからの相対パス
+'[RET] String         : フルパス
+'[ACT]
+'  strBaseDirからの相対パスをフルパスに変換する。
+'---------------------------------------------------------------------
+Dim i As Integer
+Dim lngPos As Integer
+Dim strTemp As String
+Dim strLeft As String
+
+    strTemp = strRelativePath
+
+    Do While Len(strRelativePath) > 0
+        DoEvents
+        lngPos = InStr(strRelativePath, "\")
+        If (lngPos = 0) Then
+            'ディレクトリ指定がもうないので、ファイル名を最後にくっつける
+            strTemp = strTemp & "\" & strRelativePath
+            strRelativePath = ""
+        Else
+            strLeft = Left$(strRelativePath, lngPos)
+            strRelativePath = Mid$(strRelativePath, lngPos + 1)
+            If (strLeft = ".\") Then
+                '現在のディレクトリ
+            ElseIf (strLeft = "..\") Then
+               '親ディレクトリに移動
+                strTemp = DeleteDirFromPath(strTemp)
+            Else
+                '指定されたディレクトリに移動
+                strTemp = strTemp & "\" & strLeft
+            End If
+        End If
+    Loop
+
+    GetFullPathName = strTemp
+End Function
+
 Public Function ReplaceConstant(ByVal strText As String, _
     ByRef strConstName() As String, ByRef strConstValue() As String) As String
 '---------------------------------------------------------------------
