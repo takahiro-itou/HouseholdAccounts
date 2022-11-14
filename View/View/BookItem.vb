@@ -249,8 +249,8 @@ Dim lngDayBalance() As Integer
 
     With utBookItems
         '配列のバックアップコピーをとる
-        lngFlags() = .nFlags()
-        utItems() = .utItemEntries()
+        lngFlags = .nFlags.Clone
+        utItems = .utItemEntries.Clone
 
         '項目データを設定する
         For i = 0 To lngItemBufferSize - 1
@@ -261,7 +261,7 @@ Dim lngDayBalance() As Integer
             '子ノードを書き換える
             With .utItemEntries(lngNew)
                 lngCount = .nSubItemCount
-                lngSubItems() = .nSubItems()
+                lngSubItems = .nSubItems.Clone
             End With
 
             For j = 0 To lngCount - 1
