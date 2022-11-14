@@ -316,6 +316,13 @@ Public Function IsLegalInputFileName(ByVal strFileName As String) As Boolean
 '[ACT]
 '  ユーザーの意思でResourceディレクトリからは読み込みできない
 '---------------------------------------------------------------------
+Dim strDir As String
+
+    strDir = GetDirFromPath(strFileName)
+    If (LCase$(Right$(strDir, 9)) = "\resource") Then
+        IsLegalInputFileName = False
+        Exit Function
+    End If
 
     IsLegalInputFileName = True
 End Function
