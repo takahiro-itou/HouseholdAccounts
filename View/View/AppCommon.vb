@@ -394,7 +394,7 @@ Dim lngTempFileNumber As Integer
     OpenTemporaryFile = lngTempFileNumber
 End Function
 
-Public Sub ParseDate(ByVal lngDate As Long, ByRef utResult As tParsedDate)
+Public Sub ParseDate(ByVal lngDate As integer, ByRef utResult As tParsedDate)
 '---------------------------------------------------------------------
 '本ソフトで使われている日付の形式を解析して、
 '西暦年・月・日・週・曜日に分解する
@@ -404,6 +404,26 @@ Public Sub ParseDate(ByVal lngDate As Long, ByRef utResult As tParsedDate)
 '[ACT]
 '  週は最初の週を０と数える
 '---------------------------------------------------------------------
+Dim lngYear As Integer, lngMonth As Integer, lngDay As Integer
+Dim lngDayInYear As Integer, lngDayOffset As Integer, lngDayIndex As Integer
+
+    lngYear = (lngDate \ 65536)
+    lngMonth = (lngDate \ 256) And 255
+    lngDay = (lngDate And 255)
+    lngDayInYear = GetDayInYear(lngYear, lngMonth, lngDay)
+    lngDayOffset = GetWeekday(lngYear, 1, 1)
+    lngDayIndex = lngDayInYear + lngDayOffset
+
+    With utResult
+        .nYear = lngDate
+        .nMonth = lngMonth
+        .nDay = lngDay
+        .nDayInYear = lngDayInYear
+        .nDayOffset = lngDayOffset
+        .nDayIndex = lngDayIndex
+        .nWeek = (lngDayIndex \ 7)
+        .nWeekday = (lngDayIndex Mod 7)
+    End With
 
 End Sub
 
