@@ -173,7 +173,6 @@ Public Function GetFullPathName(ByVal strBaseDir As String,
 '[ACT]
 '  strBaseDirからの相対パスをフルパスに変換する。
 '---------------------------------------------------------------------
-Dim i As Integer
 Dim lngPos As Integer
 Dim strTemp As String
 Dim strLeft As String
@@ -181,7 +180,7 @@ Dim strLeft As String
     strTemp = strRelativePath
 
     Do While Len(strRelativePath) > 0
-        DoEvents
+        Application.DoEvents()
         lngPos = InStr(strRelativePath, "\")
         If (lngPos = 0) Then
             'ディレクトリ指定がもうないので、ファイル名を最後にくっつける
