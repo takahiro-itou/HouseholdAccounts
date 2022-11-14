@@ -241,7 +241,7 @@ Dim lngDayBalance() As Integer
     Next i
     For i = 0 To lngItemBufferSize - 1
         If (lngCheck(i) <> 1) Then
-            MsgBox "エラー：項目の並び替えができません。" & vbCrLf & "指示された並び替えは、重複または不足があります。"
+            MessageBox.Show("エラー：項目の並び替えができません。" & vbCrLf & "指示された並び替えは、重複または不足があります。")
             BookItemRelocateItems = -1
             Exit Function
         End If
