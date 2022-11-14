@@ -95,7 +95,7 @@ Dim blnRefresh As Boolean
 
     With utBookView
         With .utUserInterface
-            .oBookPicture.SetFocus
+            .oBookPicture.Focus()
             lngX = .nCurrentMouseX
             lngY = .nCurrentMouseY
             lngYear = .nCurrentYear
