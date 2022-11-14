@@ -48,6 +48,30 @@ Dim strText As String
     ByteToString = strText
 End Function
 
+Public Function DeleteExtFromPath(ByVal strPath As String) As String
+'---------------------------------------------------------------------
+'フルパスから、拡張子のみを除いた部分を取得する
+'[ IN] strPath: フルパス
+'[RET] String : 拡張子を除いた部分
+'[ACT]
+'  フルパスから、拡張子のみを取り除く。
+'  返される結果には、ディレクトリ名が含まれる。
+'---------------------------------------------------------------------
+Dim i As Integer
+
+    i = Len(strPath)
+    For i = Len(strPath) To 1 Step -1
+        If Mid$(strPath, i, 1) = "." Then
+            'この "." の前までを取り出す
+            DeleteExtFromPath = Left$(strPath, i - 1)
+            Exit Function
+        End If
+    Next i
+
+    '"." が見つからないので、このフルパスには拡張子がない
+    DeleteExtFromPath = strPath
+End Function
+
 Public Function ReplaceConstant(ByVal strText As String, _
     ByRef strConstName() As String, ByRef strConstValue() As String) As String
 '---------------------------------------------------------------------
