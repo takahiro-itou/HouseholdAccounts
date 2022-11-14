@@ -103,9 +103,9 @@ Dim blnRefresh As Boolean
         End With
         blnRefresh = False
 
-        blnShiftDown = ((lngShift And vbShiftMask) > 0)
-        blnCtrlDown = ((lngShift And vbCtrlMask) > 0)
-        blnAltDown = ((lngShift And vbAltMask) > 0)
+        blnShiftDown = ((lngShift And Keys.Shift) > 0)
+        blnCtrlDown = ((lngShift And Keys.Control) > 0)
+        blnAltDown = ((lngShift And Keys.Alt) > 0)
 
         Select Case lngKeyCode
             Case vbKeyReturn:
