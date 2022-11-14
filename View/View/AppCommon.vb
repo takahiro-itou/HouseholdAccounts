@@ -336,6 +336,13 @@ Public Function IsLegalOutputFileName(ByVal strFileName As String) As Boolean
 '[ACT]
 '  ユーザーの意思でResourceディレクトリには書き込みできない
 '---------------------------------------------------------------------
+Dim strDir As String
+
+    strDir = GetDirFromPath(strFileName)
+    If (LCase$(Right$(strDir, 9)) = "\resource") Then
+        IsLegalOutputFileName = False
+        Exit Function
+    End If
 
     IsLegalOutputFileName = True
 End Function
