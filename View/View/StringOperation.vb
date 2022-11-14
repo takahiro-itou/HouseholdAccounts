@@ -145,6 +145,24 @@ Dim i As Integer
     GetDirFromPath = ""
 End Function
 
+Public Function GetTitleFromPath(ByVal strPath As String) As String
+'---------------------------------------------------------------------
+'フルパスからファイルのタイトルを取得する
+'[ IN] strPath: フルパス
+'[RET] String : ファイルタイトル
+'[ACT]
+'  ファイルのタイトル、つまりフルパスから
+'ディレクトリ名と拡張子を除いた残りの部分を取得する。
+'---------------------------------------------------------------------
+Dim strTemp As String
+
+    'フルパスからディレクトリ名を除く
+    strTemp = DeleteDirFromPath(strPath)
+
+    'さらに拡張子も除く
+    GetTitleFromPath = DeleteExtFromPath(strTemp)
+End Function
+
 Public Function ReplaceConstant(ByVal strText As String, _
     ByRef strConstName() As String, ByRef strConstValue() As String) As String
 '---------------------------------------------------------------------
