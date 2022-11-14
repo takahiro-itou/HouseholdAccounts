@@ -108,11 +108,11 @@ Dim blnRefresh As Boolean
         blnAltDown = ((lngShift And Keys.Alt) > 0)
 
         Select Case lngKeyCode
-            Case vbKeyReturn:
+            Case Keys.Return:
                 ExecuteCellAction(.utUserInterface, .utAccountBook, lngX, lngY)
                 blnRefresh = True
 
-            Case vbKeyLeft:
+            Case Keys.Left:
                 If ((blnCtrlDown) And (blnShiftDown)) Then
                     If (lngWeek >= 4) Then
                         UpdateBook(.utUserInterface, .utAccountBook,
@@ -137,7 +137,7 @@ Dim blnRefresh As Boolean
                         blnRefresh = True
                     End If
                 End If
-            Case vbKeyUp:
+            Case Keys.Up:
                 If (lngY > BOOKFIXEDROWS) Then
                     SelectCell(.utUserInterface, .utAccountBook, lngX, lngY - 1)
                     blnRefresh = True
@@ -145,7 +145,7 @@ Dim blnRefresh As Boolean
                     SelectCell(.utUserInterface, .utAccountBook, lngX, 0)
                     blnRefresh = True
                 End If
-            Case vbKeyRight:
+            Case Keys.Right:
                 If ((blnCtrlDown) And (blnShiftDown)) Then
                     If (lngWeek < .nNumWeeks - 4) Then
                         UpdateBook(.utUserInterface, .utAccountBook,
@@ -174,7 +174,7 @@ Dim blnRefresh As Boolean
                     End If
                 End If
 
-            Case vbKeyDown:
+            Case Keys.Down:
                 If (lngY < BOOKFIXEDROWS) Then
                     SelectCell(.utUserInterface, .utAccountBook,
                                lngX, BOOKFIXEDROWS)
