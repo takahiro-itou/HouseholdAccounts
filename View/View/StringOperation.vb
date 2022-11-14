@@ -72,6 +72,31 @@ Dim i As Integer
     DeleteExtFromPath = strPath
 End Function
 
+Public Function DeleteDirFromPath(ByVal strPath As String) As String
+'---------------------------------------------------------------------
+'フルパスから、ディレクトリ名を除いた部分を取得する
+'[ IN] strPath: フルパス
+'[RET] String : ディレクトリ名を除いた部分
+'[ACT]
+'  フルパスから、ディレクトリ名を取り除く。
+'  返される結果には、拡張子も含むが、
+'ディレクトリの区切りを示す "\" は含まない。
+'---------------------------------------------------------------------
+Dim i As Long
+
+    i = Len(strPath)
+    For i = Len(strPath) To 1 Step -1
+        If Mid$(strPath, i, 1) = "\" Then
+            'この ".\" の後ろを取り出す
+            DeleteDirFromPath = Mid$(strPath, i + 1)
+            Exit Function
+        End If
+    Next i
+
+    '"\" が見つからないので、このフルパスはディレクトリ名を含んでいない
+    DeleteDirFromPath = strPath
+End Function
+
 Public Function ReplaceConstant(ByVal strText As String, _
     ByRef strConstName() As String, ByRef strConstValue() As String) As String
 '---------------------------------------------------------------------
