@@ -215,7 +215,63 @@ Public Function BookItemRelocateItems(ByRef utBookItems As tBookItems,
 '  この関数を呼び出して、項目を並べ替えた場合は、
 '年間項目データも更新すること
 '---------------------------------------------------------------------
+Dim lngItemBufferSize As Integer
+Dim i As Integer, lngNew As Integer
+Dim j As Integer, lngCount As Integer, lngChildHandle As Integer
+Dim lngFlags() As Integer
+Dim lngSubItems() As Integer, lngCheck() As Integer
+Dim utItems() As tBookItemEntry
 
+Dim lngDay As Integer
+Dim utGoodsRecord() As tGoods
+Dim lngDayTotal() As Integer, lngWeekTotal() As Integer
+Dim lngMonthTotal() As Integer, lngYearTotal() As Integer
+Dim lngDayBalance() As Integer
+
+    lngItemBufferSize = utBookItems.nItemBufferSize
+
+    '並び替える前に、並び替えのデータを検査する
+    ReDim lngCheck(0 To lngItemBufferSize - 1)
+    For i = 0 To lngItemBufferSize - 1
+        lngCheck(i) = 0
+    Next i
+    For i = 0 To lngItemBufferSize - 1
+        lngNew = lpNewIndex(i)
+        lngCheck(lngNew) = lngCheck(lngNew) + 1
+    Next i
+    For i = 0 To lngItemBufferSize - 1
+        If (lngCheck(i) <> 1) Then
+            MsgBox "エラー：項目の並び替えができません。" & vbCrLf & "指示された並び替えは、重複または不足があります。"
+            BookItemRelocateItems = -1
+            Exit Function
+        End If
+    Next i
+
+    With utBookItems
+        '配列のバックアップコピーをとる
+        lngFlags() = .nFlags()
+        utItems() = .utItemEntries()
+
+        '項目データを設定する
+        For i = 0 To lngItemBufferSize - 1
+            lngNew = lpNewIndex(i)
+            .nFlags(lngNew) = lngFlags(i)
+            .utItemEntries(lngNew) = utItems(i)
+
+            '子ノードを書き換える
+            With .utItemEntries(lngNew)
+                lngCount = .nSubItemCount
+                lngSubItems() = .nSubItems()
+            End With
+
+            For j = 0 To lngCount - 1
+                lngChildHandle = lngSubItems(j)
+                .utItemEntries(lngChildHandle).nParentHandle = lngNew
+            Next j
+        Next i
+    End With
+
+    '完了
     BookItemRelocateItems = 1
 End Function
 
