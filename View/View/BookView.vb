@@ -109,76 +109,85 @@ Dim blnRefresh As Boolean
 
         Select Case lngKeyCode
             Case vbKeyReturn:
-                ExecuteCellAction .utUserInterface, .utAccountBook, lngX, lngY
+                ExecuteCellAction(.utUserInterface, .utAccountBook, lngX, lngY)
                 blnRefresh = True
 
             Case vbKeyLeft:
                 If ((blnCtrlDown) And (blnShiftDown)) Then
                     If (lngWeek >= 4) Then
-                        UpdateBook .utUserInterface, .utAccountBook, -1, lngWeek - 4
+                        UpdateBook(.utUserInterface, .utAccountBook,
+                                   -1, lngWeek - 4)
                     Else
-                        UpdateBook .utUserInterface, .utAccountBook, -1, 0
+                        UpdateBook(.utUserInterface, .utAccountBook, -1, 0)
                     End If
                     blnRefresh = True
                 ElseIf (blnShiftDown) Then
                     If (lngWeek >= 1) Then
-                        UpdateBook .utUserInterface, .utAccountBook, -1, lngWeek - 1
+                        UpdateBook(.utUserInterface, .utAccountBook,
+                                    -1, lngWeek - 1)
                         blnRefresh = True
                     End If
                 Else
                     If (lngX > BOOKFIXEDCOLS) Then
-                        SelectCell .utUserInterface, .utAccountBook, lngX - 1, lngY
+                        SelectCell(.utUserInterface, .utAccountBook,
+                                   lngX - 1, lngY)
                         blnRefresh = True
                     Else
-                        SelectCell .utUserInterface, .utAccountBook, 0, lngY
+                        SelectCell(.utUserInterface, .utAccountBook, 0, lngY)
                         blnRefresh = True
                     End If
                 End If
             Case vbKeyUp:
                 If (lngY > BOOKFIXEDROWS) Then
-                    SelectCell .utUserInterface, .utAccountBook, lngX, lngY - 1
+                    SelectCell(.utUserInterface, .utAccountBook, lngX, lngY - 1)
                     blnRefresh = True
                 Else
-                    SelectCell .utUserInterface, .utAccountBook, lngX, 0
+                    SelectCell(.utUserInterface, .utAccountBook, lngX, 0)
                     blnRefresh = True
                 End If
             Case vbKeyRight:
                 If ((blnCtrlDown) And (blnShiftDown)) Then
                     If (lngWeek < .nNumWeeks - 4) Then
-                        UpdateBook .utUserInterface, .utAccountBook, -1, lngWeek + 4
+                        UpdateBook(.utUserInterface, .utAccountBook,
+                                   -1, lngWeek + 4)
                     Else
-                        UpdateBook .utUserInterface, .utAccountBook, -1, .nNumWeeks - 1
+                        UpdateBook(.utUserInterface, .utAccountBook,
+                                   -1, .nNumWeeks - 1)
                     End If
                     blnRefresh = True
                 ElseIf (blnShiftDown) Then
                     If (lngWeek < .nNumWeeks - 1) Then
-                        UpdateBook .utUserInterface, .utAccountBook, -1, lngWeek + 1
+                        UpdateBook(.utUserInterface, .utAccountBook,
+                                    -1, lngWeek + 1)
                         blnRefresh = True
                     End If
                 Else
                     If (lngX < BOOKFIXEDCOLS) Then
-                        SelectCell .utUserInterface, .utAccountBook, BOOKFIXEDCOLS, lngY
+                        SelectCell(.utUserInterface, .utAccountBook,
+                                   BOOKFIXEDCOLS, lngY)
                         blnRefresh = True
                         lngX = BOOKFIXEDCOLS
                     ElseIf (lngX < BOOKNUMCOLUMNS - 1) Then
-                        SelectCell .utUserInterface, .utAccountBook, lngX + 1, lngY
+                        SelectCell(.utUserInterface, .utAccountBook,
+                                   lngX + 1, lngY)
                         blnRefresh = True
                     End If
                 End If
 
             Case vbKeyDown:
                 If (lngY < BOOKFIXEDROWS) Then
-                    SelectCell .utUserInterface, .utAccountBook, lngX, BOOKFIXEDROWS
+                    SelectCell(.utUserInterface, .utAccountBook,
+                               lngX, BOOKFIXEDROWS)
                     blnRefresh = True
                 ElseIf (lngY < .utUserInterface.nNowShowingItemCount + BOOKFIXEDROWS - 1) Then
-                    SelectCell .utUserInterface, .utAccountBook, lngX, lngY + 1
+                    SelectCell(.utUserInterface, .utAccountBook, lngX, lngY + 1)
                     blnRefresh = True
                 End If
         End Select
 
         '必要があれば表示内容をリフレッシュする
         If (blnRefresh) Then
-            RefreshBook .utUserInterface, .utAccountBook, -1, -1
+            RefreshBook(.utUserInterface, .utAccountBook, -1, -1)
         End If
     End With
 
