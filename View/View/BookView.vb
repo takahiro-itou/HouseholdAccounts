@@ -228,6 +228,55 @@ Public Sub HandleSheetMouseDownEvent(ByRef utBookView As tBookView,
 '[ IN] lngY      : マウスを押したときのカーソルの垂直位置
 '[RET] なし
 '---------------------------------------------------------------------
+Dim lngMouseX As Integer, lngMouseY As Integer
+Dim lngRightCol As Integer, lngBottomRow As Integer
+Dim blnHitSomeCell As Boolean
+Dim blnRefresh As Boolean
+
+    With utBookView
+        With .utUserInterface
+            '範囲チェック
+            blnHitSomeCell = True
+            If (lngX < .nLeftMargin) Or (lngY < .nTopMargin) Then
+                blnHitSomeCell = False
+            End If
+
+            'ピクセル座標をセル座標に変換する
+            lngMouseX = (lngX - .nLeftMargin) \ .nCellWidth
+            lngMouseY = (lngY - .nTopMargin) \ .nCellHeight
+            lngRightCol = .nColumnsInSheet
+            lngBottomRow = .nNowShowingItemCount + BOOKFIXEDROWS
+
+            '範囲チェック
+            If (lngMouseX >= lngRightCol) Or (lngMouseY >= lngBottomRow) Then
+                blnHitSomeCell = False
+            End If
+
+            If (blnHitSomeCell) Then
+                '固定行でなければ、スクロール分を加味する
+                If (lngMouseX >= BOOKFIXEDCOLS) Then
+                    lngMouseX = lngMouseX + .nLeftCol
+                End If
+                If (lngMouseY >= BOOKFIXEDROWS) Then
+                    lngMouseY = lngMouseY + .nTopRow
+                End If
+
+                If ((.nCurrentMouseX <> lngMouseX) Or (.nCurrentMouseY <> lngMouseY)) Then
+                    blnRefresh = True
+                End If
+            End If
+        End With
+
+        If (blnHitSomeCell) Then
+            'セルを選択する
+            SelectCell .utUserInterface, .utAccountBook, lngMouseX, lngMouseY
+
+            '必要があれば表示内容をリフレッシュする
+            If (blnRefresh) Then
+                RefreshBook .utUserInterface, .utAccountBook, -1, -1
+            End If
+        End If
+    End With
 
 End Sub
 
