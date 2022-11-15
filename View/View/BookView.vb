@@ -332,6 +332,94 @@ Public Sub PostLoadingFile(ByRef utBookView As tBookView)
 '[ACT]
 '  新規作成によって初期化データがロードされた場合も同様。
 '---------------------------------------------------------------------
+Dim lngStartYear As Integer, lngNumYears As Integer
+Dim lngStartMonth As Integer, lngStartDay As Integer
+Dim blnEnabled As Boolean, blnCancel As Boolean
+Dim lngToday As Integer, lngYear As Integer, lngOffset As Integer
+Dim lngMsgAns As VbMsgBoxResult
+Dim dtmToday As Date
+Dim utDate As tParsedDate
+Dim objfDate As frmDate
+
+    With utBookView
+        blnEnabled = EnableAccountBook(.utAccountBook, True)
+        .bBackupedBookFile = False
+        .bModifyCurrentBook = False
+
+        '今日の日付を取得する
+        dtmToday = Date
+        lngYear = Year(dtmToday)
+
+        lngStartYear = GetAccountBookStartYear(.utAccountBook)
+        lngNumYears = GetAccountBookNumYears(.utAccountBook)
+    End With
+
+    If ((lngStartYear = 0) Or (lngNumYears = 0)) Then
+        lngMsgAns = MsgBox("データの開始日と年数が指定されていません。" & vbCrLf & "今すぐ指定しますか？", vbYesNo)
+        If (lngMsgAns = vbNo) Then
+            With utBookView
+                blnEnabled = EnableAccountBook(.utAccountBook, False)
+                .bBackupedBookFile = False
+                .bModifyCurrentBook = False
+            End With
+            Exit Sub
+        End If
+
+        Set objfDate = New frmDate
+        Load objfDate
+        With objfDate
+            .SetSelectDate lngYear, Month(dtmToday), Day(dtmToday)
+            .Show vbModal, utBookView.oBookForm
+
+            blnCancel = .IsCanceled()
+            lngStartYear = .GetSelectYear()
+            lngStartMonth = .GetSelectMonth()
+            lngStartDay = .GetSelectDay()
+            lngNumYears = (lngYear - lngStartYear + 1)
+        End With
+        Unload objfDate
+        Set objfDate = Nothing
+
+        If (lngNumYears <= 0) Then lngNumYears = 0
+
+        If (blnCancel) Then
+            With utBookView
+                blnEnabled = EnableAccountBook(.utAccountBook, False)
+                .bBackupedBookFile = False
+                .bModifyCurrentBook = False
+            End With
+            Exit Sub
+        End If
+
+        With utBookView
+            SetAccountBookStartDate .utAccountBook, lngStartYear, lngStartMonth, lngStartDay
+            SetAccountBookNumYears .utAccountBook, lngNumYears
+        End With
+    End If
+
+    '今日の日付を含む週を表示する
+    With utBookView
+        lngOffset = GetWeekday(lngYear, 1, 1)
+        lngToday = GetDayInYear(lngYear, Month(dtmToday), Day(dtmToday))
+        lngToday = lngToday + lngOffset
+        GetDayFromIndex utDate, lngYear, lngToday, lngOffset
+
+        .nNumWeeks = ChangeAccountBookYear(.utAccountBook, utDate.nYear)
+        Recount .utAccountBook, utDate.nYear
+
+        'テスト
+        ChangeCellSize .utUserInterface, .utAccountBook, -1, -1
+        UpdateBook .utUserInterface, .utAccountBook, utDate.nYear, utDate.nWeek
+
+        '固定ではない部分の一番左上のセルを選択する
+        SelectCell .utUserInterface, .utAccountBook, BOOKFIXEDCOLS, BOOKFIXEDROWS
+        RefreshBook .utUserInterface, .utAccountBook, -1, -1
+
+        'ウィンドウのキャプションを更新する
+        .oBookForm.Caption = UpdateWindowCaption(utBookView)
+    End With
+
+    'メニューの状態を更新する
 
 End Sub
 
