@@ -290,7 +290,6 @@ Public Sub LoadFromFile(ByRef utBookView As tBookView,
 '---------------------------------------------------------------------
 Dim blnLegal As Boolean
 Dim blnOpen As Boolean, blnRead As Boolean
-Dim blnResult As Boolean
 
     With utBookView
         blnLegal = IsLegalInputFileName(strFileName)
