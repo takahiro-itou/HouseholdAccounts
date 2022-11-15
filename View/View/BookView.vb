@@ -199,6 +199,20 @@ Public Sub HandleSheetDoubleClickEvent(ByRef utBookView As tBookView)
 '[I/O] utBookView: 家計簿ビュー
 '[RET] なし
 '---------------------------------------------------------------------
+Dim lngX As Integer, lngY As Integer
+
+    With utBookView
+        With .utUserInterface
+            lngX = .nCurrentMouseX
+            lngY = .nCurrentMouseY
+        End With
+
+        'セル以外の部分は無視する
+        If ((lngX >= 0) And (lngY >= 0)) Then
+            'セルに対するアクションを実行する
+            ExecuteCellAction(.utUserInterface, .utAccountBook, lngX, lngY)
+        End If
+    End With
 
 End Sub
 
@@ -214,20 +228,6 @@ Public Sub HandleSheetMouseDownEvent(ByRef utBookView As tBookView,
 '[ IN] lngY      : マウスを押したときのカーソルの垂直位置
 '[RET] なし
 '---------------------------------------------------------------------
-Dim lngX As Integer, lngY As Integer
-
-    With utBookView
-        With .utUserInterface
-            lngX = .nCurrentMouseX
-            lngY = .nCurrentMouseY
-        End With
-
-        'セル以外の部分は無視する
-        If ((lngX >= 0) And (lngY >= 0)) Then
-            'セルに対するアクションを実行する
-            ExecuteCellAction .utUserInterface, .utAccountBook, lngX, lngY
-        End If
-    End With
 
 End Sub
 
