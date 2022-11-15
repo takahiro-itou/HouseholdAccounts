@@ -295,8 +295,8 @@ Dim blnResult As Boolean
     With utBookView
         blnLegal = IsLegalInputFileName(strFileName)
         If (blnLegal = False) Then
-            MsgBox "ロードできません。" & _
-                "指定されたファイルまたはディレクトリに対する読み込み権限がありません"
+            MessageBox.Show("ロードできません。" & _
+                "指定されたファイルまたはディレクトリに対する読み込み権限がありません")
             blnOpen = False
         Else
             blnOpen = OpenAccountBook(.utAccountBook, strFileName)
@@ -309,7 +309,7 @@ Dim blnResult As Boolean
         End If
 
         If (blnRead = False) Then
-            MsgBox "ロードに失敗しました。"
+            MessageBox.Show("ロードに失敗しました。")
         Else
             .sCurrentBookFile = strFileName
         End If
@@ -320,8 +320,8 @@ Dim blnResult As Boolean
     End If
 
     'ロード後の処理を行う
-    PostLoadingFile utBookView
-    MsgBox "ロードは正常に完了しました"
+    PostLoadingFile(utBookView)
+    MessageBox.Show("ロードは正常に完了しました")
 
 End Sub
 
