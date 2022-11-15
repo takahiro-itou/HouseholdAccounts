@@ -288,6 +288,40 @@ Public Sub LoadFromFile(ByRef utBookView As tBookView,
 '[ IN] strFileName : ファイル名
 '[RET] なし
 '---------------------------------------------------------------------
+Dim blnLegal As Boolean
+Dim blnOpen As Boolean, blnRead As Boolean
+Dim blnResult As Boolean
+
+    With utBookView
+        blnLegal = IsLegalInputFileName(strFileName)
+        If (blnLegal = False) Then
+            MsgBox "ロードできません。" & _
+                "指定されたファイルまたはディレクトリに対する読み込み権限がありません"
+            blnOpen = False
+        Else
+            blnOpen = OpenAccountBook(.utAccountBook, strFileName)
+        End If
+
+        If (blnOpen = False) Then
+            blnRead = False
+        Else
+            blnRead = ReadAccountBookSettings(.utAccountBook)
+        End If
+
+        If (blnRead = False) Then
+            MsgBox "ロードに失敗しました。"
+        Else
+            .sCurrentBookFile = strFileName
+        End If
+    End With
+
+    If (blnRead = False) Then
+        Exit Sub
+    End If
+
+    'ロード後の処理を行う
+    PostLoadingFile utBookView
+    MsgBox "ロードは正常に完了しました"
 
 End Sub
 
