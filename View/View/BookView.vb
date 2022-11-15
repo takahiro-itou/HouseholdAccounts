@@ -368,7 +368,7 @@ Dim objfDate As frmDate
         Set objfDate = New frmDate
         Load objfDate
         With objfDate
-            .SetSelectDate lngYear, Month(dtmToday), Day(dtmToday)
+            .SetSelectDate(lngYear, Month(dtmToday), Day(dtmToday))
             .Show vbModal, utBookView.oBookForm
 
             blnCancel = .IsCanceled()
@@ -378,7 +378,7 @@ Dim objfDate As frmDate
             lngNumYears = (lngYear - lngStartYear + 1)
         End With
         Unload objfDate
-        Set objfDate = Nothing
+        objfDate = Nothing
 
         If (lngNumYears <= 0) Then lngNumYears = 0
 
@@ -392,8 +392,9 @@ Dim objfDate As frmDate
         End If
 
         With utBookView
-            SetAccountBookStartDate .utAccountBook, lngStartYear, lngStartMonth, lngStartDay
-            SetAccountBookNumYears .utAccountBook, lngNumYears
+            SetAccountBookStartDate(.utAccountBook, lngStartYear,
+                                    lngStartMonth, lngStartDay)
+            SetAccountBookNumYears(.utAccountBook, lngNumYears)
         End With
     End If
 
@@ -402,18 +403,20 @@ Dim objfDate As frmDate
         lngOffset = GetWeekday(lngYear, 1, 1)
         lngToday = GetDayInYear(lngYear, Month(dtmToday), Day(dtmToday))
         lngToday = lngToday + lngOffset
-        GetDayFromIndex utDate, lngYear, lngToday, lngOffset
+        GetDayFromIndex(utDate, lngYear, lngToday, lngOffset)
 
         .nNumWeeks = ChangeAccountBookYear(.utAccountBook, utDate.nYear)
-        Recount .utAccountBook, utDate.nYear
+        Recount(.utAccountBook, utDate.nYear)
 
         'テスト
-        ChangeCellSize .utUserInterface, .utAccountBook, -1, -1
-        UpdateBook .utUserInterface, .utAccountBook, utDate.nYear, utDate.nWeek
+        ChangeCellSize(.utUserInterface, .utAccountBook, -1, -1)
+        UpdateBook(.utUserInterface, .utAccountBook,
+                   utDate.nYear, utDate.nWeek)
 
         '固定ではない部分の一番左上のセルを選択する
-        SelectCell .utUserInterface, .utAccountBook, BOOKFIXEDCOLS, BOOKFIXEDROWS
-        RefreshBook .utUserInterface, .utAccountBook, -1, -1
+        SelectCell(.utUserInterface, .utAccountBook,
+                   BOOKFIXEDCOLS, BOOKFIXEDROWS)
+        RefreshBook(.utUserInterface, .utAccountBook, -1, -1)
 
         'ウィンドウのキャプションを更新する
         .oBookForm.Caption = UpdateWindowCaption(utBookView)
