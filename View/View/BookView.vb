@@ -269,11 +269,11 @@ Dim blnRefresh As Boolean
 
         If (blnHitSomeCell) Then
             'セルを選択する
-            SelectCell .utUserInterface, .utAccountBook, lngMouseX, lngMouseY
+            SelectCell(.utUserInterface, .utAccountBook, lngMouseX, lngMouseY)
 
             '必要があれば表示内容をリフレッシュする
             If (blnRefresh) Then
-                RefreshBook .utUserInterface, .utAccountBook, -1, -1
+                RefreshBook(.utUserInterface, .utAccountBook, -1, -1)
             End If
         End If
     End With
