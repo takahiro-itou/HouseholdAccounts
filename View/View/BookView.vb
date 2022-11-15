@@ -336,10 +336,11 @@ Dim lngStartYear As Integer, lngNumYears As Integer
 Dim lngStartMonth As Integer, lngStartDay As Integer
 Dim blnEnabled As Boolean, blnCancel As Boolean
 Dim lngToday As Integer, lngYear As Integer, lngOffset As Integer
-Dim lngMsgAns As VbMsgBoxResult
-Dim dtmToday As Date
+Dim dtmToday As System.DateTime
 Dim utDate As tParsedDate
-Dim objfDate As frmDate
+Dim objfDate As DateSelect
+Dim msgAns As System.Windows.Forms.DialogResult
+Dim dtmSelect As System.DateTime
 
     With utBookView
         blnEnabled = EnableAccountBook(.utAccountBook, True)
@@ -347,16 +348,18 @@ Dim objfDate As frmDate
         .bModifyCurrentBook = False
 
         '今日の日付を取得する
-        dtmToday = Date
-        lngYear = Year(dtmToday)
+        dtmToday = Now
+        lngYear = dtmToday.Year
 
         lngStartYear = GetAccountBookStartYear(.utAccountBook)
         lngNumYears = GetAccountBookNumYears(.utAccountBook)
     End With
 
     If ((lngStartYear = 0) Or (lngNumYears = 0)) Then
-        lngMsgAns = MsgBox("データの開始日と年数が指定されていません。" & vbCrLf & "今すぐ指定しますか？", vbYesNo)
-        If (lngMsgAns = vbNo) Then
+        msgAns = MessageBox.Show(
+            "データの開始日と年数が指定されていません。" & vbCrLf & "今すぐ指定しますか？", "Question",
+              MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If (msgAns = Windows.Forms.DialogResult.No) Then
             With utBookView
                 blnEnabled = EnableAccountBook(.utAccountBook, False)
                 .bBackupedBookFile = False
@@ -365,19 +368,21 @@ Dim objfDate As frmDate
             Exit Sub
         End If
 
-        Set objfDate = New frmDate
-        Load objfDate
+        objfDate = New DateSelect()
+        'Load objfDate
         With objfDate
-            .SetSelectDate(lngYear, Month(dtmToday), Day(dtmToday))
-            .Show vbModal, utBookView.oBookForm
+            .selectDate(dtmToday)
+            .ShowDialog(utBookView.oBookForm)
 
-            blnCancel = .IsCanceled()
-            lngStartYear = .GetSelectYear()
-            lngStartMonth = .GetSelectMonth()
-            lngStartDay = .GetSelectDay()
+            ' blnCancel = .IsCanceled()
+            dtmSelect = .getSelectedDate()
+            lngStartYear = dtmSelect.Year   ' .GetSelectYear()
+            lngStartMonth = dtmSelect.Month ' .GetSelectMonth()
+            lngStartDay = dtmSelect.Day     ' .GetSelectDay()
             lngNumYears = (lngYear - lngStartYear + 1)
+
+            .Dispose()
         End With
-        Unload objfDate
         objfDate = Nothing
 
         If (lngNumYears <= 0) Then lngNumYears = 0
@@ -401,7 +406,7 @@ Dim objfDate As frmDate
     '今日の日付を含む週を表示する
     With utBookView
         lngOffset = GetWeekday(lngYear, 1, 1)
-        lngToday = GetDayInYear(lngYear, Month(dtmToday), Day(dtmToday))
+        lngToday = GetDayInYear(lngYear, dtmToday.Month, dtmToday.Day)
         lngToday = lngToday + lngOffset
         GetDayFromIndex(utDate, lngYear, lngToday, lngOffset)
 
@@ -419,7 +424,7 @@ Dim objfDate As frmDate
         RefreshBook(.utUserInterface, .utAccountBook, -1, -1)
 
         'ウィンドウのキャプションを更新する
-        .oBookForm.Caption = UpdateWindowCaption(utBookView)
+        .oBookForm.Text = UpdateWindowCaption(utBookView)
     End With
 
     'メニューの状態を更新する
