@@ -447,7 +447,7 @@ Dim lngYear As Integer
 
     '出力ファイルの名前を確認する
     If (IsLegalOutputFileName(strFileName) = False) Then
-        MsgBox "保存できません。指定されたファイルまたはディレクトリに対する書き込み権限がありません"
+        MessageBox.Show("保存できません。指定されたファイルまたはディレクトリに対する書き込み権限がありません")
         Exit Sub
     End If
 
@@ -460,17 +460,17 @@ Dim lngYear As Integer
         'すでにファイルがあり、まだバックアップしていなければ、
         'バックアップをとる
         If ((Dir$(strFileName) <> "") And (.bBackupedBookFile = False)) Then
-            FileCopy strFileName, strFileName & "~"
+            FileCopy(strFileName, strFileName & "~")
             .bBackupedBookFile = True
         End If
 
         'データを集計する
         lngYear = .utUserInterface.nCurrentYear
-        WriteAccountBookSettings .utAccountBook
-        WriteAccountBookRecords .utAccountBook, lngYear
+        WriteAccountBookSettings(.utAccountBook)
+        WriteAccountBookRecords(.utAccountBook, lngYear)
 
         '指定されたファイルに保存する
-        SaveAccountBook .utAccountBook, strFileName
+        SaveAccountBook(.utAccountBook, strFileName)
 
         .sCurrentBookFile = strFileName
         .bModifyCurrentBook = False
@@ -479,7 +479,7 @@ Dim lngYear As Integer
     'ウィンドウのキャプションを更新する
     utBookView.oBookForm.Caption = UpdateWindowCaption(utBookView)
 
-    MsgBox "セーブは正常に完了しました。"
+    MessageBox.Show("セーブは正常に完了しました。")
 
 End Sub
 
