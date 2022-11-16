@@ -477,7 +477,7 @@ Dim lngYear As Integer
     End With
 
     'ウィンドウのキャプションを更新する
-    utBookView.oBookForm.Caption = UpdateWindowCaption(utBookView)
+    utBookView.oBookForm.Text = UpdateWindowCaption(utBookView)
 
     MessageBox.Show("セーブは正常に完了しました。")
 
