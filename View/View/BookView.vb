@@ -440,6 +440,46 @@ Public Sub SaveToFile(ByRef utBookView As tBookView,
 '[ IN] strFileName : ファイル名
 '[RET] なし
 '---------------------------------------------------------------------
+Dim lngYear As Integer
+
+    '家計簿オブジェクトの状態をチェックする
+    If (IsAccountBookEnabled(utBookView.utAccountBook) = False) Then Exit Sub
+
+    '出力ファイルの名前を確認する
+    If (IsLegalOutputFileName(strFileName) = False) Then
+        MsgBox "保存できません。指定されたファイルまたはディレクトリに対する書き込み権限がありません"
+        Exit Sub
+    End If
+
+    With utBookView
+        'ファイル名を現在の名前から変更した場合
+        If (strFileName <> .sCurrentBookFile) Then
+            .bBackupedBookFile = False
+        End If
+
+        'すでにファイルがあり、まだバックアップしていなければ、
+        'バックアップをとる
+        If ((Dir$(strFileName) <> "") And (.bBackupedBookFile = False)) Then
+            FileCopy strFileName, strFileName & "~"
+            .bBackupedBookFile = True
+        End If
+
+        'データを集計する
+        lngYear = .utUserInterface.nCurrentYear
+        WriteAccountBookSettings .utAccountBook
+        WriteAccountBookRecords .utAccountBook, lngYear
+
+        '指定されたファイルに保存する
+        SaveAccountBook .utAccountBook, strFileName
+
+        .sCurrentBookFile = strFileName
+        .bModifyCurrentBook = False
+    End With
+
+    'ウィンドウのキャプションを更新する
+    utBookView.oBookForm.Caption = UpdateWindowCaption(utBookView)
+
+    MsgBox "セーブは正常に完了しました。"
 
 End Sub
 
