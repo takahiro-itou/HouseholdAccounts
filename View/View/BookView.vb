@@ -428,6 +428,7 @@ Dim dtmSelect As System.DateTime
     End With
 
     'メニューの状態を更新する
+    EnableControls(utBookView)
 
 End Sub
 
