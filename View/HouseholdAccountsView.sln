@@ -13,7 +13,7 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wrapper.Net48", "Cli.Net4.8\Wrapper.Net48.vcxproj", "{4E90FA41-1BB3-45CA-8FB1-45A39EA26F84}"
 EndProject
 
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "View", "View\View.vbproj", "{420B55E8-66A4-450F-831E-7185C8E2F849}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "View", "View\View.vbproj", "{420B55E8-66A4-450F-831E-7185C8E2F849}"
 EndProject
 
 Global
