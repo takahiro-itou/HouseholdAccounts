@@ -463,7 +463,7 @@ Public Function StartupBookView(ByRef utBookView As tBookView,
 '---------------------------------------------------------------------
 
     With utBookView
-        Set .oBookForm = objBookForm
+        .oBookForm = objBookForm
     End With
 
     StartupBookView = True
