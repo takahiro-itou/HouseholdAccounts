@@ -18,32 +18,32 @@ Module StringTable
 '
 
 'ソート状態
-Public Const STRINGSORTNONE As Long = 0         'ソートなし
-Public Const STRINGSORTASCENDING As Long = 1    '昇順
+Public Const STRINGSORTNONE As Integer = 0         'ソートなし
+Public Const STRINGSORTASCENDING As Integer = 1    '昇順
 
 Public Structure tStringTable
-    Public nTableBufferSize As Long            'テーブル用のバッファサイズ
-    Public nNumEntry As Long                   '実際に格納されているデータ数
-    Public nSorted As Long                     'ソート状態
-    Public nEntryFlags() As Long               '各エントリのフラグ
+    Public nTableBufferSize As Integer            'テーブル用のバッファサイズ
+    Public nNumEntry As Integer                   '実際に格納されているデータ数
+    Public nSorted As Integer                     'ソート状態
+    Public nEntryFlags() As Integer               '各エントリのフラグ
     Public sTableEntries() As String           '文字列テーブル
-    Public nSortIndex() As Long                '昇順にソートしたときの、インデックステーブル
+    Public nSortIndex() As Integer                '昇順にソートしたときの、インデックステーブル
 End Structure
 
 Public Function FindString(ByRef utStringTable As tStringTable, _
-    ByVal strText As String) As Long
+    ByVal strText As String) As Integer
 '---------------------------------------------------------------------
 '[ IN] utStringTable: 文字列テーブル
 '[ IN] strText      : 検索する文字列
-'[RET] Long
+'[RET] Integer
 '  検索結果
 '[ACT]
 '  指定された文字列テーブルから、
 'strText で指定された文字列を検索し、そのインデックスを返す。
 '  見つからなければ、-1を返す。
 '---------------------------------------------------------------------
-Dim lngIndex As Long, lngResult As Long
-Dim lngLeft As Long, lngRight As Long, lngTarget As Long
+Dim lngIndex As Integer, lngResult As Integer
+Dim lngLeft As Integer, lngRight As Integer, lngTarget As Integer
 Dim strCheck As String
 
     With utStringTable
@@ -92,20 +92,20 @@ Dim strCheck As String
 End Function
 
 Public Function InsertStringToTable(ByRef utStringTable As tStringTable, _
-    ByVal strNewText As String) As Long
+    ByVal strNewText As String) As Integer
 '---------------------------------------------------------------------
 '[I/O] utStringTable: 文字列テーブル
 '[ IN] strNewText   : 新しく挿入するデータ
-'[RET] Long
+'[RET] Integer
 '  挿入したデータのインデックス
 '[ACT]
 '  指定した文字列テーブルに、新しいデータを挿入する。
 '  挿入された場合は、そのインデックスを返す。
 '  すでにデータが存在していた場合は何もせず、そのインデックスを返す。
 '---------------------------------------------------------------------
-Dim i As Long
-Dim lngIndex As Long, lngResult As Long, lngInsertPos As Long
-Dim lngLeft As Long, lngRight As Long, lngTarget As Long
+Dim i As Integer
+Dim lngIndex As Integer, lngResult As Integer, lngInsertPos As Integer
+Dim lngLeft As Integer, lngRight As Integer, lngTarget As Integer
 Dim strCheck As String
 
     '指定されたデータの検索、および挿入位置の決定を行う
@@ -193,17 +193,17 @@ Dim strCheck As String
 End Function
 
 Public Function ReadStringTable(ByRef utStringTable As tStringTable, _
-    ByVal lngFileNumber As Integer) As Long
+    ByVal lngFileNumber As Integer) As Integer
 '---------------------------------------------------------------------
 'ファイルから、文字列テーブルを読み込む
 '[OUT] utStringTable: 文字列テーブル
 '[ IN] lngFileNumber: ファイル番号
-'[RET] Long
+'[RET] Integer
 '---------------------------------------------------------------------
-Dim i As Long, lngCount As Long
-Dim lngSorted As Long
-Dim lngFlags As Long, lngLength As Long
-Dim lngFirstPos As Long, lngEndPos As Long
+Dim i As Integer, lngCount As Integer
+Dim lngSorted As Integer
+Dim lngFlags As Integer, lngLength As Integer
+Dim lngFirstPos As Integer, lngEndPos As Integer
 Dim strTemp As String
 Dim bytBuffer() As Byte
 
@@ -282,18 +282,18 @@ Public Sub SortStringTable(ByRef utStringTable As tStringTable)
 End Sub
 
 Public Function WriteStringTable(ByRef utStringTable As tStringTable, _
-    ByVal lngFileNumber As Integer) As Long
+    ByVal lngFileNumber As Integer) As Integer
 '---------------------------------------------------------------------
 'ファイルに、文字列テーブルを書き込む
 '[ IN] utStringTable: 文字列テーブル
 '[ IN] lngFileNumber: ファイル番号
-'[RET] Long
+'[RET] Integer
 '  書き込んだバイト数
 '---------------------------------------------------------------------
-Dim i As Long, lngCount As Long
-Dim lngSorted As Long, lngIndex As Long
-Dim lngFlags As Long, lngLength As Long, lngRecordSize As Long
-Dim lngFirstPos As Long, lngEndPos As Long
+Dim i As Integer, lngCount As Integer
+Dim lngSorted As Integer, lngIndex As Integer
+Dim lngFlags As Integer, lngLength As Integer, lngRecordSize As Integer
+Dim lngFirstPos As Integer, lngEndPos As Integer
 Dim strTemp As String
 Dim bytBuffer() As Byte
 
@@ -349,8 +349,8 @@ End Function
 Public Function TestStringTable(ByRef lpTable As tStringTable) As Boolean
 '---------------------------------------------------------------------
 '---------------------------------------------------------------------
-Dim i As Long
-Dim j0 As Long, j1 As Long
+Dim i As Integer
+Dim j0 As Integer, j1 As Integer
 
     For i = 1 To lpTable.nNumEntry - 1
         j0 = lpTable.nSortIndex(i - 1)
