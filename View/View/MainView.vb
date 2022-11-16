@@ -13,6 +13,9 @@
 
 Public Class MainView
 
+'家計簿ビュー(家計簿データとユーザーインターフェイスを含む)
+Private mutBookView As tBookView
+
 Private Const INI_SEC_MAIN_VIEW As String = "MainView"
 
 ''========================================================================
@@ -93,6 +96,16 @@ Private Sub mnuFileNew_Click(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    メニュー「ファイル」－「新規作成」
 ''--------------------------------------------------------------------
+
+    '家計簿オブジェクトを初期化する
+    If (CreateEmptyAccountBook(mutBookView.utAccountBook)) = False Then
+        MessageBox.Show("空の家計簿データの作成に失敗しました。必要なファイルが見つかりません。")
+        Exit Sub
+    End If
+
+    'ロード後の処理を行う
+    mutBookView.sCurrentBookFile = ""
+    PostLoadingFile(mutBookView)
 
 End Sub
 
