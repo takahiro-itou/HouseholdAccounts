@@ -462,6 +462,10 @@ Public Function StartupBookView(ByRef utBookView As tBookView,
 '  成功したらTrue, 失敗したら False
 '---------------------------------------------------------------------
 
+    With utBookView
+        Set .oBookForm = objBookForm
+    End With
+
     StartupBookView = True
 End Function
 
