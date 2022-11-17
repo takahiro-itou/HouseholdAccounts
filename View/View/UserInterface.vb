@@ -141,9 +141,9 @@ Dim blnResult As Boolean
     ExecuteCellAction = blnResult
 End Function
 
-Public Sub RefreshBook(ByRef utUI As tUserInterface, _
-    ByRef utBook As tAccountBook, _
-    ByVal lngLeftCol As Integer, ByVal lngTopRow As Integer)
+Public Sub RefreshBook(ByRef utUI As tUserInterface,
+        ByRef utBook As tAccountBook, _
+        ByVal lngLeftCol As Integer, ByVal lngTopRow As Integer)
 '---------------------------------------------------------------------
 '家計簿の表示を更新する
 '[I/O] utUI      : ユーザーインターフェイス
@@ -173,7 +173,7 @@ Dim rectSrc As System.Drawing.Rectangle
     End If
 
     With utUI
-        imgSrc = .oBookPicture.Image
+        imgSrc = .imgCanvas
 
         '指定された左端の行、上端の列がマイナスであれば、
         'スクロールバーの現在の値にセットする
