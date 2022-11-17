@@ -263,7 +263,8 @@ Public Sub initializeTables()
 ''    必要なテーブルを初期化する。
 ''--------------------------------------------------------------------
 
-#If NET6
+#If NET48
+#Else
     System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance)
 #End If
 
