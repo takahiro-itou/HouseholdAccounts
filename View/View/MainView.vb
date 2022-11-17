@@ -49,6 +49,11 @@ Private Sub MainView_Load(sender As Object, e As EventArgs) _
     Dim g As Graphics = Graphics.FromImage(picBook.Image)
 
     StartupBookView(mutBookView, Me)
+    With mutBookView
+        With .utUserInterface
+            .imgIcons = New Bitmap(g_appPath & "\Resource\Icons.bmp")
+        End With
+    End With
 
     g.FillRectangle(Brushes.Black, g.VisibleClipBounds)
     g.DrawString(DateTime.Now.ToLongTimeString(), _
