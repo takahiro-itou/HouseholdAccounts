@@ -152,6 +152,14 @@ Dim i As Integer
                 End With
             Next i
         End If
+
+        For i = 0 To lngItemBufferSize - 1
+            With .utItemDetailCounts(i)
+                ReDim Preserve .nDayTotal(MAXDAYS - 1)
+                ReDim Preserve .nWeekTotal(MAXWEEKS - 1)
+                ReDim Preserve .nMonthTotal(MAXMONTH)
+            End With
+        Next i
     End With
 
     ReallocAnnualRecordsBuffers = True
