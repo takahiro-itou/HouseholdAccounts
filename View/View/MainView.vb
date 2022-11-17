@@ -45,14 +45,16 @@ Dim lngDefaultHeight As Integer
     initializeTables()
     moveWindowToStartPosition(g_iniFileName, INI_SEC_MAIN_VIEW, Me, Nothing)
 
-    If picBook.Image Is Nothing Then
-        picBook.Image = New System.Drawing.Bitmap(200, 100)
-    End If
+    With picBook
+        If .Image Is Nothing Then
+            .Image = New System.Drawing.Bitmap(.Width, .Height)
+        End If
+    End With
     Dim g As Graphics = Graphics.FromImage(picBook.Image)
 
     StartupBookView(mutBookView, Me)
     With mutBookView
-        lngDefaultWidth = 16
+        lngDefaultWidth = 8
         lngDefaultHeight = 8
 
         With .utUserInterface
