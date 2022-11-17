@@ -217,7 +217,7 @@ Dim rectSrc As System.Drawing.Rectangle
         lngHeight = .nBookHeight - lngTop
         rectSrc = New System.Drawing.Rectangle(0, lngSrcY, lngWidth, lngHeight)
         grpDest.DrawImage(
-                imgSrc, lngTop + .nTopMargin, lngWidth,
+                imgSrc, .nLeftMargin, lngTop + .nTopMargin,
                 rectSrc, GraphicsUnit.Pixel)
 
         '残りの部分を表示する
