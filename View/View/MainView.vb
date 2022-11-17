@@ -40,6 +40,7 @@ Private Sub MainView_Load(sender As Object, e As EventArgs) _
     g_appPath = getAppPath()
     g_iniFileName = g_appPath & "\ApplicationSettings.ini"
 
+    initializeTables()
     moveWindowToStartPosition(g_iniFileName, INI_SEC_MAIN_VIEW, Me, Nothing)
 
     If picBook.Image Is Nothing Then
