@@ -81,7 +81,7 @@ Public Sub CleanupUserInterface(ByRef utUI As tUserInterface)
 
     With utUI
         .oBookPicture = Nothing
-        .oCanvasPicture = Nothing
+        .imgCanvas = Nothing
         .imgCell = Nothing
         .oIconsPicture = Nothing
         .oBookHScrollBar = Nothing
@@ -186,7 +186,7 @@ Dim rectSrc As System.Drawing.Rectangle
         lngSrcX = (lngLeftCol + BOOKFIXEDCOLS) * .nCellWidth
         lngSrcY = (lngTopRow + BOOKFIXEDROWS) * .nCellHeight
 
-        grpSrc = Graphics.FromImage(.oCanvasPicture.Image)
+        grpSrc = Graphics.FromImage(.imgCanvas)
         ' hSrcDC = .oCanvasPicture.hDC
 
         grpDest = Graphics.FromImage(.oBookPicture.Image)
@@ -424,7 +424,7 @@ Public Sub StartupUserInterface(ByRef utUI As tUserInterface, _
 
     With utUI
         .oBookPicture = picBook
-        .oCanvasPicture = picCanvas
+        ' .oCanvasPicture = picCanvas
         ' .oCellPicture = picCell
         .oIconsPicture = picIcons
         .oBookHScrollBar = hsbBook
@@ -475,7 +475,7 @@ Dim colorText As Color = Color.Black
         ReDim .utNowShowingDates(0 To NUMDAYSPERWEEK - 1)
 
         'ターゲットに描かれている内容をクリアする
-        Dim g As Graphics = Graphics.FromImage(.oCanvasPicture.Image)
+        Dim g As Graphics = Graphics.FromImage(.imgCanvas)
         g.Clear(Color.White)
         g.Dispose()
     End With
