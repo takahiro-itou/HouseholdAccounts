@@ -65,7 +65,10 @@ Dim lngDefaultHeight As Integer
         End With
         StartupUserInterface(
                 .utUserInterface, picBook,
-                Nothing, Nothing, Nothing, Nothing, Nothing, Nothing)
+                Nothing, Nothing, Nothing,
+                New HScrollBar(),
+                New VScrollBar(),
+                New System.Windows.Forms.StatusStrip())
     End With
 
     g.FillRectangle(Brushes.Black, g.VisibleClipBounds)
