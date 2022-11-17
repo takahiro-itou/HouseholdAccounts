@@ -48,6 +48,8 @@ Private Sub MainView_Load(sender As Object, e As EventArgs) _
     End If
     Dim g As Graphics = Graphics.FromImage(picBook.Image)
 
+    StartupBookView(mutBookView, Me)
+
     g.FillRectangle(Brushes.Black, g.VisibleClipBounds)
     g.DrawString(DateTime.Now.ToLongTimeString(), _
         SystemFonts.DefaultFont, Brushes.White, 10, 10)
