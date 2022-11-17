@@ -17,9 +17,9 @@ Module UserInterface
 'パブリックプロシージャ
 '
 
-Public Sub ChangeCellSize(ByRef utUI As tUserInterface, _
-    ByRef utBook As tAccountBook, _
-    ByVal lngNewWidth As Long, ByVal lngNewHeight As Long)
+Public Sub ChangeCellSize(ByRef utUI As tUserInterface,
+        ByRef utBook As tAccountBook,
+        ByVal lngNewWidth As Integer, ByVal lngNewHeight As Integer)
 '---------------------------------------------------------------------
 'セルの幅と高さを変更する
 '[I/O] utUI        : ユーザーインターフェイス
@@ -28,8 +28,8 @@ Public Sub ChangeCellSize(ByRef utUI As tUserInterface, _
 '[ IN] lngNewHeight: セルの高さ
 '[RET] なし
 '---------------------------------------------------------------------
-Dim lngCount As Long
-Dim lngCellWidth As Long, lngCellHeight As Long
+Dim lngCount As Integer
+Dim lngCellWidth As Integer, lngCellHeight As Integer
 
     If (False) Then
         lngCount = 32
@@ -59,10 +59,8 @@ Dim lngCellWidth As Long, lngCellHeight As Long
         .nRowsInSheet = .nBookHeight \ .nCellHeight
 
         'ピクチャボックスのサイズを変更する
-        With .oCellPicture
-            .Width = lngCellWidth * 4
-            .Height = lngCellHeight * 4
-        End With
+        .imgCell = New System.Drawing.Bitmap(
+                            lngCellWidth * 4, lngCellHeight * 4)
 
         With .oCanvasPicture
             .Width = (lngCellWidth * (BOOKNUMCOLUMNS + 1) + 16) * glngTwipsPerPixelX
@@ -84,7 +82,7 @@ Public Sub CleanupUserInterface(ByRef utUI As tUserInterface)
     With utUI
         .oBookPicture = Nothing
         .oCanvasPicture = Nothing
-        .oCellPicture = Nothing
+        .imgCell = Nothing
         .oIconsPicture = Nothing
         .oBookHScrollBar = Nothing
         .oBookVScrollBar = Nothing
@@ -93,7 +91,7 @@ Public Sub CleanupUserInterface(ByRef utUI As tUserInterface)
 End Sub
 
 Public Function ExecuteCellAction(ByRef utUI As tUserInterface, _
-    ByRef utBook As tAccountBook, ByVal lngX As Long, ByVal lngY As Long) As Boolean
+    ByRef utBook As tAccountBook, ByVal lngX As Integer, ByVal lngY As Integer) As Boolean
 '---------------------------------------------------------------------
 'セルに対するアクションを実行する
 '[I/O] utUI    : ユーザーインターフェイス
@@ -103,7 +101,7 @@ Public Function ExecuteCellAction(ByRef utUI As tUserInterface, _
 '[RET] Boolean
 '  何か変化が生じて画面を更新する必要があればTrue
 '---------------------------------------------------------------------
-Dim lngIndex As Long
+Dim lngIndex As Integer
 Dim blnExpand As Boolean
 Dim blnResult As Boolean
 
@@ -373,9 +371,9 @@ Public Sub SetScrollRange(ByRef utUI As tUserInterface)
 '[I/O] utUI: ユーザーインターフェイス
 '[RET] なし
 '---------------------------------------------------------------------
-Dim lngColumnsInSheet As Long
-Dim lngRowsInSheet As Long
-Dim lngNowShowingRows As Long
+Dim lngColumnsInSheet As Integer
+Dim lngRowsInSheet As Integer
+Dim lngNowShowingRows As Integer
 
     With utUI
         lngColumnsInSheet = .nColumnsInSheet
@@ -427,7 +425,7 @@ Public Sub StartupUserInterface(ByRef utUI As tUserInterface, _
     With utUI
         .oBookPicture = picBook
         .oCanvasPicture = picCanvas
-        .oCellPicture = picCell
+        ' .oCellPicture = picCell
         .oIconsPicture = picIcons
         .oBookHScrollBar = hsbBook
         .oBookVScrollBar = vsbBook
@@ -690,7 +688,7 @@ Dim rectSrc As System.Drawing.Rectangle
 
 
         '文字を表示する
-        With .oCellPicture
+        With .oBookPicture
             lngTextWidth = grpCell.MeasureString(strText, .Font).Width
 
             If (lngArrangeCol = ACLEFT) Then
@@ -701,7 +699,7 @@ Dim rectSrc As System.Drawing.Rectangle
                 CurrentX = lngTextAreaLeft + (lngTextAreaWidth - lngTextWidth) \ 2
             End If
             CurrentY = (lngHeight - utUI.nCharHeight) \ 2
-            .ForeColor = lngTextColor
+            ' .ForeColor = lngTextColor
         End With
         grpCell.DrawString(
                 strText, SystemFonts.DefaultFont, Brushes.Black,
@@ -888,7 +886,7 @@ Private Function UserInterfaceShowItem(ByRef utUI As tUserInterface, _
 '[ IN] lngYear     :
 '[ IN] lngMonth    :
 '[ IN] lngWeek     :
-'[RET] Long
+'[RET] Integer
 '  表示した項目の数
 '[ACT]
 '  ピクチャーボックスの指定位置に、
