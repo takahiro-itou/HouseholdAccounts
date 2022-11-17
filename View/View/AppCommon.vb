@@ -263,6 +263,10 @@ Public Sub initializeTables()
 ''    必要なテーブルを初期化する。
 ''--------------------------------------------------------------------
 
+#If NET6
+    System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance)
+#End If
+
     ReDim glngFirstDayTable(0 To 1, 0 To MAXMONTH + 1)
     glngFirstDayTable(0, 1) = 0
     glngFirstDayTable(0, 2) = 31
