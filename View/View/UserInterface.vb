@@ -62,10 +62,10 @@ Dim lngCellWidth As Integer, lngCellHeight As Integer
         .imgCell = New System.Drawing.Bitmap(
                             lngCellWidth * 4, lngCellHeight * 4)
 
-        With .oCanvasPicture
-            .Width = (lngCellWidth * (BOOKNUMCOLUMNS + 1) + 16) * glngTwipsPerPixelX
-            .Height = (lngCellHeight * (lngCount + BOOKFIXEDROWS + 1)) * glngTwipsPerPixelY
-        End With
+        .imgCanvas = New System.Drawing.Bitmap(
+                            (lngCellWidth * (BOOKNUMCOLUMNS + 1) + 16),
+                            (lngCellHeight * (lngCount + BOOKFIXEDROWS + 1))
+        )
     End With
 
     'スクロールバーの範囲を設定する
