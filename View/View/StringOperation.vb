@@ -32,7 +32,7 @@ Dim lpTemp() As Byte
 Dim strText As String
 
     '指定された範囲を文字列に変換する
-    cnvLastIndex = lngEnd - lngStart + 1
+    cnvLastIndex = lngEnd - lngStart
     ReDim lpTemp(cnvLastIndex)
     For i = 0 To cnvLastIndex
         c = lpBuffer(i + lngStart)
@@ -42,7 +42,7 @@ Dim strText As String
         End If
         lpTemp(i) = c
     Next i
-    strText = System.Text.Encoding.GetEncoding("utf8").GetString(lpTemp)
+    strText = System.Text.Encoding.GetEncoding("shift_jis").GetString(lpTemp)
 
     '変換結果を返す
     ByteToString = strText
