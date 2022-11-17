@@ -36,6 +36,8 @@ Private Sub MainView_Load(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    フォームのロードイベントハンドラ。
 ''--------------------------------------------------------------------
+Dim lngDefaultWidth As Integer
+Dim lngDefaultHeight As Integer
 
     g_appPath = getAppPath()
     g_iniFileName = g_appPath & "\ApplicationSettings.ini"
@@ -50,9 +52,20 @@ Private Sub MainView_Load(sender As Object, e As EventArgs) _
 
     StartupBookView(mutBookView, Me)
     With mutBookView
+        lngDefaultWidth = 16
+        lngDefaultHeight = 8
+
         With .utUserInterface
             .imgIcons = New Bitmap(g_appPath & "\Resource\Icons.bmp")
+            .nCharWidth = lngDefaultWidth
+            .nCharHeight = lngDefaultHeight
+            .nCellWidth = lngDefaultWidth * 12
+            .nCellHeight = lngDefaultHeight + 4
+            If (.nCellHeight < 18) Then .nCellHeight = 18
         End With
+        StartupUserInterface(
+                .utUserInterface, picBook,
+                Nothing, Nothing, Nothing, Nothing, Nothing, Nothing)
     End With
 
     g.FillRectangle(Brushes.Black, g.VisibleClipBounds)
