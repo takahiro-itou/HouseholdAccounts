@@ -83,7 +83,7 @@ Public Sub CleanupUserInterface(ByRef utUI As tUserInterface)
         .oBookPicture = Nothing
         .imgCanvas = Nothing
         .imgCell = Nothing
-        .oIconsPicture = Nothing
+        .imgIcons = Nothing
         .oBookHScrollBar = Nothing
         .oBookVScrollBar = Nothing
     End With
@@ -426,7 +426,7 @@ Public Sub StartupUserInterface(ByRef utUI As tUserInterface, _
         .oBookPicture = picBook
         ' .oCanvasPicture = picCanvas
         ' .oCellPicture = picCell
-        .oIconsPicture = picIcons
+        ' .oIconsPicture = picIcons
         .oBookHScrollBar = hsbBook
         .oBookVScrollBar = vsbBook
         .oInfoStatusBar = stbInfo

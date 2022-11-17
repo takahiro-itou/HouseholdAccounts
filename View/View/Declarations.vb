@@ -249,9 +249,6 @@ End Structure
 Public Structure tUserInterface
     '家計簿の表を表示する領域
     Public oBookPicture As PictureBox
-    Public oCanvasPicture As PictureBox
-    Public oCellPicture As PictureBox
-    Public oIconsPicture As PictureBox
 
     Public grpBook As System.Drawing.Graphics
     Public imgCanvas As System.Drawing.Bitmap
