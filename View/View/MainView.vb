@@ -180,7 +180,14 @@ Private Sub mnuViewToolBar_Click(sender As Object, e As EventArgs) _
 
 End Sub
 
-''========================================================================
+Private Sub picBook_MouseDoubleClick(sender As Object, e As MouseEventArgs) _
+    Handles picBook.MouseDoubleClick
+''--------------------------------------------------------------------
+''    セルをダブルクリックした時の処理。
+''--------------------------------------------------------------------
+    HandleSheetDoubleClickEvent(mutBookView)
+End Sub
+
 Private Sub picBook_MouseDown(sender As Object, e As MouseEventArgs) _
     Handles picBook.MouseDown
 ''--------------------------------------------------------------------
