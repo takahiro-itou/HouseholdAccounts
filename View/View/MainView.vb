@@ -180,4 +180,14 @@ Private Sub mnuViewToolBar_Click(sender As Object, e As EventArgs) _
 
 End Sub
 
+''========================================================================
+Private Sub picBook_MouseDown(sender As Object, e As MouseEventArgs) _
+    Handles picBook.MouseDown
+''--------------------------------------------------------------------
+''    マウスを押したセルを調べる。
+''--------------------------------------------------------------------
+    HandleSheetMouseDownEvent(
+            mutBookView, e.Button, Control.ModifierKeys, e.X, e.Y)
+End Sub
+
 End Class
