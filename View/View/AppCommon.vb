@@ -14,7 +14,7 @@
 Module AppCommon
 
 Public g_appRootDir As String
-Public g_appPath As String
+Public g_appRunPath As String
 Public g_iniFileName As String
 
 '解像度

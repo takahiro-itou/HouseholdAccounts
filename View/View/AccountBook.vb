@@ -257,7 +257,7 @@ Public Function CreateEmptyAccountBook(
 Dim blnResult As Boolean
 
     '空のデータをロードする
-    blnResult = OpenAccountBook(utBook, g_appPath & "\Resource\Empty.abd")
+    blnResult = OpenAccountBook(utBook, g_appRootDir & "\Resource\Empty.abd")
     If (blnResult = True) Then
         blnResult = ReadAccountBookSettings(utBook)
     End If
@@ -365,7 +365,7 @@ Dim strTempFileName As String, strIndexFileName As String
 
     With utBook
         'テンポラリファイルを置くディレクトリを決定する
-        strTempDir = g_appPath & "\Resource"
+        strTempDir = g_appRootDir & "\Resource"
         utBook.sTempFileDir = strTempDir
 
         '入力ファイルを開く

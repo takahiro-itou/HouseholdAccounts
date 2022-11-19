@@ -39,9 +39,9 @@ Private Sub MainView_Load(sender As Object, e As EventArgs) _
 Dim lngDefaultWidth As Integer
 Dim lngDefaultHeight As Integer
 
-    g_appPath = getAppPath()
-    g_iniFileName = g_appPath & "\ApplicationSettings.ini"
-    g_appRootDir = getRootDir(g_appPath, "bin")
+    g_appRunPath = getAppPath()
+    g_iniFileName = g_appRunPath & "\ApplicationSettings.ini"
+    g_appRootDir = getRootDir(g_appRunPath, "bin")
 
     initializeTables()
     moveWindowToStartPosition(g_iniFileName, INI_SEC_MAIN_VIEW, Me, Nothing)
@@ -59,7 +59,7 @@ Dim lngDefaultHeight As Integer
         lngDefaultHeight = 8
 
         With .utUserInterface
-            .imgIcons = New Bitmap(g_appPath & "\Resource\Icons.bmp")
+            .imgIcons = New Bitmap(g_appRootDir & "\Resource\Icons.bmp")
             .nCharWidth = lngDefaultWidth
             .nCharHeight = lngDefaultHeight
             .nCellWidth = lngDefaultWidth * 12
