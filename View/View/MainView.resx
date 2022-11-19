@@ -384,6 +384,31 @@
     <value>&amp;Tool Bar</value>
   </data>
 
+  <data name="&gt;&gt;picBook.Name" xml:space="preserve">
+    <value>picBook</value>
+  </data>
+  <data name="&gt;&gt;picBook.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;picBook.Parent" xml:space="preserve">
+    <value>splContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;picBook.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="picBook.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="picBook.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 68</value>
+  </data>
+  <data name="picBook.Size" type="System.Drawing.Size, System.Drawing">
+    <value>784, 344</value>
+  </data>
+  <data name="picBook.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+
   <data name="&gt;&gt;pnlView.Name" xml:space="preserve">
     <value>pnlView</value>
   </data>

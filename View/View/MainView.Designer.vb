@@ -45,6 +45,7 @@ Partial Class MainView
         Me.splContainer = New System.Windows.Forms.SplitContainer()
         Me.dgvTotal = New System.Windows.Forms.DataGridView()
         Me.dgvBalance = New System.Windows.Forms.DataGridView()
+        Me.picBook = New System.Windows.Forms.PictureBox()
 
         Me.mnuMain.SuspendLayout()
         Me.pnlView.SuspendLayout()
@@ -54,6 +55,7 @@ Partial Class MainView
         Me.splContainer.SuspendLayout()
         CType(Me.dgvTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvBalance, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picBook, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
 
         '
@@ -164,6 +166,7 @@ Partial Class MainView
         resources.ApplyResources(Me.pnlView, "pnlView")
         Me.pnlView.Controls.Add(Me.splContainer)
         Me.pnlView.Name = "pnlView"
+        Me.pnlView.Visible = False
 
         '
         'splContainer
@@ -211,11 +214,20 @@ Partial Class MainView
         Me.dgvBalance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
 
         '
+        'picBook
+        '
+        resources.ApplyResources(Me.picBook, "picBook")
+        Me.picBook.Name = "picBook"
+        Me.picBook.BackColor = System.Drawing.SystemColors.Window
+        Me.picBook.TabStop = False
+
+        '
         'MainView
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.Controls.Add(Me.pnlView)
+        Me.Controls.Add(Me.picBook)
         Me.Controls.Add(Me.stbMain)
         Me.Controls.Add(Me.tlbMain)
         Me.Controls.Add(Me.mnuMain)
@@ -231,6 +243,7 @@ Partial Class MainView
         Me.splContainer.ResumeLayout(False)
         CType(Me.dgvTotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvBalance, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picBook, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -242,6 +255,7 @@ Partial Class MainView
     Friend WithEvents dlgOpen As OpenFileDialog
     Friend WithEvents dlgSave As SaveFileDialog
 
+    Friend WithEvents picBook As PictureBox
     Friend WithEvents pnlView As Panel
     Friend WithEvents splContainer As SplitContainer
     Friend WithEvents stbMain As StatusStrip
