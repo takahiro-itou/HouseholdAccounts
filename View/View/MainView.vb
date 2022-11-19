@@ -41,6 +41,7 @@ Dim lngDefaultHeight As Integer
 
     g_appPath = getAppPath()
     g_iniFileName = g_appPath & "\ApplicationSettings.ini"
+    g_appRootDir = getRootDir(g_appPath, "bin")
 
     initializeTables()
     moveWindowToStartPosition(g_iniFileName, INI_SEC_MAIN_VIEW, Me, Nothing)
