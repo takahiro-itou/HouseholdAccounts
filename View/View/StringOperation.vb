@@ -241,6 +241,32 @@ Dim strNameTemp As String
     GetRelativePath = strTemp
 End Function
 
+Public Function getRootDir(
+        ByVal strFullPath As String,
+        ByVal stripDir As String) As String
+''--------------------------------------------------------------------
+''    指定したパスから特定のディレクトリまでを除外する。
+''--------------------------------------------------------------------
+Dim strWorkPath As String
+Dim strDir As String
+Dim strFile As String
+
+    strWorkPath = strFullPath
+
+    While strWorkPath <> ""
+        strDir = System.IO.Path.GetDirectoryName(strWorkPath)
+        strFile = System.IO.Path.GetFileName(strWorkPath)
+        If strFile = stripDir Then
+            GetRootDir = strDir
+            Exit Function
+        End If
+        strWorkPath = strDir
+    End While
+
+    GetRootDir = strFullPath
+
+End Function
+
 Public Function ReplaceConstant(ByVal strText As String, _
     ByRef strConstName() As String, ByRef strConstValue() As String) As String
 '---------------------------------------------------------------------
