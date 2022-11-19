@@ -13,6 +13,9 @@
 
 Public Class MainView
 
+'家計簿ビュー(家計簿データとユーザーインターフェイスを含む)
+Private mutBookView As tBookView
+
 Private Const INI_SEC_MAIN_VIEW As String = "MainView"
 
 ''========================================================================
@@ -33,11 +36,49 @@ Private Sub MainView_Load(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    フォームのロードイベントハンドラ。
 ''--------------------------------------------------------------------
+Dim lngDefaultWidth As Integer
+Dim lngDefaultHeight As Integer
 
-    g_appPath = getAppPath()
-    g_iniFileName = g_appPath & "\ApplicationSettings.ini"
+    g_appRunPath = getAppPath()
+    g_iniFileName = g_appRunPath & "\ApplicationSettings.ini"
+    g_appRootDir = getRootDir(g_appRunPath, "bin")
 
+    initializeTables()
     moveWindowToStartPosition(g_iniFileName, INI_SEC_MAIN_VIEW, Me, Nothing)
+
+    With picBook
+        If .Image Is Nothing Then
+            .Image = New System.Drawing.Bitmap(.Width, .Height)
+        End If
+    End With
+    Dim g As Graphics = Graphics.FromImage(picBook.Image)
+
+    StartupBookView(mutBookView, Me)
+    With mutBookView
+        lngDefaultWidth = 8
+        lngDefaultHeight = 8
+
+        With .utUserInterface
+            .imgIcons = New Bitmap(g_appRootDir & "\Resources\Icons.bmp")
+            .nCharWidth = lngDefaultWidth
+            .nCharHeight = lngDefaultHeight
+            .nCellWidth = lngDefaultWidth * 12
+            .nCellHeight = lngDefaultHeight + 4
+            If (.nCellHeight < 18) Then .nCellHeight = 18
+        End With
+        StartupUserInterface(
+                .utUserInterface, picBook,
+                Nothing, Nothing, Nothing,
+                New HScrollBar(),
+                New VScrollBar(),
+                New System.Windows.Forms.StatusStrip())
+    End With
+
+    g.FillRectangle(Brushes.Black, g.VisibleClipBounds)
+    g.DrawString(DateTime.Now.ToLongTimeString(), _
+        SystemFonts.DefaultFont, Brushes.White, 10, 10)
+    g.Dispose()
+    picBook.Invalidate()
 
 End Sub
 
@@ -82,6 +123,16 @@ Private Sub mnuFileNew_Click(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    メニュー「ファイル」－「新規作成」
 ''--------------------------------------------------------------------
+
+    '家計簿オブジェクトを初期化する
+    If (CreateEmptyAccountBook(mutBookView.utAccountBook)) = False Then
+        MessageBox.Show("空の家計簿データの作成に失敗しました。必要なファイルが見つかりません。")
+        Exit Sub
+    End If
+
+    'ロード後の処理を行う
+    mutBookView.sCurrentBookFile = ""
+    PostLoadingFile(mutBookView)
 
 End Sub
 
@@ -128,6 +179,23 @@ Private Sub mnuViewToolBar_Click(sender As Object, e As EventArgs) _
 ''    メニュー「表示」－「ツールバー」
 ''--------------------------------------------------------------------
 
+End Sub
+
+Private Sub picBook_MouseDoubleClick(sender As Object, e As MouseEventArgs) _
+    Handles picBook.MouseDoubleClick
+''--------------------------------------------------------------------
+''    セルをダブルクリックした時の処理。
+''--------------------------------------------------------------------
+    HandleSheetDoubleClickEvent(mutBookView)
+End Sub
+
+Private Sub picBook_MouseDown(sender As Object, e As MouseEventArgs) _
+    Handles picBook.MouseDown
+''--------------------------------------------------------------------
+''    マウスを押したセルを調べる。
+''--------------------------------------------------------------------
+    HandleSheetMouseDownEvent(
+            mutBookView, e.Button, Control.ModifierKeys, e.X, e.Y)
 End Sub
 
 End Class
