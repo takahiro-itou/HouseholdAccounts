@@ -257,7 +257,7 @@ Public Function CreateEmptyAccountBook(
 Dim blnResult As Boolean
 
     '空のデータをロードする
-    blnResult = OpenAccountBook(utBook, g_appRootDir & "\Resource\Empty.abd")
+    blnResult = OpenAccountBook(utBook, g_appRootDir & "\Resources\Empty.abd")
     If (blnResult = True) Then
         blnResult = ReadAccountBookSettings(utBook)
     End If
