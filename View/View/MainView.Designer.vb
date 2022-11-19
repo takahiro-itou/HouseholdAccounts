@@ -226,7 +226,7 @@ Partial Class MainView
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.Controls.Add(Me.pnlView)
+        ' Me.Controls.Add(Me.pnlView)
         Me.Controls.Add(Me.picBook)
         Me.Controls.Add(Me.stbMain)
         Me.Controls.Add(Me.tlbMain)
