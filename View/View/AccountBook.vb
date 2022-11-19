@@ -365,7 +365,7 @@ Dim strTempFileName As String, strIndexFileName As String
 
     With utBook
         'テンポラリファイルを置くディレクトリを決定する
-        strTempDir = g_appRootDir & "\Resource"
+        strTempDir = g_appRootDir & "\Resources"
         utBook.sTempFileDir = strTempDir
 
         '入力ファイルを開く

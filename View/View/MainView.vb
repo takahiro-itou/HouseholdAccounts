@@ -59,7 +59,7 @@ Dim lngDefaultHeight As Integer
         lngDefaultHeight = 8
 
         With .utUserInterface
-            .imgIcons = New Bitmap(g_appRootDir & "\Resource\Icons.bmp")
+            .imgIcons = New Bitmap(g_appRootDir & "\Resources\Icons.bmp")
             .nCharWidth = lngDefaultWidth
             .nCharHeight = lngDefaultHeight
             .nCellWidth = lngDefaultWidth * 12
