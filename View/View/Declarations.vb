@@ -108,22 +108,6 @@ Public Const BOOKNUMCOLUMNS As Integer = BOOKFIXEDCOLS + COLBUDGETBALANCE + 1
 
 '*****************************************************************************
 '
-'家計簿内の各項目、口座(現金残高を含む)
-'
-
-'項目一覧
-Public Structure tBookItems
-    Public nItemBufferSize As Integer                '項目用バッファサイズ
-    Public nRegisteredItemCount As Integer            '登録済み項目数
-    Public nRootItemCount As Integer                  'ルートになる項目の数
-    Public nFlags() As Integer                       '項目のフラグ
-    Public utItemEntries() As Wrapper.BookItemEntry     '項目データ
-    Public nInnerTaxItemHandle As Integer             '「内税」項目のハンドル
-    Public nOuterTaxItemHandle As Integer            '「外税」項目のハンドル
-End Structure
-
-'*****************************************************************************
-'
 '集計されたデータの情報
 '
 
