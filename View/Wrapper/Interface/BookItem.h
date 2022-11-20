@@ -24,5 +24,40 @@
 
 namespace  Wrapper  {
 
+//========================================================================
+//
+//    Type Definitions.
+//
+
+//----------------------------------------------------------------
+/**
+**    データ項目。
+**/
+
+public ref  class  BookItemEntry
+{
+public:
+
+    /**   親項目のハンドル。    **/
+    property    int     nParentHandle;
+
+    /**   項目名の ID  (文字列テーブル内のインデックス) 。  **/
+    property    int     nItemNameID;
+
+    /**   項目名。  **/
+    property    System::String^     sItemName;
+
+    /**   サブ項目数。  **/
+    property    int     nSubItemCount;
+
+    /**   サブ項目のハンドル (インデックス) 。  **/
+    property    cli::array<int, 1>^     nSubItems;
+
+    /**   開始年月日 (残高の項目のみ) 。    **/
+    property    int     nStartDate;
+
+    /**   開始時の残高 (残高の項目のみ) 。  **/
+    property    int     nStartBalance;
+};
 
 }   //  End of namespace  Wrapper
