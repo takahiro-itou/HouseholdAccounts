@@ -22,7 +22,7 @@
 
 #include    "HouseholdAccounts/Common/AccountsTypes.h"
 
-namespace  AccountsWrapper  {
+namespace  Wrapper  {
 
 public  enum class  ErrCode
 {
@@ -33,4 +33,4 @@ public  enum class  ErrCode
     ERR_INDEX_OUT_OF_RANGE  = HouseholdAccounts::ERR_INDEX_OUT_OF_RANGE
 };
 
-}   //  End of namespace  AccountsWrapper
+}   //  End of namespace  Wrapper

@@ -12,8 +12,17 @@
 **                                                                      **
 *************************************************************************/
 
-#include    "PreCompile.h"
+/**
+**      Type Definitions.
+**
+**      @file       Interface/BookItem.h
+**/
 
-#include    "HouseholdAccountsWrapper.h"
+#pragma     once
 
-#include    "Interface/BookItem.h"
+#include    "HouseholdAccounts/Common/AccountsTypes.h"
+
+namespace  Wrapper  {
+
+
+}   //  End of namespace  Wrapper
