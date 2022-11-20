@@ -220,7 +220,7 @@ Dim i As Integer, lngNew As Integer
 Dim j As Integer, lngCount As Integer, lngChildHandle As Integer
 Dim lngFlags() As Integer
 Dim lngSubItems() As Integer, lngCheck() As Integer
-Dim utItems() As tBookItemEntry
+Dim utItems() As Wrapper.BookItemEntry
 
     lngItemBufferSize = utBookItems.nItemBufferSize
 

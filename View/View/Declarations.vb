@@ -128,7 +128,7 @@ Public Structure tBookItems
     Public nRegisteredItemCount As Integer            '登録済み項目数
     Public nRootItemCount As Integer                  'ルートになる項目の数
     Public nFlags() As Integer                       '項目のフラグ
-    Public utItemEntries() As tBookItemEntry       '項目データ
+    Public utItemEntries() As Wrapper.BookItemEntry     '項目データ
     Public nInnerTaxItemHandle As Integer             '「内税」項目のハンドル
     Public nOuterTaxItemHandle As Integer            '「外税」項目のハンドル
 End Structure
