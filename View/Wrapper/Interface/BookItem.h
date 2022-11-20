@@ -13,7 +13,7 @@
 *************************************************************************/
 
 /**
-**      Type Definitions.
+**      An Interface of BookItem class(es).
 **
 **      @file       Interface/BookItem.h
 **/
