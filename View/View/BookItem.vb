@@ -34,17 +34,6 @@ Public Sub BookItemExpandItem(
     End With
 End Sub
 
-Public Function BookItemGetItemBufferSize(
-        ByRef utBookItems As Wrapper.BookItems)
-'---------------------------------------------------------------------
-'項目用のバッファのサイズを得る
-'[ IN] utBookItems : 項目一覧データ
-'[RET] Long
-'  項目用バッファのサイズ
-'---------------------------------------------------------------------
-    BookItemGetItemBufferSize = utBookItems.nItemBufferSize
-End Function
-
 Public Function BookItemGetItemExpanded(
         ByRef utBookItems As Wrapper.BookItems,
         ByVal lngItemIndex As Integer) As Boolean
