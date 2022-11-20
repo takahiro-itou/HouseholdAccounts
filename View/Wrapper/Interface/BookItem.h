@@ -34,7 +34,7 @@ namespace  Wrapper  {
 **    データ項目。
 **/
 
-public ref  class  BookItemEntry
+public value struct BookItemEntry
 {
 public:
 

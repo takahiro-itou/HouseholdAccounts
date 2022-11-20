@@ -133,7 +133,7 @@
     <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h" />
     <ClInclude Include="..\Wrapper\Resource.h" />
     <ClInclude Include="..\Wrapper\PreCompile.h" />
-    <ClInclude Include="..\Wrapper\Interace\BookItem.h" />
+    <ClInclude Include="..\Wrapper\Interface\BookItem.h" />
   </ItemGroup>
 
   <ItemGroup>
