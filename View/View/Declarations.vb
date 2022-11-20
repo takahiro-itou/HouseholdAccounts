@@ -111,17 +111,6 @@ Public Const BOOKNUMCOLUMNS As Integer = BOOKFIXEDCOLS + COLBUDGETBALANCE + 1
 '家計簿内の各項目、口座(現金残高を含む)
 '
 
-'データ項目
-Public Structure tBookItemEntry
-    Public nParentHandle As Integer               '親項目のハンドル
-    Public nItemNameID As Integer                 '項目名のID(文字列テーブル内のインデックス)
-    Public sItemName As String                 '項目名
-    Public nSubItemCount As Integer               'サブ項目数
-    Public nSubItems() As Integer                 'サブ項目のハンドル(インデックス)
-    Public nStartDate As Integer                  '開始年月日(残高の項目のみ)
-    Public nStartBalance As Integer               '開始時の残高(残高の項目のみ)
-End Structure
-
 '項目一覧
 Public Structure tBookItems
     Public nItemBufferSize As Integer                '項目用バッファサイズ
