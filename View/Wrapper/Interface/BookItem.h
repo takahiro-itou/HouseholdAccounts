@@ -60,4 +60,33 @@ public:
     property    int     nStartBalance;
 };
 
+//----------------------------------------------------------------
+/**
+**    項目一覧。
+**/
+
+public value struct BookItems
+{
+    /**   項目用バッファサイズ。    **/
+    property    int     nItemBufferSize;
+
+    /**   登録済み項目数。          **/
+    property    int     nRegisteredItemCount;
+
+    /**   ルートになる項目の数。    **/
+    property    int     nRootItemCount;
+
+    /**   項目のフラグ。            **/
+    property    cli::array<int, 1>^         nFlags;
+
+    /**   項目データ。              **/
+    property    cli::array<BookItemEntry>^  utItemEntries;
+
+    /**   「内税」項目のハンドル。  **/
+    property    int     nInnerTaxItemHandle;
+
+    /**   「外税」項目のハンドル。  **/
+    property    int     nOuterTaxItemHandle;
+};
+
 }   //  End of namespace  Wrapper
