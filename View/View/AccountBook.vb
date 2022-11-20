@@ -15,7 +15,7 @@ Module AccountBook
 Public gutTempBook As tAccountBook
 
 Public Function AccountBookUpdateItemHandleInYearRecord(
-        ByRef lpBookItems As tBookItems,
+        ByRef lpBookItems As Wrapper.BookItems,
         ByRef lpNewIndex() As Integer,
         ByRef utYearRecord As tAnnualRecords) As Integer
 '---------------------------------------------------------------------

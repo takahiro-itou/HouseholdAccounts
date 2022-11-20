@@ -215,7 +215,7 @@ Public Structure tAccountBook
     Public utStartDate As tParsedDate
 
     '項目データと年間レコード
-    Public utBookItems As tBookItems
+    Public utBookItems As Wrapper.BookItems
     Public nCurrentYear As Integer                    '一年分ずつバッファに記憶する
     Public nNumWeeks As Integer                       'この年の週数
     Public utAnnualRecords As tAnnualRecords       'この年のレコード

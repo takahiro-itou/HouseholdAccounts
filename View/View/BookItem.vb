@@ -12,8 +12,9 @@ Module BookItem
 ' This file is written in 2006/09/23 - 2008/01/06
 '*****************************************************************************
 
-Public Sub BookItemExpandItem(ByRef utBookItems As tBookItems, _
-    ByVal lngItemIndex As Integer, ByVal blnExpanded As Boolean)
+Public Sub BookItemExpandItem(
+        ByRef utBookItems As Wrapper.BookItems,
+        ByVal lngItemIndex As Integer, ByVal blnExpanded As Boolean)
 '---------------------------------------------------------------------
 '指定した項目を展開したり、閉じたりする
 '[I/O] utBookItems : 項目一覧データ
@@ -33,7 +34,8 @@ Public Sub BookItemExpandItem(ByRef utBookItems As tBookItems, _
     End With
 End Sub
 
-Public Function BookItemGetItemBufferSize(ByRef utBookItems As tBookItems)
+Public Function BookItemGetItemBufferSize(
+        ByRef utBookItems As Wrapper.BookItems)
 '---------------------------------------------------------------------
 '項目用のバッファのサイズを得る
 '[ IN] utBookItems : 項目一覧データ
@@ -43,8 +45,9 @@ Public Function BookItemGetItemBufferSize(ByRef utBookItems As tBookItems)
     BookItemGetItemBufferSize = utBookItems.nItemBufferSize
 End Function
 
-Public Function BookItemGetItemExpanded(ByRef utBookItems As tBookItems, _
-    ByVal lngItemIndex As Integer) As Boolean
+Public Function BookItemGetItemExpanded(
+        ByRef utBookItems As Wrapper.BookItems,
+        ByVal lngItemIndex As Integer) As Boolean
 '---------------------------------------------------------------------
 '指定した項目が、展開されているかを返す
 '[ IN] utBookItems : 項目一覧データ
@@ -59,8 +62,9 @@ Dim lngFlags As Integer
     BookItemGetItemExpanded = (lngFlags And ITEM_FLAG_EXPANDED)
 End Function
 
-Public Function BookItemGetItemFlags(ByRef utBookItems As tBookItems, _
-    ByVal lngItemIndex As Integer) As Long
+Public Function BookItemGetItemFlags(
+        ByRef utBookItems As Wrapper.BookItems,
+        ByVal lngItemIndex As Integer) As Long
 '---------------------------------------------------------------------
 '項目のフラグを得る
 '[ IN] utBookItems : 項目一覧データ
@@ -73,8 +77,9 @@ Dim lngFlags As Integer
     BookItemGetItemFlags = lngFlags
 End Function
 
-Public Function BookItemGetItemName(ByRef utBookItems As tBookItems, _
-    ByVal lngItemIndex As Integer) As String
+Public Function BookItemGetItemName(
+        ByRef utBookItems As Wrapper.BookItems,
+        ByVal lngItemIndex As Integer) As String
 '---------------------------------------------------------------------
 '項目の名前を得る
 '[ IN] utBookItems : 項目一覧データ
@@ -87,8 +92,9 @@ Dim strName As String
     BookItemGetItemName = strName
 End Function
 
-Public Function BookItemGetItemType(ByRef utBookItems As tBookItems, _
-    ByVal lngItemIndex As Integer) As Integer
+Public Function BookItemGetItemType(
+        ByRef utBookItems As Wrapper.BookItems,
+        ByVal lngItemIndex As Integer) As Integer
 '---------------------------------------------------------------------
 '項目の種類を返す
 '[ IN] utBookItems : 項目一覧データ
@@ -114,8 +120,9 @@ Dim lngParentHandle As Integer
     BookItemGetItemType = lngType
 End Function
 
-Public Function BookItemGetParentItemHandle(ByRef utBookItems As tBookItems, _
-    ByVal lngItemIndex As Integer) As Integer
+Public Function BookItemGetParentItemHandle(
+        ByRef utBookItems As Wrapper.BookItems,
+        ByVal lngItemIndex As Integer) As Integer
 '---------------------------------------------------------------------
 '項目の親項目のハンドルを返す
 '[ IN] utBookItems : 項目一覧データ
@@ -128,7 +135,8 @@ Dim lngParentHandle As Integer
     BookItemGetParentItemHandle = lngParentHandle
 End Function
 
-Public Function BookItemGetRegisteredItemCount(ByRef utBookItems As tBookItems) As Integer
+Public Function BookItemGetRegisteredItemCount(
+        ByRef utBookItems As Wrapper.BookItems) As Integer
 '---------------------------------------------------------------------
 '使用済みの項目数を返す
 '[ IN] utBookItems : 項目一覧データ
@@ -138,7 +146,7 @@ Public Function BookItemGetRegisteredItemCount(ByRef utBookItems As tBookItems) 
 End Function
 
 Public Function BookItemGetRootItemCount(
-        ByRef utBookItems As tBookItems) As Integer
+        ByRef utBookItems As Wrapper.BookItems) As Integer
 '---------------------------------------------------------------------
 'ルートにある項目数を返す
 '[ IN] utBookItems : 項目一覧データ
@@ -147,8 +155,9 @@ Public Function BookItemGetRootItemCount(
     BookItemGetRootItemCount = utBookItems.nRootItemCount
 End Function
 
-Public Function BookItemGetRootItemHandle(ByRef utBookItems As tBookItems, _
-    ByVal lngItemIndex As Integer) As Integer
+Public Function BookItemGetRootItemHandle(
+        ByRef utBookItems As Wrapper.BookItems,
+        ByVal lngItemIndex As Integer) As Integer
 '---------------------------------------------------------------------
 '項目のルート項目のハンドルを返す
 'lngItemIndexがルート項目を示している場合は、それ自身を返す
@@ -170,8 +179,9 @@ Dim lngParentHandle As Integer
     BookItemGetRootItemHandle = lngItemIndex
 End Function
 
-Public Function BookItemGetSubItemCount(ByRef utBookItems As tBookItems, _
-    ByVal lngItemIndex As Integer) As Integer
+Public Function BookItemGetSubItemCount(
+        ByRef utBookItems As Wrapper.BookItems,
+        ByVal lngItemIndex As Integer) As Integer
 '---------------------------------------------------------------------
 '項目が持つサブ項目の個数を返す
 '[ IN] utBookItems : 項目一覧データ
@@ -184,7 +194,8 @@ Dim lngCount As Integer
     BookItemGetSubItemCount = lngCount
 End Function
 
-Public Function BookItemGetSubItemHandle(ByRef utBookItems As tBookItems, _
+Public Function BookItemGetSubItemHandle(
+        ByRef utBookItems As Wrapper.BookItems,
         ByVal lngItemIndex As Integer,
         ByVal lngSubItemIndex As Integer) As Integer
 '---------------------------------------------------------------------
@@ -200,7 +211,8 @@ Dim lngSubItemHandle As Integer
     BookItemGetSubItemHandle = lngSubItemHandle
 End Function
 
-Public Function BookItemRelocateItems(ByRef utBookItems As tBookItems,
+Public Function BookItemRelocateItems(
+        ByRef utBookItems As Wrapper.BookItems,
         ByRef lpNewIndex() As Integer) As Integer
 '---------------------------------------------------------------------
 '家計簿の項目を並べなおす
