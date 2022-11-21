@@ -147,7 +147,7 @@ End Structure
 Public Structure tReceipt
     Public nFlags As Integer                  'フラグ
     Public nNumGoods As Integer               '購入した商品の数
-    Public utGoods() As tGoods             '購入した商品のデータ
+    Public utGoods() As Wrapper.Goods         '購入した商品のデータ
     Public nSubTotal As Integer               '小計
     Public nInsideTax As Integer              '内税
     Public nOutsideTax As Integer             '外税
