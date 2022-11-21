@@ -24,4 +24,48 @@
 
 namespace  Wrapper  {
 
+//========================================================================
+//
+//    １回の買い物 (レシート１枚) の情報。
+//
+
+//========================================================================
+/**
+**    １個の商品。
+**/
+
+public value struct Goods
+{
+public:
+
+    /**   ルートの項目インデックス。    **/
+    property    int     nRootItemType;
+
+    /**   項目インデックス。            **/
+    property    int     nItemType;
+
+    /**   商品名の ID  (文字列テーブル内のインデックス) 。  **/
+    property    int     nGoodsNameID;
+
+    /**   商品名。  **/
+    property    System::String^     sGoodsName;
+
+    /**   単価。    **/
+    property    int     nUnitPrice;
+
+    /**   数量。    **/
+    property    int     nQuantity;
+
+    /**   小計。    **/
+    property    int     nSubTotal;
+
+    /**   予約。    **/
+    property    int     nReserved0;
+};
+
+//========================================================================
+/**
+**    １回の買い物 (レシート１枚) のデータ。
+**/
+
 }   //  End of namespace  Wrapper
