@@ -76,7 +76,7 @@ public:
     property    int     nFlags;
 
     /**   購入した商品の数。        **/
-    property    int     nNumGoods
+    property    int     nNumGoods;
 
     /**   購入した商品のデータ。    **/
     property    cli::array<Goods, 1>^   utGoods;

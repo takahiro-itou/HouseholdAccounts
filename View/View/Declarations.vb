@@ -150,7 +150,7 @@ End Structure
 Public Structure tOneDayReceipts
     Public nDate As Integer               '日付
     Public nNumReceipt As Integer         'レシートの枚数
-    Public utReceipts() As tReceipt    '各レシート
+    Public utReceipts() As Wrapper.Receipt      '各レシート
 End Structure
 
 '１年分 のデータ
