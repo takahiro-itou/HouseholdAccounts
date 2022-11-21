@@ -131,18 +131,6 @@ End Structure
 '１回の買い物(レシート１枚)の情報
 '
 
-'１個の商品
-Public Structure tGoods
-    Public nRootItemType As Integer           'ルートの項目インデックス
-    Public nItemType As Integer               '項目インデックス
-    Public nGoodsNameID As Integer            '商品名のID(文字列テーブル内のインデックス)
-    Public sGoodsName As String            '商品名
-    Public nUnitPrice As Integer              '単価
-    Public nQuantity As Integer               '数量
-    Public nSubTotal As Integer               '小計
-    Public nReserved0 As Integer              '予約
-End Structure
-
 '１回の買い物(レシート１枚)
 Public Structure tReceipt
     Public nFlags As Integer                  'フラグ
