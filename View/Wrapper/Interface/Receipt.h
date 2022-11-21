@@ -106,4 +106,23 @@ public:
     property    int     nReserved1;
 };
 
+//========================================================================
+/**
+**    １日の買い物。
+**/
+
+public value struct OneDayReceipts
+{
+public:
+
+    /**   日付。            **/
+    property    int     nDate;
+
+    /**   レシートの枚数。  **/
+    property    int     nNumReceipt;
+
+    /**   各レシート。      **/
+    property    cli::array<Receipt, 1>^     utReceipts;
+};
+
 }   //  End of namespace  Wrapper
