@@ -131,21 +131,6 @@ End Structure
 '１回の買い物(レシート１枚)の情報
 '
 
-'１回の買い物(レシート１枚)
-Public Structure tReceipt
-    Public nFlags As Integer                  'フラグ
-    Public nNumGoods As Integer               '購入した商品の数
-    Public utGoods() As Wrapper.Goods         '購入した商品のデータ
-    Public nSubTotal As Integer               '小計
-    Public nInsideTax As Integer              '内税
-    Public nOutsideTax As Integer             '外税
-    Public nTotal As Integer                  '合計
-    Public nInsideTaxItemType As Integer      '内税を加える項目インデックス
-    Public nOutsideTaxItemType As Integer     '外税を加える項目インデックス
-    Public nReserved0 As Integer              '予約
-    Public nReserved1 As Integer              '予約
-End Structure
-
 '１日の買い物
 Public Structure tOneDayReceipts
     Public nDate As Integer               '日付
