@@ -147,7 +147,7 @@ Public Structure tAnnualRecords
     Public utItemDetailCounts() As tBookItemDetailCounts
 
     'レシートデータ
-    Public utDayRecords() As tOneDayReceipts       'その年の各日のレコード
+    Public utDayRecords() As Wrapper.OneDayReceipts     'その年の各日のレコード
 End Structure
 
 '*****************************************************************************
