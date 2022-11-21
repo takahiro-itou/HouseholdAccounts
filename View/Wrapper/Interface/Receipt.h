@@ -68,4 +68,42 @@ public:
 **    １回の買い物 (レシート１枚) のデータ。
 **/
 
+public value struct Receipt
+{
+public:
+
+    /**   フラグ。  **/
+    property    int     nFlags;
+
+    /**   購入した商品の数。        **/
+    property    int     nNumGoods
+
+    /**   購入した商品のデータ。    **/
+    property    cli::array<Goods, 1>^   utGoods;
+
+    /**   小計。    **/
+    property    int     nSubTotal;
+
+    /**   内税。    **/
+    property    int     nInsideTax;
+
+    /**   外税。    **/
+    property    int     nOutsideTax;
+
+    /**   合計。    **/
+    property    int     nTotal;
+
+    /**   内税を加える項目インデックス。    **/
+    property    int     nInsideTaxItemType;
+
+    /**   外税を加える項目インデックス。    **/
+    property    int     nOutsideTaxItemType;
+
+    /**   予約。    **/
+    property    int     nReserved0;
+
+    /**   予約。    **/
+    property    int     nReserved1;
+};
+
 }   //  End of namespace  Wrapper
