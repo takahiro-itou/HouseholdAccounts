@@ -131,13 +131,6 @@ End Structure
 '１回の買い物(レシート１枚)の情報
 '
 
-'１日の買い物
-Public Structure tOneDayReceipts
-    Public nDate As Integer               '日付
-    Public nNumReceipt As Integer         'レシートの枚数
-    Public utReceipts() As Wrapper.Receipt      '各レシート
-End Structure
-
 '１年分 のデータ
 Public Structure tAnnualRecords
     Public nItemBufferSize As Integer
