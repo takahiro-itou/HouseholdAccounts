@@ -133,6 +133,7 @@
     <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h" />
     <ClInclude Include="..\Wrapper\Resource.h" />
     <ClInclude Include="..\Wrapper\PreCompile.h" />
+    <ClInclude Include="..\Wrapper\Interface\AggregateData.h" />
     <ClInclude Include="..\Wrapper\Interface\BookItem.h" />
     <ClInclude Include="..\Wrapper\Interface\Receipt.h" />
   </ItemGroup>
@@ -143,6 +144,7 @@
     <ClCompile Include="..\Wrapper\PreCompile.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\Wrapper\Interface\AggregateData.cpp" />
     <ClCompile Include="..\Wrapper\Interface\BookItem.cpp" />
     <ClCompile Include="..\Wrapper\Interface\Receipt.cpp" />
   </ItemGroup>
