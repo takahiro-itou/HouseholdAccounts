@@ -807,7 +807,7 @@ Dim utDate As tParsedDate
     End With
 
     '週計
-    If (lngType = ITEM_FLAG_BALANCE) Or (lngWeekTotal = 0) Then
+    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngWeekTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngWeekTotal, "#,##0")
@@ -821,7 +821,7 @@ Dim utDate As tParsedDate
             1, 1)
 
     '月計
-    If (lngType = ITEM_FLAG_BALANCE) Or (lngMonthTotal = 0) Then
+    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngMonthTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngMonthTotal, "#,##0")
@@ -835,7 +835,7 @@ Dim utDate As tParsedDate
             1, 1)
 
     '年計
-    If (lngType = ITEM_FLAG_BALANCE) Or (lngYearTotal = 0) Then
+    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngYearTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngYearTotal, "#,##0")
@@ -929,7 +929,7 @@ Dim blnExpand As Boolean
 
     'この項目を表示する
     lngResult = 1
-    If (lngType = ITEM_FLAG_BALANCE) Then
+    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
         '残高
         UserInterfaceShowData(utUI, utBook,
             lngDepth, lngIcon, ACRIGHT,

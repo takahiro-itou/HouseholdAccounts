@@ -69,7 +69,7 @@ Dim lngResult As Integer
         With .utBookItems
             If (.nRegisteredItemCount < .nItemBufferSize) Then
                 For i = .nRootItemCount To .nItemBufferSize - 1
-                    If (.nFlags(i) = ITEM_FLAG_NOTUSED) Then
+                    If (.nFlags(i) = Wrapper.ItemFlag.ITEM_FLAG_NOTUSED) Then
                         lngResult = i
                         Exit For
                     End If

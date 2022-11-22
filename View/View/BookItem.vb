@@ -27,9 +27,9 @@ Public Sub BookItemExpandItem(
 
     With utBookItems
         If (blnExpanded) Then
-            .nFlags(lngItemIndex) = (.nFlags(lngItemIndex) Or ITEM_FLAG_EXPANDED)
+            .nFlags(lngItemIndex) = (.nFlags(lngItemIndex) Or Wrapper.ItemFlag.ITEM_FLAG_EXPANDED)
         Else
-            .nFlags(lngItemIndex) = (.nFlags(lngItemIndex) And (Not ITEM_FLAG_EXPANDED))
+            .nFlags(lngItemIndex) = (.nFlags(lngItemIndex) And (Not Wrapper.ItemFlag.ITEM_FLAG_EXPANDED))
         End If
     End With
 End Sub
@@ -48,7 +48,7 @@ Public Function BookItemGetItemExpanded(
 Dim lngFlags As Integer
 
     lngFlags = utBookItems.nFlags(lngItemIndex)
-    BookItemGetItemExpanded = (lngFlags And ITEM_FLAG_EXPANDED)
+    BookItemGetItemExpanded = (lngFlags And Wrapper.ItemFlag.ITEM_FLAG_EXPANDED)
 End Function
 
 Public Function BookItemGetItemFlags(
@@ -95,10 +95,10 @@ Dim lngParentHandle As Integer
 
     With utBookItems
         Do While (lngItemIndex >= 0)
-            lngType = (.nFlags(lngItemIndex) And ITEM_FLAG_TYPEMASK)
+            lngType = (.nFlags(lngItemIndex) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK)
             lngParentHandle = .utItemEntries(lngItemIndex).nParentHandle
 
-            If (lngType = ITEM_FLAG_INHERIT) Then
+            If (lngType = Wrapper.ItemFlag.ITEM_FLAG_INHERIT) Then
                 lngItemIndex = lngParentHandle
             Else
                 Exit Do
