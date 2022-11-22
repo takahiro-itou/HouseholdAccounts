@@ -136,7 +136,7 @@ Public Structure tAnnualRecords
     Public nItemBufferSize As Integer
 
     '各項目ごとの集計データ
-    Public utItemAnnualCounts() As tBookItemAnnualCounts
+    Public utItemAnnualCounts() As Wrapper.BookItemAnnualCounts
     Public utItemDetailCounts() As tBookItemDetailCounts
 
     'レシートデータ
