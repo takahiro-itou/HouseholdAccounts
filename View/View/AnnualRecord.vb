@@ -182,7 +182,7 @@ Dim lngDate As Integer, lngStartDayIndex As Integer, lngEndDayIndex As Integer
     '初期値を書き込む
     With utRecord
         For i = 0 To lngItemBufferSize - 1
-            If ((lngItemFlags(i) And ITEM_FLAG_TYPEMASK) = ITEM_FLAG_BALANCE) Then
+            If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
                 .utItemDetailCounts(i).nDayTotal(0) = .utItemAnnualCounts(i).nStartValues(lngYear)
             End If
         Next i
@@ -194,7 +194,7 @@ Dim lngDate As Integer, lngStartDayIndex As Integer, lngEndDayIndex As Integer
         For lngDate = 0 To lngNumDays - 1
             'バッファをクリアする
             For i = 0 To lngItemBufferSize - 1
-                If ((lngItemFlags(i) And ITEM_FLAG_TYPEMASK) = ITEM_FLAG_BALANCE) Then
+                If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
                 Else
                     .utItemDetailCounts(i).nDayTotal(lngDate) = 0
                 End If

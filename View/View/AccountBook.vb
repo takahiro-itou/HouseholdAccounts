@@ -100,11 +100,11 @@ Dim blnAddToParent As Boolean, blnAddToRoot As Boolean
         Do While (lngItemIndex >= 0)
             lngParentHandle = utBook.utBookItems.utItemEntries(lngItemIndex).nParentHandle
 
-            If (lngFlags(lngItemIndex) And ITEM_FLAG_NOCOUNT_PARENT) Then
+            If (lngFlags(lngItemIndex) And Wrapper.ItemFlag.ITEM_FLAG_NOCOUNT_PARENT) Then
                 blnAddToParent = False
                 blnAddToRoot = False
             End If
-            If (lngFlags(lngItemIndex) And ITEM_FLAG_NOCOUNT_ROOT) Then
+            If (lngFlags(lngItemIndex) And Wrapper.ItemFlag.ITEM_FLAG_NOCOUNT_ROOT) Then
                 blnAddToRoot = False
             End If
 
@@ -568,7 +568,7 @@ Dim blnResult As Boolean
     '初期値を書き込む
     With utBook.utAnnualRecords
         For i = 0 To lngItemBufferSize - 1
-            If ((lngItemFlags(i) And ITEM_FLAG_TYPEMASK) = ITEM_FLAG_BALANCE) Then
+            If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
                 .utItemDetailCounts(i).nDayTotal(0) = .utItemAnnualCounts(i).nStartValues(lngYearIndex)
             End If
         Next i
@@ -580,7 +580,7 @@ Dim blnResult As Boolean
         For lngDate = 0 To utBook.nNumWeeks * NUMDAYSPERWEEK - 1
             'バッファをクリアする
             For i = 0 To lngItemBufferSize - 1
-                If ((lngItemFlags(i) And ITEM_FLAG_TYPEMASK) = ITEM_FLAG_BALANCE) Then
+                If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
 
                 Else
                     .utItemDetailCounts(i).nDayTotal(lngDate) = 0
@@ -593,10 +593,10 @@ Dim blnResult As Boolean
                 'データを書き込む
                 For i = 0 To lngItemBufferSize - 1
                     lngSubCount = utBook.utBookItems.utItemEntries(i).nSubItemCount
-                    If ((lngItemFlags(i) <> ITEM_FLAG_NOTUSED) And (lngSubCount = 0)) Then
+                    If ((lngItemFlags(i) <> Wrapper.ItemFlag.ITEM_FLAG_NOTUSED) And (lngSubCount = 0)) Then
                         lngType = BookItemGetItemType(utBook.utBookItems, i)
 
-                        If (lngType = ITEM_FLAG_INCOME) Or (lngType = ITEM_FLAG_BANK_WITHDRAW) Then
+                        If (lngType = Wrapper.ItemFlag.ITEM_FLAG_INCOME) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_WITHDRAW) Then
                             If (Int(Rnd * 100) < 25) Then
                                 lngValue = Int(Rnd * 11500)
 
@@ -607,7 +607,7 @@ Dim blnResult As Boolean
                                     AddDataToItemTotal(utBook, lngYearIndex, lngDate, 3, lngValue)
                                 End If
                             End If
-                        ElseIf (lngType = ITEM_FLAG_OUTLAY) Or (lngType = ITEM_FLAG_BANK_DEPOSIT) Then
+                        ElseIf (lngType = Wrapper.ItemFlag.ITEM_FLAG_OUTLAY) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_DEPOSIT) Then
                             If (Int(Rnd * 100) < 15) Then
                                 lngValue = Int(Rnd * 1000)
 
@@ -625,7 +625,7 @@ Dim blnResult As Boolean
 
             'この日の残高を次の日の残高にコピーする
             For i = 0 To lngItemBufferSize - 1
-                If ((lngItemFlags(i) And ITEM_FLAG_TYPEMASK) = ITEM_FLAG_BALANCE) Then
+                If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
                     With .utItemDetailCounts(i)
                         .nDayTotal(lngDate + 1) = .nDayTotal(lngDate)
                     End With
