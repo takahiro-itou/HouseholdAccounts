@@ -27,6 +27,30 @@
 
 namespace  Wrapper  {
 
+//========================================================================
+//
+//    集計されたデータの情報。
+//
+
+//========================================================================
+/**
+**    項目毎の年間集計。
+**/
+
+public value struct BookItemAnnualCounts
+{
+public:
+
+    /**   開始時の数値。    **/
+    property    cli::array<int, 1>^     nStartValues;
+
+    /**   終了時の数値。    **/
+    property    cli::array<int, 1>^     nEndValues;
+
+    /**   各年の合計金額。  **/
+    property    cli::array<int, 1>^     nYearTotal;
+};
+
 }   //  End of namespace  Wrapper
 
 #endif
