@@ -111,19 +111,6 @@ Public Const BOOKNUMCOLUMNS As Integer = BOOKFIXEDCOLS + COLBUDGETBALANCE + 1
 '集計されたデータの情報
 '
 
-'項目毎の詳細集計結果
-Public Structure tBookItemDetailCounts
-    '日週月毎の集計、一年間の合計金額
-    Public nDayTotal() As Integer     '日毎の合計金額：378 日
-    Public nWeekTotal() As Integer   '週毎の合計金額：54週
-    Public nMonthTotal() As Integer      '月毎の合計金額：12ヶ月
-End Structure
-
-'*****************************************************************************
-'
-'１回の買い物(レシート１枚)の情報
-'
-
 '１年分 のデータ
 Public Structure tAnnualRecords
     Public nItemBufferSize As Integer
