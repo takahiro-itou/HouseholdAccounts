@@ -28,7 +28,7 @@ Dim i As Integer, lngNew As Integer, lngBufferSize As Integer
 Dim j As Integer, lngFlags As Integer, lngCount As Integer
 Dim lngDay As Integer
 'Dim utAnnualCounts() As tBookItemAnnualCounts
-Dim utDetailCounts() As tBookItemDetailCounts
+Dim utDetailCounts() As Wrapper.BookItemDetailCounts
 
     lngBufferSize = lpBookItems.nItemBufferSize
 

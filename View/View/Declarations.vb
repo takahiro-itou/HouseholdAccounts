@@ -130,7 +130,7 @@ Public Structure tAnnualRecords
 
     '各項目ごとの集計データ
     Public utItemAnnualCounts() As Wrapper.BookItemAnnualCounts
-    Public utItemDetailCounts() As tBookItemDetailCounts
+    Public utItemDetailCounts() As Wrapper.BookItemDetailCounts
 
     'レシートデータ
     Public utDayRecords() As Wrapper.OneDayReceipts     'その年の各日のレコード
