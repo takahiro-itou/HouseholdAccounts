@@ -111,13 +111,6 @@ Public Const BOOKNUMCOLUMNS As Integer = BOOKFIXEDCOLS + COLBUDGETBALANCE + 1
 '集計されたデータの情報
 '
 
-'項目毎の年間集計
-Public Structure tBookItemAnnualCounts
-    Public nStartValues() As Integer                  '開始時の数値
-    Public nEndValues() As Integer                    '終了時の数値
-    Public nYearTotal() As Integer                    '各年の合計金額
-End Structure
-
 '項目毎の詳細集計結果
 Public Structure tBookItemDetailCounts
     '日週月毎の集計、一年間の合計金額

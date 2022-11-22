@@ -220,7 +220,7 @@ Public Function WriteAnnualRecords(ByRef utRecord As tAnnualRecords,
 '---------------------------------------------------------------------
 Dim lngReserved As Integer
 Dim lngStartPos As Integer, lngEndPos As Integer
-Dim utTemp() As tBookItemAnnualCounts
+Dim utTemp() As Wrapper.BookItemAnnualCounts
 
     lngStartPos = Seek(lngFileNumber) - 1
     With utRecord
