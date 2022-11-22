@@ -14,30 +14,6 @@ Module Declarations
 
 '*****************************************************************************
 '
-'項目用フラグ
-'
-
-Public Const ITEM_FLAG_TYPEMASK As Integer = &HFF&
-Public Const ITEM_FLAG_NOTUSED As Integer = 0          '未使用
-Public Const ITEM_FLAG_INHERIT As Integer = 1          '親の設定を継承
-Public Const ITEM_FLAG_BALANCE As Integer = 9          '残高表示
-Public Const ITEM_FLAG_INCOME As Integer = 17          '収入
-Public Const ITEM_FLAG_OUTLAY As Integer = 18          '支出
-Public Const ITEM_FLAG_BANK As Integer = 25            '銀行口座
-Public Const ITEM_FLAG_BANK_WITHDRAW As Integer = 26   '口座引出
-Public Const ITEM_FLAG_BANK_DEPOSIT As Integer = 27    '口座入金
-Public Const ITEM_FLAG_BANK_TRANSFER As Integer = 28   '口座振替
-
-Public Const ITEM_FLAG_EXPANDED As Integer = &H100&
-
-Public Const ITEM_FLAG_NOCOUNT_PARENT As Integer = &H10000
-Public Const ITEM_FLAG_NOCOUNT_ROOT As Integer = &H20000
-Public Const ITEM_FLAG_HIDDEN As Integer = &H10000000
-Public Const ITEM_FLAG_UNERASABLE As Integer = &H20000000
-Public Const ITEM_FLAG_READONLY As Integer = &H40000000
-
-'*****************************************************************************
-'
 'レシートデータ用フラグ
 '
 

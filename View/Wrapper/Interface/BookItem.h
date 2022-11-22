@@ -34,21 +34,25 @@ namespace  Wrapper  {
 //    家計簿内の各項目、口座 (現金を含む) 残高。
 //
 
+/**
+**    項目用フラグ。
+**/
+
 public  enum class  ItemFlag
 {
-    ITEM_FLAG_TYPEMASK  = 0x000000ff,
+    ITEM_FLAG_TYPEMASK          = 0x000000ff,
 
-    ITEM_FLAG_NOTUSED       = 0,    /**<  未使用。          **/
-    ITEM_FLAG_INHERIT       = 1,    /**<  親の設定を継承。  **/
-    ITEM_FLAG_BALANCE       = 9,    /**<  残高表示。        **/
-    ITEM_FLAG_INCOME        = 17,   /**<  収入。            **/
-    ITEM_FLAG_OUTLAY        = 18,   /**<  支出。            **/
-    ITEM_FLAG_BANK          = 25,   /**<  銀行口座。        **/
-    ITEM_FLAG_BANK_WITHDRAW = 26,   /**<  口座引出。        **/
-    ITEM_FLAG_BANK_DEPOSIT  = 27,   /**<  口座入金。        **/
-    ITEM_FLAG_BANK_TRANSFER = 28,   /**<  口座振替。        **/
+    ITEM_FLAG_NOTUSED           = 0,    /**<  未使用。          **/
+    ITEM_FLAG_INHERIT           = 1,    /**<  親の設定を継承。  **/
+    ITEM_FLAG_BALANCE           = 9,    /**<  残高表示。        **/
+    ITEM_FLAG_INCOME            = 17,   /**<  収入。            **/
+    ITEM_FLAG_OUTLAY            = 18,   /**<  支出。            **/
+    ITEM_FLAG_BANK              = 25,   /**<  銀行口座。        **/
+    ITEM_FLAG_BANK_WITHDRAW     = 26,   /**<  口座引出。        **/
+    ITEM_FLAG_BANK_DEPOSIT      = 27,   /**<  口座入金。        **/
+    ITEM_FLAG_BANK_TRANSFER     = 28,   /**<  口座振替。        **/
 
-    ITEM_FLAG_EXPANDED      = 0x00000100,
+    ITEM_FLAG_EXPANDED          = 0x00000100,
 
     ITEM_FLAG_NOCOUNT_PARENT    = 0x00010000,
     ITEM_FLAG_NOCOUNT_ROOT      = 0x00020000,
