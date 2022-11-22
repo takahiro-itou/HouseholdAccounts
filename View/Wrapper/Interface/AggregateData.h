@@ -51,6 +51,26 @@ public:
     property    cli::array<int, 1>^     nYearTotal;
 };
 
+//========================================================================
+/**
+**    項目毎の詳細集計結果。
+**/
+
+public value struct BookItemDetailCounts
+{
+public:
+
+    /**   日毎の合計金額 :  378 日分。  **/
+    property    cli::array<int, 1>^     nDayTotal;
+
+    /**   週毎の合計金額 : 54 週間分。  **/
+    property    cli::array<int, 1>^     nWeekTotal;
+
+    /**   月毎の合計金額 : 12 ヶ月分。  **/
+    property    cli::array<int, 1>^     nMonthTotal;
+
+};
+
 }   //  End of namespace  Wrapper
 
 #endif
