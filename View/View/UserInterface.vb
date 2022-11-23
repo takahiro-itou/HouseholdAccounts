@@ -34,7 +34,7 @@ Dim lngCellWidth As Integer, lngCellHeight As Integer
     If (False) Then
         lngCount = 32
     Else
-        lngCount = BookItemGetRegisteredItemCount(utBook.utBookItems)
+        lngCount = utBook.utBookItems.getRegisteredItemCount()
     End If
 
     With utUI
@@ -465,7 +465,7 @@ Dim colorText As Color = Color.Black
 
     'データの個数をチェックする
     With utBook
-        lngItemCount = BookItemGetRegisteredItemCount(.utBookItems)
+        lngItemCount = .utBookItems.getRegisteredItemCount()
         lngRootItemCount = BookItemGetRootItemCount(.utBookItems)
     End With
 
