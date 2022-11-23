@@ -278,7 +278,7 @@ Dim blnResult As Boolean
         lngHeader(18) = .nNumYears
 
         '各データの件数をヘッダに書き込む
-        lngItemCount = BookItemGetRegisteredItemCount(.utBookItems)
+        lngItemCount = .utBookItems.getRegisteredItemCount()
         lngHeader(32) = lngItemCount
         lngHeader(33) = BookItemGetRootItemCount(.utBookItems)
         With .utBookItems
