@@ -104,6 +104,17 @@ BookItems::getItemBufferSize()
 }
 
 //----------------------------------------------------------------
+//    項目の名前を取得する。
+//
+
+System::String^
+BookItems::getItemName(
+        const  int  lngItemIndex)
+{
+    return ( this->utItemEntries[lngItemIndex].sItemName );
+}
+
+//----------------------------------------------------------------
 //    指定した項目が展開されているか調べる。
 //
 

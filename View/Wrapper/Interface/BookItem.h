@@ -162,6 +162,15 @@ public:
     getItemBufferSize();
 
     //----------------------------------------------------------------
+    /**   項目の名前を取得する。
+    **
+    **  @param [in] lngItemIndex    項目番号。
+    **/
+    System::String^
+    getItemName(
+            const  int  lngItemIndex);
+
+    //----------------------------------------------------------------
     /**   指定した項目が展開されているか調べる。
     **
     **  @param [in] lngItemIndex   項目番号。
