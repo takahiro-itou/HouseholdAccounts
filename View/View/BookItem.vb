@@ -27,21 +27,6 @@ Dim lngFlags As Integer
     BookItemGetItemFlags = lngFlags
 End Function
 
-Public Function BookItemGetItemName(
-        ByRef utBookItems As Wrapper.BookItems,
-        ByVal lngItemIndex As Integer) As String
-'---------------------------------------------------------------------
-'項目の名前を得る
-'[ IN] utBookItems : 項目一覧データ
-'[ IN] lngItemIndex: 項目番号
-'[RET] String
-'---------------------------------------------------------------------
-Dim strName As String
-
-    strName = utBookItems.utItemEntries(lngItemIndex).sItemName
-    BookItemGetItemName = strName
-End Function
-
 Public Function BookItemGetItemType(
         ByRef utBookItems As Wrapper.BookItems,
         ByVal lngItemIndex As Integer) As Integer
