@@ -124,7 +124,7 @@ Dim blnResult As Boolean
         '選択した項目を閉じたり、開いたりする
         With utBook
             lngIndex = utUI.nNowShowingItems(lngY - BOOKFIXEDROWS)
-            blnExpand = BookItemGetItemExpanded(.utBookItems, lngIndex)
+            blnExpand = .utBookItems.isItemExpanded(lngIndex)
             BookItemExpandItem(.utBookItems, lngIndex, Not (blnExpand))
             blnResult = True
         End With
@@ -903,7 +903,7 @@ Dim blnExpand As Boolean
     With utBook
         strName = BookItemGetItemName(.utBookItems, lngRootItem)
         lngType = BookItemGetItemType(.utBookItems, lngRootItem)
-        blnExpand = BookItemGetItemExpanded(.utBookItems, lngRootItem)
+        blnExpand = .utBookItems.isItemExpanded(lngRootItem)
         lngCount = BookItemGetSubItemCount(.utBookItems, lngRootItem)
     End With
 
