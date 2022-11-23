@@ -171,6 +171,15 @@ public:
             const  int  lngItemIndex);
 
     //----------------------------------------------------------------
+    /**   項目の種類を取得する。
+    **
+    **  @param [in] lngItemIndex    項目番号。
+    **/
+    int
+    getItemType(
+            const  int  lngItemIndex);
+
+    //----------------------------------------------------------------
     /**   指定した項目が展開されているか調べる。
     **
     **  @param [in] lngItemIndex   項目番号。

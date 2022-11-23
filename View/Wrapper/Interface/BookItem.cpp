@@ -115,6 +115,32 @@ BookItems::getItemName(
 }
 
 //----------------------------------------------------------------
+//    項目の種類を取得する。
+//
+
+int
+BookItems::getItemType(
+        const  int  lngItemIndex)
+{
+    int lngType, lngParentHandle;
+    int curIdx  = lngItemIndex;
+
+    while ( curIdx >= 0 ) {
+        lngType = (this->nFlags[curIdx] &
+                   static_cast<int>(ItemFlag::ITEM_FLAG_TYPEMASK));
+        lngParentHandle = this->utItemEntries[curIdx].nParentHandle;
+
+        if ( lngType == static_cast<int>(ItemFlag::ITEM_FLAG_INHERIT) ) {
+            curIdx  = lngParentHandle;
+        } else {
+            break;
+        }
+    }
+
+    return ( lngType );
+}
+
+//----------------------------------------------------------------
 //    指定した項目が展開されているか調べる。
 //
 
