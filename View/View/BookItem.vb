@@ -42,16 +42,6 @@ Dim lngParentHandle As Integer
     BookItemGetParentItemHandle = lngParentHandle
 End Function
 
-Public Function BookItemGetRootItemCount(
-        ByRef utBookItems As Wrapper.BookItems) As Integer
-'---------------------------------------------------------------------
-'ルートにある項目数を返す
-'[ IN] utBookItems : 項目一覧データ
-'[RET] Long
-'---------------------------------------------------------------------
-    BookItemGetRootItemCount = utBookItems.nRootItemCount
-End Function
-
 Public Function BookItemGetRootItemHandle(
         ByRef utBookItems As Wrapper.BookItems,
         ByVal lngItemIndex As Integer) As Integer
