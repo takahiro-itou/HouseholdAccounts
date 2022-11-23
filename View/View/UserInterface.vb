@@ -466,7 +466,7 @@ Dim colorText As Color = Color.Black
     'データの個数をチェックする
     With utBook
         lngItemCount = .utBookItems.getRegisteredItemCount()
-        lngRootItemCount = BookItemGetRootItemCount(.utBookItems)
+        lngRootItemCount = .utBookItems.getRootItemCount()
     End With
 
     With utUI

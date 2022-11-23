@@ -280,7 +280,7 @@ Dim blnResult As Boolean
         '各データの件数をヘッダに書き込む
         lngItemCount = .utBookItems.getRegisteredItemCount()
         lngHeader(32) = lngItemCount
-        lngHeader(33) = BookItemGetRootItemCount(.utBookItems)
+        lngHeader(33) = .utBookItems.getRootItemCount()
         With .utBookItems
             lngHeader(36) = .nInnerTaxItemHandle
             lngHeader(37) = .nOuterTaxItemHandle
