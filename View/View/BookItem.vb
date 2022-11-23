@@ -34,23 +34,6 @@ Public Sub BookItemExpandItem(
     End With
 End Sub
 
-Public Function BookItemGetItemExpanded(
-        ByRef utBookItems As Wrapper.BookItems,
-        ByVal lngItemIndex As Integer) As Boolean
-'---------------------------------------------------------------------
-'指定した項目が、展開されているかを返す
-'[ IN] utBookItems : 項目一覧データ
-'[ IN] lngItemIndex: 項目番号
-'[RET] Boolean
-'  True  = サブ項目も表示する
-'  False = この項目まで表示して、サブ項目は表示しない
-'---------------------------------------------------------------------
-Dim lngFlags As Integer
-
-    lngFlags = utBookItems.nFlags(lngItemIndex)
-    BookItemGetItemExpanded = (lngFlags And Wrapper.ItemFlag.ITEM_FLAG_EXPANDED)
-End Function
-
 Public Function BookItemGetItemFlags(
         ByRef utBookItems As Wrapper.BookItems,
         ByVal lngItemIndex As Integer) As Long
