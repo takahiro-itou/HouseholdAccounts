@@ -334,7 +334,7 @@ Dim utDayInfo As tParsedDate
             strItemName = ""
         Else
             lngItemIndex = .nNowShowingItems(lngY - BOOKFIXEDROWS)
-            strItemName = BookItemGetItemName(utBook.utBookItems, lngItemIndex)
+            strItemName = utBook.utBookItems.getItemName(lngItemIndex)
         End If
 
         If (lngX < BOOKFIXEDCOLS) Then
@@ -901,7 +901,7 @@ Dim strName As String
 Dim blnExpand As Boolean
 
     With utBook
-        strName = BookItemGetItemName(.utBookItems, lngRootItem)
+        strName = .utBookItems.getItemName(lngRootItem)
         lngType = BookItemGetItemType(.utBookItems, lngRootItem)
         blnExpand = .utBookItems.isItemExpanded(lngRootItem)
         lngCount = BookItemGetSubItemCount(.utBookItems, lngRootItem)
