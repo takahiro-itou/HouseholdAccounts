@@ -594,7 +594,7 @@ Dim blnResult As Boolean
                 For i = 0 To lngItemBufferSize - 1
                     lngSubCount = utBook.utBookItems.utItemEntries(i).nSubItemCount
                     If ((lngItemFlags(i) <> Wrapper.ItemFlag.ITEM_FLAG_NOTUSED) And (lngSubCount = 0)) Then
-                        lngType = BookItemGetItemType(utBook.utBookItems, i)
+                        lngType = utBook.utBookItems.getItemType(i)
 
                         If (lngType = Wrapper.ItemFlag.ITEM_FLAG_INCOME) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_WITHDRAW) Then
                             If (Int(Rnd * 100) < 25) Then
