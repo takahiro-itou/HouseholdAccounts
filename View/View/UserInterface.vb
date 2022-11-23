@@ -800,7 +800,7 @@ Dim utDate As tParsedDate
                     1, 1)
         Next X
 
-        lngType = BookItemGetItemType(.utBookItems, lngRootItem)
+        lngType = .utBookItems.getItemType(lngRootItem)
         lngWeekTotal = AnnualRecordGetItemWeekTotal(.utAnnualRecords, lngRootItem, lngWeek)
         lngMonthTotal = AnnualRecordGetItemMonthTotal(.utAnnualRecords, lngRootItem, lngMonth)
         lngYearTotal = AnnualRecordGetItemYearTotal(.utAnnualRecords, lngRootItem, lngYearIndex)
@@ -902,7 +902,7 @@ Dim blnExpand As Boolean
 
     With utBook
         strName = .utBookItems.getItemName(lngRootItem)
-        lngType = BookItemGetItemType(.utBookItems, lngRootItem)
+        lngType = .utBookItems.getItemType(lngRootItem)
         blnExpand = .utBookItems.isItemExpanded(lngRootItem)
         lngCount = BookItemGetSubItemCount(.utBookItems, lngRootItem)
     End With
