@@ -133,6 +133,19 @@ public value struct BookItems
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   指定した項目を展開したり閉じたりする。
+    **
+    **  @param [in] lngItemIndex    項目番号。
+    **  @param [in] blnExpanded     展開または折畳。
+    **  @return     void.
+    **/
+    void
+    expandItem(
+            const  int              lngItemIndex,
+            const  System::Boolean  blnExpanded);
 
 //========================================================================
 //

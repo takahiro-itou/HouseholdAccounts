@@ -63,6 +63,26 @@ namespace  {
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    指定した項目を展開したり閉じたりする。
+//
+
+void
+BookItems::expandItem(
+        const  int              lngItemIndex,
+        const  System::Boolean  blnExpanded)
+{
+    int iFlags  = this->nFlags[lngItemIndex];
+
+    if ( blnExpanded ) {
+        iFlags  |=   static_cast<int>(ItemFlag::ITEM_FLAG_EXPANDED) ;
+    } else {
+        iFlags  &= ~(static_cast<int>(ItemFlag::ITEM_FLAG_EXPANDED));
+    }
+
+    this->nFlags[lngItemIndex]  = iFlags;
+}
+
 //========================================================================
 //
 //    Public Member Functions (Static).
