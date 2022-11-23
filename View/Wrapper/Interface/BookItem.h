@@ -148,6 +148,16 @@ public:
     int
     getItemBufferSize();
 
+    //----------------------------------------------------------------
+    /**   指定した項目が展開されているか調べる。
+    **
+    **  @param [in] lngItemIndex   項目番号。
+    **  @retval
+    **/
+    System::Boolean
+    isItemExpanded(
+            const  int  lngItemIndex);
+
 //========================================================================
 //
 //    Properties.

@@ -83,6 +83,18 @@ BookItems::getItemBufferSize()
     return ( this->nItemBufferSize );
 }
 
+//----------------------------------------------------------------
+//    指定した項目が展開されているか調べる。
+//
+
+System::Boolean
+BookItems::isItemExpanded(
+        const  int  lngItemIndex)
+{
+    const  int  iFlags  = this->nFlags[lngItemIndex];
+    return ( iFlags & static_cast<int>(ItemFlag::ITEM_FLAG_EXPANDED) );
+}
+
 //========================================================================
 //
 //    Properties.
