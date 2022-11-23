@@ -125,7 +125,7 @@ Dim blnResult As Boolean
         With utBook
             lngIndex = utUI.nNowShowingItems(lngY - BOOKFIXEDROWS)
             blnExpand = .utBookItems.isItemExpanded(lngIndex)
-            BookItemExpandItem(.utBookItems, lngIndex, Not (blnExpand))
+            .utBookItems.expandItem(lngIndex, Not (blnExpand))
             blnResult = True
         End With
     End If
