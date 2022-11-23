@@ -27,34 +27,6 @@ Dim lngFlags As Integer
     BookItemGetItemFlags = lngFlags
 End Function
 
-Public Function BookItemGetItemType(
-        ByRef utBookItems As Wrapper.BookItems,
-        ByVal lngItemIndex As Integer) As Integer
-'---------------------------------------------------------------------
-'項目の種類を返す
-'[ IN] utBookItems : 項目一覧データ
-'[ IN] lngItemIndex: 項目番号
-'[RET] Long
-'---------------------------------------------------------------------
-Dim lngType As Integer
-Dim lngParentHandle As Integer
-
-    With utBookItems
-        Do While (lngItemIndex >= 0)
-            lngType = (.nFlags(lngItemIndex) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK)
-            lngParentHandle = .utItemEntries(lngItemIndex).nParentHandle
-
-            If (lngType = Wrapper.ItemFlag.ITEM_FLAG_INHERIT) Then
-                lngItemIndex = lngParentHandle
-            Else
-                Exit Do
-            End If
-        Loop
-    End With
-
-    BookItemGetItemType = lngType
-End Function
-
 Public Function BookItemGetParentItemHandle(
         ByRef utBookItems As Wrapper.BookItems,
         ByVal lngItemIndex As Integer) As Integer
