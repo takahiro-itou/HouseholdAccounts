@@ -53,7 +53,7 @@ Dim utDetailCounts() As Wrapper.BookItemDetailCounts
                     With .utGoods(j)
                         lngNew = lpNewIndex(.nItemType)
                         .nItemType = lngNew
-                        .nRootItemType = BookItemGetRootItemHandle(lpBookItems, lngNew)
+                        .nRootItemType = lpBookItems.getRootItemHandle(lngNew)
                     End With
                     Next j
                 End If
