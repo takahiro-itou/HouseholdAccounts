@@ -161,6 +161,25 @@ BookItems::getRootItemCount()
 }
 
 //----------------------------------------------------------------
+//    項目のルート項目のハンドルを取得する。
+//
+
+int
+BookItems::getRootItemHandle(
+        const  int  lngItemIndex)
+{
+    int lngParentHandle;
+    int curIdx  = lngItemIndex;
+
+    lngParentHandle = this->utItemEntries[curIdx].nParentHandle;
+    while ( lngParentHandle >= 0 ) {
+        curIdx  = lngParentHandle;
+        lngParentHandle = this->utItemEntries[curIdx].nParentHandle;
+    }
+    return ( curIdx );
+}
+
+//----------------------------------------------------------------
 //    指定した項目が展開されているか調べる。
 //
 
