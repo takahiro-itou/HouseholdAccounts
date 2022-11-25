@@ -42,30 +42,6 @@ Dim lngParentHandle As Integer
     BookItemGetParentItemHandle = lngParentHandle
 End Function
 
-Public Function BookItemGetRootItemHandle(
-        ByRef utBookItems As Wrapper.BookItems,
-        ByVal lngItemIndex As Integer) As Integer
-'---------------------------------------------------------------------
-'項目のルート項目のハンドルを返す
-'lngItemIndexがルート項目を示している場合は、それ自身を返す
-'[I/O] utBookItems : 項目一覧データ
-'[ IN] lngItemIndex: 項目番号
-'[RET] Long
-'---------------------------------------------------------------------
-Dim lngParentHandle As Integer
-
-    With utBookItems
-        lngParentHandle = .utItemEntries(lngItemIndex).nParentHandle
-
-        Do While (lngParentHandle >= 0)
-            lngItemIndex = lngParentHandle
-            lngParentHandle = .utItemEntries(lngItemIndex).nParentHandle
-        Loop
-    End With
-
-    BookItemGetRootItemHandle = lngItemIndex
-End Function
-
 Public Function BookItemGetSubItemCount(
         ByRef utBookItems As Wrapper.BookItems,
         ByVal lngItemIndex As Integer) As Integer
