@@ -906,7 +906,7 @@ Dim blnExpand As Boolean
         strName = .utBookItems.getItemName(lngRootItem)
         lngType = .utBookItems.getItemType(lngRootItem)
         blnExpand = .utBookItems.isItemExpanded(lngRootItem)
-        lngCount = BookItemGetSubItemCount(.utBookItems, lngRootItem)
+        lngCount = .utBookItems.getSubItemCount(lngRootItem)
     End With
 
     '表示する背景色を決定する
