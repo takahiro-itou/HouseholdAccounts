@@ -12,21 +12,6 @@ Module BookItem
 ' This file is written in 2006/09/23 - 2008/01/06
 '*****************************************************************************
 
-Public Function BookItemGetItemFlags(
-        ByRef utBookItems As Wrapper.BookItems,
-        ByVal lngItemIndex As Integer) As Long
-'---------------------------------------------------------------------
-'項目のフラグを得る
-'[ IN] utBookItems : 項目一覧データ
-'[ IN] lngItemIndex: 項目番号
-'[RET] Long
-'---------------------------------------------------------------------
-Dim lngFlags As Integer
-
-    lngFlags = utBookItems.nFlags(lngItemIndex)
-    BookItemGetItemFlags = lngFlags
-End Function
-
 Public Function BookItemGetParentItemHandle(
         ByRef utBookItems As Wrapper.BookItems,
         ByVal lngItemIndex As Integer) As Integer
