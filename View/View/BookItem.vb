@@ -42,21 +42,6 @@ Dim lngParentHandle As Integer
     BookItemGetParentItemHandle = lngParentHandle
 End Function
 
-Public Function BookItemGetSubItemCount(
-        ByRef utBookItems As Wrapper.BookItems,
-        ByVal lngItemIndex As Integer) As Integer
-'---------------------------------------------------------------------
-'項目が持つサブ項目の個数を返す
-'[ IN] utBookItems : 項目一覧データ
-'[ IN] lngItemIndex: 項目番号
-'[RET] Long
-'---------------------------------------------------------------------
-Dim lngCount As Integer
-
-    lngCount = utBookItems.utItemEntries(lngItemIndex).nSubItemCount
-    BookItemGetSubItemCount = lngCount
-End Function
-
 Public Function BookItemGetSubItemHandle(
         ByRef utBookItems As Wrapper.BookItems,
         ByVal lngItemIndex As Integer,
