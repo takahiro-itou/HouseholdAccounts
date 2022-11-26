@@ -957,8 +957,8 @@ Dim blnExpand As Boolean
         'この項目を展開し、サブアイテムも表示する
         lngTop = lngTop + 1
         For i = 0 To lngCount - 1
-            lngSubItem = BookItemGetSubItemHandle(utBook.utBookItems, lngRootItem, i)
-            lngInc = UserInterfaceShowItem(utUI, utBook, _
+            lngSubItem = utBook.utBookItems.getSubItemHandle(lngRootItem, i)
+            lngInc = UserInterfaceShowItem(utUI, utBook,
                lngDepth + 1, lngTop, lngSubItem, lngYear, lngMonth, lngWeek)
             lngTop = lngTop + lngInc
             lngResult = lngResult + lngInc
