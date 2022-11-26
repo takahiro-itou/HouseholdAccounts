@@ -42,23 +42,6 @@ Dim lngParentHandle As Integer
     BookItemGetParentItemHandle = lngParentHandle
 End Function
 
-Public Function BookItemGetSubItemHandle(
-        ByRef utBookItems As Wrapper.BookItems,
-        ByVal lngItemIndex As Integer,
-        ByVal lngSubItemIndex As Integer) As Integer
-'---------------------------------------------------------------------
-'項目が持つサブ項目のハンドルを返す
-'[ IN] utBookItems     : 項目一覧データ
-'[ IN] lngItemIndex    : 項目番号
-'[ IN] lngSubItemIndex : サブ項目の番号
-'[RET] Long
-'---------------------------------------------------------------------
-Dim lngSubItemHandle As Integer
-
-    lngSubItemHandle = utBookItems.utItemEntries(lngItemIndex).nSubItems(lngSubItemIndex)
-    BookItemGetSubItemHandle = lngSubItemHandle
-End Function
-
 Public Function BookItemRelocateItems(
         ByRef utBookItems As Wrapper.BookItems,
         ByRef lpNewIndex() As Integer) As Integer
