@@ -171,6 +171,15 @@ public:
     getItemBufferSize();
 
     //----------------------------------------------------------------
+    /**   項目のフラグを得る。
+    **
+    **  @param [in] lngItemIndex    項目番号。
+    **/
+    ItemFlag
+    getItemFlags(
+            const  int  lngItemIndex);
+
+    //----------------------------------------------------------------
     /**   項目の名前を取得する。
     **
     **  @param [in] lngItemIndex    項目番号。

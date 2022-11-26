@@ -115,6 +115,17 @@ BookItems::getItemBufferSize()
 }
 
 //----------------------------------------------------------------
+//    項目のフラグを得る。
+//
+
+ItemFlag
+BookItems::getItemFlags(
+        const  int  lngItemIndex)
+{
+    return ( static_cast<ItemFlag>(this->nFlags[lngItemIndex]) );
+}
+
+//----------------------------------------------------------------
 //    項目の名前を取得する。
 //
 
