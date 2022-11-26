@@ -163,6 +163,17 @@ BookItems::getItemType(
 }
 
 //----------------------------------------------------------------
+//    項目の親項目のハンドルを取得する。
+//
+
+int
+BookItems::getParentItemHandle(
+        const  int  lngItemIndex)
+{
+    return ( this->utItemEntries[lngItemIndex].nParentHandle );
+}
+
+//----------------------------------------------------------------
 //    使用済みの項目数を取得する。
 //
 
