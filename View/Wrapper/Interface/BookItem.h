@@ -207,6 +207,16 @@ public:
             const  int  lngItemIndex);
 
     //----------------------------------------------------------------
+    /**   項目が持つサブ項目の個数を取得する。
+    **
+    **  @param [in] lngItemIndex    項目番号。
+    **  @return     サブ項目の個数を返す。
+    **/
+    int
+    getSubItemCount(
+            const  int  lngItemIndex);
+
+    //----------------------------------------------------------------
     /**   指定した項目が展開されているか調べる。
     **
     **  @param [in] lngItemIndex   項目番号。

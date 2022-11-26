@@ -180,6 +180,17 @@ BookItems::getRootItemHandle(
 }
 
 //----------------------------------------------------------------
+//    項目が持つサブ項目の個数を取得する。
+//
+
+int
+BookItems::getSubItemCount(
+        const  int  lngItemIndex)
+{
+    return ( this->utItemEntries[lngItemIndex].nSubItemCount );
+}
+
+//----------------------------------------------------------------
 //    指定した項目が展開されているか調べる。
 //
 
