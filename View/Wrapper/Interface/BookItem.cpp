@@ -191,6 +191,18 @@ BookItems::getSubItemCount(
 }
 
 //----------------------------------------------------------------
+//    項目が持つサブ項目のハンドルを取得する。
+//
+
+int
+BookItems::getSubItemHandle(
+        const  int  lngItemIndex,
+        const  int  lngSubItemIndex)
+{
+    return ( this->utItemEntries[lngItemIndex].nSubItems[lngSubItemIndex] );
+}
+
+//----------------------------------------------------------------
 //    指定した項目が展開されているか調べる。
 //
 

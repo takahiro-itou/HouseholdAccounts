@@ -217,6 +217,17 @@ public:
             const  int  lngItemIndex);
 
     //----------------------------------------------------------------
+    /**   項目が持つサブ項目のハンドルを取得する。
+    **
+    **  @param [in] lngItemIndex      項目番号。
+    **  @param [in] lngSubItemIndex   サブ項目の番号。
+    **/
+    int
+    getSubItemHandle(
+            const  int  lngItemIndex,
+            const  int  lngSubItemIndex);
+
+    //----------------------------------------------------------------
     /**   指定した項目が展開されているか調べる。
     **
     **  @param [in] lngItemIndex   項目番号。
