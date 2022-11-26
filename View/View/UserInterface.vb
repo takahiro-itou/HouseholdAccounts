@@ -903,10 +903,12 @@ Dim strName As String
 Dim blnExpand As Boolean
 
     With utBook
-        strName = .utBookItems.getItemName(lngRootItem)
-        lngType = .utBookItems.getItemType(lngRootItem)
-        blnExpand = .utBookItems.isItemExpanded(lngRootItem)
-        lngCount = .utBookItems.getSubItemCount(lngRootItem)
+        With .utBookItems
+            strName = .getItemName(lngRootItem)
+            lngType = .getItemType(lngRootItem)
+            blnExpand = .isItemExpanded(lngRootItem)
+            lngCount = .getSubItemCount(lngRootItem)
+        End With
     End With
 
     '表示する背景色を決定する
