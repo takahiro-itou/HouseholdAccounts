@@ -91,7 +91,56 @@ int
 BookItems::relocateItems(
         cli::array<int, 1>^ lpNewIndex)
 {
-    return ( -1 );
+    int lngItemBufferSize;
+    int i, lngNew;
+    int j, lngCount, lngChildHandle;
+    cli::array<int, 1>^ lngFlags;
+    cli::array<int, 1>^ lngSubItems;
+    cli::array<int, 1>^ lngCheck;
+    cli::array<BookItemEntry, 1>^   utItems;
+
+    lngItemBufferSize = this->nItemBufferSize;
+
+    //  並び替える前に、並び順のデータを検査する。  //
+    lngCheck = gcnew cli::array<int, 1>(lngItemBufferSize);
+    for ( i = 0; i < lngItemBufferSize; ++ i ) {
+        lngCheck[i] = 0;
+    }
+    for ( i = 0; i < lngItemBufferSize; ++ i ) {
+        lngNew = lpNewIndex[i];
+        ++ lngCheck[lngNew];
+    }
+    for ( i = 0; i < lngItemBufferSize; ++ i ) {
+        if ( lngCheck[i] != 1 ) {
+            return ( -1 );
+        }
+    }
+
+    //  配列のバックアップコピーを取る。    //
+    lngFlags = gcnew cli::array<int, 1>(lngItemBufferSize);
+    utItems = gcnew cli::array<BookItemEntry, 1>(lngItemBufferSize);
+    for ( i = 0; i < lngItemBufferSize; ++ i ) {
+        lngFlags[i] = this->nFlags[i];
+        utItems [i] = this->utItemEntries[i];
+    }
+
+    //  項目データを設定する。  //
+    this->nFlags = gcnew cli::array<int, 1>(lngItemBufferSize);
+    this->utItemEntries = gcnew cli::array<BookItemEntry, 1>(lngItemBufferSize);
+    for ( i = 0; i < lngItemBufferSize; ++ i ) {
+        lngNew  = lpNewIndex[i];
+        this->nFlags[lngNew] = lngFlags[i];
+        this->utItemEntries[lngNew] = utItems[i];
+
+        //  子ノードを書き換える。  //
+        lngCount = this->utItemEntries[lngNew].nSubItemCount;
+        for ( j = 0; j < lngCount; ++ j ) {
+            lngChildHandle = this->utItemEntries[lngNew].nSubItems[j];
+            this->utItemEntries[lngNew].nParentHandle = lngNew;
+        }
+    }
+
+    return ( 1 );
 }
 
 //========================================================================
