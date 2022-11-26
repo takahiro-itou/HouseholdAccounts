@@ -83,6 +83,17 @@ BookItems::expandItem(
     this->nFlags[lngItemIndex]  = iFlags;
 }
 
+//----------------------------------------------------------------
+//    家計簿の項目を並べなおす。
+//
+
+int
+BookItems::relocateItems(
+        cli::array<int, 1>^ lpNewIndex)
+{
+    return ( -1 );
+}
+
 //========================================================================
 //
 //    Public Member Functions (Static).

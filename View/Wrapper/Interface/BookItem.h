@@ -147,6 +147,15 @@ public:
             const  int              lngItemIndex,
             const  System::Boolean  blnExpanded);
 
+    //----------------------------------------------------------------
+    /**   家計簿の項目を並べなおす。
+    **
+    **  @param [in] lpNewIndex
+    **/
+    int
+    relocateItems(
+            cli::array<int, 1>^ lpNewIndex);
+
 //========================================================================
 //
 //    Accessors.
