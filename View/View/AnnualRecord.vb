@@ -12,29 +12,6 @@ Module AnnualRecord
 ' This file is written in 2006/09/23 - 2008/01/09
 '*****************************************************************************
 
-Public Function AnnualRecordGetItemWeekTotal(
-        ByRef utRecord As Wrapper.AnnualRecords,
-        ByVal lngItemIndex As Integer, ByVal lngWeek As Integer) As Integer
-'---------------------------------------------------------------------
-'項目の１週間の合計金額を返す
-'[ IN] utRecord    : 年間レコード
-'[ IN] lngItemIndex: 項目インデックス
-'[ IN] lngWeek     : 週
-'[RET] Long
-'  １週間の合計金額
-'---------------------------------------------------------------------
-Dim lngTotal As Integer
-
-    With utRecord
-        If (lngItemIndex < MAXITEMS) Then
-            lngTotal = .utItemDetailCounts(lngItemIndex).nWeekTotal(lngWeek)
-        Else
-            lngTotal = 0
-        End If
-    End With
-    AnnualRecordGetItemWeekTotal = lngTotal
-End Function
-
 Public Function AnnualRecordGetItemYearTotal(
         ByRef utRecord As Wrapper.AnnualRecords,
         ByVal lngItemIndex As Integer,
