@@ -13,30 +13,24 @@
 *************************************************************************/
 
 /**
-**      An Interface of StringTable class.
+**      An Implementation of ManagedDate class.
 **
-**      @file       Interface/StringTable.h
+**      @file       Interface/ManagedDate.cpp
 **/
 
-#if !defined( HAWRAPPER_COMMON_INCLUDED_STRING_TABLE_H )
-#    define   HAWRAPPER_COMMON_INCLUDED_STRING_TABLE_H
+#include    "PreCompile.h"
 
-#pragma     once
-
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
+#include    "ManagedDate.h"
 
 namespace  Wrapper  {
 
-//========================================================================
-//
-//    StringTable  class.
-//
+namespace  {
 
-public value struct StringTable
-{
+}   //  End of (Unnamed) namespace
+
 //========================================================================
 //
-//    Internal Type Definitions.
+//    ManagedDate  class.
 //
 
 //========================================================================
@@ -89,13 +83,4 @@ public value struct StringTable
 //    For Internal Use Only.
 //
 
-//========================================================================
-//
-//    Member Variables.
-//
-
-};
-
-}   //  End of namespace  Wrapper
-
-#endif
+}   //  End of namespace  Wrappe

@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Interface of StringTable class.
+**      An Interface of ManagedDate class.
 **
-**      @file       Interface/StringTable.h
+**      @file       Interface/ManagedDate.h
 **/
 
-#if !defined( HAWRAPPER_COMMON_INCLUDED_STRING_TABLE_H )
-#    define   HAWRAPPER_COMMON_INCLUDED_STRING_TABLE_H
+#if !defined( HAWRAPPER_COMMON_INCLUDED_MANAGED_DATE_H )
+#    define   HAWRAPPER_COMMON_INCLUDED_MANAGED_DATE_H
 
 #pragma     once
 
@@ -29,10 +29,10 @@ namespace  Wrapper  {
 
 //========================================================================
 //
-//    StringTable  class.
+//    ManagedDate  class.
 //
 
-public value struct StringTable
+public ref  class  ManagedDate
 {
 //========================================================================
 //
