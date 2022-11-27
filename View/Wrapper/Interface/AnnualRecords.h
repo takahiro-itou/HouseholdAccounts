@@ -25,6 +25,9 @@
 
 #include    "HouseholdAccounts/Common/AccountsTypes.h"
 
+#include    "AggregateData.h"
+#include    "Receipt.h"
+
 namespace  Wrapper  {
 
 //========================================================================
@@ -85,6 +88,15 @@ public:
 //    Properties.
 //
 public:
+
+    property    int     nItemBufferSize;
+
+    property    cli::array<BookItemAnnualCounts, 1>^    utItemAnnualCounts;
+
+    property    cli::array<BookItemDetailCounts, 1>^    utItemDetailCounts;
+
+    /**   その年の各日のレコード。  **/
+    property    cli::array<OneDayReceipts, 1>^  utDayRecords;
 
 //========================================================================
 //
