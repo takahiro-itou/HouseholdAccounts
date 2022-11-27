@@ -160,6 +160,15 @@ public value struct BookItemDetailCounts
 //
 public:
 
+    //----------------------------------------------------------------
+    /**   項目の一日の合計金額を取得する。
+    **
+    **  @param [in] lngDate   日付。
+    **/
+    int
+    getItemDayTotal(
+            const  int  lngDate);
+
 //========================================================================
 //
 //    Properties.

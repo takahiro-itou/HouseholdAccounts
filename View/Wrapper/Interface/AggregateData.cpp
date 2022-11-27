@@ -134,6 +134,17 @@ namespace  {
 //    Accessors.
 //
 
+//----------------------------------------------------------------
+//    項目の一日の合計金額を取得する。
+//
+
+int
+BookItemDetailCounts::getItemDayTotal(
+        const  int  lngDate)
+{
+    return ( this->nDayTotal[lngDate] );
+}
+
 //========================================================================
 //
 //    Properties.
