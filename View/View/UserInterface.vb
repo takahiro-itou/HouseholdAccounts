@@ -787,11 +787,12 @@ Dim utDate As tParsedDate
                     lngTextColor = Color.FromArgb(NORMALTEXTCOLOR)
                 End If
 
-                lngDayTotal = AnnualRecordGetItemDayTotal(.utAnnualRecords, lngRootItem, lngDate)
+                lngDayTotal = .utAnnualRecords.getItemDayTotal(
+                                lngRootItem, lngDate)
                 If (lngDayTotal = 0) Then
                     strText = ""
                 Else
-                    strText = Format$(AnnualRecordGetItemDayTotal(.utAnnualRecords, lngRootItem, lngDate), "#,##0")
+                    strText = Format$(lngDayTotal, "#,##0")
                 End If
             End If
 
