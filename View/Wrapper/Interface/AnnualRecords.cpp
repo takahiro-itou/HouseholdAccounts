@@ -100,6 +100,21 @@ AnnualRecords::getItemMonthTotal(
     return ( this->utItemDetailCounts[lngItemIndex].nMonthTotal[lngMonth] );
 }
 
+//----------------------------------------------------------------
+//    項目の一週間の合計金額を取得する。
+//
+
+int
+AnnualRecords::getItemWeekTotal(
+        const  int  lngItemIndex,
+        const  int  lngWeek)
+{
+    if ( lngItemIndex >= MAXITEMS ) {
+        return ( 0 );
+    }
+    return ( this->utItemDetailCounts[lngItemIndex].nWeekTotal[lngWeek] );
+}
+
 //========================================================================
 //
 //    Properties.
