@@ -20,7 +20,7 @@
 
 #include    "PreCompile.h"
 
-#include    "AccountBook.h"
+#include    "StringTable.h"
 
 namespace  Wrapper  {
 
