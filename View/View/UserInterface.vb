@@ -804,8 +804,10 @@ Dim utDate As tParsedDate
         Next X
 
         lngType = .utBookItems.getItemType(lngRootItem)
-        lngWeekTotal = AnnualRecordGetItemWeekTotal(.utAnnualRecords, lngRootItem, lngWeek)
-        lngMonthTotal = .utAnnualRecords.getItemMonthTotal(lngRootItem, lngMonth)
+        With .utAnnualRecords
+            lngWeekTotal = .getItemWeekTotal(lngRootItem, lngWeek)
+            lngMonthTotal = .getItemMonthTotal(lngRootItem, lngMonth)
+        End With
         lngYearTotal = AnnualRecordGetItemYearTotal(.utAnnualRecords, lngRootItem, lngYearIndex)
     End With
 
