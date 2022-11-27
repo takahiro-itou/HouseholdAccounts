@@ -133,6 +133,8 @@
     <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h" />
     <ClInclude Include="..\Wrapper\Resource.h" />
     <ClInclude Include="..\Wrapper\PreCompile.h" />
+    <ClInclude Include="..\Wrapper\Common\AccountsConst.h" />
+    <ClInclude Include="..\Wrapper\Common\AccountsTypes.h" />
     <ClInclude Include="..\Wrapper\Interface\AggregateData.h" />
     <ClInclude Include="..\Wrapper\Interface\AnnualRecords.h" />
     <ClInclude Include="..\Wrapper\Interface\BookItem.h" />
