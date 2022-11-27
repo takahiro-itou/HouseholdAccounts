@@ -63,6 +63,20 @@ namespace  {
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    年間レコードを再集計する。
+//
+
+System::Boolean
+AnnualRecords::recountAnnualRecords(
+        cli::array<int, 1>^ lngItemFlags,
+        const  int  lngItemBufferSize,
+        const  int  lngYear,
+        const  int  lngNumDays)
+{
+    return ( false );
+}
+
 //========================================================================
 //
 //    Public Member Functions (Static).

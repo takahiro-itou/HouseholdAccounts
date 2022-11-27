@@ -78,6 +78,20 @@ public value struct AnnualRecords
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   年間レコードを再集計する。
+    **
+    **  @param [in] lngItemFlags        各項目のフラグ。
+    **  @param [in] lngItemBufferSize   項目バッファのサイズ。
+    **/
+    System::Boolean
+    recountAnnualRecords(
+            cli::array<int, 1>^ lngItemFlags,
+            const  int  lngItemBufferSize,
+            const  int  lngYear,
+            const  int  lngNumDays);
 
 //========================================================================
 //
