@@ -85,6 +85,21 @@ AnnualRecords::getItemDayTotal(
     return ( this->utItemDetailCounts[lngItemIndex].nDayTotal[lngDate] );
 }
 
+//----------------------------------------------------------------
+//    項目の一ヶ月の合計金額を取得する。
+//
+
+int
+AnnualRecords::getItemMonthTotal(
+        const  int  lngItemIndex,
+        const  int  lngMonth)
+{
+    if ( lngItemIndex >= MAXITEMS ) {
+        return ( 0 );
+    }
+    return ( this->utItemDetailCounts[lngItemIndex].nMonthTotal[lngMonth] );
+}
+
 //========================================================================
 //
 //    Properties.

@@ -25,6 +25,8 @@
 
 #include    "HouseholdAccounts/Common/AccountsTypes.h"
 
+#include    "Common/AccountsConst.h"
+
 #include    "AggregateData.h"
 #include    "Receipt.h"
 
@@ -93,6 +95,17 @@ public:
     getItemDayTotal(
             const  int  lngItemIndex,
             const  int  lngDate);
+
+    //----------------------------------------------------------------
+    /**   項目の一ヶ月の合計金額を取得する。
+    **
+    **  @param [in] lngItemIndex    項目インデックス。
+    **  @param [in] lngMonth        月。
+    **/
+    int
+    getItemMonthTotal(
+            const  int  lngItemIndex,
+            const  int  lngMonth);
 
 //========================================================================
 //
