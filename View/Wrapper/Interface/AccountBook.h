@@ -13,36 +13,31 @@
 *************************************************************************/
 
 /**
-**      An Interface of AnnualRecords class.
+**      An Interface of AccountBook class.
 **
-**      @file       Interface/AnnualRecords.h
+**      @file       Interface/AccountBook.h
 **/
 
-#if !defined( HAWRAPPER_INTERFACE_INCLUDED_ANNUAL_RECORDS_H )
-#    define   HAWRAPPER_INTERFACE_INCLUDED_ANNUAL_RECORDS_H
+#if !defined( HAWRAPPER_INTERFACE_INCLUDED_ACCOUNT_BOOK_H )
+#    define   HAWRAPPER_INTERFACE_INCLUDED_ACCOUNT_BOOK_H
 
 #pragma     once
 
 #include    "HouseholdAccounts/Common/AccountsTypes.h"
 
-#include    "Common/AccountsConst.h"
-
-#include    "AggregateData.h"
-#include    "Receipt.h"
-
 namespace  Wrapper  {
 
 //========================================================================
 //
-//    集計されたデータの情報。
+//    家計簿一冊。
 //
 
 //========================================================================
 /**
-**    AnnualRecords  class.
+**    AccountBook  class.
 **/
 
-public value struct AnnualRecords
+public value struct AccountBook
 {
 //========================================================================
 //
@@ -78,85 +73,16 @@ public value struct AnnualRecords
 //
 //    Public Member Functions.
 //
-public:
-
-    //----------------------------------------------------------------
-    /**   年間レコードを再集計する。
-    **
-    **  @param [in] lngItemFlags        各項目のフラグ。
-    **  @param [in] lngItemBufferSize   項目バッファのサイズ。
-    **/
-    System::Boolean
-    recountAnnualRecords(
-            cli::array<int, 1>^ lngItemFlags,
-            const  int  lngItemBufferSize,
-            const  int  lngYear,
-            const  int  lngNumDays);
 
 //========================================================================
 //
 //    Accessors.
 //
-public:
-
-    //----------------------------------------------------------------
-    /**   項目の一日の合計金額を取得する。
-    **
-    **  @param [in] lngItemIndex    項目インデックス。
-    **  @param [in] lngDate         日付。
-    **/
-    int
-    getItemDayTotal(
-            const  int  lngItemIndex,
-            const  int  lngDate);
-
-    //----------------------------------------------------------------
-    /**   項目の一ヶ月の合計金額を取得する。
-    **
-    **  @param [in] lngItemIndex    項目インデックス。
-    **  @param [in] lngMonth        月。
-    **/
-    int
-    getItemMonthTotal(
-            const  int  lngItemIndex,
-            const  int  lngMonth);
-
-    //----------------------------------------------------------------
-    /**   項目の一週間の合計金額を取得する。
-    **
-    **  @param [in] lngItemIndex    項目インデックス。
-    **  @param [in] lngWeek         週。
-    **/
-    int
-    getItemWeekTotal(
-            const  int  lngItemIndex,
-            const  int  lngWeek);
-
-    //----------------------------------------------------------------
-    /**   項目の一年間の合計金額を取得する。
-    **
-    **  @param [in] lngItemIndex    項目インデックス。
-    **  @param [in] lngYear         西暦年。
-    **/
-    int
-    getItemYearTotal(
-            const  int  lngItemIndex,
-            const  int  lngYear);
 
 //========================================================================
 //
 //    Properties.
 //
-public:
-
-    property    int     nItemBufferSize;
-
-    property    cli::array<BookItemAnnualCounts, 1>^    utItemAnnualCounts;
-
-    property    cli::array<BookItemDetailCounts, 1>^    utItemDetailCounts;
-
-    /**   その年の各日のレコード。  **/
-    property    cli::array<OneDayReceipts, 1>^  utDayRecords;
 
 //========================================================================
 //
