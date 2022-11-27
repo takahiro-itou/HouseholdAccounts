@@ -12,25 +12,6 @@ Module AnnualRecord
 ' This file is written in 2006/09/23 - 2008/01/09
 '*****************************************************************************
 
-Public Function AnnualRecordGetItemDayTotal(
-        ByRef utRecord As Wrapper.AnnualRecords,
-        ByVal lngItemIndex As Integer, ByVal lngDate As Integer) As Integer
-'---------------------------------------------------------------------
-'項目の１日の合計金額を返す
-'[ IN] utRecord    : 年間レコード
-'[ IN] lngItemIndex: 項目インデックス
-'[ IN] lngDate     : 日付
-'[RET] Long
-'  １日の合計金額
-'---------------------------------------------------------------------
-Dim lngTotal As Integer
-
-    With utRecord
-        lngTotal = .utItemDetailCounts(lngItemIndex).nDayTotal(lngDate)
-    End With
-    AnnualRecordGetItemDayTotal = lngTotal
-End Function
-
 Public Function AnnualRecordGetItemMonthTotal(
         ByRef utRecord As Wrapper.AnnualRecords,
         ByVal lngItemIndex As Integer, ByVal lngMonth As Integer) As Integer
