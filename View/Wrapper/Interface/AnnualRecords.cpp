@@ -73,6 +73,18 @@ namespace  {
 //    Accessors.
 //
 
+//----------------------------------------------------------------
+//    項目の一日の合計金額を取得する。
+//
+
+int
+AnnualRecords::getItemDayTotal(
+        const  int  lngItemIndex,
+        const  int  lngDate)
+{
+    return ( this->utItemDetailCounts[lngItemIndex].nDayTotal[lngDate] );
+}
+
 //========================================================================
 //
 //    Properties.

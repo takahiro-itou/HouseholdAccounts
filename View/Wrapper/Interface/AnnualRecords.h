@@ -83,6 +83,17 @@ public value struct AnnualRecords
 //
 public:
 
+    //----------------------------------------------------------------
+    /**   項目の一日の合計金額を取得する。
+    **
+    **  @param [in] lngItemIndex    項目インデックス。
+    **  @param [in] lngDate         日付。
+    **/
+    int
+    getItemDayTotal(
+            const  int  lngItemIndex,
+            const  int  lngDate);
+
 //========================================================================
 //
 //    Properties.
