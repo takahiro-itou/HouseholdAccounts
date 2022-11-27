@@ -134,6 +134,7 @@
     <ClInclude Include="..\Wrapper\Resource.h" />
     <ClInclude Include="..\Wrapper\PreCompile.h" />
     <ClInclude Include="..\Wrapper\Interface\AggregateData.h" />
+    <ClInclude Include="..\Wrapper\Interface\AnnualRecords.h" />
     <ClInclude Include="..\Wrapper\Interface\BookItem.h" />
     <ClInclude Include="..\Wrapper\Interface\Receipt.h" />
   </ItemGroup>
@@ -145,6 +146,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Wrapper\Interface\AggregateData.cpp" />
+    <ClCompile Include="..\Wrapper\Interface\AnnualRecords.cpp" />
     <ClCompile Include="..\Wrapper\Interface\BookItem.cpp" />
     <ClCompile Include="..\Wrapper\Interface\Receipt.cpp" />
   </ItemGroup>
