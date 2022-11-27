@@ -27,6 +27,10 @@
 
 namespace  Wrapper  {
 
+const   int     DAY_START   = 6;
+const   int     MAXITEMS    = 65536;
+const   int     MAXBALANCES = 256;
+
 }   //  End of namespace  Wrapper
 
 #endif

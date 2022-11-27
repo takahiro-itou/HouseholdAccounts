@@ -18,6 +18,9 @@
 **      @file       Common/AccountsTypes.h
 **/
 
+#if !defined( HAWRAPPER_COMMON_INCLUDED_ACCOUNTS_TYPES_H )
+#    define   HAWRAPPER_COMMON_INCLUDED_ACCOUNTS_TYPES_H
+
 #pragma     once
 
 #include    "HouseholdAccounts/Common/AccountsTypes.h"
@@ -34,3 +37,5 @@ public  enum class  ErrCode
 };
 
 }   //  End of namespace  Wrapper
+
+#endif
