@@ -13,7 +13,7 @@ Module AnnualRecord
 '*****************************************************************************
 
 Public Function AnnualRecordGetItemDayTotal(
-        ByRef utRecord As tAnnualRecords,
+        ByRef utRecord As Wrapper.AnnualRecords,
         ByVal lngItemIndex As Integer, ByVal lngDate As Integer) As Integer
 '---------------------------------------------------------------------
 '項目の１日の合計金額を返す
@@ -32,7 +32,7 @@ Dim lngTotal As Integer
 End Function
 
 Public Function AnnualRecordGetItemMonthTotal(
-        ByRef utRecord As tAnnualRecords, _
+        ByRef utRecord As Wrapper.AnnualRecords,
         ByVal lngItemIndex As Integer, ByVal lngMonth As Integer) As Integer
 '---------------------------------------------------------------------
 '項目の１ヶ月の合計金額を返す
@@ -55,7 +55,7 @@ Dim lngTotal As Integer
 End Function
 
 Public Function AnnualRecordGetItemWeekTotal(
-        ByRef utRecord As tAnnualRecords,
+        ByRef utRecord As Wrapper.AnnualRecords,
         ByVal lngItemIndex As Integer, ByVal lngWeek As Integer) As Integer
 '---------------------------------------------------------------------
 '項目の１週間の合計金額を返す
@@ -78,7 +78,7 @@ Dim lngTotal As Integer
 End Function
 
 Public Function AnnualRecordGetItemYearTotal(
-        ByRef utRecord As tAnnualRecords,
+        ByRef utRecord As Wrapper.AnnualRecords,
         ByVal lngItemIndex As Integer,
         ByVal lngYearIndex As Integer) As Integer
 '---------------------------------------------------------------------
@@ -97,7 +97,8 @@ Dim lngTotal As Integer
     AnnualRecordGetItemYearTotal = lngTotal
 End Function
 
-Public Function ReadAnnualRecords(ByRef utRecord As tAnnualRecords,
+Public Function ReadAnnualRecords(
+        ByRef utRecord As Wrapper.AnnualRecords,
         ByVal lngFileNumber As Integer,
         ByVal lngItemBufferSize As Integer) As Integer
 '---------------------------------------------------------------------
@@ -119,7 +120,7 @@ Dim lngStartPos As Integer, lngEndPos As Integer
 End Function
 
 Public Function ReallocAnnualRecordsBuffers(
-        ByRef utRecord As tAnnualRecords,
+        ByRef utRecord As Wrapper.AnnualRecords,
         ByVal lngItemBufferSize As Integer,
         ByVal lngStartYear As Integer,
         ByVal lngNumYears As Integer) As Boolean
@@ -165,7 +166,8 @@ Dim i As Integer
     ReallocAnnualRecordsBuffers = True
 End Function
 
-Public Function RecountAnnualRecords(ByRef utRecord As tAnnualRecords,
+Public Function RecountAnnualRecords(
+        ByRef utRecord As Wrapper.AnnualRecords,
         ByRef lngItemFlags() As Integer, ByVal lngItemBufferSize As Integer,
         ByVal lngYear As Integer, ByVal lngNumDays As Integer) As Boolean
 '---------------------------------------------------------------------
@@ -205,7 +207,8 @@ Dim lngDate As Integer, lngStartDayIndex As Integer, lngEndDayIndex As Integer
     RecountAnnualRecords = True
 End Function
 
-Public Function WriteAnnualRecords(ByRef utRecord As tAnnualRecords,
+Public Function WriteAnnualRecords(
+        ByRef utRecord As Wrapper.AnnualRecords,
         ByVal lngFileNumber As Integer,
         ByVal lngItemBufferSize As Integer) As Integer
 '---------------------------------------------------------------------

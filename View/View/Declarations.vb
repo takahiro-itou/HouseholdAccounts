@@ -124,7 +124,7 @@ Public Structure tAccountBook
     Public utBookItems As Wrapper.BookItems
     Public nCurrentYear As Integer                    '一年分ずつバッファに記憶する
     Public nNumWeeks As Integer                       'この年の週数
-    Public utAnnualRecords As tAnnualRecords       'この年のレコード
+    Public utAnnualRecords As Wrapper.AnnualRecords     'この年のレコード
 
     'その他の情報
     Public nStartWeekday As Integer                   '本年の元日の曜日(0=日,6=土)
