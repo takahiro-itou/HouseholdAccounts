@@ -17,7 +17,7 @@ Public gutTempBook As tAccountBook
 Public Function AccountBookUpdateItemHandleInYearRecord(
         ByRef lpBookItems As Wrapper.BookItems,
         ByRef lpNewIndex() As Integer,
-        ByRef utYearRecord As tAnnualRecords) As Integer
+        ByRef utYearRecord As Wrapper.AnnualRecords) As Integer
 '---------------------------------------------------------------------
 '家計簿の項目を並べ替えにあわせて、
 '指定された年のデータの、項目毎の集計データを並べなおし、

@@ -84,23 +84,6 @@ Public Const BOOKNUMCOLUMNS As Integer = BOOKFIXEDCOLS + COLBUDGETBALANCE + 1
 
 '*****************************************************************************
 '
-'集計されたデータの情報
-'
-
-'１年分 のデータ
-Public Structure tAnnualRecords
-    Public nItemBufferSize As Integer
-
-    '各項目ごとの集計データ
-    Public utItemAnnualCounts() As Wrapper.BookItemAnnualCounts
-    Public utItemDetailCounts() As Wrapper.BookItemDetailCounts
-
-    'レシートデータ
-    Public utDayRecords() As Wrapper.OneDayReceipts     'その年の各日のレコード
-End Structure
-
-'*****************************************************************************
-'
 '家計簿一冊
 '
 
