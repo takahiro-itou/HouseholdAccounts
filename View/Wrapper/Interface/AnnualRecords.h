@@ -118,6 +118,17 @@ public:
             const  int  lngItemIndex,
             const  int  lngWeek);
 
+    //----------------------------------------------------------------
+    /**   項目の一年間の合計金額を取得する。
+    **
+    **  @param [in] lngItemIndex    項目インデックス。
+    **  @param [in] lngYear         西暦年。
+    **/
+    int
+    getItemYearTotal(
+            const  int  lngItemIndex,
+            const  int  lngYear);
+
 //========================================================================
 //
 //    Properties.

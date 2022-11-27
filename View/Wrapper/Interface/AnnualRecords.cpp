@@ -115,6 +115,18 @@ AnnualRecords::getItemWeekTotal(
     return ( this->utItemDetailCounts[lngItemIndex].nWeekTotal[lngWeek] );
 }
 
+//----------------------------------------------------------------
+//    項目の一年間の合計金額を取得する。
+//
+
+int
+AnnualRecords::getItemYearTotal(
+        const  int  lngItemIndex,
+        const  int  lngYear)
+{
+    return ( this->utItemAnnualCounts[lngItemIndex].nYearTotal[lngYear] );
+}
+
 //========================================================================
 //
 //    Properties.
