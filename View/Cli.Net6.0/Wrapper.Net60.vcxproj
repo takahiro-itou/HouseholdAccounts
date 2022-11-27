@@ -135,6 +135,7 @@
     <ClInclude Include="..\Wrapper\PreCompile.h" />
     <ClInclude Include="..\Wrapper\Common\AccountsConst.h" />
     <ClInclude Include="..\Wrapper\Common\AccountsTypes.h" />
+    <ClInclude Include="..\Wrapper\Interface\AccountBook.h" />
     <ClInclude Include="..\Wrapper\Interface\AggregateData.h" />
     <ClInclude Include="..\Wrapper\Interface\AnnualRecords.h" />
     <ClInclude Include="..\Wrapper\Interface\BookItem.h" />
@@ -147,6 +148,7 @@
     <ClCompile Include="..\Wrapper\PreCompile.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\Wrapper\Interface\AccountBook.cpp" />
     <ClCompile Include="..\Wrapper\Interface\AggregateData.cpp" />
     <ClCompile Include="..\Wrapper\Interface\AnnualRecords.cpp" />
     <ClCompile Include="..\Wrapper\Interface\BookItem.cpp" />
