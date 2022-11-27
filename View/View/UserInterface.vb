@@ -807,8 +807,8 @@ Dim utDate As tParsedDate
         With .utAnnualRecords
             lngWeekTotal = .getItemWeekTotal(lngRootItem, lngWeek)
             lngMonthTotal = .getItemMonthTotal(lngRootItem, lngMonth)
+            lngYearTotal = .getItemYearTotal(lngRootItem, lngYearIndex)
         End With
-        lngYearTotal = AnnualRecordGetItemYearTotal(.utAnnualRecords, lngRootItem, lngYearIndex)
     End With
 
     '週計
