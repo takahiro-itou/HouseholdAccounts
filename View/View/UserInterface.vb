@@ -292,7 +292,7 @@ Dim lngYear As Integer, lngWeek As Integer, lngMonth As Integer
 Dim blnResult As Boolean
 Dim strTemp As String
 Dim strItemName As String, strColumnTitle As String
-Dim utDayInfo As tParsedDate
+Dim utDayInfo As Wrapper.ParsedDate
 
     blnResult = False
 
@@ -451,7 +451,7 @@ Dim lngCurTop As Integer, lngInc As Integer
 Dim lngMonth As Integer
 Dim strTemp As String
 Dim strText As String
-Dim utDayInfo As tParsedDate
+Dim utDayInfo As Wrapper.ParsedDate
 Dim colorText As Color = Color.Black
 
     '描画するデータ(年／週)を記録する
@@ -755,7 +755,7 @@ Dim lngYearIndex As Integer, lngDate As Integer, lngDayTotal As Integer
 Dim lngWeekTotal As Integer, lngMonthTotal As Integer, lngYearTotal As Integer
 Dim strText As String
 Dim lngTextColor As Color, lngCellColor As Color
-Dim utDate As tParsedDate
+Dim utDate As Wrapper.ParsedDate
 
     'この項目以下の合計を表示する
     UserInterfaceDrawCell(utUI, _

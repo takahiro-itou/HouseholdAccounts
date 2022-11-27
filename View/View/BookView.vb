@@ -337,7 +337,7 @@ Dim lngStartMonth As Integer, lngStartDay As Integer
 Dim blnEnabled As Boolean, blnCancel As Boolean
 Dim lngToday As Integer, lngYear As Integer, lngOffset As Integer
 Dim dtmToday As System.DateTime
-Dim utDate As tParsedDate
+Dim utDate As Wrapper.ParsedDate
 Dim objfDate As DateSelect
 Dim msgAns As System.Windows.Forms.DialogResult
 Dim dtmSelect As System.DateTime

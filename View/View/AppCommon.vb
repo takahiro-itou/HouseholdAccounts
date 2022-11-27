@@ -126,7 +126,7 @@ Public Sub ExitApplication()
 End Sub
 
 Public Sub GetDayFromIndex(
-        ByRef utDate As tParsedDate,
+        ByRef utDate As Wrapper.ParsedDate,
         ByVal lngYear As Integer, ByVal lngDayIndex As Integer,
         ByVal lngDayOffset As Integer)
 '---------------------------------------------------------------------
@@ -207,8 +207,10 @@ Dim lngTemp As Integer
     GetDayInYear = glngFirstDayTable(lngTemp, lngMonth) + (lngDay - 1)
 End Function
 
-Public Function GetDayStringFromInfo(ByRef utDayInfo As tParsedDate,
-        ByVal blnYear As Boolean, ByVal blnWeekday As Boolean) As String
+Public Function GetDayStringFromInfo(
+        ByRef utDayInfo As Wrapper.ParsedDate,
+        ByVal blnYear As Boolean,
+        ByVal blnWeekday As Boolean) As String
 '---------------------------------------------------------------------
 '日付情報から、日付を表す文字列を得る
 '[ IN] utDayInfo : 日付情報
@@ -400,7 +402,9 @@ Dim lngTempFileNumber As Integer
     OpenTemporaryFile = lngTempFileNumber
 End Function
 
-Public Sub ParseDate(ByVal lngDate As integer, ByRef utResult As tParsedDate)
+Public Sub ParseDate(
+        ByVal lngDate As integer,
+        ByRef utResult As Wrapper.ParsedDate)
 '---------------------------------------------------------------------
 '本ソフトで使われている日付の形式を解析して、
 '西暦年・月・日・週・曜日に分解する

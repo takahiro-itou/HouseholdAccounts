@@ -74,7 +74,7 @@ Public Function AddDataToItemTotal(ByRef utBook As tAccountBook,
 Dim lngFlags() As Integer
 Dim lngParentHandle As Integer
 Dim lngYear As Integer, lngWeek As Integer, lngMonth As Integer
-Dim utDate As tParsedDate
+Dim utDate As Wrapper.ParsedDate
 Dim blnAddToParent As Boolean, blnAddToRoot As Boolean
 
     blnAddToParent = True

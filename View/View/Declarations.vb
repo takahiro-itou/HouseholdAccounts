@@ -101,7 +101,7 @@ Public Structure tAccountBook
     Public nStartYear As Integer                          '開始西暦年
     Public nStartDayIndex As Integer                      '開始日(オフセット付、元日からの日数)
     Public nNumYears As Integer                           'データの存在する年数
-    Public utStartDate As tParsedDate
+    Public utStartDate As Wrapper.ParsedDate
 
     '項目データと年間レコード
     Public utBookItems As Wrapper.BookItems
@@ -152,7 +152,7 @@ Public Structure tUserInterface
     Public sTableCaption As String                     'テーブルキャプション
     Public nNowShowingItemCount As Integer                '現在画面に表示している項目数
     Public nNowShowingItems() As Integer                  '現在画面に表示している項目
-    Public utNowShowingDates() As tParsedDate          '現在画面に表示している列項目(日付)
+    Public utNowShowingDates() As Wrapper.ParsedDate    '現在画面に表示している列項目(日付)
 
     'スクロール範囲と位置
     Public oBookHScrollBar As HScrollBar
