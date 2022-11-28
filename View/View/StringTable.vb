@@ -21,15 +21,6 @@ Module StringTable
 Public Const STRINGSORTNONE As Integer = 0         'ソートなし
 Public Const STRINGSORTASCENDING As Integer = 1    '昇順
 
-Public Structure tStringTable
-    Public nTableBufferSize As Integer            'テーブル用のバッファサイズ
-    Public nNumEntry As Integer                   '実際に格納されているデータ数
-    Public nSorted As Integer                     'ソート状態
-    Public nEntryFlags() As Integer               '各エントリのフラグ
-    Public sTableEntries() As String           '文字列テーブル
-    Public nSortIndex() As Integer                '昇順にソートしたときの、インデックステーブル
-End Structure
-
 Public Function FindString(
         ByRef utStringTable As Wrapper.StringTable,
         ByVal strText As String) As Integer
