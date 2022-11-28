@@ -30,8 +30,9 @@ Public Structure tStringTable
     Public nSortIndex() As Integer                '昇順にソートしたときの、インデックステーブル
 End Structure
 
-Public Function FindString(ByRef utStringTable As tStringTable, _
-    ByVal strText As String) As Integer
+Public Function FindString(
+        ByRef utStringTable As Wrapper.StringTable,
+        ByVal strText As String) As Integer
 '---------------------------------------------------------------------
 '[ IN] utStringTable: 文字列テーブル
 '[ IN] strText      : 検索する文字列
@@ -91,8 +92,9 @@ Dim strCheck As String
     FindString = lngResult
 End Function
 
-Public Function InsertStringToTable(ByRef utStringTable As tStringTable, _
-    ByVal strNewText As String) As Integer
+Public Function InsertStringToTable(
+        ByRef utStringTable As Wrapper.StringTable,
+        ByVal strNewText As String) As Integer
 '---------------------------------------------------------------------
 '[I/O] utStringTable: 文字列テーブル
 '[ IN] strNewText   : 新しく挿入するデータ
@@ -192,8 +194,9 @@ Dim strCheck As String
     InsertStringToTable = lngIndex
 End Function
 
-Public Function ReadStringTable(ByRef utStringTable As tStringTable, _
-    ByVal lngFileNumber As Integer) As Integer
+Public Function ReadStringTable(
+        ByRef utStringTable As Wrapper.StringTable,
+        ByVal lngFileNumber As Integer) As Integer
 '---------------------------------------------------------------------
 'ファイルから、文字列テーブルを読み込む
 '[OUT] utStringTable: 文字列テーブル
@@ -271,7 +274,8 @@ Dim bytBuffer() As Byte
     ReadStringTable = (lngEndPos - lngFirstPos)
 End Function
 
-Public Sub SortStringTable(ByRef utStringTable As tStringTable)
+Public Sub SortStringTable(
+        ByRef utStringTable As Wrapper.StringTable)
 '---------------------------------------------------------------------
 '文字列テーブルを昇順にソートする
 '[I/O] utStringTable: 文字列テーブル
@@ -281,8 +285,9 @@ Public Sub SortStringTable(ByRef utStringTable As tStringTable)
     End With
 End Sub
 
-Public Function WriteStringTable(ByRef utStringTable As tStringTable, _
-    ByVal lngFileNumber As Integer) As Integer
+Public Function WriteStringTable(
+        ByRef utStringTable As Wrapper.StringTable,
+        ByVal lngFileNumber As Integer) As Integer
 '---------------------------------------------------------------------
 'ファイルに、文字列テーブルを書き込む
 '[ IN] utStringTable: 文字列テーブル
@@ -346,7 +351,8 @@ Dim bytBuffer() As Byte
     WriteStringTable = (lngEndPos - lngFirstPos)
 End Function
 
-Public Function TestStringTable(ByRef lpTable As tStringTable) As Boolean
+Public Function TestStringTable(
+        ByRef lpTable As Wrapper.StringTable) As Boolean
 '---------------------------------------------------------------------
 '---------------------------------------------------------------------
 Dim i As Integer

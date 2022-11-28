@@ -94,8 +94,8 @@ Public Structure tAccountBook
     Public sTempFileDir As String                      'テンポラリファイルのディレクトリ
 
     'データに使用されている文字列テーブル
-    Public utSettingsStringTable As tStringTable       '設定データ用文字列テーブル
-    Public utRecordsStringTable As tStringTable        'レコード用文字列テーブル
+    Public utSettingsStringTable As Wrapper.StringTable       '設定データ用文字列テーブル
+    Public utRecordsStringTable As Wrapper.StringTable        'レコード用文字列テーブル
 
     '開始年月日
     Public nStartYear As Integer                          '開始西暦年
