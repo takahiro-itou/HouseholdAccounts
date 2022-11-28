@@ -78,6 +78,25 @@ public value struct StringTable
 //
 //    Properties.
 //
+public:
+
+    /**   テーブル用のバッファサイズ。  **/
+    int     nTableBufferSize;
+
+    /**   実際に格納されているデータ数。    **/
+    int     nNumEntry;
+
+    /**   ソート状態。  **/
+    int     nSorted;
+
+    /**   各エントリのフラグ。  **/
+    cli::array<int, 1>^     nEntryFlags;
+
+    /**   文字列テーブル。      **/
+    cli::array<System::String^, 1>^     sTableEntries;
+
+    /**   昇順にソートした時の、インデックステーブル。  **/
+    cli::array<int, 1>^     nSortIndex;
 
 //========================================================================
 //
