@@ -38,6 +38,12 @@ public value struct StringTable
 //
 //    Internal Type Definitions.
 //
+public:
+
+    enum class StringTableSort {
+        STRING_SORT_NONE        = 0,
+        STRING_SORT_ASCENDING   = 1,
+    };
 
 //========================================================================
 //
@@ -87,7 +93,7 @@ public:
     int     nNumEntry;
 
     /**   ソート状態。  **/
-    int     nSorted;
+    StringTableSort         nSorted;
 
     /**   各エントリのフラグ。  **/
     cli::array<int, 1>^     nEntryFlags;
