@@ -25,6 +25,11 @@
 
 #include    "HouseholdAccounts/Common/AccountsTypes.h"
 
+#include    "AnnualRecords.h"
+#include    "BookItem.h"
+#include    "Common/ManagedDate.h"
+#include    "Common/StringTable.h"
+
 namespace  Wrapper  {
 
 //========================================================================
@@ -83,6 +88,47 @@ public value struct AccountBook
 //
 //    Properties.
 //
+public:
+
+    /**   家計簿データが有効か。    **/
+    System::Boolean     bEnabled;
+
+    /**   テンポラリファイルのディレクトリ。    **/
+    System::String^     sTempFileDir;
+
+    /**   設定データ用文字列テーブル。  **/
+    StringTable         utSettingsStringTable;
+
+    /**   レコード用文字列テーブル。    **/
+    StringTable         utRecordsStringTable;
+
+    /**   開始西暦年。  **/
+    int     nStartYear;
+
+    /**   開始日。      **/
+    int     nStartDayIndex;
+
+    /**   データの存在する年数。    **/
+    int     nNumYears;
+
+    ParsedDate  utStartDate;
+
+    BookItems   utBookItems;
+
+    /**   一年分ずつバッファに記憶する。    **/
+    int         nCurrentYear;
+
+    /**   この年の週数。    **/
+    int         nNumWeeks;
+
+    /**   この年のレコード。    **/
+    AnnualRecords   utAnnualRecords;
+
+    /**   本年の元日の曜日。    **/
+    int     nStartWeekday;
+
+    /**   レコード内に本年分の前に去年分が何日分入っているか。  **/
+    int     nPreviousDays;
 
 //========================================================================
 //
