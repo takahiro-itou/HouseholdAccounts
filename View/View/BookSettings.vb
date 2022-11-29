@@ -17,8 +17,9 @@ Module BookSettings
 'パブリックプロシージャ
 '
 
-Public Function AllocBookItems(ByRef utBook As tAccountBook, _
-    ByVal lngItemBufferSize As Integer) As Integer
+Public Function AllocBookItems(
+        ByRef utBook As Wrapper.AccountBook,
+        ByVal lngItemBufferSize As Integer) As Integer
 '---------------------------------------------------------------------
 '項目データ用バッファを確保する
 '[I/O] utBook            : 家計簿データ
@@ -51,7 +52,8 @@ Dim lngResult As Integer
     AllocBookItems = lngResult
 End Function
 
-Public Function BookItemAllocNewItem(ByRef utBook As tAccountBook) As Integer
+Public Function BookItemAllocNewItem(
+        ByRef utBook As Wrapper.AccountBook) As Integer
 '---------------------------------------------------------------------
 '新しい項目用の領域を確保し、そのハンドルを返す
 '[I/O] utBook: 家計簿データ
@@ -87,7 +89,8 @@ Dim lngResult As Integer
     BookItemAllocNewItem = AllocBookItems(utBook, lngResult)
 End Function
 
-Public Function InsertNewBookItem(ByRef utBook As tAccountBook,
+Public Function InsertNewBookItem(
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngParentItemHandle As Integer, ByVal strName As String,
         ByVal lngFlags As Integer, ByVal lngStartDate As Integer,
         ByVal lngStartBalance As Integer) As Integer
@@ -134,7 +137,7 @@ Dim lngNewItemHandle As Integer
 End Function
 
 Public Function ReadAccountBookSettings(
-        ByRef utBook As tAccountBook) As Boolean
+        ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイル(.set)から、家計簿の設定を読み込む
 '[I/O] utBook : 家計簿データ
@@ -238,7 +241,7 @@ Dim strTempDir As String, strTempFileName As String
 End Function
 
 Public Function WriteAccountBookSettings(
-        ByRef utBook As tAccountBook) As Boolean
+        ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイル(.set)に、家計簿の設定を書き込む
 '[ IN] utBook : 家計簿データ

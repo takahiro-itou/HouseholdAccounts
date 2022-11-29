@@ -12,7 +12,7 @@ Module AccountBook
 ' This file is written in 2006/09/23 - 2008/01/09
 '*****************************************************************************
 
-Public gutTempBook As tAccountBook
+Public gutTempBook As Wrapper.AccountBook
 
 Public Function AccountBookUpdateItemHandleInYearRecord(
         ByRef lpBookItems As Wrapper.BookItems,
@@ -552,7 +552,8 @@ Dim strTempFileName As String
     ReadAccountBookRecords = True
 End Function
 
-Public Sub Recount(ByRef utBook As tAccountBook, ByVal lngYear As Integer)
+Public Sub Recount(
+        ByRef utBook As Wrapper.AccountBook, ByVal lngYear As Integer)
 '---------------------------------------------------------------------
 '---------------------------------------------------------------------
 Dim i As Integer, lngItemBufferSize As Integer
