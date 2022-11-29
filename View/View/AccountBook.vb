@@ -66,7 +66,8 @@ Dim utDetailCounts() As Wrapper.BookItemDetailCounts
     AccountBookUpdateItemHandleInYearRecord = 0
 End Function
 
-Public Function AddDataToItemTotal(ByRef utBook As tAccountBook,
+Public Function AddDataToItemTotal(
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngYearIndex As Integer, ByVal lngDayIndex As Integer,
         ByVal lngItemIndex As Integer, ByVal lngValue As Integer) As Boolean
 '---------------------------------------------------------------------
@@ -127,7 +128,8 @@ Dim blnAddToParent As Boolean, blnAddToRoot As Boolean
     AddDataToItemTotal = blnAddToRoot
 End Function
 
-Public Function ChangeAccountBookYear(ByRef utBook As tAccountBook,
+Public Function ChangeAccountBookYear(
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngNewYear As Integer) As Long
 '---------------------------------------------------------------------
 'カレントの年を変更する
@@ -199,7 +201,7 @@ Dim blnResult As Boolean
     ChangeAccountBookYear = lngNumWeeks
 End Function
 
-Public Sub CloseAccountBook(ByRef utBook As tAccountBook)
+Public Sub CloseAccountBook(ByRef utBook As Wrapper.AccountBook)
 '---------------------------------------------------------------------
 '家計簿のデータファイルを閉じる
 '[I/O] utBook: 家計簿データ
@@ -247,7 +249,7 @@ Dim strTempFileName As String
 End Sub
 
 Public Function CreateEmptyAccountBook(
-        ByRef utBook As tAccountBook) As Boolean
+        ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
 '家計簿の内容を初期状態にセットする
 '[OUT] utBook : 家計簿データ
@@ -265,8 +267,9 @@ Dim blnResult As Boolean
     CreateEmptyAccountBook = blnResult
 End Function
 
-Public Function EnableAccountBook(ByRef utBook As tAccountBook, _
-    ByVal blnEnabled As Boolean) As Boolean
+Public Function EnableAccountBook(
+        ByRef utBook As Wrapper.AccountBook,
+        ByVal blnEnabled As Boolean) As Boolean
 '---------------------------------------------------------------------
 '家計簿を有効／無効にする
 '[I/O] utBook    : 家計簿データ
@@ -279,7 +282,7 @@ Public Function EnableAccountBook(ByRef utBook As tAccountBook, _
 End Function
 
 Public Function GetAccountBookNumYears(
-        ByRef utBook As tAccountBook) As Integer
+        ByRef utBook As Wrapper.AccountBook) As Integer
 '---------------------------------------------------------------------
 '家計簿のデータが何年分あるかを返す
 '[ IN] utBook: 家計簿データ
@@ -290,7 +293,7 @@ Public Function GetAccountBookNumYears(
 End Function
 
 Public Function GetAccountBookStartYear(
-        ByRef utBook As tAccountBook) As Integer
+        ByRef utBook As Wrapper.AccountBook) As Integer
 '---------------------------------------------------------------------
 '家計簿の開始年を返す
 '[ IN] utBook: 家計簿データ
@@ -300,7 +303,8 @@ Public Function GetAccountBookStartYear(
     GetAccountBookStartYear = utBook.nStartYear
 End Function
 
-Public Function IsAccountBookEnabled(ByRef utBook As tAccountBook) As Boolean
+Public Function IsAccountBookEnabled(
+        ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
 '家計簿データが有効なデータかどうか判断する
 '[ IN] utBook : 家計簿データ
@@ -314,8 +318,9 @@ Public Function IsAccountBookEnabled(ByRef utBook As tAccountBook) As Boolean
     IsAccountBookEnabled = utBook.bEnabled
 End Function
 
-Public Function IsDayBeforeStart(ByRef utBook As tAccountBook, _
-    ByVal lngYear As Integer, ByVal lngDayIndex As Integer) As Boolean
+Public Function IsDayBeforeStart(
+        ByRef utBook As Wrapper.AccountBook,
+        ByVal lngYear As Integer, ByVal lngDayIndex As Integer) As Boolean
 '---------------------------------------------------------------------
 '指定した日付が、家計簿の開始日より前かどうか調べる
 '[ IN] utBook      : 家計簿データ
@@ -336,8 +341,9 @@ Dim blnResult As Boolean
     IsDayBeforeStart = blnResult
 End Function
 
-Public Function OpenAccountBook(ByRef utBook As tAccountBook, _
-    ByVal strFileName As String) As Boolean
+Public Function OpenAccountBook(
+        ByRef utBook As Wrapper.AccountBook,
+        ByVal strFileName As String) As Boolean
 '---------------------------------------------------------------------
 '家計簿のデータファイルを開く
 '[OUT] utBook     : 家計簿データ
@@ -467,7 +473,8 @@ Dim strTempFileName As String, strIndexFileName As String
     OpenAccountBook = True
 End Function
 
-Public Function PopAccountBook(ByRef utBook As tAccountBook) As Long
+Public Function PopAccountBook(
+        ByRef utBook As Wrapper.AccountBook) As Long
 '---------------------------------------------------------------------
 '一時変数の内容を、指定した家計簿データに転送する
 '[ IN] utBook: 家計簿データ
@@ -480,7 +487,8 @@ Public Function PopAccountBook(ByRef utBook As tAccountBook) As Long
     PopAccountBook = 1
 End Function
 
-Public Function PushAccountBook(ByRef utBook As tAccountBook) As Long
+Public Function PushAccountBook(
+        ByRef utBook As Wrapper.AccountBook) As Long
 '---------------------------------------------------------------------
 '一時変数に、家計簿のコピーを書き込む
 '[ IN] utBook: 家計簿データ
@@ -495,7 +503,7 @@ Public Function PushAccountBook(ByRef utBook As tAccountBook) As Long
 End Function
 
 Public Function ReadAccountBookCommons(
-        ByRef utBook As tAccountBook) As Boolean
+        ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイルから、家計簿の共通レコードを読み込む
 '[I/O] utBook : 家計簿データ
@@ -506,7 +514,8 @@ Public Function ReadAccountBookCommons(
     ReadAccountBookCommons = False
 End Function
 
-Public Function ReadAccountBookRecords(ByRef utBook As tAccountBook, _
+Public Function ReadAccountBookRecords(
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngYear As Integer) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイルから、家計簿の指定された年のデータを読み込む
@@ -635,7 +644,8 @@ Dim blnResult As Boolean
     End With
 End Sub
 
-Public Function SaveAccountBook(ByRef utBook As tAccountBook,
+Public Function SaveAccountBook(
+        ByRef utBook As Wrapper.AccountBook,
         ByVal strFileName As String) As Boolean
 '---------------------------------------------------------------------
 '家計簿のデータをファイルに保存する
@@ -823,7 +833,8 @@ Dim strTempFileName As String, strIndexFileName As String
     SaveAccountBook = True
 End Function
 
-Public Sub SetAccountBookStartDate(ByRef utBook As tAccountBook,
+Public Sub SetAccountBookStartDate(
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngStartYear As Integer,
         ByVal lngStartMonth As Integer,
         ByVal lngStartDay As Integer)
@@ -850,7 +861,7 @@ Dim lngDayIndex As Integer, lngDayOffset As Integer
 End Sub
 
 Public Sub SetAccountBookNumYears(
-        ByRef utBook As tAccountBook, ByVal lngNumYears As Integer)
+        ByRef utBook As Wrapper.AccountBook, ByVal lngNumYears As Integer)
 '---------------------------------------------------------------------
 'データの年数を設定する
 '[I/O] utBook        : 家計簿データ
@@ -865,7 +876,8 @@ Public Sub SetAccountBookNumYears(
     End With
 End Sub
 
-Public Function UpdateIndexFile(ByVal strTempDir As String, _
+Public Function UpdateIndexFile(
+        ByVal strTempDir As String,
         ByVal lngKey As Integer, ByVal lngPos As Integer,
         ByVal lngSize As Integer) As Boolean
 '---------------------------------------------------------------------
@@ -927,7 +939,7 @@ Dim bytBuffer() As Byte
 End Function
 
 Public Function WriteAccountBookCommons(
-        ByRef utBook As tAccountBook) As Boolean
+        ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイルに、家計簿の共通レコードを書き込む
 '[ IN] utBook: 家計簿データ
@@ -958,7 +970,8 @@ Dim strTempDir As String, strTempFileName As String
     WriteAccountBookCommons = UpdateIndexFile(strTempDir, 1, -1, lngFileLen)
 End Function
 
-Public Function WriteAccountBookRecords(ByRef utBook As tAccountBook, _
+Public Function WriteAccountBookRecords(
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngYear As Integer) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイルに、家計簿の指定された年のデータを書き込む
