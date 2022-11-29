@@ -17,9 +17,11 @@ Module UserInterface
 'パブリックプロシージャ
 '
 
-Public Sub ChangeCellSize(ByRef utUI As tUserInterface,
-        ByRef utBook As tAccountBook,
-        ByVal lngNewWidth As Integer, ByVal lngNewHeight As Integer)
+Public Sub ChangeCellSize(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
+        ByVal lngNewWidth As Integer,
+        ByVal lngNewHeight As Integer)
 '---------------------------------------------------------------------
 'セルの幅と高さを変更する
 '[I/O] utUI        : ユーザーインターフェイス
@@ -90,8 +92,10 @@ Public Sub CleanupUserInterface(ByRef utUI As tUserInterface)
 
 End Sub
 
-Public Function ExecuteCellAction(ByRef utUI As tUserInterface, _
-    ByRef utBook As tAccountBook, ByVal lngX As Integer, ByVal lngY As Integer) As Boolean
+Public Function ExecuteCellAction(
+        ByRef utUI As tUserInterface, _
+        ByRef utBook As Wrapper.AccountBook,
+        ByVal lngX As Integer, ByVal lngY As Integer) As Boolean
 '---------------------------------------------------------------------
 'セルに対するアクションを実行する
 '[I/O] utUI    : ユーザーインターフェイス
@@ -141,8 +145,9 @@ Dim blnResult As Boolean
     ExecuteCellAction = blnResult
 End Function
 
-Public Sub RefreshBook(ByRef utUI As tUserInterface,
-        ByRef utBook As tAccountBook, _
+Public Sub RefreshBook(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngLeftCol As Integer, ByVal lngTopRow As Integer)
 '---------------------------------------------------------------------
 '家計簿の表示を更新する
@@ -276,8 +281,9 @@ Dim rectSrc As System.Drawing.Rectangle
     End With
 End Sub
 
-Public Sub SelectCell(ByRef utUI As tUserInterface, _
-        ByRef utBook As tAccountBook,
+Public Sub SelectCell(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngX As Integer, ByVal lngY As Integer)
 '---------------------------------------------------------------------
 '指定したセルを選択状態にする
@@ -433,8 +439,9 @@ Public Sub StartupUserInterface(ByRef utUI As tUserInterface, _
     End With
 End Sub
 
-Public Sub UpdateBook(ByRef utUI As tUserInterface,
-        ByRef utBook As tAccountBook,
+Public Sub UpdateBook(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngYear As Integer, ByVal lngWeek As Integer)
 '---------------------------------------------------------------------
 '指定したピクチャーボックスに家計簿の内容を描画する
@@ -721,14 +728,16 @@ Dim rectSrc As System.Drawing.Rectangle
 
 End Sub
 
-Private Sub UserInterfaceShowData(ByRef utUI As tUserInterface, _
-    ByRef utBook As tAccountBook, ByVal lngDepth As Integer, _
-    ByVal lngFixedColIcon As Integer, ByVal lngFixedColArrange As Integer, _
-    ByVal lngBGFixedColsColor As Color, ByVal lngBGColor As Color, _
-    ByVal lngTop As Integer, ByVal lngRootItem As Integer, _
-    ByVal strItemName As String, _
-    ByVal lngYear As Integer, ByVal lngMonth As Integer, _
-    ByVal lngWeek As Integer)
+Private Sub UserInterfaceShowData(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
+        ByVal lngDepth As Integer,
+        ByVal lngFixedColIcon As Integer, ByVal lngFixedColArrange As Integer,
+        ByVal lngBGFixedColsColor As Color, ByVal lngBGColor As Color,
+        ByVal lngTop As Integer, ByVal lngRootItem As Integer,
+        ByVal strItemName As String,
+        ByVal lngYear As Integer, ByVal lngMonth As Integer,
+        ByVal lngWeek As Integer)
 '---------------------------------------------------------------------
 'データを表示する
 '[ IN] utUI                :
@@ -875,8 +884,9 @@ Dim utDate As Wrapper.ParsedDate
 
 End Sub
 
-Private Function UserInterfaceShowItem(ByRef utUI As tUserInterface, _
-        ByRef utBook As tAccountBook, _
+Private Function UserInterfaceShowItem(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngDepth As Integer, ByVal lngTop As Integer,
         ByVal lngRootItem As Integer,
         ByVal lngYear As Integer, ByVal lngMonth As Integer,
