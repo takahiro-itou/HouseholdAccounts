@@ -84,38 +84,6 @@ Public Const BOOKNUMCOLUMNS As Integer = BOOKFIXEDCOLS + COLBUDGETBALANCE + 1
 
 '*****************************************************************************
 '
-'家計簿一冊
-'
-
-Public Structure tAccountBook
-    Public bEnabled As Boolean                         '家計簿データが有効か
-
-    'ファイル情報
-    Public sTempFileDir As String                      'テンポラリファイルのディレクトリ
-
-    'データに使用されている文字列テーブル
-    Public utSettingsStringTable As Wrapper.StringTable       '設定データ用文字列テーブル
-    Public utRecordsStringTable As Wrapper.StringTable        'レコード用文字列テーブル
-
-    '開始年月日
-    Public nStartYear As Integer                          '開始西暦年
-    Public nStartDayIndex As Integer                      '開始日(オフセット付、元日からの日数)
-    Public nNumYears As Integer                           'データの存在する年数
-    Public utStartDate As Wrapper.ParsedDate
-
-    '項目データと年間レコード
-    Public utBookItems As Wrapper.BookItems
-    Public nCurrentYear As Integer                    '一年分ずつバッファに記憶する
-    Public nNumWeeks As Integer                       'この年の週数
-    Public utAnnualRecords As Wrapper.AnnualRecords     'この年のレコード
-
-    'その他の情報
-    Public nStartWeekday As Integer                   '本年の元日の曜日(0=日,6=土)
-    Public nPreviousDays As Integer                   'レコード内に本年分の前に去年分が何日分入っているか
-End Structure
-
-'*****************************************************************************
-'
 '表に関する情報
 '
 
