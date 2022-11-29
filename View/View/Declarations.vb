@@ -171,7 +171,7 @@ Public Structure tUserInterface
 End Structure
 
 Public Structure tBookView
-    Public utAccountBook As tAccountBook
+    Public utAccountBook As Wrapper.AccountBook
     Public utUserInterface As tUserInterface
     Public oBookForm As Form
 
