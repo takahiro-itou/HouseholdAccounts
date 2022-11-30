@@ -63,6 +63,59 @@ namespace  {
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    指定された文字列を検索する。
+//
+
+int
+StringTable::findString(
+        System::String^  strText)
+{
+    int lngIndex, lngResult;
+    int lngLeft, lngRight, lngTarget;
+    System::String^     strCheck;
+
+    lngLeft = 0;
+    lngRight = this->nNumEntry - 1;
+    lngResult = -1;
+
+    while (lngRight - lngLeft >= 8) {
+        lngTarget = (lngLeft + lngRight) / 2;
+        lngIndex = this->nSortIndex[lngTarget];
+        strCheck = this->sTableEntries[lngIndex];
+
+        if ( strCheck == strText ) {
+            //  見つかった   //
+            lngResult = lngIndex;
+            lngLeft = lngIndex;
+            lngRight = lngIndex;
+            break;
+        }
+
+        //  検索範囲を絞る  //
+        if ( System::String::Compare(strCheck, strText) < 0 ) {
+            //  検索しているデータは現在位置より右にある。  //
+            lngLeft = lngTarget + 1;
+        } else {
+            //  検索しているデータは現在位置より左にある。  //
+            lngRight = lngTarget - 1;
+        }
+    }
+
+    //  ある程度範囲が小さくなったところで、単純検索に切り替える。  //
+    for ( lngTarget = lngLeft; lngTarget <= lngRight; ++ lngTarget ) {
+        lngIndex = this->nSortIndex[lngTarget];
+        strCheck = this->sTableEntries[lngIndex];
+
+        if ( strCheck == strText ) {
+            lngResult = lngIndex;
+            break;
+        }
+    }
+
+    return ( lngIndex );
+}
+
 //========================================================================
 //
 //    Accessors.
