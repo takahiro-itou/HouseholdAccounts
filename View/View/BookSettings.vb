@@ -320,7 +320,7 @@ Dim blnResult As Boolean
                     lngReserved = 0
                 End With
 
-                lngNameID = FindString(utBook.utSettingsStringTable, strTemp)
+                lngNameID = utBook.utSettingsStringTable.findString(strTemp)
 
                 FilePut(lngTempFileNumber, lngHandle)
                 FilePut(lngTempFileNumber, lngFlags)
