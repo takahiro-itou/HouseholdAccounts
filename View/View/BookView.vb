@@ -343,7 +343,7 @@ Dim msgAns As System.Windows.Forms.DialogResult
 Dim dtmSelect As System.DateTime
 
     With utBookView
-        blnEnabled = EnableAccountBook(.utAccountBook, True)
+        blnEnabled = .utAccountBook.enableAccountBook(True)
         .bBackupedBookFile = False
         .bModifyCurrentBook = False
 
@@ -361,7 +361,7 @@ Dim dtmSelect As System.DateTime
               MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If (msgAns = Windows.Forms.DialogResult.No) Then
             With utBookView
-                blnEnabled = EnableAccountBook(.utAccountBook, False)
+                blnEnabled = .utAccountBook.enableAccountBook(False)
                 .bBackupedBookFile = False
                 .bModifyCurrentBook = False
             End With
@@ -389,7 +389,7 @@ Dim dtmSelect As System.DateTime
 
         If (blnCancel) Then
             With utBookView
-                blnEnabled = EnableAccountBook(.utAccountBook, False)
+                blnEnabled = .utAccountBook.enableAccountBook(False)
                 .bBackupedBookFile = False
                 .bModifyCurrentBook = False
             End With
