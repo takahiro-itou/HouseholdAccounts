@@ -21,68 +21,6 @@ Module StringTable
 Public Const STRINGSORTNONE As Integer = 0         'ソートなし
 Public Const STRINGSORTASCENDING As Integer = 1    '昇順
 
-Public Function FindString(
-        ByRef utStringTable As Wrapper.StringTable,
-        ByVal strText As String) As Integer
-'---------------------------------------------------------------------
-'[ IN] utStringTable: 文字列テーブル
-'[ IN] strText      : 検索する文字列
-'[RET] Integer
-'  検索結果
-'[ACT]
-'  指定された文字列テーブルから、
-'strText で指定された文字列を検索し、そのインデックスを返す。
-'  見つからなければ、-1を返す。
-'---------------------------------------------------------------------
-Dim lngIndex As Integer, lngResult As Integer
-Dim lngLeft As Integer, lngRight As Integer, lngTarget As Integer
-Dim strCheck As String
-
-    With utStringTable
-        lngLeft = 0
-        lngRight = .nNumEntry - 1
-        lngResult = -1
-
-        Do While (lngRight - lngLeft >= 8)
-            lngTarget = (lngLeft + lngRight) \ 2
-            lngIndex = .nSortIndex(lngTarget)
-            strCheck = .sTableEntries(lngIndex)
-
-            If (strCheck = strText) Then
-                '見つかった
-                lngResult = lngIndex
-                lngLeft = lngIndex
-                lngRight = lngIndex
-                Exit Do
-            End If
-
-            '検索範囲を絞る
-            If (strCheck < strText) Then
-                '検索しているデータは、現在位置lngTarget より右にある
-                lngLeft = lngTarget + 1
-            Else
-                '検索しているデータは、現在位置lngTarget より左にある
-                lngRight = lngTarget - 1
-            End If
-        Loop
-
-        'ある程度範囲が小さくなったところで、単純検索に切り替える
-        For lngTarget = lngLeft To lngRight
-            lngIndex = .nSortIndex(lngTarget)
-            strCheck = .sTableEntries(lngIndex)
-
-            If (strCheck = strText) Then
-                '見つかった
-                lngResult = lngIndex
-                Exit For
-            End If
-        Next lngTarget
-    End With
-
-    '結果を返す
-    FindString = lngResult
-End Function
-
 Public Function InsertStringToTable(
         ByRef utStringTable As Wrapper.StringTable,
         ByVal strNewText As String) As Integer
