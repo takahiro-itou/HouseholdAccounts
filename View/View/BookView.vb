@@ -343,9 +343,11 @@ Dim msgAns As System.Windows.Forms.DialogResult
 Dim dtmSelect As System.DateTime
 
     With utBookView
-        blnEnabled = .utAccountBook.enableAccountBook(True)
-        lngStartYear = GetAccountBookStartYear(.utAccountBook)
-        lngNumYears = .utAccountBook.getNumYears()
+        With .utAccountBook
+            blnEnabled = .enableAccountBook(True)
+            lngNumYears = .getNumYears()
+            lngStartYear = .getStartYear()
+        End With
 
         .bBackupedBookFile = False
         .bModifyCurrentBook = False
