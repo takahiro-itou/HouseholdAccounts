@@ -110,7 +110,7 @@ Dim blnExpand As Boolean
 Dim blnResult As Boolean
 
     '家計簿オブジェクトの状態をチェックする
-    If (IsAccountBookEnabled(utBook) = False) Then
+    If (utBook.isEnabled() = False) Then
         ExecuteCellAction = False
         Exit Function
     End If
@@ -166,7 +166,7 @@ Dim grpDest As Graphics, grpSrc As Graphics
 Dim rectSrc As System.Drawing.Rectangle
 
     '家計簿オブジェクトの状態をチェックする
-    If (IsAccountBookEnabled(utBook) = False) Then
+    If (utBook.isEnabled() = False) Then
         With utUI
              grpDest = Graphics.FromImage(.oBookPicture.Image)
              grpDest.Clear(Color.White)
@@ -303,7 +303,7 @@ Dim utDayInfo As Wrapper.ParsedDate
     blnResult = False
 
     '家計簿オブジェクトの状態をチェックする
-    If (IsAccountBookEnabled(utBook) = False) Then Exit Sub
+    If (utBook.isEnabled() = False) Then Exit Sub
 
     With utUI
         'カーソル位置を保存する
@@ -468,7 +468,7 @@ Dim colorText As Color = Color.Black
     End With
 
     '家計簿オブジェクトの状態をチェックする
-    If (IsAccountBookEnabled(utBook) = False) Then Exit Sub
+    If (utBook.isEnabled() = False) Then Exit Sub
 
     'データの個数をチェックする
     With utBook

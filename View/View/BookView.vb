@@ -40,7 +40,7 @@ Dim blnEnabled As Boolean
 
     '家計簿の状態を確認する
     With utBookView
-        blnEnabled = IsAccountBookEnabled(utBookView.utAccountBook)
+        blnEnabled = .utAccountBook.isEnabled()
 
         'コントロール
         With .utUserInterface
@@ -443,7 +443,7 @@ Public Sub SaveToFile(ByRef utBookView As tBookView,
 Dim lngYear As Integer
 
     '家計簿オブジェクトの状態をチェックする
-    If (IsAccountBookEnabled(utBookView.utAccountBook) = False) Then Exit Sub
+    If (utBookView.utAccountBook.isEnabled() = False) Then Exit Sub
 
     '出力ファイルの名前を確認する
     If (IsLegalOutputFileName(strFileName) = False) Then
