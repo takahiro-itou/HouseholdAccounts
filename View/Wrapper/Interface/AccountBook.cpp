@@ -68,6 +68,27 @@ namespace  {
 //    Accessors.
 //
 
+//----------------------------------------------------------------
+//    家計簿を有効／無効にする。
+//
+
+System::Boolean
+AccountBook::enableAccountBook(
+        const  System::Boolean  blnEnabled)
+{
+    return ( this->bEnabled  = blnEnabled );
+}
+
+//----------------------------------------------------------------
+//    家計簿データが有効なデータかどうか判断する。
+//
+
+System::Boolean
+AccountBook::isEnabled()
+{
+    return ( this->bEnabled );
+}
+
 //========================================================================
 //
 //    Properties.
