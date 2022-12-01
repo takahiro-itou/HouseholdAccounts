@@ -344,15 +344,15 @@ Dim dtmSelect As System.DateTime
 
     With utBookView
         blnEnabled = .utAccountBook.enableAccountBook(True)
+        lngStartYear = GetAccountBookStartYear(.utAccountBook)
+        lngNumYears = .utAccountBook.getNumYears()
+
         .bBackupedBookFile = False
         .bModifyCurrentBook = False
 
         '今日の日付を取得する
         dtmToday = Now
         lngYear = dtmToday.Year
-
-        lngStartYear = GetAccountBookStartYear(.utAccountBook)
-        lngNumYears = GetAccountBookNumYears(.utAccountBook)
     End With
 
     If ((lngStartYear = 0) Or (lngNumYears = 0)) Then
