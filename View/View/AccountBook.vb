@@ -267,17 +267,6 @@ Dim blnResult As Boolean
     CreateEmptyAccountBook = blnResult
 End Function
 
-Public Function GetAccountBookNumYears(
-        ByRef utBook As Wrapper.AccountBook) As Integer
-'---------------------------------------------------------------------
-'家計簿のデータが何年分あるかを返す
-'[ IN] utBook: 家計簿データ
-'[RET] Long
-'  データの年数
-'---------------------------------------------------------------------
-    GetAccountBookNumYears = utBook.nNumYears
-End Function
-
 Public Function GetAccountBookStartYear(
         ByRef utBook As Wrapper.AccountBook) As Integer
 '---------------------------------------------------------------------
