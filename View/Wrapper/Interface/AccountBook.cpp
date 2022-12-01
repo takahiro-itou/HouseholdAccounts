@@ -99,6 +99,16 @@ AccountBook::getNumYears()
     return ( this->nNumYears );
 }
 
+//----------------------------------------------------------------
+//    家計簿の開始年を取得する。
+//
+
+int
+AccountBook::getStartYear()
+{
+    return ( this->nStartYear );
+}
+
 //========================================================================
 //
 //    Properties.
