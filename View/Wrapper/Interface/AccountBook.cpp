@@ -63,6 +63,18 @@ namespace  {
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    指定した日付が、家計簿の開始日より前か調べる。
+//
+
+System::Boolean
+AccountBook::isDayBeforeStart(
+        const  int  lngYear,
+        const  int  lngDayIndex)
+{
+    return ( false );
+}
+
 //========================================================================
 //
 //    Accessors.

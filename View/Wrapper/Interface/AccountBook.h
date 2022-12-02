@@ -80,6 +80,17 @@ public value struct AccountBook
 //
 public:
 
+    //----------------------------------------------------------------
+    /**   指定した日付が、家計簿の開始日より前か調べる。
+    **
+    **  @param [in] lngYear       西暦年。
+    **  @param [in] lngDayIndex   元日からの日数（オフセット付）。
+    **/
+    System::Boolean
+    isDayBeforeStart(
+            const  int  lngYear,
+            const  int  lngDayIndex);
+
 //========================================================================
 //
 //    Accessors.
