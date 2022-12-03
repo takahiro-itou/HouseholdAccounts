@@ -174,18 +174,12 @@ public:
         AnnualCountsArray^  get()  {
             return ( this->m_itemAnnualCount );
         }
-        void  set(AnnualCountsArray^  annualCounts)  {
-            this->m_itemAnnualCount = annualCounts;
-        }
     }
 
     property    DetailCountsArray^  utItemDetailCounts
     {
         DetailCountsArray^  get()  {
             return ( this->m_itemDetailCount );
-        }
-        void  set(DetailCountsArray^  detailCounts)  {
-            this->m_itemDetailCount = detailCounts;
         }
     }
 

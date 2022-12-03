@@ -34,53 +34,6 @@ Dim lngStartPos As Integer, lngEndPos As Integer
     ReadAnnualRecords = (lngEndPos - lngStartPos)
 End Function
 
-Public Function ReallocAnnualRecordsBuffers(
-        ByRef utRecord As Wrapper.AnnualRecords,
-        ByVal lngItemBufferSize As Integer,
-        ByVal lngStartYear As Integer,
-        ByVal lngNumYears As Integer) As Boolean
-'---------------------------------------------------------------------
-'年間レコード用のバッファを確保しなおす
-'[I/O] utRecord          : 年間レコード
-'[ IN] lngItemBufferSize : 項目バッファのサイズ
-'[ IN] lngStartYear      : 開始西暦年
-'[ IN] lngNumYears       : 年数
-'[RET] Boolean
-'  成功したらTrue, 失敗したら False
-'---------------------------------------------------------------------
-Dim i As Integer
-
-    With utRecord
-        If (lngItemBufferSize < 0) Then lngItemBufferSize = .nItemBufferSize
-
-        'If (lngItemBufferSize < 0) Then lngItemBufferSize = .nItemBufferSize
-
-        ReDim Preserve .utItemAnnualCounts(0 To lngItemBufferSize - 1)
-        ReDim Preserve .utItemDetailCounts(0 To lngItemBufferSize - 1)
-        .nItemBufferSize = lngItemBufferSize
-
-        If (lngNumYears > 0) Then
-            For i = 0 To lngItemBufferSize - 1
-                With .utItemAnnualCounts(i)
-                    ReDim Preserve .nStartValues(0 To lngNumYears - 1)
-                    ReDim Preserve .nEndValues(0 To lngNumYears - 1)
-                    ReDim Preserve .nYearTotal(0 To lngNumYears - 1)
-                End With
-            Next i
-        End If
-
-        For i = 0 To lngItemBufferSize - 1
-            With .utItemDetailCounts(i)
-                ReDim Preserve .nDayTotal(MAXDAYS - 1)
-                ReDim Preserve .nWeekTotal(MAXWEEKS - 1)
-                ReDim Preserve .nMonthTotal(MAXMONTH)
-            End With
-        Next i
-    End With
-
-    ReallocAnnualRecordsBuffers = True
-End Function
-
 Public Function RecountAnnualRecords(
         ByRef utRecord As Wrapper.AnnualRecords,
         ByRef lngItemFlags() As Integer, ByVal lngItemBufferSize As Integer,
