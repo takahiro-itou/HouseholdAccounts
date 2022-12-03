@@ -762,33 +762,6 @@ Dim strTempFileName As String, strIndexFileName As String
     SaveAccountBook = True
 End Function
 
-Public Sub SetAccountBookStartDate(
-        ByRef utBook As Wrapper.AccountBook,
-        ByVal lngStartYear As Integer,
-        ByVal lngStartMonth As Integer,
-        ByVal lngStartDay As Integer)
-'---------------------------------------------------------------------
-'開始日を設定する
-'[I/O] utBook        : 家計簿データ
-'[ IN] lngStartYear  : 開始年
-'[ IN] lngStartMonth : 開始月
-'[ IN] lngStartDay   : 開始日
-'[RET] なし
-'---------------------------------------------------------------------
-Dim lngDayIndex As Integer, lngDayOffset As Integer
-
-    lngDayOffset = Wrapper.ManagedDate.getWeekday(lngStartYear, 1, 1)
-    lngDayIndex = Wrapper.ManagedDate.getDayInYear(lngStartYear, lngStartMonth, lngStartDay)
-    lngDayIndex = lngDayIndex + lngDayOffset
-
-    With utBook
-        .utStartDate = Wrapper.ManagedDate.getDayFromIndex(lngStartYear, lngDayIndex, lngDayOffset)
-
-        .nStartYear = .utStartDate.nYear
-        .nStartDayIndex = lngDayIndex
-    End With
-End Sub
-
 Public Sub SetAccountBookNumYears(
         ByRef utBook As Wrapper.AccountBook, ByVal lngNumYears As Integer)
 '---------------------------------------------------------------------
