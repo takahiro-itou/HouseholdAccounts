@@ -110,6 +110,18 @@ public ref  class  ManagedDate
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   二つの日付を比較する。
+    **
+    **/
+    static  int
+    compareDates(
+            const  int  lngYear1,
+            const  int  lngDayIndex1,
+            const  int  lngYear2,
+            const  int  lngDayIndex2);
 
 //========================================================================
 //

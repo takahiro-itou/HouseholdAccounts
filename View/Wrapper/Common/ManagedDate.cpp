@@ -63,6 +63,32 @@ namespace  {
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    二つの日付を比較する。
+//
+
+int
+ManagedDate::compareDates(
+        const  int  lngYear1,
+        const  int  lngDayIndex1,
+        const  int  lngYear2,
+        const  int  lngDayIndex2)
+{
+    if ( lngYear1 < lngYear2 ) {
+        return ( -1 );
+    } else if ( lngYear1 > lngYear2 ) {
+        return (  1 );
+    }
+
+    if ( lngDayIndex1 < lngDayIndex2 ) {
+        return ( -1 );
+    } else if ( lngDayIndex1 > lngDayIndex2 ) {
+        return (  1 );
+    }
+
+    return ( 0 );
+}
+
 //========================================================================
 //
 //    Accessors.
