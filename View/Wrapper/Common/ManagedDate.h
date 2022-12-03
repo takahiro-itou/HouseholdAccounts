@@ -124,6 +124,20 @@ public:
             const  int  lngDayIndex2);
 
     //----------------------------------------------------------------
+    /**   指定された日から、日付情報に分解する。
+    **
+    **  @param [in] lngYear         西暦年。
+    **  @param [in] lngDayIndex     元日からの日数。
+    **  @param [in] lngDayOffset    オフセット。
+    **  @return     結果を格納した日付構造体。
+    **/
+    static  ParsedDate
+    getDayFromIndex(
+            const  int  lngYear,
+            const  int  lngDayIndex,
+            const  int  lngDayOffset);
+
+    //----------------------------------------------------------------
     /**   元日から数えて何日目かを計算する。
     **
     **  @param [in] lngYear     西暦年。

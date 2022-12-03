@@ -26,6 +26,8 @@ namespace  Wrapper  {
 
 namespace  {
 
+constexpr  int  MAXMONTH    = 12;
+
 constexpr  int  g_firstDayTable[2][14] = {
     //  Jan, Feb, Mar, Apl, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec,
     { 0,  0,  31,  59,  90, 120, 151, 181, 212, 243, 273, 304, 334, 365 },
@@ -93,6 +95,67 @@ ManagedDate::compareDates(
     }
 
     return ( 0 );
+}
+
+
+//----------------------------------------------------------------
+//    指定された日から、日付情報に分解する。
+//
+
+ParsedDate
+ManagedDate::getDayFromIndex(
+        const  int  lngYear,
+        const  int  lngDayIndex,
+        const  int  lngDayOffset_)
+{
+    ParsedDate  utDate;
+    int lngMonth, lngDay;
+    int lngDayInYear;
+    int lngTempDay, lngUruu;
+    int tmpYear = lngYear;
+    int lngDayOffset    = lngDayOffset_;
+
+    //  まずオフセットを除いて指定された日が元日から数えて何日目か調べる。  //
+    if ( lngDayOffset < 0 ) {
+        lngDayOffset = static_cast<int>( getWeekday(lngYear, 1, 1) );
+    }
+    lngDayInYear = lngDayIndex - lngDayOffset;
+    lngTempDay = (lngDayIndex + 1);
+
+    if ( lngDayInYear < 0 ) {
+        //  去年の余り。    //
+        lngMonth    = 12;
+        -- tmpYear;
+        lngDay = lngTempDay + 31;
+    } else {
+        lngMonth    = MAXMONTH + 1;
+        lngUruu = isUruuYear(lngYear);
+        for ( int i = 1; i <= MAXMONTH; ++ i ) {
+            if ( lngDayInYear < g_firstDayTable[lngUruu][i + 1] ) {
+                lngMonth    = i;
+                break;
+            }
+        }
+        if ( lngMonth == MAXMONTH + 1 ) {
+            //  来年分。    //
+            lngMonth    = 1;
+            ++ tmpYear;
+            lngDay = lngTempDay - g_firstDayTable[lngUruu][MAXMONTH + 1];
+        } else {
+            lngDay = lngTempDay - g_firstDayTable[lngUruu][lngMonth];
+        }
+    }
+
+    utDate.nYear    = tmpYear;
+    utDate.nMonth   = lngMonth;
+    utDate.nDay     = lngDay;
+    utDate.nDayInYear   = lngDayInYear;
+    utDate.nDayOffset   = lngDayOffset;
+    utDate.nDayIndex    = lngDayIndex;
+    utDate.nWeek    = (lngDayIndex / 7);
+    utDate.nWeekday = static_cast<Weekday>(lngDayIndex % 7);
+
+    return ( utDate );
 }
 
 //----------------------------------------------------------------
