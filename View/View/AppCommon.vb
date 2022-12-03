@@ -107,7 +107,7 @@ Dim lngTempDay As Integer, lngUruu As Integer
         lngDay = lngTempDay + 31
     Else
         lngMonth = MAXMONTH + 1
-        lngUruu = IsUruuYear(lngYear)
+        lngUruu = Wrapper.ManagedDate.isUruuYear(lngYear)
         For i = 1 To MAXMONTH
             If (lngDayInYear < glngFirstDayTable(lngUruu, i + 1)) Then
                 lngMonth = i
@@ -148,7 +148,7 @@ Public Function GetDayInYear(ByVal lngYear As Integer,
 '---------------------------------------------------------------------
 Dim lngTemp As Integer
 
-    lngTemp = IsUruuYear(lngYear)
+    lngTemp = Wrapper.ManagedDate.isUruuYear(lngYear)
     GetDayInYear = glngFirstDayTable(lngTemp, lngMonth) + (lngDay - 1)
 End Function
 
