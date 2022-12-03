@@ -136,22 +136,6 @@ Dim lngTempDay As Integer, lngUruu As Integer
     End With
 End Sub
 
-Public Function GetDayInYear(ByVal lngYear As Integer,
-        ByVal lngMonth As Integer, ByVal lngDay As Integer) As Integer
-'---------------------------------------------------------------------
-'元日から数えて何日目であるかを返す。
-'[ IN] lngYear : 西暦年
-'[ IN] lngMonth: 月
-'[ IN] lngDay  : 日
-'[RET] Long
-'  元日を０とする、元日からの経過日数
-'---------------------------------------------------------------------
-Dim lngTemp As Integer
-
-    lngTemp = Wrapper.ManagedDate.isUruuYear(lngYear)
-    GetDayInYear = glngFirstDayTable(lngTemp, lngMonth) + (lngDay - 1)
-End Function
-
 Public Function GetDayStringFromInfo(
         ByRef utDayInfo As Wrapper.ParsedDate,
         ByVal blnYear As Boolean,
