@@ -169,8 +169,6 @@ public:
 //
 public:
 
-    property    int     nItemBufferSize;
-
     property    AnnualCountsArray^  utItemAnnualCounts
     {
         AnnualCountsArray^  get()  {
@@ -216,8 +214,11 @@ public:
 //
 //    Member Variables.
 //
-private:
+public:
 
+    int     nItemBufferSize;
+
+private:
     AnnualCountsArray^      m_itemAnnualCount;
     DetailCountsArray^      m_itemDetailCount;
     OneDayReceiptArray^     m_dayRecords;

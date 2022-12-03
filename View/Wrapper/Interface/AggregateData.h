@@ -86,15 +86,6 @@ public:
 //
 public:
 
-    /**   開始時の数値。    **/
-    property    cli::array<int, 1>^     nStartValues;
-
-    /**   終了時の数値。    **/
-    property    cli::array<int, 1>^     nEndValues;
-
-    /**   各年の合計金額。  **/
-    property    cli::array<int, 1>^     nYearTotal;
-
 //========================================================================
 //
 //    Protected Member Functions.
@@ -109,6 +100,16 @@ public:
 //
 //    Member Variables.
 //
+public:
+
+    /**   開始時の数値。    **/
+    cli::array<int, 1>^     nStartValues;
+
+    /**   終了時の数値。    **/
+    cli::array<int, 1>^     nEndValues;
+
+    /**   各年の合計金額。  **/
+    cli::array<int, 1>^     nYearTotal;
 
 };
 
@@ -175,15 +176,6 @@ public:
 //
 public:
 
-    /**   日毎の合計金額 :  378 日分。  **/
-    property    cli::array<int, 1>^     nDayTotal;
-
-    /**   週毎の合計金額 : 54 週間分。  **/
-    property    cli::array<int, 1>^     nWeekTotal;
-
-    /**   月毎の合計金額 : 12 ヶ月分。  **/
-    property    cli::array<int, 1>^     nMonthTotal;
-
 //========================================================================
 //
 //    Protected Member Functions.
@@ -198,6 +190,16 @@ public:
 //
 //    Member Variables.
 //
+public:
+
+    /**   日毎の合計金額 :  378 日分。  **/
+    cli::array<int, 1>^     nDayTotal;
+
+    /**   週毎の合計金額 : 54 週間分。  **/
+    cli::array<int, 1>^     nWeekTotal;
+
+    /**   月毎の合計金額 : 12 ヶ月分。  **/
+    cli::array<int, 1>^     nMonthTotal;
 
 };
 
