@@ -23,7 +23,6 @@ Public glngScreenHeight As Integer
 Public glngTwipsPerPixelX As Integer
 Public glngTwipsPerPixelY As Integer
 
-Public glngFirstDayTable(,) As Integer   '各月の一日が元日から数えて何日目か。(元日を０とする)
 Public gstrMonthName() As String
 Public gstrWeekdayName() As String
 
@@ -107,27 +106,6 @@ Public Sub initializeTables()
 #Else
     System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance)
 #End If
-
-    ReDim glngFirstDayTable(0 To 1, 0 To MAXMONTH + 1)
-    glngFirstDayTable(0, 1) = 0
-    glngFirstDayTable(0, 2) = 31
-    glngFirstDayTable(0, 3) = 59
-    glngFirstDayTable(0, 4) = 90
-    glngFirstDayTable(0, 5) = 120
-    glngFirstDayTable(0, 6) = 151
-    glngFirstDayTable(0, 7) = 181
-    glngFirstDayTable(0, 8) = 212
-    glngFirstDayTable(0, 9) = 243
-    glngFirstDayTable(0, 10) = 273
-    glngFirstDayTable(0, 11) = 304
-    glngFirstDayTable(0, 12) = 334
-    glngFirstDayTable(0, 13) = 365
-
-    glngFirstDayTable(1, 1) = 0
-    glngFirstDayTable(1, 2) = 31
-    For i = 3 To MAXMONTH + 1
-        glngFirstDayTable(1, i) = glngFirstDayTable(0, i) + 1
-    Next i
 
     ReDim gstrMonthName(0 To 12)
     For i = 1 To 12
