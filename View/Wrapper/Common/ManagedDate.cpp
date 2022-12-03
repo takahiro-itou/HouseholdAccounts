@@ -130,11 +130,11 @@ ManagedDate::isUruuYear(
 {
     if ( (lngYear % 4) != 0 ) {
         return ( 0 );
-    } else if ( ((lngYear % 100) == 0) && ((lngYear % 400) != 0) ) {
-        return ( 0 );
-    } else {
-        return ( 1 );
     }
+    if ( ((lngYear % 100) == 0) && ((lngYear % 400) != 0) ) {
+        return ( 0 );
+    }
+    return ( 1 );
 }
 
 //========================================================================
