@@ -120,7 +120,7 @@ ManagedDate::getDayFromIndex(
         lngDayOffset = static_cast<int>( getWeekday(lngYear, 1, 1) );
     }
     lngDayInYear = lngDayIndex - lngDayOffset;
-    lngTempDay = (lngDayIndex + 1);
+    lngTempDay = (lngDayInYear + 1);
 
     if ( lngDayInYear < 0 ) {
         //  去年の余り。    //
