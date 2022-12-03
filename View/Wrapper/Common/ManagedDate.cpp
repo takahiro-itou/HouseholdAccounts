@@ -26,6 +26,12 @@ namespace  Wrapper  {
 
 namespace  {
 
+constexpr  int  g_firstDayTable[2][14] = {
+    //  Jan, Feb, Mar, Apl, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec,
+    { 0,  0,  31,  59,  90, 120, 151, 181, 212, 243, 273, 304, 334, 365 },
+    { 0,  0,  31,  60,  91, 121, 152, 182, 213, 244, 274, 305, 335, 366 }
+};
+
 }   //  End of (Unnamed) namespace
 
 //========================================================================
