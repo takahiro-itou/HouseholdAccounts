@@ -105,7 +105,7 @@ Dim lngDate As Integer, lngStartDayIndex As Integer, lngEndDayIndex As Integer
         Next i
 
         lngStartDayIndex = Wrapper.ManagedDate.getWeekday(lngYear, 1, 1)
-        lngEndDayIndex = GetDayInYear(lngYear, 12, 31) + lngStartDayIndex
+        lngEndDayIndex = Wrapper.ManagedDate.getDayInYear(lngYear, 12, 31) + lngStartDayIndex
 
         '全てのレシートを集計する
         For lngDate = 0 To lngNumDays - 1
