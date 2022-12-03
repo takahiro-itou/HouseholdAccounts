@@ -322,7 +322,7 @@ Dim lngDayInYear As Integer, lngDayOffset As Integer, lngDayIndex As Integer
     lngYear = (lngDate \ 65536)
     lngMonth = (lngDate \ 256) And 255
     lngDay = (lngDate And 255)
-    lngDayInYear = GetDayInYear(lngYear, lngMonth, lngDay)
+    lngDayInYear = Wrapper.ManagedDate.getDayInYear(lngYear, lngMonth, lngDay)
     lngDayOffset = Wrapper.ManagedDate.getWeekday(lngYear, 1, 1)
     lngDayIndex = lngDayInYear + lngDayOffset
 

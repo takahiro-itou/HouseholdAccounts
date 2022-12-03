@@ -408,7 +408,7 @@ Dim dtmSelect As System.DateTime
     '今日の日付を含む週を表示する
     With utBookView
         lngOffset = Wrapper.ManagedDate.getWeekday(lngYear, 1, 1)
-        lngToday = GetDayInYear(lngYear, dtmToday.Month, dtmToday.Day)
+        lngToday = Wrapper.ManagedDate.getDayInYear(lngYear, dtmToday.Month, dtmToday.Day)
         lngToday = lngToday + lngOffset
         GetDayFromIndex(utDate, lngYear, lngToday, lngOffset)
 
