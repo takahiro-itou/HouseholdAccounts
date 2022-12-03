@@ -62,40 +62,6 @@ Public Function ChangeLanguage(ByVal strLanguageFile As String) As Boolean
     ChangeLanguage = True
 End Function
 
-Public Function CompareDates(
-        ByVal lngYear1 As Integer, ByVal lngDayIndex1 As Integer,
-        ByVal lngYear2 As Integer, ByVal lngDayIndex2 As Integer) As Integer
-'---------------------------------------------------------------------
-'二つの日付を比較する
-'[ IN] lngYear1    :
-'[ IN] lngDayIndex1:
-'[ IN] lngYear2    :
-'[ IN] lngDayIndex2:
-'[RET] Long
-'  一番目の日付の方が前ならば-1,
-'  等しければ 0,
-'  二番目の日付のほうが前ならば+1
-'---------------------------------------------------------------------
-
-    If (lngYear1 < lngYear2) Then
-        CompareDates = -1
-        Exit Function
-    ElseIf (lngYear1 > lngYear2) Then
-        CompareDates = 1
-        Exit Function
-    End If
-
-    If (lngDayIndex1 < lngDayIndex2) Then
-        CompareDates = -1
-        Exit Function
-    ElseIf (lngDayIndex1 > lngDayIndex2) Then
-        CompareDates = 1
-        Exit Function
-    End If
-
-    CompareDates = 0
-End Function
-
 Public Sub ExitApplication()
 '---------------------------------------------------------------------
 'プログラムを終了する
