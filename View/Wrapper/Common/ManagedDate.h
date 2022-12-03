@@ -124,6 +124,20 @@ public:
             const  int  lngDayIndex2);
 
     //----------------------------------------------------------------
+    /**   元日から数えて何日目かを計算する。
+    **
+    **  @param [in] lngYear     西暦年。
+    **  @param [in] lngMonth    月。
+    **  @param [in] lngDay      日。
+    **  @return     元日を零とする、元日からの経過日数。
+    **/
+    static  int
+    getDayInYear(
+            const  int  lngYear,
+            const  int  lngMonth,
+            const  int  lngDay);
+
+    //----------------------------------------------------------------
     /**   指定した日付（西暦年・月・日）から曜日を得る。
     **
     **  @param [in] lngYear     西暦年。

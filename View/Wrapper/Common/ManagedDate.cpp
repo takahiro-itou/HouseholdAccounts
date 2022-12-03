@@ -96,6 +96,20 @@ ManagedDate::compareDates(
 }
 
 //----------------------------------------------------------------
+//    元日から数えて何日目かを計算する。
+//
+
+int
+ManagedDate::getDayInYear(
+        const  int  lngYear,
+        const  int  lngMonth,
+        const  int  lngDay)
+{
+    int lngTemp = isUruuYear(lngYear);
+    return ( g_firstDayTable[lngTemp][lngMonth] + lngDay - 1 );
+}
+
+//----------------------------------------------------------------
 //    指定した日付（西暦年・月・日）から曜日を得る。
 //
 
