@@ -45,8 +45,8 @@ Dim lngResult As Integer
             ReDim .utItemEntries(0 To lngBufferSize - 1)
         End With
 
-        ReallocAnnualRecordsBuffers(
-                .utAnnualRecords, lngBufferSize, lngStartYear, lngNumYears)
+        .utAnnualRecords.reallocBuffers(
+                lngBufferSize, lngStartYear, lngNumYears)
     End With
 
     AllocBookItems = lngResult

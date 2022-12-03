@@ -183,7 +183,7 @@ Dim blnResult As Boolean
     '新しい年のデータを読み込む
     If (lngNewYear >= lngStartYear + lngNumYears) Then
         lngNumYears = lngNewYear - lngStartYear + 1
-        ReallocAnnualRecordsBuffers(utBook.utAnnualRecords, -1, lngStartYear, lngNumYears)
+        utBook.utAnnualRecords.reallocBuffers(-1, lngStartYear, lngNumYears)
         utBook.nNumYears = lngNumYears
     End If
 
@@ -772,8 +772,7 @@ Public Sub SetAccountBookNumYears(
 '---------------------------------------------------------------------
 
     With utBook
-        ReallocAnnualRecordsBuffers(
-                .utAnnualRecords, -1, .nStartYear, lngNumYears)
+        .utAnnualRecords.reallocBuffers(-1, .nStartYear, lngNumYears)
         .nNumYears = lngNumYears
     End With
 End Sub
