@@ -39,28 +39,29 @@ public value struct Goods
 public:
 
     /**   ルートの項目インデックス。    **/
-    property    int     nRootItemType;
+    int     nRootItemType;
 
     /**   項目インデックス。            **/
-    property    int     nItemType;
+    int     nItemType;
 
     /**   商品名の ID  (文字列テーブル内のインデックス) 。  **/
-    property    int     nGoodsNameID;
+    int     nGoodsNameID;
 
     /**   商品名。  **/
-    property    System::String^     sGoodsName;
+    System::String^     sGoodsName;
 
     /**   単価。    **/
-    property    int     nUnitPrice;
+    int     nUnitPrice;
 
     /**   数量。    **/
-    property    int     nQuantity;
+    int     nQuantity;
 
     /**   小計。    **/
-    property    int     nSubTotal;
+    int     nSubTotal;
 
     /**   予約。    **/
-    property    int     nReserved0;
+    int     nReserved0;
+
 };
 
 //========================================================================
@@ -73,37 +74,38 @@ public value struct Receipt
 public:
 
     /**   フラグ。  **/
-    property    int     nFlags;
+    int     nFlags;
 
     /**   購入した商品の数。        **/
-    property    int     nNumGoods;
+    int     nNumGoods;
 
     /**   購入した商品のデータ。    **/
-    property    cli::array<Goods, 1>^   utGoods;
+    cli::array<Goods, 1>^   utGoods;
 
     /**   小計。    **/
-    property    int     nSubTotal;
+    int     nSubTotal;
 
     /**   内税。    **/
-    property    int     nInsideTax;
+    int     nInsideTax;
 
     /**   外税。    **/
-    property    int     nOutsideTax;
+    int     nOutsideTax;
 
     /**   合計。    **/
-    property    int     nTotal;
+    int     nTotal;
 
     /**   内税を加える項目インデックス。    **/
-    property    int     nInsideTaxItemType;
+    int     nInsideTaxItemType;
 
     /**   外税を加える項目インデックス。    **/
-    property    int     nOutsideTaxItemType;
+    int     nOutsideTaxItemType;
 
     /**   予約。    **/
-    property    int     nReserved0;
+    int     nReserved0;
 
     /**   予約。    **/
-    property    int     nReserved1;
+    int     nReserved1;
+
 };
 
 //========================================================================
@@ -116,13 +118,14 @@ public value struct OneDayReceipts
 public:
 
     /**   日付。            **/
-    property    int     nDate;
+    int     nDate;
 
     /**   レシートの枚数。  **/
-    property    int     nNumReceipt;
+    int     nNumReceipt;
 
     /**   各レシート。      **/
-    property    cli::array<Receipt, 1>^     utReceipts;
+    cli::array<Receipt, 1>^     utReceipts;
+
 };
 
 }   //  End of namespace  Wrapper

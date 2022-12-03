@@ -71,25 +71,25 @@ public value struct BookItemEntry
 public:
 
     /**   親項目のハンドル。    **/
-    property    int     nParentHandle;
+    int     nParentHandle;
 
     /**   項目名の ID  (文字列テーブル内のインデックス) 。  **/
-    property    int     nItemNameID;
+    int     nItemNameID;
 
     /**   項目名。  **/
-    property    System::String^     sItemName;
+    System::String^     sItemName;
 
     /**   サブ項目数。  **/
-    property    int     nSubItemCount;
+    int     nSubItemCount;
 
     /**   サブ項目のハンドル (インデックス) 。  **/
-    property    cli::array<int, 1>^     nSubItems;
+    cli::array<int, 1>^     nSubItems;
 
     /**   開始年月日 (残高の項目のみ) 。    **/
-    property    int     nStartDate;
+    int     nStartDate;
 
     /**   開始時の残高 (残高の項目のみ) 。  **/
-    property    int     nStartBalance;
+    int     nStartBalance;
 };
 
 //========================================================================
@@ -270,27 +270,6 @@ public:
 //
 public:
 
-    /**   項目用バッファサイズ。    **/
-    property    int     nItemBufferSize;
-
-    /**   登録済み項目数。          **/
-    property    int     nRegisteredItemCount;
-
-    /**   ルートになる項目の数。    **/
-    property    int     nRootItemCount;
-
-    /**   項目のフラグ。            **/
-    property    cli::array<int, 1>^         nFlags;
-
-    /**   項目データ。              **/
-    property    cli::array<BookItemEntry>^  utItemEntries;
-
-    /**   「内税」項目のハンドル。  **/
-    property    int     nInnerTaxItemHandle;
-
-    /**   「外税」項目のハンドル。  **/
-    property    int     nOuterTaxItemHandle;
-
 //========================================================================
 //
 //    Protected Member Functions.
@@ -305,6 +284,28 @@ public:
 //
 //    Member Variables.
 //
+public:
+
+    /**   項目用バッファサイズ。    **/
+    int     nItemBufferSize;
+
+    /**   登録済み項目数。          **/
+    int     nRegisteredItemCount;
+
+    /**   ルートになる項目の数。    **/
+    int     nRootItemCount;
+
+    /**   項目のフラグ。            **/
+    cli::array<int, 1>^         nFlags;
+
+    /**   項目データ。              **/
+    cli::array<BookItemEntry>^  utItemEntries;
+
+    /**   「内税」項目のハンドル。  **/
+    int     nInnerTaxItemHandle;
+
+    /**   「外税」項目のハンドル。  **/
+    int     nOuterTaxItemHandle;
 
 };
 
