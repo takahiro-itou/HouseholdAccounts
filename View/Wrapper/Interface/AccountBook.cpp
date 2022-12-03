@@ -72,6 +72,12 @@ AccountBook::isDayBeforeStart(
         const  int  lngYear,
         const  int  lngDayIndex)
 {
+    if ( ManagedDate::compareDates(
+                    lngYear, lngDayIndex, this->nStartYear,
+                    this->nStartDayIndex) < 0 )
+    {
+        return ( true );
+    }
     return ( false );
 }
 
