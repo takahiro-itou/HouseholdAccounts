@@ -780,7 +780,7 @@ Dim utDate As Wrapper.ParsedDate
         For X = 0 To 6
             lngDate = (lngWeek * NUMDAYSPERWEEK) + X
 
-            If (IsDayBeforeStart(utBook, lngYear, lngDate)) Then
+            If (utBook.isDayBeforeStart(lngYear, lngDate)) Then
                 '開始日より前
                 lngCellColor = Color.FromArgb(BOOKBGREADONLYCELLSCOLOR)
                 lngTextColor = Color.FromArgb(READONLYTEXTCOLOR)

@@ -546,7 +546,7 @@ Dim blnResult As Boolean
                 End If
             Next i
 
-            If (IsDayBeforeStart(utBook, lngYear, lngDate)) Then
+            If (utBook.isDayBeforeStart(lngYear, lngDate)) Then
 
             Else
                 'データを書き込む
