@@ -78,13 +78,13 @@ AnnualRecords::reallocBuffers(
         bufSize = this->nItemBufferSize;
     }
 
-    System::Array::Resize(this->utItemAnnualCounts, bufSize);
-    System::Array::Resize(this->utItemDetailCounts, bufSize);
+    System::Array::Resize(this->m_itemAnnualCount, bufSize);
+    System::Array::Resize(this->m_itemDetailCount, bufSize);
     this->nItemBufferSize   = bufSize;
 
     if ( numYears > 0 ) {
         for ( int i = 0; i < bufSize; ++  i ) {
-            BookItemAnnualCounts  % ac  = this->utItemAnnualCounts[i];
+            BookItemAnnualCounts  % ac  = this->m_itemAnnualCount[i];
             System::Array::Resize(ac.nStartValues, numYears);
             System::Array::Resize(ac.nEndValues,   numYears);
             System::Array::Resize(ac.nYearTotal,   numYears);
@@ -92,7 +92,7 @@ AnnualRecords::reallocBuffers(
     }
 
     for ( int i = 0; i < bufSize; ++ i ) {
-        BookItemDetailCounts  % dc  = this->utItemDetailCounts[i];
+        BookItemDetailCounts  % dc  = this->m_itemDetailCount[i];
         System::Array::Resize(dc.nDayTotal, MAX_DAYS);
         System::Array::Resize(dc.nWeekTotal, MAX_WEEKS);
         System::Array::Resize(dc.nMonthTotal, MAX_MONTH + 1);

@@ -48,6 +48,13 @@ public value struct AnnualRecords
 //
 //    Internal Type Definitions.
 //
+public:
+
+    typedef     cli::array<BookItemAnnualCounts, 1>     AnnualCountsArray;
+
+    typedef     cli::array<BookItemDetailCounts, 1>     DetailCountsArray;
+
+    typedef     cli::array<OneDayReceipts, 1>           OneDayReceiptArray;
 
 //========================================================================
 //
@@ -164,12 +171,36 @@ public:
 
     property    int     nItemBufferSize;
 
-    property    cli::array<BookItemAnnualCounts, 1>^    utItemAnnualCounts;
+    property    AnnualCountsArray^  utItemAnnualCounts
+    {
+        AnnualCountsArray^  get()  {
+            return ( this->m_itemAnnualCount );
+        }
+        void  set(AnnualCountsArray^  annualCounts)  {
+            this->m_itemAnnualCount = annualCounts;
+        }
+    }
 
-    property    cli::array<BookItemDetailCounts, 1>^    utItemDetailCounts;
+    property    DetailCountsArray^  utItemDetailCounts
+    {
+        DetailCountsArray^  get()  {
+            return ( this->m_itemDetailCount );
+        }
+        void  set(DetailCountsArray^  detailCounts)  {
+            this->m_itemDetailCount = detailCounts;
+        }
+    }
 
     /**   その年の各日のレコード。  **/
-    property    cli::array<OneDayReceipts, 1>^  utDayRecords;
+    property    OneDayReceiptArray^ utDayRecords
+    {
+        OneDayReceiptArray^ get()  {
+            return ( this->m_dayRecords );
+        }
+        void  set(OneDayReceiptArray^  dayRecords) {
+            this->m_dayRecords  = dayRecords;
+        }
+    }
 
 //========================================================================
 //
@@ -185,7 +216,11 @@ public:
 //
 //    Member Variables.
 //
+private:
 
+    AnnualCountsArray^      m_itemAnnualCount;
+    DetailCountsArray^      m_itemDetailCount;
+    OneDayReceiptArray^     m_dayRecords;
 };
 
 }   //  End of namespace  Wrapper
