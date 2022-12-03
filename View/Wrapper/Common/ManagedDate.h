@@ -123,6 +123,19 @@ public:
             const  int  lngYear2,
             const  int  lngDayIndex2);
 
+    //----------------------------------------------------------------
+    /**   指定した日付（西暦年・月・日）から曜日を得る。
+    **
+    **  @param [in] lngYear     西暦年。
+    **  @param [in] lngMonth    月。
+    **  @param [in] lngDay      日。
+    **/
+    static  Weekday
+    getWeekday(
+            const  int  lngYear,
+            const  int  lngMonth,
+            const  int  lngDay);
+
 //========================================================================
 //
 //    Accessors.

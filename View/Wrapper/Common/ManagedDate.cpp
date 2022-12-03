@@ -89,6 +89,31 @@ ManagedDate::compareDates(
     return ( 0 );
 }
 
+//----------------------------------------------------------------
+//    指定した日付（西暦年・月・日）から曜日を得る。
+//
+
+Weekday
+ManagedDate::getWeekday(
+        const  int  lngYear,
+        const  int  lngMonth,
+        const  int  lngDay)
+{
+    int lngWeekday;
+    int tYear   = lngYear;
+    int tMonth  = lngMonth;
+
+    if ( tMonth <= 2 ) {
+        tMonth    += 12;
+        -- tYear;
+    }
+
+    lngWeekday = (tYear + (tYear / 4) - (tYear / 100) + (tYear / 400));
+    lngWeekday += ((tMonth * 13 + 8) / 5) + lngDay;
+
+    return ( static_cast<Weekday>(lngWeekday % 7) );
+}
+
 //========================================================================
 //
 //    Accessors.
