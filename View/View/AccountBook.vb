@@ -158,7 +158,8 @@ Dim blnResult As Boolean
     End If
 
     '新しい年の週数を計算しておく
-    lngLastDay = GetDayInYear(lngNewYear, 12, 31) + GetWeekday(lngNewYear, 1, 1)
+    lngLastDay = GetDayInYear(lngNewYear, 12, 31) + _
+                    Wrapper.ManagedDate.getWeekday(lngNewYear, 1, 1)
     lngNumWeeks = (lngLastDay \ 7) + 1
 
     If (lngNewYear = lngCurrentYear) Then
@@ -509,7 +510,7 @@ Dim blnResult As Boolean
             End If
         Next i
 
-        lngStartDayIndex = GetWeekday(lngYear, 1, 1)
+        lngStartDayIndex = Wrapper.ManagedDate.getWeekday(lngYear, 1, 1)
         lngEndDayIndex = GetDayInYear(lngYear, 12, 31) + lngStartDayIndex
 
         'すべてのレシートを集計する
@@ -775,7 +776,7 @@ Public Sub SetAccountBookStartDate(
 '---------------------------------------------------------------------
 Dim lngDayIndex As Integer, lngDayOffset As Integer
 
-    lngDayOffset = GetWeekday(lngStartYear, 1, 1)
+    lngDayOffset = Wrapper.ManagedDate.getWeekday(lngStartYear, 1, 1)
     lngDayIndex = GetDayInYear(lngStartYear, lngStartMonth, lngStartDay)
     lngDayIndex = lngDayIndex + lngDayOffset
 
