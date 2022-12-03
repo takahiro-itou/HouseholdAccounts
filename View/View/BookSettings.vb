@@ -178,7 +178,8 @@ Dim strTempDir As String, strTempFileName As String
         .nStartDayIndex = lngHeader(17)
         .nNumYears = lngHeader(18)
         If ((.nStartYear > 0) And (.nNumYears > 0)) Then
-            GetDayFromIndex(.utStartDate, .nStartYear, .nStartDayIndex, -1)
+            .utStartDate = Wrapper.ManagedDate.getDayFromIndex(
+                                .nStartYear, .nStartDayIndex, -1)
         End If
 
         lngItemCount = lngHeader(32)

@@ -410,7 +410,7 @@ Dim dtmSelect As System.DateTime
         lngOffset = Wrapper.ManagedDate.getWeekday(lngYear, 1, 1)
         lngToday = Wrapper.ManagedDate.getDayInYear(lngYear, dtmToday.Month, dtmToday.Day)
         lngToday = lngToday + lngOffset
-        GetDayFromIndex(utDate, lngYear, lngToday, lngOffset)
+        utDate = Wrapper.ManagedDate.getDayFromIndex(lngYear, lngToday, lngOffset)
 
         .nNumWeeks = ChangeAccountBookYear(.utAccountBook, utDate.nYear)
         Recount(.utAccountBook, utDate.nYear)

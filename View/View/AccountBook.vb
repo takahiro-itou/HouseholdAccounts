@@ -90,7 +90,7 @@ Dim blnAddToParent As Boolean, blnAddToRoot As Boolean
     End With
 
     '日付から、週と月を計算しておく
-    GetDayFromIndex(utDate, lngYear, lngDayIndex, -1)
+    utDate = Wrapper.ManagedDate.getDayFromIndex(lngYear, lngDayIndex, -1)
     With utDate
         lngWeek = .nWeek
         lngMonth = .nMonth
@@ -782,7 +782,7 @@ Dim lngDayIndex As Integer, lngDayOffset As Integer
     lngDayIndex = lngDayIndex + lngDayOffset
 
     With utBook
-        GetDayFromIndex(.utStartDate, lngStartYear, lngDayIndex, lngDayOffset)
+        .utStartDate = Wrapper.ManagedDate.getDayFromIndex(lngStartYear, lngDayIndex, lngDayOffset)
 
         .nStartYear = .utStartDate.nYear
         .nStartDayIndex = lngDayIndex

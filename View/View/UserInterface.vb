@@ -313,7 +313,8 @@ Dim utDayInfo As Wrapper.ParsedDate
         '現在のカーソル位置の日付を得る
         lngYear = .nCurrentYear
         lngWeek = .nCurrentWeek
-        GetDayFromIndex(utDayInfo, lngYear, (lngWeek * 7), -1)
+        utDayInfo = Wrapper.ManagedDate.getDayFromIndex(
+                        lngYear, (lngWeek * 7), -1)
         lngMonth = utDayInfo.nMonth
 
         'カーソルが画面外にはみ出す場合は、スクロールバーを調整する
@@ -490,7 +491,7 @@ Dim colorText As Color = Color.Black
     End With
 
     '表示する最初の日付を取得して、何月分かを調べる
-    GetDayFromIndex(utDayInfo, lngYear, (lngWeek * 7), -1)
+    utDayInfo = Wrapper.ManagedDate.getDayFromIndex(lngYear, (lngWeek * 7), -1)
     lngMonth = utDayInfo.nMonth
 
     'タイトル表示
@@ -503,7 +504,8 @@ Dim colorText As Color = Color.Black
             2, 1)
 
     For X = 0 To 6
-        GetDayFromIndex(utDayInfo, lngYear, (lngWeek * 7) + X, -1)
+        utDayInfo = Wrapper.ManagedDate.getDayFromIndex(
+                        lngYear, (lngWeek * 7) + X, -1)
         strTemp = GetDayStringFromInfo(utDayInfo, False, True)
         utUI.utNowShowingDates(X) = utDayInfo
         UserInterfaceDrawCell(utUI,
@@ -786,7 +788,7 @@ Dim utDate As Wrapper.ParsedDate
                 lngTextColor = Color.FromArgb(READONLYTEXTCOLOR)
                 strText = ""
             Else
-                GetDayFromIndex(utDate, lngYear, lngDate, -1)
+                utDate = Wrapper.ManagedDate.getDayFromIndex(lngYear, lngDate, -1)
                 If (utDate.nYear <> lngYear) Then
                     '去年の残り、又は、来年へのはみ出し
                     lngCellColor = Color.FromArgb(BOOKBGREADONLYCELLSCOLOR)
