@@ -31,6 +31,10 @@ const   int     DAY_START   = 6;
 const   int     MAXITEMS    = 65536;
 const   int     MAXBALANCES = 256;
 
+constexpr   int     MAX_DAYS    = 378;
+constexpr   int     MAX_WEEKS   = 54;
+constexpr   int     MAX_MONTH   = 12;
+
 }   //  End of namespace  Wrapper
 
 #endif

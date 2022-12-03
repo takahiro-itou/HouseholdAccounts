@@ -81,6 +81,19 @@ public value struct AnnualRecords
 public:
 
     //----------------------------------------------------------------
+    /**   年間レコード用のバッファを確保しなおす。
+    **
+    **  @param [in] itemBufferSize    項目バッファのサイズ。
+    **  @param [in] startYear         開始西暦年。
+    **  @param [in] numYears          年数。
+    **/
+    System::Boolean
+    reallocBuffers(
+            const  int  itemBufferSize,
+            const  int  startYear,
+            const  int  numYears);
+
+    //----------------------------------------------------------------
     /**   年間レコードを再集計する。
     **
     **  @param [in] lngItemFlags        各項目のフラグ。
