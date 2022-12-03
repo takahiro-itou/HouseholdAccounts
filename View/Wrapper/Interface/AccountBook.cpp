@@ -81,6 +81,28 @@ AccountBook::isDayBeforeStart(
     return ( false );
 }
 
+//----------------------------------------------------------------
+//    開始日を設定する。
+//
+
+void
+AccountBook::setStartDate(
+        const  int  startYear,
+        const  int  startMonth,
+        const  int  startDay)
+{
+    int dayIndex, dayOffset;
+
+    dayOffset = static_cast<int>( ManagedDate::getWeekday(startYear, 1, 1) );
+    dayIndex  = ManagedDate::getDayInYear(startYear, startMonth, startDay);
+    dayIndex  += dayOffset;
+
+    this->utStartDate = ManagedDate::getDayFromIndex(
+                                startYear, dayIndex, dayOffset);
+    this->nStartYear  = this->utStartDate.nYear;
+    this->nStartDayIndex  = dayIndex;
+}
+
 //========================================================================
 //
 //    Accessors.

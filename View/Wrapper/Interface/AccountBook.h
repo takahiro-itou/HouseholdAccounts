@@ -91,6 +91,19 @@ public:
             const  int  lngYear,
             const  int  lngDayIndex);
 
+    //----------------------------------------------------------------
+    /**   開始日を設定する。
+    **
+    **  @param [in] startYear     開始年。
+    **  @param [in] startMonth    開始月。
+    **  @param [in] startDay      開始日。
+    **/
+    void
+    setStartDate(
+            const  int  startYear,
+            const  int  startMonth,
+            const  int  startDay);
+
 //========================================================================
 //
 //    Accessors.
