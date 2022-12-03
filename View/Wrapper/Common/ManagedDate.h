@@ -136,6 +136,17 @@ public:
             const  int  lngMonth,
             const  int  lngDay);
 
+    //----------------------------------------------------------------
+    /**   指定した西暦年が閏年か判定する。
+    **
+    **  @param [in] lngYear   西暦年。
+    **  @retval     0 : 平年。
+    **  @retval     1 : 閏年。
+    **/
+    static  int
+    isUruuYear(
+            const  int  lngYear);
+
 //========================================================================
 //
 //    Accessors.

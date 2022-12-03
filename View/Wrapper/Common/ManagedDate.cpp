@@ -120,6 +120,23 @@ ManagedDate::getWeekday(
     return ( static_cast<Weekday>(lngWeekday % 7) );
 }
 
+//----------------------------------------------------------------
+//    指定した西暦年が閏年か判定する。
+//
+
+int
+ManagedDate::isUruuYear(
+        const  int  lngYear)
+{
+    if ( (lngYear % 4) != 0 ) {
+        return ( 0 );
+    } else if ( ((lngYear % 100) == 0) && ((lngYear % 400) != 0) ) {
+        return ( 0 );
+    } else {
+        return ( 1 );
+    }
+}
+
 //========================================================================
 //
 //    Accessors.
