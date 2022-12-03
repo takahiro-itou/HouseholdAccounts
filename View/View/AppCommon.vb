@@ -95,7 +95,7 @@ Dim lngTempDay As Integer, lngUruu As Integer
 
     'まず、オフセットを除いて、指定された日が元日から数えて何日目かを調べる
     If (lngDayOffset < 0) Then
-        lngDayOffset = GetWeekday(lngYear, 1, 1)
+        lngDayOffset = Wrapper.ManagedDate.getWeekday(lngYear, 1, 1)
     End If
     lngDayInYear = lngDayIndex - lngDayOffset
     lngTempDay = (lngDayInYear + 1)
@@ -366,7 +366,7 @@ Dim lngDayInYear As Integer, lngDayOffset As Integer, lngDayIndex As Integer
     lngMonth = (lngDate \ 256) And 255
     lngDay = (lngDate And 255)
     lngDayInYear = GetDayInYear(lngYear, lngMonth, lngDay)
-    lngDayOffset = GetWeekday(lngYear, 1, 1)
+    lngDayOffset = Wrapper.ManagedDate.getWeekday(lngYear, 1, 1)
     lngDayIndex = lngDayInYear + lngDayOffset
 
     With utResult
