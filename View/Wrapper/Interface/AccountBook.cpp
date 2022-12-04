@@ -88,6 +88,37 @@ AccountBook::allocItemBuffers(
 }
 
 //----------------------------------------------------------------
+//    新しい項目用の領域を確保する。
+//
+
+int
+AccountBook::allocNewItem()
+{
+    int iResult = -1;
+
+    //  バッファサイズと登録済み項目数を比較し、    //
+    //  バッファに空きがある場合は、空きを探して    //
+    //  そのハンドル（インデックス）を返す。        //
+    const   BookItems  % bi = this->utBookItems;
+    if ( bi.nRegisteredItemCount < bi.nItemBufferSize ) {
+        for ( int i = bi.nRootItemCount; i < bi.nItemBufferSize; ++ i ) {
+            if ( bi.nFlags[i] == static_cast<int>(ItemFlag::ITEM_FLAG_NOTUSED) )
+            {
+                iResult = i;
+                break;
+            }
+        }
+    }
+
+    if ( iResult >= 0 ){
+        return ( iResult );
+    }
+
+    //  バッファをリサイズし、増えた部分の先頭を確保する。  //
+    return ( allocItemBuffers(bi.nItemBufferSize + 1) );
+}
+
+//----------------------------------------------------------------
 //    指定した日付が、家計簿の開始日より前か調べる。
 //
 
