@@ -401,8 +401,8 @@ Dim dtmSelect As System.DateTime
         With utBookView
             With .utAccountBook
                 .setStartDate(lngStartYear, lngStartMonth, lngStartDay)
+                .setNumYears(lngNumYears)
             End With
-            SetAccountBookNumYears(.utAccountBook, lngNumYears)
         End With
     End If
 
