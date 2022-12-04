@@ -17,41 +17,6 @@ Module BookSettings
 'パブリックプロシージャ
 '
 
-Public Function AllocBookItems(
-        ByRef utBook As Wrapper.AccountBook,
-        ByVal lngItemBufferSize As Integer) As Integer
-'---------------------------------------------------------------------
-'項目データ用バッファを確保する
-'[I/O] utBook            : 家計簿データ
-'[ IN] lngItemBufferSize : 確保する項目数
-'[RET] Long
-'  増えた部分の先頭のインデックス
-'---------------------------------------------------------------------
-Dim lngBufferSize As Integer
-Dim lngStartYear As Integer, lngNumYears As Integer
-Dim lngResult As Integer
-
-    With utBook
-        lngStartYear = .nStartYear
-        lngNumYears = .nNumYears
-
-        'バッファをリサイズし、増えた部分の先頭を記録しておく
-        With .utBookItems
-            lngResult = .nItemBufferSize
-            lngBufferSize = (lngItemBufferSize + 15) And &H7FFFFFF0
-            .nItemBufferSize = lngBufferSize
-
-            ReDim .nFlags(0 To lngBufferSize - 1)
-            ReDim .utItemEntries(0 To lngBufferSize - 1)
-        End With
-
-        .utAnnualRecords.reallocBuffers(
-                lngBufferSize, lngStartYear, lngNumYears)
-    End With
-
-    AllocBookItems = lngResult
-End Function
-
 Public Function BookItemAllocNewItem(
         ByRef utBook As Wrapper.AccountBook) As Integer
 '---------------------------------------------------------------------
