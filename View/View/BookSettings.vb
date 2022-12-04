@@ -152,7 +152,9 @@ Dim strTempDir As String, strTempFileName As String
                     End With
                 End With
             Else
-                lngResult = InsertNewBookItem(utBook, lngHandle, strTemp, lngFlags, lngStartDate, lngStartBalance)
+                lngResult = utBook.insertNewItem(
+                                lngHandle, strTemp, lngFlags,
+                                lngStartDate, lngStartBalance)
                 If (lngResult <> i) Then
                     MessageBox.Show("エラー：追加されたサブアイテムのインデックスが一致しません。" & _
                         vbCrLf & "インデックス：" & i & vbCrLf & _
