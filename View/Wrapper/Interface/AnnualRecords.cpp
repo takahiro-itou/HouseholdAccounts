@@ -22,6 +22,9 @@
 
 #include    "AnnualRecords.h"
 
+#include    "BookItem.h"
+#include    "Common/ManagedDate.h"
+
 namespace  Wrapper  {
 
 namespace  {
@@ -108,11 +111,40 @@ AnnualRecords::reallocBuffers(
 System::Boolean
 AnnualRecords::recountAnnualRecords(
         cli::array<int, 1>^ lngItemFlags,
-        const  int  lngItemBufferSize,
+        const  int  itemBufferSize,
         const  int  lngYear,
-        const  int  lngNumDays)
+        const  int  numDays)
 {
-    return ( false );
+    int dayIndexStart, dayIndexEnd;
+
+    //  初期値を書き込む。  //
+    for ( int i = 0; i < itemBufferSize; ++ i ) {
+        ItemFlag flag = static_cast<ItemFlag>(lngItemFlags[i]);
+        if ( (flag & ItemFlag::ITEM_FLAG_TYPEMASK)
+                == ItemFlag::ITEM_FLAG_BALANCE )
+        {
+            this->m_itemDetailCount[i].nDayTotal[0]
+                    = this->m_itemAnnualCount[i].nStartValues[lngYear];
+        }
+    }
+
+    dayIndexStart = static_cast<int>(ManagedDate::getWeekday(lngYear, 1, 1));
+    dayIndexEnd = ManagedDate::getDayInYear(lngYear, 12, 31) + dayIndexStart;
+
+    //  全てのレシートを集計する。  //
+    for ( int trgDate = 0; trgDate < numDays; ++ trgDate ) {
+        for ( int i = 0; i < itemBufferSize; ++ i ) {
+            ItemFlag flag = static_cast<ItemFlag>(lngItemFlags[i]);
+            if ( (flag & ItemFlag::ITEM_FLAG_TYPEMASK)
+                    == ItemFlag::ITEM_FLAG_BALANCE )
+            {
+            } else {
+                this->m_itemDetailCount[i].nDayTotal[trgDate] = 0;
+            }
+        }
+    }
+
+    return ( true );
 }
 
 //========================================================================
