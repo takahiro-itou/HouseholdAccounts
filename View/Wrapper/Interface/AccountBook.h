@@ -87,7 +87,7 @@ public:
     **  @return     増えた部分の先頭のインデックス。
     **/
     int
-    allocBookItems(
+    allocItemBuffers(
             const  int  bufSize);
 
     //----------------------------------------------------------------

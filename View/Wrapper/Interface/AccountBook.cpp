@@ -68,7 +68,7 @@ namespace  {
 //
 
 int
-AccountBook::allocBookItems(
+AccountBook::allocItemBuffers(
         const  int  bufSize)
 {
     const  int  startYear = this->nStartYear;

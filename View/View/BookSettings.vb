@@ -51,7 +51,7 @@ Dim lngResult As Integer
     End If
 
     'バッファをリサイズし、増えた部分の先頭を確保する
-    BookItemAllocNewItem = utBook.allocBookItems(lngResult)
+    BookItemAllocNewItem = utBook.allocItemBuffers(lngResult)
 End Function
 
 Public Function InsertNewBookItem(
@@ -151,7 +151,7 @@ Dim strTempDir As String, strTempFileName As String
         lngRootItemCount = lngHeader(33)
 
         'バッファを確保する
-        utBook.allocBookItems(lngItemCount)
+        utBook.allocItemBuffers(lngItemCount)
 
         With .utBookItems
             .nRootItemCount = lngRootItemCount
