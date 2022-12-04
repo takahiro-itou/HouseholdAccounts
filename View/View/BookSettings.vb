@@ -17,53 +17,6 @@ Module BookSettings
 'パブリックプロシージャ
 '
 
-Public Function InsertNewBookItem(
-        ByRef utBook As Wrapper.AccountBook,
-        ByVal lngParentItemHandle As Integer, ByVal strName As String,
-        ByVal lngFlags As Integer, ByVal lngStartDate As Integer,
-        ByVal lngStartBalance As Integer) As Integer
-'---------------------------------------------------------------------
-'指定した項目に新しいサブ項目を追加する
-'[I/O] utBookItems         : 項目一覧データ
-'[I/O] utYearRecord        : 年間レコードデータ
-'[ IN] lngParentItemHandle : 親項目のハンドル
-'[ IN] strName             : 項目名
-'[ IN] lngFlags            : 項目フラグ
-'[ IN] lngStartDate        : 開始日
-'[ IN] lngStartBalance     : 開始時金額
-'[RET] Long
-'  追加した項目のハンドル
-'---------------------------------------------------------------------
-Dim lngNewItemHandle As Integer
-
-    '新しい項目用のインデックスを取得する
-    lngNewItemHandle = utBook.allocNewItem()
-
-    With utBook.utBookItems
-        'この項目に初期値を書き込む
-        .nFlags(lngNewItemHandle) = lngFlags
-        With .utItemEntries(lngNewItemHandle)
-            .nParentHandle = lngParentItemHandle
-            .sItemName = strName
-            .nSubItemCount = 0
-            .nStartDate = lngStartDate
-            .nStartBalance = lngStartBalance
-        End With
-
-        .nRegisteredItemCount = .nRegisteredItemCount + 1
-
-        '親項目の内容を更新する
-        With .utItemEntries(lngParentItemHandle)
-            ReDim Preserve .nSubItems(0 To .nSubItemCount)
-            .nSubItems(.nSubItemCount) = lngNewItemHandle
-            .nSubItemCount = .nSubItemCount + 1
-        End With
-    End With
-
-    '追加した新しい項目のハンドルを返す
-    InsertNewBookItem = lngNewItemHandle
-End Function
-
 Public Function ReadAccountBookSettings(
         ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
