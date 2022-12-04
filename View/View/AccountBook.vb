@@ -539,10 +539,10 @@ Dim blnResult As Boolean
                                 lngValue = Int(Rnd * 11500)
 
                                 'このデータを加算する
-                                blnResult = AddDataToItemTotal(utBook, lngYearIndex, lngDate, i, lngValue)
+                                blnResult = utBook.addDataToItemTotal(lngYearIndex, lngDate, i, lngValue)
                                 If (blnResult) Then
                                     '残高に加える
-                                    AddDataToItemTotal(utBook, lngYearIndex, lngDate, 3, lngValue)
+                                    utBook.addDataToItemTotal(lngYearIndex, lngDate, 3, lngValue)
                                 End If
                             End If
                         ElseIf (lngType = Wrapper.ItemFlag.ITEM_FLAG_OUTLAY) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_DEPOSIT) Then
@@ -550,10 +550,10 @@ Dim blnResult As Boolean
                                 lngValue = Int(Rnd * 1000)
 
                                 'このデータを加算する
-                                blnResult = AddDataToItemTotal(utBook, lngYearIndex, lngDate, i, lngValue)
+                                blnResult = utBook.addDataToItemTotal(lngYearIndex, lngDate, i, lngValue)
                                 If (blnResult) Then
                                     '残高から引く
-                                    AddDataToItemTotal(utBook, lngYearIndex, lngDate, 3, -lngValue)
+                                    utBook.addDataToItemTotal(lngYearIndex, lngDate, 3, -lngValue)
                                 End If
                             End If
                         End If
