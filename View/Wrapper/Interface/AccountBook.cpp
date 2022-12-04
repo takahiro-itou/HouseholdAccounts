@@ -74,7 +74,54 @@ AccountBook::addDataToItemTotal(
         const  int  lngItemIndex,
         const  int  lngValue)
 {
-    return ( false );
+    int     parentItem;
+    bool    blnAddToParent, blnAddToRoot;
+
+    blnAddToParent  = true;
+    blnAddToRoot    = true;
+
+    int lngYear = this->nStartYear + lngYearIndex;
+
+    //  日付から週と月を計算しておく。  //
+    const  ParsedDate
+        utDate  = ManagedDate::getDayFromIndex(lngYear, lngDayIndex, -1);
+    const  int lngWeek  = utDate.nWeek;
+    const  int lngMonth = utDate.nMonth;
+    lngYear = utDate.nYear;
+
+    BookItems      % bi = this->utBookItems;
+    AnnualRecords  % ar = this->utAnnualRecords;
+
+    int itemHandle  = lngItemIndex;
+    while ( itemHandle >= 0 ) {
+        parentItem  = bi.utItemEntries[itemHandle].nParentHandle;
+        const ItemFlag flag = static_cast<ItemFlag>(bi.nFlags[itemHandle]);
+        if ( flag & ItemFlag::ITEM_FLAG_NOCOUNT_PARENT ) {
+            blnAddToParent  = false;
+            blnAddToRoot    = false;
+        }
+        if ( flag & ItemFlag::ITEM_FLAG_NOCOUNT_ROOT ) {
+            blnAddToRoot    = false;
+        }
+        if ( (parentItem == -1) && (blnAddToRoot == false) ) {
+            break;
+        }
+
+        BookItemDetailCounts   % dc = ar.m_itemDetailCount[itemHandle];
+        dc.nDayTotal[lngDayIndex]   += lngValue;
+        dc.nWeekTotal[lngWeek]      += lngValue;
+        dc.nMonthTotal[lngMonth]    += lngValue;
+
+        BookItemAnnualCounts   % ac = ar.m_itemAnnualCount[itemHandle];
+        ac.nYearTotal[lngYearIndex] += lngValue;
+
+        if ( (blnAddToParent == false) || (parentItem == -1) ) {
+            break;
+        }
+        itemHandle  = parentItem;
+    }
+
+    return ( blnAddToRoot );
 }
 
 //----------------------------------------------------------------
