@@ -64,6 +64,20 @@ namespace  {
 //
 
 //----------------------------------------------------------------
+//    項目の合計金額に指定したデータを加算する。
+//
+
+System::Boolean
+AccountBook::addDataToItemTotal(
+        const  int  lngYearIndex,
+        const  int  lngDayIndex,
+        const  int  lngItemIndex,
+        const  int  lngValue)
+{
+    return ( false );
+}
+
+//----------------------------------------------------------------
 //    項目データ用バッファを確保する。
 //
 
@@ -172,6 +186,16 @@ AccountBook::isDayBeforeStart(
         return ( true );
     }
     return ( false );
+}
+
+//----------------------------------------------------------------
+//    データを再集計する。
+//
+
+void
+AccountBook::recountData(
+        const  int  lngYear)
+{
 }
 
 //----------------------------------------------------------------

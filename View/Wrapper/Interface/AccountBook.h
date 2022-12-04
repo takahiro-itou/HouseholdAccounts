@@ -81,6 +81,17 @@ public value struct AccountBook
 public:
 
     //----------------------------------------------------------------
+    /**   項目の合計金額に指定したデータを加算する。
+    **
+    **/
+    System::Boolean
+    addDataToItemTotal(
+            const  int  lngYearIndex,
+            const  int  lngDayIndex,
+            const  int  lngItemIndex,
+            const  int  lngValue);
+
+    //----------------------------------------------------------------
     /**   項目データ用バッファを確保する。
     **
     **  @param [in] bufSize   確保する項目数。
@@ -126,6 +137,14 @@ public:
     isDayBeforeStart(
             const  int  lngYear,
             const  int  lngDayIndex);
+
+    //----------------------------------------------------------------
+    /**   データを再集計する。
+    **
+    **/
+    void
+    recountData(
+            const  int  lngYear);
 
     //----------------------------------------------------------------
     /**   開始日を設定する。
