@@ -119,6 +119,44 @@ AccountBook::allocNewItem()
 }
 
 //----------------------------------------------------------------
+//    指定した項目に新しいサブ項目を追加する。
+//
+
+int
+AccountBook::insertNewItem(
+        const   int         parentItemHandle,
+        const   System::String^     strName,
+        const   ItemFlag    lngFlags,
+        const   int         startDate,
+        const   int         startBalance)
+{
+    //  新しい項目用のインデックスを取得する。  //
+    const  int  iNewHandle  = allocNewItem();
+
+    //  この項目に初期値を書き込む。
+    BookItem  % bi  = this->utBookItems;
+    bi.nFlags[iNewHandle]   = lngFlags;
+
+    BookItemEntry  % entry  = bi.utItemEntries[iNewHandle];
+    entry.nParentHandle = parentItemHandle;
+    entry.sItemName     = strName;
+    entry.nSubItemCount = 0;
+    entry.nStartDate    = startDate;
+    entry.nStartBalance = startBalance;
+
+    +++ bi.nRegisteredItemCount;
+
+    //  親項目の内容を更新する。    //
+    BookItemEntry  % parent = bi.utItemEntries[parentItemHandle];
+    System::Array::Resize(parent.nSubItems, parent.nSubItemCount + 1);
+    parent.nSubItems[parent.nSubItemCount] = iNewHandle;
+    ++ parent.nSubItemCount;
+
+    //  追加した新しい項目のハンドルを返す。    //
+    return ( iNewHandle );
+}
+
+//----------------------------------------------------------------
 //    指定した日付が、家計簿の開始日より前か調べる。
 //
 

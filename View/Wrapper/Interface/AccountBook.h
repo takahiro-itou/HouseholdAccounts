@@ -99,6 +99,24 @@ public:
     allocNewItem();
 
     //----------------------------------------------------------------
+    /**   指定した項目に新しいサブ項目を追加する。
+    **
+    **  @param [in] parentItemHandle    親項目のハンドル。
+    **  @param [in] strName             項目名。
+    **  @param [in] lngFlags            項目フラグ。
+    **  @param [in] startDate           開始日。
+    **  @param [in] startBalance        開始時金額。
+    **  @return     追加した項目のハンドル。
+    **/
+    int
+    insertNewItem(
+            const   int         parentItemHandle,
+            const   System::String^     strName,
+            const   ItemFlag    lngFlags,
+            const   int         startDate,
+            const   int         startBalance);
+
+    //----------------------------------------------------------------
     /**   指定した日付が、家計簿の開始日より前か調べる。
     **
     **  @param [in] lngYear       西暦年。
