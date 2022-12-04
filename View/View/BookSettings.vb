@@ -74,7 +74,7 @@ Public Function InsertNewBookItem(
 Dim lngNewItemHandle As Integer
 
     '新しい項目用のインデックスを取得する
-    lngNewItemHandle = BookItemAllocNewItem(utBook)
+    lngNewItemHandle = utBook.allocNewItem()
 
     With utBook.utBookItems
         'この項目に初期値を書き込む
