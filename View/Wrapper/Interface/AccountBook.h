@@ -111,7 +111,7 @@ public:
     int
     insertNewItem(
             const   int         parentItemHandle,
-            const   System::String^     strName,
+            System::String^     strName,
             const   ItemFlag    lngFlags,
             const   int         startDate,
             const   int         startBalance);

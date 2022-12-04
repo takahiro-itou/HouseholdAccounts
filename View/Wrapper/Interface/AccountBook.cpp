@@ -125,7 +125,7 @@ AccountBook::allocNewItem()
 int
 AccountBook::insertNewItem(
         const   int         parentItemHandle,
-        const   System::String^     strName,
+        System::String^     strName,
         const   ItemFlag    lngFlags,
         const   int         startDate,
         const   int         startBalance)
@@ -134,8 +134,8 @@ AccountBook::insertNewItem(
     const  int  iNewHandle  = allocNewItem();
 
     //  この項目に初期値を書き込む。
-    BookItem  % bi  = this->utBookItems;
-    bi.nFlags[iNewHandle]   = lngFlags;
+    BookItems  % bi = this->utBookItems;
+    bi.nFlags[iNewHandle]   = static_cast<int>(lngFlags);
 
     BookItemEntry  % entry  = bi.utItemEntries[iNewHandle];
     entry.nParentHandle = parentItemHandle;
@@ -144,7 +144,7 @@ AccountBook::insertNewItem(
     entry.nStartDate    = startDate;
     entry.nStartBalance = startBalance;
 
-    +++ bi.nRegisteredItemCount;
+    ++ bi.nRegisteredItemCount;
 
     //  親項目の内容を更新する。    //
     BookItemEntry  % parent = bi.utItemEntries[parentItemHandle];
