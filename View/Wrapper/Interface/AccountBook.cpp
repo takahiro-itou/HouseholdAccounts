@@ -233,6 +233,18 @@ AccountBook::getNumYears()
 }
 
 //----------------------------------------------------------------
+//    データの年数を設定する。
+//
+
+void
+AccountBook::setNumYears(
+        const  int  numYears)
+{
+    this->utAnnualRecords.reallocBuffers(-1, this->nStartYear, numYears);
+    this->nNumYears = numYears;
+}
+
+//----------------------------------------------------------------
 //    家計簿の開始年を取得する。
 //
 
