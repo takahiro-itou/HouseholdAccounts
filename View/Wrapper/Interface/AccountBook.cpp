@@ -64,6 +64,30 @@ namespace  {
 //
 
 //----------------------------------------------------------------
+//    項目データ用バッファを確保する。
+//
+
+int
+AccountBook::allocBookItems(
+        const  int  bufSize)
+{
+    const  int  startYear = this->nStartYear;
+    const  int  numYear = this->nNumYears;
+
+    //  バッファをリサイズし、増えた部分の先頭を記録しておく。  //
+    const  int  sizeCur = this->utBookItems.nItemBufferSize;
+    const  int  sizeNew = (bufSize + 15) & ~15;
+
+    this->utBookItems.nItemBufferSize = sizeNew;
+    System::Array::Resize(this->utBookItems.nFlags, sizeNew);
+    System::Array::Resize(this->utBookItems.utItemEntries, sizeNew);
+
+    this->utAnnualRecords.reallocBuffers(sizeNew, startYear, numYear);
+
+    return ( sizeCur );
+}
+
+//----------------------------------------------------------------
 //    指定した日付が、家計簿の開始日より前か調べる。
 //
 
