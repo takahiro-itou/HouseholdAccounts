@@ -95,12 +95,12 @@ AccountBook::addDataToItemTotal(
     int itemHandle  = lngItemIndex;
     while ( itemHandle >= 0 ) {
         parentItem  = bi.utItemEntries[itemHandle].nParentHandle;
-        const ItemFlag flag = static_cast<ItemFlag>(bi.nFlags[itemHandle]);
-        if ( flag & ItemFlag::ITEM_FLAG_NOCOUNT_PARENT ) {
+        const int flag = (bi.nFlags[itemHandle]);
+        if ( flag & static_cast<int>(ItemFlag::ITEM_FLAG_NOCOUNT_PARENT) ) {
             blnAddToParent  = false;
             blnAddToRoot    = false;
         }
-        if ( flag & ItemFlag::ITEM_FLAG_NOCOUNT_ROOT ) {
+        if ( flag & static_cast<int>(ItemFlag::ITEM_FLAG_NOCOUNT_ROOT) ) {
             blnAddToRoot    = false;
         }
         if ( (parentItem == -1) && (blnAddToRoot == false) ) {

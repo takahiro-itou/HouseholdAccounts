@@ -212,7 +212,7 @@ public:
 
     int     nItemBufferSize;
 
-private:
+public:
     AnnualCountsArray^      m_itemAnnualCount;
     DetailCountsArray^      m_itemDetailCount;
     OneDayReceiptArray^     m_dayRecords;
