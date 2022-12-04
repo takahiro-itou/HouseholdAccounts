@@ -34,47 +34,6 @@ Dim lngStartPos As Integer, lngEndPos As Integer
     ReadAnnualRecords = (lngEndPos - lngStartPos)
 End Function
 
-Public Function RecountAnnualRecords(
-        ByRef utRecord As Wrapper.AnnualRecords,
-        ByRef lngItemFlags() As Integer, ByVal lngItemBufferSize As Integer,
-        ByVal lngYear As Integer, ByVal lngNumDays As Integer) As Boolean
-'---------------------------------------------------------------------
-'年間レコードを再集計する
-'[I/O] utRecord          : 年間レコード
-'[ IN] lngItemFlags()    : 各項目のフラグ
-'[ IN] lngItemBufferSize : 項目バッファのサイズ
-'[RET] Boolean
-'  成功したらTrue, 何かエラーがあれば False
-'---------------------------------------------------------------------
-Dim i As Integer
-Dim lngDate As Integer, lngStartDayIndex As Integer, lngEndDayIndex As Integer
-
-    '初期値を書き込む
-    With utRecord
-        For i = 0 To lngItemBufferSize - 1
-            If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
-                .utItemDetailCounts(i).nDayTotal(0) = .utItemAnnualCounts(i).nStartValues(lngYear)
-            End If
-        Next i
-
-        lngStartDayIndex = Wrapper.ManagedDate.getWeekday(lngYear, 1, 1)
-        lngEndDayIndex = Wrapper.ManagedDate.getDayInYear(lngYear, 12, 31) + lngStartDayIndex
-
-        '全てのレシートを集計する
-        For lngDate = 0 To lngNumDays - 1
-            'バッファをクリアする
-            For i = 0 To lngItemBufferSize - 1
-                If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
-                Else
-                    .utItemDetailCounts(i).nDayTotal(lngDate) = 0
-                End If
-            Next i
-        Next lngDate
-    End With
-
-    RecountAnnualRecords = True
-End Function
-
 Public Function WriteAnnualRecords(
         ByRef utRecord As Wrapper.AnnualRecords,
         ByVal lngFileNumber As Integer,
