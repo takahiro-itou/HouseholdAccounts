@@ -17,43 +17,6 @@ Module BookSettings
 'パブリックプロシージャ
 '
 
-Public Function BookItemAllocNewItem(
-        ByRef utBook As Wrapper.AccountBook) As Integer
-'---------------------------------------------------------------------
-'新しい項目用の領域を確保し、そのハンドルを返す
-'[I/O] utBook: 家計簿データ
-'[RET] Long
-'  新しい項目用のハンドル
-'---------------------------------------------------------------------
-Dim i As Integer
-Dim lngResult As Integer
-
-    With utBook
-        'バッファサイズと登録済み項目数を比較し、
-        'バッファに空きがある場合は、
-        '空きを探してそのバンドル(インデックス)を返す
-        lngResult = -1
-        With .utBookItems
-            If (.nRegisteredItemCount < .nItemBufferSize) Then
-                For i = .nRootItemCount To .nItemBufferSize - 1
-                    If (.nFlags(i) = Wrapper.ItemFlag.ITEM_FLAG_NOTUSED) Then
-                        lngResult = i
-                        Exit For
-                    End If
-                Next i
-            End If
-        End With
-    End With
-
-    If (lngResult >= 0) Then
-        BookItemAllocNewItem = lngResult
-        Exit Function
-    End If
-
-    'バッファをリサイズし、増えた部分の先頭を確保する
-    BookItemAllocNewItem = utBook.allocItemBuffers(lngResult)
-End Function
-
 Public Function InsertNewBookItem(
         ByRef utBook As Wrapper.AccountBook,
         ByVal lngParentItemHandle As Integer, ByVal strName As String,
