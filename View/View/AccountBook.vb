@@ -762,21 +762,6 @@ Dim strTempFileName As String, strIndexFileName As String
     SaveAccountBook = True
 End Function
 
-Public Sub SetAccountBookNumYears(
-        ByRef utBook As Wrapper.AccountBook, ByVal lngNumYears As Integer)
-'---------------------------------------------------------------------
-'データの年数を設定する
-'[I/O] utBook        : 家計簿データ
-'[ IN] lngNumYears   : 家計簿の年数
-'[RET] なし
-'---------------------------------------------------------------------
-
-    With utBook
-        .utAnnualRecords.reallocBuffers(-1, .nStartYear, lngNumYears)
-        .nNumYears = lngNumYears
-    End With
-End Sub
-
 Public Function UpdateIndexFile(
         ByVal strTempDir As String,
         ByVal lngKey As Integer, ByVal lngPos As Integer,
