@@ -66,68 +66,6 @@ Dim utDetailCounts() As Wrapper.BookItemDetailCounts
     AccountBookUpdateItemHandleInYearRecord = 0
 End Function
 
-Public Function AddDataToItemTotal(
-        ByRef utBook As Wrapper.AccountBook,
-        ByVal lngYearIndex As Integer, ByVal lngDayIndex As Integer,
-        ByVal lngItemIndex As Integer, ByVal lngValue As Integer) As Boolean
-'---------------------------------------------------------------------
-'---------------------------------------------------------------------
-Dim lngFlags() As Integer
-Dim lngParentHandle As Integer
-Dim lngYear As Integer, lngWeek As Integer, lngMonth As Integer
-Dim utDate As Wrapper.ParsedDate
-Dim blnAddToParent As Boolean, blnAddToRoot As Boolean
-
-    blnAddToParent = True
-    blnAddToRoot = True
-
-    '項目フラグを取り出しておく
-    With utBook
-        lngYear = .nStartYear + lngYearIndex
-        With .utBookItems
-            lngFlags = .nFlags
-        End With
-    End With
-
-    '日付から、週と月を計算しておく
-    utDate = Wrapper.ManagedDate.getDayFromIndex(lngYear, lngDayIndex, -1)
-    With utDate
-        lngWeek = .nWeek
-        lngMonth = .nMonth
-        lngYear = .nYear
-    End With
-
-    With utBook.utAnnualRecords
-        Do While (lngItemIndex >= 0)
-            lngParentHandle = utBook.utBookItems.utItemEntries(lngItemIndex).nParentHandle
-
-            If (lngFlags(lngItemIndex) And Wrapper.ItemFlag.ITEM_FLAG_NOCOUNT_PARENT) Then
-                blnAddToParent = False
-                blnAddToRoot = False
-            End If
-            If (lngFlags(lngItemIndex) And Wrapper.ItemFlag.ITEM_FLAG_NOCOUNT_ROOT) Then
-                blnAddToRoot = False
-            End If
-
-            If (lngParentHandle = -1) And (blnAddToRoot = False) Then Exit Do
-
-            With .utItemDetailCounts(lngItemIndex)
-                .nDayTotal(lngDayIndex) = .nDayTotal(lngDayIndex) + lngValue
-                .nWeekTotal(lngWeek) = .nWeekTotal(lngWeek) + lngValue
-                .nMonthTotal(lngMonth) = .nMonthTotal(lngMonth) + lngValue
-            End With
-            With .utItemAnnualCounts(lngItemIndex)
-                .nYearTotal(lngYearIndex) = .nYearTotal(lngYearIndex) + lngValue
-            End With
-
-            If ((blnAddToParent = False) Or (lngParentHandle = -1)) Then Exit Do
-            lngItemIndex = lngParentHandle
-        Loop
-    End With
-
-    AddDataToItemTotal = blnAddToRoot
-End Function
-
 Public Function ChangeAccountBookYear(
         ByRef utBook As Wrapper.AccountBook,
         ByVal lngNewYear As Integer) As Long
