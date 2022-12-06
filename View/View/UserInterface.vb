@@ -17,9 +17,11 @@ Module UserInterface
 'パブリックプロシージャ
 '
 
-Public Sub ChangeCellSize(ByRef utUI As tUserInterface,
-        ByRef utBook As tAccountBook,
-        ByVal lngNewWidth As Integer, ByVal lngNewHeight As Integer)
+Public Sub ChangeCellSize(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
+        ByVal lngNewWidth As Integer,
+        ByVal lngNewHeight As Integer)
 '---------------------------------------------------------------------
 'セルの幅と高さを変更する
 '[I/O] utUI        : ユーザーインターフェイス
@@ -34,7 +36,7 @@ Dim lngCellWidth As Integer, lngCellHeight As Integer
     If (False) Then
         lngCount = 32
     Else
-        lngCount = BookItemGetRegisteredItemCount(utBook.utBookItems)
+        lngCount = utBook.utBookItems.getRegisteredItemCount()
     End If
 
     With utUI
@@ -90,8 +92,10 @@ Public Sub CleanupUserInterface(ByRef utUI As tUserInterface)
 
 End Sub
 
-Public Function ExecuteCellAction(ByRef utUI As tUserInterface, _
-    ByRef utBook As tAccountBook, ByVal lngX As Integer, ByVal lngY As Integer) As Boolean
+Public Function ExecuteCellAction(
+        ByRef utUI As tUserInterface, _
+        ByRef utBook As Wrapper.AccountBook,
+        ByVal lngX As Integer, ByVal lngY As Integer) As Boolean
 '---------------------------------------------------------------------
 'セルに対するアクションを実行する
 '[I/O] utUI    : ユーザーインターフェイス
@@ -106,7 +110,7 @@ Dim blnExpand As Boolean
 Dim blnResult As Boolean
 
     '家計簿オブジェクトの状態をチェックする
-    If (IsAccountBookEnabled(utBook) = False) Then
+    If (utBook.isEnabled() = False) Then
         ExecuteCellAction = False
         Exit Function
     End If
@@ -124,8 +128,8 @@ Dim blnResult As Boolean
         '選択した項目を閉じたり、開いたりする
         With utBook
             lngIndex = utUI.nNowShowingItems(lngY - BOOKFIXEDROWS)
-            blnExpand = BookItemGetItemExpanded(.utBookItems, lngIndex)
-            BookItemExpandItem(.utBookItems, lngIndex, Not (blnExpand))
+            blnExpand = .utBookItems.isItemExpanded(lngIndex)
+            .utBookItems.expandItem(lngIndex, Not (blnExpand))
             blnResult = True
         End With
     End If
@@ -141,8 +145,9 @@ Dim blnResult As Boolean
     ExecuteCellAction = blnResult
 End Function
 
-Public Sub RefreshBook(ByRef utUI As tUserInterface,
-        ByRef utBook As tAccountBook, _
+Public Sub RefreshBook(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngLeftCol As Integer, ByVal lngTopRow As Integer)
 '---------------------------------------------------------------------
 '家計簿の表示を更新する
@@ -161,7 +166,7 @@ Dim grpDest As Graphics, grpSrc As Graphics
 Dim rectSrc As System.Drawing.Rectangle
 
     '家計簿オブジェクトの状態をチェックする
-    If (IsAccountBookEnabled(utBook) = False) Then
+    If (utBook.isEnabled() = False) Then
         With utUI
              grpDest = Graphics.FromImage(.oBookPicture.Image)
              grpDest.Clear(Color.White)
@@ -276,8 +281,9 @@ Dim rectSrc As System.Drawing.Rectangle
     End With
 End Sub
 
-Public Sub SelectCell(ByRef utUI As tUserInterface, _
-        ByRef utBook As tAccountBook,
+Public Sub SelectCell(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngX As Integer, ByVal lngY As Integer)
 '---------------------------------------------------------------------
 '指定したセルを選択状態にする
@@ -292,12 +298,12 @@ Dim lngYear As Integer, lngWeek As Integer, lngMonth As Integer
 Dim blnResult As Boolean
 Dim strTemp As String
 Dim strItemName As String, strColumnTitle As String
-Dim utDayInfo As tParsedDate
+Dim utDayInfo As Wrapper.ParsedDate
 
     blnResult = False
 
     '家計簿オブジェクトの状態をチェックする
-    If (IsAccountBookEnabled(utBook) = False) Then Exit Sub
+    If (utBook.isEnabled() = False) Then Exit Sub
 
     With utUI
         'カーソル位置を保存する
@@ -307,7 +313,8 @@ Dim utDayInfo As tParsedDate
         '現在のカーソル位置の日付を得る
         lngYear = .nCurrentYear
         lngWeek = .nCurrentWeek
-        GetDayFromIndex(utDayInfo, lngYear, (lngWeek * 7), -1)
+        utDayInfo = Wrapper.ManagedDate.getDayFromIndex(
+                        lngYear, (lngWeek * 7), -1)
         lngMonth = utDayInfo.nMonth
 
         'カーソルが画面外にはみ出す場合は、スクロールバーを調整する
@@ -334,7 +341,7 @@ Dim utDayInfo As tParsedDate
             strItemName = ""
         Else
             lngItemIndex = .nNowShowingItems(lngY - BOOKFIXEDROWS)
-            strItemName = BookItemGetItemName(utBook.utBookItems, lngItemIndex)
+            strItemName = utBook.utBookItems.getItemName(lngItemIndex)
         End If
 
         If (lngX < BOOKFIXEDCOLS) Then
@@ -433,8 +440,9 @@ Public Sub StartupUserInterface(ByRef utUI As tUserInterface, _
     End With
 End Sub
 
-Public Sub UpdateBook(ByRef utUI As tUserInterface,
-        ByRef utBook As tAccountBook,
+Public Sub UpdateBook(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngYear As Integer, ByVal lngWeek As Integer)
 '---------------------------------------------------------------------
 '指定したピクチャーボックスに家計簿の内容を描画する
@@ -451,7 +459,7 @@ Dim lngCurTop As Integer, lngInc As Integer
 Dim lngMonth As Integer
 Dim strTemp As String
 Dim strText As String
-Dim utDayInfo As tParsedDate
+Dim utDayInfo As Wrapper.ParsedDate
 Dim colorText As Color = Color.Black
 
     '描画するデータ(年／週)を記録する
@@ -461,12 +469,14 @@ Dim colorText As Color = Color.Black
     End With
 
     '家計簿オブジェクトの状態をチェックする
-    If (IsAccountBookEnabled(utBook) = False) Then Exit Sub
+    If (utBook.isEnabled() = False) Then Exit Sub
 
     'データの個数をチェックする
     With utBook
-        lngItemCount = BookItemGetRegisteredItemCount(.utBookItems)
-        lngRootItemCount = BookItemGetRootItemCount(.utBookItems)
+        With .utBookItems
+            lngItemCount = .getRegisteredItemCount()
+            lngRootItemCount = .getRootItemCount()
+        End With
     End With
 
     With utUI
@@ -481,7 +491,7 @@ Dim colorText As Color = Color.Black
     End With
 
     '表示する最初の日付を取得して、何月分かを調べる
-    GetDayFromIndex(utDayInfo, lngYear, (lngWeek * 7), -1)
+    utDayInfo = Wrapper.ManagedDate.getDayFromIndex(lngYear, (lngWeek * 7), -1)
     lngMonth = utDayInfo.nMonth
 
     'タイトル表示
@@ -494,7 +504,8 @@ Dim colorText As Color = Color.Black
             2, 1)
 
     For X = 0 To 6
-        GetDayFromIndex(utDayInfo, lngYear, (lngWeek * 7) + X, -1)
+        utDayInfo = Wrapper.ManagedDate.getDayFromIndex(
+                        lngYear, (lngWeek * 7) + X, -1)
         strTemp = GetDayStringFromInfo(utDayInfo, False, True)
         utUI.utNowShowingDates(X) = utDayInfo
         UserInterfaceDrawCell(utUI,
@@ -719,14 +730,16 @@ Dim rectSrc As System.Drawing.Rectangle
 
 End Sub
 
-Private Sub UserInterfaceShowData(ByRef utUI As tUserInterface, _
-    ByRef utBook As tAccountBook, ByVal lngDepth As Integer, _
-    ByVal lngFixedColIcon As Integer, ByVal lngFixedColArrange As Integer, _
-    ByVal lngBGFixedColsColor As Color, ByVal lngBGColor As Color, _
-    ByVal lngTop As Integer, ByVal lngRootItem As Integer, _
-    ByVal strItemName As String, _
-    ByVal lngYear As Integer, ByVal lngMonth As Integer, _
-    ByVal lngWeek As Integer)
+Private Sub UserInterfaceShowData(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
+        ByVal lngDepth As Integer,
+        ByVal lngFixedColIcon As Integer, ByVal lngFixedColArrange As Integer,
+        ByVal lngBGFixedColsColor As Color, ByVal lngBGColor As Color,
+        ByVal lngTop As Integer, ByVal lngRootItem As Integer,
+        ByVal strItemName As String,
+        ByVal lngYear As Integer, ByVal lngMonth As Integer,
+        ByVal lngWeek As Integer)
 '---------------------------------------------------------------------
 'データを表示する
 '[ IN] utUI                :
@@ -753,7 +766,7 @@ Dim lngYearIndex As Integer, lngDate As Integer, lngDayTotal As Integer
 Dim lngWeekTotal As Integer, lngMonthTotal As Integer, lngYearTotal As Integer
 Dim strText As String
 Dim lngTextColor As Color, lngCellColor As Color
-Dim utDate As tParsedDate
+Dim utDate As Wrapper.ParsedDate
 
     'この項目以下の合計を表示する
     UserInterfaceDrawCell(utUI, _
@@ -769,13 +782,13 @@ Dim utDate As tParsedDate
         For X = 0 To 6
             lngDate = (lngWeek * NUMDAYSPERWEEK) + X
 
-            If (IsDayBeforeStart(utBook, lngYear, lngDate)) Then
+            If (utBook.isDayBeforeStart(lngYear, lngDate)) Then
                 '開始日より前
                 lngCellColor = Color.FromArgb(BOOKBGREADONLYCELLSCOLOR)
                 lngTextColor = Color.FromArgb(READONLYTEXTCOLOR)
                 strText = ""
             Else
-                GetDayFromIndex(utDate, lngYear, lngDate, -1)
+                utDate = Wrapper.ManagedDate.getDayFromIndex(lngYear, lngDate, -1)
                 If (utDate.nYear <> lngYear) Then
                     '去年の残り、又は、来年へのはみ出し
                     lngCellColor = Color.FromArgb(BOOKBGREADONLYCELLSCOLOR)
@@ -785,11 +798,12 @@ Dim utDate As tParsedDate
                     lngTextColor = Color.FromArgb(NORMALTEXTCOLOR)
                 End If
 
-                lngDayTotal = AnnualRecordGetItemDayTotal(.utAnnualRecords, lngRootItem, lngDate)
+                lngDayTotal = .utAnnualRecords.getItemDayTotal(
+                                lngRootItem, lngDate)
                 If (lngDayTotal = 0) Then
                     strText = ""
                 Else
-                    strText = Format$(AnnualRecordGetItemDayTotal(.utAnnualRecords, lngRootItem, lngDate), "#,##0")
+                    strText = Format$(lngDayTotal, "#,##0")
                 End If
             End If
 
@@ -800,14 +814,16 @@ Dim utDate As tParsedDate
                     1, 1)
         Next X
 
-        lngType = BookItemGetItemType(.utBookItems, lngRootItem)
-        lngWeekTotal = AnnualRecordGetItemWeekTotal(.utAnnualRecords, lngRootItem, lngWeek)
-        lngMonthTotal = AnnualRecordGetItemMonthTotal(.utAnnualRecords, lngRootItem, lngMonth)
-        lngYearTotal = AnnualRecordGetItemYearTotal(.utAnnualRecords, lngRootItem, lngYearIndex)
+        lngType = .utBookItems.getItemType(lngRootItem)
+        With .utAnnualRecords
+            lngWeekTotal = .getItemWeekTotal(lngRootItem, lngWeek)
+            lngMonthTotal = .getItemMonthTotal(lngRootItem, lngMonth)
+            lngYearTotal = .getItemYearTotal(lngRootItem, lngYearIndex)
+        End With
     End With
 
     '週計
-    If (lngType = ITEM_FLAG_BALANCE) Or (lngWeekTotal = 0) Then
+    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngWeekTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngWeekTotal, "#,##0")
@@ -821,7 +837,7 @@ Dim utDate As tParsedDate
             1, 1)
 
     '月計
-    If (lngType = ITEM_FLAG_BALANCE) Or (lngMonthTotal = 0) Then
+    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngMonthTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngMonthTotal, "#,##0")
@@ -835,7 +851,7 @@ Dim utDate As tParsedDate
             1, 1)
 
     '年計
-    If (lngType = ITEM_FLAG_BALANCE) Or (lngYearTotal = 0) Then
+    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngYearTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngYearTotal, "#,##0")
@@ -870,8 +886,9 @@ Dim utDate As tParsedDate
 
 End Sub
 
-Private Function UserInterfaceShowItem(ByRef utUI As tUserInterface, _
-        ByRef utBook As tAccountBook, _
+Private Function UserInterfaceShowItem(
+        ByRef utUI As tUserInterface,
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngDepth As Integer, ByVal lngTop As Integer,
         ByVal lngRootItem As Integer,
         ByVal lngYear As Integer, ByVal lngMonth As Integer,
@@ -901,10 +918,12 @@ Dim strName As String
 Dim blnExpand As Boolean
 
     With utBook
-        strName = BookItemGetItemName(.utBookItems, lngRootItem)
-        lngType = BookItemGetItemType(.utBookItems, lngRootItem)
-        blnExpand = BookItemGetItemExpanded(.utBookItems, lngRootItem)
-        lngCount = BookItemGetSubItemCount(.utBookItems, lngRootItem)
+        With .utBookItems
+            strName = .getItemName(lngRootItem)
+            lngType = .getItemType(lngRootItem)
+            blnExpand = .isItemExpanded(lngRootItem)
+            lngCount = .getSubItemCount(lngRootItem)
+        End With
     End With
 
     '表示する背景色を決定する
@@ -929,7 +948,7 @@ Dim blnExpand As Boolean
 
     'この項目を表示する
     lngResult = 1
-    If (lngType = ITEM_FLAG_BALANCE) Then
+    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
         '残高
         UserInterfaceShowData(utUI, utBook,
             lngDepth, lngIcon, ACRIGHT,
@@ -953,8 +972,8 @@ Dim blnExpand As Boolean
         'この項目を展開し、サブアイテムも表示する
         lngTop = lngTop + 1
         For i = 0 To lngCount - 1
-            lngSubItem = BookItemGetSubItemHandle(utBook.utBookItems, lngRootItem, i)
-            lngInc = UserInterfaceShowItem(utUI, utBook, _
+            lngSubItem = utBook.utBookItems.getSubItemHandle(lngRootItem, i)
+            lngInc = UserInterfaceShowItem(utUI, utBook,
                lngDepth + 1, lngTop, lngSubItem, lngYear, lngMonth, lngWeek)
             lngTop = lngTop + lngInc
             lngResult = lngResult + lngInc

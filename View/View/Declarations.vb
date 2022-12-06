@@ -14,30 +14,6 @@ Module Declarations
 
 '*****************************************************************************
 '
-'項目用フラグ
-'
-
-Public Const ITEM_FLAG_TYPEMASK As Integer = &HFF&
-Public Const ITEM_FLAG_NOTUSED As Integer = 0          '未使用
-Public Const ITEM_FLAG_INHERIT As Integer = 1          '親の設定を継承
-Public Const ITEM_FLAG_BALANCE As Integer = 9          '残高表示
-Public Const ITEM_FLAG_INCOME As Integer = 17          '収入
-Public Const ITEM_FLAG_OUTLAY As Integer = 18          '支出
-Public Const ITEM_FLAG_BANK As Integer = 25            '銀行口座
-Public Const ITEM_FLAG_BANK_WITHDRAW As Integer = 26   '口座引出
-Public Const ITEM_FLAG_BANK_DEPOSIT As Integer = 27    '口座入金
-Public Const ITEM_FLAG_BANK_TRANSFER As Integer = 28   '口座振替
-
-Public Const ITEM_FLAG_EXPANDED As Integer = &H100&
-
-Public Const ITEM_FLAG_NOCOUNT_PARENT As Integer = &H10000
-Public Const ITEM_FLAG_NOCOUNT_ROOT As Integer = &H20000
-Public Const ITEM_FLAG_HIDDEN As Integer = &H10000000
-Public Const ITEM_FLAG_UNERASABLE As Integer = &H20000000
-Public Const ITEM_FLAG_READONLY As Integer = &H40000000
-
-'*****************************************************************************
-'
 'レシートデータ用フラグ
 '
 
@@ -108,136 +84,6 @@ Public Const BOOKNUMCOLUMNS As Integer = BOOKFIXEDCOLS + COLBUDGETBALANCE + 1
 
 '*****************************************************************************
 '
-'家計簿内の各項目、口座(現金残高を含む)
-'
-
-'データ項目
-Public Structure tBookItemEntry
-    Public nParentHandle As Integer               '親項目のハンドル
-    Public nItemNameID As Integer                 '項目名のID(文字列テーブル内のインデックス)
-    Public sItemName As String                 '項目名
-    Public nSubItemCount As Integer               'サブ項目数
-    Public nSubItems() As Integer                 'サブ項目のハンドル(インデックス)
-    Public nStartDate As Integer                  '開始年月日(残高の項目のみ)
-    Public nStartBalance As Integer               '開始時の残高(残高の項目のみ)
-End Structure
-
-'項目一覧
-Public Structure tBookItems
-    Public nItemBufferSize As Integer                '項目用バッファサイズ
-    Public nRegisteredItemCount As Integer            '登録済み項目数
-    Public nRootItemCount As Integer                  'ルートになる項目の数
-    Public nFlags() As Integer                       '項目のフラグ
-    Public utItemEntries() As tBookItemEntry       '項目データ
-    Public nInnerTaxItemHandle As Integer             '「内税」項目のハンドル
-    Public nOuterTaxItemHandle As Integer            '「外税」項目のハンドル
-End Structure
-
-'*****************************************************************************
-'
-'集計されたデータの情報
-'
-
-'項目毎の年間集計
-Public Structure tBookItemAnnualCounts
-    Public nStartValues() As Integer                  '開始時の数値
-    Public nEndValues() As Integer                    '終了時の数値
-    Public nYearTotal() As Integer                    '各年の合計金額
-End Structure
-
-'項目毎の詳細集計結果
-Public Structure tBookItemDetailCounts
-    '日週月毎の集計、一年間の合計金額
-    Public nDayTotal() As Integer     '日毎の合計金額：378 日
-    Public nWeekTotal() As Integer   '週毎の合計金額：54週
-    Public nMonthTotal() As Integer      '月毎の合計金額：12ヶ月
-End Structure
-
-'*****************************************************************************
-'
-'１回の買い物(レシート１枚)の情報
-'
-
-'１個の商品
-Public Structure tGoods
-    Public nRootItemType As Integer           'ルートの項目インデックス
-    Public nItemType As Integer               '項目インデックス
-    Public nGoodsNameID As Integer            '商品名のID(文字列テーブル内のインデックス)
-    Public sGoodsName As String            '商品名
-    Public nUnitPrice As Integer              '単価
-    Public nQuantity As Integer               '数量
-    Public nSubTotal As Integer               '小計
-    Public nReserved0 As Integer              '予約
-End Structure
-
-'１回の買い物(レシート１枚)
-Public Structure tReceipt
-    Public nFlags As Integer                  'フラグ
-    Public nNumGoods As Integer               '購入した商品の数
-    Public utGoods() As tGoods             '購入した商品のデータ
-    Public nSubTotal As Integer               '小計
-    Public nInsideTax As Integer              '内税
-    Public nOutsideTax As Integer             '外税
-    Public nTotal As Integer                  '合計
-    Public nInsideTaxItemType As Integer      '内税を加える項目インデックス
-    Public nOutsideTaxItemType As Integer     '外税を加える項目インデックス
-    Public nReserved0 As Integer              '予約
-    Public nReserved1 As Integer              '予約
-End Structure
-
-'１日の買い物
-Public Structure tOneDayReceipts
-    Public nDate As Integer               '日付
-    Public nNumReceipt As Integer         'レシートの枚数
-    Public utReceipts() As tReceipt    '各レシート
-End Structure
-
-'１年分 のデータ
-Public Structure tAnnualRecords
-    Public nItemBufferSize As Integer
-
-    '各項目ごとの集計データ
-    Public utItemAnnualCounts() As tBookItemAnnualCounts
-    Public utItemDetailCounts() As tBookItemDetailCounts
-
-    'レシートデータ
-    Public utDayRecords() As tOneDayReceipts       'その年の各日のレコード
-End Structure
-
-'*****************************************************************************
-'
-'家計簿一冊
-'
-
-Public Structure tAccountBook
-    Public bEnabled As Boolean                         '家計簿データが有効か
-
-    'ファイル情報
-    Public sTempFileDir As String                      'テンポラリファイルのディレクトリ
-
-    'データに使用されている文字列テーブル
-    Public utSettingsStringTable As tStringTable       '設定データ用文字列テーブル
-    Public utRecordsStringTable As tStringTable        'レコード用文字列テーブル
-
-    '開始年月日
-    Public nStartYear As Integer                          '開始西暦年
-    Public nStartDayIndex As Integer                      '開始日(オフセット付、元日からの日数)
-    Public nNumYears As Integer                           'データの存在する年数
-    Public utStartDate As tParsedDate
-
-    '項目データと年間レコード
-    Public utBookItems As tBookItems
-    Public nCurrentYear As Integer                    '一年分ずつバッファに記憶する
-    Public nNumWeeks As Integer                       'この年の週数
-    Public utAnnualRecords As tAnnualRecords       'この年のレコード
-
-    'その他の情報
-    Public nStartWeekday As Integer                   '本年の元日の曜日(0=日,6=土)
-    Public nPreviousDays As Integer                   'レコード内に本年分の前に去年分が何日分入っているか
-End Structure
-
-'*****************************************************************************
-'
 '表に関する情報
 '
 
@@ -274,7 +120,7 @@ Public Structure tUserInterface
     Public sTableCaption As String                     'テーブルキャプション
     Public nNowShowingItemCount As Integer                '現在画面に表示している項目数
     Public nNowShowingItems() As Integer                  '現在画面に表示している項目
-    Public utNowShowingDates() As tParsedDate          '現在画面に表示している列項目(日付)
+    Public utNowShowingDates() As Wrapper.ParsedDate    '現在画面に表示している列項目(日付)
 
     'スクロール範囲と位置
     Public oBookHScrollBar As HScrollBar
@@ -293,7 +139,7 @@ Public Structure tUserInterface
 End Structure
 
 Public Structure tBookView
-    Public utAccountBook As tAccountBook
+    Public utAccountBook As Wrapper.AccountBook
     Public utUserInterface As tUserInterface
     Public oBookForm As Form
 

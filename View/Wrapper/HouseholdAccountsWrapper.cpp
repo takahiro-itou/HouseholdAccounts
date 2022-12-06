@@ -15,3 +15,5 @@
 #include    "PreCompile.h"
 
 #include    "HouseholdAccountsWrapper.h"
+
+#include    "Interface/BookItem.h"

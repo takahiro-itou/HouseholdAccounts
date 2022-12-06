@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      Type Definitions.
+**      Constant Definitions.
 **
-**      @file       Common/AccountsTypes.h
+**      @file       Common/AccountsConst.h
 **/
 
-#if !defined( HAWRAPPER_COMMON_INCLUDED_ACCOUNTS_TYPES_H )
-#    define   HAWRAPPER_COMMON_INCLUDED_ACCOUNTS_TYPES_H
+#if !defined( HAWRAPPER_COMMON_INCLUDED_ACCOUNTS_CONST_H )
+#    define   HAWRAPPER_COMMON_INCLUDED_ACCOUNTS_CONST_H
 
 #pragma     once
 
@@ -27,14 +27,13 @@
 
 namespace  Wrapper  {
 
-public  enum class  ErrCode
-{
-    ERR_SUCCESS             = HouseholdAccounts::ERR_SUCCESS,
-    ERR_FAILURE             = HouseholdAccounts::ERR_FAILURE,
-    ERR_FILE_OPEN_ERROR     = HouseholdAccounts::ERR_FILE_OPEN_ERROR,
-    ERR_FILE_IO_ERROR       = HouseholdAccounts::ERR_FILE_IO_ERROR,
-    ERR_INDEX_OUT_OF_RANGE  = HouseholdAccounts::ERR_INDEX_OUT_OF_RANGE
-};
+const   int     DAY_START   = 6;
+const   int     MAXITEMS    = 65536;
+const   int     MAXBALANCES = 256;
+
+constexpr   int     MAX_DAYS    = 378;
+constexpr   int     MAX_WEEKS   = 54;
+constexpr   int     MAX_MONTH   = 12;
 
 }   //  End of namespace  Wrapper
 

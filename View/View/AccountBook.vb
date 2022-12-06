@@ -12,12 +12,12 @@ Module AccountBook
 ' This file is written in 2006/09/23 - 2008/01/09
 '*****************************************************************************
 
-Public gutTempBook As tAccountBook
+Public gutTempBook As Wrapper.AccountBook
 
 Public Function AccountBookUpdateItemHandleInYearRecord(
-        ByRef lpBookItems As tBookItems,
+        ByRef lpBookItems As Wrapper.BookItems,
         ByRef lpNewIndex() As Integer,
-        ByRef utYearRecord As tAnnualRecords) As Integer
+        ByRef utYearRecord As Wrapper.AnnualRecords) As Integer
 '---------------------------------------------------------------------
 '家計簿の項目を並べ替えにあわせて、
 '指定された年のデータの、項目毎の集計データを並べなおし、
@@ -28,7 +28,7 @@ Dim i As Integer, lngNew As Integer, lngBufferSize As Integer
 Dim j As Integer, lngFlags As Integer, lngCount As Integer
 Dim lngDay As Integer
 'Dim utAnnualCounts() As tBookItemAnnualCounts
-Dim utDetailCounts() As tBookItemDetailCounts
+Dim utDetailCounts() As Wrapper.BookItemDetailCounts
 
     lngBufferSize = lpBookItems.nItemBufferSize
 
@@ -53,7 +53,7 @@ Dim utDetailCounts() As tBookItemDetailCounts
                     With .utGoods(j)
                         lngNew = lpNewIndex(.nItemType)
                         .nItemType = lngNew
-                        .nRootItemType = BookItemGetRootItemHandle(lpBookItems, lngNew)
+                        .nRootItemType = lpBookItems.getRootItemHandle(lngNew)
                     End With
                     Next j
                 End If
@@ -66,68 +66,8 @@ Dim utDetailCounts() As tBookItemDetailCounts
     AccountBookUpdateItemHandleInYearRecord = 0
 End Function
 
-Public Function AddDataToItemTotal(ByRef utBook As tAccountBook,
-        ByVal lngYearIndex As Integer, ByVal lngDayIndex As Integer,
-        ByVal lngItemIndex As Integer, ByVal lngValue As Integer) As Boolean
-'---------------------------------------------------------------------
-'---------------------------------------------------------------------
-Dim lngFlags() As Integer
-Dim lngParentHandle As Integer
-Dim lngYear As Integer, lngWeek As Integer, lngMonth As Integer
-Dim utDate As tParsedDate
-Dim blnAddToParent As Boolean, blnAddToRoot As Boolean
-
-    blnAddToParent = True
-    blnAddToRoot = True
-
-    '項目フラグを取り出しておく
-    With utBook
-        lngYear = .nStartYear + lngYearIndex
-        With .utBookItems
-            lngFlags = .nFlags
-        End With
-    End With
-
-    '日付から、週と月を計算しておく
-    GetDayFromIndex(utDate, lngYear, lngDayIndex, -1)
-    With utDate
-        lngWeek = .nWeek
-        lngMonth = .nMonth
-        lngYear = .nYear
-    End With
-
-    With utBook.utAnnualRecords
-        Do While (lngItemIndex >= 0)
-            lngParentHandle = utBook.utBookItems.utItemEntries(lngItemIndex).nParentHandle
-
-            If (lngFlags(lngItemIndex) And ITEM_FLAG_NOCOUNT_PARENT) Then
-                blnAddToParent = False
-                blnAddToRoot = False
-            End If
-            If (lngFlags(lngItemIndex) And ITEM_FLAG_NOCOUNT_ROOT) Then
-                blnAddToRoot = False
-            End If
-
-            If (lngParentHandle = -1) And (blnAddToRoot = False) Then Exit Do
-
-            With .utItemDetailCounts(lngItemIndex)
-                .nDayTotal(lngDayIndex) = .nDayTotal(lngDayIndex) + lngValue
-                .nWeekTotal(lngWeek) = .nWeekTotal(lngWeek) + lngValue
-                .nMonthTotal(lngMonth) = .nMonthTotal(lngMonth) + lngValue
-            End With
-            With .utItemAnnualCounts(lngItemIndex)
-                .nYearTotal(lngYearIndex) = .nYearTotal(lngYearIndex) + lngValue
-            End With
-
-            If ((blnAddToParent = False) Or (lngParentHandle = -1)) Then Exit Do
-            lngItemIndex = lngParentHandle
-        Loop
-    End With
-
-    AddDataToItemTotal = blnAddToRoot
-End Function
-
-Public Function ChangeAccountBookYear(ByRef utBook As tAccountBook,
+Public Function ChangeAccountBookYear(
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngNewYear As Integer) As Long
 '---------------------------------------------------------------------
 'カレントの年を変更する
@@ -156,7 +96,8 @@ Dim blnResult As Boolean
     End If
 
     '新しい年の週数を計算しておく
-    lngLastDay = GetDayInYear(lngNewYear, 12, 31) + GetWeekday(lngNewYear, 1, 1)
+    lngLastDay = Wrapper.ManagedDate.getDayInYear(lngNewYear, 12, 31) + _
+                    Wrapper.ManagedDate.getWeekday(lngNewYear, 1, 1)
     lngNumWeeks = (lngLastDay \ 7) + 1
 
     If (lngNewYear = lngCurrentYear) Then
@@ -180,7 +121,7 @@ Dim blnResult As Boolean
     '新しい年のデータを読み込む
     If (lngNewYear >= lngStartYear + lngNumYears) Then
         lngNumYears = lngNewYear - lngStartYear + 1
-        ReallocAnnualRecordsBuffers(utBook.utAnnualRecords, -1, lngStartYear, lngNumYears)
+        utBook.utAnnualRecords.reallocBuffers(-1, lngStartYear, lngNumYears)
         utBook.nNumYears = lngNumYears
     End If
 
@@ -199,7 +140,7 @@ Dim blnResult As Boolean
     ChangeAccountBookYear = lngNumWeeks
 End Function
 
-Public Sub CloseAccountBook(ByRef utBook As tAccountBook)
+Public Sub CloseAccountBook(ByRef utBook As Wrapper.AccountBook)
 '---------------------------------------------------------------------
 '家計簿のデータファイルを閉じる
 '[I/O] utBook: 家計簿データ
@@ -247,7 +188,7 @@ Dim strTempFileName As String
 End Sub
 
 Public Function CreateEmptyAccountBook(
-        ByRef utBook As tAccountBook) As Boolean
+        ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
 '家計簿の内容を初期状態にセットする
 '[OUT] utBook : 家計簿データ
@@ -265,79 +206,9 @@ Dim blnResult As Boolean
     CreateEmptyAccountBook = blnResult
 End Function
 
-Public Function EnableAccountBook(ByRef utBook As tAccountBook, _
-    ByVal blnEnabled As Boolean) As Boolean
-'---------------------------------------------------------------------
-'家計簿を有効／無効にする
-'[I/O] utBook    : 家計簿データ
-'[ IN] blnEnabled: Trueなら有効にし, False なら無効にする
-'[RET] Boolean
-'  変更後の状態をそのまま返す
-'---------------------------------------------------------------------
-    utBook.bEnabled = blnEnabled
-    EnableAccountBook = blnEnabled
-End Function
-
-Public Function GetAccountBookNumYears(
-        ByRef utBook As tAccountBook) As Integer
-'---------------------------------------------------------------------
-'家計簿のデータが何年分あるかを返す
-'[ IN] utBook: 家計簿データ
-'[RET] Long
-'  データの年数
-'---------------------------------------------------------------------
-    GetAccountBookNumYears = utBook.nNumYears
-End Function
-
-Public Function GetAccountBookStartYear(
-        ByRef utBook As tAccountBook) As Integer
-'---------------------------------------------------------------------
-'家計簿の開始年を返す
-'[ IN] utBook: 家計簿データ
-'[RET] Long
-'  開始西暦年
-'---------------------------------------------------------------------
-    GetAccountBookStartYear = utBook.nStartYear
-End Function
-
-Public Function IsAccountBookEnabled(ByRef utBook As tAccountBook) As Boolean
-'---------------------------------------------------------------------
-'家計簿データが有効なデータかどうか判断する
-'[ IN] utBook : 家計簿データ
-'[RET] Boolean
-'  有効ならTrue, 無効なら False
-'[ACT]
-'  初期化されていない状態などは無効なデータである。
-'  新規作成、ロードなどを行って、家計簿の処理ができる状態に
-'移行していれば有効なデータである。
-'---------------------------------------------------------------------
-    IsAccountBookEnabled = utBook.bEnabled
-End Function
-
-Public Function IsDayBeforeStart(ByRef utBook As tAccountBook, _
-    ByVal lngYear As Integer, ByVal lngDayIndex As Integer) As Boolean
-'---------------------------------------------------------------------
-'指定した日付が、家計簿の開始日より前かどうか調べる
-'[ IN] utBook      : 家計簿データ
-'[ IN] lngYear     : 西暦年
-'[ IN] lngDayIndex : 元日からの日数(オフセット付)
-'[RET] Boolean
-'  開始日より前ならTrue, そうでなければ False
-'---------------------------------------------------------------------
-Dim blnResult As Boolean
-
-    With utBook
-        If (CompareDates(lngYear, lngDayIndex, .nStartYear, .nStartDayIndex) < 0) Then
-            blnResult = True
-        Else
-            blnResult = False
-        End If
-    End With
-    IsDayBeforeStart = blnResult
-End Function
-
-Public Function OpenAccountBook(ByRef utBook As tAccountBook, _
-    ByVal strFileName As String) As Boolean
+Public Function OpenAccountBook(
+        ByRef utBook As Wrapper.AccountBook,
+        ByVal strFileName As String) As Boolean
 '---------------------------------------------------------------------
 '家計簿のデータファイルを開く
 '[OUT] utBook     : 家計簿データ
@@ -467,7 +338,8 @@ Dim strTempFileName As String, strIndexFileName As String
     OpenAccountBook = True
 End Function
 
-Public Function PopAccountBook(ByRef utBook As tAccountBook) As Long
+Public Function PopAccountBook(
+        ByRef utBook As Wrapper.AccountBook) As Long
 '---------------------------------------------------------------------
 '一時変数の内容を、指定した家計簿データに転送する
 '[ IN] utBook: 家計簿データ
@@ -480,7 +352,8 @@ Public Function PopAccountBook(ByRef utBook As tAccountBook) As Long
     PopAccountBook = 1
 End Function
 
-Public Function PushAccountBook(ByRef utBook As tAccountBook) As Long
+Public Function PushAccountBook(
+        ByRef utBook As Wrapper.AccountBook) As Long
 '---------------------------------------------------------------------
 '一時変数に、家計簿のコピーを書き込む
 '[ IN] utBook: 家計簿データ
@@ -495,7 +368,7 @@ Public Function PushAccountBook(ByRef utBook As tAccountBook) As Long
 End Function
 
 Public Function ReadAccountBookCommons(
-        ByRef utBook As tAccountBook) As Boolean
+        ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイルから、家計簿の共通レコードを読み込む
 '[I/O] utBook : 家計簿データ
@@ -506,7 +379,8 @@ Public Function ReadAccountBookCommons(
     ReadAccountBookCommons = False
 End Function
 
-Public Function ReadAccountBookRecords(ByRef utBook As tAccountBook, _
+Public Function ReadAccountBookRecords(
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngYear As Integer) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイルから、家計簿の指定された年のデータを読み込む
@@ -529,7 +403,7 @@ Dim strTempFileName As String
     With utBook
         'テンポラリファイルを開く
         strTempFileName = .sTempFileDir & "\." & Trim$(Str$(lngYear))
-        lngItemBufferSize = BookItemGetItemBufferSize(.utBookItems)
+        lngItemBufferSize = .utBookItems.getItemBufferSize()
         lngTempFileNumber = OpenTemporaryFile(strTempFileName, False)
 
         'データを読み込む
@@ -543,7 +417,8 @@ Dim strTempFileName As String
     ReadAccountBookRecords = True
 End Function
 
-Public Sub Recount(ByRef utBook As tAccountBook, ByVal lngYear As Integer)
+Public Sub Recount(
+        ByRef utBook As Wrapper.AccountBook, ByVal lngYear As Integer)
 '---------------------------------------------------------------------
 '---------------------------------------------------------------------
 Dim i As Integer, lngItemBufferSize As Integer
@@ -568,54 +443,55 @@ Dim blnResult As Boolean
     '初期値を書き込む
     With utBook.utAnnualRecords
         For i = 0 To lngItemBufferSize - 1
-            If ((lngItemFlags(i) And ITEM_FLAG_TYPEMASK) = ITEM_FLAG_BALANCE) Then
+            If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
                 .utItemDetailCounts(i).nDayTotal(0) = .utItemAnnualCounts(i).nStartValues(lngYearIndex)
             End If
         Next i
 
-        lngStartDayIndex = GetWeekday(lngYear, 1, 1)
-        lngEndDayIndex = GetDayInYear(lngYear, 12, 31) + lngStartDayIndex
+        lngStartDayIndex = Wrapper.ManagedDate.getWeekday(lngYear, 1, 1)
+        lngEndDayIndex = Wrapper.ManagedDate.getDayInYear(lngYear, 12, 31) + _
+                            lngStartDayIndex
 
         'すべてのレシートを集計する
         For lngDate = 0 To utBook.nNumWeeks * NUMDAYSPERWEEK - 1
             'バッファをクリアする
             For i = 0 To lngItemBufferSize - 1
-                If ((lngItemFlags(i) And ITEM_FLAG_TYPEMASK) = ITEM_FLAG_BALANCE) Then
+                If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
 
                 Else
                     .utItemDetailCounts(i).nDayTotal(lngDate) = 0
                 End If
             Next i
 
-            If (IsDayBeforeStart(utBook, lngYear, lngDate)) Then
+            If (utBook.isDayBeforeStart(lngYear, lngDate)) Then
 
             Else
                 'データを書き込む
                 For i = 0 To lngItemBufferSize - 1
                     lngSubCount = utBook.utBookItems.utItemEntries(i).nSubItemCount
-                    If ((lngItemFlags(i) <> ITEM_FLAG_NOTUSED) And (lngSubCount = 0)) Then
-                        lngType = BookItemGetItemType(utBook.utBookItems, i)
+                    If ((lngItemFlags(i) <> Wrapper.ItemFlag.ITEM_FLAG_NOTUSED) And (lngSubCount = 0)) Then
+                        lngType = utBook.utBookItems.getItemType(i)
 
-                        If (lngType = ITEM_FLAG_INCOME) Or (lngType = ITEM_FLAG_BANK_WITHDRAW) Then
-                            If (Int(Rnd * 100) < 25) Then
+                        If (lngType = Wrapper.ItemFlag.ITEM_FLAG_INCOME) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_WITHDRAW) Then
+                            If (Int(Rnd * 100) < 0) Then
                                 lngValue = Int(Rnd * 11500)
 
                                 'このデータを加算する
-                                blnResult = AddDataToItemTotal(utBook, lngYearIndex, lngDate, i, lngValue)
+                                blnResult = utBook.addDataToItemTotal(lngYearIndex, lngDate, i, lngValue)
                                 If (blnResult) Then
                                     '残高に加える
-                                    AddDataToItemTotal(utBook, lngYearIndex, lngDate, 3, lngValue)
+                                    utBook.addDataToItemTotal(lngYearIndex, lngDate, 3, lngValue)
                                 End If
                             End If
-                        ElseIf (lngType = ITEM_FLAG_OUTLAY) Or (lngType = ITEM_FLAG_BANK_DEPOSIT) Then
-                            If (Int(Rnd * 100) < 15) Then
+                        ElseIf (lngType = Wrapper.ItemFlag.ITEM_FLAG_OUTLAY) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_DEPOSIT) Then
+                            If (Int(Rnd * 100) < 0) Then
                                 lngValue = Int(Rnd * 1000)
 
                                 'このデータを加算する
-                                blnResult = AddDataToItemTotal(utBook, lngYearIndex, lngDate, i, lngValue)
+                                blnResult = utBook.addDataToItemTotal(lngYearIndex, lngDate, i, lngValue)
                                 If (blnResult) Then
                                     '残高から引く
-                                    AddDataToItemTotal(utBook, lngYearIndex, lngDate, 3, -lngValue)
+                                    utBook.addDataToItemTotal(lngYearIndex, lngDate, 3, -lngValue)
                                 End If
                             End If
                         End If
@@ -625,7 +501,7 @@ Dim blnResult As Boolean
 
             'この日の残高を次の日の残高にコピーする
             For i = 0 To lngItemBufferSize - 1
-                If ((lngItemFlags(i) And ITEM_FLAG_TYPEMASK) = ITEM_FLAG_BALANCE) Then
+                If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
                     With .utItemDetailCounts(i)
                         .nDayTotal(lngDate + 1) = .nDayTotal(lngDate)
                     End With
@@ -635,7 +511,8 @@ Dim blnResult As Boolean
     End With
 End Sub
 
-Public Function SaveAccountBook(ByRef utBook As tAccountBook,
+Public Function SaveAccountBook(
+        ByRef utBook As Wrapper.AccountBook,
         ByVal strFileName As String) As Boolean
 '---------------------------------------------------------------------
 '家計簿のデータをファイルに保存する
@@ -823,49 +700,8 @@ Dim strTempFileName As String, strIndexFileName As String
     SaveAccountBook = True
 End Function
 
-Public Sub SetAccountBookStartDate(ByRef utBook As tAccountBook,
-        ByVal lngStartYear As Integer,
-        ByVal lngStartMonth As Integer,
-        ByVal lngStartDay As Integer)
-'---------------------------------------------------------------------
-'開始日を設定する
-'[I/O] utBook        : 家計簿データ
-'[ IN] lngStartYear  : 開始年
-'[ IN] lngStartMonth : 開始月
-'[ IN] lngStartDay   : 開始日
-'[RET] なし
-'---------------------------------------------------------------------
-Dim lngDayIndex As Integer, lngDayOffset As Integer
-
-    lngDayOffset = GetWeekday(lngStartYear, 1, 1)
-    lngDayIndex = GetDayInYear(lngStartYear, lngStartMonth, lngStartDay)
-    lngDayIndex = lngDayIndex + lngDayOffset
-
-    With utBook
-        GetDayFromIndex(.utStartDate, lngStartYear, lngDayIndex, lngDayOffset)
-
-        .nStartYear = .utStartDate.nYear
-        .nStartDayIndex = lngDayIndex
-    End With
-End Sub
-
-Public Sub SetAccountBookNumYears(
-        ByRef utBook As tAccountBook, ByVal lngNumYears As Integer)
-'---------------------------------------------------------------------
-'データの年数を設定する
-'[I/O] utBook        : 家計簿データ
-'[ IN] lngNumYears   : 家計簿の年数
-'[RET] なし
-'---------------------------------------------------------------------
-
-    With utBook
-        ReallocAnnualRecordsBuffers(
-                .utAnnualRecords, -1, .nStartYear, lngNumYears)
-        .nNumYears = lngNumYears
-    End With
-End Sub
-
-Public Function UpdateIndexFile(ByVal strTempDir As String, _
+Public Function UpdateIndexFile(
+        ByVal strTempDir As String,
         ByVal lngKey As Integer, ByVal lngPos As Integer,
         ByVal lngSize As Integer) As Boolean
 '---------------------------------------------------------------------
@@ -927,7 +763,7 @@ Dim bytBuffer() As Byte
 End Function
 
 Public Function WriteAccountBookCommons(
-        ByRef utBook As tAccountBook) As Boolean
+        ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイルに、家計簿の共通レコードを書き込む
 '[ IN] utBook: 家計簿データ
@@ -944,7 +780,7 @@ Dim strTempDir As String, strTempFileName As String
 
         'テンポラリファイルを開く
         strTempFileName = strTempDir & "\.common"
-        lngItemBufferSize = BookItemGetItemBufferSize(.utBookItems)
+        lngItemBufferSize = .utBookItems.getItemBufferSize()
         lngTempFileNumber = OpenTemporaryFile(strTempFileName, True)
 
         'データを書き込む
@@ -958,7 +794,8 @@ Dim strTempDir As String, strTempFileName As String
     WriteAccountBookCommons = UpdateIndexFile(strTempDir, 1, -1, lngFileLen)
 End Function
 
-Public Function WriteAccountBookRecords(ByRef utBook As tAccountBook, _
+Public Function WriteAccountBookRecords(
+        ByRef utBook As Wrapper.AccountBook,
         ByVal lngYear As Integer) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイルに、家計簿の指定された年のデータを書き込む
@@ -987,7 +824,7 @@ Dim blnResult As Boolean
 
         'テンポラリファイルを開く
         strTempFileName = strTempDir & "\." & Trim$(Str$(lngYear))
-        lngItemBufferSize = BookItemGetItemBufferSize(.utBookItems)
+        lngItemBufferSize = .utBookItems.getItemBufferSize()
         lngTempFileNumber = OpenTemporaryFile(strTempFileName, True)
 
         'データを書き込む

@@ -17,124 +17,8 @@ Module BookSettings
 'パブリックプロシージャ
 '
 
-Public Function AllocBookItems(ByRef utBook As tAccountBook, _
-    ByVal lngItemBufferSize As Integer) As Integer
-'---------------------------------------------------------------------
-'項目データ用バッファを確保する
-'[I/O] utBook            : 家計簿データ
-'[ IN] lngItemBufferSize : 確保する項目数
-'[RET] Long
-'  増えた部分の先頭のインデックス
-'---------------------------------------------------------------------
-Dim lngBufferSize As Integer
-Dim lngStartYear As Integer, lngNumYears As Integer
-Dim lngResult As Integer
-
-    With utBook
-        lngStartYear = .nStartYear
-        lngNumYears = .nNumYears
-
-        'バッファをリサイズし、増えた部分の先頭を記録しておく
-        With .utBookItems
-            lngResult = .nItemBufferSize
-            lngBufferSize = (lngItemBufferSize + 15) And &H7FFFFFF0
-            .nItemBufferSize = lngBufferSize
-
-            ReDim .nFlags(0 To lngBufferSize - 1)
-            ReDim .utItemEntries(0 To lngBufferSize - 1)
-        End With
-
-        ReallocAnnualRecordsBuffers(
-                .utAnnualRecords, lngBufferSize, lngStartYear, lngNumYears)
-    End With
-
-    AllocBookItems = lngResult
-End Function
-
-Public Function BookItemAllocNewItem(ByRef utBook As tAccountBook) As Integer
-'---------------------------------------------------------------------
-'新しい項目用の領域を確保し、そのハンドルを返す
-'[I/O] utBook: 家計簿データ
-'[RET] Long
-'  新しい項目用のハンドル
-'---------------------------------------------------------------------
-Dim i As Integer
-Dim lngResult As Integer
-
-    With utBook
-        'バッファサイズと登録済み項目数を比較し、
-        'バッファに空きがある場合は、
-        '空きを探してそのバンドル(インデックス)を返す
-        lngResult = -1
-        With .utBookItems
-            If (.nRegisteredItemCount < .nItemBufferSize) Then
-                For i = .nRootItemCount To .nItemBufferSize - 1
-                    If (.nFlags(i) = ITEM_FLAG_NOTUSED) Then
-                        lngResult = i
-                        Exit For
-                    End If
-                Next i
-            End If
-        End With
-    End With
-
-    If (lngResult >= 0) Then
-        BookItemAllocNewItem = lngResult
-        Exit Function
-    End If
-
-    'バッファをリサイズし、増えた部分の先頭を確保する
-    BookItemAllocNewItem = AllocBookItems(utBook, lngResult)
-End Function
-
-Public Function InsertNewBookItem(ByRef utBook As tAccountBook,
-        ByVal lngParentItemHandle As Integer, ByVal strName As String,
-        ByVal lngFlags As Integer, ByVal lngStartDate As Integer,
-        ByVal lngStartBalance As Integer) As Integer
-'---------------------------------------------------------------------
-'指定した項目に新しいサブ項目を追加する
-'[I/O] utBookItems         : 項目一覧データ
-'[I/O] utYearRecord        : 年間レコードデータ
-'[ IN] lngParentItemHandle : 親項目のハンドル
-'[ IN] strName             : 項目名
-'[ IN] lngFlags            : 項目フラグ
-'[ IN] lngStartDate        : 開始日
-'[ IN] lngStartBalance     : 開始時金額
-'[RET] Long
-'  追加した項目のハンドル
-'---------------------------------------------------------------------
-Dim lngNewItemHandle As Integer
-
-    '新しい項目用のインデックスを取得する
-    lngNewItemHandle = BookItemAllocNewItem(utBook)
-
-    With utBook.utBookItems
-        'この項目に初期値を書き込む
-        .nFlags(lngNewItemHandle) = lngFlags
-        With .utItemEntries(lngNewItemHandle)
-            .nParentHandle = lngParentItemHandle
-            .sItemName = strName
-            .nSubItemCount = 0
-            .nStartDate = lngStartDate
-            .nStartBalance = lngStartBalance
-        End With
-
-        .nRegisteredItemCount = .nRegisteredItemCount + 1
-
-        '親項目の内容を更新する
-        With .utItemEntries(lngParentItemHandle)
-            ReDim Preserve .nSubItems(0 To .nSubItemCount)
-            .nSubItems(.nSubItemCount) = lngNewItemHandle
-            .nSubItemCount = .nSubItemCount + 1
-        End With
-    End With
-
-    '追加した新しい項目のハンドルを返す
-    InsertNewBookItem = lngNewItemHandle
-End Function
-
 Public Function ReadAccountBookSettings(
-        ByRef utBook As tAccountBook) As Boolean
+        ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイル(.set)から、家計簿の設定を読み込む
 '[I/O] utBook : 家計簿データ
@@ -175,14 +59,15 @@ Dim strTempDir As String, strTempFileName As String
         .nStartDayIndex = lngHeader(17)
         .nNumYears = lngHeader(18)
         If ((.nStartYear > 0) And (.nNumYears > 0)) Then
-            GetDayFromIndex(.utStartDate, .nStartYear, .nStartDayIndex, -1)
+            .utStartDate = Wrapper.ManagedDate.getDayFromIndex(
+                                .nStartYear, .nStartDayIndex, -1)
         End If
 
         lngItemCount = lngHeader(32)
         lngRootItemCount = lngHeader(33)
 
         'バッファを確保する
-        AllocBookItems(utBook, lngItemCount)
+        utBook.allocItemBuffers(lngItemCount)
 
         With .utBookItems
             .nRootItemCount = lngRootItemCount
@@ -220,7 +105,9 @@ Dim strTempDir As String, strTempFileName As String
                     End With
                 End With
             Else
-                lngResult = InsertNewBookItem(utBook, lngHandle, strTemp, lngFlags, lngStartDate, lngStartBalance)
+                lngResult = utBook.insertNewItem(
+                                lngHandle, strTemp, lngFlags,
+                                lngStartDate, lngStartBalance)
                 If (lngResult <> i) Then
                     MessageBox.Show("エラー：追加されたサブアイテムのインデックスが一致しません。" & _
                         vbCrLf & "インデックス：" & i & vbCrLf & _
@@ -238,7 +125,7 @@ Dim strTempDir As String, strTempFileName As String
 End Function
 
 Public Function WriteAccountBookSettings(
-        ByRef utBook As tAccountBook) As Boolean
+        ByRef utBook As Wrapper.AccountBook) As Boolean
 '---------------------------------------------------------------------
 'テンポラリファイル(.set)に、家計簿の設定を書き込む
 '[ IN] utBook : 家計簿データ
@@ -278,10 +165,11 @@ Dim blnResult As Boolean
         lngHeader(18) = .nNumYears
 
         '各データの件数をヘッダに書き込む
-        lngItemCount = BookItemGetRegisteredItemCount(.utBookItems)
-        lngHeader(32) = lngItemCount
-        lngHeader(33) = BookItemGetRootItemCount(.utBookItems)
         With .utBookItems
+            lngItemCount = .getRegisteredItemCount()
+            lngHeader(32) = lngItemCount
+            lngHeader(33) = .getRootItemCount()
+
             lngHeader(36) = .nInnerTaxItemHandle
             lngHeader(37) = .nOuterTaxItemHandle
         End With
@@ -316,7 +204,7 @@ Dim blnResult As Boolean
                     lngReserved = 0
                 End With
 
-                lngNameID = FindString(utBook.utSettingsStringTable, strTemp)
+                lngNameID = utBook.utSettingsStringTable.findString(strTemp)
 
                 FilePut(lngTempFileNumber, lngHandle)
                 FilePut(lngTempFileNumber, lngFlags)

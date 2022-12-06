@@ -40,7 +40,7 @@ Dim blnEnabled As Boolean
 
     '家計簿の状態を確認する
     With utBookView
-        blnEnabled = IsAccountBookEnabled(utBookView.utAccountBook)
+        blnEnabled = .utAccountBook.isEnabled()
 
         'コントロール
         With .utUserInterface
@@ -337,22 +337,24 @@ Dim lngStartMonth As Integer, lngStartDay As Integer
 Dim blnEnabled As Boolean, blnCancel As Boolean
 Dim lngToday As Integer, lngYear As Integer, lngOffset As Integer
 Dim dtmToday As System.DateTime
-Dim utDate As tParsedDate
+Dim utDate As Wrapper.ParsedDate
 Dim objfDate As DateSelect
 Dim msgAns As System.Windows.Forms.DialogResult
 Dim dtmSelect As System.DateTime
 
     With utBookView
-        blnEnabled = EnableAccountBook(.utAccountBook, True)
+        With .utAccountBook
+            blnEnabled = .enableAccountBook(True)
+            lngNumYears = .getNumYears()
+            lngStartYear = .getStartYear()
+        End With
+
         .bBackupedBookFile = False
         .bModifyCurrentBook = False
 
         '今日の日付を取得する
         dtmToday = Now
         lngYear = dtmToday.Year
-
-        lngStartYear = GetAccountBookStartYear(.utAccountBook)
-        lngNumYears = GetAccountBookNumYears(.utAccountBook)
     End With
 
     If ((lngStartYear = 0) Or (lngNumYears = 0)) Then
@@ -361,7 +363,7 @@ Dim dtmSelect As System.DateTime
               MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If (msgAns = Windows.Forms.DialogResult.No) Then
             With utBookView
-                blnEnabled = EnableAccountBook(.utAccountBook, False)
+                blnEnabled = .utAccountBook.enableAccountBook(False)
                 .bBackupedBookFile = False
                 .bModifyCurrentBook = False
             End With
@@ -389,7 +391,7 @@ Dim dtmSelect As System.DateTime
 
         If (blnCancel) Then
             With utBookView
-                blnEnabled = EnableAccountBook(.utAccountBook, False)
+                blnEnabled = .utAccountBook.enableAccountBook(False)
                 .bBackupedBookFile = False
                 .bModifyCurrentBook = False
             End With
@@ -397,18 +399,19 @@ Dim dtmSelect As System.DateTime
         End If
 
         With utBookView
-            SetAccountBookStartDate(.utAccountBook, lngStartYear,
-                                    lngStartMonth, lngStartDay)
-            SetAccountBookNumYears(.utAccountBook, lngNumYears)
+            With .utAccountBook
+                .setStartDate(lngStartYear, lngStartMonth, lngStartDay)
+                .setNumYears(lngNumYears)
+            End With
         End With
     End If
 
     '今日の日付を含む週を表示する
     With utBookView
-        lngOffset = GetWeekday(lngYear, 1, 1)
-        lngToday = GetDayInYear(lngYear, dtmToday.Month, dtmToday.Day)
+        lngOffset = Wrapper.ManagedDate.getWeekday(lngYear, 1, 1)
+        lngToday = Wrapper.ManagedDate.getDayInYear(lngYear, dtmToday.Month, dtmToday.Day)
         lngToday = lngToday + lngOffset
-        GetDayFromIndex(utDate, lngYear, lngToday, lngOffset)
+        utDate = Wrapper.ManagedDate.getDayFromIndex(lngYear, lngToday, lngOffset)
 
         .nNumWeeks = ChangeAccountBookYear(.utAccountBook, utDate.nYear)
         Recount(.utAccountBook, utDate.nYear)
@@ -443,7 +446,7 @@ Public Sub SaveToFile(ByRef utBookView As tBookView,
 Dim lngYear As Integer
 
     '家計簿オブジェクトの状態をチェックする
-    If (IsAccountBookEnabled(utBookView.utAccountBook) = False) Then Exit Sub
+    If (utBookView.utAccountBook.isEnabled() = False) Then Exit Sub
 
     '出力ファイルの名前を確認する
     If (IsLegalOutputFileName(strFileName) = False) Then
