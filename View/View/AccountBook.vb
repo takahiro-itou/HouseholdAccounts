@@ -473,7 +473,7 @@ Dim blnResult As Boolean
                         lngType = utBook.utBookItems.getItemType(i)
 
                         If (lngType = Wrapper.ItemFlag.ITEM_FLAG_INCOME) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_WITHDRAW) Then
-                            If (Int(Rnd * 100) < 25) Then
+                            If (Int(Rnd * 100) < 0) Then
                                 lngValue = Int(Rnd * 11500)
 
                                 'このデータを加算する
@@ -484,7 +484,7 @@ Dim blnResult As Boolean
                                 End If
                             End If
                         ElseIf (lngType = Wrapper.ItemFlag.ITEM_FLAG_OUTLAY) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_DEPOSIT) Then
-                            If (Int(Rnd * 100) < 15) Then
+                            If (Int(Rnd * 100) < 0) Then
                                 lngValue = Int(Rnd * 1000)
 
                                 'このデータを加算する
