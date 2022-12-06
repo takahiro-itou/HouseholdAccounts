@@ -89,7 +89,7 @@
 
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\Core\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Core\Include;..\Wrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PreCompile.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
@@ -131,8 +131,17 @@
 
   <ItemGroup>
     <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h" />
-    <ClInclude Include="..\Wrapper\Resource.h" />
     <ClInclude Include="..\Wrapper\PreCompile.h" />
+    <ClInclude Include="..\Wrapper\Resource.h" />
+    <ClInclude Include="..\Wrapper\Common\AccountsConst.h" />
+    <ClInclude Include="..\Wrapper\Common\AccountsTypes.h" />
+    <ClInclude Include="..\Wrapper\Common\ManagedDate.h" />
+    <ClInclude Include="..\Wrapper\Common\StringTable.h" />
+    <ClInclude Include="..\Wrapper\Interface\AccountBook.h" />
+    <ClInclude Include="..\Wrapper\Interface\AggregateData.h" />
+    <ClInclude Include="..\Wrapper\Interface\AnnualRecords.h" />
+    <ClInclude Include="..\Wrapper\Interface\BookItem.h" />
+    <ClInclude Include="..\Wrapper\Interface\Receipt.h" />
   </ItemGroup>
 
   <ItemGroup>
@@ -141,6 +150,13 @@
     <ClCompile Include="..\Wrapper\PreCompile.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\Wrapper\Common\ManagedDate.cpp" />
+    <ClCompile Include="..\Wrapper\Common\StringTable.cpp" />
+    <ClCompile Include="..\Wrapper\Interface\AccountBook.cpp" />
+    <ClCompile Include="..\Wrapper\Interface\AggregateData.cpp" />
+    <ClCompile Include="..\Wrapper\Interface\AnnualRecords.cpp" />
+    <ClCompile Include="..\Wrapper\Interface\BookItem.cpp" />
+    <ClCompile Include="..\Wrapper\Interface\Receipt.cpp" />
   </ItemGroup>
 
   <ItemGroup>
