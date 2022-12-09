@@ -133,11 +133,14 @@
     <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h" />
     <ClInclude Include="..\Wrapper\PreCompile.h" />
     <ClInclude Include="..\Wrapper\Resource.h" />
+
     <ClInclude Include="..\Wrapper\Common\AccountsConst.h" />
     <ClInclude Include="..\Wrapper\Common\AccountsTypes.h" />
+    <ClInclude Include="..\Wrapper\Common\FilePathUtils.h" />
     <ClInclude Include="..\Wrapper\Common\ManagedDate.h" />
     <ClInclude Include="..\Wrapper\Common\StringTable.h" />
     <ClInclude Include="..\Wrapper\Common\TextOperation.h" />
+
     <ClInclude Include="..\Wrapper\Interface\AccountBook.h" />
     <ClInclude Include="..\Wrapper\Interface\AggregateData.h" />
     <ClInclude Include="..\Wrapper\Interface\AnnualRecords.h" />
@@ -151,9 +154,12 @@
     <ClCompile Include="..\Wrapper\PreCompile.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+
+    <ClCompile Include="..\Wrapper\Common\FilePathUtils.cpp" />
     <ClCompile Include="..\Wrapper\Common\ManagedDate.cpp" />
     <ClCompile Include="..\Wrapper\Common\StringTable.cpp" />
     <ClCompile Include="..\Wrapper\Common\TextOperation.cpp" />
+
     <ClCompile Include="..\Wrapper\Interface\AccountBook.cpp" />
     <ClCompile Include="..\Wrapper\Interface\AggregateData.cpp" />
     <ClCompile Include="..\Wrapper\Interface\AnnualRecords.cpp" />
