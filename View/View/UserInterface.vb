@@ -32,6 +32,7 @@ Public Sub ChangeCellSize(
 '---------------------------------------------------------------------
 Dim lngCount As Integer
 Dim lngCellWidth As Integer, lngCellHeight As Integer
+Dim canvasWidth As Integer, canvasHeight As Integer
 
     If (False) Then
         lngCount = 32
@@ -64,10 +65,20 @@ Dim lngCellWidth As Integer, lngCellHeight As Integer
         .imgCell = New System.Drawing.Bitmap(
                             lngCellWidth * 4, lngCellHeight * 4)
 
-        .imgCanvas = New System.Drawing.Bitmap(
-                            (lngCellWidth * (BOOKNUMCOLUMNS + 1) + 16),
-                            (lngCellHeight * (lngCount + BOOKFIXEDROWS + 1))
-        )
+        canvasWidth = (lngCellWidth * (BOOKNUMCOLUMNS + 1) + 16)
+        canvasHeight = lngCellHeight * (lngCount + BOOKFIXEDROWS + 1)
+        If (.canvasWidth <> canvasWidth) Or (.canvasHeight <> canvasHeight) Then
+            .imgCanvas = New System.Drawing.Bitmap(canvasWidth, canvasHeight)
+            .canvasWidth = canvasWidth
+            .canvasHeight = canvasHeight
+        End If
+
+        With .oBookPicture
+            If (.Image.Width <> .Width) Or (.Image.Height <> .Height) Then
+                .Image = Nothing
+                .Image = New System.Drawing.Bitmap(.Width, .Height)
+            End If
+        End With
     End With
 
     'スクロールバーの範囲を設定する
