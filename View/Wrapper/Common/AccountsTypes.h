@@ -43,6 +43,13 @@ public  enum class  ErrCode
 
 typedef     int                 IOffsetType;
 
+//----------------------------------------------------------------
+/**
+**    文字列の配列型。
+**/
+
+typedef     cli::array<System::String^, 1>      StringArray;
+
 }   //  End of namespace  Wrapper
 
 #endif

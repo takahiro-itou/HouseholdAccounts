@@ -75,6 +75,19 @@ public:
 public:
 
     //----------------------------------------------------------------
+    /**   文字列中の定数名に値を代入して返す。
+    **
+    **  @param [in] srcText     文字列。
+    **  @param [in] varNames    定数名のリスト。
+    **  @param [in] varVals     定数値のリスト。
+    **/
+    static  System::String^
+    replaceConstant(
+            System::String^     srcText,
+            StringArray^        varNames,
+            StringArray^        varVals);
+
+    //----------------------------------------------------------------
     /**   文字列をバイト列に変換する。
     **
     **/

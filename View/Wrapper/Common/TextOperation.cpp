@@ -64,6 +64,57 @@ namespace  {
 //
 
 //----------------------------------------------------------------
+//    文字列中の定数名に値を代入して返す。
+//
+
+System::String^
+TextOperation::replaceConstant(
+        System::String^     srcText,
+        StringArray^        varNames,
+        StringArray^        varVals)
+{
+    System::String^ strVal;
+    int             posFind;
+
+    System::String^ trgText = gcnew System::String(srcText);
+    const  int  numName = varNames->Length;
+    const  int  numVals = varVals->Length;
+
+    for ( int i = 0; i < numName; ++ i ) {
+        System::String^ strName = varNames[i];
+        if ( i >= numVals ) {
+            strVal  = "";
+        } else {
+            strVal  = varVals[i];
+        }
+
+        //  全て置換する。  //
+        posFind = 0;
+        while ( posFind >= 0 ) {
+            posFind = trgText->IndexOf(strName, posFind);
+            if ( (posFind < 0 ) || (strName->Length == 0) ) {
+                break;
+            }
+            if ( posFind == 0 ) {
+                trgText = System::String::Concat(
+                                strVal,
+                                trgText->Substring(strVal->Length)
+                );
+            } else {
+                trgText = System::String::Concat(
+                                trgText->Substring(0, posFind),
+                                strVal,
+                                trgText->Substring(posFind + strVal->Length)
+                );
+            }
+        }
+    }
+
+    //  置換した文字列を返す。  //
+    return ( trgText );
+}
+
+//----------------------------------------------------------------
 //    文字列をバイト列に変換する。
 //
 
