@@ -171,7 +171,8 @@ Dim bytBuffer() As Byte
             ReDim bytBuffer(0 To lngLength - 1)
             FileGet(lngFileNumber, bytBuffer)
 
-            strTemp = ByteToString(bytBuffer, 0, lngLength - 1, True)
+            strTemp = Wrapper.TextOperation.toStringFromBytes(
+                        bytBuffer, 0, lngLength - 1, True)
 
             If (lngSorted = STRINGSORTNONE) Then
                 'データがソートされていない場合は、基本挿入法を使う
@@ -255,7 +256,8 @@ Dim bytBuffer() As Byte
             strTemp = .sTableEntries(i)
 
             ReDim bytBuffer(0 To 255)
-            lngLength = StringToByte(strTemp, bytBuffer, 0, 255, False)
+            lngLength = Wrapper.TextOperation.toBytesFromString(
+                              strTemp, bytBuffer, 0, 255, False)
             If (lngLength And 1) Then lngLength = lngLength + 1
 
             lngRecordSize = (lngLength + 8 + 15) And &H7FFFFFF0
