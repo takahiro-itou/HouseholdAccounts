@@ -82,6 +82,11 @@ TextOperation::replaceConstant(
 
     for ( int i = 0; i < numName; ++ i ) {
         System::String^ strName = varNames[i];
+        const  int  nameLen = strName->Length;
+
+        if ( nameLen == 0 ) {
+            continue;
+        }
         if ( i >= numVals ) {
             strVal  = "";
         } else {
@@ -90,9 +95,9 @@ TextOperation::replaceConstant(
 
         //  全て置換する。  //
         posFind = 0;
-        while ( posFind >= 0 ) {
+        while ( posFind < trgText->Length - nameLen ) {
             posFind = trgText->IndexOf(strName, posFind);
-            if ( (posFind < 0 ) || (strName->Length == 0) ) {
+            if ( posFind < 0 ) {
                 break;
             }
             if ( posFind == 0 ) {
