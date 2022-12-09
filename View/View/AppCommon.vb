@@ -340,7 +340,8 @@ Dim strValues(0 To 4) As String
     strValues(3) = lngDay
     strValues(4) = gstrMonthName(lngMonth)
 
-    WriteVariablesInString = ReplaceConstant(strText, strNames, strValues)
+    WriteVariablesInString = Wrapper.TextOperation.replaceConstant(
+                                    strText, strNames, strValues)
 End Function
 
 End Module
