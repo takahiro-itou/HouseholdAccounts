@@ -75,6 +75,25 @@ public:
 public:
 
     //----------------------------------------------------------------
+    /**   文字列をバイト列に変換する。
+    **
+    **/
+    static  IOffsetType
+    toBytesFromString(
+            System::String^         srcText,
+            ByteArray^%             bufBytes,
+            const  IOffsetType      posStart,
+            const  IOffsetType      posEnd,
+            const  System::Boolean  allocBuf);
+
+    static  IOffsetType
+    toBytesFromString(
+            System::String^     srcText,
+            ByteArray^          bufBytes,
+            const  IOffsetType  posStart,
+            const  IOffsetType  posEnd);
+
+    //----------------------------------------------------------------
     /**   バイト列を文字列に変換する。
     **
     **/
@@ -87,12 +106,9 @@ public:
 
     static  System::String^
     toStringFromBytes(
-            ByteArray^              bufBytes,
-            const  IOffsetType      posStart,
-            const  IOffsetType      posEnd)
-    {
-        return ( toStringFromBytes(bufBytes, posStart, posEnd, true) );
-    }
+            ByteArray^          bufBytes,
+            const  IOffsetType  posStart,
+            const  IOffsetType  posEnd);
 
 //========================================================================
 //

@@ -64,6 +64,51 @@ namespace  {
 //
 
 //----------------------------------------------------------------
+//    文字列をバイト列に変換する。
+//
+
+IOffsetType
+TextOperation::toBytesFromString(
+        System::String^         srcText,
+        ByteArray^%             bufBytes,
+        const  IOffsetType      posStart,
+        const  IOffsetType      posEnd,
+        const  System::Boolean  allocBuf)
+{
+    System::Text::Encoding^
+            enc = System::Text::Encoding::GetEncoding("shift_jis");
+    ByteArray^  bufTemp = enc->GetBytes(srcText);
+
+    if ( allocBuf ) {
+        bufBytes = gcnew ByteArray(posEnd + 1);
+    }
+
+    IOffsetType szCopy  = bufTemp->Length;
+    if ( (posEnd - posStart + 1) < szCopy ) {
+        //  コピー先バッファのサイズが足りない時は切り捨てる。  //
+        szCopy  = posEnd - posStart + 1;
+    }
+    for ( IOffsetType i = posStart; i <= posEnd; ++ i ) {
+        bufBytes[i] = 0;
+    }
+    for ( IOffsetType i = 0; i < szCopy; ++ i ) {
+        bufBytes[posStart + i]  = bufTemp[i];
+    }
+
+    return ( szCopy );
+}
+
+IOffsetType
+TextOperation::toBytesFromString(
+        System::String^     srcText,
+        ByteArray^          bufBytes,
+        const  IOffsetType  posStart,
+        const  IOffsetType  posEnd)
+{
+    return ( toBytesFromString(srcText, bufBytes, posStart, posEnd, false) );
+}
+
+//----------------------------------------------------------------
 //    バイト列を文字列に変換する。
 //
 
@@ -91,6 +136,15 @@ TextOperation::toStringFromBytes(
     System::String^     trgText = enc->GetString(bufTemp);
 
     return ( trgText );
+}
+
+System::String^
+TextOperation::toStringFromBytes(
+        ByteArray^          bufBytes,
+        const  IOffsetType  posStart,
+        const  IOffsetType  posEnd)
+{
+    return ( toStringFromBytes(bufBytes, posStart, posEnd, true) );
 }
 
 //========================================================================
