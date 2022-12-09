@@ -137,6 +137,7 @@
     <ClInclude Include="..\Wrapper\Common\AccountsTypes.h" />
     <ClInclude Include="..\Wrapper\Common\ManagedDate.h" />
     <ClInclude Include="..\Wrapper\Common\StringTable.h" />
+    <ClInclude Include="..\Wrapper\Common\TextOperation.h" />
     <ClInclude Include="..\Wrapper\Interface\AccountBook.h" />
     <ClInclude Include="..\Wrapper\Interface\AggregateData.h" />
     <ClInclude Include="..\Wrapper\Interface\AnnualRecords.h" />
@@ -152,6 +153,7 @@
     </ClCompile>
     <ClCompile Include="..\Wrapper\Common\ManagedDate.cpp" />
     <ClCompile Include="..\Wrapper\Common\StringTable.cpp" />
+    <ClCompile Include="..\Wrapper\Common\TextOperation.cpp" />
     <ClCompile Include="..\Wrapper\Interface\AccountBook.cpp" />
     <ClCompile Include="..\Wrapper\Interface\AggregateData.cpp" />
     <ClCompile Include="..\Wrapper\Interface\AnnualRecords.cpp" />
