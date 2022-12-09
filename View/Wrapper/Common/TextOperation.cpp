@@ -73,6 +73,10 @@ TextOperation::replaceConstant(
         StringArray^        varNames,
         StringArray^        varVals)
 {
+    if ( srcText == nullptr ) {
+        return ( System::String::Empty );
+    }
+
     System::String^ strVal;
     int             posFind;
 
@@ -103,13 +107,13 @@ TextOperation::replaceConstant(
             if ( posFind == 0 ) {
                 trgText = System::String::Concat(
                                 strVal,
-                                trgText->Substring(strVal->Length)
+                                trgText->Substring(nameLen)
                 );
             } else {
                 trgText = System::String::Concat(
                                 trgText->Substring(0, posFind),
                                 strVal,
-                                trgText->Substring(posFind + strVal->Length)
+                                trgText->Substring(posFind + nameLen)
                 );
             }
         }
