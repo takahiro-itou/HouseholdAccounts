@@ -82,6 +82,14 @@ Dim lngDefaultHeight As Integer
 
 End Sub
 
+Private Sub MainView_ResizeEnd(sender As Object, e As EventArgs) _
+    Handles Me.ResizeEnd
+''--------------------------------------------------------------------
+''    フォームのリサイズイベントハンドラ。
+''--------------------------------------------------------------------
+    picBook.Invalidate()
+End Sub
+
 ''========================================================================
 Private Sub mnuEditMove_Click(sender As Object, e As EventArgs) _
     Handles mnuEditMove.Click
