@@ -172,7 +172,7 @@ Dim bytBuffer() As Byte
             FileGet(lngFileNumber, bytBuffer)
 
             strTemp = Wrapper.TextOperation.toStringFromBytes(
-                        bytBuffer, 0, lngLength - 1, True)
+                            bytBuffer, 0, lngLength - 1, True)
 
             If (lngSorted = STRINGSORTNONE) Then
                 'データがソートされていない場合は、基本挿入法を使う
