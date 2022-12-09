@@ -18,10 +18,12 @@ Set (INCLIB_BINARY_DIR     "${INCLUDE_BINARY_DIR}/${MODULE_DIR_NAME}")
 
 Set (LIBRARY_SOURCE_FILES
         BookDocument.cpp
+        StringTable.cpp
 )
 
 Set (INCLIB_HEADER_FILES
         ${INCLIB_SOURCE_DIR}/BookDocument.h
+        ${INCLIB_SOURCE_DIR}/StringTable.h
 )
 
 ##----------------------------------------------------------------

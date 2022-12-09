@@ -23,6 +23,7 @@ EXTRA_NOINST_HEADER_FILES   =
 
 LIBRARY_SOURCE_FILES        =  \
         BookDocument.cpp               \
+        StringTable.cpp                \
         ${EXTRA_LIBRARY_SOURCE_FILES}
 
 LIBRARY_INSTANTIATIONS      =
@@ -37,6 +38,7 @@ DIST_NOINST_HEADER_FILES    =  \
 
 INCLIB_HEADER_FILES         =  \
         ${INCLIB_SOURCE_DIR}/BookDocument.h  \
+        ${INCLIB_SOURCE_DIR}/StringTable.h   \
         ${EXTRA_LIBRARY_HEADER_FILES}
 
 INCLIB_NODIST_HEADER_FILES  =

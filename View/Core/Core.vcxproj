@@ -135,11 +135,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Core\Lib\Documents\BookDocument.cpp" />
+    <ClCompile Include="..\..\Core\Lib\Documents\StringTable.cpp" />
     <ClCompile Include="..\..\Core\Lib\FileFormat\BookFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Common\HouseholdAccountsSettings.h" />
     <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Documents\BookDocument.h" />
+    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Documents\StringTable.h" />
     <ClInclude Include="..\..\Core\Include\HouseholdAccounts\FileFormat\BookFile.h" />
   </ItemGroup>
 
