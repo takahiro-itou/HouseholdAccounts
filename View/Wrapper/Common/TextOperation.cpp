@@ -63,6 +63,36 @@ namespace  {
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    バイト列を文字列に変換する。
+//
+
+System::String^
+TextOperation::toStringFromBytes(
+        ByteArray^              bufBytes,
+        const  IOffsetType      posStart,
+        const  IOffsetType      posEnd,
+        const  System::Boolean  termNull)
+{
+    //  指定された範囲を文字列に変換する。  //
+    const  IOffsetType  idxLastConv = (posEnd - posStart);
+    ByteArray^  bufTemp = gcnew ByteArray (idxLastConv + 1);
+    for ( IOffsetType i = 0; i <= idxLastConv; ++  i ) {
+        System::Byte  c = bufBytes[posStart + i];
+        if ( (termNull) && (c == 0) && (i > 0) ) {
+            System::Array::Resize(bufTemp, i);
+            break;
+        }
+        bufTemp[i]  = c;
+    }
+
+    System::Text::Encoding^
+            enc = System::Text::Encoding::GetEncoding("shift_jis");
+    System::String^     trgText = enc->GetString(bufTemp);
+
+    return ( trgText );
+}
+
 //========================================================================
 //
 //    Accessors.

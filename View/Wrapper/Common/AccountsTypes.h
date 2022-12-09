@@ -36,6 +36,13 @@ public  enum class  ErrCode
     ERR_INDEX_OUT_OF_RANGE  = HouseholdAccounts::ERR_INDEX_OUT_OF_RANGE
 };
 
+//----------------------------------------------------------------
+/**
+**
+**/
+
+typedef     int                 IOffsetType;
+
 }   //  End of namespace  Wrapper
 
 #endif

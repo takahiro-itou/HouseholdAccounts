@@ -24,7 +24,7 @@
 
 #pragma     once
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
+#include    "AccountsTypes.h"
 
 namespace  Wrapper  {
 
@@ -39,6 +39,9 @@ public ref  class  TextOperation
 //
 //    Internal Type Definitions.
 //
+public:
+
+    typedef     cli::array<System::Byte, 1>     ByteArray;
 
 //========================================================================
 //
@@ -69,6 +72,27 @@ public ref  class  TextOperation
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   バイト列を文字列に変換する。
+    **
+    **/
+    static  System::String^
+    toStringFromBytes(
+            ByteArray^              bufBytes,
+            const  IOffsetType      posStart,
+            const  IOffsetType      posEnd,
+            const  System::Boolean  termNull);
+
+    static  System::String^
+    toStringFromBytes(
+            ByteArray^              bufBytes,
+            const  IOffsetType      posStart,
+            const  IOffsetType      posEnd)
+    {
+        return ( toStringFromBytes(bufBytes, posStart, posEnd, true) );
+    }
 
 //========================================================================
 //
