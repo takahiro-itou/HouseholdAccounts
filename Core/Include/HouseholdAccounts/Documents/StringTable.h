@@ -21,7 +21,17 @@
 #if !defined( HACCOUNTS_DOCUMENTS_INCLUDED_STRING_TABLE_H )
 #    define   HACCOUNTS_DOCUMENTS_INCLUDED_STRING_TABLE_H
 
-#include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
+#include    "HouseholdAccounts/Common/AccountsTypes.h"
+
+#if !defined( HACCOUNTS_INCLUDES_STL_STRING )
+#    include    <string>
+#    define     HACCOUNTS_INCLUDES_STL_STRING
+#endif
+
+#if !defined( HACCOUNTS_INCLUDES_STL_VECTOR )
+#    include    <vector>
+#    define     HACCOUNTS_INCLUDES_STL_VECTOR
+#endif
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {
@@ -44,6 +54,20 @@ class  StringTable
 //    Internal Type Definitions.
 //
 public:
+
+    enum  class  StringTableSort
+    {
+        TABLE_SORT_NONE         = 0,
+        TABLE_SORT_ASCENDING    = 1,
+    };
+
+public:
+
+    typedef     std::vector<std::string>        StringArray;
+
+    typedef     size_t                          StringIndex;
+
+    typedef     std::vector<StringIndex>        IndexArray;
 
 //========================================================================
 //
@@ -104,6 +128,25 @@ public:
 //
 //    Member Variables.
 //
+private:
+
+    /**   テーブル用のバッファサイズ。  **/
+    BufferSize          m_tableBufferSize;
+
+    /**   実際に格納されているデータ数。    **/
+    StringIndex         m_numEntries;
+
+    /**   ソート状態。  **/
+    StringTableSort     m_flagSorted;
+
+    /**   各エントリのフラグ。  **/
+    std::vector<int>    m_entryFlags;
+
+    /**   文字列テーブル。      **/
+    StringArray         m_tableEntry;
+
+    /**   昇順にソートした時の、インデックステーブル。  **/
+    IndexArray          m_sortedIndex;
 
 //========================================================================
 //
