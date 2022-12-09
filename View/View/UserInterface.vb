@@ -17,11 +17,11 @@ Module UserInterface
 'パブリックプロシージャ
 '
 
-Public Sub ChangeCellSize(
+Public Function ChangeCellSize(
         ByRef utUI As tUserInterface,
         ByRef utBook As Wrapper.AccountBook,
         ByVal lngNewWidth As Integer,
-        ByVal lngNewHeight As Integer)
+        ByVal lngNewHeight As Integer) As Boolean
 '---------------------------------------------------------------------
 'セルの幅と高さを変更する
 '[I/O] utUI        : ユーザーインターフェイス
@@ -33,6 +33,7 @@ Public Sub ChangeCellSize(
 Dim lngCount As Integer
 Dim lngCellWidth As Integer, lngCellHeight As Integer
 Dim canvasWidth As Integer, canvasHeight As Integer
+Dim flagInvalid As Boolean
 
     If (False) Then
         lngCount = 32
@@ -67,10 +68,12 @@ Dim canvasWidth As Integer, canvasHeight As Integer
 
         canvasWidth = (lngCellWidth * (BOOKNUMCOLUMNS + 1) + 16)
         canvasHeight = lngCellHeight * (lngCount + BOOKFIXEDROWS + 1)
+        flagInvalid = False
         If (.canvasWidth <> canvasWidth) Or (.canvasHeight <> canvasHeight) Then
             .imgCanvas = New System.Drawing.Bitmap(canvasWidth, canvasHeight)
             .canvasWidth = canvasWidth
             .canvasHeight = canvasHeight
+            flagInvalid = True
         End If
 
         With .oBookPicture
@@ -83,7 +86,9 @@ Dim canvasWidth As Integer, canvasHeight As Integer
 
     'スクロールバーの範囲を設定する
     SetScrollRange(utUI)
-End Sub
+
+    ChangeCellSize = flagInvalid
+End Function
 
 Public Sub CleanupUserInterface(ByRef utUI As tUserInterface)
 '---------------------------------------------------------------------

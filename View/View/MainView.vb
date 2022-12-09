@@ -87,8 +87,14 @@ Private Sub MainView_ResizeEnd(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    フォームのリサイズイベントハンドラ。
 ''--------------------------------------------------------------------
+Dim bInvalid As Boolean
+
     With mutBookView
-        ChangeCellSize(.utUserInterface, .utAccountBook, -1, -1)
+        bInvalid = ChangeCellSize(.utUserInterface, .utAccountBook, -1, -1)
+        If bInvalid Then
+            UpdateBook(.utUserInterface, .utAccountBook, -1, -1)
+        End If
+        RefreshBook(.utUserInterface, .utAccountBook, -1, -1)
     End With
     picBook.Invalidate()
 End Sub
