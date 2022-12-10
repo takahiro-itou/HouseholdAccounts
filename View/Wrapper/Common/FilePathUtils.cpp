@@ -64,6 +64,32 @@ namespace  {
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    指定したパスから特定のディレクトリまでを除外する。
+//
+
+System::String^
+FilePathUtils::getAncestorDir(
+        System::String^     pathName,
+        System::String^     stripDir)
+{
+    System::String^  tmpPath = gcnew System::String(pathName);
+    System::String^  strDir;
+
+    while ( tmpPath->Length != 0 ) {
+        strDir  = System::IO::Path::GetDirectoryName(tmpPath);
+        const  System::String^
+            strFile = System::IO::Path::GetFileName(tmpPath);
+
+        if ( strFile == stripDir ) {
+            return ( strDir );
+        }
+        tmpPath = strDir;
+    }
+
+    return ( pathName );
+}
+
 //========================================================================
 //
 //    Accessors.

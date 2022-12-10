@@ -70,6 +70,18 @@ public ref  class  FilePathUtils
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   指定したパスから特定のディレクトリまでを除外する。
+    **
+    **  @param [in] pathName
+    **  @param [in] stripDir
+    **/
+    static  System::String^
+    getAncestorDir(
+            System::String^     pathName,
+            System::String^     stripDir);
 
 //========================================================================
 //
