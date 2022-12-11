@@ -94,6 +94,15 @@ public:
             System::String^     pathName,
             System::String^     stripDir);
 
+    //----------------------------------------------------------------
+    /**   フルパスから拡張子のみを除いた部分を取得する。
+    **
+    **  @param [in] pathName
+    **/
+    static  System::String^
+    removeExtFromPath(
+            System::String^     pathName);
+
 //========================================================================
 //
 //    Accessors.

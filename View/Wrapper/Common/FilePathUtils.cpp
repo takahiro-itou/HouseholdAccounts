@@ -102,6 +102,28 @@ FilePathUtils::getProjectRootDir(
     return ( getAncestorDir(pathName, stripDir) );
 }
 
+//----------------------------------------------------------------
+//    フルパスから拡張子のみを除いた部分を取得する。
+//
+
+System::String^
+FilePathUtils::removeExtFromPath(
+        System::String^     pathName)
+{
+    if ( (pathName == nullptr) || (pathName->Length == 0) ) {
+        return ( System::String::Empty );
+    }
+
+    //  一番最後のピリオドの前までを取り出す。  //
+    const  int  posFind = pathName->LastIndexOf('.');
+    if ( posFind >= 0 ){
+        return pathName->Substring(0, posFind);
+    }
+
+    //  ピリオドが見つからないので、このパスには拡張子が無い。  //
+    return ( pathName );
+}
+
 //========================================================================
 //
 //    Accessors.
