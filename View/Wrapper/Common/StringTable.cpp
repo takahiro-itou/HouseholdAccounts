@@ -75,8 +75,8 @@ StringTable::appendString(
     reserveBuffer(this->nNumEntry);
 
     this->nEntryFlags[idx]      = 0;
-    this->nSortIndex[idx]       = idx;
     this->sTableEntries[idx]    = strText;
+    this->nSortIndex[idx]       = idx;
 
     return ( idx );
 }
@@ -145,6 +145,24 @@ StringTable::reserveBuffer(
     System::Array::Resize(this->nSortIndex, siAlloc);
 
     return ( this->nTableBufferSize = siAlloc );
+}
+
+//----------------------------------------------------------------
+//    テーブルのエントリを直接設定する。
+//
+
+StringIndex
+StringTable::setTableEntry(
+        const  StringIndex  drIndex,
+        System::String^     steText,
+        const  int          steFlag)
+{
+    reserveBuffer(drIndex + 1);
+
+    this->nEntryFlags[drIndex]   = steFlag;
+    this->sTableEntries[drIndex] = steText;
+
+    return ( drIndex );
 }
 
 //========================================================================

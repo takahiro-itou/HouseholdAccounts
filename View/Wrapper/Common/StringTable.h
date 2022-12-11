@@ -126,6 +126,19 @@ public:
     reserveBuffer(
             const  StringIndex  bufSize);
 
+    //----------------------------------------------------------------
+    /**   テーブルのエントリを直接設定する。
+    **
+    **  @param [in] drIndex
+    **  @param [in] steText
+    **  @param [in] strFlag
+    **/
+    StringIndex
+    setTableEntry(
+            const  StringIndex  drIndex,
+            System::String^     steText,
+            const  int          steFlag);
+
 //========================================================================
 //
 //    Accessors.
