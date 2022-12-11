@@ -95,6 +95,15 @@ public:
             System::String^     stripDir);
 
     //----------------------------------------------------------------
+    /**   フルパスからディレクトリ名を除いた部分を取得する。
+    **
+    **  @param [in] pathName
+    **/
+    static  System::String^
+    removeDirFromPath(
+            System::String^     pathName);
+
+    //----------------------------------------------------------------
     /**   フルパスから拡張子のみを除いた部分を取得する。
     **
     **  @param [in] pathName

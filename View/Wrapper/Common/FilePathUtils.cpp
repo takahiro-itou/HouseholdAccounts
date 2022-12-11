@@ -103,6 +103,17 @@ FilePathUtils::getProjectRootDir(
 }
 
 //----------------------------------------------------------------
+//    フルパスからディレクトリ名を除いた部分を取得する。
+//
+
+System::String^
+FilePathUtils::removeDirFromPath(
+        System::String^     pathName)
+{
+    return ( System::IO::Path::GetFileName(pathName) );
+}
+
+//----------------------------------------------------------------
 //    フルパスから拡張子のみを除いた部分を取得する。
 //
 
