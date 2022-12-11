@@ -91,6 +91,28 @@ FilePathUtils::getAncestorDir(
 }
 
 //----------------------------------------------------------------
+//    ファイルの拡張子を取得する。
+//
+
+System::String^
+FilePathUtils::getFileExt(
+        System::String^     pathName)
+{
+    if ( (pathName == nullptr) || (pathName->Length == 0) ) {
+        return ( System::String::Empty );
+    }
+
+    //  一番最後のピリオドの後を取り出す。  //
+    const  int  posFind = pathName->LastIndexOf('.');
+    if ( posFind >= 0 ) {
+        return pathName->Substring(posFind + 1);
+    }
+
+    //  ピリオドが見つからないので、このパスには拡張子が無い。  //
+    return ( pathName );
+}
+
+//----------------------------------------------------------------
 //    ディレクトリ名と拡張子を除いた部分を取得する。
 //
 

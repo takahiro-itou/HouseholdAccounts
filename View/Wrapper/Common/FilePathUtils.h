@@ -84,6 +84,15 @@ public:
             System::String^     stripDir);
 
     //----------------------------------------------------------------
+    /**   ファイルの拡張子を取得する。
+    **
+    **  @param [in] pathName
+    **/
+    static  System::String^
+    getFileExt(
+            System::String^     pathName);
+
+    //----------------------------------------------------------------
     /**   ディレクトリ名と拡張子を除いた部分を取得する。
     **
     **  @param [in] pathName
