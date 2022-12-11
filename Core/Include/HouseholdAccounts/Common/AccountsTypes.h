@@ -24,6 +24,7 @@
 #include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
 
 #include    <stddef.h>
+#include    <stdint.h>
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
