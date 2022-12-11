@@ -45,6 +45,16 @@ public:
         STRING_SORT_ASCENDING   = 1,
     };
 
+    /**
+    **    データの検索結果。
+    **/
+    value   struct  FindResult
+    {
+        System::Boolean     bFound;
+        StringIndex         siResult;
+        StringIndex         siInsert;
+    };
+
 //========================================================================
 //
 //    Constructor(s) and Destructor.
@@ -154,6 +164,16 @@ public:
 //
 //    For Internal Use Only.
 //
+private:
+
+    //----------------------------------------------------------------
+    /**   データを検索する。
+    **
+    **  @param [in] strText
+    **/
+    FindResult
+    searchEntry(
+            System::String^     strText);
 
 //========================================================================
 //

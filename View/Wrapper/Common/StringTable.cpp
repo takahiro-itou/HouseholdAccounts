@@ -257,4 +257,75 @@ StringTable::reserveBuffer(
 //    For Internal Use Only.
 //
 
+//----------------------------------------------------------------
+//    データを検索する。
+//
+
+StringTable::FindResult
+StringTable::searchEntry(
+        System::String^     strText)
+{
+    FindResult      result;
+    StringIndex     bsLeft, bsRight, bsPivot;
+    StringIndex     siCheck;
+    System::String^ trgText;
+
+    //  二分探索である程度まで範囲を絞る。  //
+    bsLeft  = 0;
+    bsRight = this->nNumEntry - 1;
+
+    while ( bsRight - bsLeft >= 8 ) {
+        bsPivot = (bsLeft + bsRight) / 2;
+        siCheck = this->nSortIndex[bsPivot];
+        trgText = this->sTableEntries[siCheck];
+
+        if ( trgText == strText ) {
+            //  見つかった  //
+            result.bFound   = true;
+            result.siResult = siCheck;
+            result.siInsert = bsPivot;
+            return ( result );
+        }
+
+        //  検索範囲を絞る  //
+        if ( System::String::Compare(trgText, strText) > 0 ) {
+            //  検索しているデータは現在位置より左にある。  //
+            bsRight = bsPivot - 1;
+        } else {
+            //  検索しているデータは現在位置より右にある。  //
+            bsLeft  = bsPivot + 1;
+        }
+    }
+
+    //  念のため番兵を立てる。  //
+    result.bFound   = false;
+    result.siResult = -1;
+    result.siInsert = bsRight + 1;
+
+    //  ある程度範囲が小さくなったところで、単純検索に切り替える。  //
+    for ( bsPivot = bsLeft; bsPivot <= bsRight; ++ bsPivot ) {
+        siCheck = this->nSortIndex[bsPivot];
+        trgText = this->sTableEntries[siCheck];
+
+        if ( trgText == strText ) {
+            //  見つかった  //
+            result.bFound   = true;
+            result.siResult = siCheck;
+            result.siInsert = bsPivot;
+            return ( result );
+        }
+        if ( System::String::Compare(trgText, strText) > 0 ) {
+            //  テーブル内のデータはソートされているから、  //
+            //  この時点でデータがテーブル内に存在しない。  //
+            //  また、データを挿入する時はこの場所になる。  //
+            result.bFound   = false;
+            result.siResult = -1;
+            result.siInsert = bsPivot;
+            break;
+        }
+    }
+
+    return ( result );
+}
+
 }   //  End of namespace  Wrappe
