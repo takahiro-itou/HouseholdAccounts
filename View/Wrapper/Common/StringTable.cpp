@@ -71,7 +71,14 @@ StringIndex
 StringTable::appendString(
         System::String^     strText)
 {
-    return ( -1 );
+    const  StringIndex  idx = this->nNumEntry ++;
+    reserveBuffer(this->nNumEntry);
+
+    this->nEntryFlags[idx]      = 0;
+    this->nSortIndex[idx]       = idx;
+    this->sTableEntries[idx]    = strText;
+
+    return ( idx );
 }
 
 //----------------------------------------------------------------
