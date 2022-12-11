@@ -65,8 +65,6 @@ public:
 
     typedef     std::vector<std::string>        StringArray;
 
-    typedef     size_t                          StringIndex;
-
     typedef     std::vector<StringIndex>        IndexArray;
 
 //========================================================================
