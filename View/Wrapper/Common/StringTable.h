@@ -107,6 +107,15 @@ public:
     insertString(
             System::String^     strText);
 
+    //----------------------------------------------------------------
+    /**   データ用のバッファを確保する。
+    **
+    **  @param [in] bufSize
+    **/
+    StringIndex
+    reserveBuffer(
+            const  StringIndex  bufSize);
+
 //========================================================================
 //
 //    Accessors.
@@ -119,10 +128,10 @@ public:
 public:
 
     /**   テーブル用のバッファサイズ。  **/
-    int     nTableBufferSize;
+    StringIndex             nTableBufferSize;
 
     /**   実際に格納されているデータ数。    **/
-    int     nNumEntry;
+    StringIndex             nNumEntry;
 
     /**   ソート状態。  **/
     StringTableSort         nSorted;

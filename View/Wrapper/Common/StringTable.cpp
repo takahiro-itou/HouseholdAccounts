@@ -138,6 +138,26 @@ StringTable::insertString(
     return ( -1 );
 }
 
+//----------------------------------------------------------------
+//    データ用のバッファを確保する。
+//
+
+StringIndex
+StringTable::reserveBuffer(
+        const  StringIndex  bufSize)
+{
+    const  StringIndex  siAlloc = (bufSize + 15) & ~15;
+    if ( siAlloc < this->nTableBufferSize ) {
+        return ( this->nTableBufferSize );
+    }
+
+    System::Array::Resize(this->nEntryFlags, siAlloc);
+    System::Array::Resize(this->sTableEntries, siAlloc);
+    System::Array::Resize(this->nSortIndex, siAlloc);
+
+    return ( this->nTableBufferSize = siAlloc );
+}
+
 //========================================================================
 //
 //    Accessors.
