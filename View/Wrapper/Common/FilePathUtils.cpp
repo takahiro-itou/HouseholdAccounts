@@ -91,6 +91,23 @@ FilePathUtils::getAncestorDir(
 }
 
 //----------------------------------------------------------------
+//    ディレクトリ名と拡張子を除いた部分を取得する。
+//
+
+System::String^
+FilePathUtils::getFileTitleFromPath(
+        System::String^     pathName)
+{
+    System::String^ strTemp;
+
+    //  フルパスからディレクトリ名を除く。  //
+    strTemp = removeDirFromPath(pathName);
+
+    //  さらに拡張子も除く。    //
+    return ( removeExtFromPath(strTemp) );
+}
+
+//----------------------------------------------------------------
 //    プロジェクトのディレクトリを取得する。
 //
 
