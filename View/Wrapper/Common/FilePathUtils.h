@@ -133,6 +133,17 @@ public:
             System::String^     stripDir);
 
     //----------------------------------------------------------------
+    /**   フルパスから相対パスを取得する。
+    **
+    **  @param [in] pathName
+    **  @param [in] baseDir
+    **/
+    static  System::String^
+    getRelativePath(
+            System::String^     pathName,
+            System::String^     baseDir);
+
+    //----------------------------------------------------------------
     /**   フルパスからディレクトリ名を除いた部分を取得する。
     **
     **  @param [in] pathName

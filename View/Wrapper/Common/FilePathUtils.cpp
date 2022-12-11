@@ -193,6 +193,45 @@ FilePathUtils::getProjectRootDir(
 }
 
 //----------------------------------------------------------------
+//    フルパスから相対パスを取得する。
+//
+
+System::String^
+FilePathUtils::getRelativePath(
+        System::String^     pathName,
+        System::String^     baseDir)
+{
+    if ( (baseDir == nullptr) || (baseDir->Length == 0) ) {
+        return ( pathName );
+    }
+
+    System::String^ strBaseDir  = gcnew System::String(baseDir);
+    System::String^ strPath     = gcnew System::String(pathName);
+    System::String^ strTemp     = System::String::Empty;
+
+    int posFind;
+    System::String^ strBaseTemp;
+    System::String^ strNameTemp;
+
+    posFind = -1;
+    while ( posFind == -1 ) {
+        strBaseTemp = strBaseDir->ToLower();
+        strNameTemp = strPath->ToLower();
+        posFind = strNameTemp->IndexOf(strBaseTemp);
+        if ( posFind >= 0 ) {
+            strTemp = System::String::Concat(
+                            strTemp, strPath->Substring(strBaseDir->Length + 2)
+            );
+            break;
+        }
+        strBaseDir = removeDirFromPath(strBaseDir);
+        strTemp = System::String::Concat(strTemp, "..\\");
+    }
+
+    return ( strTemp) ;
+}
+
+//----------------------------------------------------------------
 //    フルパスからディレクトリ名を除いた部分を取得する。
 //
 
