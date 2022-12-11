@@ -157,7 +157,7 @@ Dim strLeft As String
                 '現在のディレクトリ
             ElseIf (strLeft = "..\") Then
                '親ディレクトリに移動
-                strTemp = DeleteDirFromPath(strTemp)
+                strTemp = Wrapper.Common.FilePathUtils.removeDirFromPath(strTemp)
             Else
                 '指定されたディレクトリに移動
                 strTemp = strTemp & "\" & strLeft
@@ -195,7 +195,7 @@ Dim strNameTemp As String
         strNameTemp = LCase$(strPath)
         lngPos = InStr(strNameTemp, strBaseTemp)
         If lngPos = 0 Then
-            strBaseDir = DeleteDirFromPath(strBaseDir)
+            strBaseDir = Wrapper.Common.FilePathUtils.removeDirFromPath(strBaseDir)
             strTemp = strTemp & "..\"
         Else
             strTemp = strTemp & Mid$(strPath, Len(strBaseDir) + 2)
