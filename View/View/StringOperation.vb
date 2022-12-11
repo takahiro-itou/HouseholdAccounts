@@ -12,31 +12,6 @@ Module StringOperation
 ' This file is written in 2004/08/18 - 2007/12/31
 '*****************************************************************************
 
-Public Function GetDirFromPath(ByVal strPath As String) As String
-'---------------------------------------------------------------------
-'フルパスからディレクトリ名を取得する
-'[ IN] strPath: フルパス
-'[RET] String : ディレクトリ名
-'[ACT]
-'  ファイル名(フルパスの最も右の"\"から後ろ)を切り捨て、
-'ディレクトリ名を取得する。
-'  返される結果は、最後の "\" を含まない。
-'---------------------------------------------------------------------
-Dim i As Integer
-
-    i = Len(strPath)
-    For i = Len(strPath) To 1 Step -1
-        If Mid$(strPath, i, 1) = "\" Then
-            'この "\" の前までを取り出す
-            GetDirFromPath = Left$(strPath, i - 1)
-            Exit Function
-        End If
-    Next i
-
-    '"\" が見つからないので、このフルパスはディレクトリ名を含んでいない
-    GetDirFromPath = ""
-End Function
-
 Public Function GetFullPathName(ByVal strBaseDir As String,
         ByVal strRelativePath As String) As String
 '---------------------------------------------------------------------
