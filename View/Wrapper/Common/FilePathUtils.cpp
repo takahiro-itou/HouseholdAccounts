@@ -141,6 +141,46 @@ FilePathUtils::getFileTitleFromPath(
 }
 
 //----------------------------------------------------------------
+//    相対パスからフルパスを取得する。
+//
+
+System::String^
+FilePathUtils::getFullPathName(
+        System::String^     baseDir,
+        System::String^     relPath)
+{
+    int posFind;
+    System::String^ strLeft;
+
+    System::String^ strTemp = gcnew System::String(relPath);
+    System::String^ relTemp = gcnew System::String(relPath);
+
+    while ( (relTemp != nullptr) && (relTemp->Length > 0) ) {
+        posFind = relTemp->IndexOf('\\');
+        if ( posFind == 0 ) {
+            //  ディレクトリ指定がもうないので  //
+            //  ファイル名を最後にくっつける。  //
+            strTemp = System::String::Concat(strTemp, "\\", relTemp);
+            relTemp = System::String::Empty;
+            break;
+        }
+        strLeft = relTemp->Substring(0, posFind);
+        relTemp = relTemp->Substring(posFind + 1);
+        if ( strLeft == ".\\" ) {
+            //  現在のディレクトリ。    //
+        } else if ( strLeft = "..\\" ) {
+            //  親ディレクトリに移動。  //
+            strTemp = removeDirFromPath(strTemp);
+        } else {
+            //  指定されたディレクトリに移動。  //
+            strTemp = System::String::Concat(strTemp, "\\", strLeft);
+        }
+    }
+
+    return ( strTemp );
+}
+
+//----------------------------------------------------------------
 //    プロジェクトのディレクトリを取得する。
 //
 

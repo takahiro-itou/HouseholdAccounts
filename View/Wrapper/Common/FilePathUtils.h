@@ -111,6 +111,17 @@ public:
             System::String^     pathName);
 
     //----------------------------------------------------------------
+    /**   相対パスからフルパスを取得する。
+    **
+    **  @param [in] baseDir   基準となるディレクトリ名。
+    **  @param [in] relPath   baseDir からの相対パス。
+    **/
+    static  System::String^
+    getFullPathName(
+            System::String^     baseDir,
+            System::String^     relPath);
+
+    //----------------------------------------------------------------
     /**   プロジェクトのディレクトリを取得する。
     **
     **  @param [in] pathName
