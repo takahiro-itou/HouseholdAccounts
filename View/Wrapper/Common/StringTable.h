@@ -50,7 +50,7 @@ public:
     **/
     value   struct  FindResult
     {
-        System::Boolean     bFound;
+        System::Boolean     flgFound;
         StringIndex         siResult;
         StringIndex         siInsert;
     };

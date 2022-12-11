@@ -104,7 +104,7 @@ StringTable::insertString(
     FindResult  resFind = searchEntry(strText);
 
     //  データが見つかった場合はそのインデックスを返して終了。  //
-    if ( resFind.bFound ) {
+    if ( resFind.flgFound ) {
         return ( resFind.siResult );
     }
 
@@ -191,7 +191,7 @@ StringTable::searchEntry(
 
         if ( trgText == strText ) {
             //  見つかった  //
-            result.bFound   = true;
+            result.flgFound = true;
             result.siResult = siCheck;
             result.siInsert = bsPivot;
             return ( result );
@@ -208,7 +208,7 @@ StringTable::searchEntry(
     }
 
     //  念のため番兵を立てる。  //
-    result.bFound   = false;
+    result.flgFound = false;
     result.siResult = -1;
     result.siInsert = bsRight + 1;
 
@@ -219,7 +219,7 @@ StringTable::searchEntry(
 
         if ( trgText == strText ) {
             //  見つかった  //
-            result.bFound   = true;
+            result.flgFound = true;
             result.siResult = siCheck;
             result.siInsert = bsPivot;
             return ( result );
@@ -228,7 +228,7 @@ StringTable::searchEntry(
             //  テーブル内のデータはソートされているから、  //
             //  この時点でデータがテーブル内に存在しない。  //
             //  また、データを挿入する時はこの場所になる。  //
-            result.bFound   = false;
+            result.flgFound = false;
             result.siResult = -1;
             result.siInsert = bsPivot;
             break;
