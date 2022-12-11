@@ -141,7 +141,7 @@ Public Function IsLegalInputFileName(ByVal strFileName As String) As Boolean
 '---------------------------------------------------------------------
 Dim strDir As String
 
-    strDir = GetDirFromPath(strFileName)
+    strDir = Wrapper.Common.FilePathUtils.getDirFromPath(strFileName)
     If (LCase$(Right$(strDir, 9)) = "\resource") Then
         IsLegalInputFileName = False
         Exit Function
@@ -161,7 +161,7 @@ Public Function IsLegalOutputFileName(ByVal strFileName As String) As Boolean
 '---------------------------------------------------------------------
 Dim strDir As String
 
-    strDir = GetDirFromPath(strFileName)
+    strDir = Wrapper.Common.FilePathUtils.getDirFromPath(strFileName)
     If (LCase$(Right$(strDir, 9)) = "\resource") Then
         IsLegalOutputFileName = False
         Exit Function
