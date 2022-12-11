@@ -12,55 +12,6 @@ Module StringOperation
 ' This file is written in 2004/08/18 - 2007/12/31
 '*****************************************************************************
 
-Public Function DeleteExtFromPath(ByVal strPath As String) As String
-'---------------------------------------------------------------------
-'フルパスから、拡張子のみを除いた部分を取得する
-'[ IN] strPath: フルパス
-'[RET] String : 拡張子を除いた部分
-'[ACT]
-'  フルパスから、拡張子のみを取り除く。
-'  返される結果には、ディレクトリ名が含まれる。
-'---------------------------------------------------------------------
-Dim i As Integer
-
-    i = Len(strPath)
-    For i = Len(strPath) To 1 Step -1
-        If Mid$(strPath, i, 1) = "." Then
-            'この "." の前までを取り出す
-            DeleteExtFromPath = Left$(strPath, i - 1)
-            Exit Function
-        End If
-    Next i
-
-    '"." が見つからないので、このフルパスには拡張子がない
-    DeleteExtFromPath = strPath
-End Function
-
-Public Function DeleteDirFromPath(ByVal strPath As String) As String
-'---------------------------------------------------------------------
-'フルパスから、ディレクトリ名を除いた部分を取得する
-'[ IN] strPath: フルパス
-'[RET] String : ディレクトリ名を除いた部分
-'[ACT]
-'  フルパスから、ディレクトリ名を取り除く。
-'  返される結果には、拡張子も含むが、
-'ディレクトリの区切りを示す "\" は含まない。
-'---------------------------------------------------------------------
-Dim i As Integer
-
-    i = Len(strPath)
-    For i = Len(strPath) To 1 Step -1
-        If Mid$(strPath, i, 1) = "\" Then
-            'この ".\" の後ろを取り出す
-            DeleteDirFromPath = Mid$(strPath, i + 1)
-            Exit Function
-        End If
-    Next i
-
-    '"\" が見つからないので、このフルパスはディレクトリ名を含んでいない
-    DeleteDirFromPath = strPath
-End Function
-
 Public Function GetFileExt(ByVal strFileName As String) As String
 '---------------------------------------------------------------------
 'ファイルの拡張子を取得する
@@ -107,24 +58,6 @@ Dim i As Integer
 
     '"\" が見つからないので、このフルパスはディレクトリ名を含んでいない
     GetDirFromPath = ""
-End Function
-
-Public Function GetTitleFromPath(ByVal strPath As String) As String
-'---------------------------------------------------------------------
-'フルパスからファイルのタイトルを取得する
-'[ IN] strPath: フルパス
-'[RET] String : ファイルタイトル
-'[ACT]
-'  ファイルのタイトル、つまりフルパスから
-'ディレクトリ名と拡張子を除いた残りの部分を取得する。
-'---------------------------------------------------------------------
-Dim strTemp As String
-
-    'フルパスからディレクトリ名を除く
-    strTemp = DeleteDirFromPath(strPath)
-
-    'さらに拡張子も除く
-    GetTitleFromPath = DeleteExtFromPath(strTemp)
 End Function
 
 Public Function GetFullPathName(ByVal strBaseDir As String,
