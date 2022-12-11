@@ -67,12 +67,12 @@ namespace  {
 //    指定された文字列を検索する。
 //
 
-int
+StringIndex
 StringTable::findString(
         System::String^  strText)
 {
-    int lngIndex, lngResult;
-    int lngLeft, lngRight, lngTarget;
+    StringIndex         lngIndex, lngResult;
+    StringIndex         lngLeft, lngRight, lngTarget;
     System::String^     strCheck;
 
     lngLeft = 0;

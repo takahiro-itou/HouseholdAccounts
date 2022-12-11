@@ -23,7 +23,7 @@
 
 #pragma     once
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
+#include    "AccountsTypes.h"
 
 namespace  Wrapper  {
 
@@ -82,7 +82,7 @@ public:
     **  @param [in] strText   検索する文字列。
     **  @return
     **/
-    int
+    StringIndex
     findString(
             System::String^  strText);
 

@@ -73,7 +73,7 @@ enum  Boolean
 **    文字列インデックス型。
 **/
 
-typedef     int64_t             StringIndex;
+typedef     int                 StringIndex;
 
 //----------------------------------------------------------------
 /**
