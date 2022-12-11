@@ -76,10 +76,10 @@ FilePathUtils::getAncestorDir(
     System::String^  tmpPath = gcnew System::String(pathName);
     System::String^  strDir;
 
-    while ( tmpPath->Length != 0 ) {
+    while ( (tmpPath != nullptr) && (tmpPath->Length != 0) ) {
         strDir  = System::IO::Path::GetDirectoryName(tmpPath);
-        const  System::String^
-            strFile = System::IO::Path::GetFileName(tmpPath);
+        System::String^
+                strFile = System::IO::Path::GetFileName(tmpPath);
 
         if ( strFile == stripDir ) {
             return ( strDir );
