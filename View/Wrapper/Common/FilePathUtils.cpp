@@ -91,6 +91,17 @@ FilePathUtils::getAncestorDir(
 }
 
 //----------------------------------------------------------------
+//    フルパスからディレクトリ名を取得する。
+//
+
+System::String^
+FilePathUtils::getDirFromPath(
+        System::String^     pathName)
+{
+    return ( System::IO::Path::GetDirectoryName(pathName) );
+}
+
+//----------------------------------------------------------------
 //    ファイルの拡張子を取得する。
 //
 

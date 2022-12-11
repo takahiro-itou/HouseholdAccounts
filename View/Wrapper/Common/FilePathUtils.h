@@ -84,6 +84,15 @@ public:
             System::String^     stripDir);
 
     //----------------------------------------------------------------
+    /**   フルパスからディレクトリ名を取得する。
+    **
+    **  @param [in] pathName
+    **/
+    static  System::String^
+    getDirFromPath(
+            System::String^     pathName);
+
+    //----------------------------------------------------------------
     /**   ファイルの拡張子を取得する。
     **
     **  @param [in] pathName
