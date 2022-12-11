@@ -50,6 +50,10 @@ typedef     int                 IOffsetType;
 
 typedef     cli::array<System::String^, 1>      StringArray;
 
+//========================================================================
+
+typedef     HouseholdAccounts::StringIndex      StringIndex;
+
 }   //  End of namespace  Wrapper
 
 #endif
