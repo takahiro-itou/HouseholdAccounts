@@ -90,6 +90,18 @@ FilePathUtils::getAncestorDir(
     return ( pathName );
 }
 
+//----------------------------------------------------------------
+//    プロジェクトのディレクトリを取得する。
+//
+
+System::String^
+FilePathUtils::getProjectRootDir(
+        System::String^     pathName,
+        System::String^     stripDir)
+{
+    return ( getAncestorDir(pathName, stripDir) );
+}
+
 //========================================================================
 //
 //    Accessors.

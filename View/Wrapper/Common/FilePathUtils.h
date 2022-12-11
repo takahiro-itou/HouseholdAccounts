@@ -83,6 +83,17 @@ public:
             System::String^     pathName,
             System::String^     stripDir);
 
+    //----------------------------------------------------------------
+    /**   プロジェクトのディレクトリを取得する。
+    **
+    **  @param [in] pathName
+    **  @param [in] stripDir
+    **/
+    static  System::String^
+    getProjectRootDir(
+            System::String^     pathName,
+            System::String^     stripDir);
+
 //========================================================================
 //
 //    Accessors.

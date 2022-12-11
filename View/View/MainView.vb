@@ -41,7 +41,8 @@ Dim lngDefaultHeight As Integer
 
     g_appRunPath = getAppPath()
     g_iniFileName = g_appRunPath & "\ApplicationSettings.ini"
-    g_appRootDir = getRootDir(g_appRunPath, "bin")
+    g_appRootDir = Wrapper.Common.FilePathUtils.getProjectRootDir(
+                        g_appRunPath, "bin")
 
     initializeTables()
     moveWindowToStartPosition(g_iniFileName, INI_SEC_MAIN_VIEW, Me, Nothing)
