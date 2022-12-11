@@ -142,7 +142,79 @@ StringIndex
 StringTable::insertString(
         System::String^     strText)
 {
-    return ( -1 );
+    StringIndex         lngIndex, lngResult, lngInsertPos;
+    StringIndex         bsLeft, bsRight, lngTarget;
+    System::String^     strCheck;
+
+    //  指定されたデータの検索と挿入位置の決定を行う。  //
+    bsLeft  = 0;
+    bsRight = this->nNumEntry - 1;
+    lngResult = -1;
+
+    while ( bsRight - bsLeft >= 8 ) {
+        lngTarget = (bsLeft + bsRight) / 2;
+        lngIndex = this->nSortIndex[lngTarget];
+        strCheck = this->sTableEntries[lngIndex];
+
+        if ( strCheck == strText ) {
+            //  見つかった  //
+            lngResult = lngIndex;
+            bsLeft = lngTarget;
+            bsRight =lngTarget;
+            break;
+        }
+
+        //  検索範囲を絞る  //
+        if ( System::String::Compare(strCheck, strText) < 0 ) {
+            //  検索しているデータは現在位置より右にある。  //
+            bsLeft  = lngTarget + 1;
+        } else {
+            //  検索しているデータは現在位置より左にある。  //
+            bsRight = lngTarget - 1;
+        }
+    }
+
+    //  ある程度範囲が小さくなったところで、単純検索に切り替える。  //
+    lngInsertPos = bsRight + 1;
+    for ( lngTarget = bsLeft; lngTarget <= bsRight; ++ lngTarget ) {
+        lngIndex = this->nSortIndex[lngTarget];
+        strCheck = this->sTableEntries[lngIndex];
+
+        if ( strCheck == strText ) {
+            //  見つかった  //
+            lngResult = lngIndex;
+            break;
+        }
+        if ( System::String::Compare(strCheck, strText) > 0 ) {
+            //  この時点で指定されたデータがテーブル内に存在しない  //
+            lngResult = -1;
+            lngInsertPos = lngTarget;
+            break;
+        }
+    }
+
+    //  データが見つかった場合はそのインデックスを返して終了。  //
+    if ( lngResult >= 0 ) {
+        return ( lngResult );
+    }
+
+    //  データをテーブルの最後尾に追加し、  //
+    //  ソートインデックスを更新する。      //
+    lngIndex = this->nNumEntry ++;
+
+    reserveBuffer(this->nNumEntry);
+    appendString(strText);
+
+    //  挿入位置より後ろにあるデータをずらす。  //
+    for ( StringIndex i = this->nNumEntry - 1; i >= lngInsertPos + 1; -- i )
+    {
+        this->nSortIndex[i] = this->nSortIndex[i - 1];
+    }
+    //  挿入位置にインデックスを書き込む。  //
+    this->nSortIndex[lngInsertPos] = lngIndex;
+
+    //  挿入したデータのインデックスを返す。    //
+    return ( lngIndex );
 }
 
 //----------------------------------------------------------------
@@ -154,7 +226,7 @@ StringTable::reserveBuffer(
         const  StringIndex  bufSize)
 {
     const  StringIndex  siAlloc = (bufSize + 15) & ~15;
-    if ( siAlloc < this->nTableBufferSize ) {
+    if ( siAlloc <= this->nTableBufferSize ) {
         return ( this->nTableBufferSize );
     }
 
