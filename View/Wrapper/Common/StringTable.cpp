@@ -82,6 +82,27 @@ StringTable::appendString(
 }
 
 //----------------------------------------------------------------
+//    テーブルの整合性を検査する。
+//
+
+System::Boolean
+StringTable::checkIntegrity()
+{
+    for ( StringIndex i = 1; i < this->nNumEntry; ++ i ) {
+        const  StringIndex  j0  = this->nSortIndex[i - 1];
+        const  StringIndex  j1  = this->nSortIndex[i];
+
+        System::String^     s0  = this->sTableEntries[j0];
+        System::String^     s1  = this->sTableEntries[j1];
+        if ( System::String::Compare(s0, s1) >= 0 ) {
+            return ( false );
+        }
+    }
+
+    return ( true );
+}
+
+//----------------------------------------------------------------
 //    指定された文字列を検索する。
 //
 
