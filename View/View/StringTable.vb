@@ -188,7 +188,7 @@ Dim bytBuffer() As Byte
         .nSorted = STRINGSORTASCENDING
     End With
 
-    If (TestStringTable(utStringTable) = False) Then
+    If (utStringTable.checkIntegrity() = False) Then
         MessageBox.Show("文字列テーブルが正しくソートされていません。" & vbCrLf & "ソートしなおします。")
         SortStringTable(utStringTable)
     End If
