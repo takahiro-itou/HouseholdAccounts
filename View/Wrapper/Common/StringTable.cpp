@@ -94,7 +94,7 @@ StringTable::checkIntegrity()
 
         System::String^     s0  = this->sTableEntries[j0];
         System::String^     s1  = this->sTableEntries[j1];
-        if ( System::String::Compare(s0, s1) >= 0 ) {
+        if ( System::String::CompareOrdinal(s0, s1) >= 0 ) {
             return ( false );
         }
     }
