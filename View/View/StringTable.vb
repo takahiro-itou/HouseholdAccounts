@@ -176,7 +176,7 @@ Dim bytBuffer() As Byte
 
             If (lngSorted = STRINGSORTNONE) Then
                 'データがソートされていない場合は、基本挿入法を使う
-                InsertStringToTable(utStringTable, strTemp)
+                .insertString(strTemp)
             Else
                 'データがソートされている場合は、単純に最後に追加していく
                 .sTableEntries(i) = strTemp
