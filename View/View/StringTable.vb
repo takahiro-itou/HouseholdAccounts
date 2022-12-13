@@ -180,25 +180,4 @@ Dim bytBuffer() As Byte
     WriteStringTable = (lngEndPos - lngFirstPos)
 End Function
 
-Public Function TestStringTable(
-        ByRef lpTable As Wrapper.StringTable) As Boolean
-'---------------------------------------------------------------------
-'---------------------------------------------------------------------
-Dim i As Integer
-Dim j0 As Integer, j1 As Integer
-
-    For i = 1 To lpTable.nNumEntry - 1
-        j0 = lpTable.nSortIndex(i - 1)
-        j1 = lpTable.nSortIndex(i)
-
-        If lpTable.sTableEntries(j0) >= lpTable.sTableEntries(j1) Then
-            Debug.Print("NumEntry=", lpTable.nNumEntry)
-            TestStringTable = False
-            Exit Function
-        End If
-    Next i
-
-    TestStringTable = True
-End Function
-
 End Module
