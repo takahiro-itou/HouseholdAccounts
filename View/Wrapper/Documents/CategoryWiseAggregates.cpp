@@ -39,6 +39,37 @@ namespace  {
 //    Constructor(s) and Destructor.
 //
 
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （デフォルトコンストラクタ）。
+//
+
+CategoryWiseAggregates::CategoryWiseAggregates()
+{
+}
+
+//----------------------------------------------------------------
+//    インスタンスを破棄する。
+//  （デストラクタ）。
+//
+
+CategoryWiseAggregates::~CategoryWiseAggregates()
+{
+    //  マネージドリソースを破棄する。              //
+
+    //  続いて、アンマネージドリソースも破棄する。  //
+    this->!CategoryWiseAggregates();
+}
+
+//----------------------------------------------------------------
+//    アンマネージドリソースを破棄する。
+//  （ファイナライザ）。
+//
+
+CategoryWiseAggregates::!CategoryWiseAggregates()
+{
+}
+
 //========================================================================
 //
 //    Public Member Functions (Implement Pure Virtual).
