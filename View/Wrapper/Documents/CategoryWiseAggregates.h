@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Interface of ItemWiseAggregate class.
+**      An Interface of CategoryWiseAggregates class.
 **
-**      @file       Documents/ItemWiseAggregate.h
+**      @file       Documents/CategoryWiseAggregates.h
 **/
 
-#if !defined( HAWRAPPER_DOCUMENTS_INCLUDED_ITEM_WISE_AGGREGATE_H )
-#    define   HAWRAPPER_DOCUMENTS_INCLUDED_ITEM_WISE_AGGREGATE_H
+#if !defined( HAWRAPPER_DOCUMENTS_INCLUDED_CATEGORY_WISE_AGGREGATES_H )
+#    define   HAWRAPPER_DOCUMENTS_INCLUDED_CATEGORY_WISE_AGGREGATES_H
 
 #pragma     once
 
@@ -30,14 +30,14 @@ namespace  Documents  {
 
 //========================================================================
 //
-//    ItemWiseAggregate  class.
+//    CategoryWiseAggregates  class.
 //
 
 /**
 **    項目ごとの集計した結果を管理するクラス。
 **/
 
-public ref  class  ItemWiseAggregate
+public ref  class  CategoryWiseAggregates
 {
 
 //========================================================================

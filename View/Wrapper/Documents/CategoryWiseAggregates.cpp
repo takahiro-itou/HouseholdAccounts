@@ -13,14 +13,14 @@
 *************************************************************************/
 
 /**
-**      An Implementation of ItemWiseAggregate class.
+**      An Implementation of CategoryWiseAggregates class.
 **
-**      @file       Documents/ItemWiseAggregate.cpp
+**      @file       Documents/CategoryWiseAggregates.cpp
 **/
 
 #include    "PreCompile.h"
 
-#include    "ItemWiseAggregate.h"
+#include    "CategoryWiseAggregates.h"
 
 namespace  Wrapper  {
 namespace  Documents  {
@@ -31,7 +31,7 @@ namespace  {
 
 //========================================================================
 //
-//    ItemWiseAggregate  class.
+//    CategoryWiseAggregates  class.
 //
 
 //========================================================================
