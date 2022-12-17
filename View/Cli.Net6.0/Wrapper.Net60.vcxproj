@@ -141,7 +141,7 @@
     <ClInclude Include="..\Wrapper\Common\StringTable.h" />
     <ClInclude Include="..\Wrapper\Common\TextOperation.h" />
 
-    <ClInclude Include="..\Wrapper\Documents\ItemWiseAggregate.h" />
+    <ClInclude Include="..\Wrapper\Documents\CategoryWiseAggregates.h" />
 
     <ClInclude Include="..\Wrapper\Interface\AccountBook.h" />
     <ClInclude Include="..\Wrapper\Interface\AggregateData.h" />
@@ -162,7 +162,7 @@
     <ClCompile Include="..\Wrapper\Common\StringTable.cpp" />
     <ClCompile Include="..\Wrapper\Common\TextOperation.cpp" />
 
-    <ClCompile Include="..\Wrapper\Documents\ItemWiseAggregate.cpp" />
+    <ClCompile Include="..\Wrapper\Documents\CategoryWiseAggregates.cpp" />
 
     <ClCompile Include="..\Wrapper\Interface\AccountBook.cpp" />
     <ClCompile Include="..\Wrapper\Interface\AggregateData.cpp" />
