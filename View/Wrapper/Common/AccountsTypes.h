@@ -52,6 +52,7 @@ typedef     cli::array<System::String^, 1>      StringArray;
 
 //========================================================================
 
+typedef     HouseholdAccounts::CategoryHandle   CategoryHandle;
 typedef     HouseholdAccounts::StringIndex      StringIndex;
 
 }   //  End of namespace  Wrapper
