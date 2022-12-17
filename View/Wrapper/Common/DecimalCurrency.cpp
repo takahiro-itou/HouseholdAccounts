@@ -40,6 +40,64 @@ namespace  {
 //    Constructor(s) and Destructor.
 //
 
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （デフォルトコンストラクタ）。
+//
+
+DecimalCurrency::DecimalCurrency()
+    : m_internValue(0),
+      m_scaleFactor(1)
+{
+}
+
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （コンストラクタ）。
+//
+
+DecimalCurrency::DecimalCurrency(
+        const   TInternalValue  intValue,
+        const   TInternalValue  intScale)
+    : m_internValue(intValue),
+      m_scaleFactor(intScale)
+{
+}
+
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （コンストラクタ）。
+//
+
+DecimalCurrency::DecimalCurrency(
+        const   TInternalValue  intValue)
+    : m_internValue(intValue),
+      m_scaleFactor(1)
+{
+}
+
+//----------------------------------------------------------------
+//    インスタンスを破棄する
+//  （デストラクタ）。
+//
+
+DecimalCurrency::~DecimalCurrency()
+{
+    //  マネージドリソースを破棄する。              //
+
+    //  続いて、アンマネージドリソースも破棄する。  //
+    this->!DecimalCurrency();
+}
+
+//----------------------------------------------------------------
+//    アンマネージドリソースを破棄する
+//  （ファイナライザ）。
+//
+
+DecimalCurrency::!DecimalCurrency()
+{
+}
+
 //========================================================================
 //
 //    Public Member Functions (Implement Pure Virtual).
@@ -65,6 +123,11 @@ namespace  {
 //    Public Member Functions.
 //
 
+//========================================================================
+//
+//    Accessors.
+//
+
 //----------------------------------------------------------------
 //    現在の値を取得する。
 //
@@ -72,13 +135,24 @@ namespace  {
 DecimalCurrency::DecimalType
 DecimalCurrency::getValue()
 {
-    return ( static_cast<DecimalType>(this->m_intVal) );
+    return (
+            static_cast<DecimalType>(this->m_internValue) /
+            static_cast<DecimalType>(this->m_scaleFactor)
+    );
 }
 
-//========================================================================
+//----------------------------------------------------------------
+//    値を設定する。
 //
-//    Accessors.
-//
+
+void
+DecimalCurrency::setInternalValue(
+        const   TInternalValue  intValue,
+        const   TInternalValue  intScale)
+{
+    this->m_internValue = intValue;
+    this->m_scaleFactor = intScale;
+}
 
 //========================================================================
 //
@@ -102,7 +176,7 @@ DecimalCurrency::decimalValue::get()
 DecimalCurrency::TInternalValue
 DecimalCurrency::internalValue::get()
 {
-    return ( this->m_intVal );
+    return ( this->m_internValue );
 }
 
 //========================================================================

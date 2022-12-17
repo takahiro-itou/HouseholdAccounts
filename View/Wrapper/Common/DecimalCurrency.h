@@ -54,6 +54,48 @@ public:
 //
 //    Constructor(s) and Destructor.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （デフォルトコンストラクタ）。
+    **
+    **/
+    DecimalCurrency();
+
+    //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （コンストラクタ）。
+    **
+    **  @param [in] intValue    内部の値。
+    **  @param [in] intScale    スケール。
+    **/
+    DecimalCurrency(
+            const   TInternalValue  intValue,
+            const   TInternalValue  intScale);
+
+    //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （コンストラクタ）。
+    **
+    **  @param [in] intValue    内部の値。
+    **/
+    DecimalCurrency(
+            const   TInternalValue  intValue);
+
+    //----------------------------------------------------------------
+    /**   インスタンスを破棄する
+    **  （デストラクタ）。
+    **
+    **/
+    ~DecimalCurrency();
+
+    //----------------------------------------------------------------
+    /**   アンマネージドリソースを破棄する
+    **  （ファイナライザ）。
+    **
+    **/
+    !DecimalCurrency();
 
 //========================================================================
 //
@@ -92,6 +134,18 @@ public:
     **/
     DecimalType
     getValue();
+
+    //----------------------------------------------------------------
+    /**   値を設定する。
+    **
+    **  @param [in] intValue    内部の値。
+    **  @param [in] intScale    スケール。
+    **  @return     void.
+    **/
+    void
+    setInternalValue(
+            const   TInternalValue  intValue,
+            const   TInternalValue  intScale);
 
 //========================================================================
 //
@@ -135,7 +189,9 @@ public:
 //
 private:
 
-    TInternalValue      m_intVal;
+    TInternalValue      m_internValue;
+
+    TInternalValue      m_scaleFactor;
 
 //========================================================================
 //
