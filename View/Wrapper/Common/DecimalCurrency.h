@@ -44,6 +44,11 @@ public ref  class  DecimalCurrency
 //
 //    Internal Type Definitions.
 //
+public:
+
+    typedef     int64_t     TInternalValue;
+
+    typedef     double      DecimalType;
 
 //========================================================================
 //
@@ -79,11 +84,40 @@ public ref  class  DecimalCurrency
 //
 //    Accessors.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   現在の値を取得する。
+    **
+    **/
+    DecimalType
+    getValue();
 
 //========================================================================
 //
 //    Properties.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   通貨型の値。
+    **
+    **/
+    property    DecimalType
+    decimalValue
+    {
+        DecimalType     get();
+    }
+
+    //----------------------------------------------------------------
+    /**   内部表現の値。
+    **
+    **/
+    property    TInternalValue
+    internalValue
+    {
+        TInternalValue  get();
+    }
 
 //========================================================================
 //
@@ -99,6 +133,9 @@ public ref  class  DecimalCurrency
 //
 //    Member Variables.
 //
+private:
+
+    TInternalValue      m_intVal;
 
 //========================================================================
 //

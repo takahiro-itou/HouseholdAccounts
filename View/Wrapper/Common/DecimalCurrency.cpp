@@ -65,6 +65,16 @@ namespace  {
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    現在の値を取得する。
+//
+
+DecimalCurrency::DecimalType
+DecimalCurrency::getValue()
+{
+    return ( static_cast<DecimalType>(this->m_intVal) );
+}
+
 //========================================================================
 //
 //    Accessors.
@@ -74,6 +84,26 @@ namespace  {
 //
 //    Properties.
 //
+
+//----------------------------------------------------------------
+//    通貨型の値。
+//
+
+DecimalCurrency::DecimalType
+DecimalCurrency::decimalValue::get()
+{
+    return ( getValue() );
+}
+
+//----------------------------------------------------------------
+//    内部表現の値。
+//
+
+DecimalCurrency::TInternalValue
+DecimalCurrency::internalValue::get()
+{
+    return ( this->m_intVal );
+}
 
 //========================================================================
 //
