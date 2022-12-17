@@ -71,7 +71,7 @@
       <Filter>Common\Source Files</Filter>
     </ClCompile>
 
-    <ClCompile Include="..\Wrapper\Documents\ItemWiseAggregate.cpp">
+    <ClCompile Include="..\Wrapper\Documents\CategoryWiseAggregates.cpp">
       <Filter>Documents\Source Files</Filter>
     </ClCompile>
 
@@ -123,7 +123,7 @@
       <Filter>Common\Header Files</Filter>
     </ClInclude>
 
-    <ClInclude Include="..\Wrapper\Documents\ItemWiseAggregate.h">
+    <ClInclude Include="..\Wrapper\Documents\CategoryWiseAggregates.h">
       <Filter>Documents\Header Files</Filter>
     </ClInclude>
 
