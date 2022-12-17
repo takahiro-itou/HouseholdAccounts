@@ -63,7 +63,7 @@ BookCategory::~BookCategory()
     this->m_subCategories   = nullptr;
 
     //  続いて、アンマネージドリソースも破棄する。  //
-    this->!CategoryWiseAggregates();
+    this->!BookCategory();
 }
 
 //----------------------------------------------------------------
