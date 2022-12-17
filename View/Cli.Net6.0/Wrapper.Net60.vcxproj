@@ -136,6 +136,7 @@
 
     <ClInclude Include="..\Wrapper\Common\AccountsConst.h" />
     <ClInclude Include="..\Wrapper\Common\AccountsTypes.h" />
+    <ClInclude Include="..\Wrapper\Common\DecimalCurrency.h" />
     <ClInclude Include="..\Wrapper\Common\FilePathUtils.h" />
     <ClInclude Include="..\Wrapper\Common\ManagedDate.h" />
     <ClInclude Include="..\Wrapper\Common\StringTable.h" />
@@ -157,6 +158,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
 
+    <ClCompile Include="..\Wrapper\Common\DecimalCurrency.cpp" />
     <ClCompile Include="..\Wrapper\Common\FilePathUtils.cpp" />
     <ClCompile Include="..\Wrapper\Common\ManagedDate.cpp" />
     <ClCompile Include="..\Wrapper\Common\StringTable.cpp" />
