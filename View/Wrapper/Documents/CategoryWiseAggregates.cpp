@@ -105,7 +105,7 @@ CategoryWiseAggregates::!CategoryWiseAggregates()
 //    Properties.
 //
 
-Common::DecimalCurrency^
+Common::DecimalCurrency
 CategoryWiseAggregates::categoryValue::get(
         CategoryHandle  idxCategory)
 {
