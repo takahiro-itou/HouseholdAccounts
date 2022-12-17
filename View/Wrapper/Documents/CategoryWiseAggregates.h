@@ -48,7 +48,8 @@ public ref  class  CategoryWiseAggregates
 public:
 
     /**   集計結果を保存する配列型。    **/
-    typedef     cli::array<DecimalCurrency^, 1>     AggregatesList;
+    typedef     cli::array<Common::DecimalCurrency^, 1>
+    AggregatesList;
 
 //========================================================================
 //
