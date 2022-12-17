@@ -24,6 +24,7 @@
 #pragma     once
 
 #include    "Common/AccountsTypes.h"
+#include    "Common/DecimalCurrency.h"
 
 namespace  Wrapper  {
 namespace  Documents  {
@@ -44,6 +45,10 @@ public ref  class  CategoryWiseAggregates
 //
 //    Internal Type Definitions.
 //
+public:
+
+    /**   集計結果を保存する配列型。    **/
+    typedef     cli::array<DecimalCurrency^, 1>     AggregatesList;
 
 //========================================================================
 //
@@ -120,6 +125,15 @@ public:
 //========================================================================
 //
 //    Member Variables.
+//
+private:
+
+    /**   集計した結果を格納する配列。  **/
+    AggregatesList^     m_aggregateResult;
+
+//========================================================================
+//
+//    Other Features.
 //
 
 };
