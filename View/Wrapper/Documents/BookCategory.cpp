@@ -96,10 +96,71 @@ BookCategory::!BookCategory()
 //    Accessors.
 //
 
+//----------------------------------------------------------------
+//    項目のフラグを取得する。
+//
+
+CategoryFlags
+BookCategory::getCategoryFlags()
+{
+    return ( this->m_categoryFlags );
+}
+
+//----------------------------------------------------------------
+//    サブ項目のインデックスの配列を取得する。
+//
+
+BookCategory::CategoryHandleArray^
+BookCategory::getSubCategories()
+{
+    return ( this->m_subCategories );
+}
+
 //========================================================================
 //
 //    Properties.
 //
+
+//----------------------------------------------------------------
+//    親項目のインデックス。
+//
+
+CategoryHandle
+BookCategory::parentHandle::get()
+{
+    return ( this->m_parentHandle );
+}
+
+//----------------------------------------------------------------
+//    項目の名前。
+//
+
+System::String^
+BookCategory::categoryName::get()
+{
+    return ( this->m_categoryName );
+}
+
+//----------------------------------------------------------------
+//    サブ項目数。
+//
+
+CategoryHandle
+BookCategory::numSubCategories::get()
+{
+    return ( this->m_numSubCategory );
+}
+
+//----------------------------------------------------------------
+//    サブ項目のインデックス。
+//
+
+CategoryHandle
+BookCategory::subCategory::get(
+        CategoryHandle  idxSub)
+{
+    return ( this->m_subCategories[idxSub] );
+}
 
 //========================================================================
 //
