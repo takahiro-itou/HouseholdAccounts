@@ -105,6 +105,13 @@ CategoryWiseAggregates::!CategoryWiseAggregates()
 //    Properties.
 //
 
+Common::DecimalCurrency^
+CategoryWiseAggregates::categoryValue::get(
+        CategoryHandle  idxCategory)
+{
+    return ( this->m_aggregateResult[idxCategory] );
+}
+
 //========================================================================
 //
 //    Protected Member Functions.

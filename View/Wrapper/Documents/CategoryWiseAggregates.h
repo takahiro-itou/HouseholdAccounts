@@ -112,6 +112,13 @@ public:
 //
 //    Properties.
 //
+public:
+
+    property    Common::DecimalCurrency^
+    categoryValue[int]
+    {
+        Common::DecimalCurrency^    get(CategoryHandle  idxCategory);
+    }
 
 //========================================================================
 //
