@@ -43,6 +43,9 @@ public ref  class  CategoryManager
 //
 //    Internal Type Definitions.
 //
+private:
+
+    typedef     cli::array<BookCategory^, 1>    CategoryArray;
 
 //========================================================================
 //
@@ -120,6 +123,25 @@ public:
 //
 //    Member Variables.
 //
+private:
+
+    /**   項目用バッファサイズ。    **/
+    CategoryHandle      m_cateBufferSize;
+
+    /**   登録済みの項目の数。      **/
+    CategoryHandle      m_numUsedCategory;
+
+    /**   ルートになる項目の個数。  **/
+    CategoryHandle      m_numRootCategory;
+
+    /**   項目のデータ。            **/
+    CategoryArray^      m_bufCategory;
+
+    /**   「内税」項目のハンドル。  **/
+    CategoryHandle      m_chInnerTax;
+
+    /**   「外税」項目のハンドル。  **/
+    CategoryHandle      m_chOuterTax;
 
 //========================================================================
 //
