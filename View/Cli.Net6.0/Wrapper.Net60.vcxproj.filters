@@ -77,6 +77,9 @@
     <ClCompile Include="..\Wrapper\Documents\BookCategory.cpp">
       <Filter>Documents\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Wrapper\Documents\CategoryManager.cpp">
+      <Filter>Documents\Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\Wrapper\Documents\CategoryWiseAggregates.cpp">
       <Filter>Documents\Source Files</Filter>
     </ClCompile>
@@ -133,6 +136,9 @@
     </ClInclude>
 
     <ClInclude Include="..\Wrapper\Documents\BookCategory.h">
+      <Filter>Documents\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Documents\CategoryManager.h">
       <Filter>Documents\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Wrapper\Documents\CategoryWiseAggregates.h">
