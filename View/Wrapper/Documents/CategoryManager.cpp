@@ -105,7 +105,7 @@ CategoryManager::!CategoryManager()
 //
 
 CategoryHandle
-CategoryManager::getBuffercCapacity()
+CategoryManager::getBufferCapacity()
 {
     return ( this->m_cateBufferSize );
 }
@@ -118,6 +118,16 @@ CategoryHandle
 CategoryManager::getRegisteredCategoryCount()
 {
     return ( this->m_numUsedCategory );
+}
+
+//----------------------------------------------------------------
+//    ルートにある項目数を取得する。
+//
+
+CategoryHandle
+CategoryManager::getRootCategoryCount()
+{
+    return ( this->m_numRootCategory );
 }
 
 //========================================================================

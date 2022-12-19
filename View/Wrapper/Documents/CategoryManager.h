@@ -111,7 +111,7 @@ public:
     **  @return     項目用バッファのサイズ。
     **/
     CategoryHandle
-    getBuffercCapacity();
+    getBufferCapacity();
 
     //----------------------------------------------------------------
     /**   登録済みの項目数を取得する。
@@ -120,6 +120,14 @@ public:
     **/
     CategoryHandle
     getRegisteredCategoryCount();
+
+    //----------------------------------------------------------------
+    /**   ルートにある項目数を取得する。
+    **
+    **  @return     ルートの項目数を返す。
+    **/
+    CategoryHandle
+    getRootCategoryCount();
 
 //========================================================================
 //
