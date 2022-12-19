@@ -100,6 +100,26 @@ CategoryManager::!CategoryManager()
 //    Accessors.
 //
 
+//----------------------------------------------------------------
+//    項目用のバッファのサイズを得る。
+//
+
+CategoryHandle
+CategoryManager::getBuffercCapacity()
+{
+    return ( this->m_cateBufferSize );
+}
+
+//----------------------------------------------------------------
+//    登録済みの項目数を取得する。
+//
+
+CategoryHandle
+CategoryManager::getRegisteredCategoryCount()
+{
+    return ( this->m_numUsedCategory );
+}
+
 //========================================================================
 //
 //    Properties.
