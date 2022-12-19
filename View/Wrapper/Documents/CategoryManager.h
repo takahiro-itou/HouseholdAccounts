@@ -98,6 +98,18 @@ public:
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   項目のルート項目のハンドルを取得する。
+    **
+    **  @param [in] idxCate   項目番号。
+    **  @return     項目がルート項目を示している場合は、
+    **      それ自身を返す。
+    **/
+    CategoryHandle
+    getRootCategoryHandle(
+            const   CategoryHandle  idxCate);
 
 //========================================================================
 //
