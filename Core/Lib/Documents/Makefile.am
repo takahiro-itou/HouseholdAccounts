@@ -22,7 +22,9 @@ EXTRA_NOINST_DATA_FILES     =
 EXTRA_NOINST_HEADER_FILES   =
 
 LIBRARY_SOURCE_FILES        =  \
+        BookCategory.cpp               \
         BookDocument.cpp               \
+        CategoryManager.cpp            \
         StringTable.cpp                \
         ${EXTRA_LIBRARY_SOURCE_FILES}
 
@@ -37,8 +39,10 @@ DIST_NOINST_HEADER_FILES    =  \
         ${EXTRA_NOINST_HEADER_FILES}
 
 INCLIB_HEADER_FILES         =  \
-        ${INCLIB_SOURCE_DIR}/BookDocument.h  \
-        ${INCLIB_SOURCE_DIR}/StringTable.h   \
+        ${INCLIB_SOURCE_DIR}/BookCategory.h            \
+        ${INCLIB_SOURCE_DIR}/BookDocument.h            \
+        ${INCLIB_SOURCE_DIR}/CategoryManager.h         \
+        ${INCLIB_SOURCE_DIR}/StringTable.h             \
         ${EXTRA_LIBRARY_HEADER_FILES}
 
 INCLIB_NODIST_HEADER_FILES  =

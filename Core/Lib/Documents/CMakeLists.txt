@@ -17,12 +17,16 @@ Set (INCLIB_BINARY_DIR     "${INCLUDE_BINARY_DIR}/${MODULE_DIR_NAME}")
 ##
 
 Set (LIBRARY_SOURCE_FILES
+        BookCategory.cpp
         BookDocument.cpp
+        CategoryManager.cpp
         StringTable.cpp
 )
 
 Set (INCLIB_HEADER_FILES
+        ${INCLIB_SOURCE_DIR}/BookCategory.h
         ${INCLIB_SOURCE_DIR}/BookDocument.h
+        ${INCLIB_SOURCE_DIR}/CategoryManager.h
         ${INCLIB_SOURCE_DIR}/StringTable.h
 )
 

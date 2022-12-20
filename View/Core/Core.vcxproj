@@ -133,11 +133,16 @@
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
+
   <ItemGroup>
+    <ClCompile Include="..\..\Core\Lib\Documents\BookCategory.cpp" />
     <ClCompile Include="..\..\Core\Lib\Documents\BookDocument.cpp" />
+    <ClCompile Include="..\..\Core\Lib\Documents\CategoryManager.cpp" />
     <ClCompile Include="..\..\Core\Lib\Documents\StringTable.cpp" />
+
     <ClCompile Include="..\..\Core\Lib\FileFormat\BookFile.cpp" />
   </ItemGroup>
+
   <ItemGroup>
     <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Common\HouseholdAccountsSettings.h" />
     <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Documents\BookDocument.h" />
