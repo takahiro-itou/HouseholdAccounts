@@ -135,6 +135,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ClCompile Include="..\..\Core\Lib\Common\DecimalCurrency.cpp" />
+    <ClCompile Include="..\..\Core\Lib\Common\TextParser.cpp" />
+
     <ClCompile Include="..\..\Core\Lib\Documents\BookCategory.cpp" />
     <ClCompile Include="..\..\Core\Lib\Documents\BookDocument.cpp" />
     <ClCompile Include="..\..\Core\Lib\Documents\CategoryManager.cpp" />
@@ -144,9 +147,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Common\AccountsTypes.h" />
+    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Common\BookInterface.h" />
+    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Common\DecimalCurrency.h" />
     <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Common\HouseholdAccountsSettings.h" />
+    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Common\TextParser.h" />
+
+    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Documents\BookCategory.h" />
     <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Documents\BookDocument.h" />
+    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Documents\CategoryManager.h" />
     <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Documents\StringTable.h" />
+
     <ClInclude Include="..\..\Core\Include\HouseholdAccounts\FileFormat\BookFile.h" />
   </ItemGroup>
 
