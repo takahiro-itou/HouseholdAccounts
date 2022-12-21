@@ -4,26 +4,26 @@
 ##    モジュールの設定。
 ##
 
-Set (MODULE_DIR_NAME       "Documents")
-Set (MODULE_OUTPUT_NAME    "Documents")
-Set (MODULE_TITLE          "Documents")
+set(MODULE_DIR_NAME         "Documents")
+set(MODULE_OUTPUT_NAME      "Documents")
+set(MODULE_TITLE            "Documents")
 
-Set (INCLIB_SOURCE_DIR     "${INCLUDE_SOURCE_DIR}/${MODULE_DIR_NAME}")
-Set (INCLIB_BINARY_DIR     "${INCLUDE_BINARY_DIR}/${MODULE_DIR_NAME}")
+set(INCLIB_SOURCE_DIR       "${INCLUDE_SOURCE_DIR}/${MODULE_DIR_NAME}")
+set(INCLIB_BINARY_DIR       "${INCLUDE_BINARY_DIR}/${MODULE_DIR_NAME}")
 
 ##----------------------------------------------------------------
 ##
 ##    ソースファイルとヘッダファイルのリスト。
 ##
 
-Set (LIBRARY_SOURCE_FILES
+set(LIBRARY_SOURCE_FILES
         BookCategory.cpp
         BookDocument.cpp
         CategoryManager.cpp
         StringTable.cpp
 )
 
-Set (INCLIB_HEADER_FILES
+set(INCLIB_HEADER_FILES
         ${INCLIB_SOURCE_DIR}/BookCategory.h
         ${INCLIB_SOURCE_DIR}/BookDocument.h
         ${INCLIB_SOURCE_DIR}/CategoryManager.h
@@ -42,5 +42,5 @@ Include (${COMMON_CMAKE_DIR}/BuildLibraryCommon.cmake)
 ##    テストの設定。
 ##
 
-Add_SubDirectory (Tests)
+add_subdirectory(Tests)
 
