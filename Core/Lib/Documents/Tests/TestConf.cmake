@@ -14,6 +14,11 @@ add_test(
     COMMAND     $<TARGET_FILE:BookDocumentTest>
 )
 
+add_test(
+    NAME        CategoryManagerTest
+    COMMAND     $<TARGET_FILE:CategoryManagerTest>
+)
+
 ##----------------------------------------------------------------
 ##
 ##    テストプログラムのビルド。
@@ -22,4 +27,6 @@ add_test(
 add_executable(BookCategoryTest     BookCategoryTest.cpp)
 
 add_executable(BookDocumentTest     BookDocumentTest.cpp)
+
+add_executable(CategoryManagerTest  CategoryManagerTest.cpp)
 

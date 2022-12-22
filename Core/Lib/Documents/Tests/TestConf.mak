@@ -4,9 +4,10 @@
 ##
 
 EXTRATESTS              =
-TESTS                   =  \
-        BookCategoryTest   \
-        BookDocumentTest   \
+TESTS                   =      \
+        BookCategoryTest       \
+        BookDocumentTest       \
+        CategoryManagerTest    \
         ${EXTRATESTS}
 ##
 ##    Test Configurations.
@@ -31,6 +32,7 @@ TEST_LDFLAGS_COMMON         +=
 ##    Test Programs.
 ##
 
-BookCategoryTest_SOURCES  =  BookCategoryTest.cpp
-BookDocumentTest_SOURCES  =  BookDocumentTest.cpp
+BookCategoryTest_SOURCES     =  BookCategoryTest.cpp
+BookDocumentTest_SOURCES     =  BookDocumentTest.cpp
+CategoryManagerTest_SOURCES  =  CategoryManagerTest.cpp
 
