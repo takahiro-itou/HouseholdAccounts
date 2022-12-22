@@ -5,6 +5,7 @@
 
 EXTRATESTS              =
 TESTS                   =  \
+        DecimalCurrencyTest            \
         HouseholdAccountsSettingsTest  \
         TextParserTest                 \
         ${EXTRATESTS}
@@ -31,6 +32,7 @@ TEST_LDFLAGS_COMMON         +=
 ##    Test Programs.
 ##
 
+DecimalCurrencyTest_SOURCES             =  DecimalCurrencyTest.cpp
 HouseholdAccountsSettingsTest_SOURCES   =  HouseholdAccountsSettingsTest.cpp
 TextParserTest_SOURCES                  =  TextParserTest.cpp
 

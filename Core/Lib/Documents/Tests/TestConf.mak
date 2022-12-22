@@ -4,7 +4,7 @@
 ##
 
 EXTRATESTS              =
-TESTS                   =      \
+TESTS                   =  \
         BookCategoryTest       \
         BookDocumentTest       \
         CategoryManagerTest    \
