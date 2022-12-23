@@ -108,6 +108,11 @@ public:
 //
 //    Member Variables.
 //
+private:
+
+    TInternalValue      m_internValue;
+
+    TInternalValue      m_scaleFactor;
 
 //========================================================================
 //
