@@ -63,6 +63,35 @@ public:
     DecimalCurrency();
 
     //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （コンストラクタ）。
+    **
+    **  @param [in] intValue    内部の値。
+    **  @param [in] intScale    スケール。
+    **/
+    DecimalCurrency(
+            const   TInternalValue  intValue,
+            const   TInternalValue  intScale);
+
+    //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （コンストラクタ）。
+    **
+    **  @param [in] intValue    内部の値。
+    **/
+    DecimalCurrency(
+            const   TInternalValue  intValue);
+
+    //----------------------------------------------------------------
+    /**   別のインスタンスと同じ内容で初期化する。
+    **  （コピーコンストラクタ）。
+    **
+    **  @param [in] src   コピー元インスタンス。
+    **/
+    DecimalCurrency(
+            const  DecimalCurrency  &src);
+
+    //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
