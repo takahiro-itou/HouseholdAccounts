@@ -33,7 +33,7 @@ namespace  Common  {
 //    DecimalCurrency  class.
 //
 /**
-**
+**    固定小数点型の通貨クラス。
 **/
 
 class  DecimalCurrency
@@ -43,6 +43,11 @@ class  DecimalCurrency
 //
 //    Internal Type Definitions.
 //
+public:
+
+    typedef     int64_t     TInternalValue;
+
+    typedef     double      DecimalType;
 
 //========================================================================
 //
