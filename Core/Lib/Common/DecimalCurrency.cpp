@@ -120,6 +120,47 @@ DecimalCurrency::~DecimalCurrency()
 
 //========================================================================
 //
+//    Accessors.
+//
+
+//----------------------------------------------------------------
+//    現在の内部表現の値を取得する。
+//
+
+const   DecimalCurrency::TInternalValue
+DecimalCurrency::getInternalValue()  const
+{
+    return ( this->m_internValue );
+}
+
+//----------------------------------------------------------------
+//    値を設定する。
+//
+
+DecimalCurrency  &
+DecimalCurrency::setInternalValue(
+        const   TInternalValue  intValue)
+{
+    this->m_internValue = intValue;
+    return  ( *this );
+}
+
+//----------------------------------------------------------------
+//    値を設定する。
+//
+
+DecimalCurrency  &
+DecimalCurrency::setInternalValue(
+        const   TInternalValue  intValue,
+        const   TInternalValue  intScale)
+{
+    this->m_internValue = intValue;
+    this->m_scaleFactor = intScale;
+    return ( *this );
+}
+
+//========================================================================
+//
 //    Protected Member Functions.
 //
 

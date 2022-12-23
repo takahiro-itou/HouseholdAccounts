@@ -125,6 +125,42 @@ public:
 
 //========================================================================
 //
+//    Accessors.
+//
+public:
+
+    //----------------------------------------------------------------
+    /**   現在の内部表現の値を取得する。
+    **
+    **  @return     内部表現の値。
+    **/
+    const   TInternalValue
+    getInternalValue()  const;
+
+    //----------------------------------------------------------------
+    /**   値を設定する。
+    **
+    **  @param [in] intValue    内部表現の数値。
+    **  @return     インスタンス自身の参照。
+    **/
+    DecimalCurrency  &
+    setInternalValue(
+            const   TInternalValue  intValue);
+
+    //----------------------------------------------------------------
+    /**   値を設定する。
+    **
+    **  @param [in] intValue    内部表現の数値。
+    **  @param [in] intScale    スケール。
+    **  @return     インスタンス自身の参照。
+    **/
+    DecimalCurrency  &
+    setInternalValue(
+            const   TInternalValue  intValue,
+            const   TInternalValue  intScale);
+
+//========================================================================
+//
 //    Protected Member Functions.
 //
 
