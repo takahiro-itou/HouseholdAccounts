@@ -18,8 +18,8 @@
 **      @file       .Config/ConfiguredHouseholdAccounts.h.in
 **/
 
-#if !defined( HACCOUNTS_CONFIG_INCLUDED_CONFIGURED_HOUSEHOLD_ACCOUNTS_H )
-#    define   HACCOUNTS_CONFIG_INCLUDED_CONFIGURED_HOUSEHOLD_ACCOUNTS_H
+#if !defined( HACORE_CONFIG_INCLUDED_PRE_CONFIG_HOUSEHOLD_ACCOUNTS_MSVC_H )
+#    define   HACORE_CONFIG_INCLUDED_PRE_CONFIG_HOUSEHOLD_ACCOUNTS_MSVC_H
 
 //========================================================================
 //
