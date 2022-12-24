@@ -123,6 +123,14 @@ MYAC_WITH_EXT_LIB(
 
 dnl----------------------------------------------------------------
 dnl
+dnl   Linker Scripts.
+dnl   リンカスクリプトを生成する。
+dnl
+
+m4_include([.M4/LinkerScripts.m4])
+
+dnl----------------------------------------------------------------
+dnl
 dnl   Outputs.
 dnl   出力ファイルを設定する。
 dnl
