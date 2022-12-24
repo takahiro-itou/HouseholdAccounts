@@ -13,7 +13,7 @@ TESTS                   =  \
 ##    Test Configurations.
 ##
 
-TARGET_TESTEE_LIBRARY       +=  ../libhacCommon.a
+TARGET_TESTEE_LIBRARY       +=  -lhacCommon
 
 DIST_NOINST_DATA_FILES      +=
 DIST_NOINST_HEADER_FILES    +=
