@@ -21,6 +21,7 @@
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
 #    define   HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H
 
+
 #if !defined( HACORE_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H )
 #    include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
 #endif
@@ -34,6 +35,7 @@
 #    include    <stdint.h>
 #    define   HACORE_SYS_INCLUDED_STDINT_H
 #endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 

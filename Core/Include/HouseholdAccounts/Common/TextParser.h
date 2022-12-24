@@ -18,10 +18,14 @@
 **      @file       Common/TextParser.h
 **/
 
-#if !defined( HACCOUNTS_COMMON_INCLUDED_TEXT_PARSER_H )
-#    define   HACCOUNTS_COMMON_INCLUDED_TEXT_PARSER_H
+#if !defined( HACORE_COMMON_INCLUDED_TEXT_PARSER_H )
+#    define   HACORE_COMMON_INCLUDED_TEXT_PARSER_H
 
-#include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
+
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    include    "AccountsTypes.h"
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {
