@@ -24,6 +24,10 @@ Set (INCLIB_HEADER_FILES
         ${INCLIB_SOURCE_DIR}/BookFile.h
 )
 
+Set (MODULE_NEEDS_LIBRARIES
+        ${PROJECT_NAME}-${LIBRARIES_TARGET_PREFIX}Documents
+)
+
 ##----------------------------------------------------------------
 ##
 ##    ビルドとインストールの設定。

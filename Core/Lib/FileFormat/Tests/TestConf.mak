@@ -12,7 +12,7 @@ TESTS                   =  \
 ##    Test Configurations.
 ##
 
-TARGET_TESTEE_LIBRARY       +=  ../libhacFileFormat.a
+TARGET_TESTEE_LIBRARY       +=  -lhacFileFormat
 
 DIST_NOINST_DATA_FILES      +=
 DIST_NOINST_HEADER_FILES    +=
