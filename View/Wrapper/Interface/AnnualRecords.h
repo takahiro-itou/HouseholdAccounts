@@ -23,12 +23,13 @@
 
 #pragma     once
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
 
-#include    "Common/AccountsConst.h"
+#include    "Account/Common/AccountsTypes.h"
 
 #include    "AggregateData.h"
 #include    "Receipt.h"
+#include    "Wrapper/Common/AccountsConst.h"
+
 
 namespace  Wrapper  {
 

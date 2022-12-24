@@ -23,12 +23,12 @@
 
 #pragma     once
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
+#include    "Account/Common/AccountsTypes.h"
 
 #include    "AnnualRecords.h"
 #include    "BookItem.h"
-#include    "Common/ManagedDate.h"
-#include    "Common/StringTable.h"
+#include    "Wrapper/Common/ManagedDate.h"
+#include    "Wrapper/Common/StringTable.h"
 
 namespace  Wrapper  {
 

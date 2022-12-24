@@ -23,8 +23,8 @@
 
 #pragma     once
 
-#include    "Common/AccountsTypes.h"
-#include    "Common/DecimalCurrency.h"
+#include    "Wrapper/Common/AccountsTypes.h"
+#include    "Wrapper/Common/DecimalCurrency.h"
 
 namespace  Wrapper  {
 namespace  Documents  {

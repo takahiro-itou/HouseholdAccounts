@@ -13,52 +13,26 @@
 *************************************************************************/
 
 /**
-**      Type Definitions.
+**      配列操作のユーティリティ。
 **
-**      @file       Common/AccountsTypes.h
+**      @file       Interface/ArrayUtils.h
 **/
 
-#if !defined( HAWRAPPER_COMMON_INCLUDED_ACCOUNTS_TYPES_H )
-#    define   HAWRAPPER_COMMON_INCLUDED_ACCOUNTS_TYPES_H
+#if !defined( HAWRAPPER_COMMON_INCLUDED_ARRAY_UTILS_H )
+#    define   HAWRAPPER_COMMON_INCLUDED_ARRAY_UTILS_H
 
 #pragma     once
 
-#include    "Account/Common/AccountsTypes.h"
+#include    "HouseholdAccounts/Common/AccountsTypes.h"
 
 namespace  Wrapper  {
 
-public  enum class  ErrCode
-{
-    ERR_SUCCESS             = HouseholdAccounts::ERR_SUCCESS,
-    ERR_FAILURE             = HouseholdAccounts::ERR_FAILURE,
-    ERR_FILE_OPEN_ERROR     = HouseholdAccounts::ERR_FILE_OPEN_ERROR,
-    ERR_FILE_IO_ERROR       = HouseholdAccounts::ERR_FILE_IO_ERROR,
-    ERR_INDEX_OUT_OF_RANGE  = HouseholdAccounts::ERR_INDEX_OUT_OF_RANGE
-};
-
-//----------------------------------------------------------------
-/**
-**
-**/
-
-typedef     int                 IOffsetType;
-
-//----------------------------------------------------------------
-/**
-**    文字列の配列型。
-**/
-
-typedef     cli::array<System::String^, 1>      StringArray;
-
-//========================================================================
-
-typedef     HouseholdAccounts::CategoryHandle   CategoryHandle;
-typedef     HouseholdAccounts::StringIndex      StringIndex;
-
 //========================================================================
 //
-//    配列型。
+//    配列操作のユーティリティ。
 //
+
+
 
 }   //  End of namespace  Wrapper
 

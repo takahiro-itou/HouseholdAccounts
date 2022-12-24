@@ -20,7 +20,7 @@
 
 #pragma     once
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
+#include    "Account/Common/AccountsTypes.h"
 
 namespace  Wrapper  {
 
