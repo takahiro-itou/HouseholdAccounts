@@ -153,6 +153,31 @@ public:
 //
 //    Member Variables.
 //
+private:
+
+    /**   項目フラグ。              **/
+    CategoryFlags           m_categoryFlags;
+
+    /**  親項目のインデックス。     **/
+    CategoryHandle          m_parentHandle;
+
+    /**   項目名の ID  (文字列テーブル内のインデックス) 。  **/
+    StringIndex             m_categoryNameId;
+
+    /**   項目名。                  **/
+    std::string             m_categoryName;
+
+    /**   サブ項目数。              **/
+    CategoryHandle          m_numSubCategory;
+
+    /**   サブ項目のインデックス。  **/
+    CategoryHandleArray     m_subCategories;
+
+    /**   開始年月日 (残高の項目のみ) 。    **/
+    int                     m_startDate;
+
+    /**   開始時の残高 (残高の項目のみ) 。  **/
+    DecimalCurrency         m_startBalance;
 
 //========================================================================
 //
