@@ -20,6 +20,8 @@
 
 #include    "PreCompile.h"
 
+#include    "Account/Documents/BookCategory.h"
+
 #include    "BookCategory.h"
 
 namespace  Wrapper  {
@@ -45,6 +47,7 @@ namespace  {
 //
 
 BookCategory::BookCategory()
+    : m_ptrObj(new WrapTarget())
 {
 }
 
@@ -73,6 +76,8 @@ BookCategory::~BookCategory()
 
 BookCategory::!BookCategory()
 {
+    delete  this->m_ptrObj;
+    this->m_ptrObj  = nullptr;
 }
 
 //========================================================================

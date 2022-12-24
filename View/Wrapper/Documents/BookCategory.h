@@ -23,8 +23,20 @@
 
 #pragma     once
 
+
 #include    "Wrapper/Common/AccountsTypes.h"
 #include    "Wrapper/Common/DecimalCurrency.h"
+
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
+
+//  クラスの前方宣言。  //
+namespace  Documents  {
+class   BookCategory;
+}   //  End of namespace  Documents
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+
 
 namespace  Wrapper  {
 namespace  Documents  {
@@ -87,6 +99,9 @@ public ref  class  BookCategory
 //    Internal Type Definitions.
 //
 private:
+
+    typedef     HouseholdAccounts::Documents::BookCategory
+    WrapTarget;
 
     typedef     cli::array<CategoryHandle, 1>
     CategoryHandleArray;
@@ -226,6 +241,8 @@ public:
 //    Member Variables.
 //
 private:
+
+    WrapTarget  *   m_ptrObj;
 
     /**   項目フラグ。              **/
     CategoryFlags           m_categoryFlags;
