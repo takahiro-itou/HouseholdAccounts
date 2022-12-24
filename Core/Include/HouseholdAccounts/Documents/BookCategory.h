@@ -79,11 +79,15 @@ enum class  CategoryFlags
 
 class  BookCategory
 {
-
 //========================================================================
 //
 //    Internal Type Definitions.
 //
+private:
+
+    typedef     std::vector<CategoryHandle> CategoryHandleArray;
+
+    typedef     Common::DecimalCurrency     DecimalCurrency;
 
 //========================================================================
 //
@@ -128,6 +132,11 @@ public:
 //========================================================================
 //
 //    Public Member Functions.
+//
+
+//========================================================================
+//
+//    Accessors.
 //
 
 //========================================================================
