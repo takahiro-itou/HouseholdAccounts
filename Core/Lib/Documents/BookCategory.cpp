@@ -18,6 +18,8 @@
 **      @file       Documents/BookCategory.cpp
 **/
 
+#include    "Account/pch/PreCompile.h"
+
 #include    "Account/Documents/BookCategory.h"
 
 

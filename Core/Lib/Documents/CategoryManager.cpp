@@ -18,6 +18,8 @@
 **      @file       Documents/CategoryManager.cpp
 **/
 
+#include    "Account/pch/PreCompile.h"
+
 #include    "Account/Documents/CategoryManager.h"
 
 
