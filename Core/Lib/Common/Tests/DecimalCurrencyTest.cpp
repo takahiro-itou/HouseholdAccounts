@@ -19,7 +19,8 @@
 **/
 
 #include    "TestDriver.h"
-#include    "HouseholdAccounts/Common/DecimalCurrency.h"
+#include    "Account/Common/DecimalCurrency.h"
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {

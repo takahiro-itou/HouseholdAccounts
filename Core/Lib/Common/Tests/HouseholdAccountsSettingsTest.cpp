@@ -19,7 +19,8 @@
 **/
 
 #include    "TestDriver.h"
-#include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
+#include    "Account/Common/HouseholdAccountsSettings.h"
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 

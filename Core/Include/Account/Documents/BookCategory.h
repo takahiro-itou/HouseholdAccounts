@@ -23,11 +23,11 @@
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
-#    include    "HouseholdAccounts/Common/AccountsTypes.h"
+#    include    "Account/Common/AccountsTypes.h"
 #endif
 
 #if !defined( HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H )
-#    include    "HouseholdAccounts/Common/DecimalCurrency.h"
+#    include    "Account/Common/DecimalCurrency.h"
 #endif
 
 #if !defined( HACORE_SYS_INCLUDED_STL_STRING )

@@ -23,7 +23,7 @@
 
 
 #if !defined( HACORE_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H )
-#    include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
+#    include    "Account/Common/HouseholdAccountsSettings.h"
 #endif
 
 #if !defined( HACORE_SYS_INCLUDED_STDDEF_H )

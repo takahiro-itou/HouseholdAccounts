@@ -18,7 +18,8 @@
 **      @file       Documents/BookCategory.cpp
 **/
 
-#include    "HouseholdAccounts/Documents/BookCategory.h"
+#include    "Account/Documents/BookCategory.h"
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {

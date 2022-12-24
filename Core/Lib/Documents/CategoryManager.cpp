@@ -18,7 +18,8 @@
 **      @file       Documents/CategoryManager.cpp
 **/
 
-#include    "HouseholdAccounts/Documents/CategoryManager.h"
+#include    "Account/Documents/CategoryManager.h"
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {

@@ -71,7 +71,7 @@ m4_include([.M4/ConfigDirectory.m4])
 MYAC_CUSTOMIZE_LIBRARY_DIR([Lib])
 MYAC_CUSTOMIZE_BINARY_DIR([Bin])
 MYAC_CUSTOMIZE_INCLUDE_DIR(
-    [Include], [HouseholdAccounts], [.Config], [Config.h])
+    [Include], [Account], [.Config], [Config.h])
 
 dnl----------------------------------------------------------------
 dnl
@@ -152,7 +152,7 @@ AC_CONFIG_FILES([
 ])
 
 AC_CONFIG_FILES([
-    Include/HouseholdAccounts/.Config/ConfiguredHouseholdAccounts.h
+    Include/Account/.Config/ConfiguredHouseholdAccounts.h
 ])
 
 dnl

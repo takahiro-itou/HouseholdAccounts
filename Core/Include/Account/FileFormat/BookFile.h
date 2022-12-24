@@ -18,12 +18,19 @@
 **      @file       FileFormat/BookFile.h
 **/
 
-#if !defined( HACCOUNTS_FILEFORMAT_INCLUDED_BOOK_FILE_H )
-#    define   HACCOUNTS_FILEFORMAT_INCLUDED_BOOK_FILE_H
+#if !defined( HACORE_FILEFORMAT_INCLUDED_BOOK_FILE_H )
+#    define   HACORE_FILEFORMAT_INCLUDED_BOOK_FILE_H
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
 
-#include    <iosfwd>
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    include    "Account/Common/AccountsTypes.h"
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_IOS_FWD )
+#    include    <iosfwd>
+#    define   HACORE_SYS_INCLUDED_IOS_FWD
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 

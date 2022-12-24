@@ -23,7 +23,7 @@
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
-#    include    "HouseholdAccounts/Common/AccountsTypes.h"
+#    include    "Account/Common/AccountsTypes.h"
 #endif
 
 

@@ -18,7 +18,8 @@
 **      @file       Documents/StringTable.cpp
 **/
 
-#include    "HouseholdAccounts/Documents/StringTable.h"
+#include    "Account/Documents/StringTable.h"
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {
