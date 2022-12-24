@@ -84,6 +84,72 @@ BookCategory::~BookCategory()
 
 //========================================================================
 //
+//    Accessors.
+//
+
+//----------------------------------------------------------------
+//    項目のフラグを取得する。
+//
+
+const   CategoryFlags
+BookCategory::getCategoryFlags()  const
+{
+    return ( this->m_categoryFlags );
+}
+
+//----------------------------------------------------------------
+//    項目の名前を取得する。
+//
+
+const   std::string  &
+BookCategory::getCategoryName()  const
+{
+    return ( this->m_categoryName );
+}
+
+//----------------------------------------------------------------
+//    サブ項目の個数を取得する。
+//
+
+const   CategoryHandle
+BookCategory::getNumSubCategories()  const
+{
+    return ( this->m_numSubCategory );
+}
+
+//----------------------------------------------------------------
+//    親項目のインデックスを取得する。
+//
+
+const   CategoryHandle
+BookCategory::getParentHandle()  const
+{
+    return ( this->m_parentHandle );
+}
+
+//----------------------------------------------------------------
+//    サブ項目のインデックスの配列を取得する。
+//
+
+const   BookCategory::CategoryHandleArray  &
+BookCategory::getSubCategories()  const
+{
+    return ( this->m_subCategories );
+}
+
+//----------------------------------------------------------------
+//    サブ項目のインデックスを取得する。
+//
+
+const   CategoryHandle
+BookCategory::getSubCategor(
+        const   CategoryHandle  idxSub)  const
+{
+    return ( this->m_subCategories[idxSub] );
+}
+
+//========================================================================
+//
 //    Protected Member Functions.
 //
 
