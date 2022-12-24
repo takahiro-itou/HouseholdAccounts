@@ -21,7 +21,11 @@
 #if !defined( HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H )
 #    define   HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H
 
-#include    "AccountsTypes.h"
+
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    include    "AccountsTypes.h"
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {

@@ -21,6 +21,7 @@
 #if !defined( HACORE_COMMON_INCLUDED_BOOK_INTERFACE_H )
 #    define   HACORE_COMMON_INCLUDED_BOOK_INTERFACE_H
 
+
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
 #    include    "AccountsTypes.h"
 #endif
