@@ -22,6 +22,7 @@ EXTRA_NOINST_DATA_FILES     =
 EXTRA_NOINST_HEADER_FILES   =
 
 LIBRARY_SOURCE_FILES        =  \
+        DecimalCurrency.cpp            \
         TextParser.cpp                 \
         ${EXTRA_LIBRARY_SOURCE_FILES}
 
@@ -38,6 +39,7 @@ DIST_NOINST_HEADER_FILES    =  \
 INCLIB_HEADER_FILES         =  \
         ${INCLIB_SOURCE_DIR}/AccountsTypes.h              \
         ${INCLIB_SOURCE_DIR}/BookInterface.h              \
+        ${INCLIB_SOURCE_DIR}/DecimalCurrency.h            \
         ${INCLIB_SOURCE_DIR}/HouseholdAccountsSettings.h  \
         ${INCLIB_SOURCE_DIR}/TextParser.h                 \
         ${EXTRA_LIBRARY_HEADER_FILES}

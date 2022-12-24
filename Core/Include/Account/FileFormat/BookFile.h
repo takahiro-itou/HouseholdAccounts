@@ -13,30 +13,43 @@
 *************************************************************************/
 
 /**
-**      An Interface of BookDocument class.
+**      An Interface of BookFile class.
 **
-**      @file       Documents/BookDocument.h
+**      @file       FileFormat/BookFile.h
 **/
 
-#if !defined( HACCOUNTS_DOCUMENTS_INCLUDED_BOOK_DOCUMENT_H )
-#    define   HACCOUNTS_DOCUMENTS_INCLUDED_BOOK_DOCUMENT_H
+#if !defined( HACORE_FILEFORMAT_INCLUDED_BOOK_FILE_H )
+#    define   HACORE_FILEFORMAT_INCLUDED_BOOK_FILE_H
 
-#include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
+
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    include    "Account/Common/AccountsTypes.h"
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_IOS_FWD )
+#    include    <iosfwd>
+#    define   HACORE_SYS_INCLUDED_IOS_FWD
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
 
 //  クラスの前方宣言。  //
+namespace  Documents  {
+class   BookDocument;
+}   //  End of namespace  Documents.
+
+namespace  FileFormat  {
 
 //========================================================================
 //
-//    BookDocument  class.
+//    BookFile  class.
 //
 /**
 **
 **/
 
-class  BookDocument
+class  BookFile
 {
 
 //========================================================================
@@ -56,14 +69,14 @@ public:
     **  （デフォルトコンストラクタ）。
     **
     **/
-    BookDocument();
+    BookFile();
 
     //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
     **/
-    virtual  ~BookDocument();
+    virtual  ~BookFile();
 
 //========================================================================
 //
@@ -89,6 +102,37 @@ public:
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   データをテキストストリームから読み込む。
+    **
+    **  @param [in,out] inStr     入力ストリーム。
+    **  @param    [out] ptrDoc    ドキュメントを格納する変数。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
+    **/
+    static  ErrCode
+    readFromTextStream(
+            std::istream            &inStr,
+            Documents::BookDocument *ptrDoc);
+
+    //----------------------------------------------------------------
+    /**   データをテキストストリームに書き込む。
+    **
+    **  @param [in] objDoc    ドキュメント。
+    **  @param[out] outStr    出力ストリーム。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
+    **/
+    static  ErrCode
+    saveToTextStream(
+            const   Documents::BookDocument &objDoc,
+            std::ostream                    &outStr);
 
 //========================================================================
 //
@@ -111,7 +155,7 @@ public:
 //
 public:
     //  テストクラス。  //
-    friend  class   BookDocumentTest;
+    friend  class   BookFileTest;
 };
 
 }   //  End of namespace  Documents

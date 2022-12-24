@@ -546,7 +546,8 @@ Dim strValues(0 To 2) As String
         strTemp = .sWindowCaption
     End With
 
-    UpdateWindowCaption = ReplaceConstant(strTemp, strNames, strValues)
+    UpdateWindowCaption = Wrapper.TextOperation.replaceConstant(
+                                strTemp, strNames, strValues)
 End Function
 
 End Module

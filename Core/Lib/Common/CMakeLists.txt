@@ -17,13 +17,16 @@ set(INCLIB_BINARY_DIR       "${INCLUDE_BINARY_DIR}/${MODULE_DIR_NAME}")
 ##
 
 set(LIBRARY_SOURCE_FILES
+        DecimalCurrency.cpp
         TextParser.cpp
 )
 
 set(INCLIB_HEADER_FILES
         ${INCLIB_SOURCE_DIR}/AccountsTypes.h
         ${INCLIB_SOURCE_DIR}/BookInterface.h
+        ${INCLIB_SOURCE_DIR}/DecimalCurrency.h
         ${INCLIB_SOURCE_DIR}/HouseholdAccountsSettings.h
+        ${INCLIB_SOURCE_DIR}/TextParser.h
 )
 
 ##----------------------------------------------------------------

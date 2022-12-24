@@ -18,12 +18,24 @@
 **      @file       Common/AccountsTypes.h
 **/
 
-#if !defined( HACCOUNTS_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
-#    define   HACCOUNTS_COMMON_INCLUDED_ACCOUTNS_TYPES_H
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    define   HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H
 
-#include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
 
-#include    <stddef.h>
+#if !defined( HACORE_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H )
+#    include    "Account/Common/HouseholdAccountsSettings.h"
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_STDDEF_H )
+#    include    <stddef.h>
+#    define   HACORE_SYS_INCLUDED_STDDEF_H
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_STDINT_H )
+#    include    <stdint.h>
+#    define   HACORE_SYS_INCLUDED_STDINT_H
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
@@ -66,6 +78,67 @@ enum  Boolean
     BOOL_FALSE  =  0,       /**<  偽。  **/
     BOOL_TRUE   =  1        /**<  真。  **/
 };
+
+//----------------------------------------------------------------
+/**
+**    文字列インデックス型。
+**/
+
+typedef     int                 StringIndex;
+
+//----------------------------------------------------------------
+/**
+**    勘定科目および分類のインデックス型。
+**/
+
+typedef     int                 CategoryHandle;
+
+//----------------------------------------------------------------
+/**
+**    ファイルの長さを表す型。
+**/
+
+typedef     size_t              FileLength;
+
+//----------------------------------------------------------------
+/**
+**    バッファサイズ（要素数）を表す型。
+**/
+
+typedef     size_t              BufferSize;
+
+//----------------------------------------------------------------
+/**
+**    読み取り専用バッファ。
+**/
+
+typedef     const  void  *      LpcReadBuf;
+
+//----------------------------------------------------------------
+/**
+**    読み書き両用バッファ。
+**/
+
+typedef     void  *             LpWriteBuf;
+
+//----------------------------------------------------------------
+/**
+**    バイト型。
+**/
+
+typedef     unsigned char       BtByte;
+
+/**
+**    バイト型の読み取り専用バッファ。
+**/
+
+typedef     const  BtByte  *    LpcByteReadBuf;
+
+/**
+**    バイト型の読み書き両用バッファ。
+**/
+
+typedef     BtByte  *           LpByteWriteBuf;
 
 //========================================================================
 //

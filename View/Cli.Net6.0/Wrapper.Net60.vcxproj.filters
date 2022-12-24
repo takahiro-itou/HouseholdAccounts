@@ -1,17 +1,182 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ソース ファイル">
+    <Filter Include="Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="ヘッダー ファイル">
+    <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="リソース ファイル">
+    <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+
+    <Filter Include="Common">
+      <UniqueIdentifier>{5496ac89-4ab8-436b-84d9-df85e2d9ba7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documents">
+      <UniqueIdentifier>{93b8fc72-0c8c-4c0e-ad03-7ecd8775b447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{bf6b0880-28c1-4607-810a-41073b597e96}</UniqueIdentifier>
+    </Filter>
+
+    <Filter Include="Common\Source Files">
+      <UniqueIdentifier>{862e9b57-aeda-4524-97f9-00520698309c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Header Files">
+      <UniqueIdentifier>{e6bae11d-fcf8-4626-9c34-df0580fad5d8}</UniqueIdentifier>
+    </Filter>
+
+    <Filter Include="Documents\Source Files">
+      <UniqueIdentifier>{8ad4d022-de8a-4d3c-97cb-7b785232bfdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documents\Header Files">
+      <UniqueIdentifier>{f670c115-f0be-4c84-8fbb-581e127896dc}</UniqueIdentifier>
+    </Filter>
+
+    <Filter Include="Interface\Source Files">
+      <UniqueIdentifier>{98554765-9d85-4c39-9512-5f1136d616bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface\Header Files">
+      <UniqueIdentifier>{69d22122-7341-4859-ab8f-9f517d0be2e3}</UniqueIdentifier>
+    </Filter>
+
   </ItemGroup>
+
+  <ItemGroup>
+    <ClCompile Include="..\Wrapper\AssemblyInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\HouseholdAccountsWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\PreCompile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+
+    <ClCompile Include="..\Wrapper\Common\DecimalCurrency.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\Common\FilePathUtils.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\Common\ManagedDate.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\Common\StringTable.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\Common\TextOperation.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+
+    <ClCompile Include="..\Wrapper\Documents\BookCategory.cpp">
+      <Filter>Documents\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\Documents\CategoryManager.cpp">
+      <Filter>Documents\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\Documents\CategoryWiseAggregates.cpp">
+      <Filter>Documents\Source Files</Filter>
+    </ClCompile>
+
+    <ClCompile Include="..\Wrapper\Interface\AccountBook.cpp">
+      <Filter>Interface\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\Interface\AggregateData.cpp">
+      <Filter>Interface\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\Interface\AnnualRecords.cpp">
+      <Filter>Interface\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\Interface\BookItem.cpp">
+      <Filter>Interface\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wrapper\Interface\Receipt.cpp">
+      <Filter>Interface\Source Files</Filter>
+    </ClCompile>
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\PreCompile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+
+    <ClInclude Include="..\Wrapper\Common\AccountsConst.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Common\AccountsTypes.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Common\DecimalCurrency.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Common\FilePathUtils.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Common\ManagedDate.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Common\StringTable.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Common\TextOperation.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+
+    <ClInclude Include="..\Wrapper\Documents\BookCategory.h">
+      <Filter>Documents\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Documents\CategoryManager.h">
+      <Filter>Documents\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Documents\CategoryWiseAggregates.h">
+      <Filter>Documents\Header Files</Filter>
+    </ClInclude>
+
+    <ClInclude Include="..\Wrapper\Interface\AccountBook.h">
+      <Filter>Interface\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Interface\AggregateData.h">
+      <Filter>Interface\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Interface\AnnualRecords.h">
+      <Filter>Interface\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Interface\BookItem.h">
+      <Filter>Interface\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Interface\Receipt.h">
+      <Filter>Interface\Header Files</Filter>
+    </ClInclude>
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ResourceCompile Include="..\Wrapper\app.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Image Include="..\Wrapper\app.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Text Include="..\Wrapper\ReadMe.txt" />
+  </ItemGroup>
+
 </Project>
