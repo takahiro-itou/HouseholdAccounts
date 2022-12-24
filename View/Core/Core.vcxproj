@@ -79,6 +79,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\Core\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Account/pch/PreCompile.h</PrecompiledHeaderFile>
       <SDLCheck>true</SDLCheck>
