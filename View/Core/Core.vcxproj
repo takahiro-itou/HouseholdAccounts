@@ -79,8 +79,8 @@
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\Core\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Account/pch/PreCompile.h</PrecompiledHeaderFile>
       <SDLCheck>true</SDLCheck>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
@@ -144,6 +144,11 @@
     <ClCompile Include="..\..\Core\Lib\Documents\StringTable.cpp" />
 
     <ClCompile Include="..\..\Core\Lib\FileFormat\BookFile.cpp" />
+
+    <ClCompile Include="..\..\Core\Lib\pch\PreCompile.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+
   </ItemGroup>
 
   <ItemGroup>
@@ -159,6 +164,8 @@
     <ClInclude Include="..\..\Core\Include\Account\Documents\StringTable.h" />
 
     <ClInclude Include="..\..\Core\Include\Account\FileFormat\BookFile.h" />
+
+    <ClInclude Include="..\..\Core\Include\Account\pch\PreCompile.h" />
   </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
