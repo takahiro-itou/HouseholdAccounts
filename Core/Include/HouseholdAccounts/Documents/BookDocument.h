@@ -18,10 +18,14 @@
 **      @file       Documents/BookDocument.h
 **/
 
-#if !defined( HACCOUNTS_DOCUMENTS_INCLUDED_BOOK_DOCUMENT_H )
-#    define   HACCOUNTS_DOCUMENTS_INCLUDED_BOOK_DOCUMENT_H
+#if !defined( HACORE_DOCUMENTS_INCLUDED_BOOK_DOCUMENT_H )
+#    define   HACORE_DOCUMENTS_INCLUDED_BOOK_DOCUMENT_H
 
-#include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
+
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    include    "HouseholdAccounts/Common/AccountsTypes.h"
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {

@@ -18,20 +18,24 @@
 **      @file       Documents/StringTable.h
 **/
 
-#if !defined( HACCOUNTS_DOCUMENTS_INCLUDED_STRING_TABLE_H )
-#    define   HACCOUNTS_DOCUMENTS_INCLUDED_STRING_TABLE_H
+#if !defined( HACORE_DOCUMENTS_INCLUDED_STRING_TABLE_H )
+#    define   HACORE_DOCUMENTS_INCLUDED_STRING_TABLE_H
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
 
-#if !defined( HACCOUNTS_INCLUDES_STL_STRING )
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    include    "HouseholdAccounts/Common/AccountsTypes.h"
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_STL_STRING )
 #    include    <string>
-#    define     HACCOUNTS_INCLUDES_STL_STRING
+#    define   HACORE_SYS_INCLUDED_STL_STRING
 #endif
 
-#if !defined( HACCOUNTS_INCLUDES_STL_VECTOR )
+#if !defined( HACORE_SYS_INCLUDED_STL_VECTOR )
 #    include    <vector>
-#    define     HACCOUNTS_INCLUDES_STL_VECTOR
+#    define   HACORE_SYS_INCLUDED_STL_VECTOR
 #endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {
