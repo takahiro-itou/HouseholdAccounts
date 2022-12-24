@@ -1,0 +1,6 @@
+
+/*  Linker Script.  */
+INPUT( AS_NEEDED(Documents/libhacDocuments.a) )
+
+INPUT( AS_NEEDED(-lhacCommon) )
+

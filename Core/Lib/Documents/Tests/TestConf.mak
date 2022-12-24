@@ -5,13 +5,15 @@
 
 EXTRATESTS              =
 TESTS                   =  \
-        BookDocumentTest   \
+        BookCategoryTest       \
+        BookDocumentTest       \
+        CategoryManagerTest    \
         ${EXTRATESTS}
 ##
 ##    Test Configurations.
 ##
 
-TARGET_TESTEE_LIBRARY       +=  ../libhacDocuments.a
+TARGET_TESTEE_LIBRARY       +=  -lhacDocuments
 
 DIST_NOINST_DATA_FILES      +=
 DIST_NOINST_HEADER_FILES    +=
@@ -30,5 +32,7 @@ TEST_LDFLAGS_COMMON         +=
 ##    Test Programs.
 ##
 
-BookDocumentTest_SOURCES  =  BookDocumentTest.cpp
+BookCategoryTest_SOURCES     =  BookCategoryTest.cpp
+BookDocumentTest_SOURCES     =  BookDocumentTest.cpp
+CategoryManagerTest_SOURCES  =  CategoryManagerTest.cpp
 

@@ -133,14 +133,32 @@
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
+
   <ItemGroup>
+    <ClCompile Include="..\..\Core\Lib\Common\DecimalCurrency.cpp" />
+    <ClCompile Include="..\..\Core\Lib\Common\TextParser.cpp" />
+
+    <ClCompile Include="..\..\Core\Lib\Documents\BookCategory.cpp" />
     <ClCompile Include="..\..\Core\Lib\Documents\BookDocument.cpp" />
+    <ClCompile Include="..\..\Core\Lib\Documents\CategoryManager.cpp" />
+    <ClCompile Include="..\..\Core\Lib\Documents\StringTable.cpp" />
+
     <ClCompile Include="..\..\Core\Lib\FileFormat\BookFile.cpp" />
   </ItemGroup>
+
   <ItemGroup>
-    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Common\HouseholdAccountsSettings.h" />
-    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\Documents\BookDocument.h" />
-    <ClInclude Include="..\..\Core\Include\HouseholdAccounts\FileFormat\BookFile.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\AccountsTypes.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\BookInterface.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\DecimalCurrency.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\HouseholdAccountsSettings.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\TextParser.h" />
+
+    <ClInclude Include="..\..\Core\Include\Account\Documents\BookCategory.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Documents\BookDocument.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Documents\CategoryManager.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Documents\StringTable.h" />
+
+    <ClInclude Include="..\..\Core\Include\Account\FileFormat\BookFile.h" />
   </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -13,58 +13,47 @@
 *************************************************************************/
 
 /**
-**      An Interface of TextParser class.
+**      An Implementation of BookCategory class.
 **
-**      @file       Common/TextParser.h
+**      @file       Documents/BookCategory.cpp
 **/
 
-#if !defined( HACCOUNTS_COMMON_INCLUDED_TEXT_PARSER_H )
-#    define   HACCOUNTS_COMMON_INCLUDED_TEXT_PARSER_H
+#include    "Account/Documents/BookCategory.h"
 
-#include    "HouseholdAccounts/Common/HouseholdAccountsSettings.h"
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Common  {
+namespace  Documents  {
 
-//  クラスの前方宣言。  //
-
-
-//========================================================================
-//
-//    TextParser  class.
-//
-/**
-**
-**/
-
-class  TextParser
-{
+namespace  {
+}   //  End of (Unnamed) namespace.
 
 //========================================================================
 //
-//    Internal Type Definitions.
+//    BookCategory  class.
 //
-public:
 
 //========================================================================
 //
 //    Constructor(s) and Destructor.
 //
-public:
 
-    //----------------------------------------------------------------
-    /**   インスタンスを初期化する
-    **  （デフォルトコンストラクタ）。
-    **
-    **/
-    TextParser();
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （デフォルトコンストラクタ）。
+//
 
-    //----------------------------------------------------------------
-    /**   インスタンスを破棄する
-    **  （デストラクタ）。
-    **
-    **/
-    virtual  ~TextParser();
+BookCategory::BookCategory()
+{
+}
+
+//----------------------------------------------------------------
+//    インスタンスを破棄する
+//  （デストラクタ）。
+//
+
+BookCategory::~BookCategory()
+{
+}
 
 //========================================================================
 //
@@ -101,21 +90,5 @@ public:
 //    For Internal Use Only.
 //
 
-//========================================================================
-//
-//    Member Variables.
-//
-
-//========================================================================
-//
-//    Other Features.
-//
-public:
-    //  テストクラス。  //
-    friend  class   TextParserTest;
-};
-
-}   //  End of namespace  Common
+}   //  End of namespace  Documents
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
-
-#endif

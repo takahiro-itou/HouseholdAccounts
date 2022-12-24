@@ -18,7 +18,8 @@
 **      @file       Common/TextParser.cpp
 **/
 
-#include    "HouseholdAccounts/Common/TextParser.h"
+#include    "Account/Common/TextParser.h"
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {

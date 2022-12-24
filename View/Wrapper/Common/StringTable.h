@@ -23,7 +23,7 @@
 
 #pragma     once
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
+#include    "AccountsTypes.h"
 
 namespace  Wrapper  {
 
@@ -43,6 +43,16 @@ public:
     enum class StringTableSort {
         STRING_SORT_NONE        = 0,
         STRING_SORT_ASCENDING   = 1,
+    };
+
+    /**
+    **    データの検索結果。
+    **/
+    value   struct  FindResult
+    {
+        System::Boolean     flgFound;
+        StringIndex         siResult;
+        StringIndex         siInsert;
     };
 
 //========================================================================
@@ -77,14 +87,64 @@ public:
 public:
 
     //----------------------------------------------------------------
+    /**   テーブルの最後尾にデータを追加する。
+    **
+    **  @param [in] strText   追加するデータ。
+    **/
+    StringIndex
+    appendString(
+            System::String^     strText);
+
+    //----------------------------------------------------------------
+    /**   テーブルの整合性を検査する。
+    **
+    **/
+    System::Boolean
+    checkIntegrity();
+
+    //----------------------------------------------------------------
     /**   指定された文字列を検索する。
     **
     **  @param [in] strText   検索する文字列。
     **  @return
     **/
-    int
+    StringIndex
     findString(
-            System::String^  strText);
+            System::String^     strText);
+
+    //----------------------------------------------------------------
+    /**   新しいデータを挿入する。
+    **
+    **  @param [in] strText   新しく挿入するデータ。
+    **  @return     挿入したデータのインデックス。
+    **      既にデータが存在していた場合は何もせず、
+    **      そのインデックスを返す。
+    **/
+    StringIndex
+    insertString(
+            System::String^     strText);
+
+    //----------------------------------------------------------------
+    /**   データ用のバッファを確保する。
+    **
+    **  @param [in] bufSize
+    **/
+    StringIndex
+    reserveBuffer(
+            const  StringIndex  bufSize);
+
+    //----------------------------------------------------------------
+    /**   テーブルのエントリを直接設定する。
+    **
+    **  @param [in] drIndex
+    **  @param [in] steText
+    **  @param [in] strFlag
+    **/
+    StringIndex
+    setTableEntry(
+            const  StringIndex  drIndex,
+            System::String^     steText,
+            const  int          steFlag);
 
 //========================================================================
 //
@@ -98,10 +158,10 @@ public:
 public:
 
     /**   テーブル用のバッファサイズ。  **/
-    int     nTableBufferSize;
+    StringIndex             nTableBufferSize;
 
     /**   実際に格納されているデータ数。    **/
-    int     nNumEntry;
+    StringIndex             nNumEntry;
 
     /**   ソート状態。  **/
     StringTableSort         nSorted;
@@ -124,6 +184,16 @@ public:
 //
 //    For Internal Use Only.
 //
+private:
+
+    //----------------------------------------------------------------
+    /**   データを検索する。
+    **
+    **  @param [in] strText
+    **/
+    FindResult
+    searchEntry(
+            System::String^     strText);
 
 //========================================================================
 //

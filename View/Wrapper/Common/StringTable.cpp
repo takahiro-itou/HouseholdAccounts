@@ -64,56 +64,126 @@ namespace  {
 //
 
 //----------------------------------------------------------------
+//    テーブルの最後尾にデータを追加する。
+//
+
+StringIndex
+StringTable::appendString(
+        System::String^     strText)
+{
+    const  StringIndex  idx = this->nNumEntry ++;
+    reserveBuffer(this->nNumEntry);
+
+    this->nEntryFlags[idx]      = 0;
+    this->sTableEntries[idx]    = strText;
+    this->nSortIndex[idx]       = idx;
+
+    return ( idx );
+}
+
+//----------------------------------------------------------------
+//    テーブルの整合性を検査する。
+//
+
+System::Boolean
+StringTable::checkIntegrity()
+{
+    for ( StringIndex i = 1; i < this->nNumEntry; ++ i ) {
+        const  StringIndex  j0  = this->nSortIndex[i - 1];
+        const  StringIndex  j1  = this->nSortIndex[i];
+
+        System::String^     s0  = this->sTableEntries[j0];
+        System::String^     s1  = this->sTableEntries[j1];
+        if ( System::String::CompareOrdinal(s0, s1) >= 0 ) {
+            return ( false );
+        }
+    }
+
+    return ( true );
+}
+
+//----------------------------------------------------------------
 //    指定された文字列を検索する。
 //
 
-int
+StringIndex
 StringTable::findString(
         System::String^  strText)
 {
-    int lngIndex, lngResult;
-    int lngLeft, lngRight, lngTarget;
-    System::String^     strCheck;
+    FindResult  resFind = searchEntry(strText);
+    return ( resFind.siResult );
+}
 
-    lngLeft = 0;
-    lngRight = this->nNumEntry - 1;
-    lngResult = -1;
+//----------------------------------------------------------------
+//    新しいデータを挿入する。
+//
 
-    while (lngRight - lngLeft >= 8) {
-        lngTarget = (lngLeft + lngRight) / 2;
-        lngIndex = this->nSortIndex[lngTarget];
-        strCheck = this->sTableEntries[lngIndex];
+StringIndex
+StringTable::insertString(
+        System::String^     strText)
+{
+    FindResult  resFind = searchEntry(strText);
 
-        if ( strCheck == strText ) {
-            //  見つかった   //
-            lngResult = lngIndex;
-            lngLeft = lngIndex;
-            lngRight = lngIndex;
-            break;
-        }
-
-        //  検索範囲を絞る  //
-        if ( System::String::Compare(strCheck, strText) < 0 ) {
-            //  検索しているデータは現在位置より右にある。  //
-            lngLeft = lngTarget + 1;
-        } else {
-            //  検索しているデータは現在位置より左にある。  //
-            lngRight = lngTarget - 1;
-        }
+    //  データが見つかった場合はそのインデックスを返して終了。  //
+    if ( resFind.flgFound ) {
+        return ( resFind.siResult );
     }
 
-    //  ある程度範囲が小さくなったところで、単純検索に切り替える。  //
-    for ( lngTarget = lngLeft; lngTarget <= lngRight; ++ lngTarget ) {
-        lngIndex = this->nSortIndex[lngTarget];
-        strCheck = this->sTableEntries[lngIndex];
+    //  データをテーブルの最後尾に追加し、  //
+    //  ソートインデックスを更新する。      //
+    const  StringIndex  bsInsertPos = resFind.siInsert;
+    const  StringIndex  siNewEntry  = this->nNumEntry;
+    reserveBuffer(this->nNumEntry);
+    appendString(strText);
 
-        if ( strCheck == strText ) {
-            lngResult = lngIndex;
-            break;
-        }
+    //  挿入位置より後ろにあるデータをずらす。  //
+    for ( StringIndex i = this->nNumEntry - 1; i >= bsInsertPos + 1; -- i )
+    {
+        this->nSortIndex[i] = this->nSortIndex[i - 1];
+    }
+    //  挿入位置にインデックスを書き込む。  //
+    this->nSortIndex[bsInsertPos]   = siNewEntry;
+
+    //  挿入したデータのインデックスを返す。    //
+    return ( siNewEntry );
+}
+
+//----------------------------------------------------------------
+//    データ用のバッファを確保する。
+//
+
+StringIndex
+StringTable::reserveBuffer(
+        const  StringIndex  bufSize)
+{
+    const  StringIndex  siAlloc = (bufSize + 15) & ~15;
+    if ( siAlloc <= this->nTableBufferSize ) {
+        return ( this->nTableBufferSize );
     }
 
-    return ( lngIndex );
+    System::Array::Resize(this->nEntryFlags, siAlloc);
+    System::Array::Resize(this->sTableEntries, siAlloc);
+    System::Array::Resize(this->nSortIndex, siAlloc);
+
+    return ( this->nTableBufferSize = siAlloc );
+}
+
+//----------------------------------------------------------------
+//    テーブルのエントリを直接設定する。
+//
+
+StringIndex
+StringTable::setTableEntry(
+        const  StringIndex  drIndex,
+        System::String^     steText,
+        const  int          steFlag)
+{
+    reserveBuffer(drIndex + 1);
+
+    this->nEntryFlags[drIndex]   = steFlag;
+    this->sTableEntries[drIndex] = steText;
+
+    return ( drIndex );
 }
 
 //========================================================================
@@ -135,5 +205,76 @@ StringTable::findString(
 //
 //    For Internal Use Only.
 //
+
+//----------------------------------------------------------------
+//    データを検索する。
+//
+
+StringTable::FindResult
+StringTable::searchEntry(
+        System::String^     strText)
+{
+    FindResult      result;
+    StringIndex     bsLeft, bsRight, bsPivot;
+    StringIndex     siCheck;
+    System::String^ trgText;
+
+    //  二分探索である程度まで範囲を絞る。  //
+    bsLeft  = 0;
+    bsRight = this->nNumEntry - 1;
+
+    while ( bsRight - bsLeft >= 8 ) {
+        bsPivot = (bsLeft + bsRight) / 2;
+        siCheck = this->nSortIndex[bsPivot];
+        trgText = this->sTableEntries[siCheck];
+
+        if ( trgText == strText ) {
+            //  見つかった  //
+            result.flgFound = true;
+            result.siResult = siCheck;
+            result.siInsert = bsPivot;
+            return ( result );
+        }
+
+        //  検索範囲を絞る  //
+        if ( System::String::Compare(trgText, strText) > 0 ) {
+            //  検索しているデータは現在位置より左にある。  //
+            bsRight = bsPivot - 1;
+        } else {
+            //  検索しているデータは現在位置より右にある。  //
+            bsLeft  = bsPivot + 1;
+        }
+    }
+
+    //  念のため番兵を立てる。  //
+    result.flgFound = false;
+    result.siResult = -1;
+    result.siInsert = bsRight + 1;
+
+    //  ある程度範囲が小さくなったところで、単純検索に切り替える。  //
+    for ( bsPivot = bsLeft; bsPivot <= bsRight; ++ bsPivot ) {
+        siCheck = this->nSortIndex[bsPivot];
+        trgText = this->sTableEntries[siCheck];
+
+        if ( trgText == strText ) {
+            //  見つかった  //
+            result.flgFound = true;
+            result.siResult = siCheck;
+            result.siInsert = bsPivot;
+            return ( result );
+        }
+        if ( System::String::Compare(trgText, strText) > 0 ) {
+            //  テーブル内のデータはソートされているから、  //
+            //  この時点でデータがテーブル内に存在しない。  //
+            //  また、データを挿入する時はこの場所になる。  //
+            result.flgFound = false;
+            result.siResult = -1;
+            result.siInsert = bsPivot;
+            break;
+        }
+    }
+
+    return ( result );
+}
 
 }   //  End of namespace  Wrappe

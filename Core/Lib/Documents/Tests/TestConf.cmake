@@ -4,8 +4,19 @@
 ##    テストの設定。
 ##
 
-Add_Test (NAME  BookDocumentTest
-    COMMAND  $<TARGET_FILE:BookDocumentTest>
+add_test(
+    NAME        BookCategoryTest
+    COMMAND     $<TARGET_FILE:BookCategoryTest>
+)
+
+add_test(
+    NAME        BookDocumentTest
+    COMMAND     $<TARGET_FILE:BookDocumentTest>
+)
+
+add_test(
+    NAME        CategoryManagerTest
+    COMMAND     $<TARGET_FILE:CategoryManagerTest>
 )
 
 ##----------------------------------------------------------------
@@ -13,5 +24,9 @@ Add_Test (NAME  BookDocumentTest
 ##    テストプログラムのビルド。
 ##
 
-Add_Executable (BookDocumentTest  BookDocumentTest.cpp)
+add_executable(BookCategoryTest     BookCategoryTest.cpp)
+
+add_executable(BookDocumentTest     BookDocumentTest.cpp)
+
+add_executable(CategoryManagerTest  CategoryManagerTest.cpp)
 

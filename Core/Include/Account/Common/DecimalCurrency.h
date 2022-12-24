@@ -13,36 +13,34 @@
 *************************************************************************/
 
 /**
-**      An Interface of BookFile class.
+**      An Interface of DecimalCurrency class.
 **
-**      @file       FileFormat/BookFile.h
+**      @file       Common/DecimalCurrency.h
 **/
 
-#if !defined( HACCOUNTS_FILEFORMAT_INCLUDED_BOOK_FILE_H )
-#    define   HACCOUNTS_FILEFORMAT_INCLUDED_BOOK_FILE_H
+#if !defined( HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H )
+#    define   HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
 
-#include    <iosfwd>
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    include    "AccountsTypes.h"
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
+namespace  Common  {
 
 //  クラスの前方宣言。  //
-namespace  Documents  {
-class   BookDocument;
-}   //  End of namespace  Documents.
-
-namespace  FileFormat  {
 
 //========================================================================
 //
-//    BookFile  class.
+//    DecimalCurrency  class.
 //
 /**
-**
+**    固定小数点型の通貨クラス。
 **/
 
-class  BookFile
+class  DecimalCurrency
 {
 
 //========================================================================
@@ -50,6 +48,10 @@ class  BookFile
 //    Internal Type Definitions.
 //
 public:
+
+    typedef     int64_t     TInternalValue;
+
+    typedef     double      DecimalType;
 
 //========================================================================
 //
@@ -62,14 +64,43 @@ public:
     **  （デフォルトコンストラクタ）。
     **
     **/
-    BookFile();
+    DecimalCurrency();
+
+    //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （コンストラクタ）。
+    **
+    **  @param [in] intValue    内部の値。
+    **  @param [in] intScale    スケール。
+    **/
+    DecimalCurrency(
+            const   TInternalValue  intValue,
+            const   TInternalValue  intScale);
+
+    //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （コンストラクタ）。
+    **
+    **  @param [in] intValue    内部の値。
+    **/
+    DecimalCurrency(
+            const   TInternalValue  intValue);
+
+    //----------------------------------------------------------------
+    /**   別のインスタンスと同じ内容で初期化する。
+    **  （コピーコンストラクタ）。
+    **
+    **  @param [in] src   コピー元インスタンス。
+    **/
+    DecimalCurrency(
+            const  DecimalCurrency  &src);
 
     //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
     **/
-    virtual  ~BookFile();
+    virtual  ~DecimalCurrency();
 
 //========================================================================
 //
@@ -95,37 +126,42 @@ public:
 //
 //    Public Member Functions.
 //
+
+//========================================================================
+//
+//    Accessors.
+//
 public:
 
     //----------------------------------------------------------------
-    /**   データをテキストストリームから読み込む。
+    /**   現在の内部表現の値を取得する。
     **
-    **  @param [in,out] inStr     入力ストリーム。
-    **  @param    [out] ptrDoc    ドキュメントを格納する変数。
-    **  @return     エラーコードを返す。
-    **      -   異常終了の場合は、
-    **          エラーの種類を示す非ゼロ値を返す。
-    **      -   正常終了の場合は、ゼロを返す。
+    **  @return     内部表現の値。
     **/
-    static  ErrCode
-    readFromTextStream(
-            std::istream            &inStr,
-            Documents::BookDocument *ptrDoc);
+    const   TInternalValue
+    getInternalValue()  const;
 
     //----------------------------------------------------------------
-    /**   データをテキストストリームに書き込む。
+    /**   値を設定する。
     **
-    **  @param [in] objDoc    ドキュメント。
-    **  @param[out] outStr    出力ストリーム。
-    **  @return     エラーコードを返す。
-    **      -   異常終了の場合は、
-    **          エラーの種類を示す非ゼロ値を返す。
-    **      -   正常終了の場合は、ゼロを返す。
+    **  @param [in] intValue    内部表現の数値。
+    **  @return     インスタンス自身の参照。
     **/
-    static  ErrCode
-    saveToTextStream(
-            const   Documents::BookDocument &objDoc,
-            std::ostream                    &outStr);
+    DecimalCurrency  &
+    setInternalValue(
+            const   TInternalValue  intValue);
+
+    //----------------------------------------------------------------
+    /**   値を設定する。
+    **
+    **  @param [in] intValue    内部表現の数値。
+    **  @param [in] intScale    スケール。
+    **  @return     インスタンス自身の参照。
+    **/
+    DecimalCurrency  &
+    setInternalValue(
+            const   TInternalValue  intValue,
+            const   TInternalValue  intScale);
 
 //========================================================================
 //
@@ -141,6 +177,11 @@ public:
 //
 //    Member Variables.
 //
+private:
+
+    TInternalValue      m_internValue;
+
+    TInternalValue      m_scaleFactor;
 
 //========================================================================
 //
@@ -148,10 +189,10 @@ public:
 //
 public:
     //  テストクラス。  //
-    friend  class   BookFileTest;
+    friend  class   DecimalCurrencyTest;
 };
 
-}   //  End of namespace  Documents
+}   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif

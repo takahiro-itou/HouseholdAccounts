@@ -106,6 +106,9 @@ Public Structure tUserInterface
     Public nBookWidth As Integer
     Public nBookHeight As integer
 
+    Public canvasWidth As Integer
+    Public canvasHeight As Integer
+
     Public nCellWidth As Integer
     Public nCellHeight As Integer
     Public nColumnsInSheet As Integer

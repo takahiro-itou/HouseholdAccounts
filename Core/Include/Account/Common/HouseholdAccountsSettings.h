@@ -18,14 +18,14 @@
 **      @file       Common/HouseholdAccountsSettings.h
 **/
 
-#if !defined( HACCOUNTS_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H )
-#    define   HACCOUNTS_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H
+#if !defined( HACORE_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H )
+#    define   HACORE_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H
 
 //  スクリプトによる設定値が書き込まれたヘッダを読み込む。  //
 #if defined( HOUSEHOLDACCOUNTS_USE_PRE_CONFIGURED_MSVC )
-#    include    "HouseholdAccounts/.Config/PreConfigHouseholdAccounts.msvc.h"
+#    include    "Account/.Config/PreConfigHouseholdAccounts.msvc.h"
 #else
-#    include    "HouseholdAccounts/.Config/ConfiguredHouseholdAccounts.h"
+#    include    "Account/.Config/ConfiguredHouseholdAccounts.h"
 #endif
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN

@@ -21,108 +21,6 @@ Module StringTable
 Public Const STRINGSORTNONE As Integer = 0         'ソートなし
 Public Const STRINGSORTASCENDING As Integer = 1    '昇順
 
-Public Function InsertStringToTable(
-        ByRef utStringTable As Wrapper.StringTable,
-        ByVal strNewText As String) As Integer
-'---------------------------------------------------------------------
-'[I/O] utStringTable: 文字列テーブル
-'[ IN] strNewText   : 新しく挿入するデータ
-'[RET] Integer
-'  挿入したデータのインデックス
-'[ACT]
-'  指定した文字列テーブルに、新しいデータを挿入する。
-'  挿入された場合は、そのインデックスを返す。
-'  すでにデータが存在していた場合は何もせず、そのインデックスを返す。
-'---------------------------------------------------------------------
-Dim i As Integer
-Dim lngIndex As Integer, lngResult As Integer, lngInsertPos As Integer
-Dim lngLeft As Integer, lngRight As Integer, lngTarget As Integer
-Dim strCheck As String
-
-    '指定されたデータの検索、および挿入位置の決定を行う
-    With utStringTable
-        lngLeft = 0
-        lngRight = .nNumEntry - 1
-        lngResult = -1
-
-        Do While (lngRight - lngLeft >= 8)
-            lngTarget = (lngLeft + lngRight) \ 2
-            lngIndex = .nSortIndex(lngTarget)
-            strCheck = .sTableEntries(lngIndex)
-
-            If (strCheck = strNewText) Then
-                '見つかった
-                lngResult = lngIndex
-                lngLeft = lngTarget
-                lngRight = lngTarget
-                Exit Do
-            End If
-
-            '検索範囲を絞る
-            If (strCheck < strNewText) Then
-                '検索しているデータは、現在位置lngTarget より右にある
-                lngLeft = lngTarget + 1
-            Else
-                '検索しているデータは、現在位置lngTarget より左にある
-                lngRight = lngTarget - 1
-            End If
-        Loop
-
-        'ある程度範囲が小さくなったところで、単純検索に切り替える
-        lngInsertPos = lngRight + 1
-        For lngTarget = lngLeft To lngRight
-            lngIndex = .nSortIndex(lngTarget)
-            strCheck = .sTableEntries(lngIndex)
-
-            If (strCheck = strNewText) Then
-                '見つかった
-                lngResult = lngIndex
-                Exit For
-            ElseIf (strCheck > strNewText) Then
-                'この時点で、指定されたデータが、テーブル内に存在しない
-                'このときの、lngTargetの位置に新しいデータを挿入する
-                lngResult = -1
-                lngInsertPos = lngTarget
-                Exit For
-            End If
-        Next lngTarget
-    End With
-
-    'データが見つかった場合はそのインデックスを返して終了
-    If (lngResult >= 0) Then
-        InsertStringToTable = lngResult
-        Exit Function
-    End If
-
-    'データをテーブルの最後尾に追加し、
-    'ソートインデックステーブルを更新する
-    With utStringTable
-        lngIndex = .nNumEntry
-
-        .nNumEntry = .nNumEntry + 1
-        If (.nNumEntry > .nTableBufferSize) Then
-            .nTableBufferSize = (.nNumEntry + 15) And &H7FFFFFF0
-            ReDim Preserve .nEntryFlags(0 To .nTableBufferSize - 1)
-            ReDim Preserve .sTableEntries(0 To .nTableBufferSize - 1)
-            ReDim Preserve .nSortIndex(0 To .nTableBufferSize - 1)
-        End If
-
-        'テーブルの最後尾にデータを追加する
-        .sTableEntries(lngIndex) = strNewText
-
-        '挿入位置より後ろにあるデータをずらす
-        For i = .nNumEntry - 1 To lngInsertPos + 1 Step -1
-            .nSortIndex(i) = .nSortIndex(i - 1)
-        Next i
-
-        '挿入位置にデータを書き込む
-        .nSortIndex(lngInsertPos) = lngIndex
-    End With
-
-    '挿入したデータのインデックスを返す
-    InsertStringToTable = lngIndex
-End Function
-
 Public Function ReadStringTable(
         ByRef utStringTable As Wrapper.StringTable,
         ByVal lngFileNumber As Integer) As Integer
@@ -171,11 +69,12 @@ Dim bytBuffer() As Byte
             ReDim bytBuffer(0 To lngLength - 1)
             FileGet(lngFileNumber, bytBuffer)
 
-            strTemp = ByteToString(bytBuffer, 0, lngLength - 1, True)
+            strTemp = Wrapper.TextOperation.toStringFromBytes(
+                            bytBuffer, 0, lngLength - 1, True)
 
             If (lngSorted = STRINGSORTNONE) Then
                 'データがソートされていない場合は、基本挿入法を使う
-                InsertStringToTable(utStringTable, strTemp)
+                .insertString(strTemp)
             Else
                 'データがソートされている場合は、単純に最後に追加していく
                 .sTableEntries(i) = strTemp
@@ -187,7 +86,7 @@ Dim bytBuffer() As Byte
         .nSorted = STRINGSORTASCENDING
     End With
 
-    If (TestStringTable(utStringTable) = False) Then
+    If (utStringTable.checkIntegrity() = False) Then
         MessageBox.Show("文字列テーブルが正しくソートされていません。" & vbCrLf & "ソートしなおします。")
         SortStringTable(utStringTable)
     End If
@@ -255,7 +154,8 @@ Dim bytBuffer() As Byte
             strTemp = .sTableEntries(i)
 
             ReDim bytBuffer(0 To 255)
-            lngLength = StringToByte(strTemp, bytBuffer, 0, 255, False)
+            lngLength = Wrapper.TextOperation.toBytesFromString(
+                              strTemp, bytBuffer, 0, 255, False)
             If (lngLength And 1) Then lngLength = lngLength + 1
 
             lngRecordSize = (lngLength + 8 + 15) And &H7FFFFFF0
@@ -278,27 +178,6 @@ Dim bytBuffer() As Byte
 
     '書き込んだバイト数を返す
     WriteStringTable = (lngEndPos - lngFirstPos)
-End Function
-
-Public Function TestStringTable(
-        ByRef lpTable As Wrapper.StringTable) As Boolean
-'---------------------------------------------------------------------
-'---------------------------------------------------------------------
-Dim i As Integer
-Dim j0 As Integer, j1 As Integer
-
-    For i = 1 To lpTable.nNumEntry - 1
-        j0 = lpTable.nSortIndex(i - 1)
-        j1 = lpTable.nSortIndex(i)
-
-        If lpTable.sTableEntries(j0) >= lpTable.sTableEntries(j1) Then
-            Debug.Print("NumEntry=", lpTable.nNumEntry)
-            TestStringTable = False
-            Exit Function
-        End If
-    Next i
-
-    TestStringTable = True
 End Function
 
 End Module

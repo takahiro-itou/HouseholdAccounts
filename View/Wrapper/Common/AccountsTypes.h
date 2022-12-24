@@ -23,7 +23,7 @@
 
 #pragma     once
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
+#include    "Account/Common/AccountsTypes.h"
 
 namespace  Wrapper  {
 
@@ -35,6 +35,30 @@ public  enum class  ErrCode
     ERR_FILE_IO_ERROR       = HouseholdAccounts::ERR_FILE_IO_ERROR,
     ERR_INDEX_OUT_OF_RANGE  = HouseholdAccounts::ERR_INDEX_OUT_OF_RANGE
 };
+
+//----------------------------------------------------------------
+/**
+**
+**/
+
+typedef     int                 IOffsetType;
+
+//----------------------------------------------------------------
+/**
+**    文字列の配列型。
+**/
+
+typedef     cli::array<System::String^, 1>      StringArray;
+
+//========================================================================
+
+typedef     HouseholdAccounts::CategoryHandle   CategoryHandle;
+typedef     HouseholdAccounts::StringIndex      StringIndex;
+
+//========================================================================
+//
+//    配列型。
+//
 
 }   //  End of namespace  Wrapper
 

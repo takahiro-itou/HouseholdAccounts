@@ -141,7 +141,7 @@ Public Function IsLegalInputFileName(ByVal strFileName As String) As Boolean
 '---------------------------------------------------------------------
 Dim strDir As String
 
-    strDir = GetDirFromPath(strFileName)
+    strDir = Wrapper.Common.FilePathUtils.getDirFromPath(strFileName)
     If (LCase$(Right$(strDir, 9)) = "\resource") Then
         IsLegalInputFileName = False
         Exit Function
@@ -161,7 +161,7 @@ Public Function IsLegalOutputFileName(ByVal strFileName As String) As Boolean
 '---------------------------------------------------------------------
 Dim strDir As String
 
-    strDir = GetDirFromPath(strFileName)
+    strDir = Wrapper.Common.FilePathUtils.getDirFromPath(strFileName)
     If (LCase$(Right$(strDir, 9)) = "\resource") Then
         IsLegalOutputFileName = False
         Exit Function
@@ -340,7 +340,8 @@ Dim strValues(0 To 4) As String
     strValues(3) = lngDay
     strValues(4) = gstrMonthName(lngMonth)
 
-    WriteVariablesInString = ReplaceConstant(strText, strNames, strValues)
+    WriteVariablesInString = Wrapper.TextOperation.replaceConstant(
+                                    strText, strNames, strValues)
 End Function
 
 End Module

@@ -18,10 +18,13 @@
 **      @file       Common/BookInterface.h
 **/
 
-#if !defined( HACCOUNTS_COMMON_INCLUDED_BOOK_INTERFACE_H )
-#    define   HACCOUNTS_COMMON_INCLUDED_BOOK_INTERFACE_H
+#if !defined( HACORE_COMMON_INCLUDED_BOOK_INTERFACE_H )
+#    define   HACORE_COMMON_INCLUDED_BOOK_INTERFACE_H
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
+
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    include    "AccountsTypes.h"
+#endif
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN

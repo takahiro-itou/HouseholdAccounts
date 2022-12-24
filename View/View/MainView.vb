@@ -41,7 +41,8 @@ Dim lngDefaultHeight As Integer
 
     g_appRunPath = getAppPath()
     g_iniFileName = g_appRunPath & "\ApplicationSettings.ini"
-    g_appRootDir = getRootDir(g_appRunPath, "bin")
+    g_appRootDir = Wrapper.Common.FilePathUtils.getProjectRootDir(
+                        g_appRunPath, "bin")
 
     initializeTables()
     moveWindowToStartPosition(g_iniFileName, INI_SEC_MAIN_VIEW, Me, Nothing)
@@ -80,6 +81,23 @@ Dim lngDefaultHeight As Integer
     g.Dispose()
     picBook.Invalidate()
 
+End Sub
+
+Private Sub MainView_ResizeEnd(sender As Object, e As EventArgs) _
+    Handles Me.ResizeEnd
+''--------------------------------------------------------------------
+''    フォームのリサイズイベントハンドラ。
+''--------------------------------------------------------------------
+Dim bInvalid As Boolean
+
+    With mutBookView
+        bInvalid = ChangeCellSize(.utUserInterface, .utAccountBook, -1, -1)
+        If bInvalid Then
+            UpdateBook(.utUserInterface, .utAccountBook, -1, -1)
+        End If
+        RefreshBook(.utUserInterface, .utAccountBook, -1, -1)
+    End With
+    picBook.Invalidate()
 End Sub
 
 ''========================================================================
