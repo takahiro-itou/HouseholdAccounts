@@ -166,11 +166,30 @@ public:
     getCategoryFlags()  const;
 
     //----------------------------------------------------------------
+    /**   項目のフラグを設定する。
+    **
+    **  @param [in] flagNew
+    **  @return     以前の値。
+    **/
+    const   CategoryFlags
+    setCategoryFlags(
+            const   CategoryFlags   flagNew);
+
+    //----------------------------------------------------------------
     /**   項目の名前を取得する。
     **
     **/
     const   std::string  &
     getCategoryName()  const;
+
+    //----------------------------------------------------------------
+    /**   項目の名前を設定する。
+    **
+    **  @param [in] cateName
+    **/
+    void
+    setCategoryName(
+            const  std::string  &cateName);
 
     //----------------------------------------------------------------
     /**   サブ項目の個数を取得する。
@@ -185,6 +204,16 @@ public:
     **/
     const   CategoryHandle
     getParentHandle()  const;
+
+    //----------------------------------------------------------------
+    /**   親項目のインデックスを設定する。
+    **
+    **  @param [in] parentNew
+    **  @return     以前の値。
+    **/
+    const   CategoryHandle
+    setParentHandle(
+            const   CategoryHandle  parentNew);
 
     //----------------------------------------------------------------
     /**   サブ項目のインデックスの配列を取得する。

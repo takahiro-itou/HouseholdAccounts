@@ -98,6 +98,19 @@ BookCategory::getCategoryFlags()  const
 }
 
 //----------------------------------------------------------------
+//    項目のフラグを設定する。
+//
+
+const   CategoryFlags
+BookCategory::setCategoryFlags(
+        const   CategoryFlags   flagNew)
+{
+    const CategoryFlags flagOld = this->m_categoryFlags;
+    this->m_categoryFlags   = flagNew;
+    return ( flagOld );
+}
+
+//----------------------------------------------------------------
 //    項目の名前を取得する。
 //
 
@@ -105,6 +118,17 @@ const   std::string  &
 BookCategory::getCategoryName()  const
 {
     return ( this->m_categoryName );
+}
+
+//----------------------------------------------------------------
+//    項目の名前を設定する。
+//
+
+void
+BookCategory::setCategoryName(
+        const  std::string  &cateName)
+{
+    this->m_categoryName    = cateName;
 }
 
 //----------------------------------------------------------------
@@ -125,6 +149,19 @@ const   CategoryHandle
 BookCategory::getParentHandle()  const
 {
     return ( this->m_parentHandle );
+}
+
+//----------------------------------------------------------------
+//    親項目のインデックスを設定する。
+//
+
+const   CategoryHandle
+BookCategory::setParentHandle(
+        const   CategoryHandle  parentNew)
+{
+    CategoryHandle  oldVal  = this->m_parentHandle;
+    this->m_parentHandle    = parentNew;
+    return ( oldVal );
 }
 
 //----------------------------------------------------------------
