@@ -23,6 +23,20 @@
 
 #include    "HouseholdAccounts/Common/AccountsTypes.h"
 
+#if !defined( HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H )
+#    include    "HouseholdAccounts/Common/DecimalCurrency.h"
+#endif
+
+#if !defined( HACCOUNTS_INCLUDES_STL_STRING )
+#    include    <string>
+#    define     HACCOUNTS_INCLUDES_STL_STRING
+#endif
+
+#if !defined( HACCOUNTS_INCLUDES_STL_VECTOR )
+#    include    <vector>
+#    define     HACCOUNTS_INCLUDES_STL_VECTOR
+#endif
+
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {
 
