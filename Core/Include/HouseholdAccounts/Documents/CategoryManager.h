@@ -21,7 +21,11 @@
 #if !defined( HACORE_DOCUMENTS_INCLUDED_CATEGORY_MANAGER_H )
 #    define   HACORE_DOCUMENTS_INCLUDED_CATEGORY_MANAGER_H
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
+
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    include    "HouseholdAccounts/Common/AccountsTypes.h"
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {
