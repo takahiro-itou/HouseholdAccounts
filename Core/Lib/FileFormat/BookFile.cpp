@@ -18,6 +18,8 @@
 **      @file       FileFormat/BookFile.cpp
 **/
 
+#include    "Account/pch/PreCompile.h"
+
 #include    "Account/FileFormat/BookFile.h"
 
 

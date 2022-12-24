@@ -18,6 +18,8 @@
 **      @file       Common/TextParser.cpp
 **/
 
+#include    "Account/pch/PreCompile.h"
+
 #include    "Account/Common/TextParser.h"
 
 

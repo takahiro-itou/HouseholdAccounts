@@ -18,6 +18,8 @@
 **      @file       Common/DecimalCurrency.cpp
 **/
 
+#include    "Account/pch/PreCompile.h"
+
 #include    "Account/Common/DecimalCurrency.h"
 
 
