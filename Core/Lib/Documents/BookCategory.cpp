@@ -186,6 +186,27 @@ BookCategory::setStartDate(
 }
 
 //----------------------------------------------------------------
+//    開始時の残高を取得する。
+//
+
+const   DecimalCurrency  &
+BookCategory::getStartBalance()  const
+{
+    return ( this->m_startBalance );
+}
+
+//----------------------------------------------------------------
+//    開始時の残高を設定する。
+//
+
+void
+BookCategory::setStartBalance(
+        const  DecimalCurrency  &valNew)
+{
+    this->m_startBalance    = valNew;
+}
+
+//----------------------------------------------------------------
 //    サブ項目のインデックスの配列を取得する。
 //
 
