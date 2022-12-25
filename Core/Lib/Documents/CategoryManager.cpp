@@ -164,9 +164,8 @@ CategoryManager::insertNewCategory(
 
     //  この項目に初期値を書き込む。            //
     BookCategory   & entry  = this->m_bufCategory.at(cateNew);
-    entry.setParentHandle(cateParent);
-    entry.setCategoryName(cateName);
-
+    entry.setupCategory(cateParent, cateName, cateFlags,
+                        startDate, startBalance);
     ++ this->m_numUsedCategory;
 
     //  親項目の内容を更新する。                //
