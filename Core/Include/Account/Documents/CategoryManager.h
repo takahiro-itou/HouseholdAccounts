@@ -103,12 +103,17 @@ public:
 //
 //    Public Member Functions (Virtual Functions).
 //
-
-//========================================================================
-//
-//    Public Member Functions.
-//
 public:
+
+    //----------------------------------------------------------------
+    /**   項目データ用バッファを確保する。
+    **
+    **  @param [in] bufSize   確保する項目数。
+    **  @return     増えた部分の先頭のインデックス。
+    **/
+    virtual  const  CategoryHandle
+    allocCategoryBuffers(
+            const   CategoryHandle  bufSize);
 
     //----------------------------------------------------------------
     /**   項目のルート項目のハンドルを取得する。
@@ -138,6 +143,11 @@ public:
             const  CategoryFlags    cateFlags,
             const  int              startDate,
             const  DecimalCurrency &startBalance);
+
+//========================================================================
+//
+//    Public Member Functions.
+//
 
 //========================================================================
 //

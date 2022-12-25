@@ -77,10 +77,23 @@ CategoryManager::~CategoryManager()
 //    Public Member Functions (Virtual Functions).
 //
 
-//========================================================================
+//----------------------------------------------------------------
+//    項目データ用バッファを確保する。
 //
-//    Public Member Functions.
-//
+
+const   CategoryHandle
+CategoryManager::allocCategoryBuffers(
+        const   CategoryHandle  bufSize)
+{
+    //  バッファをリサイズし、増えた部分の先頭を記録しておく。  //
+    const   CategoryHandle  sizeCur = this->m_cateBufferSize;
+    const   CategoryHandle  sizeNew = (bufSize + 15) & ~15;
+
+    this->m_cateBufferSize  = sizeNew;
+    this->m_bufCategory.resize(sizeNew);
+
+    return ( sizeCur );
+}
 
 //----------------------------------------------------------------
 //    項目のルート項目のハンドルを取得する。
@@ -123,6 +136,11 @@ CategoryManager::insertNewCategory(
     //  追加した新しい項目のハンドルを返す。    //
     return ( cateNew );
 }
+
+//========================================================================
+//
+//    Public Member Functions.
+//
 
 //========================================================================
 //
