@@ -149,6 +149,16 @@ public:
 public:
 
     //----------------------------------------------------------------
+    /**   サブ項目を追加する。
+    **
+    **  @param [in] cateSub   項目のハンドル。
+    **  @return     何番目の子になるかを返す。
+    **/
+    virtual  const  CategoryHandle
+    appendSubCategory(
+            const   CategoryHandle  cateSub);
+
+    //----------------------------------------------------------------
     /**   サブ項目を全て消去する。
     **
     **  @return     void.

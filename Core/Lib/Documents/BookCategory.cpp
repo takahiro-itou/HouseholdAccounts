@@ -78,6 +78,20 @@ BookCategory::~BookCategory()
 //
 
 //----------------------------------------------------------------
+//    サブ項目を追加する。
+//
+
+const   CategoryHandle
+BookCategory::appendSubCategory(
+        const   CategoryHandle  cateSub)
+{
+    const   CategoryHandle  idxPos  = this->m_numSubCategory ++;
+    this->m_subCategories.resize(idxPos + 1);
+    this->m_subCategories[idxPos]   = cateSub;
+    return ( idxPos );
+}
+
+//----------------------------------------------------------------
 //    サブ項目を全て消去する。
 //
 
