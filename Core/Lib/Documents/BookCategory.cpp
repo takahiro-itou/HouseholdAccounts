@@ -179,7 +179,7 @@ BookCategory::getSubCategories()  const
 //
 
 const   CategoryHandle
-BookCategory::getSubCategor(
+BookCategory::getSubCategory(
         const   CategoryHandle  idxSub)  const
 {
     return ( this->m_subCategories[idxSub] );

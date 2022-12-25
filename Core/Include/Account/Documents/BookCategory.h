@@ -59,7 +59,7 @@ enum class  CategoryFlags
 {
     CTYPE_MASK              = 0x000000ff,
     CTYPE_NOTUSED           = 0,    /**<  未使用。          **/
-    CTYE_INHERIT            = 1,    /**<  親の設定を継承。  **/
+    CTYPE_INHERIT           = 1,    /**<  親の設定を継承。  **/
     CTYPE_BALANCE           = 9,    /**<  残高表示。        **/
     CTYPE_INCOME            = 17,   /**<  収入。            **/
     CTYPE_OUTLAY            = 18,   /**<  支出。            **/
@@ -229,7 +229,7 @@ public:
     **  @return     指定した番号のサブ項目のインデックス。
     **/
     const   CategoryHandle
-    getSubCategor(
+    getSubCategory(
             const   CategoryHandle  idxSub)  const;
 
 //========================================================================
