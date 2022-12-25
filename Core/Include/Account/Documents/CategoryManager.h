@@ -22,8 +22,13 @@
 #    define   HACORE_DOCUMENTS_INCLUDED_CATEGORY_MANAGER_H
 
 
-#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
-#    include    "Account/Common/AccountsTypes.h"
+#if !defined( HACORE_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H )
+#    include    "BookCategory.h"
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_STL_VECTOR )
+#    include    <vector>
+#    define   HACORE_SYS_INCLUDED_STL_VECTOR
 #endif
 
 
@@ -42,11 +47,14 @@ namespace  Documents  {
 
 class  CategoryManager
 {
-
 //========================================================================
 //
 //    Internal Type Definitions.
 //
+private:
+
+    typedef     std::vector<BookCategory>
+    CategoryArray;
 
 //========================================================================
 //
@@ -95,6 +103,11 @@ public:
 
 //========================================================================
 //
+//    Accessors.
+//
+
+//========================================================================
+//
 //    Protected Member Functions.
 //
 
@@ -107,6 +120,25 @@ public:
 //
 //    Member Variables.
 //
+private:
+
+    /**   項目用バッファサイズ。    **/
+    CategoryHandle      m_cateBufferSize;
+
+    /**   登録済みの項目の数。      **/
+    CategoryHandle      m_numUsedCategory;
+
+    /**   ルートになる項目の個数。  **/
+    CategoryHandle      m_numRootCategory;
+
+    /**   項目のデータ。            **/
+    CategoryArray       m_bufCategory;
+
+    /**   「内税」項目のハンドル。  **/
+    CategoryHandle      m_chInnerTax;
+
+    /**   「外税」項目のハンドル。  **/
+    CategoryHandle      m_chOuterTax;
 
 //========================================================================
 //
