@@ -164,12 +164,13 @@ CategoryManager::insertNewCategory(
 
     //  この項目に初期値を書き込む。            //
     BookCategory   & entry  = this->m_bufCategory.at(cateNew);
-    entry.setupCategory(cateParent, cateName, cateFlags,
-                        startDate, startBalance);
+    entry.setupCategory(
+            cateParent, cateName, cateFlags, startDate, startBalance);
     ++ this->m_numUsedCategory;
 
     //  親項目の内容を更新する。                //
     BookCategory   & parent = this->m_bufCategory.at(cateParent);
+    parent.appendSubCategory(cateNew);
 
     //  追加した新しい項目のハンドルを返す。    //
     return ( cateNew );
