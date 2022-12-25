@@ -109,9 +109,27 @@ public:
     **  @return     項目がルート項目を示している場合は、
     **      それ自身を返す。
     **/
-    const   CategoryHandle
+    virtual  const  CategoryHandle
     getRootCategoryHandle(
             const   CategoryHandle  idxCate)  const;
+
+    //----------------------------------------------------------------
+    /**   指定した項目に新しいサブ項目を追加する。
+    **
+    **  @param [in] cateParent      親項目のハンドル。
+    **  @param [in] cateName        項目名。
+    **  @param [in] cateFlags       項目フラグ。
+    **  @param [in] startDate       開始日。
+    **  @param [in] startBalance    開始時金額。
+    **  @return     追加した項目のハンドル。
+    **/
+    virtual  const  CategoryHandle
+    insertNewCategory(
+            const  CategoryHandle   cateParent,
+            const  std::string     &cateName,
+            const  CategoryFlags    cateFlags,
+            const  int              startDate,
+            const  DecimalCurrency  startBalance);
 
 //========================================================================
 //

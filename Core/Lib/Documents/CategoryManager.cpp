@@ -101,7 +101,28 @@ CategoryManager::getRootCategoryHandle(
     return ( cateCur );
 }
 
-//========================================================================
+//----------------------------------------------------------------
+//    指定した項目に新しいサブ項目を追加する。
+//
+
+const   CategoryHandle
+CategoryManager::insertNewCategory(
+        const  CategoryHandle   cateParent,
+        const  std::string     &cateName,
+        const  CategoryFlags    cateFlags,
+        const  int              startDate,
+        const  DecimalCurrency  startBalance)
+{
+    //  新しい項目用のインデックスを取得する。  //
+    const   CategoryHandle  cateNew = 0;
+
+    //  この項目に初期値を書き込む。            //
+
+    //  親項目の内容を更新する。                //
+
+    //  追加した新しい項目のハンドルを返す。    //
+    return ( cateNew );
+}
 
 //========================================================================
 //
