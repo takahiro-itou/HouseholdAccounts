@@ -82,6 +82,27 @@ CategoryManager::~CategoryManager()
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    項目のルート項目のハンドルを取得する。
+//
+
+const   CategoryHandle
+CategoryManager::getRootCategoryHandle(
+        const   CategoryHandle  idxCate)  const
+{
+    CategoryHandle  catePar;
+    CategoryHandle  cateCur = idxCate;
+
+    catePar = this->m_bufCategory.at(cateCur).getParentHandle();
+    while ( catePar >= 0 ) {
+        cateCur = catePar;
+        catePar = this->m_bufCategory.at(cateCur).getParentHandle();
+    }
+    return ( cateCur );
+}
+
+//========================================================================
+
 //========================================================================
 //
 //    Accessors.
