@@ -84,6 +84,41 @@ CategoryManager::~CategoryManager()
 
 //========================================================================
 //
+//    Accessors.
+//
+
+//----------------------------------------------------------------
+//    項目用のバッファのサイズを得る。
+//
+
+const   CategoryHandle
+CategoryManager::getBufferCapacity()  const
+{
+    return ( this->m_cateBufferSize );
+}
+
+//----------------------------------------------------------------
+//    登録済みの項目数を取得する。
+//
+
+const   CategoryHandle
+CategoryManager::getRegisteredCategoryCount()  const
+{
+    return ( this->m_numUsedCategory );
+}
+
+//----------------------------------------------------------------
+//    ルートにある項目数を取得する。
+//
+
+const   CategoryHandle
+CategoryManager::getRootCategoryCount()  const
+{
+    return ( this->m_numRootCategory );
+}
+
+//========================================================================
+//
 //    Protected Member Functions.
 //
 
