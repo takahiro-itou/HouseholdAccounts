@@ -96,6 +96,18 @@ CategoryManager::allocCategoryBuffers(
 }
 
 //----------------------------------------------------------------
+//    新しい項目用の領域を確保する。
+//
+
+const   CategoryHandle
+CategoryManager::allocNewCategory()
+{
+    CategoryHandle  cateResult  = -1;
+
+    return ( cateResult );
+}
+
+//----------------------------------------------------------------
 //    項目のルート項目のハンドルを取得する。
 //
 
