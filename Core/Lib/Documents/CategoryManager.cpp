@@ -111,7 +111,7 @@ CategoryManager::insertNewCategory(
         const  std::string     &cateName,
         const  CategoryFlags    cateFlags,
         const  int              startDate,
-        const  DecimalCurrency  startBalance)
+        const  DecimalCurrency &startBalance)
 {
     //  新しい項目用のインデックスを取得する。  //
     const   CategoryHandle  cateNew = 0;

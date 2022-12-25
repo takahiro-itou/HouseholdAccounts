@@ -33,6 +33,12 @@
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
+
+//  クラスの前方宣言。  //
+namespace  Common  {
+class   DecimalCurrency;
+}   //  End of namespace  Common
+
 namespace  Documents  {
 
 //  クラスの前方宣言。  //
@@ -55,6 +61,8 @@ private:
 
     typedef     std::vector<BookCategory>
     CategoryArray;
+
+    typedef     Common::DecimalCurrency     DecimalCurrency;
 
 //========================================================================
 //
@@ -129,7 +137,7 @@ public:
             const  std::string     &cateName,
             const  CategoryFlags    cateFlags,
             const  int              startDate,
-            const  DecimalCurrency  startBalance);
+            const  DecimalCurrency &startBalance);
 
 //========================================================================
 //
