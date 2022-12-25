@@ -78,6 +78,18 @@ BookCategory::~BookCategory()
 //
 
 //----------------------------------------------------------------
+//    サブ項目を全て消去する。
+//
+
+void
+BookCategory::clearSubCategories()
+{
+    this->m_numSubCategory  = 0;
+    this->m_subCategories.clear();
+    return;
+}
+
+//----------------------------------------------------------------
 //    項目のデータを設定する。
 //
 
