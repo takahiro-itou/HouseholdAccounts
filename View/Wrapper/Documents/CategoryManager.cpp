@@ -47,6 +47,7 @@ namespace  {
 //
 
 CategoryManager::CategoryManager()
+    : m_ptrObj(new WrapTarget())
 {
 }
 
@@ -70,6 +71,8 @@ CategoryManager::~CategoryManager()
 
 CategoryManager::!CategoryManager()
 {
+    delete  this->m_ptrObj;
+    this->m_ptrObj  = nullptr;
 }
 
 //========================================================================
