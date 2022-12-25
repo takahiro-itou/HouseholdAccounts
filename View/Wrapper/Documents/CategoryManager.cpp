@@ -20,6 +20,8 @@
 
 #include    "PreCompile.h"
 
+#include    "Account/Documents/CategoryManager.h"
+
 #include    "CategoryManager.h"
 
 namespace  Wrapper  {

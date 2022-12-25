@@ -23,7 +23,19 @@
 
 #pragma     once
 
+
 #include    "BookCategory.h"
+
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
+
+//  クラスの前方宣言。  //
+namespace  Documents  {
+class   CategoryManager;
+}   //  End of namespace  Documents
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+
 
 namespace  Wrapper  {
 namespace  Documents  {
@@ -44,6 +56,9 @@ public ref  class  CategoryManager
 //    Internal Type Definitions.
 //
 private:
+
+    typedef     HouseholdAccounts::Documents::CategoryManager
+    WrapTarget;
 
     typedef     cli::array<BookCategory^, 1>    CategoryArray;
 
@@ -161,6 +176,8 @@ public:
 //    Member Variables.
 //
 private:
+
+    WrapTarget  *   m_ptrObj;
 
     /**   項目用バッファサイズ。    **/
     CategoryHandle      m_cateBufferSize;
