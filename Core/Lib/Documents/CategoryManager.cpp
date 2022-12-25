@@ -22,6 +22,8 @@
 
 #include    "Account/Documents/CategoryManager.h"
 
+#include    "Account/Documents/BookCategory.h"
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {
@@ -104,7 +106,26 @@ CategoryManager::allocNewCategory()
 {
     CategoryHandle  cateResult  = -1;
 
-    return ( cateResult );
+    //  バッファサイズと登録済み項目数を比較し、    //
+    //  バッファに空きがある場合は、空きを探して    //
+    //  そのハンドル（インデックス）を返す。        //
+    const   CategoryHandle  bufSize = this->m_cateBufferSize;
+    if ( this->m_numUsedCategory < bufSize ) {
+        for ( CategoryHandle i = this->m_numRootCategory; i < bufSize; ++ i ) {
+            const  BookCategory &bc = this->m_bufCategory.at(i);
+            if ( bc.getCategoryFlags() == CategoryFlags::CTYPE_NOTUSED ) {
+                cateResult  = i;
+                break;
+            }
+        }
+    }
+
+    if ( cateResult >= 0 ) {
+        return ( cateResult );
+    }
+
+    //  バッファをリサイズし、増えた部分の先頭を確保する。  //
+    return ( allocCategoryBuffers(bufSize + 1) );
 }
 
 //----------------------------------------------------------------
