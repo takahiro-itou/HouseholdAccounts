@@ -160,11 +160,17 @@ CategoryManager::insertNewCategory(
         const  DecimalCurrency &startBalance)
 {
     //  新しい項目用のインデックスを取得する。  //
-    const   CategoryHandle  cateNew = 0;
+    const   CategoryHandle  cateNew = allocNewCategory();
 
     //  この項目に初期値を書き込む。            //
+    BookCategory   & entry  = this->m_bufCategory.at(cateNew);
+    entry.setParentHandle(cateParent);
+    entry.setCategoryName(cateName);
+
+    ++ this->m_numUsedCategory;
 
     //  親項目の内容を更新する。                //
+    BookCategory   & parent = this->m_bufCategory.at(cateParent);
 
     //  追加した新しい項目のハンドルを返す。    //
     return ( cateNew );
