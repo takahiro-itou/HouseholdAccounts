@@ -189,7 +189,7 @@ BookCategory::setStartDate(
 //    開始時の残高を取得する。
 //
 
-const   DecimalCurrency  &
+const   Common::DecimalCurrency  &
 BookCategory::getStartBalance()  const
 {
     return ( this->m_startBalance );
