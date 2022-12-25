@@ -77,6 +77,30 @@ BookCategory::~BookCategory()
 //    Public Member Functions (Virtual Functions).
 //
 
+//----------------------------------------------------------------
+//    項目のデータを設定する。
+//
+
+void
+BookCategory::setupCategory(
+        const  CategoryHandle   cateParent,
+        const  std::string     &cateName,
+        const  CategoryFlags    cateFlags,
+        const  DateSerial       startDate,
+        const  DecimalCurrency &startBalance)
+{
+    this->m_categoryFlags   = cateFlags;
+    this->m_parentHandle    = cateParent;
+    this->m_categoryName    = cateName;
+    this->m_startDate       = startDate;
+    this->m_startBalance    = startBalance;
+
+    this->m_numSubCategory  = 0;
+    this->m_subCategories.clear();
+
+    return;
+}
+
 //========================================================================
 //
 //    Public Member Functions.

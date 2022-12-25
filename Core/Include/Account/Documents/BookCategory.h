@@ -148,6 +148,23 @@ public:
 //
 public:
 
+    //----------------------------------------------------------------
+    /**   項目のデータを設定する。
+    **
+    **  @param [in] cateParent      親項目のハンドル。
+    **  @param [in] cateName        項目名。
+    **  @param [in] cateFlags       項目フラグ。
+    **  @param [in] startDate       開始日。
+    **  @param [in] startBalance    開始時金額。
+    **/
+    virtual  void
+    setupCategory(
+            const  CategoryHandle   cateParent,
+            const  std::string     &cateName,
+            const  CategoryFlags    cateFlags,
+            const  DateSerial       startDate,
+            const  DecimalCurrency &startBalance);
+
 //========================================================================
 //
 //    Public Member Functions.
