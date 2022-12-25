@@ -165,6 +165,27 @@ BookCategory::setParentHandle(
 }
 
 //----------------------------------------------------------------
+//    開始年月日を取得する。
+//
+
+const   DateSerial
+BookCategory::getStartDate()  const
+{
+    return ( this->m_startDate );
+}
+
+//----------------------------------------------------------------
+//    開始年月日を設定する。
+//
+
+void
+BookCategory::setStartDate(
+        const   DateSerial  valNew)
+{
+    this->m_startDate   = valNew;
+}
+
+//----------------------------------------------------------------
 //    サブ項目のインデックスの配列を取得する。
 //
 

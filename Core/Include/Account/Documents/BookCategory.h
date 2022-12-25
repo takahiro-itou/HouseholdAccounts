@@ -146,6 +146,7 @@ public:
 //
 //    Public Member Functions (Virtual Functions).
 //
+public:
 
 //========================================================================
 //
@@ -216,6 +217,23 @@ public:
             const   CategoryHandle  parentNew);
 
     //----------------------------------------------------------------
+    /**   開始年月日を取得する。
+    **
+    **/
+    const   DateSerial
+    getStartDate()  const;
+
+    //----------------------------------------------------------------
+    /**   開始年月日を設定する。
+    **
+    **  @param [in] valNew
+    **  @return     void.
+    **/
+    void
+    setStartDate(
+            const   DateSerial  valNew);
+
+    //----------------------------------------------------------------
     /**   サブ項目のインデックスの配列を取得する。
     **
     **/
@@ -267,7 +285,7 @@ private:
     CategoryHandleArray     m_subCategories;
 
     /**   開始年月日 (残高の項目のみ) 。    **/
-    int                     m_startDate;
+    DateSerial              m_startDate;
 
     /**   開始時の残高 (残高の項目のみ) 。  **/
     DecimalCurrency         m_startBalance;
