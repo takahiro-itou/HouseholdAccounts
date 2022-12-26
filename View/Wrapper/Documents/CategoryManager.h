@@ -179,15 +179,6 @@ private:
 
     WrapTarget  *   m_ptrObj;
 
-    /**   項目のデータ。            **/
-    CategoryArray^      m_bufCategory;
-
-    /**   「内税」項目のハンドル。  **/
-    CategoryHandle      m_chInnerTax;
-
-    /**   「外税」項目のハンドル。  **/
-    CategoryHandle      m_chOuterTax;
-
 //========================================================================
 //
 //    Other Features.
