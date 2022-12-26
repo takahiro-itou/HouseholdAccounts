@@ -151,7 +151,7 @@ CategoryManager::getRegisteredCategoryCount()
 CategoryHandle
 CategoryManager::getRootCategoryCount()
 {
-    return ( this->m_numRootCategory );
+    return ( this->m_ptrObj->getRootCategoryCount() );
 }
 
 //========================================================================

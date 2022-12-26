@@ -179,9 +179,6 @@ private:
 
     WrapTarget  *   m_ptrObj;
 
-    /**   ルートになる項目の個数。  **/
-    CategoryHandle      m_numRootCategory;
-
     /**   項目のデータ。            **/
     CategoryArray^      m_bufCategory;
 
