@@ -162,7 +162,7 @@ BookCategory::CategoryName::get()
 CategoryHandle
 BookCategory::NumSubCategories::get()
 {
-    return ( this->m_numSubCategory );
+    return ( this->m_ptrObj->getNumSubCategories() );
 }
 
 //----------------------------------------------------------------
