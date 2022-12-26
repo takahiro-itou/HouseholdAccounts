@@ -131,7 +131,7 @@ DecimalCurrency::setInternalValue(
 //
 
 DecimalCurrency::DecimalType
-DecimalCurrency::decimalValue::get()
+DecimalCurrency::DecimalValue::get()
 {
     return ( getValue() );
 }
@@ -141,7 +141,7 @@ DecimalCurrency::decimalValue::get()
 //
 
 DecimalCurrency::TInternalValue
-DecimalCurrency::internalValue::get()
+DecimalCurrency::InternalValue::get()
 {
     return ( this->m_internValue );
 }

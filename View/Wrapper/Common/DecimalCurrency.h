@@ -137,7 +137,7 @@ public:
     **
     **/
     property    DecimalType
-    decimalValue
+    DecimalValue
     {
         DecimalType     get();
     }
@@ -147,7 +147,7 @@ public:
     **
     **/
     property    TInternalValue
-    internalValue
+    InternalValue
     {
         TInternalValue  get();
     }
