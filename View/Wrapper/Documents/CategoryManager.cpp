@@ -116,12 +116,17 @@ CategoryManager::getRootCategoryHandle(
 //    Accessors.
 //
 
+//========================================================================
+//
+//    Properties.
+//
+
 //----------------------------------------------------------------
 //    項目用のバッファのサイズを得る。
 //
 
 CategoryHandle
-CategoryManager::getBufferCapacity()
+CategoryManager::BufferCapacity::get()
 {
     return ( this->m_ptrObj->getBufferCapacity() );
 }
@@ -131,7 +136,7 @@ CategoryManager::getBufferCapacity()
 //
 
 CategoryHandle
-CategoryManager::getRegisteredCategoryCount()
+CategoryManager::RegisteredCategoryCount::get()
 {
     return ( this->m_ptrObj->getRegisteredCategoryCount() );
 }
@@ -141,15 +146,10 @@ CategoryManager::getRegisteredCategoryCount()
 //
 
 CategoryHandle
-CategoryManager::getRootCategoryCount()
+CategoryManager::RootCategoryCount::get()
 {
     return ( this->m_ptrObj->getRootCategoryCount() );
 }
-
-//========================================================================
-//
-//    Properties.
-//
 
 //========================================================================
 //

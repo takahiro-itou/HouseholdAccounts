@@ -132,34 +132,44 @@ public:
 //
 public:
 
+//========================================================================
+//
+//    Properties.
+//
+public:
+
     //----------------------------------------------------------------
     /**   項目用のバッファのサイズを得る。
     **
     **  @return     項目用バッファのサイズ。
     **/
-    CategoryHandle
-    getBufferCapacity();
+    property    CategoryHandle
+    BufferCapacity
+    {
+        CategoryHandle  get();
+    }
 
     //----------------------------------------------------------------
     /**   登録済みの項目数を取得する。
     **
     **  @return     登録済みの項目数を返す。
     **/
-    CategoryHandle
-    getRegisteredCategoryCount();
+    property    CategoryHandle
+    RegisteredCategoryCount
+    {
+        CategoryHandle  get();
+    }
 
     //----------------------------------------------------------------
     /**   ルートにある項目数を取得する。
     **
     **  @return     ルートの項目数を返す。
     **/
-    CategoryHandle
-    getRootCategoryCount();
-
-//========================================================================
-//
-//    Properties.
-//
+    property    CategoryHandle
+    RootCategoryCount
+    {
+        CategoryHandle  get();
+    }
 
 //========================================================================
 //
