@@ -48,7 +48,7 @@ namespace  {
 DecimalCurrency::DecimalCurrency(
         const   WrapTarget  &srcCur)
     : m_internValue(srcCur.getInternalValue()),
-      m_scaleFactor(1)
+      m_scaleFactor(srcCur.getScaleFactor())
 {
 }
 
