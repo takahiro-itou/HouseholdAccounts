@@ -247,9 +247,6 @@ private:
     /**   項目フラグ。              **/
     CategoryFlags           m_categoryFlags;
 
-    /**  親項目のインデックス。     **/
-    CategoryHandle          m_parentHandle;
-
     /**   項目名の ID  (文字列テーブル内のインデックス) 。  **/
     StringIndex             m_categoryNameId;
 

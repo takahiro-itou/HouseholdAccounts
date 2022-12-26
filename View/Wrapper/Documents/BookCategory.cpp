@@ -142,7 +142,7 @@ BookCategory::getSubCategories()
 CategoryHandle
 BookCategory::ParentHandle::get()
 {
-    return ( this->m_parentHandle );
+    return ( this->m_ptrObj->getParentHandle() );
 }
 
 //----------------------------------------------------------------
