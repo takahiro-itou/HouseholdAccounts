@@ -53,6 +53,7 @@ typedef     cli::array<System::String^, 1>      StringArray;
 //========================================================================
 
 typedef     HouseholdAccounts::CategoryHandle   CategoryHandle;
+typedef     HouseholdAccounts::DateSerial       DateSerial;
 typedef     HouseholdAccounts::StringIndex      StringIndex;
 
 //========================================================================

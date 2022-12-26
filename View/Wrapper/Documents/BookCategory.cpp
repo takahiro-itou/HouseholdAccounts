@@ -166,6 +166,16 @@ BookCategory::NumSubCategories::get()
 }
 
 //----------------------------------------------------------------
+//    開始年月日。
+//
+
+DateSerial
+BookCategory::StartDate::get()
+{
+    return ( this->m_ptrObj->getStartDate() );
+}
+
+//----------------------------------------------------------------
 //    サブ項目のインデックス。
 //
 
