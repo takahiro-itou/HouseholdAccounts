@@ -140,7 +140,7 @@ BookCategory::getSubCategories()
 //
 
 CategoryHandle
-BookCategory::parentHandle::get()
+BookCategory::ParentHandle::get()
 {
     return ( this->m_parentHandle );
 }
@@ -150,7 +150,7 @@ BookCategory::parentHandle::get()
 //
 
 System::String^
-BookCategory::categoryName::get()
+BookCategory::CategoryName::get()
 {
     return ( this->m_categoryName );
 }
@@ -160,7 +160,7 @@ BookCategory::categoryName::get()
 //
 
 CategoryHandle
-BookCategory::numSubCategories::get()
+BookCategory::NumSubCategories::get()
 {
     return ( this->m_numSubCategory );
 }
@@ -170,7 +170,7 @@ BookCategory::numSubCategories::get()
 //
 
 CategoryHandle
-BookCategory::subCategory::get(
+BookCategory::SubCategory::get(
         CategoryHandle  idxSub)
 {
     return ( this->m_subCategories[idxSub] );

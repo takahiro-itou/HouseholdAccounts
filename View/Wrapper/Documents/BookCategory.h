@@ -191,7 +191,7 @@ public:
     **
     **/
     property    CategoryHandle
-    parentHandle
+    ParentHandle
     {
         CategoryHandle  get();
     }
@@ -201,7 +201,7 @@ public:
     **
     **/
     property    System::String^
-    categoryName
+    CategoryName
     {
         System::String^ get();
     }
@@ -211,7 +211,7 @@ public:
     **
     **/
     property    CategoryHandle
-    numSubCategories
+    NumSubCategories
     {
         CategoryHandle  get();
     }
@@ -221,7 +221,7 @@ public:
     **
     **/
     property    CategoryHandle
-    subCategory[int]
+    SubCategory[CategoryHandle]
     {
         CategoryHandle  get(CategoryHandle  idxSub);
     }
