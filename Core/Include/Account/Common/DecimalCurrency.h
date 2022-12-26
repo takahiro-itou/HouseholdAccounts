@@ -163,6 +163,14 @@ public:
             const   TInternalValue  intValue,
             const   TInternalValue  intScale);
 
+    //----------------------------------------------------------------
+    /**   現在のスケールファクタを取得する。
+    **
+    **  @return     現在のスケールファクタの値。
+    **/
+    const   TInternalValue
+    getScaleFactor()  const;
+
 //========================================================================
 //
 //    Protected Member Functions.

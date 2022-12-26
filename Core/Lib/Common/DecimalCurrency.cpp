@@ -162,6 +162,16 @@ DecimalCurrency::setInternalValue(
     return ( *this );
 }
 
+//----------------------------------------------------------------
+//    現在のスケールファクタを取得する。
+//
+
+const   DecimalCurrency::TInternalValue
+DecimalCurrency::getScaleFactor()  const
+{
+    return ( this->m_scaleFactor );
+}
+
 //========================================================================
 //
 //    Protected Member Functions.
