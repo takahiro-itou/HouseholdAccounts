@@ -131,7 +131,7 @@ CategoryManager::getRootCategoryHandle(
 CategoryHandle
 CategoryManager::getBufferCapacity()
 {
-    return ( this->m_cateBufferSize );
+    return ( this->m_ptrObj->getBufferCapacity() );
 }
 
 //----------------------------------------------------------------
@@ -141,7 +141,7 @@ CategoryManager::getBufferCapacity()
 CategoryHandle
 CategoryManager::getRegisteredCategoryCount()
 {
-    return ( this->m_numUsedCategory );
+    return ( this->m_ptrObj->getRegisteredCategoryCount() );
 }
 
 //----------------------------------------------------------------

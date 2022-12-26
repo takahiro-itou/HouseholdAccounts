@@ -179,12 +179,6 @@ private:
 
     WrapTarget  *   m_ptrObj;
 
-    /**   項目用バッファサイズ。    **/
-    CategoryHandle      m_cateBufferSize;
-
-    /**   登録済みの項目の数。      **/
-    CategoryHandle      m_numUsedCategory;
-
     /**   ルートになる項目の個数。  **/
     CategoryHandle      m_numRootCategory;
 
