@@ -52,19 +52,19 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 enum class  ErrCode
 {
     /**   正常終了。    **/
-    ERR_SUCCESS             = 0,
+    SUCCESS             = 0,
 
     /**   異常終了。エラーの理由は不明または報告なし。  **/
-    ERR_FAILURE             = 1,
+    FAILURE             = 1,
 
     /**   ファイルオープンエラー。  **/
-    ERR_FILE_OPEN_ERROR     = 2,
+    FILE_OPEN_ERROR     = 2,
 
     /**   ファイル入出力エラー。    **/
-    ERR_FILE_IO_ERROR       = 3,
+    FILE_IO_ERROR       = 3,
 
     /**   無効なインデックス指定。  **/
-    ERR_INDEX_OUT_OF_RANGE  = 4
+    INDEX_OUT_OF_RANGE  = 4
 };
 
 //----------------------------------------------------------------

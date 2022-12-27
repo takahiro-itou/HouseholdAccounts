@@ -91,7 +91,7 @@ BookFile::readFromTextStream(
         std::istream            &inStr,
         Documents::BookDocument *ptrDoc)
 {
-    return ( ErrCode::ERR_FAILURE );
+    return ( ErrCode::FAILURE );
 }
 
 //----------------------------------------------------------------
@@ -103,7 +103,7 @@ BookFile::saveToTextStream(
         const   Documents::BookDocument &objDoc,
         std::ostream                    &outStr)
 {
-    return ( ErrCode::ERR_FAILURE );
+    return ( ErrCode::FAILURE );
 }
 
 //========================================================================

@@ -27,13 +27,15 @@
 
 namespace  Wrapper  {
 
+typedef     HouseholdAccounts::ErrCode  WrapTargetErrCode;
+
 public  enum class  ErrCode
 {
-    ERR_SUCCESS             = HouseholdAccounts::ErrCode::ERR_SUCCESS,
-    ERR_FAILURE             = HouseholdAccounts::ErrCode::ERR_FAILURE,
-    ERR_FILE_OPEN_ERROR     = HouseholdAccounts::ErrCode::ERR_FILE_OPEN_ERROR,
-    ERR_FILE_IO_ERROR       = HouseholdAccounts::ErrCode::ERR_FILE_IO_ERROR,
-    ERR_INDEX_OUT_OF_RANGE  = HouseholdAccounts::ErrCode::ERR_INDEX_OUT_OF_RANGE
+    SUCCESS             = WrapTargetErrCode::SUCCESS,
+    FAILURE             = WrapTargetErrCode::FAILURE,
+    FILE_OPEN_ERROR     = WrapTargetErrCode::FILE_OPEN_ERROR,
+    FILE_IO_ERROR       = WrapTargetErrCode::FILE_IO_ERROR,
+    INDEX_OUT_OF_RANGE  = WrapTargetErrCode::INDEX_OUT_OF_RANGE
 };
 
 //----------------------------------------------------------------
