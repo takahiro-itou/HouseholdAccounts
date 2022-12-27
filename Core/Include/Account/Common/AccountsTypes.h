@@ -49,9 +49,8 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 **    エラーコード。
 **/
 
-enum  ErrCode
+enum class  ErrCode
 {
-
     /**   正常終了。    **/
     ERR_SUCCESS             = 0,
 

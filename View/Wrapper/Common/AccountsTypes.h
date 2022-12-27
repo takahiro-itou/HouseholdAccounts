@@ -29,11 +29,11 @@ namespace  Wrapper  {
 
 public  enum class  ErrCode
 {
-    ERR_SUCCESS             = HouseholdAccounts::ERR_SUCCESS,
-    ERR_FAILURE             = HouseholdAccounts::ERR_FAILURE,
-    ERR_FILE_OPEN_ERROR     = HouseholdAccounts::ERR_FILE_OPEN_ERROR,
-    ERR_FILE_IO_ERROR       = HouseholdAccounts::ERR_FILE_IO_ERROR,
-    ERR_INDEX_OUT_OF_RANGE  = HouseholdAccounts::ERR_INDEX_OUT_OF_RANGE
+    ERR_SUCCESS             = HouseholdAccounts::ErrCode::ERR_SUCCESS,
+    ERR_FAILURE             = HouseholdAccounts::ErrCode::ERR_FAILURE,
+    ERR_FILE_OPEN_ERROR     = HouseholdAccounts::ErrCode::ERR_FILE_OPEN_ERROR,
+    ERR_FILE_IO_ERROR       = HouseholdAccounts::ErrCode::ERR_FILE_IO_ERROR,
+    ERR_INDEX_OUT_OF_RANGE  = HouseholdAccounts::ErrCode::ERR_INDEX_OUT_OF_RANGE
 };
 
 //----------------------------------------------------------------
