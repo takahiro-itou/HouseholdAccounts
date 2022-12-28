@@ -6,6 +6,7 @@
 EXTRATESTS              =
 TESTS                   =  \
         DecimalCurrencyTest            \
+        EnumBitFlagTest                \
         HouseholdAccountsSettingsTest  \
         TextParserTest                 \
         ${EXTRATESTS}
@@ -33,6 +34,7 @@ TEST_LDFLAGS_COMMON         +=
 ##
 
 DecimalCurrencyTest_SOURCES             =  DecimalCurrencyTest.cpp
+EnumBitFlagTest_SOURCES                 =  EnumBitFlagTest.cpp
 HouseholdAccountsSettingsTest_SOURCES   =  HouseholdAccountsSettingsTest.cpp
 TextParserTest_SOURCES                  =  TextParserTest.cpp
 

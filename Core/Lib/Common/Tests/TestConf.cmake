@@ -10,6 +10,11 @@ add_test(
 )
 
 add_test(
+    NAME        EnumBitFlagTest
+    COMMAND     $<TARGET_FILE:EnumBitFlagTest>
+)
+
+add_test(
     NAME        HouseholdAccountsSettingsTest
     COMMAND     $<TARGET_FILE:HouseholdAccountsSettingsTest>
 )
@@ -25,6 +30,8 @@ add_test(
 ##
 
 add_executable(DecimalCurrencyTest  DecimalCurrencyTest.cpp)
+
+add_executable(EnumBitFlagTest      EnumBitFlagTest.cpp)
 
 add_executable(
     HouseholdAccountsSettingsTest
