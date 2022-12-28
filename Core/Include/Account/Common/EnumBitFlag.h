@@ -35,8 +35,8 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 //
 
 //----------------------------------------------------------------
-/**
-**    列挙型の値の論理積を取る (ビットマスク)。
+/**   列挙型の値の論理積を取る (ビットマスク)
+**
 **/
 
 template <typename T>
@@ -49,8 +49,8 @@ const T  operator & (const T lhs, const T rhs)
 }
 
 //----------------------------------------------------------------
-/**
-**    列挙型の値の論理和を取る。
+/**   列挙型の値の論理和を取る
+**
 **/
 
 template <typename T>
@@ -59,6 +59,20 @@ const T  operator | (const T lhs, const T rhs)
     typedef     typename  std::underlying_type<T>   UT;
     return ( static_cast<T>(
             static_cast<UT>(lhs) | static_cast<UT>(rhs)
+    ) );
+}
+
+//----------------------------------------------------------------
+/**   列挙型のビット反転を取る
+**
+**/
+
+template <typename T>
+const T  operator ~ (const T rhs)
+{
+    typedef     typename  std::underlying_type<T>   UT;
+    return ( static_cast<T>(
+            ~ static_cast<UT>(rhs)
     ) );
 }
 
