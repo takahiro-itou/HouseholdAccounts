@@ -73,6 +73,9 @@
     <ClInclude Include="..\..\Core\Include\Account\Common\DecimalCurrency.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Core\Include\Account\Common\EnumBitFlag.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Core\Include\Account\Common\HouseholdAccountsSettings.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>

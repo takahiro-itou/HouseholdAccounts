@@ -156,6 +156,7 @@
     <ClInclude Include="..\..\Core\Include\Account\Common\AccountsTypes.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\BookInterface.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\DecimalCurrency.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\EnumBitFlag.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\HouseholdAccountsSettings.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\TextParser.h" />
 
