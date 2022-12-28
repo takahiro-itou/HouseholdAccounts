@@ -36,6 +36,7 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
 //----------------------------------------------------------------
 /**   列挙型の値の論理積を取る (ビットマスク)
+**  （二項演算子  & ）。
 **
 **/
 
@@ -49,7 +50,24 @@ const T  operator & (const T lhs, const T rhs)
 }
 
 //----------------------------------------------------------------
+/**   列挙型の値の論理積を取る (ビットマスク)
+**  （複合代入演算子 &= ）。
+**/
+
+template <typename T>
+const T& operator &= (T & lhs, const T rhs)
+{
+    typedef     typename  std::underlying_type<T>::type     UT;
+    lhs = static_cast<T>(
+            static_cast<UT>(lhs) & static_cast<UT>(rhs)
+    );
+    return ( lhs );
+}
+
+
+//----------------------------------------------------------------
 /**   列挙型の値の論理和を取る
+**  （二項演算子  | ）。
 **
 **/
 
@@ -64,6 +82,7 @@ const T  operator | (const T lhs, const T rhs)
 
 //----------------------------------------------------------------
 /**   列挙型のビット反転を取る
+**  （単項演算子  ~ ）。
 **
 **/
 
