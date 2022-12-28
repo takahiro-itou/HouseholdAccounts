@@ -42,7 +42,7 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 template <typename T>
 const T  operator & (const T lhs, const T rhs)
 {
-    typedef     typename  std::underlying_type<T>   UT;
+    typedef     typename  std::underlying_type<T>::type     UT;
     return ( static_cast<T>(
             static_cast<UT>(lhs) & static_cast<UT>(rhs)
     ) );
@@ -56,7 +56,7 @@ const T  operator & (const T lhs, const T rhs)
 template <typename T>
 const T  operator | (const T lhs, const T rhs)
 {
-    typedef     typename  std::underlying_type<T>   UT;
+    typedef     typename  std::underlying_type<T>::type     UT;
     return ( static_cast<T>(
             static_cast<UT>(lhs) | static_cast<UT>(rhs)
     ) );
@@ -70,7 +70,7 @@ const T  operator | (const T lhs, const T rhs)
 template <typename T>
 const T  operator ~ (const T rhs)
 {
-    typedef     typename  std::underlying_type<T>   UT;
+    typedef     typename  std::underlying_type<T>::type     UT;
     return ( static_cast<T>(
             ~ static_cast<UT>(rhs)
     ) );
