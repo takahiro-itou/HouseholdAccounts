@@ -87,6 +87,10 @@ const T  operator | (const T lhs, const T rhs)
 template <typename T>
 const T& operator |= (T & lhs, const T rhs)
 {
+    typedef     typename  std::underlying_type<T>::type     UT;
+    lhs = static_cast<T>(
+            static_cast<UT>(lhs) | static_cast<UT>(rhs)
+    );
     return ( lhs );
 }
 
