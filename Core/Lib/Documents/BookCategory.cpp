@@ -22,6 +22,8 @@
 
 #include    "Account/Documents/BookCategory.h"
 
+#include    "Account/Common/EnumBitFlag.h"
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {
