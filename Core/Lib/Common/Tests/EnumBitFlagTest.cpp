@@ -77,6 +77,16 @@ void  EnumBitFlagTest::testEnumBitFlag()
             0x04U,
             static_cast<uint32_t>(b));
 
+    TestEnumType  c = a;
+    c |= TestEnumType::THE_BIT_0;
+    CPPUNIT_ASSERT_EQUAL(
+            0x0dU,
+            static_cast<uint32_t>(c));
+    c &= ~ TestEnumType::THE_BIT_2;
+    CPPUNIT_ASSERT_EQUAL(
+            0x09U,
+            static_cast<uint32_t>(c));
+
     return;
 }
 
