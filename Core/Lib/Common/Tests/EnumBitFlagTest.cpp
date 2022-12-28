@@ -71,6 +71,11 @@ enum class  TestEnumType : uint32_t
 void  EnumBitFlagTest::testEnumBitFlag()
 {
     TestEnumType  a = TestEnumType::THE_BIT_3 | TestEnumType::THE_BIT_2;
+    TestEnumType  b = a & TestEnumType::MASK;
+
+    CPPUNIT_ASSERT_EQUAL(
+            0x04U,
+            static_cast<uint32_t>(b));
 
     return;
 }
@@ -81,7 +86,7 @@ void  EnumBitFlagTest::testEnumBitFlagNot()
     TestEnumType  b = ~ a;
 
     CPPUNIT_ASSERT_EQUAL(
-            0xfffffffd,
+            0xfffffffdU,
             static_cast<uint32_t>(b));
 
     return;
