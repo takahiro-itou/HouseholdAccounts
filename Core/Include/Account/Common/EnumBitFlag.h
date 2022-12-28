@@ -34,6 +34,19 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 //    列挙型をビットフラグとして仕えるようにする便利関数。
 //
 
+/**
+**    列挙型の値で論理積を取る (ビットマスク)。
+**/
+
+template <typename T>
+const T  operator & (const T lhs, const T rhs)
+{
+    typedef     typename  std::underlying_type<T>   UT;
+    return ( static_cast<T>(
+            static_cast<UT>(lhs) & static_cast<UT>(rhs)
+    ) );
+}
+
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif
