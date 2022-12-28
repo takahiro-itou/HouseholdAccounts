@@ -72,7 +72,7 @@ enum class  ErrCode
 **    型安全なブール型。
 **/
 
-enum  Boolean
+enum  class Boolean : char
 {
     BOOL_FALSE  =  0,       /**<  偽。  **/
     BOOL_TRUE   =  1        /**<  真。  **/
