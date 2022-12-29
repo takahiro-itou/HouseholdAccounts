@@ -49,6 +49,7 @@ namespace  {
 template <typename T, typename Tag>
 inline
 StrictInteger<T, Tag>::StrictInteger()
+    : m_cValue(0)
 { }
 
 //----------------------------------------------------------------
@@ -60,6 +61,7 @@ template <typename T, typename Tag>
 inline
 StrictInteger<T, Tag>::StrictInteger(
         const T val)
+    : m_cValue(val)
 { }
 
 //----------------------------------------------------------------
@@ -71,6 +73,7 @@ template <typename T, typename Tag>
 inline
 StrictInteger<T, Tag>::StrictInteger(
         const This &src)
+    : m_cValue(src.m_cValue)
 { }
 
 //========================================================================
