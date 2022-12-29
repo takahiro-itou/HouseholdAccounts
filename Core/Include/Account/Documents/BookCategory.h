@@ -167,6 +167,17 @@ public:
     clearSubCategories();
 
     //----------------------------------------------------------------
+    /**   項目を展開または閉じる。
+    **
+    **  @param [in] flgExpand   真の場合は展開。
+    **                          偽の場合は折畳。
+    **  @return     直前の状態を返す。
+    **/
+    virtual  const  Boolean
+    expandItem(
+            const  Boolean  flgExpand);
+
+    //----------------------------------------------------------------
     /**   項目のデータを設定する。
     **
     **  @param [in] cateParent      親項目のハンドル。

@@ -106,6 +106,27 @@ BookCategory::clearSubCategories()
 }
 
 //----------------------------------------------------------------
+//    項目を展開または閉じる。
+//
+
+const   Boolean
+BookCategory::expandItem(
+        const  Boolean  flgExpand)
+{
+    CategoryFlags   cFlags  = this->m_categoryFlags;
+    CategoryFlags   cfPrev  = cFlags & CategoryFlags::CFLAG_EXPANDED;
+
+    if ( flgExpand != Boolean::BOOL_FALSE ) {
+        cFlags  |=  CategoryFlags::CFLAG_EXPANDED;
+    } else {
+        cFlags  &= ~CategoryFlags::CFLAG_EXPANDED;
+    }
+
+    this->m_categoryFlags   = cFlags;
+    return ( static_cast<Boolean>(cfPrev == CategoryFlags::CFLAG_EXPANDED) );
+}
+
+//----------------------------------------------------------------
 //    項目のデータを設定する。
 //
 
