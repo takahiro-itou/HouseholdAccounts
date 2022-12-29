@@ -8,6 +8,7 @@ TESTS                   =  \
         AccountsProjectTest     \
         DecimalCurrencyTest     \
         EnumBitFlagTest         \
+        StrictIntegerTest       \
         TextParserTest          \
         ${EXTRATESTS}
 ##
@@ -36,5 +37,6 @@ TEST_LDFLAGS_COMMON         +=
 AccountsProjectTest_SOURCES     =  AccountsProjectTest.cpp
 DecimalCurrencyTest_SOURCES     =  DecimalCurrencyTest.cpp
 EnumBitFlagTest_SOURCES         =  EnumBitFlagTest.cpp
+StrictIntegerTest_SOURCES       =  StrictIntegerTest.cpp
 TextParserTest_SOURCES          =  TextParserTest.cpp
 
