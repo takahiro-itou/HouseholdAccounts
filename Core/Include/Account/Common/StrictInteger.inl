@@ -116,6 +116,7 @@ inline  const  StrictInteger<T, Tag>  &
 StrictInteger<T, Tag>::operator =  (
             const  This  & rhs)
 {
+    this->m_cValue  = rhs.m_cValue;
     return ( *this );
 }
 
@@ -128,6 +129,7 @@ template <typename T, typename Tag>
 inline  const  StrictInteger<T, Tag>  &
 StrictInteger<T, Tag>::operator ++ ()
 {
+    ++ this->m_cValue;
     return ( *this );
 }
 
@@ -141,6 +143,7 @@ inline  const  StrictInteger<T, Tag>
 StrictInteger<T, Tag>::operator ++ (int)
 {
     This    prv(*this);
+    ++ this->m_cValue;
     return ( prv );
 }
 
@@ -153,6 +156,7 @@ template <typename T, typename Tag>
 inline  const  StrictInteger<T, Tag>  &
 StrictInteger<T, Tag>::operator -- ()
 {
+    -- this->m_cValue;
     return ( *this );
 }
 
@@ -166,6 +170,7 @@ inline  const  StrictInteger<T, Tag>
 StrictInteger<T, Tag>::operator -- (int)
 {
     This    prv(*this);
+    -- this->m_cValue;
     return ( prv );
 }
 
