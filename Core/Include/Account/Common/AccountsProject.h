@@ -28,6 +28,15 @@
 #    include    "Account/.Config/ConfiguredHouseholdAccounts.h"
 #endif
 
+//  ビルドタイプが指定されていない場合はエラーにする。  //
+#if defined( _DEBUG )
+#
+#elif defined( NDEBUG )
+#
+#else
+#    error  "Neither _DEBUG nor NDEBUG defined"
+#endif
+
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
