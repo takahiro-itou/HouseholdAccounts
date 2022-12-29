@@ -41,6 +41,38 @@ namespace  {
 //    Constructor(s) and Destructor.
 //
 
+//----------------------------------------------------------------
+//    インスタンスをゼロで初期化する
+//  （デフォルトコンストラクタ）。
+//
+
+template <typename T, typename Tag>
+inline
+StrictInteger<T, Tag>::StrictInteger()
+{ }
+
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （コンストラクタ）。
+//
+
+template <typename T, typename Tag>
+inline
+StrictInteger<T, Tag>::StrictInteger(
+        const T val)
+{ }
+
+//----------------------------------------------------------------
+//    別のインスタンスと同じ内容で初期化する
+//  （コピーコンストラクタ）。
+//
+
+template <typename T, typename Tag>
+inline
+StrictInteger<T, Tag>::StrictInteger(
+        const This &src)
+{ }
+
 //========================================================================
 //
 //    Public Member Functions (Implement Pure Virtual).
@@ -65,6 +97,74 @@ namespace  {
 //
 //    Public Member Functions.
 //
+
+//========================================================================
+//
+//    Public Member Functions (Operators).
+//
+
+//----------------------------------------------------------------
+//    値を指定した内容に設定する
+//  （代入演算子 =  ）。
+//
+
+template <typename T, typename Tag>
+inline  const  StrictInteger<T, Tag>  &
+StrictInteger<T, Tag>::operator =  (
+            const  This  & rhs)
+{
+    return ( *this );
+}
+
+//----------------------------------------------------------------
+//    インスタンスの内容を +1 し、その値を返す。
+//  （前置インクリメント演算子 ++ ）。
+//
+
+template <typename T, typename Tag>
+inline  const  StrictInteger<T, Tag>  &
+StrictInteger<T, Tag>::operator ++ ()
+{
+    return ( *this );
+}
+
+//----------------------------------------------------------------
+//    インスタンスの内容を +1 し、直前の値を返す。
+//  （後置インクリメント演算子 ++ )。
+//
+
+template <typename T, typename Tag>
+inline  const  StrictInteger<T, Tag>
+StrictInteger<T, Tag>::operator ++ (int)
+{
+    This    prv(*this);
+    return ( prv );
+}
+
+//----------------------------------------------------------------
+//    インスタンスの内容を -1 し、その値を返す。
+//  （前置デクリメント演算子 -- ）。
+//
+
+template <typename T, typename Tag>
+inline  const  StrictInteger<T, Tag>  &
+StrictInteger<T, Tag>::operator -- ()
+{
+    return ( *this );
+}
+
+//----------------------------------------------------------------
+//    インスタンスの内容を -1 し、直前の値を返す。
+//  （後置デクリメント演算子）。
+//
+
+template <typename T, typename Tag>
+inline  const  StrictInteger<T, Tag>
+StrictInteger<T, Tag>::operator - (int)
+{
+    This    prv(*this);
+    return ( prv );
+}
 
 //========================================================================
 //
