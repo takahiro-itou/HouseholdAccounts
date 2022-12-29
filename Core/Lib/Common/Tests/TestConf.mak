@@ -5,10 +5,10 @@
 
 EXTRATESTS              =
 TESTS                   =  \
-        DecimalCurrencyTest            \
-        EnumBitFlagTest                \
-        HouseholdAccountsSettingsTest  \
-        TextParserTest                 \
+        AccountsProjectTest     \
+        DecimalCurrencyTest     \
+        EnumBitFlagTest         \
+        TextParserTest          \
         ${EXTRATESTS}
 ##
 ##    Test Configurations.
@@ -33,8 +33,8 @@ TEST_LDFLAGS_COMMON         +=
 ##    Test Programs.
 ##
 
-DecimalCurrencyTest_SOURCES             =  DecimalCurrencyTest.cpp
-EnumBitFlagTest_SOURCES                 =  EnumBitFlagTest.cpp
-HouseholdAccountsSettingsTest_SOURCES   =  HouseholdAccountsSettingsTest.cpp
-TextParserTest_SOURCES                  =  TextParserTest.cpp
+AccountsProjectTest_SOURCES     =  AccountsProjectTest.cpp
+DecimalCurrencyTest_SOURCES     =  DecimalCurrencyTest.cpp
+EnumBitFlagTest_SOURCES         =  EnumBitFlagTest.cpp
+TextParserTest_SOURCES          =  TextParserTest.cpp
 
