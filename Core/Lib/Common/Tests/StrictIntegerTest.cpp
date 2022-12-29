@@ -40,6 +40,11 @@ class  StrictIntegerTest : public  TestFixture
 {
     CPPUNIT_TEST_SUITE(StrictIntegerTest);
     CPPUNIT_TEST(testStrictInteger);
+    CPPUNIT_TEST(testOpeAssign);
+    CPPUNIT_TEST(testOpePreIncrement);
+    CPPUNIT_TEST(testOpePostIncrement);
+    CPPUNIT_TEST(testOpePreDecrement);
+    CPPUNIT_TEST(testOpePostDecrement);
     CPPUNIT_TEST_SUITE_END();
 
 private:
@@ -51,6 +56,11 @@ public:
 
 private:
     void  testStrictInteger();
+    void  testOpeAssign();
+    void  testOpePreIncrement();
+    void  testOpePostIncrement();
+    void  testOpePreDecrement();
+    void  testOpePostDecrement();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( StrictIntegerTest );
@@ -62,7 +72,89 @@ CPPUNIT_TEST_SUITE_REGISTRATION( StrictIntegerTest );
 
 void  StrictIntegerTest::testStrictInteger()
 {
-    TestTarget  testee;
+    TestTarget  testee1;
+    TestTarget  testee2(100);
+    TestTarget  testee3(testee2);
+
+    CPPUNIT_ASSERT_EQUAL(  0, testee1.m_cValue);
+    CPPUNIT_ASSERT_EQUAL(100, testee2.m_cValue);
+    CPPUNIT_ASSERT_EQUAL(100, testee3.m_cValue);
+
+    return;
+}
+
+void  StrictIntegerTest::testOpeAssign()
+{
+    TestTarget  testee1(100);
+    TestTarget  testee2;
+
+    CPPUNIT_ASSERT_EQUAL(100, testee1.m_cValue);
+    CPPUNIT_ASSERT_EQUAL(  0, testee2.m_cValue);
+
+    testee2 = testee1;
+
+    CPPUNIT_ASSERT_EQUAL(100, testee1.m_cValue);
+    CPPUNIT_ASSERT_EQUAL(100, testee2.m_cValue);
+
+    return;
+}
+
+void  StrictIntegerTest::testOpePreIncrement()
+{
+    TestTarget  testee(110);
+    TestTarget  result;
+
+    CPPUNIT_ASSERT_EQUAL(110, testee.m_cValue);
+
+    result = ++ testee;
+
+    CPPUNIT_ASSERT_EQUAL(111, testee.m_cValue);
+    CPPUNIT_ASSERT_EQUAL(111, result.m_cValue);
+
+    return;
+}
+
+void  StrictIntegerTest::testOpePostIncrement()
+{
+    TestTarget  testee(120);
+    TestTarget  result;
+
+    CPPUNIT_ASSERT_EQUAL(120, testee.m_cValue);
+
+    result = testee ++;
+
+    CPPUNIT_ASSERT_EQUAL(121, testee.m_cValue);
+    CPPUNIT_ASSERT_EQUAL(120, result.m_cValue);
+
+    return;
+}
+
+void  StrictIntegerTest::testOpePreDecrement()
+{
+    TestTarget  testee(200);
+    TestTarget  result;
+
+    CPPUNIT_ASSERT_EQUAL(200, testee.m_cValue);
+
+    result = -- testee;
+
+    CPPUNIT_ASSERT_EQUAL(199, testee.m_cValue);
+    CPPUNIT_ASSERT_EQUAL(199, result.m_cValue);
+
+    return;
+}
+
+void  StrictIntegerTest::testOpePostDecrement()
+{
+    TestTarget  testee(300);
+    TestTarget  result;
+
+    CPPUNIT_ASSERT_EQUAL(300, testee.m_cValue);
+
+    result = testee --;
+
+    CPPUNIT_ASSERT_EQUAL(299, testee.m_cValue);
+    CPPUNIT_ASSERT_EQUAL(300, result.m_cValue);
 
     return;
 }

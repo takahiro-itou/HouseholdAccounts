@@ -160,7 +160,7 @@ StrictInteger<T, Tag>::operator -- ()
 
 template <typename T, typename Tag>
 inline  const  StrictInteger<T, Tag>
-StrictInteger<T, Tag>::operator - (int)
+StrictInteger<T, Tag>::operator -- (int)
 {
     This    prv(*this);
     return ( prv );
