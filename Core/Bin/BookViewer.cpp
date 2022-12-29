@@ -18,7 +18,7 @@
 **      @file       Bin/BookViewer.cpp
 **/
 
-#include    "Account/Common/HouseholdAccountsSettings.h"
+#include    "Account/Common/AccountsTypes.h"
 
 #include    <iostream>
 

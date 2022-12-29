@@ -22,8 +22,8 @@
 #    define   HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H
 
 
-#if !defined( HACORE_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H )
-#    include    "Account/Common/HouseholdAccountsSettings.h"
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUNTS_PROJECT_H )
+#    include    "Account/Common/AccountsProject.h"
 #endif
 
 #if !defined( HACORE_SYS_INCLUDED_STDDEF_H )
