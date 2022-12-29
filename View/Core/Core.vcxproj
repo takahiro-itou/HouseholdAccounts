@@ -153,11 +153,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ClInclude Include="..\..\Core\Include\Account\Common\AccountsProject.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\AccountsTypes.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\BookInterface.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\DecimalCurrency.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\EnumBitFlag.h" />
-    <ClInclude Include="..\..\Core\Include\Account\Common\AccountsProject.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\StrictInteger.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\StrictInteger.inl" />
     <ClInclude Include="..\..\Core\Include\Account\Common\TextParser.h" />
 
     <ClInclude Include="..\..\Core\Include\Account\Documents\BookCategory.h" />
