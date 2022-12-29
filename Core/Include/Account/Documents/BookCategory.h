@@ -55,7 +55,7 @@ namespace  Documents  {
 **    項目用フラグ。
 **/
 
-enum class  CategoryFlags
+enum class  CategoryFlags : int32_t
 {
     CTYPE_MASK              = 0x000000ff,
     CTYPE_NOTUSED           = 0,    /**<  未使用。          **/
