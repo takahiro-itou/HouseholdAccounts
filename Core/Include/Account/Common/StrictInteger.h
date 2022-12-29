@@ -114,4 +114,7 @@ public:
 }   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
+//  Implementation.
+#include    "StrictInteger.inl"
+
 #endif
