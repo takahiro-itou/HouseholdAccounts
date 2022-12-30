@@ -50,6 +50,7 @@ class  StrictIntegerTest : public  TestFixture
     CPPUNIT_TEST(testOpeCmpLt);
     CPPUNIT_TEST(testOpeCmpLe);
     CPPUNIT_TEST(testOpeCmpGt);
+    CPPUNIT_TEST(testOpeCmpGe);
     CPPUNIT_TEST_SUITE_END();
 
 private:
@@ -176,11 +177,11 @@ void  StrictIntegerTest::testOpeCmpEqual()
     TestTarget  testee2(300);
     TestTarget  testee3;
 
-    CPPUNIT_ASSERT_EQUAL(true,  testee1 == testee2);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 == testee2);
     CPPUNIT_ASSERT_EQUAL(false, testee1 == testee3);
 
-    CPPUNIT_ASSERT_EQUAL(true, testee1 == 300);
-    CPPUNIT_ASSERT_EQUAL(true, 300 == testee1);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 == 300);
+    CPPUNIT_ASSERT_EQUAL(true , 300 == testee1);
 
     CPPUNIT_ASSERT_EQUAL(false, testee1 == 0);
     CPPUNIT_ASSERT_EQUAL(false, 0 == testee1);
@@ -195,13 +196,13 @@ void  StrictIntegerTest::testOpeCmpNotEqual()
     TestTarget  testee3;
 
     CPPUNIT_ASSERT_EQUAL(false, testee1 != testee2);
-    CPPUNIT_ASSERT_EQUAL(true,  testee1 != testee3);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 != testee3);
 
     CPPUNIT_ASSERT_EQUAL(false, testee1 != 300);
     CPPUNIT_ASSERT_EQUAL(false, 300 != testee1);
 
-    CPPUNIT_ASSERT_EQUAL(true,  testee1 != 0);
-    CPPUNIT_ASSERT_EQUAL(true,  0 != testee1);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 != 0);
+    CPPUNIT_ASSERT_EQUAL(true , 0 != testee1);
 
     return;
 }
@@ -280,6 +281,32 @@ void  StrictIntegerTest::testOpeCmpGt()
     CPPUNIT_ASSERT_EQUAL(false, 299 > testee1);
     CPPUNIT_ASSERT_EQUAL(false, 300 > testee1);
     CPPUNIT_ASSERT_EQUAL(true , 301 > testee1);
+
+    return;
+}
+
+void  StrictIntegerTest::testOpeCmpGe()
+{
+    TestTarget  testee1(300);
+    TestTarget  testee2(299);
+    TestTarget  testee3(300);
+    TestTarget  testee4(301);
+
+    CPPUNIT_ASSERT_EQUAL(true , testee1 >= testee2);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 >= testee3);
+    CPPUNIT_ASSERT_EQUAL(false, testee1 >= testee4);
+
+    CPPUNIT_ASSERT_EQUAL(false, testee2 >= testee1);
+    CPPUNIT_ASSERT_EQUAL(true , testee3 >= testee1);
+    CPPUNIT_ASSERT_EQUAL(true , testee4 >= testee1);
+
+    CPPUNIT_ASSERT_EQUAL(true , testee1 >= 299);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 >= 300);
+    CPPUNIT_ASSERT_EQUAL(false, testee1 >= 301);
+
+    CPPUNIT_ASSERT_EQUAL(false, 299 >= testee1);
+    CPPUNIT_ASSERT_EQUAL(true , 300 >= testee1);
+    CPPUNIT_ASSERT_EQUAL(true , 301 >= testee1);
 
     return;
 }
