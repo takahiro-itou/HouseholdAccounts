@@ -49,6 +49,11 @@ template <typename T, typename Tag>     RType                   \
 operator OP (const T lhs, const StrictInteger<T, Tag> rhs)
 
 SI_FWD_DECLARE_FRIEND_BINOP(bool, ==);
+SI_FWD_DECLARE_FRIEND_BINOP(bool, !=);
+SI_FWD_DECLARE_FRIEND_BINOP(bool, <);
+SI_FWD_DECLARE_FRIEND_BINOP(bool, <=);
+SI_FWD_DECLARE_FRIEND_BINOP(bool, >);
+SI_FWD_DECLARE_FRIEND_BINOP(bool, >=);
 
 #undef  SI_FWD_DECLARE_FRIEND_BINOP
 //----------------------------------------------------------------
@@ -195,6 +200,11 @@ friend  RType                                                   \
 operator OP <T, Tag> (const T lhs, const This rhs)
 
     SI_DECLARE_FRIEND_BINOP(bool, ==);
+    SI_DECLARE_FRIEND_BINOP(bool, !=);
+    SI_DECLARE_FRIEND_BINOP(bool, <);
+    SI_DECLARE_FRIEND_BINOP(bool, <=);
+    SI_DECLARE_FRIEND_BINOP(bool, >);
+    SI_DECLARE_FRIEND_BINOP(bool, >=);
 
 #undef  SI_DECLARE_FRIEND_BINOP
 
