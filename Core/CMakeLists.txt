@@ -108,8 +108,8 @@ Find_Package (CppUnit)
 ##
 
 configure_file(
-    "${INCLUDE_SOURCE_DIR}/.Config/ConfiguredHouseholdAccounts.h.in"
-    "${INCLUDE_BINARY_DIR}/.Config/ConfiguredHouseholdAccounts.h"
+    "${INCLUDE_SOURCE_DIR}/.Config/ConfiguredProject.h.in"
+    "${INCLUDE_BINARY_DIR}/.Config/ConfiguredProject.h"
 )
 
 configure_file(

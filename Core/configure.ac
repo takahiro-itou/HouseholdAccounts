@@ -152,7 +152,7 @@ AC_CONFIG_FILES([
 ])
 
 AC_CONFIG_FILES([
-    Include/Account/.Config/ConfiguredHouseholdAccounts.h
+    Include/Account/.Config/ConfiguredProject.h
 ])
 
 dnl

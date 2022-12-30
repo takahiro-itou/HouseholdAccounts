@@ -23,9 +23,9 @@
 
 //  スクリプトによる設定値が書き込まれたヘッダを読み込む。  //
 #if defined( HOUSEHOLDACCOUNTS_USE_PRE_CONFIGURED_MSVC )
-#    include    "Account/.Config/PreConfigHouseholdAccounts.msvc.h"
+#    include    "Account/.Config/PreConfigProject.msvc.h"
 #else
-#    include    "Account/.Config/ConfiguredHouseholdAccounts.h"
+#    include    "Account/.Config/ConfiguredProject.h"
 #endif
 
 //  ビルドタイプが指定されていない場合はエラーにする。  //

@@ -20,7 +20,7 @@ Set (LIBRARY_SOURCE_FILES
 )
 
 Set (INCLIB_HEADER_FILES
-        ${INCLIB_BINARY_DIR}/ConfiguredHouseholdAccounts.h
+        ${INCLIB_BINARY_DIR}/ConfiguredProject.h
 )
 
 ##----------------------------------------------------------------
