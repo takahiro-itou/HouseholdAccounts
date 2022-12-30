@@ -209,14 +209,17 @@ void  StrictIntegerTest::testOpeCmpNotEqual()
 void  StrictIntegerTest::testOpeCmpLt()
 {
     TestTarget  testee1(100);
-    TestTarget  testee2(101);
+    TestTarget  testee2( 99);
     TestTarget  testee3(100);
+    TestTarget  testee4(101);
 
-    CPPUNIT_ASSERT_EQUAL(true , testee1 < testee2);
-    CPPUNIT_ASSERT_EQUAL(false, testee2 < testee1);
-
+    CPPUNIT_ASSERT_EQUAL(false, testee1 < testee2);
     CPPUNIT_ASSERT_EQUAL(false, testee1 < testee3);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 < testee4);
+
+    CPPUNIT_ASSERT_EQUAL(true , testee2 < testee1);
     CPPUNIT_ASSERT_EQUAL(false, testee3 < testee1);
+    CPPUNIT_ASSERT_EQUAL(false, testee4 < testee1);
 
     CPPUNIT_ASSERT_EQUAL(false, testee1 <  99);
     CPPUNIT_ASSERT_EQUAL(false, testee1 < 100);
@@ -231,46 +234,52 @@ void  StrictIntegerTest::testOpeCmpLt()
 
 void  StrictIntegerTest::testOpeCmpLe()
 {
-    TestTarget  testee1(100);
-    TestTarget  testee2(101);
-    TestTarget  testee3(100);
+    TestTarget  testee1(200);
+    TestTarget  testee2(199);
+    TestTarget  testee3(200);
+    TestTarget  testee4(201);
 
-    CPPUNIT_ASSERT_EQUAL(true , testee1 <= testee2);
-    CPPUNIT_ASSERT_EQUAL(false, testee2 <= testee1);
-
+    CPPUNIT_ASSERT_EQUAL(false, testee1 <= testee2);
     CPPUNIT_ASSERT_EQUAL(true , testee1 <= testee3);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 <= testee4);
+
+    CPPUNIT_ASSERT_EQUAL(true , testee2 <= testee1);
     CPPUNIT_ASSERT_EQUAL(true , testee3 <= testee1);
+    CPPUNIT_ASSERT_EQUAL(false, testee4 <= testee1);
 
-    CPPUNIT_ASSERT_EQUAL(false, testee1 <=  99);
-    CPPUNIT_ASSERT_EQUAL(true , testee1 <= 100);
-    CPPUNIT_ASSERT_EQUAL(true , testee1 <= 101);
+    CPPUNIT_ASSERT_EQUAL(false, testee1 <= 199);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 <= 200);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 <= 201);
 
-    CPPUNIT_ASSERT_EQUAL(true ,  99 <= testee1);
-    CPPUNIT_ASSERT_EQUAL(true , 100 <= testee1);
-    CPPUNIT_ASSERT_EQUAL(false, 101 <= testee1);
+    CPPUNIT_ASSERT_EQUAL(true , 199 <= testee1);
+    CPPUNIT_ASSERT_EQUAL(true , 200 <= testee1);
+    CPPUNIT_ASSERT_EQUAL(false, 201 <= testee1);
 
     return;
 }
 
 void  StrictIntegerTest::testOpeCmpGt()
 {
-    TestTarget  testee1(100);
-    TestTarget  testee2(101);
-    TestTarget  testee3(100);
+    TestTarget  testee1(300);
+    TestTarget  testee2(299);
+    TestTarget  testee3(300);
+    TestTarget  testee4(301);
 
-    CPPUNIT_ASSERT_EQUAL(false, testee1 > testee2);
-    CPPUNIT_ASSERT_EQUAL(true , testee2 > testee1);
-
+    CPPUNIT_ASSERT_EQUAL(true , testee1 > testee2);
     CPPUNIT_ASSERT_EQUAL(false, testee1 > testee3);
+    CPPUNIT_ASSERT_EQUAL(false, testee1 > testee4);
+
+    CPPUNIT_ASSERT_EQUAL(false, testee2 > testee1);
     CPPUNIT_ASSERT_EQUAL(false, testee3 > testee1);
+    CPPUNIT_ASSERT_EQUAL(true , testee4 > testee1);
 
-    CPPUNIT_ASSERT_EQUAL(true , testee1 >  99);
-    CPPUNIT_ASSERT_EQUAL(false, testee1 > 100);
-    CPPUNIT_ASSERT_EQUAL(false, testee1 >= 101);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 > 299);
+    CPPUNIT_ASSERT_EQUAL(false, testee1 > 300);
+    CPPUNIT_ASSERT_EQUAL(false, testee1 > 301);
 
-    CPPUNIT_ASSERT_EQUAL(false,  99 > testee1);
-    CPPUNIT_ASSERT_EQUAL(false, 100 > testee1);
-    CPPUNIT_ASSERT_EQUAL(true , 101 > testee1);
+    CPPUNIT_ASSERT_EQUAL(false, 299 > testee1);
+    CPPUNIT_ASSERT_EQUAL(false, 300 > testee1);
+    CPPUNIT_ASSERT_EQUAL(true , 301 > testee1);
 
     return;
 }
