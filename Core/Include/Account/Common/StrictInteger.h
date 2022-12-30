@@ -27,10 +27,33 @@
 #endif
 
 
+#define     SI_FWD_DECLARE_FRIEND_BINOP(RType, OP)              \
+template <typename T, typename Tag>                             \
+RType   operator OP (const StrictInteger<T, Tag> lhs,           \
+                     const StrictInteger<T, Tag> rhs);          \
+                                                                \
+template <typename T, typename Tag>     RType                   \
+operator OP (const StrictInteger<T, Tag> lhs, const T rhs);     \
+template <typename T, typename Tag>     RType                   \
+operator OP (const T lhs, const StrictInteger<T, Tag> rhs)
+
+#define     SI_DECLARE_FRIEND_BINOP(RType, OP)                  \
+friend  RType                                                   \
+operator OP <T, Tag> (const This lhs, const This rhs);          \
+friend  RType                                                   \
+operator OP <T, Tag> (const This lhs, const T rhs);             \
+friend  RType                                                   \
+operator OP <T, Tag> (const T lhs, const This rhs)
+
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {
 
 //  クラスの前方宣言。  //
+template <typename T, typename Tag>
+class  StrictInteger;
+
+//  フレンド関数の前方宣言。    //
+SI_FWD_DECLARE_FRIEND_BINOP(bool, ==);
 
 //========================================================================
 //
@@ -54,6 +77,8 @@ class  StrictInteger
 private:
 
     typedef     StrictInteger<T, Tag>   This;
+
+    typedef     bool                    CmpRet;
 
 //========================================================================
 //
@@ -122,7 +147,7 @@ public:
     **  （代入演算子 =  ）。
     **
     **/
-    const  This  &
+    inline  const  This  &
     operator =  (
             const  This  & rhs);
 
@@ -131,7 +156,7 @@ public:
     **  （前置インクリメント演算子 ++ ）。
     **
     **/
-    const  This  &
+    inline  const  This  &
     operator ++ ();
 
     //----------------------------------------------------------------
@@ -139,7 +164,7 @@ public:
     **  （後置インクリメント演算子 ++ )。
     **
     **/
-    const  This
+    inline  const  This
     operator ++ (int);
 
     //----------------------------------------------------------------
@@ -147,7 +172,7 @@ public:
     **  （前置デクリメント演算子 -- ）。
     **
     **/
-    const  This  &
+    inline  const  This  &
     operator -- ();
 
     //----------------------------------------------------------------
@@ -155,7 +180,7 @@ public:
     **  （後置デクリメント演算子）。
     **
     **/
-    const  This
+    inline  const  This
     operator -- (int);
 
 //========================================================================
