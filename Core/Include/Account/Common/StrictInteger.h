@@ -218,6 +218,9 @@ public:
 }   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
+#undef  SI_FWD_DECLARE_FRIEND_BINOP
+#undef  SI_DECLARE_FRIEND_BINOP
+
 //  Implementation.
 #include    "StrictInteger.inl"
 
