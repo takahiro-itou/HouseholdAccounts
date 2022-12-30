@@ -197,6 +197,11 @@ inline  RType   operator OP (                               \
 { return ( lhs OP rhs.m_cValue ); }
 
 SI_IMPLEMENT_FRIEND_BINOP_CMP(bool, ==);
+SI_IMPLEMENT_FRIEND_BINOP_CMP(bool, !=);
+SI_IMPLEMENT_FRIEND_BINOP_CMP(bool, <);
+SI_IMPLEMENT_FRIEND_BINOP_CMP(bool, <=);
+SI_IMPLEMENT_FRIEND_BINOP_CMP(bool, >);
+SI_IMPLEMENT_FRIEND_BINOP_CMP(bool, >=);
 
 #undef      SI_IMPLEMENT_FRIEND_BINOP_CMP
 
