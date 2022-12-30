@@ -26,6 +26,10 @@
 #    include    "Account/Common/AccountsProject.h"
 #endif
 
+#if !defined( HACORE_COMMON_INCLUDED_STRICT_INTEGER_H )
+#    include    "Account/Common/StrictInteger.h"
+#endif
+
 #if !defined( HACORE_SYS_INCLUDED_STDDEF_H )
 #    include    <stddef.h>
 #    define   HACORE_SYS_INCLUDED_STDDEF_H
@@ -77,6 +81,22 @@ enum  class Boolean : char
     BOOL_FALSE  =  0,       /**<  偽。  **/
     BOOL_TRUE   =  1        /**<  真。  **/
 };
+
+//----------------------------------------------------------------
+//
+//    厳格な型の宣言を行うマクロ。
+//  デバッグ版では、厳格な型を利用する。
+//
+
+#if defined( _DEBUG )
+#    define     DECLARE_STRICT_TYPE(BaseType, DeclType)         \
+    struct tag_Type_ ## DeclType;                               \
+    typedef     StrictInteger<BaseType, tag_Type_ ## DeclType>  \
+    DeclType
+#else
+#    define     DECLARE_STRICT_TYPE(BaseType, DeclType)         \
+    typedef     BaseType    DeclType
+#endif
 
 //----------------------------------------------------------------
 /**
