@@ -183,21 +183,18 @@ StrictInteger<T, Tag>::operator -- (int)
 template <typename T, typename Tag>                         \
 inline  RType   operator OP (                               \
     const StrictInteger<T, Tag> lhs,                        \
-    const StrictInteger<T, Tag> rhs) {                      \
-    return ( lhs.m_cValue OP rhs.m_cValue );                \
-}                                                           \
+    const StrictInteger<T, Tag> rhs)                        \
+{ return ( lhs.m_cValue OP rhs.m_cValue ); }                \
                                                             \
 template <typename T, typename Tag>                         \
 inline  RType   operator OP (                               \
-    const StrictInteger<T, Tag> lhs, const T rhs) {         \
-    return ( lhs.m_cValue OP rhs );                         \
-}                                                           \
+    const StrictInteger<T, Tag> lhs, const T rhs)           \
+{ return ( lhs.m_cValue OP rhs ); }                         \
                                                             \
 template <typename T, typename Tag>                         \
 inline  RType   operator OP (                               \
-    const T lhs, const StrictInteger<T, Tag> rhs) {         \
-    return ( lhs OP rhs.m_cValue );                         \
-}
+    const T lhs, const StrictInteger<T, Tag> rhs)           \
+{ return ( lhs OP rhs.m_cValue ); }
 
 SI_IMPLEMENT_FRIEND_BINOP_CMP(bool, ==);
 
