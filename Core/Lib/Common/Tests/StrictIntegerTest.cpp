@@ -47,6 +47,7 @@ class  StrictIntegerTest : public  TestFixture
     CPPUNIT_TEST(testOpePostDecrement);
     CPPUNIT_TEST(testOpeCmpEqual);
     CPPUNIT_TEST(testOpeCmpNotEqual);
+    CPPUNIT_TEST(testOpeCmpLt);
     CPPUNIT_TEST_SUITE_END();
 
 private:
@@ -65,6 +66,10 @@ private:
     void  testOpePostDecrement();
     void  testOpeCmpEqual();
     void  testOpeCmpNotEqual();
+    void  testOpeCmpLt();
+    void  testOpeCmpLe();
+    void  testOpeCmpGt();
+    void  testOpeCmpGe();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( StrictIntegerTest );
@@ -195,6 +200,29 @@ void  StrictIntegerTest::testOpeCmpNotEqual()
 
     CPPUNIT_ASSERT_EQUAL(true,  testee1 != 0);
     CPPUNIT_ASSERT_EQUAL(true,  0 != testee1);
+
+    return;
+}
+
+void  StrictIntegerTest::testOpeCmpLt()
+{
+    TestTarget  testee1(100);
+    TestTarget  testee2(101);
+    TestTarget  testee3(100);
+
+    CPPUNIT_ASSERT_EQUAL(true , testee1 < testee2);
+    CPPUNIT_ASSERT_EQUAL(false, testee2 < testee1);
+
+    CPPUNIT_ASSERT_EQUAL(false, testee1 < testee3);
+    CPPUNIT_ASSERT_EQUAL(false, testee3 < testee1);
+
+    CPPUNIT_ASSERT_EQUAL(false, testee1 <  99);
+    CPPUNIT_ASSERT_EQUAL(false, testee1 < 100);
+    CPPUNIT_ASSERT_EQUAL(true , testee1 < 101);
+
+    CPPUNIT_ASSERT_EQUAL(true ,  99 < testee1);
+    CPPUNIT_ASSERT_EQUAL(false, 100 < testee1);
+    CPPUNIT_ASSERT_EQUAL(false, 101 < testee1);
 
     return;
 }
