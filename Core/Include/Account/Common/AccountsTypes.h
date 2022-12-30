@@ -91,7 +91,8 @@ enum  class Boolean : char
 #if defined( _DEBUG )
 #    define     DECLARE_STRICT_TYPE(BaseType, DeclType)         \
     struct tag_Type_ ## DeclType;                               \
-    typedef     StrictInteger<BaseType, tag_Type_ ## DeclType>  \
+    typedef                                                     \
+    Common::StrictInteger<BaseType, tag_Type_ ## DeclType>      \
     DeclType
 #else
 #    define     DECLARE_STRICT_TYPE(BaseType, DeclType)         \
