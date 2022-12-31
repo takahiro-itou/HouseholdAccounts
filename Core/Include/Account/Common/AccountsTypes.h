@@ -146,7 +146,7 @@ typedef     int                 CategoryHandle;
 
 DECLARE_STRICT_TYPE(int, DateSerial);
 
-typedef     int                 TimeSerial;
+DECLARE_STRICT_TYPE(int, TimeSerial);
 
 //----------------------------------------------------------------
 /**
