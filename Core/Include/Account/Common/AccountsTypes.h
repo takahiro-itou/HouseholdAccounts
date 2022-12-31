@@ -160,7 +160,7 @@ DECLARE_STRICT_TYPE(size_t,     FileLength);
 **    バッファサイズ（要素数）を表す型。
 **/
 
-typedef     size_t              BufferSize;
+DECLARE_STRICT_TYPE(size_t,     BufferSize);
 
 //----------------------------------------------------------------
 /**
