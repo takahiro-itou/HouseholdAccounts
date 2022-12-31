@@ -130,7 +130,7 @@ enum  Boolean : char
 **    文字列インデックス型。
 **/
 
-DECLARE_STRICT_TYPE(int, StringIndex);
+DECLARE_STRICT_TYPE(int,        StringIndex);
 
 //----------------------------------------------------------------
 /**
@@ -144,16 +144,16 @@ typedef     int                 CategoryHandle;
 **
 **/
 
-DECLARE_STRICT_TYPE(int, DateSerial);
+DECLARE_STRICT_TYPE(int,        DateSerial);
 
-DECLARE_STRICT_TYPE(int, TimeSerial);
+DECLARE_STRICT_TYPE(int,        TimeSerial);
 
 //----------------------------------------------------------------
 /**
 **    ファイルの長さを表す型。
 **/
 
-typedef     size_t              FileLength;
+DECLARE_STRICT_TYPE(size_t,     FileLength);
 
 //----------------------------------------------------------------
 /**
