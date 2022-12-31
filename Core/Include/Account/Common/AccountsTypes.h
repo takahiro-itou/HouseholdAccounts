@@ -89,14 +89,22 @@ enum  class Boolean : char
 //
 
 #if defined( _DEBUG ) && !defined( HACORE_DISABLE_STRICT_TYPES )
+
 #    define     DECLARE_STRICT_TYPE(BaseType, DeclType)         \
     struct tag_Type_ ## DeclType;                               \
     typedef                                                     \
     Common::StrictInteger<BaseType, tag_Type_ ## DeclType>      \
     DeclType
+
+#    define     TO_VALUE_FROM_STRICT(sv)    sv.getValue()
+
 #else
+
 #    define     DECLARE_STRICT_TYPE(BaseType, DeclType)         \
     typedef     BaseType    DeclType
+
+#    define     TO_VALUE_FROM_STRICT(sv)    sv
+
 #endif
 
 //----------------------------------------------------------------
