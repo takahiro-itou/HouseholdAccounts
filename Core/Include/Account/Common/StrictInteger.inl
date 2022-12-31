@@ -210,6 +210,29 @@ SI_IMPLEMENT_FRIEND_BINOP_CMP(bool, >=);
 //    Accessors.
 //
 
+//----------------------------------------------------------------
+//    値を元の型で取得する。
+//
+
+template <typename T, typename Tag>
+inline  const  T
+StrictInteger<T, Tag>::getValue()  const
+{
+    return ( this->m_cValue );
+}
+
+//----------------------------------------------------------------
+//    値を設定する。
+//
+
+template <typename T, typename Tag>
+inline  const  StrictInteger<T, Tag>  &
+StrictInteger<T, Tag>::setValue(const  T  val)
+{
+    this->m_cValue  = val;
+    return ( *this );
+}
+
 //========================================================================
 //
 //    Protected Member Functions.
