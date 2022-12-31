@@ -76,11 +76,27 @@ enum class  ErrCode
 **    型安全なブール型。
 **/
 
+#if defined( _DEBUG ) && !defined( HACORE_DISABLE_STRICT_TYPES )
+
 enum  class Boolean : char
 {
     BOOL_FALSE  =  0,       /**<  偽。  **/
     BOOL_TRUE   =  1        /**<  真。  **/
 };
+
+#define     TO_BOOL_FROM_STRICT(sb)     ((sb) != Boolean::BOOL_FALSE)
+
+#else
+
+enum  Boolean : char
+{
+    BOOL_FALSE  = 0,
+    BOOL_TRUE   = 1,
+};
+
+#define     TO_BOOL_FROM_STRICT(sb)     (sb)
+
+#endif
 
 //----------------------------------------------------------------
 //
@@ -103,7 +119,7 @@ enum  class Boolean : char
 #    define     DECLARE_STRICT_TYPE(BaseType, DeclType)         \
     typedef     BaseType    DeclType
 
-#    define     TO_VALUE_FROM_STRICT(sv)    sv
+#    define     TO_VALUE_FROM_STRICT(sv)    (sv)
 
 #endif
 

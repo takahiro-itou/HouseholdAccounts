@@ -116,7 +116,7 @@ BookCategory::expandItem(
     CategoryFlags   cFlags  = this->m_categoryFlags;
     CategoryFlags   cfPrev  = cFlags & CategoryFlags::CFLAG_EXPANDED;
 
-    if ( flgExpand != Boolean::BOOL_FALSE ) {
+    if ( TO_BOOL_FROM_STRICT(flgExpand) ) {
         cFlags  |=  CategoryFlags::CFLAG_EXPANDED;
     } else {
         cFlags  &= ~CategoryFlags::CFLAG_EXPANDED;
