@@ -88,7 +88,7 @@ enum  class Boolean : char
 //  デバッグ版では、厳格な型を利用する。
 //
 
-#if defined( _DEBUG )
+#if defined( _DEBUG ) && !defined( HACORE_DISABLE_STRICT_TYPES )
 #    define     DECLARE_STRICT_TYPE(BaseType, DeclType)         \
     struct tag_Type_ ## DeclType;                               \
     typedef                                                     \
