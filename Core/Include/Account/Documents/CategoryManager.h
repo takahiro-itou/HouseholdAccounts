@@ -149,7 +149,7 @@ public:
             const  CategoryHandle   cateParent,
             const  std::string     &cateName,
             const  CategoryFlags    cateFlags,
-            const  int              startDate,
+            const  DateSerial       startDate,
             const  DecimalCurrency &startBalance);
 
 //========================================================================
