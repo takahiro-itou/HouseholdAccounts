@@ -104,7 +104,7 @@ enum  class Boolean : char
 **    文字列インデックス型。
 **/
 
-typedef     int                 StringIndex;
+DECLARE_STRICT_TYPE(int, StringIndex);
 
 //----------------------------------------------------------------
 /**
