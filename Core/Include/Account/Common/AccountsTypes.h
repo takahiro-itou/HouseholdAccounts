@@ -85,6 +85,7 @@ enum  class Boolean : char
 };
 
 #define     TO_BOOL_FROM_STRICT(sb)     ((sb) != Boolean::BOOL_FALSE)
+#define     TO_STRICT_FROM_BOOL(b)      static_cast<Boolean>(b)
 
 #else
 
@@ -95,6 +96,7 @@ enum  Boolean : char
 };
 
 #define     TO_BOOL_FROM_STRICT(sb)     (sb)
+#define     TO_STRICT_FROM_BOOL(b)      static_cast<Boolean>(b)
 
 #endif
 

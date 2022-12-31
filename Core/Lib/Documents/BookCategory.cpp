@@ -123,7 +123,7 @@ BookCategory::expandItem(
     }
 
     this->m_categoryFlags   = cFlags;
-    return ( static_cast<Boolean>(cfPrev == CategoryFlags::CFLAG_EXPANDED) );
+    return ( TO_STRICT_FROM_BOOL(cfPrev == CategoryFlags::CFLAG_EXPANDED) );
 }
 
 //----------------------------------------------------------------
