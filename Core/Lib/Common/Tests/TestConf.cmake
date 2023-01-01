@@ -20,8 +20,8 @@ add_test(
 )
 
 add_test(
-    NAME        StrictIntegerTest
-    COMMAND     $<TARGET_FILE:StrictIntegerTest>
+    NAME        StrictTypesTest
+    COMMAND     $<TARGET_FILE:StrictTypesTest>
 )
 
 add_test(
@@ -37,6 +37,6 @@ add_test(
 add_executable(AccountsProjectTest  AccountsProjectTest.cpp)
 add_executable(DecimalCurrencyTest  DecimalCurrencyTest.cpp)
 add_executable(EnumBitFlagTest      EnumBitFlagTest.cpp)
-add_executable(StrictIntegerTest    StrictIntegerTest.cpp)
+add_executable(StrictTypesTest      StrictTypesTest.cpp)
 add_executable(TextParserTest       TextParserTest.cpp)
 

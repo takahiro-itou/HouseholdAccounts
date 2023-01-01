@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Interface of StrictInteger template class.
+**      An Interface of StrictTypes template class.
 **
-**      @file       Common/StrictInteger.h
+**      @file       Common/StrictTypes.h
 **/
 
-#if !defined( HACORE_COMMON_INCLUDED_STRICT_INTEGER_H )
-#    define   HACORE_COMMON_INCLUDED_STRICT_INTEGER_H
+#if !defined( HACORE_COMMON_INCLUDED_STRICT_TYPES_H )
+#    define   HACORE_COMMON_INCLUDED_STRICT_TYPES_H
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUNTS_PROJECT_H )
@@ -32,7 +32,7 @@ namespace  Common  {
 
 //  クラスの前方宣言。  //
 template <typename T, typename Tag>
-class  StrictInteger;
+class  StrictTypes;
 
 //----------------------------------------------------------------
 //  フレンド関数の前方宣言。
@@ -40,13 +40,13 @@ class  StrictInteger;
 
 #define     SI_FWD_DECLARE_FRIEND_BINOP(RType, OP)              \
 template <typename T, typename Tag>                             \
-RType   operator OP (const StrictInteger<T, Tag> lhs,           \
-                     const StrictInteger<T, Tag> rhs);          \
+RType   operator OP (const  StrictTypes<T, Tag> lhs,            \
+                     const  StrictTypes<T, Tag> rhs);           \
                                                                 \
 template <typename T, typename Tag>     RType                   \
-operator OP (const StrictInteger<T, Tag> lhs, const T rhs);     \
+operator OP (const StrictTypes<T, Tag> lhs, const T rhs);       \
 template <typename T, typename Tag>     RType                   \
-operator OP (const T lhs, const StrictInteger<T, Tag> rhs)
+operator OP (const T lhs, const StrictTypes<T, Tag> rhs)
 
 SI_FWD_DECLARE_FRIEND_BINOP(bool, ==);
 SI_FWD_DECLARE_FRIEND_BINOP(bool, !=);
@@ -60,7 +60,7 @@ SI_FWD_DECLARE_FRIEND_BINOP(bool, >=);
 
 //========================================================================
 //
-//    StrictInteger  class.
+//    StrictTypes  class.
 //
 /**
 **    厳格な整数型クラス。
@@ -71,7 +71,7 @@ SI_FWD_DECLARE_FRIEND_BINOP(bool, >=);
 **/
 
 template <typename T, typename Tag>
-class  StrictInteger
+class  StrictTypes
 {
 //========================================================================
 //
@@ -79,9 +79,7 @@ class  StrictInteger
 //
 private:
 
-    typedef     StrictInteger<T, Tag>   This;
-
-    typedef     bool                    CmpRet;
+    typedef     StrictTypes<T, Tag>     This;
 
 //========================================================================
 //
@@ -94,7 +92,7 @@ public:
     **  （デフォルトコンストラクタ）。
     **
     **/
-    StrictInteger();
+    StrictTypes();
 
     //----------------------------------------------------------------
     /**   インスタンスを初期化する
@@ -103,7 +101,7 @@ public:
     **  @param [in] val   値。
     **/
     explicit
-    StrictInteger(
+    StrictTypes(
             const T val);
 
     //----------------------------------------------------------------
@@ -111,7 +109,7 @@ public:
     **  （コピーコンストラクタ）。
     **
     **/
-    StrictInteger(
+    StrictTypes(
             const This &src);
 
 //========================================================================
@@ -253,13 +251,13 @@ private:
 //
 public:
     //  テストクラス。  //
-    friend  class   StrictIntegerTest;
+    friend  class   StrictTypesTest;
 };
 
 }   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 //  Implementation.
-#include    "StrictInteger.inl"
+#include    "StrictTypes.inl"
 
 #endif

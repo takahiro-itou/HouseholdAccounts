@@ -42,8 +42,8 @@ INCLIB_HEADER_FILES         =  \
         ${INCLIB_SOURCE_DIR}/BookInterface.h        \
         ${INCLIB_SOURCE_DIR}/DecimalCurrency.h      \
         ${INCLIB_SOURCE_DIR}/EnumBitFlag.h          \
-        ${INCLIB_SOURCE_DIR}/StrictInteger.h        \
-        ${INCLIB_SOURCE_DIR}/StrictInteger.inl      \
+        ${INCLIB_SOURCE_DIR}/StrictTypes.h          \
+        ${INCLIB_SOURCE_DIR}/StrictTypes.inl        \
         ${INCLIB_SOURCE_DIR}/TextParser.h           \
         ${EXTRA_LIBRARY_HEADER_FILES}
 

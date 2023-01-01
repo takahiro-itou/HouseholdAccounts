@@ -26,8 +26,8 @@
 #    include    "Account/Common/AccountsProject.h"
 #endif
 
-#if !defined( HACORE_COMMON_INCLUDED_STRICT_INTEGER_H )
-#    include    "Account/Common/StrictInteger.h"
+#if !defined( HACORE_COMMON_INCLUDED_STRICT_TYPES_H )
+#    include    "Account/Common/StrictTypes.h"
 #endif
 
 #if !defined( HACORE_SYS_INCLUDED_STDDEF_H )
@@ -111,7 +111,7 @@ enum  Boolean : char
 #    define     DECLARE_STRICT_TYPE(BaseType, DeclType)         \
     struct tag_Type_ ## DeclType;                               \
     typedef                                                     \
-    Common::StrictInteger<BaseType, tag_Type_ ## DeclType>      \
+    Common::StrictTypes<BaseType, tag_Type_ ## DeclType>        \
     DeclType
 
 #    define     TO_VALUE_FROM_STRICT(sv)    sv.getValue()

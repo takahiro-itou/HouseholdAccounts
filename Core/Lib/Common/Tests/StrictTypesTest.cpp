@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Implementation of Test Case 'StrictInteger'.
+**      An Implementation of Test Case 'StrictTypes'.
 **
-**      @file       Common/Tests/StrictIntegerTest.cpp
+**      @file       Common/Tests/StrictTypesTest.cpp
 **/
 
 #include    "TestDriver.h"
-#include    "Account/Common/StrictInteger.h"
+#include    "Account/Common/StrictTypes.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
@@ -30,16 +30,16 @@ struct  tagInt;
 
 //========================================================================
 //
-//    StrictIntegerTest  class.
+//    StrictTypesTest  class.
 //
 /**
-**    クラス StrictInteger  の単体テスト。
+**    クラス StrictTypes  の単体テスト。
 **/
 
-class  StrictIntegerTest : public  TestFixture
+class  StrictTypesTest : public  TestFixture
 {
-    CPPUNIT_TEST_SUITE(StrictIntegerTest);
-    CPPUNIT_TEST(testStrictInteger);
+    CPPUNIT_TEST_SUITE(StrictTypesTest);
+    CPPUNIT_TEST(testStrictTypes);
     CPPUNIT_TEST(testOpeAssign);
     CPPUNIT_TEST(testOpePreIncrement);
     CPPUNIT_TEST(testOpePostIncrement);
@@ -54,14 +54,14 @@ class  StrictIntegerTest : public  TestFixture
     CPPUNIT_TEST_SUITE_END();
 
 private:
-    typedef     StrictInteger<int, tagInt>  TestTarget;
+    typedef     StrictTypes<int, tagInt>    TestTarget;
 
 public:
     virtual  void   setUp()     override    { }
     virtual  void   tearDown()  override    { }
 
 private:
-    void  testStrictInteger();
+    void  testStrictTypes();
     void  testOpeAssign();
     void  testOpePreIncrement();
     void  testOpePostIncrement();
@@ -75,14 +75,14 @@ private:
     void  testOpeCmpGe();
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION( StrictIntegerTest );
+CPPUNIT_TEST_SUITE_REGISTRATION( StrictTypesTest );
 
 //========================================================================
 //
 //    Tests.
 //
 
-void  StrictIntegerTest::testStrictInteger()
+void  StrictTypesTest::testStrictTypes()
 {
     TestTarget  testee1;
     TestTarget  testee2(100);
@@ -95,7 +95,7 @@ void  StrictIntegerTest::testStrictInteger()
     return;
 }
 
-void  StrictIntegerTest::testOpeAssign()
+void  StrictTypesTest::testOpeAssign()
 {
     TestTarget  testee1(100);
     TestTarget  testee2;
@@ -111,7 +111,7 @@ void  StrictIntegerTest::testOpeAssign()
     return;
 }
 
-void  StrictIntegerTest::testOpePreIncrement()
+void  StrictTypesTest::testOpePreIncrement()
 {
     TestTarget  testee(110);
     TestTarget  result;
@@ -126,7 +126,7 @@ void  StrictIntegerTest::testOpePreIncrement()
     return;
 }
 
-void  StrictIntegerTest::testOpePostIncrement()
+void  StrictTypesTest::testOpePostIncrement()
 {
     TestTarget  testee(120);
     TestTarget  result;
@@ -141,7 +141,7 @@ void  StrictIntegerTest::testOpePostIncrement()
     return;
 }
 
-void  StrictIntegerTest::testOpePreDecrement()
+void  StrictTypesTest::testOpePreDecrement()
 {
     TestTarget  testee(200);
     TestTarget  result;
@@ -156,7 +156,7 @@ void  StrictIntegerTest::testOpePreDecrement()
     return;
 }
 
-void  StrictIntegerTest::testOpePostDecrement()
+void  StrictTypesTest::testOpePostDecrement()
 {
     TestTarget  testee(300);
     TestTarget  result;
@@ -171,7 +171,7 @@ void  StrictIntegerTest::testOpePostDecrement()
     return;
 }
 
-void  StrictIntegerTest::testOpeCmpEqual()
+void  StrictTypesTest::testOpeCmpEqual()
 {
     TestTarget  testee1(300);
     TestTarget  testee2(300);
@@ -189,7 +189,7 @@ void  StrictIntegerTest::testOpeCmpEqual()
     return;
 }
 
-void  StrictIntegerTest::testOpeCmpNotEqual()
+void  StrictTypesTest::testOpeCmpNotEqual()
 {
     TestTarget  testee1(300);
     TestTarget  testee2(300);
@@ -207,7 +207,7 @@ void  StrictIntegerTest::testOpeCmpNotEqual()
     return;
 }
 
-void  StrictIntegerTest::testOpeCmpLt()
+void  StrictTypesTest::testOpeCmpLt()
 {
     TestTarget  testee1(100);
     TestTarget  testee2( 99);
@@ -233,7 +233,7 @@ void  StrictIntegerTest::testOpeCmpLt()
     return;
 }
 
-void  StrictIntegerTest::testOpeCmpLe()
+void  StrictTypesTest::testOpeCmpLe()
 {
     TestTarget  testee1(200);
     TestTarget  testee2(199);
@@ -259,7 +259,7 @@ void  StrictIntegerTest::testOpeCmpLe()
     return;
 }
 
-void  StrictIntegerTest::testOpeCmpGt()
+void  StrictTypesTest::testOpeCmpGt()
 {
     TestTarget  testee1(300);
     TestTarget  testee2(299);
@@ -285,7 +285,7 @@ void  StrictIntegerTest::testOpeCmpGt()
     return;
 }
 
-void  StrictIntegerTest::testOpeCmpGe()
+void  StrictTypesTest::testOpeCmpGe()
 {
     TestTarget  testee1(300);
     TestTarget  testee2(299);

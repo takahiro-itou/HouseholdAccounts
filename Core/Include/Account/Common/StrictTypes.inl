@@ -13,16 +13,16 @@
 *************************************************************************/
 
 /**
-**      An Implementation of StrictInteger template class.
+**      An Implementation of StrictTypes template class.
 **
-**      @file       Common/StrictInteger.inl
+**      @file       Common/StrictTypes.inl
 **/
 
 #if !defined( HACORE_COMMON_INCLUDED_STRICT_INTEGER_INL )
 #    define   HACORE_COMMON_INCLUDED_STRICT_INTEGER_INL
 
 #if !defined( HACORE_COMMON_INCLUDED_STRICT_INTEGER_H )
-#    include    "StrictInteger.h"
+#    include    "StrictTypes.h"
 #endif
 
 
@@ -34,7 +34,7 @@ namespace  {
 
 //========================================================================
 //
-//    StrictInteger  class.
+//    StrictTypes  class.
 //
 
 //========================================================================
@@ -49,7 +49,7 @@ namespace  {
 
 template <typename T, typename Tag>
 inline
-StrictInteger<T, Tag>::StrictInteger()
+StrictTypes<T, Tag>::StrictTypes()
     : m_cValue(0)
 { }
 
@@ -60,7 +60,7 @@ StrictInteger<T, Tag>::StrictInteger()
 
 template <typename T, typename Tag>
 inline
-StrictInteger<T, Tag>::StrictInteger(
+StrictTypes<T, Tag>::StrictTypes(
         const T val)
     : m_cValue(val)
 { }
@@ -72,7 +72,7 @@ StrictInteger<T, Tag>::StrictInteger(
 
 template <typename T, typename Tag>
 inline
-StrictInteger<T, Tag>::StrictInteger(
+StrictTypes<T, Tag>::StrictTypes(
         const This &src)
     : m_cValue(src.m_cValue)
 { }
@@ -113,8 +113,8 @@ StrictInteger<T, Tag>::StrictInteger(
 //
 
 template <typename T, typename Tag>
-inline  const  StrictInteger<T, Tag>  &
-StrictInteger<T, Tag>::operator =  (
+inline  const  StrictTypes<T, Tag>  &
+StrictTypes<T, Tag>::operator =  (
             const  This  & rhs)
 {
     this->m_cValue  = rhs.m_cValue;
@@ -127,8 +127,8 @@ StrictInteger<T, Tag>::operator =  (
 //
 
 template <typename T, typename Tag>
-inline  const  StrictInteger<T, Tag>  &
-StrictInteger<T, Tag>::operator ++ ()
+inline  const  StrictTypes<T, Tag>  &
+StrictTypes<T, Tag>::operator ++ ()
 {
     ++ this->m_cValue;
     return ( *this );
@@ -140,8 +140,8 @@ StrictInteger<T, Tag>::operator ++ ()
 //
 
 template <typename T, typename Tag>
-inline  const  StrictInteger<T, Tag>
-StrictInteger<T, Tag>::operator ++ (int)
+inline  const  StrictTypes<T, Tag>
+StrictTypes<T, Tag>::operator ++ (int)
 {
     This    prv(*this);
     ++ this->m_cValue;
@@ -154,8 +154,8 @@ StrictInteger<T, Tag>::operator ++ (int)
 //
 
 template <typename T, typename Tag>
-inline  const  StrictInteger<T, Tag>  &
-StrictInteger<T, Tag>::operator -- ()
+inline  const  StrictTypes<T, Tag>  &
+StrictTypes<T, Tag>::operator -- ()
 {
     -- this->m_cValue;
     return ( *this );
@@ -167,8 +167,8 @@ StrictInteger<T, Tag>::operator -- ()
 //
 
 template <typename T, typename Tag>
-inline  const  StrictInteger<T, Tag>
-StrictInteger<T, Tag>::operator -- (int)
+inline  const  StrictTypes<T, Tag>
+StrictTypes<T, Tag>::operator -- (int)
 {
     This    prv(*this);
     -- this->m_cValue;
@@ -182,18 +182,18 @@ StrictInteger<T, Tag>::operator -- (int)
 #define     SI_IMPLEMENT_FRIEND_BINOP_CMP(RType, OP)        \
 template <typename T, typename Tag>                         \
 inline  RType   operator OP (                               \
-    const StrictInteger<T, Tag> lhs,                        \
-    const StrictInteger<T, Tag> rhs)                        \
+    const StrictTypes<T, Tag> lhs,                          \
+    const StrictTypes<T, Tag> rhs)                          \
 { return ( lhs.m_cValue OP rhs.m_cValue ); }                \
                                                             \
 template <typename T, typename Tag>                         \
 inline  RType   operator OP (                               \
-    const StrictInteger<T, Tag> lhs, const T rhs)           \
+    const StrictTypes<T, Tag> lhs, const T rhs)             \
 { return ( lhs.m_cValue OP rhs ); }                         \
                                                             \
 template <typename T, typename Tag>                         \
 inline  RType   operator OP (                               \
-    const T lhs, const StrictInteger<T, Tag> rhs)           \
+    const T lhs, const StrictTypes<T, Tag> rhs)             \
 { return ( lhs OP rhs.m_cValue ); }
 
 SI_IMPLEMENT_FRIEND_BINOP_CMP(bool, ==);
@@ -216,7 +216,7 @@ SI_IMPLEMENT_FRIEND_BINOP_CMP(bool, >=);
 
 template <typename T, typename Tag>
 inline  const  T
-StrictInteger<T, Tag>::getValue()  const
+StrictTypes<T, Tag>::getValue()  const
 {
     return ( this->m_cValue );
 }
@@ -226,8 +226,8 @@ StrictInteger<T, Tag>::getValue()  const
 //
 
 template <typename T, typename Tag>
-inline  const  StrictInteger<T, Tag>  &
-StrictInteger<T, Tag>::setValue(const  T  val)
+inline  const  StrictTypes<T, Tag>  &
+StrictTypes<T, Tag>::setValue(const  T  val)
 {
     this->m_cValue  = val;
     return ( *this );
