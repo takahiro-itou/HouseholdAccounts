@@ -79,10 +79,10 @@
     <ClInclude Include="..\..\Core\Include\Account\Common\EnumBitFlag.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Core\Include\Account\Common\StrictInteger.h">
+    <ClInclude Include="..\..\Core\Include\Account\Common\StrictTypes.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Core\Include\Account\Common\StrictInteger.inl">
+    <ClInclude Include="..\..\Core\Include\Account\Common\StrictTypes.inl">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Core\Include\Account\Common\TextParser.h">
