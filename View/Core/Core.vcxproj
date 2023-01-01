@@ -160,6 +160,8 @@
     <ClInclude Include="..\..\Core\Include\Account\Common\EnumBitFlag.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\StrictTypes.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\StrictTypes.inl" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\StrictVector.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\StrictVector.inl" />
     <ClInclude Include="..\..\Core\Include\Account\Common\TextParser.h" />
 
     <ClInclude Include="..\..\Core\Include\Account\Documents\BookCategory.h" />
