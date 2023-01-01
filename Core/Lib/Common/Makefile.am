@@ -44,6 +44,8 @@ INCLIB_HEADER_FILES         =  \
         ${INCLIB_SOURCE_DIR}/EnumBitFlag.h          \
         ${INCLIB_SOURCE_DIR}/StrictTypes.h          \
         ${INCLIB_SOURCE_DIR}/StrictTypes.inl        \
+        ${INCLIB_SOURCE_DIR}/StrictVector.h         \
+        ${INCLIB_SOURCE_DIR}/StrictVector.inl       \
         ${INCLIB_SOURCE_DIR}/TextParser.h           \
         ${EXTRA_LIBRARY_HEADER_FILES}
 
