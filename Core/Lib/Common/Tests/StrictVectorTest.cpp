@@ -21,9 +21,14 @@
 #include    "TestDriver.h"
 #include    "Account/Common/StrictVector.h"
 
+#include    "Account/Common/StrictTypes.h"
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {
+
+//  クラスの前方宣言。  //
+struct  tagInt;
 
 //========================================================================
 //
@@ -38,6 +43,11 @@ class  StrictVectorTest : public  TestFixture
     CPPUNIT_TEST_SUITE(StrictVectorTest);
     CPPUNIT_TEST(testStrictVector);
     CPPUNIT_TEST_SUITE_END();
+
+private:
+
+    typedef     StrictTypes<int, tagInt>        IndexType;
+    typedef     StrictVector<int, IndexType>    TestTarget;
 
 public:
     virtual  void   setUp()     override    { }
@@ -56,7 +66,8 @@ CPPUNIT_TEST_SUITE_REGISTRATION( StrictVectorTest );
 
 void  StrictVectorTest::testStrictVector()
 {
-    StrictVector<int, int>  testee;
+    TestTarget  testee;
+
     return;
 }
 
