@@ -25,5 +25,51 @@
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {
 
+//========================================================================
+//
+//    StrictVectorTest  class.
+//
+/**
+**    クラス StrictVector の単体テスト。
+**/
+
+class  StrictVectorTest : public  TestFixture
+{
+    CPPUNIT_TEST_SUITE(StrictVectorTest);
+    CPPUNIT_TEST(testStrictVector);
+    CPPUNIT_TEST_SUITE_END();
+
+public:
+    virtual  void   setUp()     override    { }
+    virtual  void   tearDown()  override    { }
+
+private:
+    void  testStrictVector();
+};
+
+CPPUNIT_TEST_SUITE_REGISTRATION( StrictVectorTest );
+
+//========================================================================
+//
+//    Tests.
+//
+
+void  StrictVectorTest::testStrictVector()
+{
+    StrictVector<int, int>  testee;
+    return;
+}
+
+
 }   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+
+//========================================================================
+//
+//    エントリポイント。
+//
+
+int  main(int argc, char * argv[])
+{
+    return ( executeCppUnitTests(argc, argv) );
+}
