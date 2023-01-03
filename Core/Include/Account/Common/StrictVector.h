@@ -40,7 +40,7 @@ namespace  Common  {
 **
 **/
 
-template <typename TEl, typename TId>
+template <typename E, typename Id>
 class  StrictVector
 {
 //========================================================================
@@ -54,6 +54,13 @@ private:
 //    Constructor(s) and Destructor.
 //
 public:
+
+    //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （デフォルトコンストラクタ）。
+    **
+    **/
+    StrictVector();
 
 //========================================================================
 //
