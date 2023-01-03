@@ -54,6 +54,17 @@ StrictVector<E, Id>::StrictVector()
 {
 }
 
+//----------------------------------------------------------------
+//    インスタンスを破棄する
+//  （デストラクタ）。
+//
+
+template <typename E, typename Id>
+inline
+StrictVector<E, Id>::~StrictVector()
+{
+}
+
 //========================================================================
 //
 //    Public Member Functions (Implement Pure Virtual).
