@@ -40,8 +40,8 @@ namespace  Common  {
 **
 **/
 
-template <typename E, typename Id>
-class  StrictVector
+template <typename T, typename Id, class Allocator = std::allocator<T> >
+class  StrictVector : protected std::vector<T, Allocator>
 {
 //========================================================================
 //

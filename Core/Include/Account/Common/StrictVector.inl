@@ -48,9 +48,9 @@ namespace  {
 //  （デフォルトコンストラクタ）。
 //
 
-template <typename E, typename Id>
+template <typename T, typename Id, class Allocator>
 inline
-StrictVector<E, Id>::StrictVector()
+StrictVector<T, Id, Allocator>::StrictVector()
 {
 }
 
@@ -59,9 +59,9 @@ StrictVector<E, Id>::StrictVector()
 //  （デストラクタ）。
 //
 
-template <typename E, typename Id>
+template <typename T, typename Id, class Allocator>
 inline
-StrictVector<E, Id>::~StrictVector()
+StrictVector<T, Id, Allocator>::~StrictVector()
 {
 }
 
