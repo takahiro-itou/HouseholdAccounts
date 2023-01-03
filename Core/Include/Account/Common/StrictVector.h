@@ -49,6 +49,8 @@ class  StrictVector : protected std::vector<T, Allocator>
 //
 private:
 
+    typedef     std::vector<T, Allocator>   Super;
+
 //========================================================================
 //
 //    Constructor(s) and Destructor.
