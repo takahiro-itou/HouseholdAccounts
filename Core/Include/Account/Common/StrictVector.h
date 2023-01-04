@@ -95,6 +95,10 @@ public:
 //
 //    Public Member Functions.
 //
+public:
+
+    using   Super::push_back;
+    using   Super::operator [];
 
 //========================================================================
 //
