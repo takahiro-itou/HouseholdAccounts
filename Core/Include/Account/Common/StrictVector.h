@@ -172,6 +172,9 @@ public:
 //
 public:
 
+    reference       operator [] (const Id n);
+    const_reference operator [] (const Id n) const;
+
 //========================================================================
 //
 //    Accessors.
