@@ -127,6 +127,19 @@ public:
     using   Super::crend;
 #endif
 
+    //----------------------------------------------------------------
+    ///   領域。
+    //
+    using   Super::size;
+    using   Super::max_size;
+    using   Super::resize;
+    using   Super::capacity;
+    using   Super::empty;
+    using   Super::reserve;
+#if (__cplusplus >= 201103L)
+    using   Super::shrink_to_fit;
+#endif
+
     using   Super::push_back;
     using   Super::operator [];
 
