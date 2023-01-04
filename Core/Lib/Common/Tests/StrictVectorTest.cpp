@@ -42,6 +42,7 @@ class  StrictVectorTest : public  TestFixture
 {
     CPPUNIT_TEST_SUITE(StrictVectorTest);
     CPPUNIT_TEST(testStrictVector);
+    CPPUNIT_TEST(testPushBack);
     CPPUNIT_TEST_SUITE_END();
 
 private:
@@ -55,6 +56,7 @@ public:
 
 private:
     void  testStrictVector();
+    void  testPushBack();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( StrictVectorTest );
@@ -67,6 +69,21 @@ CPPUNIT_TEST_SUITE_REGISTRATION( StrictVectorTest );
 void  StrictVectorTest::testStrictVector()
 {
     TestTarget  testee;
+
+    return;
+}
+
+void  StrictVectorTest::testPushBack()
+{
+    TestTarget  testee;
+
+    testee.push_back(1);
+    testee.push_back(2);
+    testee.push_back(3);
+
+    CPPUNIT_ASSERT_EQUAL(1, testee[0]);
+    CPPUNIT_ASSERT_EQUAL(2, testee[1]);
+    CPPUNIT_ASSERT_EQUAL(3, testee[2]);
 
     return;
 }
