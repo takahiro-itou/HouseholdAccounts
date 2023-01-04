@@ -120,7 +120,7 @@ public:
     using   Super::rbegin;
     using   Super::rend;
 
-#if (__cplusplus >= 201103L)
+#if ( __cplusplus >= 201103L )
     using   Super::cbegin;
     using   Super::cend;
     using   Super::crbegin;
@@ -136,7 +136,7 @@ public:
     using   Super::capacity;
     using   Super::empty;
     using   Super::reserve;
-#if (__cplusplus >= 201103L)
+#if ( __cplusplus >= 201103L )
     using   Super::shrink_to_fit;
 #endif
 
@@ -152,8 +152,17 @@ public:
     //----------------------------------------------------------------
     //    コンテナの変更。
     //
-
+    using   Super::assign;
     using   Super::push_back;
+    using   Super::pop_back;
+    using   Super::insert;
+    using   Super::erase;
+    using   Super::swap;
+    using   Super::clear;
+#if ( __cplusplus >= 201103L )
+    using   Super::emplace_back;
+    using   Super::emplace;
+#endif
 
 //========================================================================
 //
