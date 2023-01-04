@@ -140,8 +140,20 @@ public:
     using   Super::shrink_to_fit;
 #endif
 
-    using   Super::push_back;
+    //----------------------------------------------------------------
+    //    要素アクセス。
+    //
     using   Super::operator [];
+    using   Super::at;
+    using   Super::data;
+    using   Super::front;
+    using   Super::back;
+
+    //----------------------------------------------------------------
+    //    コンテナの変更。
+    //
+
+    using   Super::push_back;
 
 //========================================================================
 //
