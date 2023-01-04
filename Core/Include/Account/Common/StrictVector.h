@@ -53,18 +53,20 @@ private:
 
 public:
 
-    using   Super::allocator_type;
-    using   Super::difference_type;
-    using   Super::iterator;
-    using   Super::const_iterator;
-    using   Super::pointer;
-    using   Super::const_pointer;
-    using   Super::reference;
-    using   Super::const_reference;
-    using   Super::reverse_iterator;
-    using   Super::const_reverse_iterator;
-    using   Super::size_type;
-    using   Super::value_type;
+    typedef   typename  Super::allocator_type   allocator_type;
+    typedef   typename  Super::difference_type  difference_type;
+    typedef   typename  Super::iterator         iterator;
+    typedef   typename  Super::const_iterator   const_iterator;
+    typedef   typename  Super::pointer          pointer;
+    typedef   typename  Super::const_pointer    const_pointer;
+    typedef   typename  Super::reference        reference;
+    typedef   typename  Super::const_reference  const_reference;
+    typedef   typename
+            Super::reverse_iterator             reverse_iterator;
+    typedef   typename
+            Super::const_reverse_iterator       const_reverse_iterator;
+    typedef   typename  Super::size_type        size_type;
+    typedef   typename  Super::value_type       value_type;
 
 //========================================================================
 //
@@ -168,6 +170,7 @@ public:
 //
 //    Public Member Functions (Operators).
 //
+public:
 
 //========================================================================
 //
