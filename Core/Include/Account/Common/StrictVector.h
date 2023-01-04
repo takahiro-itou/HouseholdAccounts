@@ -112,6 +112,21 @@ public:
 //
 public:
 
+    //----------------------------------------------------------------
+    //    イテレータ。
+    //
+    using   Super::begin;
+    using   Super::end;
+    using   Super::rbegin;
+    using   Super::rend;
+
+#if (__cplusplus >= 201103L)
+    using   Super::cbegin;
+    using   Super::cend;
+    using   Super::crbegin;
+    using   Super::crend;
+#endif
+
     using   Super::push_back;
     using   Super::operator [];
 
