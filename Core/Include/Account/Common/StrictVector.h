@@ -131,7 +131,7 @@ public:
 //
 public:
     //  テストクラス。  //
-    friend  class   StrictVectorTest;
+    //  friend  class   StrictVectorTest;
 };
 
 }   //  End of namespace  Common
