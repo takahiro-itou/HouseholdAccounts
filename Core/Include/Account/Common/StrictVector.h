@@ -51,6 +51,21 @@ private:
 
     typedef     std::vector<T, Allocator>   Super;
 
+public:
+
+    using   Super::allocator_type;
+    using   Super::difference_type;
+    using   Super::iterator;
+    using   Super::const_iterator;
+    using   Super::pointer;
+    using   Super::const_pointer;
+    using   Super::reference;
+    using   Super::const_reference;
+    using   Super::reverse_iterator;
+    using   Super::const_reverse_iterator;
+    using   Super::size_type;
+    using   Super::value_type;
+
 //========================================================================
 //
 //    Constructor(s) and Destructor.
