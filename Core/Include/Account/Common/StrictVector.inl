@@ -99,12 +99,14 @@ template <typename T, typename Id, class Allocator>
 inline  typename  StrictVector<T, Id, Allocator>::reference
 StrictVector<T, Id, Allocator>::operator [] (const Id n)
 {
+    return ( Super::operator [] (n.getValue()) );
 }
 
 template <typename T, typename Id, class Allocator>
 inline  typename  StrictVector<T, Id, Allocator>::const_reference
 StrictVector<T, Id, Allocator>::operator [] (const Id n) const
 {
+    return ( Super::operator [] (n.getValue()) );
 }
 
 template <typename T, typename Id, class Allocator>
