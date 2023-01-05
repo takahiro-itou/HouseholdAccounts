@@ -107,6 +107,18 @@ StrictVector<T, Id, Allocator>::operator [] (const Id n) const
 {
 }
 
+template <typename T, typename Id, class Allocator>
+inline  typename  StrictVector<T, Id, Allocator>::reference
+StrictVector<T, Id, Allocator>::at(const Id n)
+{
+}
+
+template <typename T, typename Id, class Allocator>
+inline  typename  StrictVector<T, Id, Allocator>::const_reference
+StrictVector<T, Id, Allocator>::at(const Id n) const
+{
+}
+
 //========================================================================
 //
 //    Accessors.

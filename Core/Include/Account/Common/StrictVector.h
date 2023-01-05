@@ -145,8 +145,6 @@ public:
     //----------------------------------------------------------------
     //    要素アクセス。
     //
-    using   Super::operator [];
-    using   Super::at;
     using   Super::data;
     using   Super::front;
     using   Super::back;
@@ -174,6 +172,9 @@ public:
 
     reference       operator [] (const Id n);
     const_reference operator [] (const Id n) const;
+
+    reference       at(const Id n);
+    const_reference at(const Id n) const;
 
 //========================================================================
 //
