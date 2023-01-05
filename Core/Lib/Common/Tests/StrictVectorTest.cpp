@@ -43,6 +43,7 @@ class  StrictVectorTest : public  TestFixture
     CPPUNIT_TEST_SUITE(StrictVectorTest);
     CPPUNIT_TEST(testStrictVector);
     CPPUNIT_TEST(testPushBack);
+    CPPUNIT_TEST(testAt);
     CPPUNIT_TEST_SUITE_END();
 
 private:
@@ -57,6 +58,7 @@ public:
 private:
     void  testStrictVector();
     void  testPushBack();
+    void  testAt();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( StrictVectorTest );
@@ -81,13 +83,30 @@ void  StrictVectorTest::testPushBack()
     testee.push_back(2);
     testee.push_back(3);
 
-    CPPUNIT_ASSERT_EQUAL(1, testee[0]);
-    CPPUNIT_ASSERT_EQUAL(2, testee[1]);
-    CPPUNIT_ASSERT_EQUAL(3, testee[2]);
-
     return;
 }
 
+void  StrictVectorTest::testAt()
+{
+    TestTarget  testee;
+    IndexType   i1(0);
+    IndexType   i2(1);
+    IndexType   i3(2);
+
+    testee.push_back(1);
+    testee.push_back(2);
+    testee.push_back(3);
+
+    CPPUNIT_ASSERT_EQUAL(1, testee[i1]);
+    CPPUNIT_ASSERT_EQUAL(2, testee[i2]);
+    CPPUNIT_ASSERT_EQUAL(3, testee[i3]);
+
+    CPPUNIT_ASSERT_EQUAL(1, testee.at(i1));
+    CPPUNIT_ASSERT_EQUAL(2, testee.at(i2));
+    CPPUNIT_ASSERT_EQUAL(3, testee.at(i3));
+
+    return;
+}
 
 }   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
