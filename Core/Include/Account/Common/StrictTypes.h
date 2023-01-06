@@ -86,6 +86,11 @@ class  StrictTypes
 //
 //    Internal Type Definitions.
 //
+public:
+
+    /**   ベースとなっている値型。  **/
+    typedef     T                       BaseValType;
+
 private:
 
     typedef     StrictTypes<T, Tag>     This;
