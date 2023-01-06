@@ -34,6 +34,15 @@ namespace  Common  {
 template <typename T, typename Tag>
 class  StrictTypes;
 
+//========================================================================
+//
+//    補助関数。
+//
+
+template <typename T>
+const  T
+getValue(const  T  val);
+
 //----------------------------------------------------------------
 //  フレンド関数の前方宣言。
 //
