@@ -220,10 +220,10 @@ void  StrictTypesTest::testOpeDiv()
     TestTarget  result;
 
     result  = testee1 / testee2;
-    CPPUNIT_ASSERT_EQUAL(300, result.m_cValue);
+    CPPUNIT_ASSERT_EQUAL(333, result.m_cValue);
 
     result  /= testee3;
-    CPPUNIT_ASSERT_EQUAL( 15, result.m_cValue);
+    CPPUNIT_ASSERT_EQUAL( 16, result.m_cValue);
 
     result  = testee1 / 50;
     CPPUNIT_ASSERT_EQUAL(200, result.m_cValue);
@@ -244,7 +244,7 @@ void  StrictTypesTest::testOpeMod()
     result  = testee1 % testee2;
     CPPUNIT_ASSERT_EQUAL(142, result.m_cValue);
 
-    result  %= testee2;
+    result  %= testee3;
     CPPUNIT_ASSERT_EQUAL(  2, result.m_cValue);
 
     result  = testee1 % 70;
