@@ -216,8 +216,8 @@ public:
     //  算術演算子、論理演算子、シフト演算子。
     //
 #define     ST_DECLARE_BIN_AND_ASSIGN_OP(OP)                    \
-    inline  const This  operator OP (const This &rhs);          \
-    inline  const This  operator OP (const T rhs);              \
+    inline  const This  operator OP (const This &rhs) const;    \
+    inline  const This  operator OP (const T rhs) const;        \
     inline  const This& operator OP##= (const This &rhs);       \
     inline  const This& operator OP##= (const T rhs)
 
