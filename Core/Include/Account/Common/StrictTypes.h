@@ -194,7 +194,7 @@ public:
     //----------------------------------------------------------------
     //    比較演算子。
     //
-#define     SI_DECLARE_FRIEND_BINOP(RType, OP)                  \
+#define     SI_DECLARE_FRIEND_BINOP_CMP(RType, OP)              \
 friend  RType                                                   \
 operator OP <T, Tag> (const This lhs, const This rhs);          \
 friend  RType                                                   \
@@ -202,14 +202,14 @@ operator OP <T, Tag> (const This lhs, const T rhs);             \
 friend  RType                                                   \
 operator OP <T, Tag> (const T lhs, const This rhs)
 
-    SI_DECLARE_FRIEND_BINOP(bool, ==);
-    SI_DECLARE_FRIEND_BINOP(bool, !=);
-    SI_DECLARE_FRIEND_BINOP(bool, <);
-    SI_DECLARE_FRIEND_BINOP(bool, <=);
-    SI_DECLARE_FRIEND_BINOP(bool, >);
-    SI_DECLARE_FRIEND_BINOP(bool, >=);
+    SI_DECLARE_FRIEND_BINOP_CMP(bool, ==);
+    SI_DECLARE_FRIEND_BINOP_CMP(bool, !=);
+    SI_DECLARE_FRIEND_BINOP_CMP(bool, <);
+    SI_DECLARE_FRIEND_BINOP_CMP(bool, <=);
+    SI_DECLARE_FRIEND_BINOP_CMP(bool, >);
+    SI_DECLARE_FRIEND_BINOP_CMP(bool, >=);
 
-#undef  SI_DECLARE_FRIEND_BINOP
+#undef  SI_DECLARE_FRIEND_BINOP_CMP
 
 
 //========================================================================
