@@ -27,6 +27,11 @@
 #endif
 
 
+#if !defined( HACORE_COMMON_INCLUDED_STRICT_TYPES_H )
+#    include    "StrictTypes.h"
+#endif
+
+
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {
 
