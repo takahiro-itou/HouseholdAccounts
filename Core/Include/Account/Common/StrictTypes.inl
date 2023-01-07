@@ -195,6 +195,44 @@ StrictTypes<T, Tag>::operator -- (int)
 }
 
 //----------------------------------------------------------------
+//    比較演算子以外の二項演算子と複合代入演算子。
+//
+
+#define     ST_IMPLEMENT_BIN_AND_ASSIGN_OP(OP)              \
+template <typename T, typename Tag>                         \
+inline  const  StrictTypes<T, Tag>                          \
+StrictTypes<T, Tag>::operator OP (const  This  &rhs)        \
+{ return This(this->m_cValue OP rhs.m_cValue); }            \
+                                                            \
+template <typename T, typename Tag>                         \
+inline  const  StrictTypes<T, Tag>                          \
+StrictTypes<T, Tag>::operator OP (const  T  rhs)            \
+{ return This(this->m_cValue OP rhs); }                     \
+                                                            \
+template <typename T, typename Tag>                         \
+inline  const  StrictTypes<T, Tag>  &                       \
+StrictTypes<T, Tag>::operator OP##= (const  This  &rhs)     \
+{ this->m_cValue OP##= (rhs.m_cValue); return ( *this ); }  \
+                                                            \
+template <typename T, typename Tag>                         \
+inline  const  StrictTypes<T, Tag>  &                       \
+StrictTypes<T, Tag>::operator OP##= (const  T  rhs)         \
+{ this->m_cValue OP##= (rhs); return ( *this ); }
+
+ST_IMPLEMENT_BIN_AND_ASSIGN_OP(*);
+ST_IMPLEMENT_BIN_AND_ASSIGN_OP(/);
+ST_IMPLEMENT_BIN_AND_ASSIGN_OP(%);
+ST_IMPLEMENT_BIN_AND_ASSIGN_OP(+);
+ST_IMPLEMENT_BIN_AND_ASSIGN_OP(-);
+ST_IMPLEMENT_BIN_AND_ASSIGN_OP(<<);
+ST_IMPLEMENT_BIN_AND_ASSIGN_OP(>>);
+ST_IMPLEMENT_BIN_AND_ASSIGN_OP(&);
+ST_IMPLEMENT_BIN_AND_ASSIGN_OP(^);
+ST_IMPLEMENT_BIN_AND_ASSIGN_OP(|);
+
+#undef      ST_IMPLEMENT_BIN_AND_ASSIGN_OP
+
+//----------------------------------------------------------------
 //    比較演算子。
 //
 
