@@ -34,6 +34,25 @@ namespace  {
 
 //========================================================================
 //
+//    補助関数。
+//
+
+template <typename T>
+inline  const  T
+getValueFromStrict(const  T  val)
+{
+    return ( val );
+}
+
+template <typename T, typename Tag>
+inline  const  T
+getValueFromStrict(const  StrictTypes<T, Tag>  sv)
+{
+    return ( sv.getValue() );
+}
+
+//========================================================================
+//
 //    StrictTypes  class.
 //
 
