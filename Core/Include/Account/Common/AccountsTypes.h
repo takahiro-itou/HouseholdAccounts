@@ -116,10 +116,17 @@ enum  Boolean : char
 
 #    define     TO_VALUE_FROM_STRICT(sv)    sv.getValue()
 
+#    define     DECLARE_STRICT_VECTOR(ValT, IdxT, DeclType)     \
+    typedef     Common::StrictTypes<ValType, IndexType>         \
+     DeclType
+
 #else
 
 #    define     DECLARE_STRICT_TYPE(BaseType, DeclType)         \
     typedef     BaseType    DeclType
+
+#    define     DECLARE_STRICT_VECTOR(ValT, IdxT, DeclType)     \
+    typedef     std::vector<ValT>   DeclType
 
 #    define     TO_VALUE_FROM_STRICT(sv)    (sv)
 
