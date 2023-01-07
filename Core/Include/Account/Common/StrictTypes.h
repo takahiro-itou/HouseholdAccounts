@@ -38,6 +38,25 @@ class  StrictTypes;
 //  フレンド関数の前方宣言。
 //
 
+#if 0
+#define     ST_FWD_DECLARE_FRIEND_BIN_OP(OP)                    \
+template <typename T, typename Tag>     StrictTypes<T, Tag>     \
+operator OP (const T lhs, const StrictTypes<T, Tag> rhs)
+
+ST_FWD_DECLARE_FRIEND_BIN_OP(*);
+ST_FWD_DECLARE_FRIEND_BIN_OP(/);
+ST_FWD_DECLARE_FRIEND_BIN_OP(%);
+ST_FWD_DECLARE_FRIEND_BIN_OP(+);
+ST_FWD_DECLARE_FRIEND_BIN_OP(-);
+ST_FWD_DECLARE_FRIEND_BIN_OP(<<);
+ST_FWD_DECLARE_FRIEND_BIN_OP(>>);
+ST_FWD_DECLARE_FRIEND_BIN_OP(&);
+ST_FWD_DECLARE_FRIEND_BIN_OP(^);
+ST_FWD_DECLARE_FRIEND_BIN_OP(|);
+
+#undef  ST_FWD_DECLARE_FRIEND_BIN_OP
+#endif
+
 #define     SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(RType, OP)         \
 template <typename T, typename Tag>                             \
 RType   operator OP (const  StrictTypes<T, Tag> lhs,            \
@@ -190,6 +209,30 @@ public:
     operator -- (int);
 
 public:
+
+    //----------------------------------------------------------------
+    //    比較演算子以外の二項演算子と複合代入演算子。
+    //
+    //  算術演算子、論理演算子、シフト演算子。
+    //
+#define     ST_DECLARE_BIN_AND_ASSIGN_OP(OP)                    \
+    inline  const This  operator OP (const This rhs);           \
+    inline  const This  operator OP (const T rhs);              \
+    inline  const This& operator OP##= (const This rhs);        \
+    inline  const This& operator OP##= (const T rhs)
+
+    ST_DECLARE_BIN_AND_ASSIGN_OP(*);
+    ST_DECLARE_BIN_AND_ASSIGN_OP(/);
+    ST_DECLARE_BIN_AND_ASSIGN_OP(%);
+    ST_DECLARE_BIN_AND_ASSIGN_OP(+);
+    ST_DECLARE_BIN_AND_ASSIGN_OP(-);
+    ST_DECLARE_BIN_AND_ASSIGN_OP(<<);
+    ST_DECLARE_BIN_AND_ASSIGN_OP(>>);
+    ST_DECLARE_BIN_AND_ASSIGN_OP(&);
+    ST_DECLARE_BIN_AND_ASSIGN_OP(^);
+    ST_DECLARE_BIN_AND_ASSIGN_OP(|);
+
+#undef      ST_DECLARE_BIN_AND_ASSIGN_OP
 
     //----------------------------------------------------------------
     //    比較演算子。
