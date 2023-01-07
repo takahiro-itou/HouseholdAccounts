@@ -26,6 +26,11 @@
 #    include    "Account/Common/AccountsProject.h"
 #endif
 
+#if !defined( HACORE_SYS_INCLUDED_STL_VECTOR )
+#    include    <vector>
+#    define   HACORE_SYS_INCLUDED_STL_VECTOR
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {

@@ -26,9 +26,8 @@
 #    include    "BookCategory.h"
 #endif
 
-#if !defined( HACORE_SYS_INCLUDED_STL_VECTOR )
-#    include    <vector>
-#    define   HACORE_SYS_INCLUDED_STL_VECTOR
+#if !defined( HACORE_COMMON_INCLUDED_STRICT_VECTOR_H )
+#    include    "Account/Common/StrictVector.h"
 #endif
 
 
