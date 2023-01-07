@@ -30,14 +30,13 @@
 #    include    "Account/Common/DecimalCurrency.h"
 #endif
 
+#if !defined( HACORE_COMMON_INCLUDED_STRICT_VECTOR_H )
+#    include    "Account/Common/StrictVector.h"
+#endif
+
 #if !defined( HACORE_SYS_INCLUDED_STL_STRING )
 #    include    <string>
 #    define   HACORE_SYS_INCLUDED_STL_STRING
-#endif
-
-#if !defined( HACORE_SYS_INCLUDED_STL_VECTOR )
-#    include    <vector>
-#    define   HACORE_SYS_INCLUDED_STL_VECTOR
 #endif
 
 
@@ -103,7 +102,10 @@ class  BookCategory
 //
 private:
 
-    typedef     std::vector<CategoryHandle> CategoryHandleArray;
+    DECLARE_STRICT_VECTOR(
+            CategoryHandle, CategoryHandle,
+            CategoryHandleArray
+    );
 
     typedef     Common::DecimalCurrency     DecimalCurrency;
 
