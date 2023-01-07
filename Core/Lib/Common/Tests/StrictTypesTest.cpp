@@ -45,6 +45,16 @@ class  StrictTypesTest : public  TestFixture
     CPPUNIT_TEST(testOpePostIncrement);
     CPPUNIT_TEST(testOpePreDecrement);
     CPPUNIT_TEST(testOpePostDecrement);
+    CPPUNIT_TEST(testOpeMul);
+    CPPUNIT_TEST(testOpeDiv);
+    CPPUNIT_TEST(testOpeMod);
+    CPPUNIT_TEST(testOpeAdd);
+    CPPUNIT_TEST(testOpeSub);
+    CPPUNIT_TEST(testOpeShl);
+    CPPUNIT_TEST(testOpeShr);
+    CPPUNIT_TEST(testOpeAnd);
+    CPPUNIT_TEST(testOpeXor);
+    CPPUNIT_TEST(testOpeOr);
     CPPUNIT_TEST(testOpeCmpEqual);
     CPPUNIT_TEST(testOpeCmpNotEqual);
     CPPUNIT_TEST(testOpeCmpLt);
@@ -67,6 +77,16 @@ private:
     void  testOpePostIncrement();
     void  testOpePreDecrement();
     void  testOpePostDecrement();
+    void  testOpeMul();
+    void  testOpeDiv();
+    void  testOpeMod();
+    void  testOpeAdd();
+    void  testOpeSub();
+    void  testOpeShl();
+    void  testOpeShr();
+    void  testOpeAnd();
+    void  testOpeXor();
+    void  testOpeOr ();
     void  testOpeCmpEqual();
     void  testOpeCmpNotEqual();
     void  testOpeCmpLt();
@@ -167,6 +187,223 @@ void  StrictTypesTest::testOpePostDecrement()
 
     CPPUNIT_ASSERT_EQUAL(299, testee.m_cValue);
     CPPUNIT_ASSERT_EQUAL(300, result.m_cValue);
+
+    return;
+}
+
+void  StrictTypesTest::testOpeMul()
+{
+    TestTarget  testee1(100);
+    TestTarget  testee2( 30);
+    TestTarget  result;
+
+    result  = testee1 * testee2;
+    CPPUNIT_ASSERT_EQUAL(  3000, result.m_cValue);
+
+    result  *= testee1;
+    CPPUNIT_ASSERT_EQUAL(300000, result.m_cValue);
+
+    result  = testee1 * 50;
+    CPPUNIT_ASSERT_EQUAL(  5000, result.m_cValue);
+
+    result  *= 70;
+    CPPUNIT_ASSERT_EQUAL(350000, result.m_cValue);
+
+    return;
+}
+
+void  StrictTypesTest::testOpeDiv()
+{
+    TestTarget  testee1(10000);
+    TestTarget  testee2(   30);
+    TestTarget  testee3(   20);
+    TestTarget  result;
+
+    result  = testee1 / testee2;
+    CPPUNIT_ASSERT_EQUAL(300, result.m_cValue);
+
+    result  /= testee3;
+    CPPUNIT_ASSERT_EQUAL( 15, result.m_cValue);
+
+    result  = testee1 / 50;
+    CPPUNIT_ASSERT_EQUAL(200, result.m_cValue);
+
+    result  /= 70;
+    CPPUNIT_ASSERT_EQUAL(  2, result.m_cValue);
+
+    return;
+}
+
+void  StrictTypesTest::testOpeMod()
+{
+    TestTarget  testee1(10000);
+    TestTarget  testee2(  159);
+    TestTarget  testee3(   35);
+    TestTarget  result;
+
+    result  = testee1 % testee2;
+    CPPUNIT_ASSERT_EQUAL(142, result.m_cValue);
+
+    result  %= testee2;
+    CPPUNIT_ASSERT_EQUAL(  2, result.m_cValue);
+
+    result  = testee1 % 70;
+    CPPUNIT_ASSERT_EQUAL( 60, result.m_cValue);
+
+    result  %= 50;
+    CPPUNIT_ASSERT_EQUAL( 10, result.m_cValue);
+
+    return;
+}
+
+void  StrictTypesTest::testOpeAdd()
+{
+    TestTarget  testee1(100);
+    TestTarget  testee2( 30);
+    TestTarget  result;
+
+    result  = testee1 + testee2;
+    CPPUNIT_ASSERT_EQUAL(130, result.m_cValue);
+
+    result  += testee1;
+    CPPUNIT_ASSERT_EQUAL(230, result.m_cValue);
+
+    result  = testee1 + 50;
+    CPPUNIT_ASSERT_EQUAL(150, result.m_cValue);
+
+    result  += 70;
+    CPPUNIT_ASSERT_EQUAL(220, result.m_cValue);
+
+    return;
+}
+
+void  StrictTypesTest::testOpeSub()
+{
+    TestTarget  testee1(200);
+    TestTarget  testee2( 30);
+    TestTarget  result;
+
+    result  = testee1 - testee2;
+    CPPUNIT_ASSERT_EQUAL(170, result.m_cValue);
+
+    result  -= testee1;
+    CPPUNIT_ASSERT_EQUAL(-30, result.m_cValue);
+
+    result  = testee1 - 50;
+    CPPUNIT_ASSERT_EQUAL(150, result.m_cValue);
+
+    result  -= 70;
+    CPPUNIT_ASSERT_EQUAL( 80, result.m_cValue);
+
+    return;
+}
+
+void  StrictTypesTest::testOpeShl()
+{
+    TestTarget  testee1(15);
+    TestTarget  testee2( 2);
+    TestTarget  testee3( 3);
+    TestTarget  result;
+
+    result  = testee1 << testee2;
+    CPPUNIT_ASSERT_EQUAL( 60, result.m_cValue);
+
+    result  <<= testee3;
+    CPPUNIT_ASSERT_EQUAL(480, result.m_cValue);
+
+    result  = testee1 << 4;
+    CPPUNIT_ASSERT_EQUAL(240, result.m_cValue);
+
+    result  <<= 2;
+    CPPUNIT_ASSERT_EQUAL(960, result.m_cValue);
+
+    return;
+}
+
+void  StrictTypesTest::testOpeShr()
+{
+    TestTarget  testee1(1000);
+    TestTarget  testee2(   2);
+    TestTarget  testee3(   3);
+    TestTarget  result;
+
+    result  = testee1 >> testee2;
+    CPPUNIT_ASSERT_EQUAL(250, result.m_cValue);
+
+    result  >>= testee3;
+    CPPUNIT_ASSERT_EQUAL( 31, result.m_cValue);
+
+    result  = testee1 >> 4;
+    CPPUNIT_ASSERT_EQUAL( 62, result.m_cValue);
+
+    result  >>= 2;
+    CPPUNIT_ASSERT_EQUAL( 15, result.m_cValue);
+
+    return;
+}
+
+void  StrictTypesTest::testOpeAnd()
+{
+    TestTarget  testee1(1020);
+    TestTarget  testee2( 510);
+    TestTarget  testee3( 121);
+    TestTarget  result;
+
+    result  = testee1 & testee2;
+    CPPUNIT_ASSERT_EQUAL(508, result.m_cValue);
+
+    result  &=  testee3;
+    CPPUNIT_ASSERT_EQUAL(120, result.m_cValue);
+
+    result  = testee1 & 499;
+    CPPUNIT_ASSERT_EQUAL(496, result.m_cValue);
+
+    result  &=  123;
+    CPPUNIT_ASSERT_EQUAL(112, result.m_cValue);
+
+    return;
+}
+
+void  StrictTypesTest::testOpeXor()
+{
+    TestTarget  testee1(  20);
+    TestTarget  testee2( 312);
+    TestTarget  testee3( 121);
+    TestTarget  result;
+
+    result  = testee1 ^ testee2;
+    CPPUNIT_ASSERT_EQUAL(300, result.m_cValue);
+
+    result  ^=  testee3;
+    CPPUNIT_ASSERT_EQUAL(341, result.m_cValue);
+
+    result  = testee1 ^ 499;
+    CPPUNIT_ASSERT_EQUAL(487, result.m_cValue);
+
+    result  ^=  123;
+    CPPUNIT_ASSERT_EQUAL(412, result.m_cValue);
+
+    return;
+}
+
+void  StrictTypesTest::testOpeOr()
+{
+    TestTarget  testee1(  20);
+    TestTarget  testee2( 312);
+    TestTarget  testee3( 121);
+    TestTarget  result;
+
+    result  = testee1 | testee2;
+    CPPUNIT_ASSERT_EQUAL(316, result.m_cValue);
+
+    result  |=  testee3;
+    CPPUNIT_ASSERT_EQUAL(381, result.m_cValue);
+
+    result  = testee1 | 499;
+    CPPUNIT_ASSERT_EQUAL(503, result.m_cValue);
+
+    result  |=  123;
+    CPPUNIT_ASSERT_EQUAL(511, result.m_cValue);
 
     return;
 }
