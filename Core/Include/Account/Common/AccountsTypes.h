@@ -114,11 +114,10 @@ enum  Boolean : char
     Common::StrictTypes<BaseType, tag_Type_ ## DeclType>        \
     DeclType
 
-#    define     TO_VALUE_FROM_STRICT(sv)    sv.getValue()
-
 #    define     DECLARE_STRICT_VECTOR(ValT, IdxT, DeclType)     \
-    typedef     Common::StrictTypes<ValType, IndexType>         \
-     DeclType
+    typedef     Common::StrictVector<ValT, IdxT>    DeclType
+
+#    define     TO_VALUE_FROM_STRICT(sv)    sv.getValue()
 
 #else
 
