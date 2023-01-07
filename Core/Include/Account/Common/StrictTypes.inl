@@ -198,7 +198,7 @@ StrictTypes<T, Tag>::operator -- (int)
 //    比較演算子。
 //
 
-#define     SI_IMPLEMENT_FRIEND_BIN_CMP_OP(RType, OP)       \
+#define     ST_IMPLEMENT_FRIEND_BIN_CMP_OP(RType, OP)       \
 template <typename T, typename Tag>                         \
 inline  RType   operator OP (                               \
     const StrictTypes<T, Tag> lhs,                          \
@@ -215,14 +215,14 @@ inline  RType   operator OP (                               \
     const T lhs, const StrictTypes<T, Tag> rhs)             \
 { return ( lhs OP rhs.m_cValue ); }
 
-SI_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, ==);
-SI_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, !=);
-SI_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, <);
-SI_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, <=);
-SI_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, >);
-SI_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, >=);
+ST_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, ==);
+ST_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, !=);
+ST_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, <);
+ST_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, <=);
+ST_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, >);
+ST_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, >=);
 
-#undef      SI_IMPLEMENT_FRIEND_BIN_CMP_OP
+#undef      ST_IMPLEMENT_FRIEND_BIN_CMP_OP
 
 //========================================================================
 //

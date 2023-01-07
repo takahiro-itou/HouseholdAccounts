@@ -57,7 +57,7 @@ ST_FWD_DECLARE_FRIEND_BIN_OP(|);
 #undef  ST_FWD_DECLARE_FRIEND_BIN_OP
 #endif
 
-#define     SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(RType, OP)         \
+#define     ST_FWD_DECLARE_FRIEND_BIN_CMP_OP(RType, OP)         \
 template <typename T, typename Tag>                             \
 RType   operator OP (const  StrictTypes<T, Tag> lhs,            \
                      const  StrictTypes<T, Tag> rhs);           \
@@ -67,14 +67,14 @@ operator OP (const StrictTypes<T, Tag> lhs, const T rhs);       \
 template <typename T, typename Tag>     RType                   \
 operator OP (const T lhs, const StrictTypes<T, Tag> rhs)
 
-SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, ==);
-SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, !=);
-SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, <);
-SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, <=);
-SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, >);
-SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, >=);
+ST_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, ==);
+ST_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, !=);
+ST_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, <);
+ST_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, <=);
+ST_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, >);
+ST_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, >=);
 
-#undef  SI_FWD_DECLARE_FRIEND_BIN_CMP_OP
+#undef  ST_FWD_DECLARE_FRIEND_BIN_CMP_OP
 //----------------------------------------------------------------
 
 //========================================================================
@@ -237,7 +237,7 @@ public:
     //----------------------------------------------------------------
     //    比較演算子。
     //
-#define     SI_DECLARE_FRIEND_BIN_CMP_OP(RType, OP)             \
+#define     ST_DECLARE_FRIEND_BIN_CMP_OP(RType, OP)             \
 friend  RType                                                   \
 operator OP <T, Tag> (const This lhs, const This rhs);          \
 friend  RType                                                   \
@@ -245,14 +245,14 @@ operator OP <T, Tag> (const This lhs, const T rhs);             \
 friend  RType                                                   \
 operator OP <T, Tag> (const T lhs, const This rhs)
 
-    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, ==);
-    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, !=);
-    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, <);
-    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, <=);
-    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, >);
-    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, >=);
+    ST_DECLARE_FRIEND_BIN_CMP_OP(bool, ==);
+    ST_DECLARE_FRIEND_BIN_CMP_OP(bool, !=);
+    ST_DECLARE_FRIEND_BIN_CMP_OP(bool, <);
+    ST_DECLARE_FRIEND_BIN_CMP_OP(bool, <=);
+    ST_DECLARE_FRIEND_BIN_CMP_OP(bool, >);
+    ST_DECLARE_FRIEND_BIN_CMP_OP(bool, >=);
 
-#undef  SI_DECLARE_FRIEND_BIN_CMP_OP
+#undef  ST_DECLARE_FRIEND_BIN_CMP_OP
 
 
 //========================================================================
