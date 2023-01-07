@@ -58,8 +58,7 @@ class  CategoryManager
 //
 private:
 
-    typedef     std::vector<BookCategory>
-    CategoryArray;
+    DECLARE_STRICT_VECTOR(BookCategory, CategoryHandle, CategoryArray);
 
     typedef     Common::DecimalCurrency     DecimalCurrency;
 
