@@ -38,7 +38,7 @@ class  StrictTypes;
 //  フレンド関数の前方宣言。
 //
 
-#define     SI_FWD_DECLARE_FRIEND_BINOP(RType, OP)              \
+#define     SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(RType, OP)         \
 template <typename T, typename Tag>                             \
 RType   operator OP (const  StrictTypes<T, Tag> lhs,            \
                      const  StrictTypes<T, Tag> rhs);           \
@@ -48,14 +48,14 @@ operator OP (const StrictTypes<T, Tag> lhs, const T rhs);       \
 template <typename T, typename Tag>     RType                   \
 operator OP (const T lhs, const StrictTypes<T, Tag> rhs)
 
-SI_FWD_DECLARE_FRIEND_BINOP(bool, ==);
-SI_FWD_DECLARE_FRIEND_BINOP(bool, !=);
-SI_FWD_DECLARE_FRIEND_BINOP(bool, <);
-SI_FWD_DECLARE_FRIEND_BINOP(bool, <=);
-SI_FWD_DECLARE_FRIEND_BINOP(bool, >);
-SI_FWD_DECLARE_FRIEND_BINOP(bool, >=);
+SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, ==);
+SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, !=);
+SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, <);
+SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, <=);
+SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, >);
+SI_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, >=);
 
-#undef  SI_FWD_DECLARE_FRIEND_BINOP
+#undef  SI_FWD_DECLARE_FRIEND_BIN_CMP_OP
 //----------------------------------------------------------------
 
 //========================================================================
@@ -194,7 +194,7 @@ public:
     //----------------------------------------------------------------
     //    比較演算子。
     //
-#define     SI_DECLARE_FRIEND_BINOP_CMP(RType, OP)              \
+#define     SI_DECLARE_FRIEND_BIN_CMP_OP(RType, OP)             \
 friend  RType                                                   \
 operator OP <T, Tag> (const This lhs, const This rhs);          \
 friend  RType                                                   \
@@ -202,14 +202,14 @@ operator OP <T, Tag> (const This lhs, const T rhs);             \
 friend  RType                                                   \
 operator OP <T, Tag> (const T lhs, const This rhs)
 
-    SI_DECLARE_FRIEND_BINOP_CMP(bool, ==);
-    SI_DECLARE_FRIEND_BINOP_CMP(bool, !=);
-    SI_DECLARE_FRIEND_BINOP_CMP(bool, <);
-    SI_DECLARE_FRIEND_BINOP_CMP(bool, <=);
-    SI_DECLARE_FRIEND_BINOP_CMP(bool, >);
-    SI_DECLARE_FRIEND_BINOP_CMP(bool, >=);
+    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, ==);
+    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, !=);
+    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, <);
+    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, <=);
+    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, >);
+    SI_DECLARE_FRIEND_BIN_CMP_OP(bool, >=);
 
-#undef  SI_DECLARE_FRIEND_BINOP_CMP
+#undef  SI_DECLARE_FRIEND_BIN_CMP_OP
 
 
 //========================================================================
