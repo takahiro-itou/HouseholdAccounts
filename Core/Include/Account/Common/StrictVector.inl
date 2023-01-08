@@ -120,12 +120,14 @@ template <typename T, typename Id, class Allocator>
 inline  void
 StrictVector<T, Id, Allocator>::resize(const Id n)
 {
+    Super::resize( getValueFromStrict(n) );
 }
 
 template <typename T, typename Id, class Allocator>
 inline  void
 StrictVector<T, Id, Allocator>::resize(const Id n, const T &c)
 {
+    Super::resize( getValueFromStrict(n), c );
 }
 
 template <typename T, typename Id, class Allocator>
