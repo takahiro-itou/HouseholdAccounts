@@ -87,8 +87,8 @@ const   SubCategoryIdx
 BookCategory::appendSubCategory(
         const   CategoryHandle  cateSub)
 {
-    const   SubCategoryIdx  idxPos  = this->m_numSubCategory ++;
-    this->m_subCategories.resize(idxPos + 1);
+    const   SubCategoryIdx  idxPos  = this->m_numSubCategory;
+    this->m_subCategories.resize(++ this->m_numSubCategory);
     this->m_subCategories[idxPos]   = cateSub;
     return ( idxPos );
 }
