@@ -97,7 +97,37 @@ StrictVector<T, Id, Allocator>::~StrictVector()
 
 template <typename T, typename Id, class Allocator>
 inline  const  Id
+StrictVector<T, Id, Allocator>::capacity()  const
+{
+}
+
+template <typename T, typename Id, class Allocator>
+inline  const  Id
+StrictVector<T, Id, Allocator>::max_size()  const
+{
+}
+
+template <typename T, typename Id, class Allocator>
+inline  const  Id
 StrictVector<T, Id, Allocator>::size()  const
+{
+}
+
+template <typename T, typename Id, class Allocator>
+inline  void
+StrictVector<T, Id, Allocator>::resize(const Id n)
+{
+}
+
+template <typename T, typename Id, class Allocator>
+inline  void
+StrictVector<T, Id, Allocator>::resize(const Id n, const T &c)
+{
+}
+
+template <typename T, typename Id, class Allocator>
+inline  void
+StrictVector<T, Id, Allocator>::reserve(const Id n)
 {
 }
 

@@ -137,12 +137,13 @@ public:
     //----------------------------------------------------------------
     ///   領域。
     //
+
     //  using   Super::size;
-    using   Super::max_size;
-    using   Super::resize;
-    using   Super::capacity;
+    //  using   Super::max_size;
+    //  using   Super::resize;
+    //  using   Super::capacity;
     using   Super::empty;
-    using   Super::reserve;
+    //  using   Super::reserve;
 #if ( __cplusplus >= 201103L )
     using   Super::shrink_to_fit;
 #endif
@@ -179,7 +180,14 @@ public:
     ///   領域。
     //
 
-    const  Id   size() const;
+    const  Id   capacity()  const;
+    const  Id   max_size()  const;
+    const  Id   size()  const;
+
+    void    resize(const Id n);
+    void    resize(const Id n, const T &c);
+
+    void    reserve(const Id n);
 
 //========================================================================
 //
