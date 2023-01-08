@@ -208,7 +208,7 @@ BookCategory::setCategoryName(
 //    サブ項目の個数を取得する。
 //
 
-const   CategoryHandle
+const   SubCategoryIdx
 BookCategory::getNumSubCategories()  const
 {
     return ( this->m_numSubCategory );
@@ -295,7 +295,7 @@ BookCategory::getSubCategories()  const
 
 const   CategoryHandle
 BookCategory::getSubCategory(
-        const   CategoryHandle  idxSub)  const
+        const   SubCategoryIdx  idxSub)  const
 {
     return ( this->m_subCategories[idxSub] );
 }
