@@ -134,6 +134,7 @@ template <typename T, typename Id, class Allocator>
 inline  void
 StrictVector<T, Id, Allocator>::reserve(const Id n)
 {
+    Super::reserve( getValueFromStrict(n) );
 }
 
 //========================================================================

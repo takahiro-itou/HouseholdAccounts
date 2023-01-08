@@ -158,7 +158,7 @@ void  StrictVectorTest::testSize()
     CPPUNIT_ASSERT(10 <= retSize.getValue());
     CPPUNIT_ASSERT(IndexType(10) <= retSize);
 
-    CPPUNIT_ASSERT_EQUAL( ! testee.empty() );
+    CPPUNIT_ASSERT( ! testee.empty() );
 
     testee.reserve(IndexType(64));
 
