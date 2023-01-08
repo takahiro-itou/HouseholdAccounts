@@ -99,18 +99,21 @@ template <typename T, typename Id, class Allocator>
 inline  const  Id
 StrictVector<T, Id, Allocator>::capacity()  const
 {
+    return ( static_cast<Id>(Super::capacity()) );
 }
 
 template <typename T, typename Id, class Allocator>
 inline  const  Id
 StrictVector<T, Id, Allocator>::max_size()  const
 {
+    return ( static_cast<Id>(Super::max_size()) );
 }
 
 template <typename T, typename Id, class Allocator>
 inline  const  Id
 StrictVector<T, Id, Allocator>::size()  const
 {
+    return ( static_cast<Id>(Super::size()) );
 }
 
 template <typename T, typename Id, class Allocator>
