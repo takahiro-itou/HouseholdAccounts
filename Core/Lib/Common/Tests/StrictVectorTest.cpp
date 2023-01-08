@@ -143,32 +143,32 @@ void  StrictVectorTest::testSize()
     IndexType   nSize(10);
     IndexType   retSize;
 
-    CPPUNIT_ASSERT_EQUAL(true, testee.empty());
+    CPPUNIT_ASSERT(testee.empty());
 
     retSize = testee.size();
     CPPUNIT_ASSERT_EQUAL(   0, retSize.getValue() );
-    CPPUNIT_ASSERT_EQUAL(true, IndexType(0) == retSize);
+    CPPUNIT_ASSERT(IndexType(0) == retSize);
 
     testee.resize(nSize);
     retSize = testee.size();
     CPPUNIT_ASSERT_EQUAL(  10, retSize.getValue() );
-    CPPUNIT_ASSERT_EQUAL(true, IndexType(10) == retSize);
+    CPPUNIT_ASSERT(IndexType(10) == retSize);
 
     retSize = testee.capacity();
-    CPPUNIT_ASSERT_EQUAL(true, 10 <= retSize.getValue());
-    CPPUNIT_ASSERT_EQUAL(true, IndexType(10) <= retSize);
+    CPPUNIT_ASSERT(10 <= retSize.getValue());
+    CPPUNIT_ASSERT(IndexType(10) <= retSize);
 
-    CPPUNIT_ASSERT_EQUAL(false, testee.empty());
+    CPPUNIT_ASSERT_EQUAL( ! testee.empty() );
 
     testee.reserve(IndexType(64));
 
     retSize = testee.size();
     CPPUNIT_ASSERT_EQUAL(  10, retSize.getValue() );
-    CPPUNIT_ASSERT_EQUAL(true, IndexType(10) == retSize);
+    CPPUNIT_ASSERT(IndexType(10) == retSize);
 
     retSize = testee.capacity();
-    CPPUNIT_ASSERT_EQUAL(true, 64 <= retSize.getValue());
-    CPPUNIT_ASSERT_EQUAL(true, IndexType(64) <= retSize);
+    CPPUNIT_ASSERT(64 <= retSize.getValue());
+    CPPUNIT_ASSERT(IndexType(64) <= retSize);
 
     return;
 }
