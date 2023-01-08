@@ -104,7 +104,7 @@ CategoryManager::allocCategoryBuffers(
 const   CategoryHandle
 CategoryManager::allocNewCategory()
 {
-    CategoryHandle  cateResult  = -1;
+    CategoryHandle  cateResult  = static_cast<CategoryHandle>(-1);
 
     //  バッファサイズと登録済み項目数を比較し、    //
     //  バッファに空きがある場合は、空きを探して    //
