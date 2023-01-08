@@ -95,6 +95,12 @@ StrictVector<T, Id, Allocator>::~StrictVector()
 //    Public Member Functions.
 //
 
+template <typename T, typename Id, class Allocator>
+inline  const  Id
+StrictVector<T, Id, Allocator>::size()  const
+{
+}
+
 //========================================================================
 //
 //    Public Member Functions (Operators).

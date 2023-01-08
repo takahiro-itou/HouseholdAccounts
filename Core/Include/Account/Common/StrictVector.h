@@ -115,7 +115,7 @@ public:
 
 //========================================================================
 //
-//    Public Member Functions.
+//    Public Member Functions (Using Super).
 //
 public:
 
@@ -137,7 +137,7 @@ public:
     //----------------------------------------------------------------
     ///   領域。
     //
-    using   Super::size;
+    //  using   Super::size;
     using   Super::max_size;
     using   Super::resize;
     using   Super::capacity;
@@ -168,6 +168,18 @@ public:
     using   Super::emplace_back;
     using   Super::emplace;
 #endif
+
+//========================================================================
+//
+//    Public Member Functions.
+//
+public:
+
+    //----------------------------------------------------------------
+    ///   領域。
+    //
+
+    const  Id   size() const;
 
 //========================================================================
 //
