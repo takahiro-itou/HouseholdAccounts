@@ -143,6 +143,8 @@ void  StrictVectorTest::testSize()
     IndexType   nSize(10);
     IndexType   retSize;
 
+    CPPUNIT_ASSERT_EQUAL(true, testee.empty());
+
     retSize = testee.size();
     CPPUNIT_ASSERT_EQUAL(   0, retSize.getValue() );
     CPPUNIT_ASSERT_EQUAL(true, IndexType(0) == retSize);
@@ -155,6 +157,8 @@ void  StrictVectorTest::testSize()
     retSize = testee.capacity();
     CPPUNIT_ASSERT_EQUAL(true, 10 <= retSize.getValue());
     CPPUNIT_ASSERT_EQUAL(true, IndexType(10) <= retSize);
+
+    CPPUNIT_ASSERT_EQUAL(false, testee.empty());
 
     return;
 }
