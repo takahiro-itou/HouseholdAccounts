@@ -103,7 +103,7 @@ class  BookCategory
 private:
 
     DECLARE_STRICT_VECTOR(
-            CategoryHandle, CategoryHandle,
+            CategoryHandle,     SubCategoryIdx,
             CategoryHandleArray
     );
 
@@ -158,7 +158,7 @@ public:
     **/
     virtual  const  CategoryHandle
     appendSubCategory(
-            const   CategoryHandle  cateSub);
+            const   SubCategoryIdx  cateSub);
 
     //----------------------------------------------------------------
     /**   サブ項目を全て消去する。
@@ -244,7 +244,7 @@ public:
     /**   サブ項目の個数を取得する。
     **
     **/
-    const   CategoryHandle
+    const   SubCategoryIdx
     getNumSubCategories()  const;
 
     //----------------------------------------------------------------
@@ -313,7 +313,7 @@ public:
     **/
     const   CategoryHandle
     getSubCategory(
-            const   CategoryHandle  idxSub)  const;
+            const   SubCategoryIdx  idxSub)  const;
 
 //========================================================================
 //
