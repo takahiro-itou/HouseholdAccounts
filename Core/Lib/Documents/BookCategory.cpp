@@ -100,7 +100,7 @@ BookCategory::appendSubCategory(
 void
 BookCategory::clearSubCategories()
 {
-    this->m_numSubCategory  = static_cast<CategoryHandle>(0);
+    this->m_numSubCategory  = static_cast<SubCategoryIdx>(0);
     this->m_subCategories.clear();
     return;
 }
@@ -144,7 +144,7 @@ BookCategory::setupCategory(
     this->m_startDate       = startDate;
     this->m_startBalance    = startBalance;
 
-    this->m_numSubCategory  = static_cast<CategoryHandle>(0);
+    this->m_numSubCategory  = static_cast<SubCategoryIdx>(0);
     this->m_subCategories.clear();
 
     return;
