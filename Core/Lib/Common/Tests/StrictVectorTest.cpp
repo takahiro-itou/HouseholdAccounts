@@ -140,11 +140,21 @@ void  StrictVectorTest::testIntegerIndex()
 void  StrictVectorTest::testSize()
 {
     TestTarget  testee;
+    IndexType   nSize(10);
     IndexType   retSize;
 
     retSize = testee.size();
     CPPUNIT_ASSERT_EQUAL(   0, retSize.getValue() );
     CPPUNIT_ASSERT_EQUAL(true, IndexType(0) == retSize);
+
+    testee.resize(nSize);
+    retSize = testee.size();
+    CPPUNIT_ASSERT_EQUAL(  10, retSize.getValue() );
+    CPPUNIT_ASSERT_EQUAL(true, IndexType(10) == retSize);
+
+    retSize = testee.capacity();
+    CPPUNIT_ASSERT_EQUAL(true, 10 <= retSize.getValue());
+    CPPUNIT_ASSERT_EQUAL(true, IndexType(10) <= retSize);
 
     return;
 }
