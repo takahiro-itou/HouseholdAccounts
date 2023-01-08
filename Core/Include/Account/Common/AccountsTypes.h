@@ -145,6 +145,8 @@ DECLARE_STRICT_TYPE(int,        StringIndex);
 
 typedef     int                 CategoryHandle;
 
+typedef     int                 SubCategoryIdx;
+
 //----------------------------------------------------------------
 /**
 **
