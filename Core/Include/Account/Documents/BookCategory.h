@@ -156,9 +156,9 @@ public:
     **  @param [in] cateSub   項目のハンドル。
     **  @return     何番目の子になるかを返す。
     **/
-    virtual  const  CategoryHandle
+    virtual  const  SubCategoryIdx
     appendSubCategory(
-            const   SubCategoryIdx  cateSub);
+            const   CategoryHandle  cateSub);
 
     //----------------------------------------------------------------
     /**   サブ項目を全て消去する。
