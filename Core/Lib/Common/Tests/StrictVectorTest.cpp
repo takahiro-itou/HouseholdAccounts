@@ -45,6 +45,7 @@ class  StrictVectorTest : public  TestFixture
     CPPUNIT_TEST(testPushBack);
     CPPUNIT_TEST(testAt);
     CPPUNIT_TEST(testIntegerIndex);
+    CPPUNIT_TEST(testSize);
     CPPUNIT_TEST_SUITE_END();
 
 private:
@@ -61,6 +62,7 @@ private:
     void  testPushBack();
     void  testAt();
     void  testIntegerIndex();
+    void  testSize();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( StrictVectorTest );
@@ -131,6 +133,18 @@ void  StrictVectorTest::testIntegerIndex()
     CPPUNIT_ASSERT_EQUAL(10, testee.at(i1));
     CPPUNIT_ASSERT_EQUAL(20, testee.at(i2));
     CPPUNIT_ASSERT_EQUAL(30, testee.at(i3));
+
+    return;
+}
+
+void  StrictVectorTest::testSize()
+{
+    TestTarget  testee;
+    IndexType   retSize;
+
+    retSize = testee.size();
+    CPPUNIT_ASSERT_EQUAL(   0, retSize.getValue() );
+    CPPUNIT_ASSERT_EQUAL(true, IndexType(0) == retSize);
 
     return;
 }
