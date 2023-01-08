@@ -344,7 +344,7 @@ private:
     std::string             m_categoryName;
 
     /**   サブ項目数。              **/
-    CategoryHandle          m_numSubCategory;
+    SubCategoryIdx          m_numSubCategory;
 
     /**   サブ項目のインデックス。  **/
     CategoryHandleArray     m_subCategories;
