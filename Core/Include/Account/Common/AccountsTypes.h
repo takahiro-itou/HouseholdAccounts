@@ -145,7 +145,12 @@ DECLARE_STRICT_TYPE(int,        StringIndex);
 
 DECLARE_STRICT_TYPE(int,        CategoryHandle);
 
-typedef     int                 SubCategoryIdx;
+//----------------------------------------------------------------
+/**
+**    項目内のサブ項目のインデックス型。
+**/
+
+DECLARE_STRICT_TYPE(int,        SubCategoryIdx);
 
 //----------------------------------------------------------------
 /**
