@@ -143,7 +143,7 @@ DECLARE_STRICT_TYPE(int,        StringIndex);
 **    勘定科目および分類のインデックス型。
 **/
 
-typedef     int                 CategoryHandle;
+DECLARE_STRICT_TYPE(int,        CategoryHandle);
 
 typedef     int                 SubCategoryIdx;
 
