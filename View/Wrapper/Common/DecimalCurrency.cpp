@@ -114,6 +114,16 @@ DecimalCurrency::fromUnmanged(
     return ( trgVal );
 }
 
+//----------------------------------------------------------------
+//    ラップ対象の型を生成する。
+//
+
+DecimalCurrency::WrapTarget
+DecimalCurrency::toUnmanaged()
+{
+    WrapTarget  trgVal;
+    return ( trgVal );
+}
 
 //========================================================================
 //
