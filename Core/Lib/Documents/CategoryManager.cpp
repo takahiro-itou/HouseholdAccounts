@@ -47,6 +47,12 @@ namespace  {
 //
 
 CategoryManager::CategoryManager()
+    : m_cateBufferSize(0),
+      m_numUsedCategory(0),
+      m_numRootCategory(0),
+      m_bufCategory(),
+      m_chInnerTax(-1),
+      m_chOuterTax(-1)
 {
 }
 
