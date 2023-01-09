@@ -111,6 +111,21 @@ CategoryManager::getRootCategoryHandle(
     return ( this->m_ptrObj->getRootCategoryHandle(idxCate) );
 }
 
+//----------------------------------------------------------------
+//    指定した項目に新しいサブ項目を追加する。
+//
+
+CategoryHandle
+CategoryManager::insertNewCategory(
+        const  CategoryHandle   cateParent,
+        System::String ^        cateName,
+        const  CategoryFlags    cateFlags,
+        const  DateSerial       startDate,
+        DecimalCurrency ^       startBalance)
+{
+    return ( 0 );
+}
+
 //========================================================================
 //
 //    Accessors.

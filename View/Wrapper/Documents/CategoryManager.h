@@ -128,6 +128,24 @@ public:
     getRootCategoryHandle(
             const   CategoryHandle  idxCate);
 
+    //----------------------------------------------------------------
+    /**   指定した項目に新しいサブ項目を追加する。
+    **
+    **  @param [in] cateParent      親項目のハンドル。
+    **  @param [in] cateName        項目名。
+    **  @param [in] cateFlags       項目フラグ。
+    **  @param [in] startDate       開始日。
+    **  @param [in] startBalance    開始時金額。
+    **  @return     追加した項目のハンドル。
+    **/
+    CategoryHandle
+    insertNewCategory(
+            const  CategoryHandle   cateParent,
+            System::String ^        cateName,
+            const  CategoryFlags        cateFlags,
+            const  DateSerial           startDate,
+            Common::DecimalCurrency ^   startBalance);
+
 //========================================================================
 //
 //    Accessors.
