@@ -47,6 +47,14 @@ namespace  {
 //
 
 BookCategory::BookCategory()
+    : m_categoryFlags(CategoryFlags::CTYPE_NOTUSED),
+      m_parentHandle  (-1),
+      m_categoryNameId(-1),
+      m_categoryName(),
+      m_numSubCategory(0),
+      m_subCategories(),
+      m_startDate(0),
+      m_startBalance()
 {
 }
 
