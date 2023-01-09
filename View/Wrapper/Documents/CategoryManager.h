@@ -62,6 +62,8 @@ private:
 
     typedef     cli::array<BookCategory^, 1>    CategoryArray;
 
+    typedef     Common::DecimalCurrency     DecimalCurrency;
+
 //========================================================================
 //
 //    Constructor(s) and Destructor.
