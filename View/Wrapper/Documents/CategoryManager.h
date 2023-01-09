@@ -142,9 +142,9 @@ public:
     insertNewCategory(
             const  CategoryHandle   cateParent,
             System::String ^        cateName,
-            const  CategoryFlags        cateFlags,
-            const  DateSerial           startDate,
-            Common::DecimalCurrency ^   startBalance);
+            const  CategoryFlags    cateFlags,
+            const  DateSerial       startDate,
+            DecimalCurrency ^       startBalance);
 
 //========================================================================
 //
