@@ -110,7 +110,9 @@ DecimalCurrency
 DecimalCurrency::fromUnmanged(
         const   WrapTarget  &srcVal)
 {
-    DecimalCurrency trgVal;
+    DecimalCurrency trgVal(
+            srcVal.getInternalValue(), srcVal.getScaleFactor()
+    );
     return ( trgVal );
 }
 
