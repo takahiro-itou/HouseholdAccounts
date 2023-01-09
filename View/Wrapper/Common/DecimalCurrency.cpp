@@ -123,7 +123,7 @@ DecimalCurrency::fromUnmanged(
 DecimalCurrency::WrapTarget
 DecimalCurrency::toUnmanaged()
 {
-    WrapTarget  trgVal;
+    WrapTarget  trgVal(this->m_internValue, this->m_scaleFactor);
     return ( trgVal );
 }
 
