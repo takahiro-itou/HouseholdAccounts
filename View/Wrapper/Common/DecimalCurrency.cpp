@@ -102,6 +102,19 @@ DecimalCurrency::DecimalCurrency(
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    ラップ対象の型からインスタンスを生成する。
+//
+
+DecimalCurrency
+DecimalCurrency::fromUnmanged(
+        const   WrapTarget  &srcVal)
+{
+    DecimalCurrency trgVal;
+    return ( trgVal );
+}
+
+
 //========================================================================
 //
 //    Accessors.

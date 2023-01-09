@@ -116,6 +116,17 @@ public:
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   ラップ対象の型からインスタンスを生成する。
+    **
+    **  @param [in] srcVal    アンマネージド。
+    **  @return     マネージド型のインスタンス。
+    **/
+    static  DecimalCurrency
+    fromUnmanged(
+            const   WrapTarget  &srcVal);
 
 //========================================================================
 //
