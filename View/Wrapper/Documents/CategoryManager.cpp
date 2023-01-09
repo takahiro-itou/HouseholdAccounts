@@ -24,6 +24,10 @@
 
 #include    "CategoryManager.h"
 
+#include    <msclr/marshal_cppstd.h>
+using       namespace   msclr::interop;
+
+
 namespace  Wrapper  {
 namespace  Documents  {
 
@@ -123,6 +127,7 @@ CategoryManager::insertNewCategory(
         const  DateSerial       startDate,
         DecimalCurrency ^       startBalance)
 {
+    const  std::string  usName  = marshal_as<std::string>(cateName);
     return ( 0 );
 }
 
