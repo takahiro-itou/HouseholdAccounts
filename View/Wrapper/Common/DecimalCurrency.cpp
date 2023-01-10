@@ -107,7 +107,7 @@ DecimalCurrency::DecimalCurrency(
 //
 
 DecimalCurrency
-DecimalCurrency::fromUnmanged(
+DecimalCurrency::fromNativeInstance(
         const   WrapTarget  &srcVal)
 {
     DecimalCurrency trgVal(
@@ -121,7 +121,7 @@ DecimalCurrency::fromUnmanged(
 //
 
 DecimalCurrency::WrapTarget
-DecimalCurrency::toUnmanaged()
+DecimalCurrency::toNativeInstance()
 {
     WrapTarget  trgVal(this->m_internValue, this->m_scaleFactor);
     return ( trgVal );

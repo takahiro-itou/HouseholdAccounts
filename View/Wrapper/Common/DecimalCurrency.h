@@ -125,7 +125,7 @@ public:
     **  @return     マネージド型のインスタンス。
     **/
     static  DecimalCurrency
-    fromUnmanged(
+    fromNativeInstance(
             const   WrapTarget  &srcVal);
 
     //----------------------------------------------------------------
@@ -134,7 +134,7 @@ public:
     **  @return     アンマネージド型のインスタンス。
     **/
     WrapTarget
-    toUnmanaged();
+    toNativeInstance();
 
 //========================================================================
 //
