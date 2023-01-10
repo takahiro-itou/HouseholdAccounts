@@ -127,6 +127,8 @@ CategoryManager::insertNewCategory(
         const  DateSerial       startDate,
         DecimalCurrency ^       startBalance)
 {
+    typedef     HouseholdAccounts::Common::DecimalCurrency  CoreDecimal;
+
     const  std::string  usName  = marshal_as<std::string>(cateName);
     return ( 0 );
 }
