@@ -118,7 +118,7 @@ BookCategory::!BookCategory()
 CategoryFlags
 BookCategory::getCategoryFlags()
 {
-    return ( this->m_categoryFlags );
+    return ( static_cast<CategoryFlags>(this->m_ptrObj->getCategoryFlags()) );
 }
 
 //----------------------------------------------------------------
@@ -153,9 +153,7 @@ BookCategory::ParentHandle::get()
 System::String^
 BookCategory::CategoryName::get()
 {
-    return ( marshal_as<System::String^>(
-                     this->m_ptrObj->getCategoryName()
-         ) );
+    return ( marshal_as<System::String^>(this->m_ptrObj->getCategoryName()) );
 }
 
 //----------------------------------------------------------------
