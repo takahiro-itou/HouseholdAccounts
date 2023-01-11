@@ -46,6 +46,9 @@ namespace  Documents  {
 //    Type Definitions.
 //
 
+typedef     HouseholdAccounts::Documents::CategoryFlags
+WrapTargetCategoryFlags;
+
 /**
 **    項目用フラグ。
 **/
