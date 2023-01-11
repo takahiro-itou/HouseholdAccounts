@@ -63,9 +63,6 @@ BookCategory::BookCategory()
 BookCategory::~BookCategory()
 {
     //  マネージドリソースを破棄する。              //
-    delete  this->m_categoryName;
-    this->m_categoryName    = nullptr;
-
     delete  this->m_subCategories;
     this->m_subCategories   = nullptr;
 

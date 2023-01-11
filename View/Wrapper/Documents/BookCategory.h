@@ -263,9 +263,6 @@ private:
     /**   項目名の ID  (文字列テーブル内のインデックス) 。  **/
     StringIndex             m_categoryNameId;
 
-    /**   項目名。                  **/
-    System::String^         m_categoryName;
-
     /**   サブ項目のインデックス。  **/
     CategoryHandleArray^    m_subCategories;
 
