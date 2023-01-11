@@ -133,6 +133,7 @@
 
     <ClInclude Include="..\Wrapper\Common\AccountsConst.h" />
     <ClInclude Include="..\Wrapper\Common\AccountsTypes.h" />
+    <ClInclude Include="..\Wrapper\Common\ArrayUtils.h" />
     <ClInclude Include="..\Wrapper\Common\DecimalCurrency.h" />
     <ClInclude Include="..\Wrapper\Common\FilePathUtils.h" />
     <ClInclude Include="..\Wrapper\Common\ManagedDate.h" />

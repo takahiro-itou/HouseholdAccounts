@@ -119,6 +119,9 @@
     <ClInclude Include="..\Wrapper\Common\AccountsTypes.h">
       <Filter>Common\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Wrapper\Common\ArrayUtils.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\Wrapper\Common\DecimalCurrency.h">
       <Filter>Common\Header Files</Filter>
     </ClInclude>
