@@ -130,7 +130,7 @@ CategoryManager::insertNewCategory(
     const   CategoryHandle  retVal  = this->m_ptrObj->insertNewCategory(
                 cateParent,
                 marshal_as<std::string>(cateName),
-                static_cast<WrapTargetCategoryFlags>(cateFlags),
+                static_cast<CoreCategoryFlags>(cateFlags),
                 startDate,
                 startBalance->toNativeInstance() );
     return ( retVal );

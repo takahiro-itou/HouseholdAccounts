@@ -47,7 +47,7 @@ namespace  Documents  {
 //
 
 typedef     HouseholdAccounts::Documents::CategoryFlags
-WrapTargetCategoryFlags;
+CoreCategoryFlags;
 
 /**
 **    項目用フラグ。
@@ -55,34 +55,34 @@ WrapTargetCategoryFlags;
 
 public  enum class  CategoryFlags
 {
-    CTYPE_MASK              = 0x000000ff,
-    CTYPE_NOTUSED           = 0,    /**<  未使用。          **/
-    CTYE_INHERIT            = 1,    /**<  親の設定を継承。  **/
-    CTYPE_BALANCE           = 9,    /**<  残高表示。        **/
-    CTYPE_INCOME            = 17,   /**<  収入。            **/
-    CTYPE_OUTLAY            = 18,   /**<  支出。            **/
-    CTYPE_BANK              = 25,   /**<  銀行口座。        **/
-    CTYPE_BANK_WITHDRAW     = 26,   /**<  口座引出。        **/
-    CTYPE_BANK_DEPOSIT      = 27,   /**<  口座入金。        **/
-    CTYPE_BANK_TRANSFER     = 28,   /**<  口座振替。        **/
+    CTYPE_MASK              = CoreCategoryFlags::CTYPE_MASK,
+    CTYPE_NOTUSED           = CoreCategoryFlags::CTYPE_NOTUSED,
+    CTYPE_INHERIT           = CoreCategoryFlags::CTYPE_INHERIT,
+    CTYPE_BALANCE           = CoreCategoryFlags::CTYPE_BALANCE,
+    CTYPE_INCOME            = CoreCategoryFlags::CTYPE_INCOME,
+    CTYPE_OUTLAY            = CoreCategoryFlags::CTYPE_OUTLAY,
+    CTYPE_BANK              = CoreCategoryFlags::CTYPE_BANK,
+    CTYPE_BANK_WITHDRAW     = CoreCategoryFlags::CTYPE_BANK_WITHDRAW,
+    CTYPE_BANK_DEPOSIT      = CoreCategoryFlags::CTYPE_BANK_DEPOSIT,
+    CTYPE_BANK_TRANSFER     = CoreCategoryFlags::CTYPE_BANK_TRANSFER,
 
     /**   サブ項目を展開表示する。          **/
-    CFLAG_EXPANDED          = 0x00000100,
+    CFLAG_EXPANDED          = CoreCategoryFlags::CFLAG_EXPANDED,
 
     /**   親の項目の合計に加算しない。      **/
-    CFLAG_NOCOUNT_PARENT    = 0x00010000,
+    CFLAG_NOCOUNT_PARENT    = CoreCategoryFlags::CFLAG_NOCOUNT_PARENT,
 
     /**   ルート項目の合計に加算しない。    **/
-    CFLAG_NOCOUNT_ROOT      = 0x00020000,
+    CFLAG_NOCOUNT_ROOT      = CoreCategoryFlags::CFLAG_NOCOUNT_ROOT,
 
     /**   表示しない隠し属性。  **/
-    CFLAG_HIDDEN            = 0x10000000,
+    CFLAG_HIDDEN            = CoreCategoryFlags::CFLAG_HIDDEN,
 
     /**   削除不能な予約項目。  **/
-    CFLAG_UNERASABLE        = 0x20000000,
+    CFLAG_UNERASABLE        = CoreCategoryFlags::CFLAG_UNERASABLE,
 
     /**   読み取り専用属性。    **/
-    CFLAG_READ_ONLY         = 0x40000000,
+    CFLAG_READ_ONLY         = CoreCategoryFlags::CFLAG_READ_ONLY,
 };
 
 
