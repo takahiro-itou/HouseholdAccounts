@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -20,9 +20,9 @@
 
 #include    "PreCompile.h"
 
-#include    "Account/Documents/BookCategory.h"
-
 #include    "BookCategory.h"
+
+#include    "Wrapper/Common/ArrayUtils.h"
 
 #include    <msclr/marshal_cppstd.h>
 using       namespace   msclr::interop;

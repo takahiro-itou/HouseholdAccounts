@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -24,8 +24,17 @@
 #pragma     once
 
 
-#include    "Wrapper/Common/AccountsTypes.h"
-#include    "Wrapper/Common/DecimalCurrency.h"
+#if !defined( HAWRAPPER_COMMON_INCLUDED_ACCOUNTS_TYPES_H )
+#    include    "Wrapper/Common/AccountsTypes.h"
+#endif
+
+#if !defined( HAWRAPPER_COMMON_INCLUDED_DECIMAL_CURRENCY_H )
+#    include    "Wrapper/Common/DecimalCurrency.h"
+#endif
+
+#if !defined( HACORE_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H )
+#    include    "Account/Documents/BookCategory.h"
+#endif
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
