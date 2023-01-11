@@ -24,6 +24,10 @@
 
 #include    "BookCategory.h"
 
+#include    <msclr/marshal_cppstd.h>
+using       namespace   msclr::interop;
+
+
 namespace  Wrapper  {
 namespace  Documents  {
 
@@ -152,7 +156,9 @@ BookCategory::ParentHandle::get()
 System::String^
 BookCategory::CategoryName::get()
 {
-    return ( this->m_categoryName );
+    return ( marshal_as<System::String^>(
+                     this->m_ptrObj->getCategoryName()
+         ) );
 }
 
 //----------------------------------------------------------------
