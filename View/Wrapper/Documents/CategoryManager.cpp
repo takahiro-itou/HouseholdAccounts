@@ -127,16 +127,13 @@ CategoryManager::insertNewCategory(
         const  DateSerial       startDate,
         DecimalCurrency ^       startBalance)
 {
-    typedef     HouseholdAccounts::Common::DecimalCurrency  CoreDecimal;
-
-    const  std::string  usName  = marshal_as<std::string>(cateName);
-    this->m_ptrObj->insertNewCategory(
-            cateParent,
-            marshal_as<std::string>(cateName),
-            static_cast<HouseholdAccounts::Documents::CategoryFlags>(cateFlags),
-            startDate,
-            startBalance->toNativeInstance() );
-    return ( 0 );
+    const   CategoryHandle  retVal  = this->m_ptrObj->insertNewCategory(
+                cateParent,
+                marshal_as<std::string>(cateName),
+                static_cast<WrapTargetCategoryFlags>(cateFlags),
+                startDate,
+                startBalance->toNativeInstance() );
+    return ( retVal );
 }
 
 //========================================================================
