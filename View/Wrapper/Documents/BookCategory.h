@@ -266,18 +266,6 @@ private:
 
     WrapTarget  *   m_ptrObj;
 
-    /**   項目フラグ。              **/
-    CategoryFlags           m_categoryFlags;
-
-    /**   項目名の ID  (文字列テーブル内のインデックス) 。  **/
-    StringIndex             m_categoryNameId;
-
-    /**   開始年月日 (残高の項目のみ) 。    **/
-    int                     m_startDate;
-
-    /**   開始時の残高 (残高の項目のみ) 。  **/
-    DecimalCurrency^        m_startBalance;
-
 //========================================================================
 //
 //    Other Features.
