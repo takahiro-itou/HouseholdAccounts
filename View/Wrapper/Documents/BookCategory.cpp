@@ -184,7 +184,7 @@ CategoryHandle
 BookCategory::SubCategory::get(
         CategoryHandle  idxSub)
 {
-    return ( this->m_subCategories[idxSub] );
+    return ( this->m_ptrObj->getSubCategory(idxSub) );
 }
 
 //========================================================================
