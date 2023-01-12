@@ -125,10 +125,10 @@ BookCategory::getCategoryFlags()
 //    サブ項目のインデックスの配列を取得する。
 //
 
-BookCategory::CategoryHandleArray^
+BookCategory::CategoryHandleArray ^
 BookCategory::getSubCategories()
 {
-    return ( this->m_subCategories );
+    return ( toManageFromVector(this->m_ptrObj->getSubCategories()) );
 }
 
 //========================================================================
