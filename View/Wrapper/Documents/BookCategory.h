@@ -272,9 +272,6 @@ private:
     /**   項目名の ID  (文字列テーブル内のインデックス) 。  **/
     StringIndex             m_categoryNameId;
 
-    /**   サブ項目のインデックス。  **/
-    CategoryHandleArray^    m_subCategories;
-
     /**   開始年月日 (残高の項目のみ) 。    **/
     int                     m_startDate;
 
