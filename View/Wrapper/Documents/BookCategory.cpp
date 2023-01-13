@@ -104,6 +104,17 @@ BookCategory::!BookCategory()
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    サブ項目以下を展開したり閉じたりする。
+//
+
+System::Boolean
+BookCategory::expandItem(
+        const  System::Boolean  blnExpanded)
+{
+    return ( false );
+}
+
 //========================================================================
 //
 //    Accessors.

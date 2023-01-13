@@ -171,6 +171,17 @@ public:
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   サブ項目以下を展開したり閉じたりする。
+    **
+    **  @param [in] blnExpanded   展開または折畳。
+    **  @return     直前の状態。
+    **/
+    System::Boolean
+    expandItem(
+            const  System::Boolean  blnExpanded);
 
 //========================================================================
 //
