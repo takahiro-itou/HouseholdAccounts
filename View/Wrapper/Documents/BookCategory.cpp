@@ -140,6 +140,16 @@ BookCategory::getSubCategories()
     return ( toManageFromVector(this->m_ptrObj->getSubCategories()) );
 }
 
+//----------------------------------------------------------------
+//    サブ項目が展開されているか調べる。
+//
+
+System::Boolean
+BookCategory::isExpanded()
+{
+    return ( false );
+}
+
 //========================================================================
 //
 //    Properties.
