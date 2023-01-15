@@ -219,7 +219,8 @@ BookCategory::setCategoryName(
 const   Boolean
 BookCategory::isExpanded()
 {
-    return ( Boolean::BOOL_FALSE );
+    const   CategoryFlags   cFlags  = this->m_categoryFlags;
+    return ( TO_STRICT_FROM_BOOL(cFlags & CategoryFlags::CFLAG_EXPANDED) );
 }
 
 //----------------------------------------------------------------
