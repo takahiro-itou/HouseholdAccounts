@@ -38,6 +38,27 @@ public  enum class  ErrCode
     INDEX_OUT_OF_RANGE  = WrapTargetErrCode::INDEX_OUT_OF_RANGE
 };
 
+//================================================================
+//
+//    ブール型。
+//
+
+typedef     HouseholdAccounts::Boolean          Boolean;
+
+inline  Boolean
+toNativeBoolean(
+        System::Boolean b)
+{
+    return ( static_cast<Boolean>(b) );
+}
+
+inline  System::Boolean
+fromNativeBoolean(
+        Boolean b)
+{
+    return ( TO_BOOL_FROM_STRICT(b) );
+}
+
 //----------------------------------------------------------------
 /**
 **
@@ -61,6 +82,11 @@ typedef     HouseholdAccounts::StringIndex      StringIndex;
 //========================================================================
 //
 //    配列型。
+//
+
+//========================================================================
+//
+//    コアライブラリ内のネイティブ型との相互変換。
 //
 
 }   //  End of namespace  Wrapper
