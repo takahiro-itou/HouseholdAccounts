@@ -109,7 +109,7 @@ BookCategory::!BookCategory()
 //
 
 System::Boolean
-BookCategory::expandItem(
+BookCategory::expandCategory(
         const  System::Boolean  blnExpanded)
 {
     return ( false );

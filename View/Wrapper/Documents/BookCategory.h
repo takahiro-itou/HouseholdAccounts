@@ -180,7 +180,7 @@ public:
     **  @return     直前の状態。
     **/
     System::Boolean
-    expandItem(
+    expandCategory(
             const  System::Boolean  blnExpanded);
 
 //========================================================================
