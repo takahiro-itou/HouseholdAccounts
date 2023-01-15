@@ -112,7 +112,9 @@ System::Boolean
 BookCategory::expandCategory(
         const  System::Boolean  blnExpanded)
 {
-    return ( this->m_ptrObj->expandCategory(blnExpanded) );
+    return ( this->m_ptrObj->expandCategory(
+                     static_cast<HouseholdAccounts::Boolean>(blnExpanded)
+             ));
 }
 
 //========================================================================
