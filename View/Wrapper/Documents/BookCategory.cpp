@@ -112,7 +112,7 @@ System::Boolean
 BookCategory::expandCategory(
         const  System::Boolean  blnExpanded)
 {
-    return ( false );
+    return ( this->m_ptrObj->expandCategory(blnExpanded) );
 }
 
 //========================================================================
