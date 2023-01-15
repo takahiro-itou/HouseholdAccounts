@@ -147,7 +147,7 @@ BookCategory::getSubCategories()
 System::Boolean
 BookCategory::isExpanded()
 {
-    return ( this->m_ptrObj->isExpanded() );
+    return ( TO_BOOL_FROM_STRICT(this->m_ptrObj->isExpanded()) );
 }
 
 //========================================================================
