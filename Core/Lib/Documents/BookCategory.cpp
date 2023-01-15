@@ -118,7 +118,7 @@ BookCategory::clearSubCategories()
 //
 
 const   Boolean
-BookCategory::expandItem(
+BookCategory::expandCategory(
         const  Boolean  flgExpand)
 {
     CategoryFlags   cFlags  = this->m_categoryFlags;

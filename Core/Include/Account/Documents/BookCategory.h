@@ -176,7 +176,7 @@ public:
     **  @return     直前の状態を返す。
     **/
     virtual  const  Boolean
-    expandItem(
+    expandCategory(
             const  Boolean  flgExpand);
 
     //----------------------------------------------------------------
