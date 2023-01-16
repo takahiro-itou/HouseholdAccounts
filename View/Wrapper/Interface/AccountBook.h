@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -23,12 +23,15 @@
 
 #pragma     once
 
+
 #include    "Account/Common/AccountsTypes.h"
 
 #include    "AnnualRecords.h"
 #include    "BookItem.h"
 #include    "Wrapper/Common/ManagedDate.h"
 #include    "Wrapper/Common/StringTable.h"
+#include    "Wrapper/Documents/CategoryManager.h"
+
 
 namespace  Wrapper  {
 
@@ -235,6 +238,8 @@ public:
     ParsedDate  utStartDate;
 
     BookItems   utBookItems;
+
+    Documents::CategoryManager ^    BookCategories;
 
     /**   一年分ずつバッファに記憶する。    **/
     int         nCurrentYear;
