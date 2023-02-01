@@ -45,7 +45,7 @@ namespace  Wrapper  {
 **    AccountBook  class.
 **/
 
-public value struct AccountBook
+public ref  class  AccountBook
 {
 //========================================================================
 //
