@@ -143,6 +143,7 @@ Private Sub mnuFileNew_Click(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 
     '家計簿オブジェクトを初期化する
+    mutBookView.utAccountBook = New Wrapper.AccountBook()
     If (CreateEmptyAccountBook(mutBookView.utAccountBook)) = False Then
         MessageBox.Show("空の家計簿データの作成に失敗しました。必要なファイルが見つかりません。")
         Exit Sub
