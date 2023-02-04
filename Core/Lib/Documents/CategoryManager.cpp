@@ -182,6 +182,19 @@ CategoryManager::insertNewCategory(
     return ( cateNew );
 }
 
+//----------------------------------------------------------------
+//    ルート項目データ用の領域を確保する。
+//
+
+const   CategoryHandle
+CategoryManager::reserveRootCategories(
+        const   CategoryHandle  numRoot)
+{
+    this->m_numUsedCategory = numRoot;
+    this->m_numRootCategory = numRoot;
+    return ( numRoot );
+}
+
 //========================================================================
 //
 //    Public Member Functions.
