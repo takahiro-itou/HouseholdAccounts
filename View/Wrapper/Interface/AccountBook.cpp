@@ -128,11 +128,15 @@ AccountBook::addDataToItemTotal(
 
     int itemHandle  = lngItemIndex;
     while ( itemHandle >= 0 ) {
+#if 0
         parentItem  = bi.utItemEntries[itemHandle].nParentHandle;
         const int flag = (bi.nFlags[itemHandle]);
+#endif
 
         const   HouseholdAccounts::Documents::BookCategory  &
             cbc = cm->getRawBookCategory(itemHandle);
+        parentItem  = cbc.getParentHandle();
+        const int  flag = static_cast<int>(cbc.getCategoryFlags());
 
         if ( flag & static_cast<int>(ItemFlag::ITEM_FLAG_NOCOUNT_PARENT) ) {
             blnAddToParent  = false;
