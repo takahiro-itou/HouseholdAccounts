@@ -245,6 +245,12 @@ AccountBook::insertNewItem(
     parent.nSubItems[parent.nSubItemCount] = iNewHandle;
     ++ parent.nSubItemCount;
 
+    this->BookCategories->insertNewCategory(
+            parentItemHandle, strName,
+            static_cast<Documents::CategoryFlags>(lngFlags),
+            startDate,
+            Common::DecimalCurrency(startBalance) );
+
     //  追加した新しい項目のハンドルを返す。    //
     return ( iNewHandle );
 }
