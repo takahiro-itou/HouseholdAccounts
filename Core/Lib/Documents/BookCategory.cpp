@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -55,6 +55,24 @@ BookCategory::BookCategory()
       m_subCategories(),
       m_startDate(0),
       m_startBalance()
+{
+}
+
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （コピーコンストラクタ）。
+//
+
+BookCategory::BookCategory(
+        const  BookCategory  &src)
+    : m_categoryFlags (src.m_categoryFlags),
+      m_parentHandle  (src.m_parentHandle),
+      m_categoryNameId(src.m_categoryNameId),
+      m_categoryName  (src.m_categoryName),
+      m_numSubCategory(src.m_numSubCategory),
+      m_subCategories (src.m_subCategories),
+      m_startDate     (src.m_startDate),
+      m_startBalance  (src.m_startBalance)
 {
 }
 
