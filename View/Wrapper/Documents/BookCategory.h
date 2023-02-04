@@ -134,6 +134,14 @@ public:
     BookCategory();
 
     //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （コンストラクタ）。
+    **
+    **/
+    BookCategory(
+            WrapTarget * wrapTarget);
+
+    //----------------------------------------------------------------
     /**   インスタンスを破棄する。
     **  （デストラクタ）。
     **
@@ -281,6 +289,8 @@ public:
 //    Member Variables.
 //
 private:
+
+    WrapTarget  *   m_ptrBuf;
 
     WrapTarget  *   m_ptrObj;
 

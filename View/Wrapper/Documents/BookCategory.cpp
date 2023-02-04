@@ -51,7 +51,20 @@ namespace  {
 //
 
 BookCategory::BookCategory()
-    : m_ptrObj(new WrapTarget())
+    : m_ptrBuf(new WrapTarget()),
+      m_ptrObj(m_ptrBuf)
+{
+}
+
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （コンストラクタ）。
+//
+
+BookCategory::BookCategory(
+        WrapTarget * wrapTarget)
+    : m_ptrBuf(nullptr),
+      m_ptrObj(wrapTarget)
 {
 }
 
@@ -75,7 +88,8 @@ BookCategory::~BookCategory()
 
 BookCategory::!BookCategory()
 {
-    delete  this->m_ptrObj;
+    delete  this->m_ptrBuf;
+    this->m_ptrBuf  = nullptr;
     this->m_ptrObj  = nullptr;
 }
 
