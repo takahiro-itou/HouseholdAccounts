@@ -149,6 +149,27 @@ CategoryManager::reserveRootCategories(
     return ( retVal );
 }
 
+//----------------------------------------------------------------
+//    ルート項目のデータを設定する。
+//
+
+CategoryHandle
+CategoryManager::setupRootCategory(
+        const  CategoryHandle   cateHandle,
+        System::String ^        cateName,
+        const  CategoryFlags    cateFlags,
+        const  DateSerial       startDate,
+        DecimalCurrency ^       startBalance)
+{
+    const   CategoryHandle  retVal  = this->m_ptrObj->setupRootCategory(
+                cateHandle,
+                marshal_as<std::string>(cateName),
+                static_cast<CoreCategoryFlags>(cateFlags),
+                startDate,
+                startBalance->toNativeInstance() );
+    return ( retVal );
+}
+
 //========================================================================
 //
 //    Accessors.

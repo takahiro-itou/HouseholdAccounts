@@ -159,6 +159,24 @@ public:
     reserveRootCategories(
             const   CategoryHandle  numRoot);
 
+    //----------------------------------------------------------------
+    /**   ルート項目のデータを設定する。
+    **
+    **  @param [in] cateHandle      項目のハンドル。
+    **  @param [in] cateName        項目名。
+    **  @param [in] cateFlags       項目フラグ。
+    **  @param [in] startDate       開始日。
+    **  @param [in] startBalance    開始時金額。
+    **  @return     設定した項目のハンドル。
+    **/
+    CategoryHandle
+    setupRootCategory(
+            const  CategoryHandle   cateHandle,
+            System::String ^        cateName,
+            const  CategoryFlags    cateFlags,
+            const  DateSerial       startDate,
+            DecimalCurrency ^       startBalance);
+
 //========================================================================
 //
 //    Accessors.
