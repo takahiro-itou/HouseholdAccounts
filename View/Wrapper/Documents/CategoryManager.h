@@ -60,6 +60,9 @@ private:
     typedef     HouseholdAccounts::Documents::CategoryManager
     WrapTarget;
 
+    typedef     HouseholdAccounts::Documents::BookCategory
+    CoreBookCategory;
+
     typedef     cli::array<BookCategory^, 1>    CategoryArray;
 
     typedef     Common::DecimalCurrency     DecimalCurrency;
