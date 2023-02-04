@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -140,6 +140,22 @@ CategoryManager::insertNewCategory(
 //
 //    Accessors.
 //
+
+//----------------------------------------------------------------
+//    項目データを取得する。
+//
+
+BookCategory^
+CategoryManager::getBookCategory(
+        const   CategoryHandle  hCate)
+{
+    typedef     HouseholdAccounts::Documents::BookCategory
+    CoreBookCategory;
+
+    CoreBookCategory  & cbc = this->m_ptrObj->getBookCategory(hCate);
+    BookCategory      ^ wbc = gcnew BookCategory(&cbc);
+    return ( wbc );
+}
 
 //========================================================================
 //
