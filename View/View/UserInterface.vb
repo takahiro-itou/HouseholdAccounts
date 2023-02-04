@@ -38,7 +38,7 @@ Dim flagInvalid As Boolean
     If (False) Then
         lngCount = 32
     Else
-        lngCount = utBook.utBookItems.getRegisteredItemCount()
+        lngCount = utBook.BookCategories.RegisteredCategoryCount()
     End If
 
     With utUI
@@ -489,9 +489,9 @@ Dim colorText As Color = Color.Black
 
     'データの個数をチェックする
     With utBook
-        With .utBookItems
-            lngItemCount = .getRegisteredItemCount()
-            lngRootItemCount = .getRootItemCount()
+        With .BookCategories
+            lngItemCount = .RegisteredCategoryCount
+            lngRootItemCount = .RootCategoryCount
         End With
     End With
 
