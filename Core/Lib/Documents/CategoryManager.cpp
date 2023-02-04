@@ -24,6 +24,8 @@
 
 #include    "Account/Documents/BookCategory.h"
 
+#include    <stdexcept>
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {
@@ -190,9 +192,38 @@ const   CategoryHandle
 CategoryManager::reserveRootCategories(
         const   CategoryHandle  numRoot)
 {
+    if ( this->m_cateBufferSize < numRoot ) {
+        allocCategoryBuffers(numRoot);
+    }
+
     this->m_numUsedCategory = numRoot;
     this->m_numRootCategory = numRoot;
+
     return ( numRoot );
+}
+
+//----------------------------------------------------------------
+//    ルート項目のデータを設定する。
+//
+
+const   CategoryHandle
+CategoryManager::setupRootCategory(
+        const  CategoryHandle   cateHandle,
+        const  std::string     &cateName,
+        const  CategoryFlags    cateFlags,
+        const  DateSerial       startDate,
+        const  DecimalCurrency &startBalance)
+{
+    if ( (cateHandle < 0) || (this->m_numRootCategory <= cateHandle) ) {
+        throw  std::out_of_range("root category handle is out of range.");
+    }
+
+    //  この項目に初期値を書き込む。            //
+    BookCategory   & entry  = this->m_bufCategory.at(cateHandle);
+    entry.setupCategory(
+            static_cast<CategoryHandle>(-1), cateName,
+            cateFlags, startDate, startBalance);
+    return ( cateHandle );
 }
 
 //========================================================================
