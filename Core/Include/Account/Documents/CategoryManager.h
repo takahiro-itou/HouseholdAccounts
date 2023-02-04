@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -160,6 +160,20 @@ public:
 //    Accessors.
 //
 public:
+
+    //----------------------------------------------------------------
+    /**   項目データを取得する。
+    **
+    **  @param [in] hCate   項目ハンドル。
+    **  @return     指定した項目。
+    **/
+    BookCategory  &
+    getBookCategory(
+            const   CategoryHandle  hCate);
+
+    const   BookCategory  &
+    getBookCategory(
+            const   CategoryHandle  hCate)  const;
 
     //----------------------------------------------------------------
     /**   項目用のバッファのサイズを得る。

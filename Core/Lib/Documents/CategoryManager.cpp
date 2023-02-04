@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -191,6 +191,24 @@ CategoryManager::insertNewCategory(
 //
 //    Accessors.
 //
+
+//----------------------------------------------------------------
+//    項目データを取得する。
+//
+
+BookCategory  &
+CategoryManager::getBookCategory(
+        const   CategoryHandle  hCate)
+{
+    return ( this->m_bufCategory.at(hCate) );
+}
+
+const   BookCategory  &
+CategoryManager::getBookCategory(
+        const   CategoryHandle  hCate)  const
+{
+    return ( this->m_bufCategory.at(hCate) );
+}
 
 //----------------------------------------------------------------
 //    項目用のバッファのサイズを得る。
