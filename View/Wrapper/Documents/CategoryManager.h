@@ -149,6 +149,16 @@ public:
             const  DateSerial       startDate,
             DecimalCurrency ^       startBalance);
 
+    //----------------------------------------------------------------
+    /**   ルート項目データ用の領域を確保する。
+    **
+    **  @param [in] numRoot   確保する項目数。
+    **  @return     最初の非ルート項目のインデックス。
+    **/
+    CategoryHandle
+    reserveRootCategories(
+            const   CategoryHandle  numRoot);
+
 //========================================================================
 //
 //    Accessors.

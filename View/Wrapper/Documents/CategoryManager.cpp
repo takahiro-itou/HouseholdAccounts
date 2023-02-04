@@ -136,6 +136,19 @@ CategoryManager::insertNewCategory(
     return ( retVal );
 }
 
+//----------------------------------------------------------------
+//    ルート項目データ用の領域を確保する。
+//
+
+CategoryHandle
+CategoryManager::reserveRootCategories(
+        const   CategoryHandle  numRoot)
+{
+    const   CategoryHandle  retVal
+        = this->m_ptrObj->reserveRootCategories(numRoot);
+    return ( retVal );
+}
+
 //========================================================================
 //
 //    Accessors.
