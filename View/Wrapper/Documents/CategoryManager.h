@@ -165,6 +165,16 @@ public:
     getBookCategory(
             const   CategoryHandle  hCate);
 
+    //----------------------------------------------------------------
+    /**   項目データを取得する。
+    **
+    **  @param [in] hCate   項目ハンドル。
+    **  @return     指定した項目。
+    **/
+    const   CoreBookCategory  &
+    getRawBookCategory(
+            const   CategoryHandle  hCate);
+
 //========================================================================
 //
 //    Properties.

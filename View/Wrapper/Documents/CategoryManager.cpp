@@ -149,12 +149,20 @@ BookCategory^
 CategoryManager::getBookCategory(
         const   CategoryHandle  hCate)
 {
-    typedef     HouseholdAccounts::Documents::BookCategory
-    CoreBookCategory;
-
     CoreBookCategory  & cbc = this->m_ptrObj->getBookCategory(hCate);
     BookCategory      ^ wbc = gcnew BookCategory(&cbc);
     return ( wbc );
+}
+
+//----------------------------------------------------------------
+//    項目データを取得する。
+//
+
+const   CategoryManager::CoreBookCategory  &
+CategoryManager::getRawBookCategory(
+        const   CategoryHandle  hCate)
+{
+    return ( this->m_ptrObj->getBookCategory(hCate) );
 }
 
 //========================================================================
