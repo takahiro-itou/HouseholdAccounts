@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -37,6 +37,38 @@ namespace  {
 //
 //    Constructor(s) and Destructor.
 //
+
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （デフォルトコンストラクタ）。
+//
+
+AccountBook::AccountBook()
+{
+    this->BookCategories    = gcnew Documents::CategoryManager ();
+}
+
+//----------------------------------------------------------------
+//    インスタンスを破棄する。
+//  （デストラクタ）。
+//
+
+AccountBook::~AccountBook()
+{
+    //  マネージドリソースを破棄する。              //
+
+    //  続いて、アンマネージドリソースも破棄する。  //
+    this->!AccountBook();
+}
+
+//----------------------------------------------------------------
+//    アンマネージドリソースを破棄する。
+//  （ファイナライザ）。
+//
+
+AccountBook::!AccountBook()
+{
+}
 
 //========================================================================
 //
