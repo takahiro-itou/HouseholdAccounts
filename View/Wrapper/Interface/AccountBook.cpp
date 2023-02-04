@@ -124,10 +124,16 @@ AccountBook::addDataToItemTotal(
     BookItems      % bi = this->utBookItems;
     AnnualRecords  % ar = this->utAnnualRecords;
 
+    Documents::CategoryManager ^ cm = this->BookCategories;
+
     int itemHandle  = lngItemIndex;
     while ( itemHandle >= 0 ) {
         parentItem  = bi.utItemEntries[itemHandle].nParentHandle;
         const int flag = (bi.nFlags[itemHandle]);
+
+        const   HouseholdAccounts::Documents::BookCategory  &
+            cbc = cm->getRawBookCategory(itemHandle);
+
         if ( flag & static_cast<int>(ItemFlag::ITEM_FLAG_NOCOUNT_PARENT) ) {
             blnAddToParent  = false;
             blnAddToRoot    = false;
