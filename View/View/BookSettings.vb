@@ -67,6 +67,7 @@ Dim strTempDir As String, strTempFileName As String
         lngRootItemCount = lngHeader(33)
 
         'バッファを確保する
+        utBook.BookCategories.reserveRootCategories(lngRootItemCount)
         utBook.allocItemBuffers(lngItemCount)
 
         With .utBookItems
