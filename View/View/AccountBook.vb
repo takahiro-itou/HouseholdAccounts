@@ -403,7 +403,7 @@ Dim strTempFileName As String
     With utBook
         'テンポラリファイルを開く
         strTempFileName = .sTempFileDir & "\." & Trim$(Str$(lngYear))
-        lngItemBufferSize = .utBookItems.getItemBufferSize()
+        lngItemBufferSize = .BookCategories.BufferCapacity()
         lngTempFileNumber = OpenTemporaryFile(strTempFileName, False)
 
         'データを読み込む
@@ -780,7 +780,7 @@ Dim strTempDir As String, strTempFileName As String
 
         'テンポラリファイルを開く
         strTempFileName = strTempDir & "\.common"
-        lngItemBufferSize = .utBookItems.getItemBufferSize()
+        lngItemBufferSize = .BookCategories.BufferCapacity()
         lngTempFileNumber = OpenTemporaryFile(strTempFileName, True)
 
         'データを書き込む
@@ -824,7 +824,7 @@ Dim blnResult As Boolean
 
         'テンポラリファイルを開く
         strTempFileName = strTempDir & "\." & Trim$(Str$(lngYear))
-        lngItemBufferSize = .utBookItems.getItemBufferSize()
+        lngItemBufferSize = .BookCategories.BufferCapacity()
         lngTempFileNumber = OpenTemporaryFile(strTempFileName, True)
 
         'データを書き込む
