@@ -205,6 +205,18 @@ CategoryManager::getRawBookCategory(
 //
 
 //----------------------------------------------------------------
+//    項目データを取得する
+//  （デフォルトプロパティ）。
+//
+
+BookCategory ^
+CategoryManager::default::get(CategoryHandle hCate)
+{
+    BookCategory ^  bc  = gcnew BookCategory();
+    return ( bc );
+}
+
+//----------------------------------------------------------------
 //    項目用のバッファのサイズを得る。
 //
 
