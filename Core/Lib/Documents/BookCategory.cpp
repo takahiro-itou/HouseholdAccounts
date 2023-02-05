@@ -22,6 +22,8 @@
 
 #include    "Account/Documents/BookCategory.h"
 
+#include    "Account/Documents/CategoryManager.h"
+
 #include    "Account/Common/EnumBitFlag.h"
 
 
@@ -246,7 +248,11 @@ BookCategory::setCategoryName(
 const   CategoryFlags
 BookCategory::getCategoryType()  const
 {
-    return ( this->m_categoryFlags & CategoryFlags::CTYPE_MASK );
+    if ( (this->m_ptrManager == nullptr) || (this->m_selfCateHandle == -1) )
+    {
+        return ( this->m_categoryFlags & CategoryFlags::CTYPE_MASK );
+    }
+    return ( this->m_ptrManager->getCategoryType(this->m_selfCateHandle) );
 }
 
 //----------------------------------------------------------------
