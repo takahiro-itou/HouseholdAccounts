@@ -244,6 +244,17 @@ public:
     }
 
     //----------------------------------------------------------------
+    /**   内税項目のハンドル。
+    **
+    **/
+    property    CategoryHandle
+    InnerTaxHandle
+    {
+        CategoryHandle  get();
+        void set(CategoryHandle hCate);
+    }
+
+    //----------------------------------------------------------------
     /**   項目データを取得する。
     **
     **  @param [in] hCate   項目ハンドル。
@@ -253,6 +264,17 @@ public:
     Items [CategoryHandle]
     {
         BookCategory^   get(CategoryHandle hCate);
+    }
+
+    //----------------------------------------------------------------
+    /**   外税項目のハンドル。
+    **
+    **/
+    property    CategoryHandle
+    OuterTaxHandle
+    {
+        CategoryHandle  get();
+        void set(CategoryHandle hCate);
     }
 
     //----------------------------------------------------------------

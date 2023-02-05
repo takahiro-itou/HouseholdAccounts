@@ -239,6 +239,22 @@ CategoryManager::BufferCapacity::get()
 }
 
 //----------------------------------------------------------------
+//    内税項目のハンドル。
+//
+
+CategoryHandle
+CategoryManager::InnerTaxHandle::get()
+{
+    return ( this->m_ptrObj->getInnerTaxCategoryHandle() );
+}
+
+void
+CategoryManager::InnerTaxHandle::set(CategoryHandle hCate)
+{
+    this->m_ptrObj->setInnerTaxCategoryHandle(hCate);
+}
+
+//----------------------------------------------------------------
 //    項目データを取得する。
 //
 
@@ -246,6 +262,22 @@ BookCategory ^
 CategoryManager::Items::get(CategoryHandle hCate)
 {
     return ( getBookCategory(hCate) );
+}
+
+//----------------------------------------------------------------
+//    外税項目のハンドル。
+//
+
+CategoryHandle
+CategoryManager::OuterTaxHandle::get()
+{
+    return ( this->m_ptrObj->getOuterTaxCategoryHandle() );
+}
+
+void
+CategoryManager::OuterTaxHandle::set(CategoryHandle hCate)
+{
+    this->m_ptrObj->setOuterTaxCategoryHandle(hCate);
 }
 
 //----------------------------------------------------------------
