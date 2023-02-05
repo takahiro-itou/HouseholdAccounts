@@ -212,8 +212,7 @@ CategoryManager::getRawBookCategory(
 BookCategory ^
 CategoryManager::default::get(CategoryHandle hCate)
 {
-    BookCategory ^  bc  = gcnew BookCategory();
-    return ( bc );
+    return ( getBookCategory(hCate) );
 }
 
 //----------------------------------------------------------------
@@ -233,8 +232,7 @@ CategoryManager::BufferCapacity::get()
 BookCategory ^
 CategoryManager::Items::get(CategoryHandle hCate)
 {
-    BookCategory ^  bc  = gcnew BookCategory();
-    return ( bc );
+    return ( getBookCategory(hCate) );
 }
 
 //----------------------------------------------------------------
