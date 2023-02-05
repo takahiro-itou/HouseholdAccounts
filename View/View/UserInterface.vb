@@ -832,7 +832,7 @@ Dim utDate As Wrapper.ParsedDate
                     1, 1)
         Next X
 
-        lngType = .utBookItems.getItemType(lngRootItem)
+        lngType = .BookCategories.getCategoryType(lngRootItem)
         With .utAnnualRecords
             lngWeekTotal = .getItemWeekTotal(lngRootItem, lngWeek)
             lngMonthTotal = .getItemMonthTotal(lngRootItem, lngMonth)
@@ -992,7 +992,7 @@ Dim rootCategory As Wrapper.Documents.BookCategory
         'この項目を展開し、サブアイテムも表示する
         lngTop = lngTop + 1
         For i = 0 To lngCount - 1
-            lngSubItem = utBook.utBookItems.getSubItemHandle(lngRootItem, i)
+            lngSubItem = rootCategory.SubCategory(i)
             lngInc = UserInterfaceShowItem(utUI, utBook,
                lngDepth + 1, lngTop, lngSubItem, lngYear, lngMonth, lngWeek)
             lngTop = lngTop + lngInc
