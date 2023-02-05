@@ -263,7 +263,7 @@ const   Boolean
 BookCategory::isExpanded()
 {
     const   CategoryFlags   cFlags  = this->m_categoryFlags;
-    return ( TO_STRICT_FROM_BOOL(cFlags & CategoryFlags::CFLAG_EXPANDED) );
+    return ( TO_SBOOLEAN_FROM_INT(cFlags & CategoryFlags::CFLAG_EXPANDED) );
 }
 
 //----------------------------------------------------------------

@@ -78,25 +78,29 @@ enum class  ErrCode
 
 #if defined( _DEBUG ) && !defined( HACORE_DISABLE_STRICT_TYPES )
 
-enum  class Boolean : char
+enum  class Boolean : int
 {
     BOOL_FALSE  =  0,       /**<  偽。  **/
     BOOL_TRUE   =  1        /**<  真。  **/
 };
 
-#define     TO_BOOL_FROM_STRICT(sb)     ((sb) != Boolean::BOOL_FALSE)
 #define     TO_STRICT_FROM_BOOL(b)      static_cast<Boolean>(b)
+#define     TO_SBOOLEAN_FROM_INT(b)     \
+    static_cast<Boolean>(static_cast<int>(b) != 0)
+#define     TO_BOOL_FROM_STRICT(sb)     ((sb) != Boolean::BOOL_FALSE)
 
 #else
 
-enum  Boolean : char
+enum  Boolean : int
 {
     BOOL_FALSE  = 0,
     BOOL_TRUE   = 1,
 };
 
-#define     TO_BOOL_FROM_STRICT(sb)     (sb)
 #define     TO_STRICT_FROM_BOOL(b)      static_cast<Boolean>(b)
+#define     TO_SBOOLEAN_FROM_INT(b)     \
+    static_cast<Boolean>(static_cast<int>(b) != 0)
+#define     TO_BOOL_FROM_STRICT(sb)     (sb)
 
 #endif
 
