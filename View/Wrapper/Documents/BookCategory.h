@@ -143,7 +143,8 @@ public:
     **
     **/
     BookCategory(
-            WrapTarget * wrapTarget);
+            WrapTarget *            wrapTarget,
+            CoreCategoryManager *   catMan);
 
     //----------------------------------------------------------------
     /**   インスタンスを破棄する。
@@ -301,9 +302,11 @@ public:
 //
 private:
 
-    WrapTarget  *   m_ptrBuf;
+    WrapTarget  *           m_ptrBuf;
 
-    WrapTarget  *   m_ptrObj;
+    CoreCategoryManager *   m_ptrMan;
+
+    WrapTarget  *           m_ptrObj;
 
 //========================================================================
 //

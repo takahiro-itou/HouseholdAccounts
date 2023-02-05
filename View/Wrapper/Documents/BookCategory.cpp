@@ -52,6 +52,7 @@ namespace  {
 
 BookCategory::BookCategory()
     : m_ptrBuf(new WrapTarget()),
+      m_ptrMan(nullptr),
       m_ptrObj(m_ptrBuf)
 {
 }
@@ -62,8 +63,10 @@ BookCategory::BookCategory()
 //
 
 BookCategory::BookCategory(
-        WrapTarget * wrapTarget)
+        WrapTarget *            wrapTarget,
+        CoreCategoryManager *   catMan)
     : m_ptrBuf(nullptr),
+      m_ptrMan(catMan),
       m_ptrObj(wrapTarget)
 {
 }

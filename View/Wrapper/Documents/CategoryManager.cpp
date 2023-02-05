@@ -197,7 +197,7 @@ CategoryManager::getBookCategory(
         const   CategoryHandle  hCate)
 {
     CoreBookCategory  & cbc = this->m_ptrObj->getBookCategory(hCate);
-    BookCategory      ^ wbc = gcnew BookCategory(&cbc);
+    BookCategory      ^ wbc = gcnew BookCategory(&cbc, this->m_ptrObj);
     return ( wbc );
 }
 
