@@ -159,7 +159,7 @@ BookCategory::getCategoryFlags()
 CategoryFlags
 BookCategory::getCategoryType()
 {
-    return ( getCategoryFlags() & CategoryFlags::CTYPE_MASK );
+    return ( static_cast<CategoryFlags>(this->m_ptrObj->getCategoryType()) );
 }
 
 //----------------------------------------------------------------
