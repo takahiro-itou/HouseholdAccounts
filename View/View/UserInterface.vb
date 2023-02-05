@@ -144,8 +144,10 @@ Dim blnResult As Boolean
         '選択した項目を閉じたり、開いたりする
         With utBook
             lngIndex = utUI.nNowShowingItems(lngY - BOOKFIXEDROWS)
-            blnExpand = .utBookItems.isItemExpanded(lngIndex)
-            .utBookItems.expandItem(lngIndex, Not (blnExpand))
+            With .BookCategories(lngIndex)
+                blnExpand = .isExpanded()
+                .expandCategory(Not (blnExpand))
+            End With
             blnResult = True
         End With
     End If
@@ -357,7 +359,7 @@ Dim utDayInfo As Wrapper.ParsedDate
             strItemName = ""
         Else
             lngItemIndex = .nNowShowingItems(lngY - BOOKFIXEDROWS)
-            strItemName = utBook.utBookItems.getItemName(lngItemIndex)
+            strItemName = utBook.BookCategories(lngItemIndex).CategoryName
         End If
 
         If (lngX < BOOKFIXEDCOLS) Then
