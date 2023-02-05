@@ -48,6 +48,7 @@ namespace  {
 
 BookCategory::BookCategory()
     : m_categoryFlags(CategoryFlags::CTYPE_NOTUSED),
+      m_selfCateHandle(-1),
       m_parentHandle  (-1),
       m_categoryNameId(-1),
       m_categoryName(),
@@ -66,6 +67,7 @@ BookCategory::BookCategory()
 BookCategory::BookCategory(
         const  BookCategory  &src)
     : m_categoryFlags (src.m_categoryFlags),
+      m_selfCateHandle(src.m_selfCateHandle),
       m_parentHandle  (src.m_parentHandle),
       m_categoryNameId(src.m_categoryNameId),
       m_categoryName  (src.m_categoryName),
@@ -158,6 +160,7 @@ BookCategory::expandCategory(
 
 void
 BookCategory::setupCategory(
+        const  CategoryHandle   cateSelf,
         const  CategoryHandle   cateParent,
         const  std::string     &cateName,
         const  CategoryFlags    cateFlags,
@@ -165,6 +168,7 @@ BookCategory::setupCategory(
         const  DecimalCurrency &startBalance)
 {
     this->m_categoryFlags   = cateFlags;
+    this->m_selfCateHandle  = cateSelf;
     this->m_parentHandle    = cateParent;
     this->m_categoryName    = cateName;
     this->m_startDate       = startDate;

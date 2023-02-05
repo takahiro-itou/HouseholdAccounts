@@ -191,6 +191,7 @@ public:
     //----------------------------------------------------------------
     /**   項目のデータを設定する。
     **
+    **  @param [in] cateSelf        自身のハンドル。
     **  @param [in] cateParent      親項目のハンドル。
     **  @param [in] cateName        項目名。
     **  @param [in] cateFlags       項目フラグ。
@@ -199,6 +200,7 @@ public:
     **/
     virtual  void
     setupCategory(
+            const  CategoryHandle   cateSelf,
             const  CategoryHandle   cateParent,
             const  std::string     &cateName,
             const  CategoryFlags    cateFlags,
@@ -356,6 +358,9 @@ private:
 
     /**   項目フラグ。              **/
     CategoryFlags           m_categoryFlags;
+
+    /**  自身の項目インデックス。   **/
+    CategoryHandle          m_selfCateHandle;
 
     /**  親項目のインデックス。     **/
     CategoryHandle          m_parentHandle;
