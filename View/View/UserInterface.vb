@@ -934,11 +934,11 @@ Dim strName As String
 Dim blnExpand As Boolean
 
     With utBook
-        With .utBookItems
-            strName = .getItemName(lngRootItem)
-            lngType = .getItemType(lngRootItem)
-            blnExpand = .isItemExpanded(lngRootItem)
-            lngCount = .getSubItemCount(lngRootItem)
+        With .BookCategories(lngRootItem)
+            strName = .CategoryName
+            lngType = .getCategoryType()
+            blnExpand = .isExpanded()
+            lngCount = .NumSubCategories
         End With
     End With
 
@@ -964,7 +964,7 @@ Dim blnExpand As Boolean
 
     'この項目を表示する
     lngResult = 1
-    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
+    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Then
         '残高
         UserInterfaceShowData(utUI, utBook,
             lngDepth, lngIcon, ACRIGHT,
