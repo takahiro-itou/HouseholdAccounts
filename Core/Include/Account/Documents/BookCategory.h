@@ -44,6 +44,8 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Documents  {
 
 //  クラスの前方宣言。  //
+class   CategoryManager;
+
 
 //========================================================================
 //
@@ -356,25 +358,28 @@ public:
 //
 private:
 
-    /**   項目フラグ。              **/
-    CategoryFlags           m_categoryFlags;
+    /**   項目を管理するインスタンス。  **/
+    CategoryManager *       m_ptrManager;
 
-    /**  自身の項目インデックス。   **/
+    /**  自身の項目インデックス。       **/
     CategoryHandle          m_selfCateHandle;
 
-    /**  親項目のインデックス。     **/
+    /**   項目フラグ。                  **/
+    CategoryFlags           m_categoryFlags;
+
+    /**  親項目のインデックス。         **/
     CategoryHandle          m_parentHandle;
 
     /**   項目名の ID  (文字列テーブル内のインデックス) 。  **/
     StringIndex             m_categoryNameId;
 
-    /**   項目名。                  **/
+    /**   項目名。                      **/
     std::string             m_categoryName;
 
-    /**   サブ項目数。              **/
+    /**   サブ項目数。                  **/
     SubCategoryIdx          m_numSubCategory;
 
-    /**   サブ項目のインデックス。  **/
+    /**   サブ項目のインデックス。      **/
     CategoryHandleArray     m_subCategories;
 
     /**   開始年月日 (残高の項目のみ) 。    **/
