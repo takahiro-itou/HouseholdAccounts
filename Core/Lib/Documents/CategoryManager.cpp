@@ -24,6 +24,8 @@
 
 #include    "Account/Documents/BookCategory.h"
 
+#include    "Account/Common/EnumBitFlag.h"
+
 #include    <stdexcept>
 
 
@@ -144,6 +146,23 @@ const   CategoryFlags
 CategoryManager::getCategoryType(
         const   CategoryHandle  hCate)  const
 {
+    CategoryHandle  catePar;
+    CategoryFlags   cfType;
+    CategoryHandle  cateCur = hCate;
+
+    while ( cateCur >= 0 ) {
+        const   BookCategory  & bc  = this->m_bufCategory.at(cateCur);
+        cfType  = bc.getCategoryFlags() & CategoryFlags::CTYPE_MASK;
+        catePar = bc.getParentHandle();
+
+        if ( cfType == CategoryFlags::CTYPE_INHERIT ) {
+            cateCur = catePar;
+        } else {
+            break;
+        }
+    }
+
+    return ( cfType );
 }
 
 //----------------------------------------------------------------
