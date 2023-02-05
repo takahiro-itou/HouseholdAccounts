@@ -934,9 +934,11 @@ Dim lngIcon As Integer
 Dim lngColor As Color
 Dim strName As String
 Dim blnExpand As Boolean
+Dim rootCategory As Wrapper.Documents.BookCategory
 
     With utBook
-        With .BookCategories(lngRootItem)
+        rootCategory = .BookCategories(lngRootItem)
+        With rootCategory
             strName = .CategoryName
             lngType = .getCategoryType()
             blnExpand = .isExpanded()
