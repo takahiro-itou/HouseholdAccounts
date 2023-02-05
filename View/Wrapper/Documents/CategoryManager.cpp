@@ -215,6 +215,17 @@ CategoryManager::BufferCapacity::get()
 }
 
 //----------------------------------------------------------------
+//    項目データを取得する。
+//
+
+BookCategory ^
+CategoryManager::Items::get(CategoryHandle hCate)
+{
+    BookCategory ^  bc  = gcnew BookCategory();
+    return ( bc );
+}
+
+//----------------------------------------------------------------
 //    登録済みの項目数を取得する。
 //
 
