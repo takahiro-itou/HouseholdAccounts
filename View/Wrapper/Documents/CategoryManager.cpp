@@ -105,6 +105,19 @@ CategoryManager::!CategoryManager()
 //
 
 //----------------------------------------------------------------
+//    項目の種類を取得する。
+//
+
+CategoryFlags
+CategoryManager::getCategoryType(
+        const   CategoryHandle  hCate)
+{
+    return ( static_cast<CategoryFlags>(
+                     this->m_ptrObj->getCategoryType(hCate)
+    ) );
+}
+
+//----------------------------------------------------------------
 //    項目のルート項目のハンドルを取得する。
 //
 
