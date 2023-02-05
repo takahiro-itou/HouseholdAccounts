@@ -162,6 +162,7 @@ BookCategory::expandCategory(
 
 void
 BookCategory::setupCategory(
+        const  CategoryManager &cateManager,
         const  CategoryHandle   cateSelf,
         const  CategoryHandle   cateParent,
         const  std::string     &cateName,
@@ -169,8 +170,10 @@ BookCategory::setupCategory(
         const  DateSerial       startDate,
         const  DecimalCurrency &startBalance)
 {
-    this->m_categoryFlags   = cateFlags;
+    this->m_ptrManager      = &cateManager;
     this->m_selfCateHandle  = cateSelf;
+
+    this->m_categoryFlags   = cateFlags;
     this->m_parentHandle    = cateParent;
     this->m_categoryName    = cateName;
     this->m_startDate       = startDate;

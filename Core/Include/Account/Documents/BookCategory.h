@@ -202,6 +202,7 @@ public:
     **/
     virtual  void
     setupCategory(
+            const  CategoryManager &cateManager,
             const  CategoryHandle   cateSelf,
             const  CategoryHandle   cateParent,
             const  std::string     &cateName,
@@ -359,7 +360,7 @@ public:
 private:
 
     /**   項目を管理するインスタンス。  **/
-    CategoryManager *       m_ptrManager;
+    const   CategoryManager *   m_ptrManager;
 
     /**  自身の項目インデックス。       **/
     CategoryHandle          m_selfCateHandle;

@@ -202,7 +202,7 @@ CategoryManager::insertNewCategory(
     //  この項目に初期値を書き込む。            //
     BookCategory   & entry  = this->m_bufCategory.at(cateNew);
     entry.setupCategory(
-            cateNew, cateParent, cateName,
+            *this, cateNew, cateParent, cateName,
             cateFlags, startDate, startBalance);
     ++ this->m_numUsedCategory;
 
@@ -251,8 +251,8 @@ CategoryManager::setupRootCategory(
     //  この項目に初期値を書き込む。            //
     BookCategory   & entry  = this->m_bufCategory.at(cateHandle);
     entry.setupCategory(
-            cateHandle, static_cast<CategoryHandle>(-1), cateName,
-            cateFlags, startDate, startBalance);
+            *this, cateHandle, static_cast<CategoryHandle>(-1),
+            cateName, cateFlags, startDate, startBalance);
     return ( cateHandle );
 }
 
