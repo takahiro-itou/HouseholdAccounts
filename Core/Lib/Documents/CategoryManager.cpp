@@ -295,6 +295,48 @@ CategoryManager::getBufferCapacity()  const
 }
 
 //----------------------------------------------------------------
+//    内税項目のハンドルを取得する。
+//
+
+const   CategoryHandle
+CategoryManager::getInnerTaxCategoryHandle()  const
+{
+    return ( this->m_chInnerTax );
+}
+
+//----------------------------------------------------------------
+//    内税項目のハンドルを設定する。
+//
+
+void
+CategoryManager::setInnerTaxCategoryHandle(
+        const   CategoryHandle  hCate)
+{
+    this->m_chInnerTax  = hCate;
+}
+
+//----------------------------------------------------------------
+//    外税項目のハンドルを取得する。
+//
+
+const   CategoryHandle
+CategoryManager::getOuterTaxCategoryHandle()  const
+{
+    return ( this->m_chOuterTax );
+}
+
+//----------------------------------------------------------------
+//    外税項目のハンドルを設定する。
+//
+
+void
+CategoryManager::setOuterTaxCategoryHandle(
+        const   CategoryHandle  hCate)
+{
+    this->m_chOuterTax  = hCate;
+}
+
+//----------------------------------------------------------------
 //    登録済みの項目数を取得する。
 //
 

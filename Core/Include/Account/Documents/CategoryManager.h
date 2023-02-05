@@ -222,6 +222,40 @@ public:
     getBufferCapacity()  const;
 
     //----------------------------------------------------------------
+    /**   内税項目のハンドルを取得する。
+    **
+    **  @return     項目のハンドル。
+    **/
+    const   CategoryHandle
+    getInnerTaxCategoryHandle()  const;
+
+    //----------------------------------------------------------------
+    /**   内税項目のハンドルを設定する。
+    **
+    **  @param [in] hCate   項目ハンドル。
+    **/
+    void
+    setInnerTaxCategoryHandle(
+            const   CategoryHandle  hCate);
+
+    //----------------------------------------------------------------
+    /**   外税項目のハンドルを取得する。
+    **
+    **  @return     項目のハンドル。
+    **/
+    const   CategoryHandle
+    getOuterTaxCategoryHandle()  const;
+
+    //----------------------------------------------------------------
+    /**   外税項目のハンドルを設定する。
+    **
+    **  @param [in] hCate   項目ハンドル。
+    **/
+    void
+    setOuterTaxCategoryHandle(
+            const   CategoryHandle  hCate);
+
+    //----------------------------------------------------------------
     /**   登録済みの項目数を取得する。
     **
     **  @return     登録済みの項目数を返す。
