@@ -38,6 +38,7 @@ Dim lngTablePos As Integer, lngTableSize As Integer
 Dim lngDataPos As Integer, lngDataSize As Integer
 Dim lngTempFileNumber As Integer
 Dim strTempDir As String, strTempFileName As String
+Dim startBalance As Wrapper.Common.DecimalCurrency
 
     With utBook
         'テンポラリファイルを開く
@@ -95,6 +96,9 @@ Dim strTempDir As String, strTempFileName As String
             strTemp = .utSettingsStringTable.sTableEntries(lngNameID)
 
             If (i < lngRootItemCount) Then
+                startBalance = New Wrapper.Common.DecimalCurrency(lngStartBalance)
+                .BookCategories.setupRootCategory(
+                        i, strTemp, lngFlags, lngStartDate, startBalance)
                 With .utBookItems
                     .nFlags(i) = lngFlags
                     With .utItemEntries(i)
