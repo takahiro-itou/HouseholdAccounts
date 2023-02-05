@@ -428,16 +428,18 @@ Dim lngValue As Integer
 Dim lngStartDayIndex As Integer, lngEndDayIndex As Integer
 Dim lngItemFlags() As Integer
 Dim blnResult As Boolean
+Dim bookCates As Wrapper.Documents.CategoryManager
 
     With utBook
         .nCurrentYear = lngYear
         lngYearIndex = lngYear - .nStartYear
+        lngItemBufferSize = .BookCategories.BufferCapacity
 
         'すべての項目のフラグを取り出す
         With .utBookItems
-            lngItemBufferSize = .nItemBufferSize
             lngItemFlags = .nFlags
         End With
+        bookCates = .BookCategories
     End With
 
     '初期値を書き込む
@@ -468,9 +470,9 @@ Dim blnResult As Boolean
             Else
                 'データを書き込む
                 For i = 0 To lngItemBufferSize - 1
-                    lngSubCount = utBook.utBookItems.utItemEntries(i).nSubItemCount
-                    If ((lngItemFlags(i) <> Wrapper.ItemFlag.ITEM_FLAG_NOTUSED) And (lngSubCount = 0)) Then
-                        lngType = utBook.utBookItems.getItemType(i)
+                    lngSubCount = bookCates(i).NumSubCategories
+                    If ((bookCates(i).getCategoryFlags() <> Wrapper.ItemFlag.ITEM_FLAG_NOTUSED) And (lngSubCount = 0)) Then
+                        lngType = bookCates.getCategoryType(i)
 
                         If (lngType = Wrapper.ItemFlag.ITEM_FLAG_INCOME) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_WITHDRAW) Then
                             If (Int(Rnd * 100) < 0) Then
