@@ -122,6 +122,16 @@ public:
     allocNewCategory();
 
     //----------------------------------------------------------------
+    /**   項目の種類を取得する。
+    **
+    **  @param [in] hCate   項目のハンドル。
+    **  @return     項目フラグの内タイプの値を返す。
+    **/
+    virtual  const  CategoryFlags
+    getCategoryType(
+            const   CategoryHandle  hCate)  const;
+
+    //----------------------------------------------------------------
     /**   項目のルート項目のハンドルを取得する。
     **
     **  @param [in] idxCate   項目番号。

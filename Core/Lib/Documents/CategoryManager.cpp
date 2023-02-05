@@ -137,6 +137,16 @@ CategoryManager::allocNewCategory()
 }
 
 //----------------------------------------------------------------
+//    項目の種類を取得する。
+//
+
+const   CategoryFlags
+CategoryManager::getCategoryType(
+        const   CategoryHandle  hCate)  const
+{
+}
+
+//----------------------------------------------------------------
 //    項目のルート項目のハンドルを取得する。
 //
 
