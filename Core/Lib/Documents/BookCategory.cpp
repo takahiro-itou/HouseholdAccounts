@@ -237,6 +237,7 @@ BookCategory::setCategoryName(
 const   CategoryFlags
 BookCategory::getCategoryType()  const
 {
+    return ( this->m_categoryFlags & CategoryFlags::CTYPE_MASK );
 }
 
 //----------------------------------------------------------------
