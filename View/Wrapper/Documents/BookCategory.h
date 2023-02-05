@@ -42,6 +42,7 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 //  クラスの前方宣言。  //
 namespace  Documents  {
 class   BookCategory;
+class   CategoryManager;
 }   //  End of namespace  Documents
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
@@ -114,6 +115,9 @@ private:
 
     typedef     HouseholdAccounts::Documents::BookCategory
     WrapTarget;
+
+    typedef     HouseholdAccounts::Documents::CategoryManager
+    CoreCategoryManager;
 
     typedef     cli::array<CategoryHandle, 1>
     CategoryHandleArray;
