@@ -47,8 +47,9 @@ namespace  {
 //
 
 BookCategory::BookCategory()
-    : m_categoryFlags(CategoryFlags::CTYPE_NOTUSED),
+    : m_ptrManager(nullptr),
       m_selfCateHandle(-1),
+      m_categoryFlags(CategoryFlags::CTYPE_NOTUSED),
       m_parentHandle  (-1),
       m_categoryNameId(-1),
       m_categoryName(),
@@ -66,8 +67,9 @@ BookCategory::BookCategory()
 
 BookCategory::BookCategory(
         const  BookCategory  &src)
-    : m_categoryFlags (src.m_categoryFlags),
+    : m_ptrManager    (src.m_ptrManager),
       m_selfCateHandle(src.m_selfCateHandle),
+      m_categoryFlags (src.m_categoryFlags),
       m_parentHandle  (src.m_parentHandle),
       m_categoryNameId(src.m_categoryNameId),
       m_categoryName  (src.m_categoryName),
