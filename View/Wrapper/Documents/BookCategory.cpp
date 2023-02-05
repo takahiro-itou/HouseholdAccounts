@@ -24,6 +24,8 @@
 
 #include    "Wrapper/Common/ArrayUtils.h"
 
+#include    "Account/Documents/CategoryManager.h"
+
 #include    <msclr/marshal_cppstd.h>
 using       namespace   msclr::interop;
 
@@ -157,7 +159,7 @@ BookCategory::getCategoryFlags()
 CategoryFlags
 BookCategory::getCategoryType()
 {
-    return ( getCategoryFlags() );
+    return ( getCategoryFlags() & CategoryFlags::CTYPE_MASK );
 }
 
 //----------------------------------------------------------------
