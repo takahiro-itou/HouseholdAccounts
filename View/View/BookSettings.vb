@@ -70,6 +70,8 @@ Dim startBalance As Wrapper.Common.DecimalCurrency
         'バッファを確保する
         With utBook.BookCategories
             .reserveRootCategories(lngRootItemCount)
+            .InnerTaxHandle = lngHeader(36)
+            .OuterTaxHandle = lngHeader(37)
         End With
         utBook.allocItemBuffers(lngItemCount)
 
