@@ -68,7 +68,9 @@ Dim startBalance As Wrapper.Common.DecimalCurrency
         lngRootItemCount = lngHeader(33)
 
         'バッファを確保する
-        utBook.BookCategories.reserveRootCategories(lngRootItemCount)
+        With utBook.BookCategories
+            .reserveRootCategories(lngRootItemCount)
+        End With
         utBook.allocItemBuffers(lngItemCount)
 
         With .utBookItems
