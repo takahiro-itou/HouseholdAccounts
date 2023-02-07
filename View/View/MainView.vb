@@ -170,6 +170,17 @@ Private Sub mnuFileSave_Click(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    メニュー「ファイル」－「上書き保存」
 ''--------------------------------------------------------------------
+Dim curFileName As String
+
+    curFileName = mutBookView.sCurrentBookFile
+    If (curFileName = "")  Then
+        ' 名前を付けて保存する
+        mnuFileSaveAs_Click(sender, e)
+        Exit Sub
+    End If
+
+    ' 現在の名前で保存する
+    SaveToFile(mutBookView, curFileName)
 
 End Sub
 
@@ -179,6 +190,12 @@ Private Sub mnuFileSaveAs_Click(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    メニュー「ファイル」－「名前を付けて保存」
 ''--------------------------------------------------------------------
+Dim strFileName As String
+
+    ' 暫定処理
+    strFileName = g_appRootDir & "Test.abd"
+
+    SaveToFile(mutBookView, strFileName)
 
 End Sub
 
