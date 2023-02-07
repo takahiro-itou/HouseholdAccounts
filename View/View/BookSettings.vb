@@ -183,6 +183,15 @@ Dim blnResult As Boolean
             lngHeader(37) = .nOuterTaxItemHandle
         End With
 
+        With .BookCategories
+            lngItemCount = .RegisteredCategoryCount
+            lngHeader(32) = lngItemCount
+            lngHeader(33) = .RootCategoryCount
+
+            lngHeader(36) = .InnerTaxHandle
+            lngHeader(37) = .OuterTaxHandle
+        End With
+
         'テンポラリファイルのディレクトリを取得する
         strTempDir = .sTempFileDir
 
