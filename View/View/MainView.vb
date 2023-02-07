@@ -193,7 +193,7 @@ Private Sub mnuFileSaveAs_Click(sender As Object, e As EventArgs) _
 Dim strFileName As String
 
     ' 暫定処理
-    strFileName = g_appRootDir & "Test.abd"
+    strFileName = g_appRootDir & "\Test.abd"
 
     SaveToFile(mutBookView, strFileName)
 
