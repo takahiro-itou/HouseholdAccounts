@@ -161,6 +161,28 @@ Private Sub mnuFileOpen_Click(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    メニュー「ファイル」－「開く」
 ''--------------------------------------------------------------------
+Dim selFileName As String
+
+    With dlgOpen
+        .DefaultExt = ".abd"
+        .Filter = "Account Book Data (*.abd)|*.abd|All Files (*.*)|*.*"
+        .FilterIndex = 1
+        .InitialDirectory = g_appRootDir
+
+        If .ShowDialog() = DialogResult.OK Then
+            selFileName = .FileName
+        Else
+            Exit Sub
+        End If
+    End With
+
+    With mutBookView
+        If (.utAccountBook IsNot Nothing) Then
+            .utAccountBook = Nothing
+        End If
+        .utAccountBook = New Wrapper.AccountBook()
+    End With
+    LoadFromFile(mutBookView, selFileName)
 
 End Sub
 
