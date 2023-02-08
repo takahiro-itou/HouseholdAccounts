@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -237,7 +237,7 @@ StringTable::searchEntry(
         }
 
         //  検索範囲を絞る  //
-        if ( System::String::Compare(trgText, strText) > 0 ) {
+        if ( System::String::CompareOrdinal(trgText, strText) > 0 ) {
             //  検索しているデータは現在位置より左にある。  //
             bsRight = bsPivot - 1;
         } else {
@@ -263,7 +263,7 @@ StringTable::searchEntry(
             result.siInsert = bsPivot;
             return ( result );
         }
-        if ( System::String::Compare(trgText, strText) > 0 ) {
+        if ( System::String::CompareOrdinal(trgText, strText) > 0 ) {
             //  テーブル内のデータはソートされているから、  //
             //  この時点でデータがテーブル内に存在しない。  //
             //  また、データを挿入する時はこの場所になる。  //
