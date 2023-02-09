@@ -218,6 +218,16 @@ BookCategory::NumSubCategories::get()
 }
 
 //----------------------------------------------------------------
+//    開始時の残高。
+//
+
+Common::DecimalCurrency
+BookCategory::StartBalance::get()
+{
+    return ( DecimalCurrency(this->m_ptrObj->getStartBalance()) );
+}
+
+//----------------------------------------------------------------
 //    開始年月日。
 //
 
