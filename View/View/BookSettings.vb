@@ -201,15 +201,15 @@ Dim blnResult As Boolean
         lngDataPos = lngTablePos + lngTableSize
 
         '項目データ
-        With .utBookItems
+        With .BookCategories
             Seek(lngTempFileNumber, lngStartPos + lngDataPos + 1)
             For i = 0 To lngItemCount - 1
-                lngFlags = .nFlags(i)
-                With .utItemEntries(i)
-                    lngHandle = .nParentHandle
-                    strTemp = .sItemName
-                    lngStartDate = .nStartDate
-                    lngStartBalance = .nStartBalance
+                lngFlags = .Items(i).Flags
+                With .Items(i)
+                    lngHandle = .ParentHandle
+                    strTemp = .CategoryName
+                    lngStartDate = .StartDate
+                    lngStartBalance = .StartBalance.InternalValue
                     lngReserved = 0
                 End With
 
