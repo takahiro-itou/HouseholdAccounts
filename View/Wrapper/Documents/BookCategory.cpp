@@ -188,6 +188,16 @@ BookCategory::isExpanded()
 //
 
 //----------------------------------------------------------------
+//    項目のフラグ。
+//
+
+CategoryFlags
+BookCategory::Flags::get()
+{
+    return ( static_cast<CategoryFlags>(this->m_ptrObj->getFlags()) );
+}
+
+//----------------------------------------------------------------
 //    親項目のインデックス。
 //
 
