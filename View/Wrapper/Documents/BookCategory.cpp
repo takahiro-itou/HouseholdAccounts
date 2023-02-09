@@ -149,7 +149,7 @@ BookCategory::expandCategory(
 CategoryFlags
 BookCategory::getCategoryFlags()
 {
-    return ( static_cast<CategoryFlags>(this->m_ptrObj->getCategoryFlags()) );
+    return ( static_cast<CategoryFlags>(this->m_ptrObj->getFlags()) );
 }
 
 //----------------------------------------------------------------

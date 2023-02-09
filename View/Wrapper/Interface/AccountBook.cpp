@@ -136,7 +136,7 @@ AccountBook::addDataToItemTotal(
         const   HouseholdAccounts::Documents::BookCategory  &
             cbc = cm->getRawBookCategory(itemHandle);
         parentItem  = cbc.getParentHandle();
-        const int  flag = static_cast<int>(cbc.getCategoryFlags());
+        const int  flag = static_cast<int>(cbc.getFlags());
 
         if ( flag & static_cast<int>(ItemFlag::ITEM_FLAG_NOCOUNT_PARENT) ) {
             blnAddToParent  = false;
