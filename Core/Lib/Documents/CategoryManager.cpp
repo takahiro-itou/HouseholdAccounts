@@ -123,7 +123,7 @@ CategoryManager::allocNewCategory()
     if ( this->m_numUsedCategory < bufSize ) {
         for ( CategoryHandle i = this->m_numRootCategory; i < bufSize; ++ i ) {
             const  BookCategory &bc = this->m_bufCategory.at(i);
-            if ( bc.getCategoryFlags() == CategoryFlags::CTYPE_NOTUSED ) {
+            if ( bc.getFlags() == CategoryFlags::CTYPE_NOTUSED ) {
                 cateResult  = i;
                 break;
             }
@@ -152,7 +152,7 @@ CategoryManager::getCategoryType(
 
     while ( cateCur >= 0 ) {
         const   BookCategory  & bc  = this->m_bufCategory.at(cateCur);
-        cfType  = bc.getCategoryFlags() & CategoryFlags::CTYPE_MASK;
+        cfType  = bc.getFlags() & CategoryFlags::CTYPE_MASK;
         catePar = bc.getParentHandle();
 
         if ( cfType == CategoryFlags::CTYPE_INHERIT ) {

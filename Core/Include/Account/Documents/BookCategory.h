@@ -226,7 +226,7 @@ public:
     **
     **/
     const   CategoryFlags
-    getCategoryFlags()  const;
+    getFlags()  const;
 
     //----------------------------------------------------------------
     /**   項目のフラグを設定する。
@@ -235,7 +235,7 @@ public:
     **  @return     以前の値。
     **/
     const   CategoryFlags
-    setCategoryFlags(
+    setFlags(
             const   CategoryFlags   flagNew);
 
     //----------------------------------------------------------------

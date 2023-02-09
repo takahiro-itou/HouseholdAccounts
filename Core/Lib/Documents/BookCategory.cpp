@@ -202,7 +202,7 @@ BookCategory::setupCategory(
 //
 
 const   CategoryFlags
-BookCategory::getCategoryFlags()  const
+BookCategory::getFlags()  const
 {
     return ( this->m_categoryFlags );
 }
@@ -212,7 +212,7 @@ BookCategory::getCategoryFlags()  const
 //
 
 const   CategoryFlags
-BookCategory::setCategoryFlags(
+BookCategory::setFlags(
         const   CategoryFlags   flagNew)
 {
     const CategoryFlags flagOld = this->m_categoryFlags;
