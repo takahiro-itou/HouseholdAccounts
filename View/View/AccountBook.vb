@@ -471,7 +471,7 @@ Dim bookCates As Wrapper.Documents.CategoryManager
                 'データを書き込む
                 For i = 0 To lngItemBufferSize - 1
                     lngSubCount = bookCates(i).NumSubCategories
-                    If ((bookCates(i).getCategoryFlags() <> Wrapper.ItemFlag.ITEM_FLAG_NOTUSED) And (lngSubCount = 0)) Then
+                    If ((bookCates(i).Flags <> Wrapper.ItemFlag.ITEM_FLAG_NOTUSED) And (lngSubCount = 0)) Then
                         lngType = bookCates.getCategoryType(i)
 
                         If (lngType = Wrapper.ItemFlag.ITEM_FLAG_INCOME) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_WITHDRAW) Then
