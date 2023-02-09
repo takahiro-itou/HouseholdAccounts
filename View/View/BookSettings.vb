@@ -201,30 +201,29 @@ Dim blnResult As Boolean
         lngDataPos = lngTablePos + lngTableSize
 
         '項目データ
-        With .BookCategories
-            Seek(lngTempFileNumber, lngStartPos + lngDataPos + 1)
-            For i = 0 To lngItemCount - 1
-                lngFlags = .Items(i).Flags
-                With .Items(i)
-                    lngHandle = .ParentHandle
-                    strTemp = .CategoryName
-                    lngStartDate = .StartDate
-                    lngStartBalance = .StartBalance.InternalValue
-                    lngReserved = 0
-                End With
+        Seek(lngTempFileNumber, lngStartPos + lngDataPos + 1)
+        For i = 0 To lngItemCount - 1
+            With .BookCategories(i)
+                lngFlags = .Flags
+                lngHandle = .ParentHandle
+                strTemp = .CategoryName
+                lngStartDate = .StartDate
+                lngStartBalance = .StartBalance.InternalValue
+                lngReserved = 0
+            End With
 
-                lngNameID = utBook.utSettingsStringTable.findString(strTemp)
+            lngNameID = utBook.utSettingsStringTable.findString(strTemp)
 
-                FilePut(lngTempFileNumber, lngHandle)
-                FilePut(lngTempFileNumber, lngFlags)
-                FilePut(lngTempFileNumber, lngStartDate)
-                FilePut(lngTempFileNumber, lngStartBalance)
-                FilePut(lngTempFileNumber, lngNameID)
-                FilePut(lngTempFileNumber, lngReserved)
-                FilePut(lngTempFileNumber, lngReserved)
-                FilePut(lngTempFileNumber, lngReserved)
-            Next i
-        End With
+            FilePut(lngTempFileNumber, lngHandle)
+            FilePut(lngTempFileNumber, lngFlags)
+            FilePut(lngTempFileNumber, lngStartDate)
+            FilePut(lngTempFileNumber, lngStartBalance)
+            FilePut(lngTempFileNumber, lngNameID)
+            FilePut(lngTempFileNumber, lngReserved)
+            FilePut(lngTempFileNumber, lngReserved)
+            FilePut(lngTempFileNumber, lngReserved)
+        Next i
+
     End With
 
     '書き込んだバイト数をチェックする
