@@ -143,16 +143,6 @@ BookCategory::expandCategory(
 //
 
 //----------------------------------------------------------------
-//    項目のフラグを取得する。
-//
-
-CategoryFlags
-BookCategory::getCategoryFlags()
-{
-    return ( static_cast<CategoryFlags>(this->m_ptrObj->getFlags()) );
-}
-
-//----------------------------------------------------------------
 //    項目の種類を取得する。
 //
 
@@ -160,6 +150,16 @@ CategoryFlags
 BookCategory::getCategoryType()
 {
     return ( static_cast<CategoryFlags>(this->m_ptrObj->getCategoryType()) );
+}
+
+//----------------------------------------------------------------
+//    項目のフラグを取得する。
+//
+
+CategoryFlags
+BookCategory::getFlags()
+{
+    return ( static_cast<CategoryFlags>(this->m_ptrObj->getFlags()) );
 }
 
 //----------------------------------------------------------------
