@@ -120,6 +120,67 @@ public:
 //
 //    Public Member Functions (Virtual Functions).
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   テーブルの最後尾にデータを追加する。
+    **
+    **  @param [in] strText   追加するデータ。
+    **/
+    virtual  StringIndex
+    appendString(
+            const  std::string  &strText);
+
+    //----------------------------------------------------------------
+    /**   テーブルの整合性を検査する。
+    **
+    **/
+    virtual  Boolean
+    checkIntegrity()  const;
+
+    //----------------------------------------------------------------
+    /**   指定された文字列を検索する。
+    **
+    **  @param [in] strText   検索する文字列。
+    **  @return
+    **/
+    virtual  StringIndex
+    findString(
+            const  std::string  &strText)  const;
+
+    //----------------------------------------------------------------
+    /**   新しいデータを挿入する。
+    **
+    **  @param [in] strText   新しく挿入するデータ。
+    **  @return     挿入したデータのインデックス。
+    **      既にデータが存在していた場合は何もせず、
+    **      そのインデックスを返す。
+    **/
+    virtual  StringIndex
+    insertString(
+            const  std::string  &strText);
+
+    //----------------------------------------------------------------
+    /**   データ用のバッファを確保する。
+    **
+    **  @param [in] bufSize
+    **/
+    virtual  StringIndex
+    reserveBuffer(
+            const  StringIndex  bufSize);
+
+    //----------------------------------------------------------------
+    /**   テーブルのエントリを直接設定する。
+    **
+    **  @param [in] drIndex
+    **  @param [in] steText
+    **  @param [in] strFlag
+    **/
+    virtual  StringIndex
+    setTableEntry(
+            const  StringIndex  drIndex,
+            const  std::string  &steText,
+            const  int          steFlag);
 
 //========================================================================
 //

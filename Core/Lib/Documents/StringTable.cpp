@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -76,6 +76,73 @@ StringTable::~StringTable()
 //
 //    Public Member Functions (Virtual Functions).
 //
+
+//----------------------------------------------------------------
+//    テーブルの最後尾にデータを追加する。
+//
+
+StringIndex
+StringTable::appendString(
+        const  std::string  &strText)
+{
+    return ( static_cast<StringIndex>(0) );
+}
+
+//----------------------------------------------------------------
+//    テーブルの整合性を検査する。
+//
+
+Boolean
+StringTable::checkIntegrity()  const
+{
+    return ( Boolean::BOOL_FALSE );
+}
+
+//----------------------------------------------------------------
+//    指定された文字列を検索する。
+//
+
+StringIndex
+StringTable::findString(
+        const  std::string  &strText)  const
+{
+    return ( static_cast<StringIndex>(-1) );
+}
+
+//----------------------------------------------------------------
+//    新しいデータを挿入する。
+//
+
+StringIndex
+StringTable::insertString(
+        const  std::string  &strText)
+{
+    return ( static_cast<StringIndex>(-1) );
+}
+
+//----------------------------------------------------------------
+//    データ用のバッファを確保する。
+//
+
+StringIndex
+StringTable::reserveBuffer(
+        const  StringIndex  bufSize)
+{
+    return ( static_cast<StringIndex>(-1) );
+}
+
+//----------------------------------------------------------------
+//    テーブルのエントリを直接設定する。
+//
+
+StringIndex
+StringTable::setTableEntry(
+        const  StringIndex  drIndex,
+        const  std::string  &steText,
+        const  int          steFlag)
+{
+    return ( static_cast<StringIndex>(-1) );
+}
 
 //========================================================================
 //
