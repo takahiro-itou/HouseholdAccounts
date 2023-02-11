@@ -44,6 +44,20 @@ namespace  {
 //
 
 AccountBook::AccountBook()
+    : bEnabled(false),
+      sTempFileDir(nullptr),
+      utSettingsStringTable(),
+      utRecordsStringTable(),
+      nStartYear(0),
+      nStartDayIndex(0),
+      nNumYears(0),
+      utStartDate(),
+      nCurrentYear(0),
+      nNumWeeks(0),
+      utAnnualRecords(),
+      nStartWeekday(0),
+      nPreviousDays(0),
+      m_cateBufferSize(0)
 {
     this->BookCategories    = gcnew Documents::CategoryManager ();
 }
@@ -178,13 +192,10 @@ AccountBook::allocItemBuffers(
     const  int  numYear = this->nNumYears;
 
     //  バッファをリサイズし、増えた部分の先頭を記録しておく。  //
-    const  int  sizeCur = this->utBookItems.nItemBufferSize;
+    const  int  sizeCur = this->m_cateBufferSize;
     const  int  sizeNew = (bufSize + 15) & ~15;
 
-    this->utBookItems.nItemBufferSize = sizeNew;
-    System::Array::Resize(this->utBookItems.nFlags, sizeNew);
-    System::Array::Resize(this->utBookItems.utItemEntries, sizeNew);
-
+    this->m_cateBufferSize = sizeNew;
     this->utAnnualRecords.reallocBuffers(sizeNew, startYear, numYear);
 
     return ( sizeCur );
@@ -241,7 +252,7 @@ AccountBook::insertNewCategory(
                         Common::DecimalCurrency(startBalance) );
 
     const   CategoryHandle  bufSize = (this->BookCategories->BufferCapacity);
-    if ( this->utBookItems.nItemBufferSize < bufSize ) {
+    if ( this->m_cateBufferSize < bufSize ) {
         allocItemBuffers(bufSize);
     }
 
