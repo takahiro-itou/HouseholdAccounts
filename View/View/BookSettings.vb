@@ -114,7 +114,7 @@ Dim startBalance As Wrapper.Common.DecimalCurrency
                     End With
                 End With
             Else
-                lngResult = utBook.insertNewItem(
+                lngResult = utBook.insertNewCategory(
                                 lngHandle, strTemp, lngFlags,
                                 lngStartDate, lngStartBalance)
                 If (lngResult <> i) Then
