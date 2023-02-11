@@ -8,8 +8,8 @@ Module UserInterface
 '
 ' 家計簿のユーザーインターフェイスを管理する
 '
-' Copyright (c) Itou Takahiro, All rights reserved.
-' This file is written in 2006/09/23 - 2008/01/08
+' Copyright (c) 2006 - 2023, Takahiro Itou
+' All rights reserved.
 '*****************************************************************************
 
 '=========================================================================
@@ -779,12 +779,12 @@ Private Sub UserInterfaceShowData(
 '家計簿の内容のlngRootItem で示されるノードのアイテムを描画する。
 '---------------------------------------------------------------------
 Dim X As Integer
-Dim lngType As Integer
 Dim lngYearIndex As Integer, lngDate As Integer, lngDayTotal As Integer
 Dim lngWeekTotal As Integer, lngMonthTotal As Integer, lngYearTotal As Integer
 Dim strText As String
 Dim lngTextColor As Color, lngCellColor As Color
 Dim utDate As Wrapper.ParsedDate
+Dim lngType As Wrapper.Documents.CategoryFlags
 
     'この項目以下の合計を表示する
     UserInterfaceDrawCell(utUI, _
@@ -841,7 +841,7 @@ Dim utDate As Wrapper.ParsedDate
     End With
 
     '週計
-    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngWeekTotal = 0) Then
+    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Or (lngWeekTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngWeekTotal, "#,##0")
@@ -855,7 +855,7 @@ Dim utDate As Wrapper.ParsedDate
             1, 1)
 
     '月計
-    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngMonthTotal = 0) Then
+    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Or (lngMonthTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngMonthTotal, "#,##0")
@@ -869,7 +869,7 @@ Dim utDate As Wrapper.ParsedDate
             1, 1)
 
     '年計
-    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngYearTotal = 0) Then
+    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Or (lngYearTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngYearTotal, "#,##0")

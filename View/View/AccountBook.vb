@@ -440,7 +440,7 @@ Dim bookCates As Wrapper.Documents.CategoryManager
     '初期値を書き込む
     With utBook.utAnnualRecords
         For i = 0 To lngItemBufferSize - 1
-            If ((bookCates(i).Flags And Wrapper.Documents.CategoryFlags.CTYPE_MASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
+            If ((bookCates(i).Flags And Wrapper.Documents.CategoryFlags.CTYPE_MASK) = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Then
                 .utItemDetailCounts(i).nDayTotal(0) = .utItemAnnualCounts(i).nStartValues(lngYearIndex)
             End If
         Next i
