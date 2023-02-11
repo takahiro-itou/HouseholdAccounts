@@ -73,14 +73,6 @@ Dim startBalance As Wrapper.Common.DecimalCurrency
             .InnerTaxHandle = lngHeader(36)
             .OuterTaxHandle = lngHeader(37)
         End With
-        utBook.allocItemBuffers(lngItemCount)
-
-        With .utBookItems
-            .nRootItemCount = lngRootItemCount
-            .nRegisteredItemCount = lngRootItemCount
-            .nInnerTaxItemHandle = lngHeader(36)
-            .nOuterTaxItemHandle = lngHeader(37)
-        End With
 
         'ヘッダ用の文字列テーブルを読み込む
         Seek(lngTempFileNumber, lngStartPos + lngTablePos + 1)
@@ -103,16 +95,6 @@ Dim startBalance As Wrapper.Common.DecimalCurrency
                 startBalance = New Wrapper.Common.DecimalCurrency(lngStartBalance)
                 .BookCategories.setupRootCategory(
                         i, strTemp, lngFlags, lngStartDate, startBalance)
-                With .utBookItems
-                    .nFlags(i) = lngFlags
-                    With .utItemEntries(i)
-                        .nParentHandle = -1
-                        .sItemName = strTemp
-                        .nSubItemCount = 0
-                        .nStartDate = lngStartDate
-                        .nStartBalance = lngStartBalance
-                    End With
-                End With
             Else
                 lngResult = utBook.insertNewCategory(
                                 lngHandle, strTemp, lngFlags,
