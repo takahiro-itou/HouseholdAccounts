@@ -233,7 +233,19 @@ AccountBook::insertNewCategory(
         const  DateSerial       startDate,
         const  int              startBalance)
 {
-    return ( 0 );
+    const   CategoryHandle
+        cateNew = this->BookCategories->insertNewCategory(
+                        cateParent, cateName,
+                        static_cast<Documents::CategoryFlags>(cateFlags),
+                        startDate,
+                        Common::DecimalCurrency(startBalance) );
+
+    const   CategoryHandle  bufSize = (this->BookCategories->BufferCapacity);
+    if ( this->utBookItems.nItemBufferSize < bufSize ) {
+        allocItemBuffers(bufSize);
+    }
+
+    return ( cateNew );
 }
 
 //----------------------------------------------------------------
