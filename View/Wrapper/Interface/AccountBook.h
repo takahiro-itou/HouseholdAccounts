@@ -295,6 +295,10 @@ public:
 //
 //    Member Variables.
 //
+private:
+
+    /**   項目用バッファサイズ。    **/
+    CategoryHandle      m_cateBufferSize;
 
 };
 
