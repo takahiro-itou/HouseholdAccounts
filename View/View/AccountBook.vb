@@ -427,7 +427,7 @@ Dim lngSubCount As Integer
 Dim lngValue As Integer
 Dim lngStartDayIndex As Integer, lngEndDayIndex As Integer
 Dim blnResult As Boolean
-Dim lngType As Wrapper.Documents.CategoryFlags
+Dim bcType As Wrapper.Documents.CategoryFlags
 Dim bookCates As Wrapper.Documents.CategoryManager
 
     With utBook
@@ -472,9 +472,9 @@ Dim bookCates As Wrapper.Documents.CategoryManager
                 For i = 0 To lngItemBufferSize - 1
                     lngSubCount = bookCates(i).NumSubCategories
                     If ((bookCates(i).Flags <> Wrapper.Documents.CategoryFlags.CTYPE_NOTUSED) And (lngSubCount = 0)) Then
-                        lngType = bookCates.getCategoryType(i)
+                        bcType = bookCates.getCategoryType(i)
 
-                        If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_INCOME) Or (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BANK_WITHDRAW) Then
+                        If (bcType = Wrapper.Documents.CategoryFlags.CTYPE_INCOME) Or (bcType = Wrapper.Documents.CategoryFlags.CTYPE_BANK_WITHDRAW) Then
                             If (Int(Rnd * 100) < 0) Then
                                 lngValue = Int(Rnd * 11500)
 
@@ -485,7 +485,7 @@ Dim bookCates As Wrapper.Documents.CategoryManager
                                     utBook.addDataToItemTotal(lngYearIndex, lngDate, 3, lngValue)
                                 End If
                             End If
-                        ElseIf (lngType = Wrapper.Documents.CategoryFlags.CTYPE_OUTLAY) Or (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BANK_DEPOSIT) Then
+                        ElseIf (bcType = Wrapper.Documents.CategoryFlags.CTYPE_OUTLAY) Or (bcType = Wrapper.Documents.CategoryFlags.CTYPE_BANK_DEPOSIT) Then
                             If (Int(Rnd * 100) < 0) Then
                                 lngValue = Int(Rnd * 1000)
 
