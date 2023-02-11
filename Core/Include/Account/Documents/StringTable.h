@@ -196,6 +196,16 @@ public:
 //
 //    For Internal Use Only.
 //
+private:
+
+    //----------------------------------------------------------------
+    /**   データを検索する。
+    **
+    **  @param [in] strText
+    **/
+    inline  FindResult
+    searchEntry(
+            const  std::string  &strText)  const;
 
 //========================================================================
 //

@@ -159,5 +159,18 @@ StringTable::setTableEntry(
 //    For Internal Use Only.
 //
 
+//----------------------------------------------------------------
+//    データを検索する。
+//
+
+inline  StringTable::FindResult
+StringTable::searchEntry(
+        const  std::string  &strText)  const
+{
+    FindResult      result;
+
+    return ( result );
+}
+
 }   //  End of namespace  Documents
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
