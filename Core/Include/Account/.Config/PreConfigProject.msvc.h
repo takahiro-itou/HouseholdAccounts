@@ -98,4 +98,12 @@
 #    undef      HOUSEHOLD_ACCOUNTS_ENABLE_OVERRIDE
 #endif
 
+//========================================================================
+//
+//    後でラッパープロジェクトから参照されることを
+//  考慮して、厳格な整数型の利用は避ける。
+//
+
+#define     HACORE_DISABLE_STRICT_TYPES
+
 #endif

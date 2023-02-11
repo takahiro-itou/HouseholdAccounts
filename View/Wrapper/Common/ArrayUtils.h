@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -23,7 +23,9 @@
 
 #pragma     once
 
-#include    "HouseholdAccounts/Common/AccountsTypes.h"
+
+#include    "Wrapper/Common/AccountsTypes.h"
+
 
 namespace  Wrapper  {
 
@@ -32,6 +34,24 @@ namespace  Wrapper  {
 //    配列操作のユーティリティ。
 //
 
+//----------------------------------------------------------------
+/**   ネイティブ動的配列をマネージド型配列に変換する。
+**
+**/
+
+template <typename T>
+cli::array<T, 1> ^
+toManageFromVector(
+        const  std::vector<T> & vecSrc)
+{
+    const  int  num = static_cast<int>(vecSrc.size());
+    cli::array<T, 1> ^  vecDest = gcnew cli::array<T, 1>(num);
+    for ( int i = 0; i < num; ++ i ) {
+        vecDest[i]  = vecSrc[i];
+    }
+
+    return ( vecDest );
+}
 
 
 }   //  End of namespace  Wrapper

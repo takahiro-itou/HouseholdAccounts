@@ -13,18 +13,32 @@
 *************************************************************************/
 
 /**
-**      ビューワープログラム。
+**      プロジェクトの設定。
 **
-**      @file       Bin/BookViewer.cpp
+**      @file       Common/AccountsProject.h
 **/
 
-#include    "Account/Common/AccountsTypes.h"
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUNTS_PROJECT_H )
+#    define   HACORE_COMMON_INCLUDED_ACCOUNTS_PROJECT_H
 
-#include    <iostream>
+//  スクリプトによる設定値が書き込まれたヘッダを読み込む。  //
+#if defined( HOUSEHOLDACCOUNTS_USE_PRE_CONFIGURED_MSVC )
+#    include    "Account/.Config/PreConfigProject.msvc.h"
+#else
+#    include    "Account/.Config/ConfiguredProject.h"
+#endif
 
-using   namespace   HOUSEHOLD_ACCOUNTS_NAMESPACE;
+//  ビルドタイプが指定されていない場合はエラーにする。  //
+#if defined( _DEBUG )
+#
+#elif defined( NDEBUG )
+#
+#else
+#    error  "Neither _DEBUG nor NDEBUG defined"
+#endif
 
-int  main(int argc, char * argv[])
-{
-    return ( 0 );
-}
+HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+
+#endif

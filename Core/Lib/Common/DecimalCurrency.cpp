@@ -18,6 +18,8 @@
 **      @file       Common/DecimalCurrency.cpp
 **/
 
+#include    "Account/pch/PreCompile.h"
+
 #include    "Account/Common/DecimalCurrency.h"
 
 
@@ -158,6 +160,16 @@ DecimalCurrency::setInternalValue(
     this->m_internValue = intValue;
     this->m_scaleFactor = intScale;
     return ( *this );
+}
+
+//----------------------------------------------------------------
+//    現在のスケールファクタを取得する。
+//
+
+const   DecimalCurrency::TInternalValue
+DecimalCurrency::getScaleFactor()  const
+{
+    return ( this->m_scaleFactor );
 }
 
 //========================================================================

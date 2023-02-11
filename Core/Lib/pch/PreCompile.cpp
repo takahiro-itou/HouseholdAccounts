@@ -1,9 +1,9 @@
 ﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
-**              ---  Household Accounts  Wrapper Lib.  ---              **
+**                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2023, Takahiro Itou                     **
+**          Copyright (C), 2017-2022, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -12,6 +12,10 @@
 **                                                                      **
 *************************************************************************/
 
-#include    "PreCompile.h"
+/**
+**      Generate Pre-Compiled Header File.
+**
+**      @file       pch/PreCompile.h
+**/
 
-#include    "HouseholdAccountsWrapper.h"
+#include    "Account/pch/PreCompile.h"

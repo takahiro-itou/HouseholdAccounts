@@ -27,14 +27,37 @@
 
 namespace  Wrapper  {
 
+typedef     HouseholdAccounts::ErrCode  WrapTargetErrCode;
+
 public  enum class  ErrCode
 {
-    ERR_SUCCESS             = HouseholdAccounts::ERR_SUCCESS,
-    ERR_FAILURE             = HouseholdAccounts::ERR_FAILURE,
-    ERR_FILE_OPEN_ERROR     = HouseholdAccounts::ERR_FILE_OPEN_ERROR,
-    ERR_FILE_IO_ERROR       = HouseholdAccounts::ERR_FILE_IO_ERROR,
-    ERR_INDEX_OUT_OF_RANGE  = HouseholdAccounts::ERR_INDEX_OUT_OF_RANGE
+    SUCCESS             = WrapTargetErrCode::SUCCESS,
+    FAILURE             = WrapTargetErrCode::FAILURE,
+    FILE_OPEN_ERROR     = WrapTargetErrCode::FILE_OPEN_ERROR,
+    FILE_IO_ERROR       = WrapTargetErrCode::FILE_IO_ERROR,
+    INDEX_OUT_OF_RANGE  = WrapTargetErrCode::INDEX_OUT_OF_RANGE
 };
+
+//================================================================
+//
+//    ブール型。
+//
+
+typedef     HouseholdAccounts::Boolean          Boolean;
+
+inline  Boolean
+toNativeBoolean(
+        System::Boolean b)
+{
+    return ( static_cast<Boolean>(b) );
+}
+
+inline  System::Boolean
+fromNativeBoolean(
+        Boolean b)
+{
+    return ( TO_BOOL_FROM_STRICT(b) );
+}
 
 //----------------------------------------------------------------
 /**
@@ -53,11 +76,17 @@ typedef     cli::array<System::String^, 1>      StringArray;
 //========================================================================
 
 typedef     HouseholdAccounts::CategoryHandle   CategoryHandle;
+typedef     HouseholdAccounts::DateSerial       DateSerial;
 typedef     HouseholdAccounts::StringIndex      StringIndex;
 
 //========================================================================
 //
 //    配列型。
+//
+
+//========================================================================
+//
+//    コアライブラリ内のネイティブ型との相互変換。
 //
 
 }   //  End of namespace  Wrapper

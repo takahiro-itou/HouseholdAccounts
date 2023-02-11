@@ -143,6 +143,7 @@ Private Sub mnuFileNew_Click(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 
     '家計簿オブジェクトを初期化する
+    mutBookView.utAccountBook = New Wrapper.AccountBook()
     If (CreateEmptyAccountBook(mutBookView.utAccountBook)) = False Then
         MessageBox.Show("空の家計簿データの作成に失敗しました。必要なファイルが見つかりません。")
         Exit Sub
@@ -160,6 +161,28 @@ Private Sub mnuFileOpen_Click(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    メニュー「ファイル」－「開く」
 ''--------------------------------------------------------------------
+Dim selFileName As String
+
+    With dlgOpen
+        .DefaultExt = ".abd"
+        .Filter = "Account Book Data (*.abd)|*.abd|All Files (*.*)|*.*"
+        .FilterIndex = 1
+        .InitialDirectory = g_appRootDir
+
+        If .ShowDialog() = DialogResult.OK Then
+            selFileName = .FileName
+        Else
+            Exit Sub
+        End If
+    End With
+
+    With mutBookView
+        If (.utAccountBook IsNot Nothing) Then
+            .utAccountBook = Nothing
+        End If
+        .utAccountBook = New Wrapper.AccountBook()
+    End With
+    LoadFromFile(mutBookView, selFileName)
 
 End Sub
 
@@ -169,6 +192,17 @@ Private Sub mnuFileSave_Click(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    メニュー「ファイル」－「上書き保存」
 ''--------------------------------------------------------------------
+Dim curFileName As String
+
+    curFileName = mutBookView.sCurrentBookFile
+    If (curFileName = "")  Then
+        ' 名前を付けて保存する
+        mnuFileSaveAs_Click(sender, e)
+        Exit Sub
+    End If
+
+    ' 現在の名前で保存する
+    SaveToFile(mutBookView, curFileName)
 
 End Sub
 
@@ -178,6 +212,12 @@ Private Sub mnuFileSaveAs_Click(sender As Object, e As EventArgs) _
 ''--------------------------------------------------------------------
 ''    メニュー「ファイル」－「名前を付けて保存」
 ''--------------------------------------------------------------------
+Dim strFileName As String
+
+    ' 暫定処理
+    strFileName = g_appRootDir & "\Test.abd"
+
+    SaveToFile(mutBookView, strFileName)
 
 End Sub
 

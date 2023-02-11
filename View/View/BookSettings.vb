@@ -38,6 +38,7 @@ Dim lngTablePos As Integer, lngTableSize As Integer
 Dim lngDataPos As Integer, lngDataSize As Integer
 Dim lngTempFileNumber As Integer
 Dim strTempDir As String, strTempFileName As String
+Dim startBalance As Wrapper.Common.DecimalCurrency
 
     With utBook
         'テンポラリファイルを開く
@@ -67,13 +68,10 @@ Dim strTempDir As String, strTempFileName As String
         lngRootItemCount = lngHeader(33)
 
         'バッファを確保する
-        utBook.allocItemBuffers(lngItemCount)
-
-        With .utBookItems
-            .nRootItemCount = lngRootItemCount
-            .nRegisteredItemCount = lngRootItemCount
-            .nInnerTaxItemHandle = lngHeader(36)
-            .nOuterTaxItemHandle = lngHeader(37)
+        With utBook.BookCategories
+            .reserveRootCategories(lngRootItemCount)
+            .InnerTaxHandle = lngHeader(36)
+            .OuterTaxHandle = lngHeader(37)
         End With
 
         'ヘッダ用の文字列テーブルを読み込む
@@ -94,18 +92,11 @@ Dim strTempDir As String, strTempFileName As String
             strTemp = .utSettingsStringTable.sTableEntries(lngNameID)
 
             If (i < lngRootItemCount) Then
-                With .utBookItems
-                    .nFlags(i) = lngFlags
-                    With .utItemEntries(i)
-                        .nParentHandle = -1
-                        .sItemName = strTemp
-                        .nSubItemCount = 0
-                        .nStartDate = lngStartDate
-                        .nStartBalance = lngStartBalance
-                    End With
-                End With
+                startBalance = New Wrapper.Common.DecimalCurrency(lngStartBalance)
+                .BookCategories.setupRootCategory(
+                        i, strTemp, lngFlags, lngStartDate, startBalance)
             Else
-                lngResult = utBook.insertNewItem(
+                lngResult = utBook.insertNewCategory(
                                 lngHandle, strTemp, lngFlags,
                                 lngStartDate, lngStartBalance)
                 If (lngResult <> i) Then
@@ -165,13 +156,13 @@ Dim blnResult As Boolean
         lngHeader(18) = .nNumYears
 
         '各データの件数をヘッダに書き込む
-        With .utBookItems
-            lngItemCount = .getRegisteredItemCount()
+        With .BookCategories
+            lngItemCount = .RegisteredCategoryCount
             lngHeader(32) = lngItemCount
-            lngHeader(33) = .getRootItemCount()
+            lngHeader(33) = .RootCategoryCount
 
-            lngHeader(36) = .nInnerTaxItemHandle
-            lngHeader(37) = .nOuterTaxItemHandle
+            lngHeader(36) = .InnerTaxHandle
+            lngHeader(37) = .OuterTaxHandle
         End With
 
         'テンポラリファイルのディレクトリを取得する
@@ -192,30 +183,29 @@ Dim blnResult As Boolean
         lngDataPos = lngTablePos + lngTableSize
 
         '項目データ
-        With .utBookItems
-            Seek(lngTempFileNumber, lngStartPos + lngDataPos + 1)
-            For i = 0 To lngItemCount - 1
-                lngFlags = .nFlags(i)
-                With .utItemEntries(i)
-                    lngHandle = .nParentHandle
-                    strTemp = .sItemName
-                    lngStartDate = .nStartDate
-                    lngStartBalance = .nStartBalance
-                    lngReserved = 0
-                End With
+        Seek(lngTempFileNumber, lngStartPos + lngDataPos + 1)
+        For i = 0 To lngItemCount - 1
+            With .BookCategories(i)
+                lngFlags = .Flags
+                lngHandle = .ParentHandle
+                strTemp = .CategoryName
+                lngStartDate = .StartDate
+                lngStartBalance = .StartBalance.InternalValue
+                lngReserved = 0
+            End With
 
-                lngNameID = utBook.utSettingsStringTable.findString(strTemp)
+            lngNameID = utBook.utSettingsStringTable.findString(strTemp)
 
-                FilePut(lngTempFileNumber, lngHandle)
-                FilePut(lngTempFileNumber, lngFlags)
-                FilePut(lngTempFileNumber, lngStartDate)
-                FilePut(lngTempFileNumber, lngStartBalance)
-                FilePut(lngTempFileNumber, lngNameID)
-                FilePut(lngTempFileNumber, lngReserved)
-                FilePut(lngTempFileNumber, lngReserved)
-                FilePut(lngTempFileNumber, lngReserved)
-            Next i
-        End With
+            FilePut(lngTempFileNumber, lngHandle)
+            FilePut(lngTempFileNumber, lngFlags)
+            FilePut(lngTempFileNumber, lngStartDate)
+            FilePut(lngTempFileNumber, lngStartBalance)
+            FilePut(lngTempFileNumber, lngNameID)
+            FilePut(lngTempFileNumber, lngReserved)
+            FilePut(lngTempFileNumber, lngReserved)
+            FilePut(lngTempFileNumber, lngReserved)
+        Next i
+
     End With
 
     '書き込んだバイト数をチェックする

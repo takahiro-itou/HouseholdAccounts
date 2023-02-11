@@ -18,6 +18,8 @@
 **      @file       Documents/BookDocument.cpp
 **/
 
+#include    "Account/pch/PreCompile.h"
+
 #include    "Account/Documents/BookDocument.h"
 
 

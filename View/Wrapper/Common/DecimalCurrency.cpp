@@ -41,6 +41,18 @@ namespace  {
 //
 
 //----------------------------------------------------------------
+//    アンマネージドリソースと同じ内容で初期化する
+//  （コンストラクタ）。
+//
+
+DecimalCurrency::DecimalCurrency(
+        const   WrapTarget  &srcCur)
+    : m_internValue(srcCur.getInternalValue()),
+      m_scaleFactor(srcCur.getScaleFactor())
+{
+}
+
+//----------------------------------------------------------------
 //    インスタンスを初期化する
 //  （コンストラクタ）。
 //
@@ -90,6 +102,31 @@ DecimalCurrency::DecimalCurrency(
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    ラップ対象の型からインスタンスを生成する。
+//
+
+DecimalCurrency
+DecimalCurrency::fromNativeInstance(
+        const   WrapTarget  &srcVal)
+{
+    DecimalCurrency trgVal(
+            srcVal.getInternalValue(), srcVal.getScaleFactor()
+    );
+    return ( trgVal );
+}
+
+//----------------------------------------------------------------
+//    ラップ対象の型を生成する。
+//
+
+DecimalCurrency::WrapTarget
+DecimalCurrency::toNativeInstance()
+{
+    WrapTarget  trgVal(this->m_internValue, this->m_scaleFactor);
+    return ( trgVal );
+}
+
 //========================================================================
 //
 //    Accessors.
@@ -131,7 +168,7 @@ DecimalCurrency::setInternalValue(
 //
 
 DecimalCurrency::DecimalType
-DecimalCurrency::decimalValue::get()
+DecimalCurrency::DecimalValue::get()
 {
     return ( getValue() );
 }
@@ -141,7 +178,7 @@ DecimalCurrency::decimalValue::get()
 //
 
 DecimalCurrency::TInternalValue
-DecimalCurrency::internalValue::get()
+DecimalCurrency::InternalValue::get()
 {
     return ( this->m_internValue );
 }

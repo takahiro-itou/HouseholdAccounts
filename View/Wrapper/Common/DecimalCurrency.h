@@ -25,6 +25,9 @@
 
 #include    "AccountsTypes.h"
 
+#include    "Account/Common/DecimalCurrency.h"
+
+
 namespace  Wrapper  {
 namespace  Common  {
 
@@ -39,7 +42,6 @@ namespace  Common  {
 
 public value class  DecimalCurrency
 {
-
 //========================================================================
 //
 //    Internal Type Definitions.
@@ -50,11 +52,25 @@ public:
 
     typedef     double      DecimalType;
 
+private:
+
+    typedef     HouseholdAccounts::Common::DecimalCurrency
+    WrapTarget;
+
 //========================================================================
 //
 //    Constructor(s) and Destructor.
 //
 public:
+
+    //----------------------------------------------------------------
+    /**   アンマネージドリソースと同じ内容で初期化する
+    **  （コンストラクタ）。
+    **
+    **  @param [in] srcCur    アンマネージド。
+    **/
+    DecimalCurrency(
+            const   WrapTarget  &srcCur);
 
     //----------------------------------------------------------------
     /**   インスタンスを初期化する
@@ -100,6 +116,25 @@ public:
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   ラップ対象の型からインスタンスを生成する。
+    **
+    **  @param [in] srcVal    アンマネージド。
+    **  @return     マネージド型のインスタンス。
+    **/
+    static  DecimalCurrency
+    fromNativeInstance(
+            const   WrapTarget  &srcVal);
+
+    //----------------------------------------------------------------
+    /**   ラップ対象の型を生成する。
+    **
+    **  @return     アンマネージド型のインスタンス。
+    **/
+    WrapTarget
+    toNativeInstance();
 
 //========================================================================
 //
@@ -137,7 +172,7 @@ public:
     **
     **/
     property    DecimalType
-    decimalValue
+    DecimalValue
     {
         DecimalType     get();
     }
@@ -147,7 +182,7 @@ public:
     **
     **/
     property    TInternalValue
-    internalValue
+    InternalValue
     {
         TInternalValue  get();
     }

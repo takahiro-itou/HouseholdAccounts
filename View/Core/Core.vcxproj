@@ -79,8 +79,9 @@
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\Core\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Account/pch/PreCompile.h</PrecompiledHeaderFile>
       <SDLCheck>true</SDLCheck>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
@@ -144,13 +145,23 @@
     <ClCompile Include="..\..\Core\Lib\Documents\StringTable.cpp" />
 
     <ClCompile Include="..\..\Core\Lib\FileFormat\BookFile.cpp" />
+
+    <ClCompile Include="..\..\Core\Lib\pch\PreCompile.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+
   </ItemGroup>
 
   <ItemGroup>
+    <ClInclude Include="..\..\Core\Include\Account\Common\AccountsProject.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\AccountsTypes.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\BookInterface.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\DecimalCurrency.h" />
-    <ClInclude Include="..\..\Core\Include\Account\Common\HouseholdAccountsSettings.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\EnumBitFlag.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\StrictTypes.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\StrictTypes.inl" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\StrictVector.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\StrictVector.inl" />
     <ClInclude Include="..\..\Core\Include\Account\Common\TextParser.h" />
 
     <ClInclude Include="..\..\Core\Include\Account\Documents\BookCategory.h" />
@@ -159,6 +170,8 @@
     <ClInclude Include="..\..\Core\Include\Account\Documents\StringTable.h" />
 
     <ClInclude Include="..\..\Core\Include\Account\FileFormat\BookFile.h" />
+
+    <ClInclude Include="..\..\Core\Include\Account\pch\PreCompile.h" />
   </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

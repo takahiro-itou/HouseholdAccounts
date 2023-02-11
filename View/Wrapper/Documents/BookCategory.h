@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -23,8 +23,30 @@
 
 #pragma     once
 
-#include    "Wrapper/Common/AccountsTypes.h"
-#include    "Wrapper/Common/DecimalCurrency.h"
+
+#if !defined( HAWRAPPER_COMMON_INCLUDED_ACCOUNTS_TYPES_H )
+#    include    "Wrapper/Common/AccountsTypes.h"
+#endif
+
+#if !defined( HAWRAPPER_COMMON_INCLUDED_DECIMAL_CURRENCY_H )
+#    include    "Wrapper/Common/DecimalCurrency.h"
+#endif
+
+#if !defined( HACORE_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H )
+#    include    "Account/Documents/BookCategory.h"
+#endif
+
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
+
+//  クラスの前方宣言。  //
+namespace  Documents  {
+class   BookCategory;
+class   CategoryManager;
+}   //  End of namespace  Documents
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+
 
 namespace  Wrapper  {
 namespace  Documents  {
@@ -34,40 +56,43 @@ namespace  Documents  {
 //    Type Definitions.
 //
 
+typedef     HouseholdAccounts::Documents::CategoryFlags
+CoreCategoryFlags;
+
 /**
 **    項目用フラグ。
 **/
 
 public  enum class  CategoryFlags
 {
-    CTYPE_MASK              = 0x000000ff,
-    CTYPE_NOTUSED           = 0,    /**<  未使用。          **/
-    CTYE_INHERIT            = 1,    /**<  親の設定を継承。  **/
-    CTYPE_BALANCE           = 9,    /**<  残高表示。        **/
-    CTYPE_INCOME            = 17,   /**<  収入。            **/
-    CTYPE_OUTLAY            = 18,   /**<  支出。            **/
-    CTYPE_BANK              = 25,   /**<  銀行口座。        **/
-    CTYPE_BANK_WITHDRAW     = 26,   /**<  口座引出。        **/
-    CTYPE_BANK_DEPOSIT      = 27,   /**<  口座入金。        **/
-    CTYPE_BANK_TRANSFER     = 28,   /**<  口座振替。        **/
+    CTYPE_MASK              = CoreCategoryFlags::CTYPE_MASK,
+    CTYPE_NOTUSED           = CoreCategoryFlags::CTYPE_NOTUSED,
+    CTYPE_INHERIT           = CoreCategoryFlags::CTYPE_INHERIT,
+    CTYPE_BALANCE           = CoreCategoryFlags::CTYPE_BALANCE,
+    CTYPE_INCOME            = CoreCategoryFlags::CTYPE_INCOME,
+    CTYPE_OUTLAY            = CoreCategoryFlags::CTYPE_OUTLAY,
+    CTYPE_BANK              = CoreCategoryFlags::CTYPE_BANK,
+    CTYPE_BANK_WITHDRAW     = CoreCategoryFlags::CTYPE_BANK_WITHDRAW,
+    CTYPE_BANK_DEPOSIT      = CoreCategoryFlags::CTYPE_BANK_DEPOSIT,
+    CTYPE_BANK_TRANSFER     = CoreCategoryFlags::CTYPE_BANK_TRANSFER,
 
     /**   サブ項目を展開表示する。          **/
-    CFLAG_EXPANDED          = 0x00000100,
+    CFLAG_EXPANDED          = CoreCategoryFlags::CFLAG_EXPANDED,
 
     /**   親の項目の合計に加算しない。      **/
-    CFLAG_NOCOUNT_PARENT    = 0x00010000,
+    CFLAG_NOCOUNT_PARENT    = CoreCategoryFlags::CFLAG_NOCOUNT_PARENT,
 
     /**   ルート項目の合計に加算しない。    **/
-    CFLAG_NOCOUNT_ROOT      = 0x00020000,
+    CFLAG_NOCOUNT_ROOT      = CoreCategoryFlags::CFLAG_NOCOUNT_ROOT,
 
     /**   表示しない隠し属性。  **/
-    CFLAG_HIDDEN            = 0x10000000,
+    CFLAG_HIDDEN            = CoreCategoryFlags::CFLAG_HIDDEN,
 
     /**   削除不能な予約項目。  **/
-    CFLAG_UNERASABLE        = 0x20000000,
+    CFLAG_UNERASABLE        = CoreCategoryFlags::CFLAG_UNERASABLE,
 
     /**   読み取り専用属性。    **/
-    CFLAG_READ_ONLY         = 0x40000000,
+    CFLAG_READ_ONLY         = CoreCategoryFlags::CFLAG_READ_ONLY,
 };
 
 
@@ -88,6 +113,12 @@ public ref  class  BookCategory
 //
 private:
 
+    typedef     HouseholdAccounts::Documents::BookCategory
+    WrapTarget;
+
+    typedef     HouseholdAccounts::Documents::CategoryManager
+    CoreCategoryManager;
+
     typedef     cli::array<CategoryHandle, 1>
     CategoryHandleArray;
 
@@ -99,12 +130,23 @@ private:
 //
 public:
 
+private:
     //----------------------------------------------------------------
     /**   インスタンスを初期化する
     **  （デフォルトコンストラクタ）。
     **
     **/
     BookCategory();
+
+public:
+    //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （コンストラクタ）。
+    **
+    **/
+    BookCategory(
+            WrapTarget *            wrapTarget,
+            CoreCategoryManager *   catMan);
 
     //----------------------------------------------------------------
     /**   インスタンスを破棄する。
@@ -144,6 +186,17 @@ public:
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   サブ項目以下を展開したり閉じたりする。
+    **
+    **  @param [in] blnExpanded   展開または折畳。
+    **  @return     直前の状態。
+    **/
+    System::Boolean
+    expandCategory(
+            const  System::Boolean  blnExpanded);
 
 //========================================================================
 //
@@ -152,11 +205,18 @@ public:
 public:
 
     //----------------------------------------------------------------
+    /**   項目の種類を取得する。
+    **
+    **/
+    CategoryFlags
+    getCategoryType();
+
+    //----------------------------------------------------------------
     /**   項目のフラグを取得する。
     **
     **/
     CategoryFlags
-    getCategoryFlags();
+    getFlags();
 
     //----------------------------------------------------------------
     /**   サブ項目のインデックスの配列を取得する。
@@ -165,6 +225,13 @@ public:
     CategoryHandleArray^
     getSubCategories();
 
+    //----------------------------------------------------------------
+    /**   サブ項目が展開されているか調べる。
+    **
+    **/
+    System::Boolean
+    isExpanded();
+
 //========================================================================
 //
 //    Properties.
@@ -172,11 +239,21 @@ public:
 public:
 
     //----------------------------------------------------------------
+    /**   項目のフラグ。
+    **
+    **/
+    property    CategoryFlags
+    Flags
+    {
+        CategoryFlags   get();
+    }
+
+    //----------------------------------------------------------------
     /**   親項目のインデックス。
     **
     **/
     property    CategoryHandle
-    parentHandle
+    ParentHandle
     {
         CategoryHandle  get();
     }
@@ -186,7 +263,7 @@ public:
     **
     **/
     property    System::String^
-    categoryName
+    CategoryName
     {
         System::String^ get();
     }
@@ -196,9 +273,29 @@ public:
     **
     **/
     property    CategoryHandle
-    numSubCategories
+    NumSubCategories
     {
         CategoryHandle  get();
+    }
+
+    //----------------------------------------------------------------
+    /**   開始時の残高。
+    **
+    **/
+    property    DecimalCurrency
+    StartBalance
+    {
+        DecimalCurrency get();
+    }
+
+    //----------------------------------------------------------------
+    /**   開始年月日。
+    **
+    **/
+    property    DateSerial
+    StartDate
+    {
+        DateSerial  get();
     }
 
     //----------------------------------------------------------------
@@ -206,7 +303,7 @@ public:
     **
     **/
     property    CategoryHandle
-    subCategory[int]
+    SubCategory[CategoryHandle]
     {
         CategoryHandle  get(CategoryHandle  idxSub);
     }
@@ -220,6 +317,7 @@ public:
 //
 //    For Internal Use Only.
 //
+private:
 
 //========================================================================
 //
@@ -227,29 +325,11 @@ public:
 //
 private:
 
-    /**   項目フラグ。              **/
-    CategoryFlags           m_categoryFlags;
+    WrapTarget  *           m_ptrBuf;
 
-    /**  親項目のインデックス。     **/
-    CategoryHandle          m_parentHandle;
+    CoreCategoryManager *   m_ptrMan;
 
-    /**   項目名の ID  (文字列テーブル内のインデックス) 。  **/
-    StringIndex             m_categoryNameId;
-
-    /**   項目名。                  **/
-    System::String^         m_categoryName;
-
-    /**   サブ項目数。              **/
-    CategoryHandle          m_numSubCategory;
-
-    /**   サブ項目のインデックス。  **/
-    CategoryHandleArray^    m_subCategories;
-
-    /**   開始年月日 (残高の項目のみ) 。    **/
-    int                     m_startDate;
-
-    /**   開始時の残高 (残高の項目のみ) 。  **/
-    DecimalCurrency^        m_startBalance;
+    WrapTarget  *           m_ptrObj;
 
 //========================================================================
 //

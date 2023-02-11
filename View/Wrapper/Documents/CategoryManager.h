@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -23,7 +23,19 @@
 
 #pragma     once
 
+
 #include    "BookCategory.h"
+
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
+
+//  クラスの前方宣言。  //
+namespace  Documents  {
+class   CategoryManager;
+}   //  End of namespace  Documents
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+
 
 namespace  Wrapper  {
 namespace  Documents  {
@@ -45,7 +57,15 @@ public ref  class  CategoryManager
 //
 private:
 
+    typedef     HouseholdAccounts::Documents::CategoryManager
+    WrapTarget;
+
+    typedef     HouseholdAccounts::Documents::BookCategory
+    CoreBookCategory;
+
     typedef     cli::array<BookCategory^, 1>    CategoryArray;
+
+    typedef     Common::DecimalCurrency     DecimalCurrency;
 
 //========================================================================
 //
@@ -101,6 +121,16 @@ public:
 public:
 
     //----------------------------------------------------------------
+    /**   項目の種類を取得する。
+    **
+    **  @param [in] hCate   項目のハンドル。
+    **  @return     項目フラグの内タイプの値を返す。
+    **/
+    CategoryFlags
+    getCategoryType(
+            const   CategoryHandle  hCate);
+
+    //----------------------------------------------------------------
     /**   項目のルート項目のハンドルを取得する。
     **
     **  @param [in] idxCate   項目番号。
@@ -111,6 +141,52 @@ public:
     getRootCategoryHandle(
             const   CategoryHandle  idxCate);
 
+    //----------------------------------------------------------------
+    /**   指定した項目に新しいサブ項目を追加する。
+    **
+    **  @param [in] cateParent      親項目のハンドル。
+    **  @param [in] cateName        項目名。
+    **  @param [in] cateFlags       項目フラグ。
+    **  @param [in] startDate       開始日。
+    **  @param [in] startBalance    開始時金額。
+    **  @return     追加した項目のハンドル。
+    **/
+    CategoryHandle
+    insertNewCategory(
+            const  CategoryHandle   cateParent,
+            System::String ^        cateName,
+            const  CategoryFlags    cateFlags,
+            const  DateSerial       startDate,
+            DecimalCurrency ^       startBalance);
+
+    //----------------------------------------------------------------
+    /**   ルート項目データ用の領域を確保する。
+    **
+    **  @param [in] numRoot   確保する項目数。
+    **  @return     最初の非ルート項目のインデックス。
+    **/
+    CategoryHandle
+    reserveRootCategories(
+            const   CategoryHandle  numRoot);
+
+    //----------------------------------------------------------------
+    /**   ルート項目のデータを設定する。
+    **
+    **  @param [in] cateHandle      項目のハンドル。
+    **  @param [in] cateName        項目名。
+    **  @param [in] cateFlags       項目フラグ。
+    **  @param [in] startDate       開始日。
+    **  @param [in] startBalance    開始時金額。
+    **  @return     設定した項目のハンドル。
+    **/
+    CategoryHandle
+    setupRootCategory(
+            const  CategoryHandle   cateHandle,
+            System::String ^        cateName,
+            const  CategoryFlags    cateFlags,
+            const  DateSerial       startDate,
+            DecimalCurrency ^       startBalance);
+
 //========================================================================
 //
 //    Accessors.
@@ -118,33 +194,110 @@ public:
 public:
 
     //----------------------------------------------------------------
+    /**   項目データを取得する。
+    **
+    **  @param [in] hCate   項目ハンドル。
+    **  @return     指定した項目。
+    **/
+    BookCategory^
+    getBookCategory(
+            const   CategoryHandle  hCate);
+
+    //----------------------------------------------------------------
+    /**   項目データを取得する。
+    **
+    **  @param [in] hCate   項目ハンドル。
+    **  @return     指定した項目。
+    **/
+    const   CoreBookCategory  &
+    getRawBookCategory(
+            const   CategoryHandle  hCate);
+
+//========================================================================
+//
+//    Properties.
+//
+public:
+
+    //----------------------------------------------------------------
+    /**   項目データを取得する
+    **  （デフォルトプロパティ）。
+    **
+    **  @param [in] hCate   項目ハンドル。
+    **  @return     指定した項目。
+    **/
+    property    BookCategory ^
+    default [CategoryHandle]
+    {
+        BookCategory^   get(CategoryHandle hCate);
+    }
+
+    //----------------------------------------------------------------
     /**   項目用のバッファのサイズを得る。
     **
     **  @return     項目用バッファのサイズ。
     **/
-    CategoryHandle
-    getBufferCapacity();
+    property    CategoryHandle
+    BufferCapacity
+    {
+        CategoryHandle  get();
+    }
+
+    //----------------------------------------------------------------
+    /**   内税項目のハンドル。
+    **
+    **/
+    property    CategoryHandle
+    InnerTaxHandle
+    {
+        CategoryHandle  get();
+        void set(CategoryHandle hCate);
+    }
+
+    //----------------------------------------------------------------
+    /**   項目データを取得する。
+    **
+    **  @param [in] hCate   項目ハンドル。
+    **  @return     指定した項目。
+    **/
+    property    BookCategory ^
+    Items [CategoryHandle]
+    {
+        BookCategory^   get(CategoryHandle hCate);
+    }
+
+    //----------------------------------------------------------------
+    /**   外税項目のハンドル。
+    **
+    **/
+    property    CategoryHandle
+    OuterTaxHandle
+    {
+        CategoryHandle  get();
+        void set(CategoryHandle hCate);
+    }
 
     //----------------------------------------------------------------
     /**   登録済みの項目数を取得する。
     **
     **  @return     登録済みの項目数を返す。
     **/
-    CategoryHandle
-    getRegisteredCategoryCount();
+    property    CategoryHandle
+    RegisteredCategoryCount
+    {
+        CategoryHandle  get();
+    }
 
     //----------------------------------------------------------------
     /**   ルートにある項目数を取得する。
     **
     **  @return     ルートの項目数を返す。
     **/
-    CategoryHandle
-    getRootCategoryCount();
-
-//========================================================================
-//
-//    Properties.
-//
+    property    CategoryHandle
+    RootCategoryCount
+    {
+        CategoryHandle  get();
+    }
 
 //========================================================================
 //
@@ -162,23 +315,7 @@ public:
 //
 private:
 
-    /**   項目用バッファサイズ。    **/
-    CategoryHandle      m_cateBufferSize;
-
-    /**   登録済みの項目の数。      **/
-    CategoryHandle      m_numUsedCategory;
-
-    /**   ルートになる項目の個数。  **/
-    CategoryHandle      m_numRootCategory;
-
-    /**   項目のデータ。            **/
-    CategoryArray^      m_bufCategory;
-
-    /**   「内税」項目のハンドル。  **/
-    CategoryHandle      m_chInnerTax;
-
-    /**   「外税」項目のハンドル。  **/
-    CategoryHandle      m_chOuterTax;
+    WrapTarget  *   m_ptrObj;
 
 //========================================================================
 //

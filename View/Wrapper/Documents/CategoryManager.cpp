@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -20,7 +20,13 @@
 
 #include    "PreCompile.h"
 
+#include    "Account/Documents/CategoryManager.h"
+
 #include    "CategoryManager.h"
+
+#include    <msclr/marshal_cppstd.h>
+using       namespace   msclr::interop;
+
 
 namespace  Wrapper  {
 namespace  Documents  {
@@ -45,6 +51,7 @@ namespace  {
 //
 
 CategoryManager::CategoryManager()
+    : m_ptrObj(new WrapTarget())
 {
 }
 
@@ -68,6 +75,8 @@ CategoryManager::~CategoryManager()
 
 CategoryManager::!CategoryManager()
 {
+    delete  this->m_ptrObj;
+    this->m_ptrObj  = nullptr;
 }
 
 //========================================================================
@@ -96,6 +105,19 @@ CategoryManager::!CategoryManager()
 //
 
 //----------------------------------------------------------------
+//    項目の種類を取得する。
+//
+
+CategoryFlags
+CategoryManager::getCategoryType(
+        const   CategoryHandle  hCate)
+{
+    return ( static_cast<CategoryFlags>(
+                     this->m_ptrObj->getCategoryType(hCate)
+    ) );
+}
+
+//----------------------------------------------------------------
 //    項目のルート項目のハンドルを取得する。
 //
 
@@ -103,15 +125,62 @@ CategoryHandle
 CategoryManager::getRootCategoryHandle(
         const   CategoryHandle  idxCate)
 {
-    CategoryHandle  catePar;
-    CategoryHandle  cateCur = idxCate;
+    return ( this->m_ptrObj->getRootCategoryHandle(idxCate) );
+}
 
-    catePar = this->m_bufCategory[cateCur]->parentHandle;
-    while ( catePar >= 0 ) {
-        cateCur = catePar;
-        catePar = this->m_bufCategory[cateCur]->parentHandle;
-    }
-    return ( cateCur );
+//----------------------------------------------------------------
+//    指定した項目に新しいサブ項目を追加する。
+//
+
+CategoryHandle
+CategoryManager::insertNewCategory(
+        const  CategoryHandle   cateParent,
+        System::String ^        cateName,
+        const  CategoryFlags    cateFlags,
+        const  DateSerial       startDate,
+        DecimalCurrency ^       startBalance)
+{
+    const   CategoryHandle  retVal  = this->m_ptrObj->insertNewCategory(
+                cateParent,
+                marshal_as<std::string>(cateName),
+                static_cast<CoreCategoryFlags>(cateFlags),
+                startDate,
+                startBalance->toNativeInstance() );
+    return ( retVal );
+}
+
+//----------------------------------------------------------------
+//    ルート項目データ用の領域を確保する。
+//
+
+CategoryHandle
+CategoryManager::reserveRootCategories(
+        const   CategoryHandle  numRoot)
+{
+    const   CategoryHandle  retVal
+        = this->m_ptrObj->reserveRootCategories(numRoot);
+    return ( retVal );
+}
+
+//----------------------------------------------------------------
+//    ルート項目のデータを設定する。
+//
+
+CategoryHandle
+CategoryManager::setupRootCategory(
+        const  CategoryHandle   cateHandle,
+        System::String ^        cateName,
+        const  CategoryFlags    cateFlags,
+        const  DateSerial       startDate,
+        DecimalCurrency ^       startBalance)
+{
+    const   CategoryHandle  retVal  = this->m_ptrObj->setupRootCategory(
+                cateHandle,
+                marshal_as<std::string>(cateName),
+                static_cast<CoreCategoryFlags>(cateFlags),
+                startDate,
+                startBalance->toNativeInstance() );
+    return ( retVal );
 }
 
 //========================================================================
@@ -120,13 +189,95 @@ CategoryManager::getRootCategoryHandle(
 //
 
 //----------------------------------------------------------------
+//    項目データを取得する。
+//
+
+BookCategory^
+CategoryManager::getBookCategory(
+        const   CategoryHandle  hCate)
+{
+    CoreBookCategory  & cbc = this->m_ptrObj->getBookCategory(hCate);
+    BookCategory      ^ wbc = gcnew BookCategory(&cbc, this->m_ptrObj);
+    return ( wbc );
+}
+
+//----------------------------------------------------------------
+//    項目データを取得する。
+//
+
+const   CategoryManager::CoreBookCategory  &
+CategoryManager::getRawBookCategory(
+        const   CategoryHandle  hCate)
+{
+    return ( this->m_ptrObj->getBookCategory(hCate) );
+}
+
+//========================================================================
+//
+//    Properties.
+//
+
+//----------------------------------------------------------------
+//    項目データを取得する
+//  （デフォルトプロパティ）。
+//
+
+BookCategory ^
+CategoryManager::default::get(CategoryHandle hCate)
+{
+    return ( getBookCategory(hCate) );
+}
+
+//----------------------------------------------------------------
 //    項目用のバッファのサイズを得る。
 //
 
 CategoryHandle
-CategoryManager::getBufferCapacity()
+CategoryManager::BufferCapacity::get()
 {
-    return ( this->m_cateBufferSize );
+    return ( this->m_ptrObj->getBufferCapacity() );
+}
+
+//----------------------------------------------------------------
+//    内税項目のハンドル。
+//
+
+CategoryHandle
+CategoryManager::InnerTaxHandle::get()
+{
+    return ( this->m_ptrObj->getInnerTaxCategoryHandle() );
+}
+
+void
+CategoryManager::InnerTaxHandle::set(CategoryHandle hCate)
+{
+    this->m_ptrObj->setInnerTaxCategoryHandle(hCate);
+}
+
+//----------------------------------------------------------------
+//    項目データを取得する。
+//
+
+BookCategory ^
+CategoryManager::Items::get(CategoryHandle hCate)
+{
+    return ( getBookCategory(hCate) );
+}
+
+//----------------------------------------------------------------
+//    外税項目のハンドル。
+//
+
+CategoryHandle
+CategoryManager::OuterTaxHandle::get()
+{
+    return ( this->m_ptrObj->getOuterTaxCategoryHandle() );
+}
+
+void
+CategoryManager::OuterTaxHandle::set(CategoryHandle hCate)
+{
+    this->m_ptrObj->setOuterTaxCategoryHandle(hCate);
 }
 
 //----------------------------------------------------------------
@@ -134,9 +285,9 @@ CategoryManager::getBufferCapacity()
 //
 
 CategoryHandle
-CategoryManager::getRegisteredCategoryCount()
+CategoryManager::RegisteredCategoryCount::get()
 {
-    return ( this->m_numUsedCategory );
+    return ( this->m_ptrObj->getRegisteredCategoryCount() );
 }
 
 //----------------------------------------------------------------
@@ -144,15 +295,10 @@ CategoryManager::getRegisteredCategoryCount()
 //
 
 CategoryHandle
-CategoryManager::getRootCategoryCount()
+CategoryManager::RootCategoryCount::get()
 {
-    return ( this->m_numRootCategory );
+    return ( this->m_ptrObj->getRootCategoryCount() );
 }
-
-//========================================================================
-//
-//    Properties.
-//
 
 //========================================================================
 //

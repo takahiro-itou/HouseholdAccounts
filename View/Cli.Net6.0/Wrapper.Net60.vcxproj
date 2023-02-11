@@ -72,19 +72,16 @@
 
   <PropertyGroup>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
 
   <ItemDefinitionGroup>
@@ -136,6 +133,7 @@
 
     <ClInclude Include="..\Wrapper\Common\AccountsConst.h" />
     <ClInclude Include="..\Wrapper\Common\AccountsTypes.h" />
+    <ClInclude Include="..\Wrapper\Common\ArrayUtils.h" />
     <ClInclude Include="..\Wrapper\Common\DecimalCurrency.h" />
     <ClInclude Include="..\Wrapper\Common\FilePathUtils.h" />
     <ClInclude Include="..\Wrapper\Common\ManagedDate.h" />
@@ -149,7 +147,6 @@
     <ClInclude Include="..\Wrapper\Interface\AccountBook.h" />
     <ClInclude Include="..\Wrapper\Interface\AggregateData.h" />
     <ClInclude Include="..\Wrapper\Interface\AnnualRecords.h" />
-    <ClInclude Include="..\Wrapper\Interface\BookItem.h" />
     <ClInclude Include="..\Wrapper\Interface\Receipt.h" />
   </ItemGroup>
 
@@ -173,7 +170,6 @@
     <ClCompile Include="..\Wrapper\Interface\AccountBook.cpp" />
     <ClCompile Include="..\Wrapper\Interface\AggregateData.cpp" />
     <ClCompile Include="..\Wrapper\Interface\AnnualRecords.cpp" />
-    <ClCompile Include="..\Wrapper\Interface\BookItem.cpp" />
     <ClCompile Include="..\Wrapper\Interface\Receipt.cpp" />
   </ItemGroup>
 

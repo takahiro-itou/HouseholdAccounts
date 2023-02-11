@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -37,6 +37,53 @@ namespace  {
 //
 //    Constructor(s) and Destructor.
 //
+
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （デフォルトコンストラクタ）。
+//
+
+AccountBook::AccountBook()
+    : bEnabled(false),
+      sTempFileDir(nullptr),
+      utSettingsStringTable(),
+      utRecordsStringTable(),
+      nStartYear(0),
+      nStartDayIndex(0),
+      nNumYears(0),
+      utStartDate(),
+      nCurrentYear(0),
+      nNumWeeks(0),
+      utAnnualRecords(),
+      nStartWeekday(0),
+      nPreviousDays(0),
+      m_cateManager(nullptr),
+      m_cateBufferSize(0)
+{
+    this->m_cateManager = gcnew Documents::CategoryManager ();
+}
+
+//----------------------------------------------------------------
+//    インスタンスを破棄する。
+//  （デストラクタ）。
+//
+
+AccountBook::~AccountBook()
+{
+    //  マネージドリソースを破棄する。              //
+
+    //  続いて、アンマネージドリソースも破棄する。  //
+    this->!AccountBook();
+}
+
+//----------------------------------------------------------------
+//    アンマネージドリソースを破棄する。
+//  （ファイナライザ）。
+//
+
+AccountBook::!AccountBook()
+{
+}
 
 //========================================================================
 //
@@ -89,18 +136,22 @@ AccountBook::addDataToItemTotal(
     const  int lngMonth = utDate.nMonth;
     lngYear = utDate.nYear;
 
-    BookItems      % bi = this->utBookItems;
     AnnualRecords  % ar = this->utAnnualRecords;
+
+    Documents::CategoryManager ^ cm = this->BookCategories;
 
     int itemHandle  = lngItemIndex;
     while ( itemHandle >= 0 ) {
-        parentItem  = bi.utItemEntries[itemHandle].nParentHandle;
-        const int flag = (bi.nFlags[itemHandle]);
-        if ( flag & static_cast<int>(ItemFlag::ITEM_FLAG_NOCOUNT_PARENT) ) {
+        const   HouseholdAccounts::Documents::BookCategory  &
+            cbc = cm->getRawBookCategory(itemHandle);
+        parentItem  = cbc.getParentHandle();
+        const int  flag = static_cast<int>(cbc.getFlags());
+
+        if ( flag & static_cast<int>(Documents::CategoryFlags::CFLAG_NOCOUNT_PARENT) ) {
             blnAddToParent  = false;
             blnAddToRoot    = false;
         }
-        if ( flag & static_cast<int>(ItemFlag::ITEM_FLAG_NOCOUNT_ROOT) ) {
+        if ( flag & static_cast<int>(Documents::CategoryFlags::CFLAG_NOCOUNT_ROOT) ) {
             blnAddToRoot    = false;
         }
         if ( (parentItem == -1) && (blnAddToRoot == false) ) {
@@ -129,92 +180,47 @@ AccountBook::addDataToItemTotal(
 //
 
 int
-AccountBook::allocItemBuffers(
+AccountBook::allocCategoryBuffers(
         const  int  bufSize)
 {
     const  int  startYear = this->nStartYear;
     const  int  numYear = this->nNumYears;
 
     //  バッファをリサイズし、増えた部分の先頭を記録しておく。  //
-    const  int  sizeCur = this->utBookItems.nItemBufferSize;
+    const  int  sizeCur = this->m_cateBufferSize;
     const  int  sizeNew = (bufSize + 15) & ~15;
 
-    this->utBookItems.nItemBufferSize = sizeNew;
-    System::Array::Resize(this->utBookItems.nFlags, sizeNew);
-    System::Array::Resize(this->utBookItems.utItemEntries, sizeNew);
-
+    this->m_cateBufferSize = sizeNew;
     this->utAnnualRecords.reallocBuffers(sizeNew, startYear, numYear);
 
     return ( sizeCur );
 }
 
 //----------------------------------------------------------------
-//    新しい項目用の領域を確保する。
-//
-
-int
-AccountBook::allocNewItem()
-{
-    int iResult = -1;
-
-    //  バッファサイズと登録済み項目数を比較し、    //
-    //  バッファに空きがある場合は、空きを探して    //
-    //  そのハンドル（インデックス）を返す。        //
-    const   BookItems  % bi = this->utBookItems;
-    if ( bi.nRegisteredItemCount < bi.nItemBufferSize ) {
-        for ( int i = bi.nRootItemCount; i < bi.nItemBufferSize; ++ i ) {
-            if ( bi.nFlags[i] == static_cast<int>(ItemFlag::ITEM_FLAG_NOTUSED) )
-            {
-                iResult = i;
-                break;
-            }
-        }
-    }
-
-    if ( iResult >= 0 ){
-        return ( iResult );
-    }
-
-    //  バッファをリサイズし、増えた部分の先頭を確保する。  //
-    return ( allocItemBuffers(bi.nItemBufferSize + 1) );
-}
-
-//----------------------------------------------------------------
 //    指定した項目に新しいサブ項目を追加する。
 //
 
-int
-AccountBook::insertNewItem(
-        const   int         parentItemHandle,
-        System::String^     strName,
-        const   ItemFlag    lngFlags,
-        const   int         startDate,
-        const   int         startBalance)
+CategoryHandle
+AccountBook::insertNewCategory(
+        const  CategoryHandle   cateParent,
+        System::String ^        cateName,
+        const  CategoryFlags    cateFlags,
+        const  DateSerial       startDate,
+        const  int              startBalance)
 {
-    //  新しい項目用のインデックスを取得する。  //
-    const  int  iNewHandle  = allocNewItem();
+    const   CategoryHandle
+        cateNew = this->BookCategories->insertNewCategory(
+                        cateParent, cateName,
+                        static_cast<Documents::CategoryFlags>(cateFlags),
+                        startDate,
+                        Common::DecimalCurrency(startBalance) );
 
-    //  この項目に初期値を書き込む。
-    BookItems  % bi = this->utBookItems;
-    bi.nFlags[iNewHandle]   = static_cast<int>(lngFlags);
+    const   CategoryHandle  bufSize = (this->BookCategories->BufferCapacity);
+    if ( this->m_cateBufferSize < bufSize ) {
+        allocCategoryBuffers(bufSize);
+    }
 
-    BookItemEntry  % entry  = bi.utItemEntries[iNewHandle];
-    entry.nParentHandle = parentItemHandle;
-    entry.sItemName     = strName;
-    entry.nSubItemCount = 0;
-    entry.nStartDate    = startDate;
-    entry.nStartBalance = startBalance;
-
-    ++ bi.nRegisteredItemCount;
-
-    //  親項目の内容を更新する。    //
-    BookItemEntry  % parent = bi.utItemEntries[parentItemHandle];
-    System::Array::Resize(parent.nSubItems, parent.nSubItemCount + 1);
-    parent.nSubItems[parent.nSubItemCount] = iNewHandle;
-    ++ parent.nSubItemCount;
-
-    //  追加した新しい項目のハンドルを返す。    //
-    return ( iNewHandle );
+    return ( cateNew );
 }
 
 //----------------------------------------------------------------
@@ -329,6 +335,16 @@ AccountBook::getStartYear()
 //
 //    Properties.
 //
+
+//----------------------------------------------------------------
+//    項目データを一元管理するインスタンス。
+//
+
+Documents::CategoryManager ^
+AccountBook::BookCategories::get()
+{
+    return ( this->m_cateManager );
+}
 
 //========================================================================
 //

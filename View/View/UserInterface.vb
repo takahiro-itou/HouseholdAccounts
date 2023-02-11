@@ -8,8 +8,8 @@ Module UserInterface
 '
 ' 家計簿のユーザーインターフェイスを管理する
 '
-' Copyright (c) Itou Takahiro, All rights reserved.
-' This file is written in 2006/09/23 - 2008/01/08
+' Copyright (c) 2006 - 2023, Takahiro Itou
+' All rights reserved.
 '*****************************************************************************
 
 '=========================================================================
@@ -38,7 +38,7 @@ Dim flagInvalid As Boolean
     If (False) Then
         lngCount = 32
     Else
-        lngCount = utBook.utBookItems.getRegisteredItemCount()
+        lngCount = utBook.BookCategories.RegisteredCategoryCount()
     End If
 
     With utUI
@@ -144,8 +144,10 @@ Dim blnResult As Boolean
         '選択した項目を閉じたり、開いたりする
         With utBook
             lngIndex = utUI.nNowShowingItems(lngY - BOOKFIXEDROWS)
-            blnExpand = .utBookItems.isItemExpanded(lngIndex)
-            .utBookItems.expandItem(lngIndex, Not (blnExpand))
+            With .BookCategories(lngIndex)
+                blnExpand = .isExpanded()
+                .expandCategory(Not (blnExpand))
+            End With
             blnResult = True
         End With
     End If
@@ -357,7 +359,7 @@ Dim utDayInfo As Wrapper.ParsedDate
             strItemName = ""
         Else
             lngItemIndex = .nNowShowingItems(lngY - BOOKFIXEDROWS)
-            strItemName = utBook.utBookItems.getItemName(lngItemIndex)
+            strItemName = utBook.BookCategories(lngItemIndex).CategoryName
         End If
 
         If (lngX < BOOKFIXEDCOLS) Then
@@ -489,9 +491,9 @@ Dim colorText As Color = Color.Black
 
     'データの個数をチェックする
     With utBook
-        With .utBookItems
-            lngItemCount = .getRegisteredItemCount()
-            lngRootItemCount = .getRootItemCount()
+        With .BookCategories
+            lngItemCount = .RegisteredCategoryCount
+            lngRootItemCount = .RootCategoryCount
         End With
     End With
 
@@ -777,12 +779,12 @@ Private Sub UserInterfaceShowData(
 '家計簿の内容のlngRootItem で示されるノードのアイテムを描画する。
 '---------------------------------------------------------------------
 Dim X As Integer
-Dim lngType As Integer
 Dim lngYearIndex As Integer, lngDate As Integer, lngDayTotal As Integer
 Dim lngWeekTotal As Integer, lngMonthTotal As Integer, lngYearTotal As Integer
 Dim strText As String
 Dim lngTextColor As Color, lngCellColor As Color
 Dim utDate As Wrapper.ParsedDate
+Dim lngType As Wrapper.Documents.CategoryFlags
 
     'この項目以下の合計を表示する
     UserInterfaceDrawCell(utUI, _
@@ -830,7 +832,7 @@ Dim utDate As Wrapper.ParsedDate
                     1, 1)
         Next X
 
-        lngType = .utBookItems.getItemType(lngRootItem)
+        lngType = .BookCategories.getCategoryType(lngRootItem)
         With .utAnnualRecords
             lngWeekTotal = .getItemWeekTotal(lngRootItem, lngWeek)
             lngMonthTotal = .getItemMonthTotal(lngRootItem, lngMonth)
@@ -839,7 +841,7 @@ Dim utDate As Wrapper.ParsedDate
     End With
 
     '週計
-    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngWeekTotal = 0) Then
+    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Or (lngWeekTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngWeekTotal, "#,##0")
@@ -853,7 +855,7 @@ Dim utDate As Wrapper.ParsedDate
             1, 1)
 
     '月計
-    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngMonthTotal = 0) Then
+    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Or (lngMonthTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngMonthTotal, "#,##0")
@@ -867,7 +869,7 @@ Dim utDate As Wrapper.ParsedDate
             1, 1)
 
     '年計
-    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Or (lngYearTotal = 0) Then
+    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Or (lngYearTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngYearTotal, "#,##0")
@@ -932,13 +934,15 @@ Dim lngIcon As Integer
 Dim lngColor As Color
 Dim strName As String
 Dim blnExpand As Boolean
+Dim rootCategory As Wrapper.Documents.BookCategory
 
     With utBook
-        With .utBookItems
-            strName = .getItemName(lngRootItem)
-            lngType = .getItemType(lngRootItem)
-            blnExpand = .isItemExpanded(lngRootItem)
-            lngCount = .getSubItemCount(lngRootItem)
+        rootCategory = .BookCategories(lngRootItem)
+        With rootCategory
+            strName = .CategoryName
+            lngType = .getCategoryType()
+            blnExpand = .isExpanded()
+            lngCount = .NumSubCategories
         End With
     End With
 
@@ -964,7 +968,7 @@ Dim blnExpand As Boolean
 
     'この項目を表示する
     lngResult = 1
-    If (lngType = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
+    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Then
         '残高
         UserInterfaceShowData(utUI, utBook,
             lngDepth, lngIcon, ACRIGHT,
@@ -988,7 +992,7 @@ Dim blnExpand As Boolean
         'この項目を展開し、サブアイテムも表示する
         lngTop = lngTop + 1
         For i = 0 To lngCount - 1
-            lngSubItem = utBook.utBookItems.getSubItemHandle(lngRootItem, i)
+            lngSubItem = rootCategory.SubCategory(i)
             lngInc = UserInterfaceShowItem(utUI, utBook,
                lngDepth + 1, lngTop, lngSubItem, lngYear, lngMonth, lngWeek)
             lngTop = lngTop + lngInc
