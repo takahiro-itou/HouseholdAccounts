@@ -230,6 +230,16 @@ public:
 //
 public:
 
+    //----------------------------------------------------------------
+    /**   項目データを一元管理するインスタンス。
+    **
+    **/
+    property    Documents::CategoryManager ^
+    BookCategories
+    {
+        Documents::CategoryManager ^    get();
+    }
+
     /**   家計簿データが有効か。    **/
     System::Boolean     bEnabled;
 
@@ -252,8 +262,6 @@ public:
     int     nNumYears;
 
     ParsedDate  utStartDate;
-
-    Documents::CategoryManager ^    BookCategories;
 
     /**   一年分ずつバッファに記憶する。    **/
     int         nCurrentYear;
@@ -287,7 +295,10 @@ public:
 private:
 
     /**   項目用バッファサイズ。    **/
-    CategoryHandle      m_cateBufferSize;
+    CategoryHandle                  m_cateBufferSize;
+
+    /**   項目データ。              **/
+    Documents::CategoryManager ^    m_cateManager;
 
 };
 

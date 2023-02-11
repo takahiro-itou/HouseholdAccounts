@@ -57,9 +57,10 @@ AccountBook::AccountBook()
       utAnnualRecords(),
       nStartWeekday(0),
       nPreviousDays(0),
+      m_cateManager(nullptr),
       m_cateBufferSize(0)
 {
-    this->BookCategories    = gcnew Documents::CategoryManager ();
+    this->m_cateManager = gcnew Documents::CategoryManager ();
 }
 
 //----------------------------------------------------------------
@@ -334,6 +335,16 @@ AccountBook::getStartYear()
 //
 //    Properties.
 //
+
+//----------------------------------------------------------------
+//    項目データを一元管理するインスタンス。
+//
+
+Documents::CategoryManager ^
+AccountBook::BookCategories::get()
+{
+    return ( this->m_cateManager );
+}
 
 //========================================================================
 //
