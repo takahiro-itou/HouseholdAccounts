@@ -434,11 +434,6 @@ Dim bookCates As Wrapper.Documents.CategoryManager
         .nCurrentYear = lngYear
         lngYearIndex = lngYear - .nStartYear
         lngItemBufferSize = .BookCategories.BufferCapacity
-
-        'すべての項目のフラグを取り出す
-        With .utBookItems
-'            lngItemFlags = .nFlags
-        End With
         bookCates = .BookCategories
     End With
 

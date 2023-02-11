@@ -254,8 +254,6 @@ public:
 
     ParsedDate  utStartDate;
 
-    BookItems   utBookItems;
-
     Documents::CategoryManager ^    BookCategories;
 
     /**   一年分ずつバッファに記憶する。    **/
