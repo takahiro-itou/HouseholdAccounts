@@ -146,11 +146,11 @@ AccountBook::addDataToItemTotal(
         parentItem  = cbc.getParentHandle();
         const int  flag = static_cast<int>(cbc.getFlags());
 
-        if ( flag & static_cast<int>(ItemFlag::ITEM_FLAG_NOCOUNT_PARENT) ) {
+        if ( flag & static_cast<int>(Documents::CategoryFlags::CFLAG_NOCOUNT_PARENT) ) {
             blnAddToParent  = false;
             blnAddToRoot    = false;
         }
-        if ( flag & static_cast<int>(ItemFlag::ITEM_FLAG_NOCOUNT_ROOT) ) {
+        if ( flag & static_cast<int>(Documents::CategoryFlags::CFLAG_NOCOUNT_ROOT) ) {
             blnAddToRoot    = false;
         }
         if ( (parentItem == -1) && (blnAddToRoot == false) ) {

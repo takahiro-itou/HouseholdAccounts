@@ -27,7 +27,6 @@
 #include    "Account/Common/AccountsTypes.h"
 
 #include    "AnnualRecords.h"
-#include    "BookItem.h"
 #include    "Wrapper/Common/ManagedDate.h"
 #include    "Wrapper/Common/StringTable.h"
 #include    "Wrapper/Documents/CategoryManager.h"
