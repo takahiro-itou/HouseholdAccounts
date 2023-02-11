@@ -225,6 +225,21 @@ AccountBook::allocNewItem()
 //    指定した項目に新しいサブ項目を追加する。
 //
 
+CategoryHandle
+AccountBook::insertNewCategory(
+        const  CategoryHandle   cateParent,
+        System::String ^        cateName,
+        const  CategoryFlags    cateFlags,
+        const  DateSerial       startDate,
+        const  int              startBalance)
+{
+    return ( 0 );
+}
+
+//----------------------------------------------------------------
+//    指定した項目に新しいサブ項目を追加する。
+//
+
 int
 AccountBook::insertNewItem(
         const   int         parentItemHandle,
