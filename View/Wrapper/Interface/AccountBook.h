@@ -126,7 +126,7 @@ public:
     **  @return     増えた部分の先頭のインデックス。
     **/
     int
-    allocItemBuffers(
+    allocCategoryBuffers(
             const  int  bufSize);
 
     //----------------------------------------------------------------

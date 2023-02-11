@@ -135,7 +135,6 @@ AccountBook::addDataToItemTotal(
     const  int lngMonth = utDate.nMonth;
     lngYear = utDate.nYear;
 
-    BookItems      % bi = this->utBookItems;
     AnnualRecords  % ar = this->utAnnualRecords;
 
     Documents::CategoryManager ^ cm = this->BookCategories;
@@ -180,7 +179,7 @@ AccountBook::addDataToItemTotal(
 //
 
 int
-AccountBook::allocItemBuffers(
+AccountBook::allocCategoryBuffers(
         const  int  bufSize)
 {
     const  int  startYear = this->nStartYear;
@@ -217,7 +216,7 @@ AccountBook::insertNewCategory(
 
     const   CategoryHandle  bufSize = (this->BookCategories->BufferCapacity);
     if ( this->m_cateBufferSize < bufSize ) {
-        allocItemBuffers(bufSize);
+        allocCategoryBuffers(bufSize);
     }
 
     return ( cateNew );
