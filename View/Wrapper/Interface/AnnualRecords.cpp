@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -115,13 +115,15 @@ AnnualRecords::recountAnnualRecords(
         const  int  lngYear,
         const  int  numDays)
 {
+    typedef     Documents::CategoryFlags    CategoryFlags;
+
     int dayIndexStart, dayIndexEnd;
 
     //  初期値を書き込む。  //
     for ( int i = 0; i < itemBufferSize; ++ i ) {
-        ItemFlag flag = static_cast<ItemFlag>(lngItemFlags[i]);
-        if ( (flag & ItemFlag::ITEM_FLAG_TYPEMASK)
-                == ItemFlag::ITEM_FLAG_BALANCE )
+        CategoryFlags flag = static_cast<CategoryFlags>(lngItemFlags[i]);
+        if ( (flag & CategoryFlags::CTYPE_MASK)
+                == CategoryFlags::CTYPE_BALANCE )
         {
             this->m_itemDetailCount[i].nDayTotal[0]
                     = this->m_itemAnnualCount[i].nStartValues[lngYear];
@@ -134,9 +136,9 @@ AnnualRecords::recountAnnualRecords(
     //  全てのレシートを集計する。  //
     for ( int trgDate = 0; trgDate < numDays; ++ trgDate ) {
         for ( int i = 0; i < itemBufferSize; ++ i ) {
-            ItemFlag flag = static_cast<ItemFlag>(lngItemFlags[i]);
-            if ( (flag & ItemFlag::ITEM_FLAG_TYPEMASK)
-                    == ItemFlag::ITEM_FLAG_BALANCE )
+            CategoryFlags flag = static_cast<CategoryFlags>(lngItemFlags[i]);
+            if ( (flag & CategoryFlags::CTYPE_MASK)
+                    == CategoryFlags::CTYPE_BALANCE )
             {
             } else {
                 this->m_itemDetailCount[i].nDayTotal[trgDate] = 0;
