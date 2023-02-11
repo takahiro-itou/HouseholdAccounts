@@ -8,6 +8,7 @@ TESTS                   =  \
         BookCategoryTest       \
         BookDocumentTest       \
         CategoryManagerTest    \
+        StringTableTest        \
         ${EXTRATESTS}
 ##
 ##    Test Configurations.
@@ -35,4 +36,5 @@ TEST_LDFLAGS_COMMON         +=
 BookCategoryTest_SOURCES     =  BookCategoryTest.cpp
 BookDocumentTest_SOURCES     =  BookDocumentTest.cpp
 CategoryManagerTest_SOURCES  =  CategoryManagerTest.cpp
+StringTableTest_SOURCES      =  StringTableTest.cpp
 
