@@ -8,14 +8,14 @@ Module AccountBook
 '
 ' 家計簿を管理する
 '
-' Copyright (c) Itou Takahiro, All rights reserved.
-' This file is written in 2006/09/23 - 2008/01/09
+' Copyright (c) 2006 - 2023, Takahiro Itou
+' All rights reserved.
 '*****************************************************************************
 
 Public gutTempBook As Wrapper.AccountBook
 
 Public Function AccountBookUpdateItemHandleInYearRecord(
-        ByRef lpBookItems As Wrapper.BookItems,
+        ByRef lpBookItems As Wrapper.Documents.CategoryManager,
         ByRef lpNewIndex() As Integer,
         ByRef utYearRecord As Wrapper.AnnualRecords) As Integer
 '---------------------------------------------------------------------
@@ -30,7 +30,7 @@ Dim lngDay As Integer
 'Dim utAnnualCounts() As tBookItemAnnualCounts
 Dim utDetailCounts() As Wrapper.BookItemDetailCounts
 
-    lngBufferSize = lpBookItems.nItemBufferSize
+    lngBufferSize = lpBookItems.BufferCapacity
 
     With utYearRecord
         '項目毎の集計データを更新する
@@ -53,7 +53,7 @@ Dim utDetailCounts() As Wrapper.BookItemDetailCounts
                     With .utGoods(j)
                         lngNew = lpNewIndex(.nItemType)
                         .nItemType = lngNew
-                        .nRootItemType = lpBookItems.getRootItemHandle(lngNew)
+                        .nRootItemType = lpBookItems.getRootCategoryHandle(lngNew)
                     End With
                     Next j
                 End If
