@@ -423,10 +423,11 @@ Public Sub Recount(
 '---------------------------------------------------------------------
 Dim i As Integer, lngItemBufferSize As Integer
 Dim lngYearIndex As Integer, lngDate As Integer
-Dim lngType As Integer, lngSubCount As Integer
+Dim lngSubCount As Integer
 Dim lngValue As Integer
 Dim lngStartDayIndex As Integer, lngEndDayIndex As Integer
 Dim blnResult As Boolean
+Dim lngType As Wrapper.Documents.CategoryFlags
 Dim bookCates As Wrapper.Documents.CategoryManager
 
     With utBook
@@ -502,7 +503,7 @@ Dim bookCates As Wrapper.Documents.CategoryManager
 
             'この日の残高を次の日の残高にコピーする
             For i = 0 To lngItemBufferSize - 1
-                If ((bookCates(i).Flags And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
+                If ((bookCates(i).Flags And Wrapper.Documents.CategoryFlags.CTYPE_MASK) = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Then
                     With .utItemDetailCounts(i)
                         .nDayTotal(lngDate + 1) = .nDayTotal(lngDate)
                     End With
