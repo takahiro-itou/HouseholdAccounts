@@ -13,28 +13,28 @@
 *************************************************************************/
 
 /**
-**      An Implementation of Test Case 'HouseholdAccountsSettings'.
+**      An Implementation of Test Case 'AccountsProject'.
 **
-**      @file       Common/Tests/HouseholdAccountsSettingsTest.cpp
+**      @file       Common/Tests/AccountsProjectTest.cpp
 **/
 
 #include    "TestDriver.h"
-#include    "Account/Common/HouseholdAccountsSettings.h"
+#include    "Account/Common/AccountsProject.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
 //========================================================================
 //
-//    HouseholdAccountsSettingsTest  class.
+//    AccountsProjectTest  class.
 //
 /**
-**    クラス HouseholdAccountsSettings  の単体テスト。
+**    クラス AccountsProject  の単体テスト。
 **/
 
-class  HouseholdAccountsSettingsTest : public  TestFixture
+class  AccountsProjectTest : public  TestFixture
 {
-    CPPUNIT_TEST_SUITE(HouseholdAccountsSettingsTest);
+    CPPUNIT_TEST_SUITE(AccountsProjectTest);
     CPPUNIT_TEST(testNameSpace);
     CPPUNIT_TEST_SUITE_END();
 
@@ -46,14 +46,14 @@ private:
     void  testNameSpace();
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION( HouseholdAccountsSettingsTest );
+CPPUNIT_TEST_SUITE_REGISTRATION( AccountsProjectTest );
 
 //========================================================================
 //
 //    Tests.
 //
 
-void  HouseholdAccountsSettingsTest::testNameSpace()
+void  AccountsProjectTest::testNameSpace()
 {
     return;
 }

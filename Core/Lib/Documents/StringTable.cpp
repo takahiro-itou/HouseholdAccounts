@@ -18,6 +18,8 @@
 **      @file       Documents/StringTable.cpp
 **/
 
+#include    "Account/pch/PreCompile.h"
+
 #include    "Account/Documents/StringTable.h"
 
 

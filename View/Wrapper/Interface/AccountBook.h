@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -23,12 +23,14 @@
 
 #pragma     once
 
+
 #include    "Account/Common/AccountsTypes.h"
 
 #include    "AnnualRecords.h"
-#include    "BookItem.h"
 #include    "Wrapper/Common/ManagedDate.h"
 #include    "Wrapper/Common/StringTable.h"
+#include    "Wrapper/Documents/CategoryManager.h"
+
 
 namespace  Wrapper  {
 
@@ -42,17 +44,42 @@ namespace  Wrapper  {
 **    AccountBook  class.
 **/
 
-public value struct AccountBook
+public ref  class  AccountBook
 {
 //========================================================================
 //
 //    Internal Type Definitions.
 //
+private:
+
+    typedef     Documents::CategoryFlags        CategoryFlags;
 
 //========================================================================
 //
 //    Constructor(s) and Destructor.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （デフォルトコンストラクタ）。
+    **
+    **/
+    AccountBook();
+
+    //----------------------------------------------------------------
+    /**   インスタンスを破棄する。
+    **  （デストラクタ）。
+    **
+    **/
+    ~AccountBook();
+
+    //----------------------------------------------------------------
+    /**   アンマネージドリソースを破棄する。
+    **  （ファイナライザ）。
+    **
+    **/
+    !AccountBook();
 
 //========================================================================
 //
@@ -98,34 +125,26 @@ public:
     **  @return     増えた部分の先頭のインデックス。
     **/
     int
-    allocItemBuffers(
+    allocCategoryBuffers(
             const  int  bufSize);
-
-    //----------------------------------------------------------------
-    /**   新しい項目用の領域を確保する。
-    **
-    **  @return     新しい項目用のハンドル。
-    **/
-    int
-    allocNewItem();
 
     //----------------------------------------------------------------
     /**   指定した項目に新しいサブ項目を追加する。
     **
-    **  @param [in] parentItemHandle    親項目のハンドル。
-    **  @param [in] strName             項目名。
-    **  @param [in] lngFlags            項目フラグ。
-    **  @param [in] startDate           開始日。
-    **  @param [in] startBalance        開始時金額。
+    **  @param [in] cateParent      親項目のハンドル。
+    **  @param [in] cateName        項目名。
+    **  @param [in] cateFlags       項目フラグ。
+    **  @param [in] startDate       開始日。
+    **  @param [in] startBalance    開始時金額。
     **  @return     追加した項目のハンドル。
     **/
-    int
-    insertNewItem(
-            const   int         parentItemHandle,
-            System::String^     strName,
-            const   ItemFlag    lngFlags,
-            const   int         startDate,
-            const   int         startBalance);
+    CategoryHandle
+    insertNewCategory(
+            const  CategoryHandle   cateParent,
+            System::String ^        cateName,
+            const  CategoryFlags    cateFlags,
+            const  DateSerial       startDate,
+            const  int              startBalance);
 
     //----------------------------------------------------------------
     /**   指定した日付が、家計簿の開始日より前か調べる。
@@ -211,6 +230,16 @@ public:
 //
 public:
 
+    //----------------------------------------------------------------
+    /**   項目データを一元管理するインスタンス。
+    **
+    **/
+    property    Documents::CategoryManager ^
+    BookCategories
+    {
+        Documents::CategoryManager ^    get();
+    }
+
     /**   家計簿データが有効か。    **/
     System::Boolean     bEnabled;
 
@@ -233,8 +262,6 @@ public:
     int     nNumYears;
 
     ParsedDate  utStartDate;
-
-    BookItems   utBookItems;
 
     /**   一年分ずつバッファに記憶する。    **/
     int         nCurrentYear;
@@ -265,6 +292,13 @@ public:
 //
 //    Member Variables.
 //
+private:
+
+    /**   項目用バッファサイズ。    **/
+    CategoryHandle                  m_cateBufferSize;
+
+    /**   項目データ。              **/
+    Documents::CategoryManager ^    m_cateManager;
 
 };
 

@@ -8,14 +8,14 @@ Module AccountBook
 '
 ' 家計簿を管理する
 '
-' Copyright (c) Itou Takahiro, All rights reserved.
-' This file is written in 2006/09/23 - 2008/01/09
+' Copyright (c) 2006 - 2023, Takahiro Itou
+' All rights reserved.
 '*****************************************************************************
 
 Public gutTempBook As Wrapper.AccountBook
 
 Public Function AccountBookUpdateItemHandleInYearRecord(
-        ByRef lpBookItems As Wrapper.BookItems,
+        ByRef lpBookItems As Wrapper.Documents.CategoryManager,
         ByRef lpNewIndex() As Integer,
         ByRef utYearRecord As Wrapper.AnnualRecords) As Integer
 '---------------------------------------------------------------------
@@ -30,7 +30,7 @@ Dim lngDay As Integer
 'Dim utAnnualCounts() As tBookItemAnnualCounts
 Dim utDetailCounts() As Wrapper.BookItemDetailCounts
 
-    lngBufferSize = lpBookItems.nItemBufferSize
+    lngBufferSize = lpBookItems.BufferCapacity
 
     With utYearRecord
         '項目毎の集計データを更新する
@@ -53,7 +53,7 @@ Dim utDetailCounts() As Wrapper.BookItemDetailCounts
                     With .utGoods(j)
                         lngNew = lpNewIndex(.nItemType)
                         .nItemType = lngNew
-                        .nRootItemType = lpBookItems.getRootItemHandle(lngNew)
+                        .nRootItemType = lpBookItems.getRootCategoryHandle(lngNew)
                     End With
                     Next j
                 End If
@@ -403,7 +403,7 @@ Dim strTempFileName As String
     With utBook
         'テンポラリファイルを開く
         strTempFileName = .sTempFileDir & "\." & Trim$(Str$(lngYear))
-        lngItemBufferSize = .utBookItems.getItemBufferSize()
+        lngItemBufferSize = .BookCategories.BufferCapacity()
         lngTempFileNumber = OpenTemporaryFile(strTempFileName, False)
 
         'データを読み込む
@@ -423,27 +423,24 @@ Public Sub Recount(
 '---------------------------------------------------------------------
 Dim i As Integer, lngItemBufferSize As Integer
 Dim lngYearIndex As Integer, lngDate As Integer
-Dim lngType As Integer, lngSubCount As Integer
+Dim lngSubCount As Integer
 Dim lngValue As Integer
 Dim lngStartDayIndex As Integer, lngEndDayIndex As Integer
-Dim lngItemFlags() As Integer
 Dim blnResult As Boolean
+Dim bcType As Wrapper.Documents.CategoryFlags
+Dim bookCates As Wrapper.Documents.CategoryManager
 
     With utBook
         .nCurrentYear = lngYear
         lngYearIndex = lngYear - .nStartYear
-
-        'すべての項目のフラグを取り出す
-        With .utBookItems
-            lngItemBufferSize = .nItemBufferSize
-            lngItemFlags = .nFlags
-        End With
+        lngItemBufferSize = .BookCategories.BufferCapacity
+        bookCates = .BookCategories
     End With
 
     '初期値を書き込む
     With utBook.utAnnualRecords
         For i = 0 To lngItemBufferSize - 1
-            If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
+            If ((bookCates(i).Flags And Wrapper.Documents.CategoryFlags.CTYPE_MASK) = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Then
                 .utItemDetailCounts(i).nDayTotal(0) = .utItemAnnualCounts(i).nStartValues(lngYearIndex)
             End If
         Next i
@@ -456,7 +453,7 @@ Dim blnResult As Boolean
         For lngDate = 0 To utBook.nNumWeeks * NUMDAYSPERWEEK - 1
             'バッファをクリアする
             For i = 0 To lngItemBufferSize - 1
-                If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
+                If ((bookCates(i).Flags And Wrapper.Documents.CategoryFlags.CTYPE_MASK) = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Then
 
                 Else
                     .utItemDetailCounts(i).nDayTotal(lngDate) = 0
@@ -468,11 +465,11 @@ Dim blnResult As Boolean
             Else
                 'データを書き込む
                 For i = 0 To lngItemBufferSize - 1
-                    lngSubCount = utBook.utBookItems.utItemEntries(i).nSubItemCount
-                    If ((lngItemFlags(i) <> Wrapper.ItemFlag.ITEM_FLAG_NOTUSED) And (lngSubCount = 0)) Then
-                        lngType = utBook.utBookItems.getItemType(i)
+                    lngSubCount = bookCates(i).NumSubCategories
+                    If ((bookCates(i).Flags <> Wrapper.Documents.CategoryFlags.CTYPE_NOTUSED) And (lngSubCount = 0)) Then
+                        bcType = bookCates.getCategoryType(i)
 
-                        If (lngType = Wrapper.ItemFlag.ITEM_FLAG_INCOME) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_WITHDRAW) Then
+                        If (bcType = Wrapper.Documents.CategoryFlags.CTYPE_INCOME) Or (bcType = Wrapper.Documents.CategoryFlags.CTYPE_BANK_WITHDRAW) Then
                             If (Int(Rnd * 100) < 0) Then
                                 lngValue = Int(Rnd * 11500)
 
@@ -483,7 +480,7 @@ Dim blnResult As Boolean
                                     utBook.addDataToItemTotal(lngYearIndex, lngDate, 3, lngValue)
                                 End If
                             End If
-                        ElseIf (lngType = Wrapper.ItemFlag.ITEM_FLAG_OUTLAY) Or (lngType = Wrapper.ItemFlag.ITEM_FLAG_BANK_DEPOSIT) Then
+                        ElseIf (bcType = Wrapper.Documents.CategoryFlags.CTYPE_OUTLAY) Or (bcType = Wrapper.Documents.CategoryFlags.CTYPE_BANK_DEPOSIT) Then
                             If (Int(Rnd * 100) < 0) Then
                                 lngValue = Int(Rnd * 1000)
 
@@ -501,7 +498,7 @@ Dim blnResult As Boolean
 
             'この日の残高を次の日の残高にコピーする
             For i = 0 To lngItemBufferSize - 1
-                If ((lngItemFlags(i) And Wrapper.ItemFlag.ITEM_FLAG_TYPEMASK) = Wrapper.ItemFlag.ITEM_FLAG_BALANCE) Then
+                If ((bookCates(i).Flags And Wrapper.Documents.CategoryFlags.CTYPE_MASK) = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Then
                     With .utItemDetailCounts(i)
                         .nDayTotal(lngDate + 1) = .nDayTotal(lngDate)
                     End With
@@ -780,7 +777,7 @@ Dim strTempDir As String, strTempFileName As String
 
         'テンポラリファイルを開く
         strTempFileName = strTempDir & "\.common"
-        lngItemBufferSize = .utBookItems.getItemBufferSize()
+        lngItemBufferSize = .BookCategories.BufferCapacity()
         lngTempFileNumber = OpenTemporaryFile(strTempFileName, True)
 
         'データを書き込む
@@ -824,7 +821,7 @@ Dim blnResult As Boolean
 
         'テンポラリファイルを開く
         strTempFileName = strTempDir & "\." & Trim$(Str$(lngYear))
-        lngItemBufferSize = .utBookItems.getItemBufferSize()
+        lngItemBufferSize = .BookCategories.BufferCapacity()
         lngTempFileNumber = OpenTemporaryFile(strTempFileName, True)
 
         'データを書き込む

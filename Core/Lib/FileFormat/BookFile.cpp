@@ -18,6 +18,8 @@
 **      @file       FileFormat/BookFile.cpp
 **/
 
+#include    "Account/pch/PreCompile.h"
+
 #include    "Account/FileFormat/BookFile.h"
 
 
@@ -89,7 +91,7 @@ BookFile::readFromTextStream(
         std::istream            &inStr,
         Documents::BookDocument *ptrDoc)
 {
-    return ( ERR_FAILURE );
+    return ( ErrCode::FAILURE );
 }
 
 //----------------------------------------------------------------
@@ -101,7 +103,7 @@ BookFile::saveToTextStream(
         const   Documents::BookDocument &objDoc,
         std::ostream                    &outStr)
 {
-    return ( ERR_FAILURE );
+    return ( ErrCode::FAILURE );
 }
 
 //========================================================================

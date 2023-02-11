@@ -37,11 +37,16 @@ DIST_NOINST_HEADER_FILES    =  \
         ${EXTRA_NOINST_HEADER_FILES}
 
 INCLIB_HEADER_FILES         =  \
-        ${INCLIB_SOURCE_DIR}/AccountsTypes.h              \
-        ${INCLIB_SOURCE_DIR}/BookInterface.h              \
-        ${INCLIB_SOURCE_DIR}/DecimalCurrency.h            \
-        ${INCLIB_SOURCE_DIR}/HouseholdAccountsSettings.h  \
-        ${INCLIB_SOURCE_DIR}/TextParser.h                 \
+        ${INCLIB_SOURCE_DIR}/AccountsProject.h      \
+        ${INCLIB_SOURCE_DIR}/AccountsTypes.h        \
+        ${INCLIB_SOURCE_DIR}/BookInterface.h        \
+        ${INCLIB_SOURCE_DIR}/DecimalCurrency.h      \
+        ${INCLIB_SOURCE_DIR}/EnumBitFlag.h          \
+        ${INCLIB_SOURCE_DIR}/StrictTypes.h          \
+        ${INCLIB_SOURCE_DIR}/StrictTypes.inl        \
+        ${INCLIB_SOURCE_DIR}/StrictVector.h         \
+        ${INCLIB_SOURCE_DIR}/StrictVector.inl       \
+        ${INCLIB_SOURCE_DIR}/TextParser.h           \
         ${EXTRA_LIBRARY_HEADER_FILES}
 
 INCLIB_NODIST_HEADER_FILES  =

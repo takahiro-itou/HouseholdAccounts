@@ -93,9 +93,6 @@
     <ClCompile Include="..\Wrapper\Interface\AnnualRecords.cpp">
       <Filter>Interface\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Wrapper\Interface\BookItem.cpp">
-      <Filter>Interface\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Wrapper\Interface\Receipt.cpp">
       <Filter>Interface\Source Files</Filter>
     </ClCompile>
@@ -117,6 +114,9 @@
       <Filter>Common\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Wrapper\Common\AccountsTypes.h">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wrapper\Common\ArrayUtils.h">
       <Filter>Common\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Wrapper\Common\DecimalCurrency.h">
@@ -152,9 +152,6 @@
       <Filter>Interface\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Wrapper\Interface\AnnualRecords.h">
-      <Filter>Interface\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Wrapper\Interface\BookItem.h">
       <Filter>Interface\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Wrapper\Interface\Receipt.h">

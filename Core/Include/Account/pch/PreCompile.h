@@ -13,23 +13,13 @@
 *************************************************************************/
 
 /**
-**      プロジェクトの設定。
+**      Pre-Compiled Header File.
 **
-**      @file       Common/HouseholdAccountsSettings.h
+**      @file       pch/PreCompile.h
 **/
 
-#if !defined( HACORE_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H )
-#    define   HACORE_COMMON_INCLUDED_HOUSEHOLD_ACCOUNTS_SETTINGS_H
+#if !defined( HACORE_PCH_INCLUDED_PRE_COMPILE_H )
+#    define   HACORE_PCH_INCLUDED_PRE_COMPILE_H
 
-//  スクリプトによる設定値が書き込まれたヘッダを読み込む。  //
-#if defined( HOUSEHOLDACCOUNTS_USE_PRE_CONFIGURED_MSVC )
-#    include    "Account/.Config/PreConfigHouseholdAccounts.msvc.h"
-#else
-#    include    "Account/.Config/ConfiguredHouseholdAccounts.h"
-#endif
-
-HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-
-HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif

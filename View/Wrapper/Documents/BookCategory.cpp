@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -21,6 +21,14 @@
 #include    "PreCompile.h"
 
 #include    "BookCategory.h"
+
+#include    "Wrapper/Common/ArrayUtils.h"
+
+#include    "Account/Documents/CategoryManager.h"
+
+#include    <msclr/marshal_cppstd.h>
+using       namespace   msclr::interop;
+
 
 namespace  Wrapper  {
 namespace  Documents  {
@@ -45,6 +53,23 @@ namespace  {
 //
 
 BookCategory::BookCategory()
+    : m_ptrBuf(new WrapTarget()),
+      m_ptrMan(nullptr),
+      m_ptrObj(m_ptrBuf)
+{
+}
+
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （コンストラクタ）。
+//
+
+BookCategory::BookCategory(
+        WrapTarget *            wrapTarget,
+        CoreCategoryManager *   catMan)
+    : m_ptrBuf(nullptr),
+      m_ptrMan(catMan),
+      m_ptrObj(wrapTarget)
 {
 }
 
@@ -56,11 +81,6 @@ BookCategory::BookCategory()
 BookCategory::~BookCategory()
 {
     //  マネージドリソースを破棄する。              //
-    delete  this->m_categoryName;
-    this->m_categoryName    = nullptr;
-
-    delete  this->m_subCategories;
-    this->m_subCategories   = nullptr;
 
     //  続いて、アンマネージドリソースも破棄する。  //
     this->!BookCategory();
@@ -73,6 +93,9 @@ BookCategory::~BookCategory()
 
 BookCategory::!BookCategory()
 {
+    delete  this->m_ptrBuf;
+    this->m_ptrBuf  = nullptr;
+    this->m_ptrObj  = nullptr;
 }
 
 //========================================================================
@@ -100,29 +123,63 @@ BookCategory::!BookCategory()
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    サブ項目以下を展開したり閉じたりする。
+//
+
+System::Boolean
+BookCategory::expandCategory(
+        const  System::Boolean  blnExpanded)
+{
+    return ( fromNativeBoolean(
+                     this->m_ptrObj->expandCategory(
+                             toNativeBoolean(blnExpanded)
+    ) ) );
+}
+
 //========================================================================
 //
 //    Accessors.
 //
 
 //----------------------------------------------------------------
+//    項目の種類を取得する。
+//
+
+CategoryFlags
+BookCategory::getCategoryType()
+{
+    return ( static_cast<CategoryFlags>(this->m_ptrObj->getCategoryType()) );
+}
+
+//----------------------------------------------------------------
 //    項目のフラグを取得する。
 //
 
 CategoryFlags
-BookCategory::getCategoryFlags()
+BookCategory::getFlags()
 {
-    return ( this->m_categoryFlags );
+    return ( static_cast<CategoryFlags>(this->m_ptrObj->getFlags()) );
 }
 
 //----------------------------------------------------------------
 //    サブ項目のインデックスの配列を取得する。
 //
 
-BookCategory::CategoryHandleArray^
+BookCategory::CategoryHandleArray ^
 BookCategory::getSubCategories()
 {
-    return ( this->m_subCategories );
+    return ( toManageFromVector(this->m_ptrObj->getSubCategories()) );
+}
+
+//----------------------------------------------------------------
+//    サブ項目が展開されているか調べる。
+//
+
+System::Boolean
+BookCategory::isExpanded()
+{
+    return ( fromNativeBoolean(this->m_ptrObj->isExpanded()) );
 }
 
 //========================================================================
@@ -131,13 +188,23 @@ BookCategory::getSubCategories()
 //
 
 //----------------------------------------------------------------
+//    項目のフラグ。
+//
+
+CategoryFlags
+BookCategory::Flags::get()
+{
+    return ( static_cast<CategoryFlags>(this->m_ptrObj->getFlags()) );
+}
+
+//----------------------------------------------------------------
 //    親項目のインデックス。
 //
 
 CategoryHandle
-BookCategory::parentHandle::get()
+BookCategory::ParentHandle::get()
 {
-    return ( this->m_parentHandle );
+    return ( this->m_ptrObj->getParentHandle() );
 }
 
 //----------------------------------------------------------------
@@ -145,9 +212,9 @@ BookCategory::parentHandle::get()
 //
 
 System::String^
-BookCategory::categoryName::get()
+BookCategory::CategoryName::get()
 {
-    return ( this->m_categoryName );
+    return ( marshal_as<System::String^>(this->m_ptrObj->getCategoryName()) );
 }
 
 //----------------------------------------------------------------
@@ -155,9 +222,29 @@ BookCategory::categoryName::get()
 //
 
 CategoryHandle
-BookCategory::numSubCategories::get()
+BookCategory::NumSubCategories::get()
 {
-    return ( this->m_numSubCategory );
+    return ( this->m_ptrObj->getNumSubCategories() );
+}
+
+//----------------------------------------------------------------
+//    開始時の残高。
+//
+
+Common::DecimalCurrency
+BookCategory::StartBalance::get()
+{
+    return ( DecimalCurrency(this->m_ptrObj->getStartBalance()) );
+}
+
+//----------------------------------------------------------------
+//    開始年月日。
+//
+
+DateSerial
+BookCategory::StartDate::get()
+{
+    return ( this->m_ptrObj->getStartDate() );
 }
 
 //----------------------------------------------------------------
@@ -165,10 +252,10 @@ BookCategory::numSubCategories::get()
 //
 
 CategoryHandle
-BookCategory::subCategory::get(
+BookCategory::SubCategory::get(
         CategoryHandle  idxSub)
 {
-    return ( this->m_subCategories[idxSub] );
+    return ( this->m_ptrObj->getSubCategory(idxSub) );
 }
 
 //========================================================================
