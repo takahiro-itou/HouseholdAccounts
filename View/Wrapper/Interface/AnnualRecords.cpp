@@ -22,8 +22,8 @@
 
 #include    "AnnualRecords.h"
 
-#include    "BookItem.h"
 #include    "Wrapper/Common/ManagedDate.h"
+#include    "Wrapper/Documents/BookCategory.h"
 
 namespace  Wrapper  {
 
