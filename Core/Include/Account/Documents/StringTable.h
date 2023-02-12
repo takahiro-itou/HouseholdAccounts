@@ -177,13 +177,13 @@ public:
     **
     **  @param [in] drIndex
     **  @param [in] steText
-    **  @param [in] strFlag
+    **  @param [in] steFlag
     **/
     virtual  StringIndex
     setTableEntry(
             const  StringIndex  drIndex,
             const  std::string  &steText,
-            const  int          steFlag);
+            const  EntryFlags   steFlag);
 
 //========================================================================
 //

@@ -154,9 +154,14 @@ StringIndex
 StringTable::setTableEntry(
         const  StringIndex  drIndex,
         const  std::string  &steText,
-        const  int          steFlag)
+        const  EntryFlags   steFlag)
 {
-    return ( static_cast<StringIndex>(-1) );
+    reserveBuffer(drIndex + 1);
+
+    this->m_entryFlags[drIndex] = steFlag;
+    this->m_tableEntry[drIndex] = steText;
+
+    return ( drIndex );
 }
 
 //========================================================================
