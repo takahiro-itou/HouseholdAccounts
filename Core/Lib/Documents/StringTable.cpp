@@ -134,7 +134,16 @@ StringIndex
 StringTable::reserveBuffer(
         const  StringIndex  bufSize)
 {
-    return ( static_cast<StringIndex>(-1) );
+    const  StringIndex  siAlloc = (bufSize + 15) & ~15;
+    if ( siAlloc <= this->m_bufferSize ) {
+        return ( this->m_bufferSize );
+    }
+
+    this->m_entryFlags.resize(siAlloc);
+    this->m_tableEntry.resize(siAlloc);
+    this->m_sortedIndex.resize(siAlloc);
+
+    return ( this->m_bufferSize = siAlloc );
 }
 
 //----------------------------------------------------------------
