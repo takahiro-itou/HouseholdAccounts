@@ -154,7 +154,7 @@ void  StringTableTest::testSearchEntry()
     CPPUNIT_ASSERT_EQUAL( 3, TO_VALUE_FROM_STRICT(result.siInsert) );
 
     result  = testee.searchEntryTest("AE");
-    CPPUNIT_ASSERT( !TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT( ! TO_BOOL_FROM_STRICT(result.flgFound) );
     CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
     CPPUNIT_ASSERT_EQUAL( 4, TO_VALUE_FROM_STRICT(result.siInsert) );
 
@@ -199,7 +199,7 @@ void  StringTableTest::testSearchEntry()
     CPPUNIT_ASSERT_EQUAL(19, TO_VALUE_FROM_STRICT(result.siInsert) );
 
     result  = testee.searchEntryTest("CV");
-    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT( ! TO_BOOL_FROM_STRICT(result.flgFound) );
     CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
     CPPUNIT_ASSERT_EQUAL(20, TO_VALUE_FROM_STRICT(result.siInsert) );
 
@@ -244,12 +244,12 @@ void  StringTableTest::testSearchEntry()
     CPPUNIT_ASSERT_EQUAL(12, TO_VALUE_FROM_STRICT(result.siInsert) );
 
     result  = testee.searchEntryTest("BV");
-    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT( ! TO_BOOL_FROM_STRICT(result.flgFound) );
     CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
     CPPUNIT_ASSERT_EQUAL(12, TO_VALUE_FROM_STRICT(result.siInsert) );
 
     result  = testee.searchEntryTest("BE");
-    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT( ! TO_BOOL_FROM_STRICT(result.flgFound) );
     CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
     CPPUNIT_ASSERT_EQUAL(12, TO_VALUE_FROM_STRICT(result.siInsert) );
 
@@ -274,12 +274,12 @@ void  StringTableTest::testSearchEntry()
     CPPUNIT_ASSERT_EQUAL( 8, TO_VALUE_FROM_STRICT(result.siInsert) );
 
     result  = testee.searchEntryTest("00");
-    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT( ! TO_BOOL_FROM_STRICT(result.flgFound) );
     CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
     CPPUNIT_ASSERT_EQUAL( 0, TO_VALUE_FROM_STRICT(result.siInsert) );
 
     result  = testee.searchEntryTest("DD");
-    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT( ! TO_BOOL_FROM_STRICT(result.flgFound) );
     CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
     CPPUNIT_ASSERT_EQUAL(24, TO_VALUE_FROM_STRICT(result.siInsert) );
 
