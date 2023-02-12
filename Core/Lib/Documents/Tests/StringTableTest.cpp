@@ -39,6 +39,7 @@ class  StringTableTest : public  TestFixture
 {
     CPPUNIT_TEST_SUITE(StringTableTest);
     CPPUNIT_TEST(testStringTable);
+    CPPUNIT_TEST(testInsertString);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -47,6 +48,7 @@ public:
 
 private:
     void  testStringTable();
+    void  testInsertString();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( StringTableTest );
@@ -59,6 +61,41 @@ CPPUNIT_TEST_SUITE_REGISTRATION( StringTableTest );
 void  StringTableTest::testStringTable()
 {
     StringTable     testee;
+
+    return;
+}
+
+void  StringTableTest::testInsertString()
+{
+    StringTable     testee;
+
+    CPPUNIT_ASSERT_EQUAL( 0, TO_VALUE_FROM_STRICT(testee.insertString("AA")));
+    CPPUNIT_ASSERT_EQUAL( 1, TO_VALUE_FROM_STRICT(testee.insertString("AB")));
+    CPPUNIT_ASSERT_EQUAL( 2, TO_VALUE_FROM_STRICT(testee.insertString("AC")));
+    CPPUNIT_ASSERT_EQUAL( 3, TO_VALUE_FROM_STRICT(testee.insertString("AD")));
+    CPPUNIT_ASSERT_EQUAL( 4, TO_VALUE_FROM_STRICT(testee.insertString("AE")));
+    CPPUNIT_ASSERT_EQUAL( 5, TO_VALUE_FROM_STRICT(testee.insertString("AF")));
+    CPPUNIT_ASSERT_EQUAL( 6, TO_VALUE_FROM_STRICT(testee.insertString("AG")));
+    CPPUNIT_ASSERT_EQUAL( 7, TO_VALUE_FROM_STRICT(testee.insertString("AH")));
+
+    CPPUNIT_ASSERT_EQUAL( 8, TO_VALUE_FROM_STRICT(testee.insertString("CA")));
+    CPPUNIT_ASSERT_EQUAL( 9, TO_VALUE_FROM_STRICT(testee.insertString("CB")));
+    CPPUNIT_ASSERT_EQUAL(10, TO_VALUE_FROM_STRICT(testee.insertString("CC")));
+    CPPUNIT_ASSERT_EQUAL(11, TO_VALUE_FROM_STRICT(testee.insertString("CD")));
+    CPPUNIT_ASSERT_EQUAL(12, TO_VALUE_FROM_STRICT(testee.insertString("CE")));
+    CPPUNIT_ASSERT_EQUAL(13, TO_VALUE_FROM_STRICT(testee.insertString("CF")));
+    CPPUNIT_ASSERT_EQUAL(14, TO_VALUE_FROM_STRICT(testee.insertString("CG")));
+    CPPUNIT_ASSERT_EQUAL(15, TO_VALUE_FROM_STRICT(testee.insertString("CH")));
+
+    CPPUNIT_ASSERT_EQUAL(16, TO_VALUE_FROM_STRICT(testee.insertString("BH")));
+    CPPUNIT_ASSERT_EQUAL(17, TO_VALUE_FROM_STRICT(testee.insertString("BG")));
+    CPPUNIT_ASSERT_EQUAL(18, TO_VALUE_FROM_STRICT(testee.insertString("BF")));
+    CPPUNIT_ASSERT_EQUAL(19, TO_VALUE_FROM_STRICT(testee.insertString("BE")));
+    CPPUNIT_ASSERT_EQUAL(20, TO_VALUE_FROM_STRICT(testee.insertString("BD")));
+    CPPUNIT_ASSERT_EQUAL(21, TO_VALUE_FROM_STRICT(testee.insertString("BC")));
+    CPPUNIT_ASSERT_EQUAL(22, TO_VALUE_FROM_STRICT(testee.insertString("BB")));
+    CPPUNIT_ASSERT_EQUAL(23, TO_VALUE_FROM_STRICT(testee.insertString("BA")));
+
     return;
 }
 
