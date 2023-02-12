@@ -72,6 +72,10 @@ public:
         Boolean         flgFound;
         StringIndex     siResult;
         StringIndex     siInsert;
+
+        FindResult()
+            : flgFound(Boolean::BOOL_FALSE), siResult(-1), siInsert(0)
+        { }
     };
 
 private:
