@@ -195,11 +195,63 @@ StringTable::searchEntry(
         const  std::string  &strText)  const
 {
     FindResult      result;
+    StringIndex     bsLeft, bsRight, bsPivot;
+    StringIndex     siCheck;
+
+    //  二分探索である程度まで範囲を絞る。  //
+    bsLeft  = static_cast<StringIndex>(0);
+    bsRight = this->m_numEntries - 1;
+
+    while ( bsRight - bsLeft >= 8 ) {
+        bsPivot = (bsLeft + bsRight) / 2;
+        siCheck = this->m_sortedIndex[bsPivot];
+        const  std::string &trgText = this->m_tableEntry.at(siCheck);
+
+        if ( trgText == strText ) {
+            //  見つかった  //
+            result.flgFound = Boolean::BOOL_TRUE;
+            result.siResult = siCheck;
+            result.siInsert = bsPivot;
+            return ( result );
+        }
+
+        //  検索範囲を絞る。    //
+        if ( strText < trgText ) {
+            //  検索しているデータは現在位置より左にある。  //
+            bsRight = bsPivot - 1;
+        } else {
+            //  検索しているデータは現在位置より右にある。  //
+            bsLeft  = bsPivot + 1;
+        }
+    }
 
     //  念のため番兵を立てる。  //
     result.flgFound = Boolean::BOOL_FALSE;
     result.siResult = static_cast<StringIndex>(-1);
     result.siInsert = static_cast<StringIndex>(-1);
+
+    //  ある程度範囲が小さくなったところで、単純検索に切り替える。  //
+    for ( bsPivot = bsLeft; bsPivot <= bsRight; ++ bsPivot ) {
+        siCheck = this->m_sortedIndex[bsPivot];
+        const  std::string &trgText = this->m_tableEntry.at(siCheck);
+
+        if ( trgText == strText ) {
+            //  見つかった  //
+            result.flgFound = Boolean::BOOL_TRUE;
+            result.siResult = siCheck;
+            result.siInsert = bsPivot;
+            return ( result );
+        }
+        if ( strText < trgText ) {
+            //  テーブル内のデータはソートされているから、  //
+            //  この時点でデータがテーブル内に存在しない。  //
+            //  また、データを挿入する時はこの場所になる。  //
+            result.flgFound = Boolean::BOOL_FALSE;
+            result.siResult = static_cast<StringIndex>(-1);
+            result.siInsert = bsPivot;
+            break;
+        }
+    }
 
     return ( result );
 }
