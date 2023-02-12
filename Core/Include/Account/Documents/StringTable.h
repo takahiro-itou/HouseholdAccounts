@@ -74,9 +74,13 @@ public:
         StringIndex     siInsert;
     };
 
-public:
+private:
+
+    typedef     int     EntryFlags;
 
     DECLARE_STRICT_VECTOR(std::string, StringIndex, StringArray);
+
+    DECLARE_STRICT_VECTOR(EntryFlags,  StringIndex, FlagsArray);
 
     DECLARE_STRICT_VECTOR(StringIndex, StringIndex, IndexArray);
 
@@ -213,7 +217,7 @@ private:
 private:
 
     /**   テーブル用のバッファサイズ。  **/
-    BufferSize          m_bufferSize;
+    StringIndex         m_bufferSize;
 
     /**   実際に格納されているデータ数。    **/
     StringIndex         m_numEntries;
@@ -222,7 +226,7 @@ private:
     StringTableSort     m_flagSorted;
 
     /**   各エントリのフラグ。  **/
-    std::vector<int>    m_entryFlags;
+    FlagsArray          m_entryFlags;
 
     /**   文字列テーブル。      **/
     StringArray         m_tableEntry;
