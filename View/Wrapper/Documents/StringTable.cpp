@@ -104,6 +104,38 @@ StringTable::!StringTable()
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    テーブルの整合性を検査する。
+//
+
+System::Boolean
+StringTable::checkIntegrity()
+{
+    return ( false );
+}
+
+//----------------------------------------------------------------
+//    指定された文字列を検索する。
+//
+
+StringIndex
+StringTable::findString(
+        System::String^     strText)
+{
+    return ( 0 );
+}
+
+//----------------------------------------------------------------
+//    新しいデータを挿入する。
+//
+
+StringIndex
+StringTable::insertString(
+        System::String^     strText)
+{
+    return ( 0 );
+}
+
 //========================================================================
 //
 //    Accessors.
