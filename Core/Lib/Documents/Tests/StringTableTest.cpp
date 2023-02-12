@@ -40,6 +40,7 @@ class  StringTableTest : public  TestFixture
     CPPUNIT_TEST_SUITE(StringTableTest);
     CPPUNIT_TEST(testStringTable);
     CPPUNIT_TEST(testInsertString);
+    CPPUNIT_TEST(testSearchEntry);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -49,6 +50,7 @@ public:
 private:
     void  testStringTable();
     void  testInsertString();
+    void  testSearchEntry();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( StringTableTest );
@@ -95,6 +97,191 @@ void  StringTableTest::testInsertString()
     CPPUNIT_ASSERT_EQUAL(21, TO_VALUE_FROM_STRICT(testee.insertString("BC")));
     CPPUNIT_ASSERT_EQUAL(22, TO_VALUE_FROM_STRICT(testee.insertString("BB")));
     CPPUNIT_ASSERT_EQUAL(23, TO_VALUE_FROM_STRICT(testee.insertString("BA")));
+
+    return;
+}
+
+void  StringTableTest::testSearchEntry()
+{
+    StringTable                 testee;
+    StringTable::FindResult     result;
+
+    testee.insertString("AA");
+    testee.insertString("AB");
+    testee.insertString("AC");
+    testee.insertString("AD");
+    testee.insertString("AW");
+    testee.insertString("AX");
+    testee.insertString("AY");
+    testee.insertString("AZ");
+
+    testee.insertString("CA");
+    testee.insertString("CB");
+    testee.insertString("CC");
+    testee.insertString("CD");
+    testee.insertString("CW");
+    testee.insertString("CX");
+    testee.insertString("CY");
+    testee.insertString("CZ");
+
+    testee.insertString("BZ");
+    testee.insertString("BY");
+    testee.insertString("BX");
+    testee.insertString("BW");
+    testee.insertString("BD");
+    testee.insertString("BC");
+    testee.insertString("BB");
+    testee.insertString("BA");
+
+    result  = testee.searchEntryTest("AA");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL( 0, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 0, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("AB");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL( 1, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 1, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("AC");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL( 2, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 2, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("AD");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL( 3, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 3, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("AE");
+    CPPUNIT_ASSERT_EQUAL( false, TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 4, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("AW");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL( 4, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 4, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("AX");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL( 5, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 5, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("AY");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL( 6, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 6, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("AZ");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL( 7, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 7, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("CA");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL( 8, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(16, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("CB");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL( 9, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(17, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("CC");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(10, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(18, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("CD");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(11, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(19, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("CV");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(20, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("CW");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(12, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(20, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("CX");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(13, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(21, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("CY");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(14, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(22, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("CZ");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(15, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(23, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("BZ");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(16, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(15, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("BY");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(17, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(14, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("BX");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(18, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(13, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("BW");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(19, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(12, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("BV");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(12, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("BE");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(12, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("BD");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(20, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(11, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("BC");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(21, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(10, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("BB");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(22, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 9, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("BA");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(23, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 8, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("00");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL( 0, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    result  = testee.searchEntryTest("DD");
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
+    CPPUNIT_ASSERT_EQUAL(24, TO_VALUE_FROM_STRICT(result.siInsert) );
 
     return;
 }
