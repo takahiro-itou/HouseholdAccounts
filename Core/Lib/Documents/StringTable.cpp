@@ -177,8 +177,8 @@ StringTable::searchEntry(
 
     //  念のため番兵を立てる。  //
     result.flgFound = Boolean::BOOL_FALSE;
-    result.siResult = -1;
-    result.siInsert = -1;
+    result.siResult = static_cast<StringIndex>(-1);
+    result.siInsert = static_cast<StringIndex>(-1);
 
     return ( result );
 }
