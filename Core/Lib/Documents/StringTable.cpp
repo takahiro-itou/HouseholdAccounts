@@ -250,7 +250,7 @@ StringTable::searchEntry(
     //  念のため番兵を立てる。  //
     result.flgFound = Boolean::BOOL_FALSE;
     result.siResult = static_cast<StringIndex>(-1);
-    result.siInsert = static_cast<StringIndex>(-1);
+    result.siInsert = bsRight + 1;
 
     //  ある程度範囲が小さくなったところで、単純検索に切り替える。  //
     for ( bsPivot = bsLeft; bsPivot <= bsRight; ++ bsPivot ) {
