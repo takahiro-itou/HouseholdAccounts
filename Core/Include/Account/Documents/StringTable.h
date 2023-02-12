@@ -213,7 +213,7 @@ private:
 private:
 
     /**   テーブル用のバッファサイズ。  **/
-    BufferSize          m_tableBufferSize;
+    BufferSize          m_bufferSize;
 
     /**   実際に格納されているデータ数。    **/
     StringIndex         m_numEntries;

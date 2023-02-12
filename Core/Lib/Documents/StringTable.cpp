@@ -45,6 +45,12 @@ namespace  {
 //
 
 StringTable::StringTable()
+    : m_bufferSize(0),
+      m_numEntries(0),
+      m_flagSorted(StringTableSort::TABLE_SORT_NONE),
+      m_entryFlags(),
+      m_tableEntry(),
+      m_sortedIndex()
 {
 }
 
