@@ -22,6 +22,8 @@
 
 #include    "StringTable.h"
 
+#include    "Account/Documents/StringTable.h"
+
 #include    <msclr/marshal_cppstd.h>
 using       namespace   msclr::interop;
 
@@ -49,6 +51,7 @@ namespace  {
 //
 
 StringTable::StringTable()
+    : m_ptrObj(new WrapTarget())
 {
 }
 
@@ -72,6 +75,8 @@ StringTable::~StringTable()
 
 StringTable::!StringTable()
 {
+    delete  this->m_ptrObj;
+    this->m_ptrObj  = nullptr;
 }
 
 //========================================================================
