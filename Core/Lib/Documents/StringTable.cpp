@@ -108,7 +108,21 @@ StringTable::appendString(
 Boolean
 StringTable::checkIntegrity()  const
 {
-    return ( Boolean::BOOL_FALSE );
+    for ( StringIndex i = static_cast<StringIndex>(1);
+            i < this->m_numEntries; ++ i )
+    {
+        const  StringIndex  siL = this->m_sortedIndex[i - 1];
+        const  StringIndex  siR = this->m_sortedIndex[i];
+
+        const  std::string  &sL = this->m_tableEntry.at(siL);
+        const  std::string  &sR = this->m_tableEntry.at(siR);
+
+        if ( sL >= sR ) {
+            return ( Boolean::BOOL_FALSE );
+        }
+    }
+
+    return ( Boolean::BOOL_TRUE );
 }
 
 //----------------------------------------------------------------
