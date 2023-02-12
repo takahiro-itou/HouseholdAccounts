@@ -91,7 +91,14 @@ StringIndex
 StringTable::appendString(
         const  std::string  &strText)
 {
-    return ( static_cast<StringIndex>(0) );
+    const  StringIndex  si  = this->m_numEntries ++;
+    reserveBuffer(this->m_numEntries);
+
+    this->m_entryFlags [si] = 0;
+    this->m_tableEntry [si] = strText;
+    this->m_sortedIndex[si] = si;
+
+    return ( si );
 }
 
 //----------------------------------------------------------------
