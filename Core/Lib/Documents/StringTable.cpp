@@ -130,7 +130,29 @@ StringIndex
 StringTable::insertString(
         const  std::string  &strText)
 {
-    return ( static_cast<StringIndex>(-1) );
+    FindResult  resFind = searchEntry(strText);
+
+    //  データが見つかった場合はそのインデックスを返して終了。  //
+    if ( TO_BOOL_FROM_STRICT(resFind.flgFound) ) {
+        return ( resFind.siResult );
+    }
+
+    //  データをテーブルの最後尾に追加し、  //
+    //  ソートインデックスを更新する。      //
+    const  StringIndex  bsInsertPos = resFind.siInsert;
+    const  StringIndex  siNewEntry  = appendString(strText);
+
+    //  挿入位置より後ろにあるデータをずらす。  //
+    for ( StringIndex i = this->m_numEntries - 1; i >= bsInsertPos + 1; -- i )
+    {
+        this->m_sortedIndex[i]  = this->m_sortedIndex[i - 1];
+    }
+
+    //  挿入位置にインデックスを書き込む。      //
+    this->m_sortedIndex.at(bsInsertPos) = siNewEntry;
+
+    //  挿入したデータのインデックスを返す。    //
+    return ( siNewEntry );
 }
 
 //----------------------------------------------------------------
