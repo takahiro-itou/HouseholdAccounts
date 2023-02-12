@@ -26,14 +26,13 @@
 #    include    "Account/Common/AccountsTypes.h"
 #endif
 
+#if !defined( HACORE_COMMON_INCLUDED_STRICT_VECTOR_H )
+#    include    "Account/Common/StrictVector.h"
+#endif
+
 #if !defined( HACORE_SYS_INCLUDED_STL_STRING )
 #    include    <string>
 #    define   HACORE_SYS_INCLUDED_STL_STRING
-#endif
-
-#if !defined( HACORE_SYS_INCLUDED_STL_VECTOR )
-#    include    <vector>
-#    define   HACORE_SYS_INCLUDED_STL_VECTOR
 #endif
 
 
@@ -77,7 +76,7 @@ public:
 
 public:
 
-    typedef     std::vector<std::string>        StringArray;
+    DECLARE_STRICT_VECTOR(std::string, StringIndex, StringArray);
 
     typedef     std::vector<StringIndex>        IndexArray;
 
