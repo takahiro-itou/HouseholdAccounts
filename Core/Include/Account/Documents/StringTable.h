@@ -237,6 +237,12 @@ private:
 public:
     //  テストクラス。  //
     friend  class   StringTableTest;
+
+    //  ユニットテスト用インターフェイス。  //
+    FindResult
+    searchEntryTest(
+            const  std::string  &strText)  const;
+
 };
 
 }   //  End of namespace  Documents

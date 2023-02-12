@@ -178,5 +178,21 @@ StringTable::searchEntry(
     return ( result );
 }
 
+//========================================================================
+//
+//    Other Features.
+//
+
+//----------------------------------------------------------------
+//    ユニットテスト用インターフェイス。
+//
+
+StringTable::FindResult
+StringTable::searchEntryTest(
+        const  std::string  &strText)  const
+{
+    return ( searchEntry(strText) );
+}
+
 }   //  End of namespace  Documents
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
