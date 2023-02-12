@@ -175,6 +175,11 @@ StringTable::searchEntry(
 {
     FindResult      result;
 
+    //  念のため番兵を立てる。  //
+    result.flgFound = Boolean::BOOL_FALSE;
+    result.siResult = -1;
+    result.siInsert = -1;
+
     return ( result );
 }
 
