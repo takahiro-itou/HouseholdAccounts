@@ -119,7 +119,8 @@ StringIndex
 StringTable::findString(
         const  std::string  &strText)  const
 {
-    return ( static_cast<StringIndex>(-1) );
+    FindResult  resFind = searchEntry(strText);
+    return ( resFind.siResult );
 }
 
 //----------------------------------------------------------------
