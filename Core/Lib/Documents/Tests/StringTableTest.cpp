@@ -154,7 +154,7 @@ void  StringTableTest::testSearchEntry()
     CPPUNIT_ASSERT_EQUAL( 3, TO_VALUE_FROM_STRICT(result.siInsert) );
 
     result  = testee.searchEntryTest("AE");
-    CPPUNIT_ASSERT_EQUAL( false, TO_BOOL_FROM_STRICT(result.flgFound) );
+    CPPUNIT_ASSERT( !TO_BOOL_FROM_STRICT(result.flgFound) );
     CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
     CPPUNIT_ASSERT_EQUAL( 4, TO_VALUE_FROM_STRICT(result.siInsert) );
 
