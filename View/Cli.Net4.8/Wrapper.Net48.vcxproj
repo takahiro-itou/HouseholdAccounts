@@ -87,7 +87,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\Core\Include;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <ObjectFileName>$(IntDir)\Cli.Net4.8\%(RelativeDir)</ObjectFileName>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PreCompile.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
