@@ -53,11 +53,16 @@ public ref  class  StringTable
 //
 //    Internal Type Definitions.
 //
+private:
+
+    typedef     HouseholdAccounts::Documents::StringTable
+    WrapTarget;
 
 //========================================================================
 //
 //    Constructor(s) and Destructor.
 //
+public:
 
 //========================================================================
 //
@@ -108,6 +113,7 @@ public ref  class  StringTable
 //
 //    Member Variables.
 //
+private:
 
 //========================================================================
 //
