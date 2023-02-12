@@ -78,7 +78,7 @@ public:
 
     DECLARE_STRICT_VECTOR(std::string, StringIndex, StringArray);
 
-    typedef     std::vector<StringIndex>        IndexArray;
+    DECLARE_STRICT_VECTOR(StringIndex, StringIndex, IndexArray);
 
 //========================================================================
 //
