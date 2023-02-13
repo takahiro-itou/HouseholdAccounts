@@ -111,7 +111,7 @@ StringTable::!StringTable()
 System::Boolean
 StringTable::checkIntegrity()
 {
-    return ( false );
+    return ( fromNativeBoolean(this->m_ptrObj->checkIntegrity()) );
 }
 
 //----------------------------------------------------------------
