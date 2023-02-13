@@ -133,7 +133,9 @@ StringIndex
 StringTable::insertString(
         System::String^     strText)
 {
-    return ( 0 );
+    const  StringIndex  retVal  =
+        this->m_ptrObj->insertString(marshal_as<std::string>(strText));
+    return ( retVal );
 }
 
 //========================================================================
