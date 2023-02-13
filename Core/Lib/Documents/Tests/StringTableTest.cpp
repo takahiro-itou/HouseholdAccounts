@@ -41,6 +41,7 @@ class  StringTableTest : public  TestFixture
     CPPUNIT_TEST(testStringTable);
     CPPUNIT_TEST(testInsertString);
     CPPUNIT_TEST(testSearchEntry);
+    CPPUNIT_TEST(testSortIndex);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -51,6 +52,7 @@ private:
     void  testStringTable();
     void  testInsertString();
     void  testSearchEntry();
+    void  testSortIndex();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( StringTableTest );
@@ -97,6 +99,8 @@ void  StringTableTest::testInsertString()
     CPPUNIT_ASSERT_EQUAL(21, TO_VALUE_FROM_STRICT(testee.insertString("BC")));
     CPPUNIT_ASSERT_EQUAL(22, TO_VALUE_FROM_STRICT(testee.insertString("BB")));
     CPPUNIT_ASSERT_EQUAL(23, TO_VALUE_FROM_STRICT(testee.insertString("BA")));
+
+    CPPUNIT_ASSERT_EQUAL(24, TO_VALUE_FROM_STRICT(testee.getNumEntries()));
 
     return;
 }
@@ -282,6 +286,69 @@ void  StringTableTest::testSearchEntry()
     CPPUNIT_ASSERT( ! TO_BOOL_FROM_STRICT(result.flgFound) );
     CPPUNIT_ASSERT_EQUAL(-1, TO_VALUE_FROM_STRICT(result.siResult) );
     CPPUNIT_ASSERT_EQUAL(24, TO_VALUE_FROM_STRICT(result.siInsert) );
+
+    return;
+}
+
+void  StringTableTest::testSortIndex()
+{
+    StringTable     testee;
+
+    testee.insertString("AA");
+    testee.insertString("AB");
+    testee.insertString("AC");
+    testee.insertString("AD");
+    testee.insertString("AW");
+    testee.insertString("AX");
+    testee.insertString("AY");
+    testee.insertString("AZ");
+
+    testee.insertString("CA");
+    testee.insertString("CB");
+    testee.insertString("CC");
+    testee.insertString("CD");
+    testee.insertString("CW");
+    testee.insertString("CX");
+    testee.insertString("CY");
+    testee.insertString("CZ");
+
+    testee.insertString("BZ");
+    testee.insertString("BY");
+    testee.insertString("BX");
+    testee.insertString("BW");
+    testee.insertString("BD");
+    testee.insertString("BC");
+    testee.insertString("BB");
+    testee.insertString("BA");
+
+    const  StringTable::IndexArray  & sorts = testee.m_sortedIndex;
+
+    CPPUNIT_ASSERT_EQUAL( 0, TO_VALUE_FROM_STRICT(sorts[StringIndex( 0)]) );
+    CPPUNIT_ASSERT_EQUAL( 1, TO_VALUE_FROM_STRICT(sorts[StringIndex( 1)]) );
+    CPPUNIT_ASSERT_EQUAL( 2, TO_VALUE_FROM_STRICT(sorts[StringIndex( 2)]) );
+    CPPUNIT_ASSERT_EQUAL( 3, TO_VALUE_FROM_STRICT(sorts[StringIndex( 3)]) );
+    CPPUNIT_ASSERT_EQUAL( 4, TO_VALUE_FROM_STRICT(sorts[StringIndex( 4)]) );
+    CPPUNIT_ASSERT_EQUAL( 5, TO_VALUE_FROM_STRICT(sorts[StringIndex( 5)]) );
+    CPPUNIT_ASSERT_EQUAL( 6, TO_VALUE_FROM_STRICT(sorts[StringIndex( 6)]) );
+    CPPUNIT_ASSERT_EQUAL( 7, TO_VALUE_FROM_STRICT(sorts[StringIndex( 7)]) );
+
+    CPPUNIT_ASSERT_EQUAL(23, TO_VALUE_FROM_STRICT(sorts[StringIndex( 8)]) );
+    CPPUNIT_ASSERT_EQUAL(22, TO_VALUE_FROM_STRICT(sorts[StringIndex( 9)]) );
+    CPPUNIT_ASSERT_EQUAL(21, TO_VALUE_FROM_STRICT(sorts[StringIndex(10)]) );
+    CPPUNIT_ASSERT_EQUAL(20, TO_VALUE_FROM_STRICT(sorts[StringIndex(11)]) );
+    CPPUNIT_ASSERT_EQUAL(19, TO_VALUE_FROM_STRICT(sorts[StringIndex(12)]) );
+    CPPUNIT_ASSERT_EQUAL(18, TO_VALUE_FROM_STRICT(sorts[StringIndex(13)]) );
+    CPPUNIT_ASSERT_EQUAL(17, TO_VALUE_FROM_STRICT(sorts[StringIndex(14)]) );
+    CPPUNIT_ASSERT_EQUAL(16, TO_VALUE_FROM_STRICT(sorts[StringIndex(15)]) );
+
+    CPPUNIT_ASSERT_EQUAL( 8, TO_VALUE_FROM_STRICT(sorts[StringIndex(16)]) );
+    CPPUNIT_ASSERT_EQUAL( 9, TO_VALUE_FROM_STRICT(sorts[StringIndex(17)]) );
+    CPPUNIT_ASSERT_EQUAL(10, TO_VALUE_FROM_STRICT(sorts[StringIndex(18)]) );
+    CPPUNIT_ASSERT_EQUAL(11, TO_VALUE_FROM_STRICT(sorts[StringIndex(19)]) );
+    CPPUNIT_ASSERT_EQUAL(12, TO_VALUE_FROM_STRICT(sorts[StringIndex(20)]) );
+    CPPUNIT_ASSERT_EQUAL(13, TO_VALUE_FROM_STRICT(sorts[StringIndex(21)]) );
+    CPPUNIT_ASSERT_EQUAL(14, TO_VALUE_FROM_STRICT(sorts[StringIndex(22)]) );
+    CPPUNIT_ASSERT_EQUAL(15, TO_VALUE_FROM_STRICT(sorts[StringIndex(23)]) );
 
     return;
 }
