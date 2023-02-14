@@ -150,6 +150,16 @@ StringTable::insertString(
 //    Properties.
 //
 
+//----------------------------------------------------------------
+//    テーブルに格納されているデータ数。
+//
+
+StringIndex
+StringTable::NumEntries::get()
+{
+    return  ( this->m_ptrObj->getNumEntries() );
+}
+
 //========================================================================
 //
 //    Protected Member Functions.
