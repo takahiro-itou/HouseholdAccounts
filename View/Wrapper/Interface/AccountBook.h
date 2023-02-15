@@ -30,6 +30,7 @@
 #include    "Wrapper/Common/ManagedDate.h"
 #include    "Wrapper/Common/StringTable.h"
 #include    "Wrapper/Documents/CategoryManager.h"
+#include    "Wrapper/Documents/StringTable.h"
 
 
 namespace  Wrapper  {
@@ -299,6 +300,12 @@ private:
 
     /**   項目データ。              **/
     Documents::CategoryManager ^    m_cateManager;
+
+    /**   設定データ用文字列テーブル。  **/
+    Documents::StringTable ^        m_strtblForConfig;
+
+    /**   レコード用文字列テーブル。    **/
+    Documents::StringTable ^        m_strtblForRecord;
 
 };
 
