@@ -171,6 +171,22 @@ StringTable::SortIndex::get()
     return ( tmp );
 }
 
+//----------------------------------------------------------------
+//    テーブルのエントリ。
+//
+
+System::String ^
+StringTable::TableEntry::get(StringIndex idx)
+{
+    System::String^ tmp = nullptr;
+    return ( tmp );
+}
+
+void
+StringTable::TableEntry::set(StringIndex idx, System::String^ val)
+{
+}
+
 //========================================================================
 //
 //    Protected Member Functions.

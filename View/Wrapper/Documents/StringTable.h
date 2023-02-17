@@ -171,6 +171,17 @@ public:
         IndexArray^     get();
     }
 
+    //----------------------------------------------------------------
+    /**   テーブルのエントリ。
+    **
+    **/
+    property    System::String ^
+    TableEntry [StringIndex]
+    {
+        System::String^ get(StringIndex idx);
+        void set(StringIndex idx, System::String^ val);
+    }
+
 //========================================================================
 //
 //    Protected Member Functions.
