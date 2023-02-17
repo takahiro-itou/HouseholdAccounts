@@ -162,6 +162,21 @@ StringTable::setSortIndexArray(
 //
 
 //----------------------------------------------------------------
+//    エントリフラグ。
+//
+
+int
+StringTable::EntryFlag::get(StringIndex idx)
+{
+    return ( 0 );
+}
+
+void
+StringTable::EntryFlag::set(StringIndex idx, int val)
+{
+}
+
+//----------------------------------------------------------------
 //    テーブルに格納されているデータ数。
 //
 
