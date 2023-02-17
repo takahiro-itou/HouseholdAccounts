@@ -145,6 +145,17 @@ StringTable::insertString(
 //    Accessors.
 //
 
+//----------------------------------------------------------------
+//    ソートインデックスを直接設定する。
+//
+
+System::Boolean
+StringTable::setSortIndexArray(
+        IndexArray^     siArray)
+{
+    return ( false );
+}
+
 //========================================================================
 //
 //    Properties.
