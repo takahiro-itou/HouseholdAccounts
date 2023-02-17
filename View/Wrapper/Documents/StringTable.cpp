@@ -160,6 +160,17 @@ StringTable::NumEntries::get()
     return  ( this->m_ptrObj->getNumEntries() );
 }
 
+//----------------------------------------------------------------
+//    ソートインデックスの配列。
+//
+
+StringTable::IndexArray ^
+StringTable::SortIndex::get()
+{
+    IndexArray^ tmp = nullptr;
+    return ( tmp );
+}
+
 //========================================================================
 //
 //    Protected Member Functions.
