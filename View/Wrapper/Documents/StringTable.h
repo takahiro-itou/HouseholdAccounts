@@ -58,6 +58,8 @@ private:
     typedef     HouseholdAccounts::Documents::StringTable
     WrapTarget;
 
+    typedef     cli::array<StringIndex, 1>      IndexArray;
+
 //========================================================================
 //
 //    Constructor(s) and Destructor.
