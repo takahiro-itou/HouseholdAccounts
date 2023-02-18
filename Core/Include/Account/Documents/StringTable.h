@@ -243,6 +243,16 @@ public:
             const  EntryFlags   flagNew);
 
     //----------------------------------------------------------------
+    /**   エントリのテキストを取得する。
+    **
+    **  @param [in] drIndex
+    **  @return     テキスト。
+    **/
+    const  std::string  &
+    getEntryText(
+            const  StringIndex  drIndex)  const;
+
+    //----------------------------------------------------------------
     /**   テーブルに格納されているデータ数を取得する。
     **
     **  @return     データ数
