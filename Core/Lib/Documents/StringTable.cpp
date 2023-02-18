@@ -48,8 +48,7 @@ StringTable::StringTable()
     : m_bufferSize(0),
       m_numEntries(0),
       m_flagSorted(StringTableSort::TABLE_SORT_NONE),
-      m_entryFlags(),
-      m_tableEntry(),
+      m_entryArray(),
       m_sortedIndex()
 {
 }
@@ -94,8 +93,8 @@ StringTable::appendString(
     const  StringIndex  si  = this->m_numEntries ++;
     reserveBuffer(this->m_numEntries);
 
-    this->m_entryFlags [si] = 0;
-    this->m_tableEntry [si] = strText;
+    this->m_entryArray[si].steFlag  = 0;
+    this->m_entryArray[si].steText  = strText;
     this->m_sortedIndex[si] = si;
 
     return ( si );
@@ -114,8 +113,8 @@ StringTable::checkIntegrity()  const
         const  StringIndex  siL = this->m_sortedIndex[i - 1];
         const  StringIndex  siR = this->m_sortedIndex[i];
 
-        const  std::string  &sL = this->m_tableEntry.at(siL);
-        const  std::string  &sR = this->m_tableEntry.at(siR);
+        const  std::string  &sL = this->m_entryArray.at(siL).steText;
+        const  std::string  &sR = this->m_entryArray.at(siR).steText;
 
         if ( sL >= sR ) {
             return ( Boolean::BOOL_FALSE );
@@ -183,8 +182,7 @@ StringTable::reserveBuffer(
         return ( this->m_bufferSize );
     }
 
-    this->m_entryFlags.resize(siAlloc);
-    this->m_tableEntry.resize(siAlloc);
+    this->m_entryArray.resize(siAlloc);
     this->m_sortedIndex.resize(siAlloc);
 
     return ( this->m_bufferSize = siAlloc );
@@ -213,8 +211,8 @@ StringTable::setTableEntry(
 {
     reserveBuffer(drIndex + 1);
 
-    this->m_entryFlags[drIndex] = steFlag;
-    this->m_tableEntry[drIndex] = steText;
+    this->m_entryArray[drIndex].steFlag = steFlag;
+    this->m_entryArray[drIndex].steText = steText;
 
     return ( drIndex );
 }
@@ -235,9 +233,9 @@ StringTable::setTableEntry(
 
 const   StringTable::EntryFlags
 StringTable::getEntryFlag(
-        const  StringIndex  idx)  const
+        const  StringIndex  drIndex)  const
 {
-    return ( this->m_entryFlags.at(idx) );
+    return ( this->m_entryArray.at(drIndex).steFlag );
 }
 
 //----------------------------------------------------------------
@@ -246,11 +244,12 @@ StringTable::getEntryFlag(
 
 const   StringTable::EntryFlags
 StringTable::setEntryFlag(
-        const  StringIndex  idx,
+        const  StringIndex  drIndex,
         const  EntryFlags   flagNew)
 {
-    const   EntryFlags  flagOld = this->m_entryFlags.at(idx);
-    this->m_entryFlags[idx] = flagNew;
+    TEntry &stEntry = this->m_entryArray.at(drIndex);
+    const   EntryFlags  flagOld = stEntry.steFlag;
+    stEntry.steFlag = flagNew;
     return ( flagOld );
 }
 
@@ -293,7 +292,7 @@ StringTable::searchEntry(
     while ( bsRight - bsLeft >= 8 ) {
         bsPivot = (bsLeft + bsRight) / 2;
         siCheck = this->m_sortedIndex[bsPivot];
-        const  std::string &trgText = this->m_tableEntry.at(siCheck);
+        const  std::string &trgText = this->m_entryArray.at(siCheck).steText;
 
         if ( trgText == strText ) {
             //  見つかった  //
@@ -321,7 +320,7 @@ StringTable::searchEntry(
     //  ある程度範囲が小さくなったところで、単純検索に切り替える。  //
     for ( bsPivot = bsLeft; bsPivot <= bsRight; ++ bsPivot ) {
         siCheck = this->m_sortedIndex[bsPivot];
-        const  std::string &trgText = this->m_tableEntry.at(siCheck);
+        const  std::string &trgText = this->m_entryArray.at(siCheck).steText;
 
         if ( trgText == strText ) {
             //  見つかった  //

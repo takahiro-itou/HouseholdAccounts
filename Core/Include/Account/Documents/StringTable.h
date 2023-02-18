@@ -82,9 +82,16 @@ private:
 
     typedef     int     EntryFlags;
 
-    DECLARE_STRICT_VECTOR(std::string, StringIndex, StringArray);
+    /**
+    **    テーブルのエントリ。
+    **/
+    struct  TEntry
+    {
+        std::string     steText;
+        EntryFlags      steFlag;
+    };
 
-    DECLARE_STRICT_VECTOR(EntryFlags,  StringIndex, FlagsArray);
+    DECLARE_STRICT_VECTOR(TEntry, StringIndex, StringArray);
 
     DECLARE_STRICT_VECTOR(StringIndex, StringIndex, IndexArray);
 
@@ -216,23 +223,23 @@ public:
     //----------------------------------------------------------------
     /**   エントリフラグを取得する。
     **
-    **  @param [in] idx   インデックス。
+    **  @param [in] drIndex   インデックス。
     **  @return     フラグ。
     **/
     const   EntryFlags
     getEntryFlag(
-            const  StringIndex  idx)  const;
+            const  StringIndex  drIndex)  const;
 
     //----------------------------------------------------------------
     /**   エントリフラグを設定する。
     **
-    **  @param [in] idx
+    **  @param [in] drIndex
     **  @param [in] flagNew
     **  @return     以前の値。
     **/
     const   EntryFlags
     setEntryFlag(
-            const  StringIndex  idx,
+            const  StringIndex  drIndex,
             const  EntryFlags   flagNew);
 
     //----------------------------------------------------------------
@@ -278,11 +285,8 @@ private:
     /**   ソート状態。  **/
     StringTableSort     m_flagSorted;
 
-    /**   各エントリのフラグ。  **/
-    FlagsArray          m_entryFlags;
-
     /**   文字列テーブル。      **/
-    StringArray         m_tableEntry;
+    StringArray         m_entryArray;
 
     /**   昇順にソートした時の、インデックステーブル。  **/
     IndexArray          m_sortedIndex;
