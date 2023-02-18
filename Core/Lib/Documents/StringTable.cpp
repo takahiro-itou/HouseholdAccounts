@@ -266,6 +266,18 @@ StringTable::getEntryText(
 }
 
 //----------------------------------------------------------------
+//    エントリのテキストを設定する。
+//
+
+ErrCode
+StringTable::setEntryText(
+        const  StringIndex  drIndex,
+        const  std::string  &steText)
+{
+    return ( ErrCode::FAILURE );
+}
+
+//----------------------------------------------------------------
 //    テーブルに格納されているデータ数を取得する。
 //
 

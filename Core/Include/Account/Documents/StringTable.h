@@ -253,6 +253,21 @@ public:
             const  StringIndex  drIndex)  const;
 
     //----------------------------------------------------------------
+    /**   エントリのテキストを設定する。
+    **
+    **  @param [in] drIndex   インデックス。
+    **  @param [in] steText   テキスト。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
+    **/
+    ErrCode
+    setEntryText(
+            const  StringIndex  drIndex,
+            const  std::string  &steText);
+
+    //----------------------------------------------------------------
     /**   テーブルに格納されているデータ数を取得する。
     **
     **  @return     データ数
