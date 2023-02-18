@@ -219,6 +219,29 @@ StringTable::setTableEntry(
 //
 
 //----------------------------------------------------------------
+//    エントリフラグを取得する。
+//
+
+const   StringTable::EntryFlags
+StringTable::getEntryFlag(
+        const  StringIndex  idx)  const
+{
+    return ( 0 );
+}
+
+//----------------------------------------------------------------
+//    エントリフラグを設定する。
+//
+
+const   StringTable::EntryFlags
+StringTable::setEntryFlag(
+        const  StringIndex  idx,
+        const  EntryFlags   flagNew)
+{
+    return ( 0 );
+}
+
+//----------------------------------------------------------------
 //    テーブルに格納されているデータ数を取得する。
 //
 

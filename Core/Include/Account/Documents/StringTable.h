@@ -201,6 +201,28 @@ public:
 public:
 
     //----------------------------------------------------------------
+    /**   エントリフラグを取得する。
+    **
+    **  @param [in] idx   インデックス。
+    **  @return     フラグ。
+    **/
+    const   EntryFlags
+    getEntryFlag(
+            const  StringIndex  idx)  const;
+
+    //----------------------------------------------------------------
+    /**   エントリフラグを設定する。
+    **
+    **  @param [in] idx
+    **  @param [in] flagNew
+    **  @return     以前の値。
+    **/
+    const   EntryFlags
+    setEntryFlag(
+            const  StringIndex  idx,
+            const  EntryFlags   flagNew);
+
+    //----------------------------------------------------------------
     /**   テーブルに格納されているデータ数を取得する。
     **
     **  @return     データ数
