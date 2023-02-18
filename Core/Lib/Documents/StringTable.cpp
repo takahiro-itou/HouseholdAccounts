@@ -274,7 +274,9 @@ StringTable::setEntryText(
         const  StringIndex  drIndex,
         const  std::string  &steText)
 {
-    return ( ErrCode::FAILURE );
+    TEntry &stEntry = this->m_entryArray.at(drIndex);
+    stEntry.steText = steText;
+    return ( ErrCode::SUCCESS );
 }
 
 //----------------------------------------------------------------
