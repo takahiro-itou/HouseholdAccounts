@@ -251,7 +251,7 @@ StringTable::setEntryFlag(
 {
     const   EntryFlags  flagOld = this->m_entryFlags.at(idx);
     this->m_entryFlags[idx] = flagNew;
-    return ( flagNew );
+    return ( flagOld );
 }
 
 //----------------------------------------------------------------
