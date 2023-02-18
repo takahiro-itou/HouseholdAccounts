@@ -237,7 +237,7 @@ const   StringTable::EntryFlags
 StringTable::getEntryFlag(
         const  StringIndex  idx)  const
 {
-    return ( 0 );
+    return ( this->m_entryFlags.at(idx) );
 }
 
 //----------------------------------------------------------------
@@ -249,7 +249,9 @@ StringTable::setEntryFlag(
         const  StringIndex  idx,
         const  EntryFlags   flagNew)
 {
-    return ( 0 );
+    const   EntryFlags  flagOld = this->m_entryFlags.at(idx);
+    this->m_entryFlags[idx] = flagNew;
+    return ( flagNew );
 }
 
 //----------------------------------------------------------------
