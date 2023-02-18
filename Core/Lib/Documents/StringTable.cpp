@@ -261,7 +261,7 @@ StringTable::setEntryFlag(
 const   StringIndex
 StringTable::getNumEntries()  const
 {
-    return ( static_cast<StringIndex>(0) );
+    return ( this->m_numEntries );
 }
 
 //========================================================================
