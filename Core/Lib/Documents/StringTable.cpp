@@ -261,6 +261,8 @@ const   std::string  &
 StringTable::getEntryText(
         const  StringIndex  drIndex)  const
 {
+    const  TEntry  &stEntry = this->m_entryArray.at(drIndex);
+    return ( stEntry.steText );
 }
 
 //----------------------------------------------------------------
