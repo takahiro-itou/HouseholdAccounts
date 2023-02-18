@@ -191,6 +191,17 @@ StringTable::reserveBuffer(
 }
 
 //----------------------------------------------------------------
+//    ソートインデックスを直接設定する。
+//
+
+ErrCode
+StringTable::setSortIndexArray(
+        const  IndexArray  &siArray)
+{
+    return ( ErrCode::FAILURE );
+}
+
+//----------------------------------------------------------------
 //    テーブルのエントリを直接設定する。
 //
 
