@@ -15,12 +15,12 @@
 /**
 **      An Implementation of BookCategory class.
 **
-**      @file       Documents/BookCategory.cpp
+**      @file       DocCls/BookCategory.cpp
 **/
 
 #include    "Account/pch/PreCompile.h"
 
-#include    "Account/Documents/BookCategory.h"
+#include    "Account/DocCls/BookCategory.h"
 
 #include    "Account/Documents/CategoryManager.h"
 
