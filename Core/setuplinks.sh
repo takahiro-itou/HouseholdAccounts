@@ -65,7 +65,7 @@ if [ -d  Lib/${testcommondir}/Tests ] ; then
       &&  ${LN_H}  ../../Tests/.TestsCommon/CMakeLists.txt)
 fi
 
-for  dir  in  Common  Documents  FileFormat  ; do
+for  dir  in  Common  DocCls  FileFormat  ; do
     if [ -d Lib/${dir}/Tests ] ; then
         (cd  Lib/${dir}/Tests          \
           &&  ${RM_F}  Makefile.am     \

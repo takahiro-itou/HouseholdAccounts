@@ -140,10 +140,10 @@
     <ClCompile Include="..\..\Core\Lib\Common\DecimalCurrency.cpp" />
     <ClCompile Include="..\..\Core\Lib\Common\TextParser.cpp" />
 
-    <ClCompile Include="..\..\Core\Lib\Documents\BookCategory.cpp" />
-    <ClCompile Include="..\..\Core\Lib\Documents\BookDocument.cpp" />
-    <ClCompile Include="..\..\Core\Lib\Documents\CategoryManager.cpp" />
-    <ClCompile Include="..\..\Core\Lib\Documents\StringTable.cpp" />
+    <ClCompile Include="..\..\Core\Lib\DocCls\BookCategory.cpp" />
+    <ClCompile Include="..\..\Core\Lib\DocCls\BookDocument.cpp" />
+    <ClCompile Include="..\..\Core\Lib\DocCls\CategoryManager.cpp" />
+    <ClCompile Include="..\..\Core\Lib\DocCls\StringTable.cpp" />
 
     <ClCompile Include="..\..\Core\Lib\FileFormat\BookFile.cpp" />
 
