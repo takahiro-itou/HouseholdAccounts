@@ -302,10 +302,10 @@ private:
     Documents::CategoryManager ^    m_cateManager;
 
     /**   設定データ用文字列テーブル。  **/
-    Documents::StringTable ^        m_strtblForConfig;
+    DocCls::StringTable ^           m_strtblForConfig;
 
     /**   レコード用文字列テーブル。    **/
-    Documents::StringTable ^        m_strtblForRecord;
+    DocCls::StringTable ^           m_strtblForRecord;
 
 };
 

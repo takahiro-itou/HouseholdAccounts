@@ -30,7 +30,7 @@ using       namespace   msclr::interop;
 
 
 namespace  Wrapper  {
-namespace  Documents  {
+namespace  DocCls  {
 
 namespace  {
 
@@ -224,5 +224,5 @@ StringTable::TableEntry::set(StringIndex idx, System::String^ val)
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 }   //  End of namespace  Wrapper

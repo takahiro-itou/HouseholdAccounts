@@ -15,11 +15,11 @@
 /**
 **      An Interface of StringTable class.
 **
-**      @file       Documents/StringTable.h
+**      @file       DocCls/StringTable.h
 **/
 
-#if !defined( HAWRAPPER_DOCUMENTS_INCLUDED_STRING_TABLE_H )
-#    define   HAWRAPPER_DOCUMENTS_INCLUDED_STRING_TABLE_H
+#if !defined( HAWRAPPER_DOCCLS_INCLUDED_STRING_TABLE_H )
+#    define   HAWRAPPER_DOCCLS_INCLUDED_STRING_TABLE_H
 
 #pragma     once
 
@@ -40,7 +40,7 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 
 namespace  Wrapper  {
-namespace  Documents  {
+namespace  DocCls  {
 
 //========================================================================
 //
@@ -228,7 +228,7 @@ private:
 
 };
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 }   //  End of namespace  Wrapper
 
 #endif
