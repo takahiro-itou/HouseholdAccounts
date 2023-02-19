@@ -15,16 +15,16 @@
 /**
 **      An Implementation of StringTable class.
 **
-**      @file       Documents/StringTable.cpp
+**      @file       DocCls/StringTable.cpp
 **/
 
 #include    "Account/pch/PreCompile.h"
 
-#include    "Account/Documents/StringTable.h"
+#include    "Account/DocCls/StringTable.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  DocCls  {
 
 namespace  {
 }   //  End of (Unnamed) namespace.
@@ -396,5 +396,5 @@ StringTable::searchEntryTest(
     return ( searchEntry(strText) );
 }
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END

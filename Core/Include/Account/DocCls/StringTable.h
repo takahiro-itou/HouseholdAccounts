@@ -15,11 +15,11 @@
 /**
 **      An Interface of StringTable class.
 **
-**      @file       Documents/StringTable.h
+**      @file       DocCls/StringTable.h
 **/
 
-#if !defined( HACORE_DOCUMENTS_INCLUDED_STRING_TABLE_H )
-#    define   HACORE_DOCUMENTS_INCLUDED_STRING_TABLE_H
+#if !defined( HACORE_DOCCLS_INCLUDED_STRING_TABLE_H )
+#    define   HACORE_DOCCLS_INCLUDED_STRING_TABLE_H
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
@@ -37,7 +37,7 @@
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  DocCls  {
 
 //  クラスの前方宣言。  //
 
@@ -343,7 +343,7 @@ public:
 
 };
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif
