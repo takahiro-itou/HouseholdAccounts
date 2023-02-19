@@ -174,6 +174,7 @@ StringTable::EntryFlag::get(StringIndex idx)
 void
 StringTable::EntryFlag::set(StringIndex idx, int val)
 {
+    this->m_ptrObj->setEntryFlag(idx, val);
 }
 
 //----------------------------------------------------------------
