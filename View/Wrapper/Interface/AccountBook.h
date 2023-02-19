@@ -30,7 +30,7 @@
 #include    "Wrapper/Common/ManagedDate.h"
 #include    "Wrapper/Common/StringTable.h"
 #include    "Wrapper/Documents/CategoryManager.h"
-#include    "Wrapper/Documents/StringTable.h"
+#include    "Wrapper/DocCls/StringTable.h"
 
 
 namespace  Wrapper  {
