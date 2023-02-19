@@ -33,7 +33,7 @@
 #endif
 
 #if !defined( HACORE_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H )
-#    include    "Account/Documents/BookCategory.h"
+#    include    <Account/Documents/BookCategory.h>
 #endif
 
 
