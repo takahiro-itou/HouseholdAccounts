@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -15,11 +15,11 @@
 /**
 **      An Implementation of Test Case 'BookDocument'.
 **
-**      @file       Documents/Tests/BookDocumentTest.cpp
+**      @file       DocCls/Tests/BookDocumentTest.cpp
 **/
 
 #include    "TestDriver.h"
-#include    "Account/Documents/BookDocument.h"
+#include    "Account/DocCls/BookDocument.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
