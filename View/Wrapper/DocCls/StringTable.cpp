@@ -23,7 +23,7 @@
 
 #include    "Wrapper/Common/ArrayUtils.h"
 
-#include    <Account/Documents/StringTable.h>
+#include    <Account/DocCls/StringTable.h>
 
 #include    <msclr/marshal_cppstd.h>
 using       namespace   msclr::interop;

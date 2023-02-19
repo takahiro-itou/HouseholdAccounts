@@ -32,9 +32,9 @@
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
 //  クラスの前方宣言。  //
-namespace  Documents  {
+namespace  DocCls  {
 class   StringTable;
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
@@ -55,7 +55,7 @@ public ref  class  StringTable
 //
 private:
 
-    typedef     HouseholdAccounts::Documents::StringTable
+    typedef     HouseholdAccounts::DocCls::StringTable
     WrapTarget;
 
     typedef     cli::array<StringIndex, 1>      IndexArray;
