@@ -89,6 +89,10 @@ private:
     {
         std::string     steText;
         EntryFlags      steFlag;
+
+        TEntry()
+            : steText(), steFlag(0)
+        { }
     };
 
     DECLARE_STRICT_VECTOR(TEntry, StringIndex, StringArray);
