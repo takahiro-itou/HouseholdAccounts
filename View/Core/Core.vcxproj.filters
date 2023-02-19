@@ -98,13 +98,13 @@
     <ClInclude Include="..\..\Core\Include\Account\Documents\BookCategory.h">
       <Filter>Header Files\DocCls</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Core\Include\Account\Documents\BookDocument.h">
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\BookDocument.h">
       <Filter>Header Files\DocCls</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Core\Include\Account\Documents\CategoryManager.h">
       <Filter>Header Files\DocCls</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Core\Include\Account\Documents\StringTable.h">
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\StringTable.h">
       <Filter>Header Files\DocCls</Filter>
     </ClInclude>
 

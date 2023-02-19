@@ -166,9 +166,9 @@
     <ClInclude Include="..\..\Core\Include\Account\Common\TextParser.h" />
 
     <ClInclude Include="..\..\Core\Include\Account\Documents\BookCategory.h" />
-    <ClInclude Include="..\..\Core\Include\Account\Documents\BookDocument.h" />
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\BookDocument.h" />
     <ClInclude Include="..\..\Core\Include\Account\Documents\CategoryManager.h" />
-    <ClInclude Include="..\..\Core\Include\Account\Documents\StringTable.h" />
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\StringTable.h" />
 
     <ClInclude Include="..\..\Core\Include\Account\FileFormat\BookFile.h" />
 
