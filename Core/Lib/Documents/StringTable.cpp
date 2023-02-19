@@ -196,7 +196,8 @@ ErrCode
 StringTable::setSortIndexArray(
         const  IndexArray  &siArray)
 {
-    return ( ErrCode::FAILURE );
+    this->m_sortedIndex = siArray;
+    return ( ErrCode::SUCCESS );
 }
 
 //----------------------------------------------------------------
