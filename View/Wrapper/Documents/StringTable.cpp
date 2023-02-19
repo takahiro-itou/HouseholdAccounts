@@ -168,7 +168,7 @@ StringTable::setSortIndexArray(
 int
 StringTable::EntryFlag::get(StringIndex idx)
 {
-    return ( 0 );
+    return  this->m_ptrObj->getEntryFlag(idx);
 }
 
 void
@@ -183,7 +183,7 @@ StringTable::EntryFlag::set(StringIndex idx, int val)
 StringIndex
 StringTable::NumEntries::get()
 {
-    return  ( this->m_ptrObj->getNumEntries() );
+    return ( this->m_ptrObj->getNumEntries() );
 }
 
 //----------------------------------------------------------------
