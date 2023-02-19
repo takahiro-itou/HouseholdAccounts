@@ -205,8 +205,7 @@ StringTable::SortIndex::get()
 System::String ^
 StringTable::TableEntry::get(StringIndex idx)
 {
-    System::String^ tmp = nullptr;
-    return ( tmp );
+    return  marshal_as<System::String^>(this->m_ptrObj->getEntryText(idx));
 }
 
 void
