@@ -19,8 +19,7 @@
 **/
 
 #include    "Account/pch/PreCompile.h"
-
-#include    "Account/Documents/CategoryManager.h"
+#include    "Account/DocCls/CategoryManager.h"
 
 #include    "Account/DocCls/BookCategory.h"
 

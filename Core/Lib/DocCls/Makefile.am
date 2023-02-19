@@ -7,7 +7,7 @@
 ##    List of Directories.
 ##
 
-MODULE_DIR_NAME         =  Documents
+MODULE_DIR_NAME         =  DocCls
 SUBDIRS                 =  .  Tests
 
 include  $(top_srcdir)/.M4/Makefile.DirList.inc
@@ -42,6 +42,7 @@ INCLIB_HEADER_FILES         =  \
         ${INCLIB_SOURCE_DIR}/BookCategory.h            \
         ${INCLIB_SOURCE_DIR}/BookDocument.h            \
         ${INCLIB_SOURCE_DIR}/CategoryManager.h         \
+        ${INCLIB_SOURCE_DIR}/StringTable.h             \
         ${EXTRA_LIBRARY_HEADER_FILES}
 
 INCLIB_NODIST_HEADER_FILES  =

@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -15,11 +15,11 @@
 /**
 **      An Implementation of Test Case 'CategoryManager'.
 **
-**      @file       Documents/Tests/CategoryManagerTest.cpp
+**      @file       DocCls/Tests/CategoryManagerTest.cpp
 **/
 
 #include    "TestDriver.h"
-#include    "Account/Documents/CategoryManager.h"
+#include    "Account/DocCls/CategoryManager.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
