@@ -24,7 +24,7 @@
 
 #include    "Wrapper/Common/ArrayUtils.h"
 
-#include    "Account/Documents/CategoryManager.h"
+#include    <Account/Documents/CategoryManager.h>
 
 #include    <msclr/marshal_cppstd.h>
 using       namespace   msclr::interop;

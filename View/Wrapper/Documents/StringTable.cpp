@@ -22,7 +22,9 @@
 
 #include    "StringTable.h"
 
-#include    "Account/Documents/StringTable.h"
+#include    "Wrapper/Common/ArrayUtils.h"
+
+#include    <Account/Documents/StringTable.h>
 
 #include    <msclr/marshal_cppstd.h>
 using       namespace   msclr::interop;
@@ -194,8 +196,7 @@ StringTable::NumEntries::get()
 StringTable::IndexArray ^
 StringTable::SortIndex::get()
 {
-    IndexArray^ tmp = nullptr;
-    return ( tmp );
+    return  toManageFromVector(this->m_ptrObj->getSortIndexArray());
 }
 
 //----------------------------------------------------------------
