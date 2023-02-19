@@ -212,6 +212,7 @@ StringTable::TableEntry::get(StringIndex idx)
 void
 StringTable::TableEntry::set(StringIndex idx, System::String^ val)
 {
+    this->m_ptrObj->setEntryText(idx, marshal_as<std::string>(val));
 }
 
 //========================================================================
