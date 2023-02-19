@@ -137,6 +137,16 @@ StringTable::findString(
 }
 
 //----------------------------------------------------------------
+//    ソートインデックスを配列ごと取得する。
+//
+
+const   StringTable::IndexArray  &
+StringTable::getSortIndexArray()  const
+{
+    return ( this->m_sortedIndex );
+}
+
+//----------------------------------------------------------------
 //    新しいデータを挿入する。
 //
 
