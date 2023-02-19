@@ -111,7 +111,7 @@ StringTable::!StringTable()
 System::Boolean
 StringTable::checkIntegrity()
 {
-    return ( fromNativeBoolean(this->m_ptrObj->checkIntegrity()) );
+    return  fromNativeBoolean(this->m_ptrObj->checkIntegrity());
 }
 
 //----------------------------------------------------------------
@@ -183,7 +183,7 @@ StringTable::EntryFlag::set(StringIndex idx, int val)
 StringIndex
 StringTable::NumEntries::get()
 {
-    return ( this->m_ptrObj->getNumEntries() );
+    return  this->m_ptrObj->getNumEntries();
 }
 
 //----------------------------------------------------------------

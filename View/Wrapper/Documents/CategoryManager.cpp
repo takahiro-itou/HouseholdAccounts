@@ -112,9 +112,9 @@ CategoryFlags
 CategoryManager::getCategoryType(
         const   CategoryHandle  hCate)
 {
-    return ( static_cast<CategoryFlags>(
-                     this->m_ptrObj->getCategoryType(hCate)
-    ) );
+    return  static_cast<CategoryFlags>(
+                this->m_ptrObj->getCategoryType(hCate)
+    );
 }
 
 //----------------------------------------------------------------
@@ -125,7 +125,7 @@ CategoryHandle
 CategoryManager::getRootCategoryHandle(
         const   CategoryHandle  idxCate)
 {
-    return ( this->m_ptrObj->getRootCategoryHandle(idxCate) );
+    return  this->m_ptrObj->getRootCategoryHandle(idxCate);
 }
 
 //----------------------------------------------------------------
@@ -209,7 +209,7 @@ const   CategoryManager::CoreBookCategory  &
 CategoryManager::getRawBookCategory(
         const   CategoryHandle  hCate)
 {
-    return ( this->m_ptrObj->getBookCategory(hCate) );
+    return  this->m_ptrObj->getBookCategory(hCate);
 }
 
 //========================================================================
@@ -225,7 +225,7 @@ CategoryManager::getRawBookCategory(
 BookCategory ^
 CategoryManager::default::get(CategoryHandle hCate)
 {
-    return ( getBookCategory(hCate) );
+    return  getBookCategory(hCate);
 }
 
 //----------------------------------------------------------------
@@ -235,7 +235,7 @@ CategoryManager::default::get(CategoryHandle hCate)
 CategoryHandle
 CategoryManager::BufferCapacity::get()
 {
-    return ( this->m_ptrObj->getBufferCapacity() );
+    return  this->m_ptrObj->getBufferCapacity();
 }
 
 //----------------------------------------------------------------
@@ -245,7 +245,7 @@ CategoryManager::BufferCapacity::get()
 CategoryHandle
 CategoryManager::InnerTaxHandle::get()
 {
-    return ( this->m_ptrObj->getInnerTaxCategoryHandle() );
+    return  this->m_ptrObj->getInnerTaxCategoryHandle();
 }
 
 void
@@ -261,7 +261,7 @@ CategoryManager::InnerTaxHandle::set(CategoryHandle hCate)
 BookCategory ^
 CategoryManager::Items::get(CategoryHandle hCate)
 {
-    return ( getBookCategory(hCate) );
+    return  getBookCategory(hCate);
 }
 
 //----------------------------------------------------------------
@@ -271,7 +271,7 @@ CategoryManager::Items::get(CategoryHandle hCate)
 CategoryHandle
 CategoryManager::OuterTaxHandle::get()
 {
-    return ( this->m_ptrObj->getOuterTaxCategoryHandle() );
+    return  this->m_ptrObj->getOuterTaxCategoryHandle();
 }
 
 void
@@ -287,7 +287,7 @@ CategoryManager::OuterTaxHandle::set(CategoryHandle hCate)
 CategoryHandle
 CategoryManager::RegisteredCategoryCount::get()
 {
-    return ( this->m_ptrObj->getRegisteredCategoryCount() );
+    return  this->m_ptrObj->getRegisteredCategoryCount();
 }
 
 //----------------------------------------------------------------
@@ -297,7 +297,7 @@ CategoryManager::RegisteredCategoryCount::get()
 CategoryHandle
 CategoryManager::RootCategoryCount::get()
 {
-    return ( this->m_ptrObj->getRootCategoryCount() );
+    return  this->m_ptrObj->getRootCategoryCount();
 }
 
 //========================================================================
