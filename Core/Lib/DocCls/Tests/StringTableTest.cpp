@@ -15,15 +15,15 @@
 /**
 **      An Implementation of Test Case 'StringTable'.
 **
-**      @file       Documents/Tests/StringTableTest.cpp
+**      @file       DocCls/Tests/StringTableTest.cpp
 **/
 
 #include    "TestDriver.h"
-#include    "Account/Documents/StringTable.h"
+#include    "Account/DocCls/StringTable.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  DocCls  {
 
 //  クラスの前方宣言。  //
 
@@ -353,7 +353,7 @@ void  StringTableTest::testSortIndex()
     return;
 }
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 //========================================================================

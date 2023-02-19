@@ -4,9 +4,9 @@
 ##    モジュールの設定。
 ##
 
-set(MODULE_DIR_NAME         "Documents")
-set(MODULE_OUTPUT_NAME      "Documents")
-set(MODULE_TITLE            "Documents")
+set(MODULE_DIR_NAME         "DocCls")
+set(MODULE_OUTPUT_NAME      "DocCls")
+set(MODULE_TITLE            "DocCls")
 
 set(INCLIB_SOURCE_DIR       "${INCLUDE_SOURCE_DIR}/${MODULE_DIR_NAME}")
 set(INCLIB_BINARY_DIR       "${INCLUDE_BINARY_DIR}/${MODULE_DIR_NAME}")
