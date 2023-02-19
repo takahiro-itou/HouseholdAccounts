@@ -19,10 +19,9 @@
 **/
 
 #include    "PreCompile.h"
-
-#include    "Account/Documents/CategoryManager.h"
-
 #include    "CategoryManager.h"
+
+#include    <Account/Documents/CategoryManager.h>
 
 #include    <msclr/marshal_cppstd.h>
 using       namespace   msclr::interop;

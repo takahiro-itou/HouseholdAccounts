@@ -19,7 +19,6 @@
 **/
 
 #include    "PreCompile.h"
-
 #include    "BookCategory.h"
 
 #include    "Wrapper/Common/ArrayUtils.h"
