@@ -15,11 +15,11 @@
 /**
 **      An Interface of CategoryWiseAggregates class.
 **
-**      @file       Documents/CategoryWiseAggregates.h
+**      @file       DocCls/CategoryWiseAggregates.h
 **/
 
-#if !defined( HAWRAPPER_DOCUMENTS_INCLUDED_CATEGORY_WISE_AGGREGATES_H )
-#    define   HAWRAPPER_DOCUMENTS_INCLUDED_CATEGORY_WISE_AGGREGATES_H
+#if !defined( HAWRAPPER_DOCCLS_INCLUDED_CATEGORY_WISE_AGGREGATES_H )
+#    define   HAWRAPPER_DOCCLS_INCLUDED_CATEGORY_WISE_AGGREGATES_H
 
 #pragma     once
 
@@ -27,7 +27,7 @@
 #include    "Wrapper/Common/DecimalCurrency.h"
 
 namespace  Wrapper  {
-namespace  Documents  {
+namespace  DocCls  {
 
 //========================================================================
 //
@@ -146,7 +146,7 @@ private:
 
 };
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 }   //  End of namespace  Wrapper
 
 #endif
