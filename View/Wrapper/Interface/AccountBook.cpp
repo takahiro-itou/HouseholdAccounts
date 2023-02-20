@@ -142,7 +142,7 @@ AccountBook::addDataToItemTotal(
 
     int itemHandle  = lngItemIndex;
     while ( itemHandle >= 0 ) {
-        const   HouseholdAccounts::Documents::BookCategory  &
+        const   HouseholdAccounts::DocCls::BookCategory  &
             cbc = cm->getRawBookCategory(itemHandle);
         parentItem  = cbc.getParentHandle();
         const int  flag = static_cast<int>(cbc.getFlags());

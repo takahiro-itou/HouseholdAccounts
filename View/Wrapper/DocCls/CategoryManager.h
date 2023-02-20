@@ -57,7 +57,7 @@ public ref  class  CategoryManager
 //
 private:
 
-    typedef     HouseholdAccounts::Documents::CategoryManager
+    typedef     HouseholdAccounts::DocCls::CategoryManager
     WrapTarget;
 
     typedef     HouseholdAccounts::DocCls::BookCategory
@@ -324,7 +324,7 @@ private:
 
 };
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 }   //  End of namespace  Wrapper
 
 #endif
