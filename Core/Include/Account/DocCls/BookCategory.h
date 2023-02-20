@@ -15,11 +15,11 @@
 /**
 **      An Interface of BookCategory class.
 **
-**      @file       Documents/BookCategory.h
+**      @file       DocCls/BookCategory.h
 **/
 
-#if !defined( HACORE_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H )
-#    define   HACORE_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H
+#if !defined( HACORE_DOCCLS_INCLUDED_BOOK_CATEGORY_H )
+#    define   HACORE_DOCCLS_INCLUDED_BOOK_CATEGORY_H
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
@@ -41,7 +41,7 @@
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  DocCls  {
 
 //  クラスの前方宣言。  //
 class   CategoryManager;
@@ -398,7 +398,7 @@ public:
     friend  class   BookCategoryTest;
 };
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif
