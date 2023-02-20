@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -15,11 +15,11 @@
 /**
 **      An Interface of BookDocument class.
 **
-**      @file       Documents/BookDocument.h
+**      @file       DocCls/BookDocument.h
 **/
 
-#if !defined( HACORE_DOCUMENTS_INCLUDED_BOOK_DOCUMENT_H )
-#    define   HACORE_DOCUMENTS_INCLUDED_BOOK_DOCUMENT_H
+#if !defined( HACORE_DOCCLS_INCLUDED_BOOK_DOCUMENT_H )
+#    define   HACORE_DOCCLS_INCLUDED_BOOK_DOCUMENT_H
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
@@ -28,7 +28,7 @@
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  DocCls  {
 
 //  クラスの前方宣言。  //
 
@@ -118,7 +118,7 @@ public:
     friend  class   BookDocumentTest;
 };
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif
