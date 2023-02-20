@@ -17,7 +17,7 @@
     <Filter Include="Common">
       <UniqueIdentifier>{5496ac89-4ab8-436b-84d9-df85e2d9ba7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Documents">
+    <Filter Include="DocCls">
       <UniqueIdentifier>{93b8fc72-0c8c-4c0e-ad03-7ecd8775b447}</UniqueIdentifier>
     </Filter>
     <Filter Include="Interface">
@@ -31,10 +31,10 @@
       <UniqueIdentifier>{e6bae11d-fcf8-4626-9c34-df0580fad5d8}</UniqueIdentifier>
     </Filter>
 
-    <Filter Include="Documents\Source Files">
+    <Filter Include="DocCls\Source Files">
       <UniqueIdentifier>{8ad4d022-de8a-4d3c-97cb-7b785232bfdb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Documents\Header Files">
+    <Filter Include="DocCls\Header Files">
       <UniqueIdentifier>{f670c115-f0be-4c84-8fbb-581e127896dc}</UniqueIdentifier>
     </Filter>
 
@@ -71,17 +71,17 @@
       <Filter>Common\Source Files</Filter>
     </ClCompile>
 
-    <ClCompile Include="..\Wrapper\Documents\BookCategory.cpp">
-      <Filter>Documents\Source Files</Filter>
+    <ClCompile Include="..\Wrapper\DocCls\BookCategory.cpp">
+      <Filter>DocCls\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Wrapper\Documents\CategoryManager.cpp">
-      <Filter>Documents\Source Files</Filter>
+    <ClCompile Include="..\Wrapper\DocCls\CategoryManager.cpp">
+      <Filter>DocCls\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Wrapper\Documents\CategoryWiseAggregates.cpp">
-      <Filter>Documents\Source Files</Filter>
+      <Filter>DocCls\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Wrapper\DocCls\StringTable.cpp">
-      <Filter>Documents\Source Files</Filter>
+      <Filter>DocCls\Source Files</Filter>
     </ClCompile>
 
     <ClCompile Include="..\Wrapper\Interface\AccountBook.cpp">
@@ -132,17 +132,17 @@
       <Filter>Common\Header Files</Filter>
     </ClInclude>
 
-    <ClInclude Include="..\Wrapper\Documents\BookCategory.h">
-      <Filter>Documents\Header Files</Filter>
+    <ClInclude Include="..\Wrapper\DocCls\BookCategory.h">
+      <Filter>DocCls\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Wrapper\Documents\CategoryManager.h">
-      <Filter>Documents\Header Files</Filter>
+    <ClInclude Include="..\Wrapper\DocCls\CategoryManager.h">
+      <Filter>DocCls\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Wrapper\Documents\CategoryWiseAggregates.h">
-      <Filter>Documents\Header Files</Filter>
+      <Filter>DocCls\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Wrapper\DocCls\StringTable.h">
-      <Filter>Documents\Header Files</Filter>
+      <Filter>DocCls\Header Files</Filter>
     </ClInclude>
 
     <ClInclude Include="..\Wrapper\Interface\AccountBook.h">
