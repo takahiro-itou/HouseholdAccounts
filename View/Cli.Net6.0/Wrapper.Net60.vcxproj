@@ -165,7 +165,7 @@
     <ClCompile Include="..\Wrapper\Common\StringTable.cpp" />
     <ClCompile Include="..\Wrapper\Common\TextOperation.cpp" />
 
-    <ClCompile Include="..\Wrapper\Documents\BookCategory.cpp" />
+    <ClCompile Include="..\Wrapper\DocCls\BookCategory.cpp" />
     <ClCompile Include="..\Wrapper\Documents\CategoryManager.cpp" />
     <ClCompile Include="..\Wrapper\Documents\CategoryWiseAggregates.cpp" />
     <ClCompile Include="..\Wrapper\DocCls\StringTable.cpp" />
