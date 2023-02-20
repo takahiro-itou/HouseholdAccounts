@@ -29,7 +29,7 @@
 #include    "AnnualRecords.h"
 #include    "Wrapper/Common/ManagedDate.h"
 #include    "Wrapper/Common/StringTable.h"
-#include    "Wrapper/Documents/CategoryManager.h"
+#include    "Wrapper/DocCls/CategoryManager.h"
 #include    "Wrapper/DocCls/StringTable.h"
 
 

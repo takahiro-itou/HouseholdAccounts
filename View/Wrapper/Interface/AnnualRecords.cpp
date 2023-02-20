@@ -19,11 +19,10 @@
 **/
 
 #include    "PreCompile.h"
-
 #include    "AnnualRecords.h"
 
 #include    "Wrapper/Common/ManagedDate.h"
-#include    "Wrapper/Documents/BookCategory.h"
+#include    "Wrapper/DocCls/BookCategory.h"
 
 namespace  Wrapper  {
 
