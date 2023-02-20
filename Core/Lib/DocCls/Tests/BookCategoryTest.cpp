@@ -23,7 +23,7 @@
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  DocCls  {
 
 //  クラスの前方宣言。  //
 
@@ -62,7 +62,7 @@ void  BookCategoryTest::testBookCategory()
     return;
 }
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 //========================================================================
