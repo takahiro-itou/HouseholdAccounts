@@ -15,11 +15,11 @@
 /**
 **      An Interface of BookCategory class.
 **
-**      @file       Documents/BookCategory.h
+**      @file       DocCls/BookCategory.h
 **/
 
-#if !defined( HAWRAPPER_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H )
-#    define   HAWRAPPER_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H
+#if !defined( HAWRAPPER_DOCCLS_INCLUDED_BOOK_CATEGORY_H )
+#    define   HAWRAPPER_DOCCLS_INCLUDED_BOOK_CATEGORY_H
 
 #pragma     once
 
@@ -32,7 +32,7 @@
 #    include    "Wrapper/Common/DecimalCurrency.h"
 #endif
 
-#if !defined( HACORE_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H )
+#if !defined( HACORE_DOCCLS_INCLUDED_BOOK_CATEGORY_H )
 #    include    <Account/DocCls/BookCategory.h>
 #endif
 
@@ -40,10 +40,9 @@
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
 //  クラスの前方宣言。  //
-namespace  Documents  {
-class   BookCategory;
+namespace  DocCls  {
 class   CategoryManager;
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
@@ -56,7 +55,7 @@ namespace  Documents  {
 //    Type Definitions.
 //
 
-typedef     HouseholdAccounts::Documents::CategoryFlags
+typedef     HouseholdAccounts::DocCls::CategoryFlags
 CoreCategoryFlags;
 
 /**
@@ -113,10 +112,10 @@ public ref  class  BookCategory
 //
 private:
 
-    typedef     HouseholdAccounts::Documents::BookCategory
+    typedef     HouseholdAccounts::DocCls::BookCategory
     WrapTarget;
 
-    typedef     HouseholdAccounts::Documents::CategoryManager
+    typedef     HouseholdAccounts::DocCls::CategoryManager
     CoreCategoryManager;
 
     typedef     cli::array<CategoryHandle, 1>
@@ -338,7 +337,7 @@ private:
 
 };
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 }   //  End of namespace  Wrapper
 
 #endif

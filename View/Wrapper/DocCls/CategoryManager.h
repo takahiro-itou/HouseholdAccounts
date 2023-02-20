@@ -15,11 +15,11 @@
 /**
 **      An Interface of CategoryManager class.
 **
-**      @file       Documents/CategoryManager.h
+**      @file       DocCls/CategoryManager.h
 **/
 
-#if !defined( HAWRAPPER_DOCUMENTS_INCLUDED_CATEGORY_MANAGER_H )
-#    define   HAWRAPPER_DOCUMENTS_INCLUDED_CATEGORY_MANAGER_H
+#if !defined( HAWRAPPER_DOCCLS_INCLUDED_CATEGORY_MANAGER_H )
+#    define   HAWRAPPER_DOCCLS_INCLUDED_CATEGORY_MANAGER_H
 
 #pragma     once
 
@@ -30,9 +30,9 @@
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
 //  クラスの前方宣言。  //
-namespace  Documents  {
+namespace  DocCls  {
 class   CategoryManager;
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
@@ -60,7 +60,7 @@ private:
     typedef     HouseholdAccounts::Documents::CategoryManager
     WrapTarget;
 
-    typedef     HouseholdAccounts::Documents::BookCategory
+    typedef     HouseholdAccounts::DocCls::BookCategory
     CoreBookCategory;
 
     typedef     cli::array<BookCategory^, 1>    CategoryArray;
