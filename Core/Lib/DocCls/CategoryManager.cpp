@@ -29,7 +29,7 @@
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  DocCls  {
 
 namespace  {
 }   //  End of (Unnamed) namespace.
@@ -365,5 +365,5 @@ CategoryManager::getRootCategoryCount()  const
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
