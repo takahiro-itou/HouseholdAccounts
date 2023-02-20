@@ -77,7 +77,7 @@
     <ClCompile Include="..\Wrapper\DocCls\CategoryManager.cpp">
       <Filter>DocCls\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Wrapper\Documents\CategoryWiseAggregates.cpp">
+    <ClCompile Include="..\Wrapper\DocCls\CategoryWiseAggregates.cpp">
       <Filter>DocCls\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Wrapper\DocCls\StringTable.cpp">
@@ -138,7 +138,7 @@
     <ClInclude Include="..\Wrapper\DocCls\CategoryManager.h">
       <Filter>DocCls\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Wrapper\Documents\CategoryWiseAggregates.h">
+    <ClInclude Include="..\Wrapper\DocCls\CategoryWiseAggregates.h">
       <Filter>DocCls\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Wrapper\DocCls\StringTable.h">
