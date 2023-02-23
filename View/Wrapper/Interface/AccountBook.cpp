@@ -346,6 +346,26 @@ AccountBook::BookCategories::get()
     return ( this->m_cateManager );
 }
 
+//----------------------------------------------------------------
+//    設定データ用文字列テーブル。
+//
+
+DocCls::StringTable ^
+AccountBook::ConfigStringTable::get()
+{
+    return ( this->m_strtblForConfig );
+}
+
+//----------------------------------------------------------------
+//    レコード用文字列テーブル。
+//
+
+DocCls::StringTable ^
+AccountBook::RecordStringTable::get()
+{
+    return ( this->m_strtblForRecord );
+}
+
 //========================================================================
 //
 //    Protected Member Functions.

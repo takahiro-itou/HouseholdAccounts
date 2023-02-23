@@ -241,6 +241,26 @@ public:
         DocCls::CategoryManager ^   get();
     }
 
+    //----------------------------------------------------------------
+    /**   設定データ用文字列テーブル。
+    **
+    **/
+    property    DocCls::StringTable ^
+    ConfigStringTable
+    {
+        DocCls::StringTable ^   get();
+    }
+
+    //----------------------------------------------------------------
+    /**   レコード用文字列テーブル。
+    **
+    **/
+    property    DocCls::StringTable ^
+    RecordStringTable
+    {
+        DocCls::StringTable ^   get();
+    }
+
     /**   家計簿データが有効か。    **/
     System::Boolean     bEnabled;
 
