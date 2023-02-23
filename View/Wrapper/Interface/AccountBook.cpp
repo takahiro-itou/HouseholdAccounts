@@ -60,7 +60,7 @@ AccountBook::AccountBook()
       m_cateManager(nullptr),
       m_cateBufferSize(0)
 {
-    this->m_cateManager = gcnew Documents::CategoryManager ();
+    this->m_cateManager = gcnew DocCls::CategoryManager ();
 }
 
 //----------------------------------------------------------------
@@ -138,7 +138,7 @@ AccountBook::addDataToItemTotal(
 
     AnnualRecords  % ar = this->utAnnualRecords;
 
-    Documents::CategoryManager ^ cm = this->BookCategories;
+    DocCls::CategoryManager ^   cm  = this->BookCategories;
 
     int itemHandle  = lngItemIndex;
     while ( itemHandle >= 0 ) {
@@ -147,11 +147,11 @@ AccountBook::addDataToItemTotal(
         parentItem  = cbc.getParentHandle();
         const int  flag = static_cast<int>(cbc.getFlags());
 
-        if ( flag & static_cast<int>(Documents::CategoryFlags::CFLAG_NOCOUNT_PARENT) ) {
+        if ( flag & static_cast<int>(DocCls::CategoryFlags::CFLAG_NOCOUNT_PARENT) ) {
             blnAddToParent  = false;
             blnAddToRoot    = false;
         }
-        if ( flag & static_cast<int>(Documents::CategoryFlags::CFLAG_NOCOUNT_ROOT) ) {
+        if ( flag & static_cast<int>(DocCls::CategoryFlags::CFLAG_NOCOUNT_ROOT) ) {
             blnAddToRoot    = false;
         }
         if ( (parentItem == -1) && (blnAddToRoot == false) ) {
@@ -211,7 +211,7 @@ AccountBook::insertNewCategory(
     const   CategoryHandle
         cateNew = this->BookCategories->insertNewCategory(
                         cateParent, cateName,
-                        static_cast<Documents::CategoryFlags>(cateFlags),
+                        static_cast<DocCls::CategoryFlags>(cateFlags),
                         startDate,
                         Common::DecimalCurrency(startBalance) );
 
@@ -340,7 +340,7 @@ AccountBook::getStartYear()
 //    項目データを一元管理するインスタンス。
 //
 
-Documents::CategoryManager ^
+DocCls::CategoryManager ^
 AccountBook::BookCategories::get()
 {
     return ( this->m_cateManager );
