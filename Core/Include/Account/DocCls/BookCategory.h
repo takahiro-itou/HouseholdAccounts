@@ -111,6 +111,8 @@ private:
 
     typedef     Common::DecimalCurrency     DecimalCurrency;
 
+    typedef     BookCategory                This;
+
 //========================================================================
 //
 //    Constructor(s) and Destructor.
@@ -214,6 +216,22 @@ public:
 //
 //    Public Member Functions.
 //
+
+//========================================================================
+//
+//    Public Member Functions (Operators).
+//
+public:
+
+    //----------------------------------------------------------------
+    /**   インスタンスを指定した内容に設定する
+    **  （代入演算子 =  ）。
+    **
+    **  @param [in] rhs   右辺。
+    **/
+    This  &
+    operator =  (
+            const  This  & rhs)  = default;
 
 //========================================================================
 //
