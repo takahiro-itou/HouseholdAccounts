@@ -300,6 +300,29 @@ StringTable::getNumEntries()  const
     return ( this->m_numEntries );
 }
 
+//----------------------------------------------------------------
+//    ソート状態フラグを取得する。
+//
+
+StringTable::StringTableSort
+StringTable::getSortFlag()  const
+{
+    return ( this->m_flagSorted );
+}
+
+//----------------------------------------------------------------
+//    ソート状態フラグを設定する。
+//
+
+StringTable::StringTableSort
+StringTable::setSortFlag(
+        const  StringTableSort  flagNew)
+{
+    StringTableSort flagOld = this->m_flagSorted;
+    this->m_flagSorted  = flagNew;
+    return ( flagOld );
+}
+
 //========================================================================
 //
 //    Protected Member Functions.
