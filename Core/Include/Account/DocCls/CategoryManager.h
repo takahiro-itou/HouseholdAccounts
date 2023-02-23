@@ -309,6 +309,10 @@ private:
 //
 //    Other Features.
 //
+private:
+    typedef     CategoryManager     This;
+    CategoryManager     (const  This  &);
+    This &  operator =  (const  This  &);
 public:
     //  テストクラス。  //
     friend  class   CategoryManagerTest;

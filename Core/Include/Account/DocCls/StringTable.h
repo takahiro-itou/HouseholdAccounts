@@ -332,6 +332,10 @@ private:
 //
 //    Other Features.
 //
+private:
+    typedef     StringTable     This;
+    StringTable         (const  This  &);
+    This &  operator =  (const  This  &);
 public:
     //  テストクラス。  //
     friend  class   StringTableTest;
