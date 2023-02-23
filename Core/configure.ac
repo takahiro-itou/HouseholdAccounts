@@ -58,7 +58,7 @@ dnl
 dnl   Project Name Space.
 dnl
 
-HOUSEHOLD_ACCOUNTS_CNF_NAMESPACE=HouseholdAccounts
+HOUSEHOLD_ACCOUNTS_CNF_NAMESPACE=HABook
 AC_SUBST(HOUSEHOLD_ACCOUNTS_CNF_NAMESPACE)
 
 dnl----------------------------------------------------------------
