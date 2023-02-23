@@ -15,7 +15,7 @@
 /**
 **      An Implementation of BookCategory class.
 **
-**      @file       Documents/BookCategory.cpp
+**      @file       DocCls/BookCategory.cpp
 **/
 
 #include    "PreCompile.h"
@@ -30,7 +30,7 @@ using       namespace   msclr::interop;
 
 
 namespace  Wrapper  {
-namespace  Documents  {
+namespace  DocCls  {
 
 namespace  {
 
@@ -267,5 +267,5 @@ BookCategory::SubCategory::get(
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 }   //  End of namespace  Wrapper
