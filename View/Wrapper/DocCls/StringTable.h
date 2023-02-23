@@ -154,6 +154,15 @@ public:
     insertString(
             System::String^     strText);
 
+    //----------------------------------------------------------------
+    /**   データ用のバッファを確保する。
+    **
+    **  @param [in] bufSize
+    **/
+    StringIndex
+    reserveBuffer(
+            const  StringIndex  bufSize);
+
 //========================================================================
 //
 //    Accessors.

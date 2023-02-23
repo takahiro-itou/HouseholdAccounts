@@ -141,6 +141,18 @@ StringTable::insertString(
     return ( retVal );
 }
 
+//----------------------------------------------------------------
+//    データ用のバッファを確保する。
+//
+
+StringIndex
+StringTable::reserveBuffer(
+        const  StringIndex  bufSize)
+{
+    const  StringIndex  retVal  = this->m_ptrObj->reserveBuffer(bufSize);
+    return ( retVal );
+}
+
 //========================================================================
 //
 //    Accessors.
