@@ -189,6 +189,21 @@ StringTable::NumEntries::get()
 }
 
 //----------------------------------------------------------------
+//    ソート状態フラグ。
+//
+
+StringTable::StringTableSort
+StringTable::SortFlag::get()
+{
+    return ( StringTableSort::TABLE_SORT_NONE );
+}
+
+void
+StringTable::SortFlag::set(StringTableSort flagNew)
+{
+}
+
+//----------------------------------------------------------------
 //    ソートインデックスの配列。
 //
 
