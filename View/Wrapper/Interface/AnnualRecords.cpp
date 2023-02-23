@@ -114,7 +114,7 @@ AnnualRecords::recountAnnualRecords(
         const  int  lngYear,
         const  int  numDays)
 {
-    typedef     Documents::CategoryFlags    CategoryFlags;
+    typedef     DocCls::CategoryFlags   CategoryFlags;
 
     int dayIndexStart, dayIndexEnd;
 
