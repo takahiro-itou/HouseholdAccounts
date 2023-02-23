@@ -38,7 +38,7 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 
 namespace  Wrapper  {
-namespace  Documents  {
+namespace  DocCls  {
 
 //========================================================================
 //
