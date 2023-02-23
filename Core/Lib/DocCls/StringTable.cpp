@@ -239,6 +239,16 @@ StringTable::setTableEntry(
 //
 
 //----------------------------------------------------------------
+//    バッファのサイズを得る。
+//
+
+const   StringIndex
+StringIndex::getBufferCapacity()  const
+{
+    return ( this->m_bufferSize );
+}
+
+//----------------------------------------------------------------
 //    エントリフラグを取得する。
 //
 
