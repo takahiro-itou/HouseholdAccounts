@@ -28,12 +28,16 @@
 #    include    "Wrapper/Common/AccountsTypes.h"
 #endif
 
+#if !defined( HACORE_DOCCLS_INCLUDED_STRING_TABLE_H )
+#    include    <Account/DocCls/StringTable.h>
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
 //  クラスの前方宣言。  //
 namespace  DocCls  {
-class   StringTable;
+
 }   //  End of namespace  DocCls
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
@@ -58,6 +62,15 @@ private:
     typedef     HABook::DocCls::StringTable     WrapTarget;
 
     typedef     cli::array<StringIndex, 1>      IndexArray;
+
+    typedef     WrapTarget::StringTableSort     CoreStringTableSort;
+
+public:
+    enum class  StringTableSort
+    {
+        TABLE_SORT_NONE         = CoreStringTableSort::TABLE_SORT_NONE,
+        TABLE_SORT_ASCENDING    = CoreStringTableSort::TABLE_SORT_ASCENDING,
+    };
 
 //========================================================================
 //
