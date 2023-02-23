@@ -55,8 +55,7 @@ public ref  class  StringTable
 //
 private:
 
-    typedef     HouseholdAccounts::DocCls::StringTable
-    WrapTarget;
+    typedef     HABook::DocCls::StringTable     WrapTarget;
 
     typedef     cli::array<StringIndex, 1>      IndexArray;
 
