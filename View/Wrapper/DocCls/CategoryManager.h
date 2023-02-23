@@ -57,15 +57,14 @@ public ref  class  CategoryManager
 //
 private:
 
-    typedef     HouseholdAccounts::DocCls::CategoryManager
-    WrapTarget;
+    typedef     HABook::DocCls::CategoryManager     WrapTarget;
 
-    typedef     HouseholdAccounts::DocCls::BookCategory
+    typedef     HABook::DocCls::BookCategory
     CoreBookCategory;
 
-    typedef     cli::array<BookCategory^, 1>    CategoryArray;
+    typedef     cli::array<BookCategory^, 1>        CategoryArray;
 
-    typedef     Common::DecimalCurrency     DecimalCurrency;
+    typedef     Common::DecimalCurrency             DecimalCurrency;
 
 //========================================================================
 //
