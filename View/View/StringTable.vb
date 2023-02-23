@@ -114,7 +114,7 @@ Public Sub SortStringTable(
 End Sub
 
 Public Function WriteStringTable(
-        ByRef utStringTable As Wrapper.StringTable,
+        ByRef utStringTable As Wrapper.DocCls.StringTable,
         ByVal lngFileNumber As Integer) As Integer
 '---------------------------------------------------------------------
 'ファイルに、文字列テーブルを書き込む
@@ -124,7 +124,7 @@ Public Function WriteStringTable(
 '  書き込んだバイト数
 '---------------------------------------------------------------------
 Dim i As Integer, lngCount As Integer
-Dim lngSorted As Integer, lngIndex As Integer
+Dim lngSorted As Integer
 Dim lngFlags As Integer, lngLength As Integer, lngRecordSize As Integer
 Dim lngFirstPos As Integer, lngEndPos As Integer
 Dim strTemp As String
@@ -134,8 +134,8 @@ Dim bytBuffer() As Byte
     lngFirstPos = Seek(lngFileNumber) - 1
 
     With utStringTable
-        lngCount = .nNumEntry
-        lngSorted = .nSorted
+        lngCount  = .NumEntries
+        lngSorted = .SortFlag
         lngLength = 0
 
         FilePut(lngFileNumber, lngCount)
@@ -145,13 +145,12 @@ Dim bytBuffer() As Byte
 
         'ソートインデックステーブルを書き込む
         If (lngSorted <> STRINGSORTNONE) Then
-            FilePut(lngFileNumber, .nSortIndex)
+            FilePut(lngFileNumber, .SortIndex)
         End If
 
         For i = 0 To lngCount - 1
-            lngFlags = .nEntryFlags(i)
-            lngIndex = .nSortIndex(i)
-            strTemp = .sTableEntries(i)
+            lngFlags = .EntryFlag(i)
+            strTemp = .TableEntry(i)
 
             ReDim bytBuffer(0 To 255)
             lngLength = Wrapper.TextOperation.toBytesFromString(

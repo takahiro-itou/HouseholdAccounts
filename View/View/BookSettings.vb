@@ -179,7 +179,7 @@ Dim blnResult As Boolean
         'ヘッダ用の文字列テーブルを書き込む
         lngTablePos = 256
         Seek(lngTempFileNumber, lngStartPos + lngTablePos + 1)
-        lngTableSize = WriteStringTable(.utSettingsStringTable, lngTempFileNumber)
+        lngTableSize = WriteStringTable(.ConfigStringTable, lngTempFileNumber)
         lngDataPos = lngTablePos + lngTableSize
 
         '項目データ
