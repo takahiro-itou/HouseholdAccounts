@@ -15,7 +15,7 @@
 /**
 **      An Implementation of CategoryManager class.
 **
-**      @file       Documents/CategoryManager.cpp
+**      @file       DocCls/CategoryManager.cpp
 **/
 
 #include    "PreCompile.h"
@@ -28,7 +28,7 @@ using       namespace   msclr::interop;
 
 
 namespace  Wrapper  {
-namespace  Documents  {
+namespace  DocCls  {
 
 namespace  {
 
@@ -309,5 +309,5 @@ CategoryManager::RootCategoryCount::get()
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 }   //  End of namespace  Wrapper
