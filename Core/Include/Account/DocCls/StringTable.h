@@ -287,6 +287,24 @@ public:
     const   StringIndex
     getNumEntries()  const;
 
+    //----------------------------------------------------------------
+    /**   ソート状態フラグを取得する。
+    **
+    **  @return     現在の値。
+    **/
+    StringTableSort
+    getSortFlag()  const;
+
+    //----------------------------------------------------------------
+    /**   ソート状態フラグを設定する。
+    **
+    **  @param [in] flagNew
+    **  @return     以前の値。
+    **/
+    StringTableSort
+    setSortFlag(
+            const  StringTableSort  flagNew);
+
 //========================================================================
 //
 //    Protected Member Functions.
