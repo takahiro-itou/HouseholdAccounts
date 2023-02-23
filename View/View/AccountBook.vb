@@ -15,7 +15,7 @@ Module AccountBook
 Public gutTempBook As Wrapper.AccountBook
 
 Public Function AccountBookUpdateItemHandleInYearRecord(
-        ByRef lpBookItems As Wrapper.Documents.CategoryManager,
+        ByRef lpBookItems As Wrapper.DocCls.CategoryManager,
         ByRef lpNewIndex() As Integer,
         ByRef utYearRecord As Wrapper.AnnualRecords) As Integer
 '---------------------------------------------------------------------
@@ -427,8 +427,8 @@ Dim lngSubCount As Integer
 Dim lngValue As Integer
 Dim lngStartDayIndex As Integer, lngEndDayIndex As Integer
 Dim blnResult As Boolean
-Dim bcType As Wrapper.Documents.CategoryFlags
-Dim bookCates As Wrapper.Documents.CategoryManager
+Dim bcType As Wrapper.DocCls.CategoryFlags
+Dim bookCates As Wrapper.DocCls.CategoryManager
 
     With utBook
         .nCurrentYear = lngYear
@@ -440,7 +440,7 @@ Dim bookCates As Wrapper.Documents.CategoryManager
     '初期値を書き込む
     With utBook.utAnnualRecords
         For i = 0 To lngItemBufferSize - 1
-            If ((bookCates(i).Flags And Wrapper.Documents.CategoryFlags.CTYPE_MASK) = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Then
+            If ((bookCates(i).Flags And Wrapper.DocCls.CategoryFlags.CTYPE_MASK) = Wrapper.DocCls.CategoryFlags.CTYPE_BALANCE) Then
                 .utItemDetailCounts(i).nDayTotal(0) = .utItemAnnualCounts(i).nStartValues(lngYearIndex)
             End If
         Next i
@@ -453,7 +453,7 @@ Dim bookCates As Wrapper.Documents.CategoryManager
         For lngDate = 0 To utBook.nNumWeeks * NUMDAYSPERWEEK - 1
             'バッファをクリアする
             For i = 0 To lngItemBufferSize - 1
-                If ((bookCates(i).Flags And Wrapper.Documents.CategoryFlags.CTYPE_MASK) = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Then
+                If ((bookCates(i).Flags And Wrapper.DocCls.CategoryFlags.CTYPE_MASK) = Wrapper.DocCls.CategoryFlags.CTYPE_BALANCE) Then
 
                 Else
                     .utItemDetailCounts(i).nDayTotal(lngDate) = 0
@@ -466,10 +466,10 @@ Dim bookCates As Wrapper.Documents.CategoryManager
                 'データを書き込む
                 For i = 0 To lngItemBufferSize - 1
                     lngSubCount = bookCates(i).NumSubCategories
-                    If ((bookCates(i).Flags <> Wrapper.Documents.CategoryFlags.CTYPE_NOTUSED) And (lngSubCount = 0)) Then
+                    If ((bookCates(i).Flags <> Wrapper.DocCls.CategoryFlags.CTYPE_NOTUSED) And (lngSubCount = 0)) Then
                         bcType = bookCates.getCategoryType(i)
 
-                        If (bcType = Wrapper.Documents.CategoryFlags.CTYPE_INCOME) Or (bcType = Wrapper.Documents.CategoryFlags.CTYPE_BANK_WITHDRAW) Then
+                        If (bcType = Wrapper.DocCls.CategoryFlags.CTYPE_INCOME) Or (bcType = Wrapper.DocCls.CategoryFlags.CTYPE_BANK_WITHDRAW) Then
                             If (Int(Rnd * 100) < 0) Then
                                 lngValue = Int(Rnd * 11500)
 
@@ -480,7 +480,7 @@ Dim bookCates As Wrapper.Documents.CategoryManager
                                     utBook.addDataToItemTotal(lngYearIndex, lngDate, 3, lngValue)
                                 End If
                             End If
-                        ElseIf (bcType = Wrapper.Documents.CategoryFlags.CTYPE_OUTLAY) Or (bcType = Wrapper.Documents.CategoryFlags.CTYPE_BANK_DEPOSIT) Then
+                        ElseIf (bcType = Wrapper.DocCls.CategoryFlags.CTYPE_OUTLAY) Or (bcType = Wrapper.DocCls.CategoryFlags.CTYPE_BANK_DEPOSIT) Then
                             If (Int(Rnd * 100) < 0) Then
                                 lngValue = Int(Rnd * 1000)
 
@@ -498,7 +498,7 @@ Dim bookCates As Wrapper.Documents.CategoryManager
 
             'この日の残高を次の日の残高にコピーする
             For i = 0 To lngItemBufferSize - 1
-                If ((bookCates(i).Flags And Wrapper.Documents.CategoryFlags.CTYPE_MASK) = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Then
+                If ((bookCates(i).Flags And Wrapper.DocCls.CategoryFlags.CTYPE_MASK) = Wrapper.DocCls.CategoryFlags.CTYPE_BALANCE) Then
                     With .utItemDetailCounts(i)
                         .nDayTotal(lngDate + 1) = .nDayTotal(lngDate)
                     End With

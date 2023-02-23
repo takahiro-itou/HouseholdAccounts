@@ -784,7 +784,7 @@ Dim lngWeekTotal As Integer, lngMonthTotal As Integer, lngYearTotal As Integer
 Dim strText As String
 Dim lngTextColor As Color, lngCellColor As Color
 Dim utDate As Wrapper.ParsedDate
-Dim lngType As Wrapper.Documents.CategoryFlags
+Dim lngType As Wrapper.DocCls.CategoryFlags
 
     'この項目以下の合計を表示する
     UserInterfaceDrawCell(utUI, _
@@ -841,7 +841,7 @@ Dim lngType As Wrapper.Documents.CategoryFlags
     End With
 
     '週計
-    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Or (lngWeekTotal = 0) Then
+    If (lngType = Wrapper.DocCls.CategoryFlags.CTYPE_BALANCE) Or (lngWeekTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngWeekTotal, "#,##0")
@@ -855,7 +855,7 @@ Dim lngType As Wrapper.Documents.CategoryFlags
             1, 1)
 
     '月計
-    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Or (lngMonthTotal = 0) Then
+    If (lngType = Wrapper.DocCls.CategoryFlags.CTYPE_BALANCE) Or (lngMonthTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngMonthTotal, "#,##0")
@@ -869,7 +869,7 @@ Dim lngType As Wrapper.Documents.CategoryFlags
             1, 1)
 
     '年計
-    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Or (lngYearTotal = 0) Then
+    If (lngType = Wrapper.DocCls.CategoryFlags.CTYPE_BALANCE) Or (lngYearTotal = 0) Then
         strText = ""
     Else
         strText = Format$(lngYearTotal, "#,##0")
@@ -934,7 +934,7 @@ Dim lngIcon As Integer
 Dim lngColor As Color
 Dim strName As String
 Dim blnExpand As Boolean
-Dim rootCategory As Wrapper.Documents.BookCategory
+Dim rootCategory As Wrapper.DocCls.BookCategory
 
     With utBook
         rootCategory = .BookCategories(lngRootItem)
@@ -968,7 +968,7 @@ Dim rootCategory As Wrapper.Documents.BookCategory
 
     'この項目を表示する
     lngResult = 1
-    If (lngType = Wrapper.Documents.CategoryFlags.CTYPE_BALANCE) Then
+    If (lngType = Wrapper.DocCls.CategoryFlags.CTYPE_BALANCE) Then
         '残高
         UserInterfaceShowData(utUI, utBook,
             lngDepth, lngIcon, ACRIGHT,
