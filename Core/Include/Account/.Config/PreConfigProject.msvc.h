@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -18,8 +18,8 @@
 **      @file       .Config/ConfiguredHouseholdAccounts.h.in
 **/
 
-#if !defined( HACORE_CONFIG_INCLUDED_PRE_CONFIG_HOUSEHOLD_ACCOUNTS_MSVC_H )
-#    define   HACORE_CONFIG_INCLUDED_PRE_CONFIG_HOUSEHOLD_ACCOUNTS_MSVC_H
+#if !defined( HACORE_CONFIG_INCLUDED_PRE_CONFIG_PROJECT_MSVC_H )
+#    define   HACORE_CONFIG_INCLUDED_PRE_CONFIG_PROJECT_MSVC_H
 
 //========================================================================
 //
