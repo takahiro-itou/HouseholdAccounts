@@ -55,7 +55,7 @@ namespace  Documents  {
 //    Type Definitions.
 //
 
-typedef     HouseholdAccounts::DocCls::CategoryFlags
+typedef     HABook::DocCls::CategoryFlags
 CoreCategoryFlags;
 
 /**
@@ -112,16 +112,15 @@ public ref  class  BookCategory
 //
 private:
 
-    typedef     HouseholdAccounts::DocCls::BookCategory
-    WrapTarget;
+    typedef     HABook::DocCls::BookCategory    WrapTarget;
 
-    typedef     HouseholdAccounts::DocCls::CategoryManager
+    typedef     HABook::DocCls::CategoryManager
     CoreCategoryManager;
 
     typedef     cli::array<CategoryHandle, 1>
     CategoryHandleArray;
 
-    typedef     Common::DecimalCurrency     DecimalCurrency;
+    typedef     Common::DecimalCurrency         DecimalCurrency;
 
 //========================================================================
 //
