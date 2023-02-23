@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -27,7 +27,7 @@
 
 namespace  Wrapper  {
 
-typedef     HouseholdAccounts::ErrCode  WrapTargetErrCode;
+typedef     HABook::ErrCode     WrapTargetErrCode;
 
 public  enum class  ErrCode
 {
@@ -43,7 +43,7 @@ public  enum class  ErrCode
 //    ブール型。
 //
 
-typedef     HouseholdAccounts::Boolean          Boolean;
+typedef     HABook::Boolean             Boolean;
 
 inline  Boolean
 toNativeBoolean(
@@ -75,9 +75,9 @@ typedef     cli::array<System::String^, 1>      StringArray;
 
 //========================================================================
 
-typedef     HouseholdAccounts::CategoryHandle   CategoryHandle;
-typedef     HouseholdAccounts::DateSerial       DateSerial;
-typedef     HouseholdAccounts::StringIndex      StringIndex;
+typedef     HABook::CategoryHandle      CategoryHandle;
+typedef     HABook::DateSerial          DateSerial;
+typedef     HABook::StringIndex         StringIndex;
 
 //========================================================================
 //
