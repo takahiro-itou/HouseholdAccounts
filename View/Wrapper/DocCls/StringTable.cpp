@@ -195,12 +195,13 @@ StringTable::NumEntries::get()
 StringTable::StringTableSort
 StringTable::SortFlag::get()
 {
-    return ( StringTableSort::TABLE_SORT_NONE );
+    return  static_cast<StringTableSort>(this->m_ptrObj->getSortFlag());
 }
 
 void
 StringTable::SortFlag::set(StringTableSort flagNew)
 {
+    this->m_ptrObj->setSortFlag(static_cast<CoreStringTableSort>(flagNew));
 }
 
 //----------------------------------------------------------------
