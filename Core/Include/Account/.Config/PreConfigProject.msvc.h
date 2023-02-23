@@ -15,7 +15,7 @@
 /**
 **      スクリプトによる設定値が書き込まれるヘッダファイル。
 **
-**      @file       .Config/ConfiguredHouseholdAccounts.h.in
+**      @file       .Config/PreConfigProject.msvc.h
 **/
 
 #if !defined( HACORE_CONFIG_INCLUDED_PRE_CONFIG_PROJECT_MSVC_H )
@@ -31,7 +31,7 @@
 **/
 
 #define     HOUSEHOLD_ACCOUNTS_CNF_NS               \
-    HouseholdAccounts
+    HABook
 
 /**
 **    名前空間。
