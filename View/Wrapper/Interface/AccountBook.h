@@ -53,7 +53,7 @@ public ref  class  AccountBook
 //
 private:
 
-    typedef     Documents::CategoryFlags        CategoryFlags;
+    typedef     DocCls::CategoryFlags       CategoryFlags;
 
 //========================================================================
 //
@@ -235,10 +235,10 @@ public:
     /**   項目データを一元管理するインスタンス。
     **
     **/
-    property    Documents::CategoryManager ^
+    property    DocCls::CategoryManager ^
     BookCategories
     {
-        Documents::CategoryManager ^    get();
+        DocCls::CategoryManager ^   get();
     }
 
     /**   家計簿データが有効か。    **/
@@ -299,7 +299,7 @@ private:
     CategoryHandle                  m_cateBufferSize;
 
     /**   項目データ。              **/
-    Documents::CategoryManager ^    m_cateManager;
+    DocCls::CategoryManager ^    m_cateManager;
 
     /**   設定データ用文字列テーブル。  **/
     DocCls::StringTable ^           m_strtblForConfig;
