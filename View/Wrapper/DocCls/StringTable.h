@@ -145,24 +145,24 @@ public:
     //----------------------------------------------------------------
     /**   指定された文字列を検索する。
     **
-    **  @param [in] strText   検索する文字列。
+    **  @param [in] steText   検索する文字列。
     **  @return
     **/
     StringIndex
     findString(
-            System::String^     strText);
+            System::String^     steText);
 
     //----------------------------------------------------------------
     /**   新しいデータを挿入する。
     **
-    **  @param [in] strText   新しく挿入するデータ。
+    **  @param [in] steText   新しく挿入するデータ。
     **  @return     挿入したデータのインデックス。
     **      既にデータが存在していた場合は何もせず、
     **      そのインデックスを返す。
     **/
     StringIndex
     insertString(
-            System::String^     strText);
+            System::String^     steText);
 
     //----------------------------------------------------------------
     /**   データ用のバッファを確保する。

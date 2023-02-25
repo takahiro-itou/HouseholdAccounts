@@ -134,10 +134,10 @@ StringTable::checkIntegrity()
 
 StringIndex
 StringTable::findString(
-        System::String^     strText)
+        System::String^     steText)
 {
     const  StringIndex  retVal  =
-        this->m_ptrObj->findString(marshal_as<std::string>(strText));
+        this->m_ptrObj->findString(marshal_as<std::string>(steText));
     return ( retVal );
 }
 
@@ -147,10 +147,10 @@ StringTable::findString(
 
 StringIndex
 StringTable::insertString(
-        System::String^     strText)
+        System::String^     steText)
 {
     const  StringIndex  retVal  =
-        this->m_ptrObj->insertString(marshal_as<std::string>(strText));
+        this->m_ptrObj->insertString(marshal_as<std::string>(steText));
     return ( retVal );
 }
 
