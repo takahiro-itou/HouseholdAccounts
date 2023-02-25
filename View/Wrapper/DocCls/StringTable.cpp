@@ -111,9 +111,11 @@ StringTable::!StringTable()
 
 StringIndex
 StringTable::appendString(
-        System::String^     strText)
+        System::String^     steText)
 {
-    return ( 0 );
+    const  StringIndex  retVal  =
+        this->m_ptrObj->appendString(marshal_as<std::string>(steText));
+    return ( retVal );
 }
 
 //----------------------------------------------------------------
