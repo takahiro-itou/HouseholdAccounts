@@ -228,7 +228,7 @@ CategoryManager::default::get(CategoryHandle hCate)
 }
 
 //----------------------------------------------------------------
-//    項目用のバッファのサイズを得る。
+//    項目用のバッファのサイズ。
 //
 
 CategoryHandle
