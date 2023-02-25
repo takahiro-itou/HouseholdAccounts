@@ -19,7 +19,6 @@
 **/
 
 #include    "Account/pch/PreCompile.h"
-
 #include    "Account/DocCls/StringTable.h"
 
 
@@ -221,6 +220,10 @@ StringTable::setTableEntry(
         const  EntryFlags   steFlag)
 {
     reserveBuffer(drIndex + 1);
+
+    if ( this->m_numEntries <= drIndex ) {
+        this->m_numEntries  = drIndex + 1;
+    }
 
     this->m_entryArray[drIndex].steFlag = steFlag;
     this->m_entryArray[drIndex].steText = steText;
