@@ -92,11 +92,6 @@ Dim sortIndex() As Integer
                 "NumEntries = " & .NumEntries & vbCrLf & _
                 "ファイル中の記録値 = " & lngCount)
         End If
-
-        If (lngSorted <> STRINGSORTNONE) And (.BufferCapacity > 0) Then
-            .setSortIndexArray(sortIndex)
-        End If
-
         .SortFlag = STRINGSORTASCENDING
     End With
 
