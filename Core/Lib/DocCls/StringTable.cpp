@@ -101,6 +101,22 @@ StringTable::allocEntry(
 }
 
 //----------------------------------------------------------------
+//    テーブルの最後尾にデータを追加する。
+//
+
+StringIndex
+StringTable::appendString(
+        const  std::string  &steText)
+{
+    const  StringIndex  si  = this->m_numEntries ++;
+    reserveBuffer(this->m_numEntries);
+
+    this->m_entryArray[si].steText  = steText;
+
+    return ( si );
+}
+
+//----------------------------------------------------------------
 //    テーブルの整合性を検査する。
 //
 
