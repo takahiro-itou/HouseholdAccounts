@@ -19,7 +19,6 @@
 **/
 
 #include    "PreCompile.h"
-
 #include    "AccountBook.h"
 
 namespace  Wrapper  {
@@ -46,8 +45,6 @@ namespace  {
 AccountBook::AccountBook()
     : bEnabled(false),
       sTempFileDir(nullptr),
-      utSettingsStringTable(),
-      utRecordsStringTable(),
       nStartYear(0),
       nStartDayIndex(0),
       nNumYears(0),
