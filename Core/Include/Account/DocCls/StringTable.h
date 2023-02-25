@@ -221,6 +221,10 @@ public:
     setSortIndexArray(
             const  IndexArray  &siArray);
 
+    virtual  ErrCode
+    setSortIndexArray(
+            IndexArray && siArray);
+
     //----------------------------------------------------------------
     /**   テーブルのエントリを直接設定する。
     **

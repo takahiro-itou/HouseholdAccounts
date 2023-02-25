@@ -226,6 +226,14 @@ StringTable::setSortIndexArray(
     return ( ErrCode::SUCCESS );
 }
 
+ErrCode
+StringTable::setSortIndexArray(
+        IndexArray && siArray)
+{
+    this->m_sortedIndex = std::move(siArray);
+    return ( ErrCode::SUCCESS );
+}
+
 //----------------------------------------------------------------
 //    テーブルのエントリを直接設定する。
 //
