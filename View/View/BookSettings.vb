@@ -89,7 +89,7 @@ Dim startBalance As Wrapper.Common.DecimalCurrency
             FileGet(lngTempFileNumber, lngReserved)
             FileGet(lngTempFileNumber, lngReserved)
             FileGet(lngTempFileNumber, lngReserved)
-            strTemp = .utSettingsStringTable.sTableEntries(lngNameID)
+            strTemp = .ConfigStringTable.TableEntry(lngNameID)
 
             If (i < lngRootItemCount) Then
                 startBalance = New Wrapper.Common.DecimalCurrency(lngStartBalance)
@@ -194,7 +194,7 @@ Dim blnResult As Boolean
                 lngReserved = 0
             End With
 
-            lngNameID = utBook.utSettingsStringTable.findString(strTemp)
+            lngNameID = utBook.ConfigStringTable.findString(strTemp)
 
             FilePut(lngTempFileNumber, lngHandle)
             FilePut(lngTempFileNumber, lngFlags)
