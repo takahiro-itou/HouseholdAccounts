@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -19,7 +19,6 @@
 **/
 
 #include    "Account/pch/PreCompile.h"
-
 #include    "Account/FileFormat/BookFile.h"
 
 
@@ -88,8 +87,8 @@ BookFile::~BookFile()
 
 ErrCode
 BookFile::readFromTextStream(
-        std::istream            &inStr,
-        Documents::BookDocument *ptrDoc)
+        std::istream          & inStr,
+        DocCls::BookDocument  * ptrDoc)
 {
     return ( ErrCode::FAILURE );
 }
@@ -100,8 +99,8 @@ BookFile::readFromTextStream(
 
 ErrCode
 BookFile::saveToTextStream(
-        const   Documents::BookDocument &objDoc,
-        std::ostream                    &outStr)
+        const   DocCls::BookDocument  & objDoc,
+        std::ostream                  & outStr)
 {
     return ( ErrCode::FAILURE );
 }
