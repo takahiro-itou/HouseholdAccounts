@@ -267,12 +267,6 @@ public:
     /**   テンポラリファイルのディレクトリ。    **/
     System::String^     sTempFileDir;
 
-    /**   設定データ用文字列テーブル。  **/
-    StringTable         utSettingsStringTable;
-
-    /**   レコード用文字列テーブル。    **/
-    StringTable         utRecordsStringTable;
-
     /**   開始西暦年。  **/
     int     nStartYear;
 
