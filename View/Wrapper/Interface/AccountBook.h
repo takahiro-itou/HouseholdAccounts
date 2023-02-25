@@ -315,11 +315,11 @@ public:
 //
 private:
 
-    /**   項目用バッファサイズ。    **/
-    CategoryHandle              m_cateBufferSize;
-
     /**   項目データ。              **/
     DocCls::CategoryManager ^   m_cateManager;
+
+    /**   項目用バッファサイズ。    **/
+    CategoryHandle              m_cateBufferSize;
 
     /**   設定データ用文字列テーブル。  **/
     DocCls::StringTable ^       m_strtblForConfig;

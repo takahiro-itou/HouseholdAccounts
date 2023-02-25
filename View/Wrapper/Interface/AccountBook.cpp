@@ -58,9 +58,13 @@ AccountBook::AccountBook()
       nStartWeekday(0),
       nPreviousDays(0),
       m_cateManager(nullptr),
-      m_cateBufferSize(0)
+      m_cateBufferSize(0),
+      m_strtblForConfig(nullptr),
+      m_strtblForRecord(nullptr)
 {
     this->m_cateManager = gcnew DocCls::CategoryManager ();
+    this->m_strtblForConfig = gcnew DocCls::StringTable ();
+    this->m_strtblForRecord = gcnew DocCls::StringTable ();
 }
 
 //----------------------------------------------------------------
