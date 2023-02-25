@@ -143,11 +143,14 @@ public:
     //----------------------------------------------------------------
     /**   テーブルの最後尾にデータを追加する。
     **
-    **  @param [in] strText   追加するデータ。
+    **  @param [in] steText   追加するデータ。
+    **  @param [in] steFlag   エントリフラグ。
+    **  @return     追加したデータのインデックス。
     **/
     virtual  StringIndex
     allocEntry(
-            const  std::string  &strText);
+            const  std::string  &steText,
+            const  EntryFlags   steFlag = 0);
 
     //----------------------------------------------------------------
     /**   テーブルの整合性を検査する。

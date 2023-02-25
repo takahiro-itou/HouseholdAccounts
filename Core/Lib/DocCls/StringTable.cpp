@@ -87,13 +87,14 @@ StringTable::~StringTable()
 
 StringIndex
 StringTable::allocEntry(
-        const  std::string  &strText)
+        const  std::string  &steText,
+        const  EntryFlags   steFlag)
 {
     const  StringIndex  si  = this->m_numEntries ++;
     reserveBuffer(this->m_numEntries);
 
-    this->m_entryArray[si].steFlag  = 0;
-    this->m_entryArray[si].steText  = strText;
+    this->m_entryArray[si].steText  = steText;
+    this->m_entryArray[si].steFlag  = steFlag;
     this->m_sortedIndex[si] = si;
 
     return ( si );
