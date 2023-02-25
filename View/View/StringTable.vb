@@ -81,7 +81,7 @@ Dim sortIndex() As Integer
                 .insertString(strTemp)
             Else
                 'データがソートされている場合は、単純に最後に追加していく
-                .TableEntry(i) = strTemp
+                .appendString(strTemp)
             End If
             .EntryFlag(i) = lngFlags
         Next i
