@@ -175,6 +175,16 @@ StringTable::setSortIndexArray(
 //
 
 //----------------------------------------------------------------
+//    バッファのサイズ。
+//
+
+StringIndex
+StringTable::BufferCapacity::get()
+{
+    return  this->m_ptrObj->getBufferCapacity();
+}
+
+//----------------------------------------------------------------
 //    エントリフラグ。
 //
 
