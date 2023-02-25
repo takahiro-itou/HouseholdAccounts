@@ -243,7 +243,7 @@ StringTable::setTableEntry(
 //
 
 const   StringIndex
-StringIndex::getBufferCapacity()  const
+StringTable::getBufferCapacity()  const
 {
     return ( this->m_bufferSize );
 }
