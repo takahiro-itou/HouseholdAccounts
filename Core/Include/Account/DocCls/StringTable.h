@@ -146,7 +146,7 @@ public:
     **  @param [in] strText   追加するデータ。
     **/
     virtual  StringIndex
-    appendString(
+    allocEntry(
             const  std::string  &strText);
 
     //----------------------------------------------------------------
