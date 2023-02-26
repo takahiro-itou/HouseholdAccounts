@@ -155,16 +155,6 @@ StringTable::insertString(
 }
 
 //----------------------------------------------------------------
-//    テーブルをソートしなおす。
-//
-
-System::Boolean
-StringTable::sortTable()
-{
-    return ( false );
-}
-
-//----------------------------------------------------------------
 //    データ用のバッファを確保する。
 //
 
@@ -174,6 +164,17 @@ StringTable::reserveBuffer(
 {
     const  StringIndex  retVal  = this->m_ptrObj->reserveBuffer(bufSize);
     return ( retVal );
+}
+
+//----------------------------------------------------------------
+//    テーブルをソートしなおす。
+//
+
+System::Boolean
+StringTable::sortTable()
+{
+    const  ErrCode  retCode = this->m_ptrObj->sortTable();
+    return ( retCode == ErrCode::SUCCESS );
 }
 
 //========================================================================
