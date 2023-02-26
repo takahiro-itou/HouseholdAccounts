@@ -93,12 +93,14 @@ Dim sortIndex() As Integer
                 "ファイル中の記録値 = " & lngCount)
         End If
         .SortFlag = STRINGSORTASCENDING
-    End With
 
-    If (utStringTable.checkIntegrity() = False) Then
-        MessageBox.Show("文字列テーブルが正しくソートされていません。" & vbCrLf & "ソートしなおします。")
-        utStringTable.sortTable()
-    End If
+        If (.checkIntegrity() = False) Then
+            MessageBox.Show(
+                "文字列テーブルが正しくソートされていません。" & vbCrLf & _
+                "ソートしなおします。")
+            .sortTable()
+        End If
+    End With
 
     'アライメント調整
     lngCount = Seek(lngFileNumber) - 1
