@@ -111,17 +111,6 @@ Dim sortIndex() As Integer
     ReadStringTable = (lngEndPos - lngFirstPos)
 End Function
 
-Public Sub SortStringTable(
-        ByRef utStringTable As Wrapper.DocCls.StringTable)
-'---------------------------------------------------------------------
-'文字列テーブルを昇順にソートする
-'[I/O] utStringTable: 文字列テーブル
-'---------------------------------------------------------------------
-
-    With utStringTable
-    End With
-End Sub
-
 Public Function WriteStringTable(
         ByRef utStringTable As Wrapper.DocCls.StringTable,
         ByVal lngFileNumber As Integer) As Integer
