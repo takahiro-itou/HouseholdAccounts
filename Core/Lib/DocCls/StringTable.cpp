@@ -121,7 +121,7 @@ StringTable::appendString(
 //
 
 Boolean
-StringTable::checkIntegrity()  const
+StringTable::checkSortIntegrity()  const
 {
     for ( StringIndex i = static_cast<StringIndex>(1);
             i < this->m_numEntries; ++ i )
@@ -316,7 +316,7 @@ StringTable::sortTable()
         idxHead = idxLastSwap;
     }
 
-    if ( ! TO_BOOL_FROM_STRICT(checkIntegrity()) ) {
+    if ( ! TO_BOOL_FROM_STRICT(checkSortIntegrity()) ) {
         return ( ErrCode::FAILURE );
     }
 
