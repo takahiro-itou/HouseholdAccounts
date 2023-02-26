@@ -276,7 +276,47 @@ StringTable::setTableEntry(
 ErrCode
 StringTable::sortTable()
 {
-    return ( ErrCode::FAILURE );
+    //  原則としてほとんど整列しているデータが  //
+    //  対象なので、シェーカーソートを行う。    //
+    StringIndex idxHead = 0;
+    StringIndex idxTail = this->m_numEntries;
+
+    while ( idxHead < idxTail ) {
+        StringIndex idxLastSwap;
+
+        idxLastSwap = idxHead;
+        for ( int i = idxHead; i < idxTail; ++ i ) {
+            const  StringIndex  siL = this->m_sortedIndex[i];
+            const  StringIndex  siR = this->m_sortedIndex[i + 1];
+            const  std::string  &sL = this->m_entryArray.at(siL).steText;
+            const  std::string  &sR = this->m_entryArray.at(siR).steText;
+            if ( sL >= sR ) {
+                std::swap(this->m_sortedIndex[i], this->m_sortedIndex[i+1]);
+                idxLastSwap = i;
+            }
+        }
+        idxTail = idxLastSwap;
+
+        if ( idxHead == idxTail ) {
+            break;
+        }
+
+        idxLastSwap = idxTail;
+        for ( int i = idxTail; i > idxHead; -- i ) {
+            const  StringIndex  siL = this->m_sortedIndex[i - 1];
+            const  StringIndex  siR = this->m_sortedIndex[i];
+            const  std::string  &sL = this->m_entryArray.at(siL).steText;
+            const  std::string  &sR = this->m_entryArray.at(siR).steText;
+            if ( sL >= sR ) {
+                std::swap(this->m_sortedIndex[i-1], this->m_sortedIndex[i]);
+                idxLastSwap = i;
+            }
+        }
+
+        idxHead = idxLastSwap;
+    }
+
+    return ( ErrCode::SUCCESS );
 }
 
 //========================================================================
