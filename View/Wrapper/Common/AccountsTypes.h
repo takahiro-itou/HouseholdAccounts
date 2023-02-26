@@ -27,15 +27,15 @@
 
 namespace  Wrapper  {
 
-typedef     HABook::ErrCode     WrapTargetErrCode;
+typedef     HABook::ErrCode     CoreErrCode;
 
 public  enum class  ErrCode
 {
-    SUCCESS             = WrapTargetErrCode::SUCCESS,
-    FAILURE             = WrapTargetErrCode::FAILURE,
-    FILE_OPEN_ERROR     = WrapTargetErrCode::FILE_OPEN_ERROR,
-    FILE_IO_ERROR       = WrapTargetErrCode::FILE_IO_ERROR,
-    INDEX_OUT_OF_RANGE  = WrapTargetErrCode::INDEX_OUT_OF_RANGE
+    SUCCESS             = CoreErrCode::SUCCESS,
+    FAILURE             = CoreErrCode::FAILURE,
+    FILE_OPEN_ERROR     = CoreErrCode::FILE_OPEN_ERROR,
+    FILE_IO_ERROR       = CoreErrCode::FILE_IO_ERROR,
+    INDEX_OUT_OF_RANGE  = CoreErrCode::INDEX_OUT_OF_RANGE
 };
 
 //================================================================
