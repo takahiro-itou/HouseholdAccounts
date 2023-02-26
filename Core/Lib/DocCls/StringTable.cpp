@@ -223,7 +223,8 @@ StringTable::setSortIndex(
         const  StringIndex  siIdx,
         const  StringIndex  siVal)
 {
-    return ( ErrCode::FAILURE );
+    this->m_sortedIndex[siIdx]  = siVal;
+    return ( ErrCode::SUCCESS );
 }
 
 //----------------------------------------------------------------
