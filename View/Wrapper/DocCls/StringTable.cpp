@@ -123,6 +123,16 @@ StringTable::appendString(
 //
 
 System::Boolean
+StringTable::checkDataIntegrity()
+{
+    return  fromNativeBoolean(this->m_ptrObj->checkDataIntegrity());
+}
+
+//----------------------------------------------------------------
+//    テーブルがソートされているか検査する。
+//
+
+System::Boolean
 StringTable::checkSortIntegrity()
 {
     return  fromNativeBoolean(this->m_ptrObj->checkSortIntegrity());
