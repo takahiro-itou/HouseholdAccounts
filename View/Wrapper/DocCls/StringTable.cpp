@@ -173,8 +173,8 @@ StringTable::reserveBuffer(
 System::Boolean
 StringTable::sortTable()
 {
-    const  ErrCode  retCode = this->m_ptrObj->sortTable();
-    return ( retCode == ErrCode::SUCCESS );
+    const  CoreErrCode  retCode = this->m_ptrObj->sortTable();
+    return ( retCode == CoreErrCode::SUCCESS );
 }
 
 //========================================================================
