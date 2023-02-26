@@ -179,7 +179,18 @@ System::Boolean
 StringTable::setSortIndexArray(
         IndexArray^     siArray)
 {
-    return ( false );
+    const  int  bufLen  = this->m_ptrObj->getBufferCapacity();
+
+    int num = siArray->Length;
+    if ( bufLen < num ) {
+        num = bufLen;
+    }
+
+    for ( int i = 0; i < num; ++ i ) {
+        this->m_ptrObj->setSortIndex(i, siArray[i]);
+    }
+
+    return ( true );
 }
 
 //========================================================================
