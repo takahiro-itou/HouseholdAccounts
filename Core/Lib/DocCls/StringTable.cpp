@@ -278,7 +278,7 @@ StringTable::sortTable()
 {
     //  原則としてほとんど整列しているデータが  //
     //  対象なので、シェーカーソートを行う。    //
-    StringIndex idxHead = 0;
+    StringIndex idxHead = static_cast<StringIndex>(0);
     StringIndex idxTail = this->m_numEntries;
 
     while ( idxHead < idxTail ) {
