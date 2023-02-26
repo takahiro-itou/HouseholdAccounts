@@ -285,7 +285,7 @@ StringTable::sortTable()
         StringIndex idxLastSwap;
 
         idxLastSwap = idxHead;
-        for ( int i = idxHead; i < idxTail; ++ i ) {
+        for ( StringIndex i = idxHead; i < idxTail; ++ i ) {
             const  StringIndex  siL = this->m_sortedIndex[i];
             const  StringIndex  siR = this->m_sortedIndex[i + 1];
             const  std::string  &sL = this->m_entryArray.at(siL).steText;
@@ -302,7 +302,7 @@ StringTable::sortTable()
         }
 
         idxLastSwap = idxTail;
-        for ( int i = idxTail; i > idxHead; -- i ) {
+        for ( StringIndex i = idxTail; i > idxHead; -- i ) {
             const  StringIndex  siL = this->m_sortedIndex[i - 1];
             const  StringIndex  siR = this->m_sortedIndex[i];
             const  std::string  &sL = this->m_entryArray.at(siL).steText;
