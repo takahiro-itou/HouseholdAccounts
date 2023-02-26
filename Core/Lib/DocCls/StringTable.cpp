@@ -316,7 +316,7 @@ StringTable::sortTable()
         idxHead = idxLastSwap;
     }
 
-    if ( ! checkIntegrity() ) {
+    if ( ! TO_BOOL_FROM_STRICT(checkIntegrity()) ) {
         return ( ErrCode::FAILURE );
     }
 
