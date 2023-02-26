@@ -269,6 +269,16 @@ StringTable::setTableEntry(
     return ( drIndex );
 }
 
+//----------------------------------------------------------------
+//    テーブルをソートしなおす。
+//
+
+ErrCode
+StringTable::sortTable()
+{
+    return ( ErrCode::FAILURE );
+}
+
 //========================================================================
 //
 //    Public Member Functions.
