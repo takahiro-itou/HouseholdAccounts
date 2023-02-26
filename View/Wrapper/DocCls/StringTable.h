@@ -140,7 +140,7 @@ public:
     **
     **/
     System::Boolean
-    checkIntegrity();
+    checkSortIntegrity();
 
     //----------------------------------------------------------------
     /**   指定された文字列を検索する。

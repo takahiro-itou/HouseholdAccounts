@@ -123,9 +123,9 @@ StringTable::appendString(
 //
 
 System::Boolean
-StringTable::checkIntegrity()
+StringTable::checkSortIntegrity()
 {
-    return  fromNativeBoolean(this->m_ptrObj->checkIntegrity());
+    return  fromNativeBoolean(this->m_ptrObj->checkSortIntegrity());
 }
 
 //----------------------------------------------------------------
