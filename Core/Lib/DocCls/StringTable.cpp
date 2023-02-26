@@ -121,6 +121,16 @@ StringTable::appendString(
 //
 
 Boolean
+StringTable::checkDataIntegrity()  const
+{
+    return ( Boolean::BOOL_FALSE );
+}
+
+//----------------------------------------------------------------
+//    テーブルの整合性を検査する。
+//
+
+Boolean
 StringTable::checkSortIntegrity()  const
 {
     for ( StringIndex i = static_cast<StringIndex>(1);
