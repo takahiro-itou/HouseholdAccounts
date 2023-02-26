@@ -94,7 +94,7 @@ Dim sortIndex() As Integer
         End If
         .SortFlag = STRINGSORTASCENDING
 
-        If (.checkIntegrity() = False) Then
+        If (.checkSortIntegrity() = False) Then
             MessageBox.Show(
                 "文字列テーブルが正しくソートされていません。" & vbCrLf & _
                 "ソートしなおします。")
