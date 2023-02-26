@@ -97,7 +97,7 @@ Dim sortIndex() As Integer
 
     If (utStringTable.checkIntegrity() = False) Then
         MessageBox.Show("文字列テーブルが正しくソートされていません。" & vbCrLf & "ソートしなおします。")
-        SortStringTable(utStringTable)
+        utStringTable.sortTable()
     End If
 
     'アライメント調整
