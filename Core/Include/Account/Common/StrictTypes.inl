@@ -271,7 +271,7 @@ template <typename T, typename Tag>
 inline  std::ostream  &
 operator << (std::ostream & os, const StrictTypes<T, Tag> rhs)
 {
-    os  <<  rhs.getVlaue();
+    os  <<  rhs.getValue();
     return ( os );
 }
 
