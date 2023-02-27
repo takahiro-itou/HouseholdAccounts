@@ -123,7 +123,18 @@ StringTable::appendString(
 Boolean
 StringTable::checkDataIntegrity()  const
 {
-    return ( Boolean::BOOL_FALSE );
+    IndexArray  work;
+
+    work.resize(this->m_numEntries);
+    for ( StringIndex i = static_cast<StringIndex>(0);
+            i < this->m_numEntries; ++ i )
+    {
+        if ( ++ work[i] >= 2 ) {
+            return ( Boolean::BOOL_FALSE );
+        }
+    }
+
+    return ( Boolean::BOOL_TRUE );
 }
 
 //----------------------------------------------------------------
