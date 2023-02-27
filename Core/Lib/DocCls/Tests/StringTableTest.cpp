@@ -42,6 +42,7 @@ class  StringTableTest : public  TestFixture
     CPPUNIT_TEST(testInsertString);
     CPPUNIT_TEST(testSearchEntry);
     CPPUNIT_TEST(testSortIndex);
+    CPPUNIT_TEST(testSortTable1);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -53,6 +54,7 @@ private:
     void  testInsertString();
     void  testSearchEntry();
     void  testSortIndex();
+    void  testSortTable1();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( StringTableTest );
@@ -351,6 +353,40 @@ void  StringTableTest::testSortIndex()
     CPPUNIT_ASSERT_EQUAL(15, TO_VALUE_FROM_STRICT(sorts[StringIndex(23)]) );
 
     return;
+}
+
+void  StringTableTest::testSortTable1()
+{
+    StringTable     testee;
+
+    for ( int i = 0; i < 7; ++ i )
+    {
+        testee.setSortIndex(i, i);
+    }
+
+    testee.appendString("AX");
+    testee.appendString("AY");
+    testee.appendString("AZ");
+    testee.appendString("AA");
+    testee.appendString("AB");
+    testee.appendString("AC");
+    testee.appendString("AD");
+
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(testee.checkDataIntegrity()) );
+    CPPUNIT_ASSERT( ! TO_BOOL_FROM_STRICT(testee.checkSortIntegrity()) );
+
+    CPPUNIT_ASSERT_EQUAL( ErrCode::SUCCESS, testee.sortTable() );
+
+    CPPUNIT_ASSERT_EQUAL( 3, static_cast<int>(testee.m_sortedIndex[0]) );
+    CPPUNIT_ASSERT_EQUAL( 4, static_cast<int>(testee.m_sortedIndex[1]) );
+    CPPUNIT_ASSERT_EQUAL( 5, static_cast<int>(testee.m_sortedIndex[2]) );
+    CPPUNIT_ASSERT_EQUAL( 6, static_cast<int>(testee.m_sortedIndex[3]) );
+    CPPUNIT_ASSERT_EQUAL( 0, static_cast<int>(testee.m_sortedIndex[4]) );
+    CPPUNIT_ASSERT_EQUAL( 1, static_cast<int>(testee.m_sortedIndex[5]) );
+    CPPUNIT_ASSERT_EQUAL( 2, static_cast<int>(testee.m_sortedIndex[6]) );
+
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(testee.checkDataIntegrity()) );
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(testee.checkSortIntegrity()) );
 }
 
 }   //  End of namespace  DocCls
