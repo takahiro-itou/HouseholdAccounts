@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -27,9 +27,9 @@
 #endif
 
 
-#if !defined( HACORE_SYS_INCLUDED_IOS_FWD )
-#    include    <iosfwd>
-#    define   HACORE_SYS_INCLUDED_IOS_FWD
+#if !defined( HACORE_SYS_INCLUDED_OSTREAM )
+#    include    <ostream>
+#    define   HACORE_SYS_INCLUDED_OSTREAM
 #endif
 
 

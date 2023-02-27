@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -20,6 +20,7 @@
 
 #if !defined( HACORE_COMMON_INCLUDED_STRICT_INTEGER_INL )
 #    define   HACORE_COMMON_INCLUDED_STRICT_INTEGER_INL
+
 
 #if !defined( HACORE_COMMON_INCLUDED_STRICT_INTEGER_H )
 #    include    "StrictTypes.h"
@@ -261,6 +262,18 @@ ST_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, >);
 ST_IMPLEMENT_FRIEND_BIN_CMP_OP(bool, >=);
 
 #undef      ST_IMPLEMENT_FRIEND_BIN_CMP_OP
+
+//----------------------------------------------------------------
+//    ストリームに出力する。
+//
+
+template <typename T, typename Tag>
+inline  std::ostream  &
+operator << (std::ostream & os, const StrictTypes<T, Tag> rhs)
+{
+    os  <<  rhs.getVlaue();
+    return ( os );
+}
 
 //========================================================================
 //
