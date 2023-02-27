@@ -27,6 +27,12 @@
 #endif
 
 
+#if !defined( HACORE_SYS_INCLUDED_IOS_FWD )
+#    include    <iosfwd>
+#    define   HACORE_SYS_INCLUDED_IOS_FWD
+#endif
+
+
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {
 
@@ -75,6 +81,10 @@ ST_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, >);
 ST_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, >=);
 
 #undef  ST_FWD_DECLARE_FRIEND_BIN_CMP_OP
+
+template <typename T, typename Tag>     std::ostream  &
+operator << (std::ostream & os, const StrictTypes<T, Tag> val);
+
 //----------------------------------------------------------------
 
 //========================================================================
