@@ -359,7 +359,9 @@ void  StringTableTest::testSortTable1()
 {
     StringTable     testee;
 
-    for ( StringIndex i = 0; i < 7; ++ i )
+    const  StringIndex  num = static_cast<StringIndex>(7);
+    testee.reserveBuffer(num);
+    for ( StringIndex i = static_cast<StringIndex>(0); i < num; ++ i )
     {
         testee.setSortIndex(i, i);
     }
@@ -375,17 +377,19 @@ void  StringTableTest::testSortTable1()
     CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(testee.checkDataIntegrity()) );
     CPPUNIT_ASSERT( ! TO_BOOL_FROM_STRICT(testee.checkSortIntegrity()) );
 
-    CPPUNIT_ASSERT_EQUAL( ErrCode::SUCCESS, testee.sortTable() );
+    const  int  retCode = static_cast<int>(testee.sortTable());
 
     const  StringTable::IndexArray  & sorts = testee.m_sortedIndex;
 
-    CPPUNIT_ASSERT_EQUAL( 3, TO_VALUE_FROM_STRICT>(sorts[StringIndex(0)]) );
-    CPPUNIT_ASSERT_EQUAL( 4, TO_VALUE_FROM_STRICT>(sorts[StringIndex(1)]) );
-    CPPUNIT_ASSERT_EQUAL( 5, TO_VALUE_FROM_STRICT>(sorts[StringIndex(2)]) );
-    CPPUNIT_ASSERT_EQUAL( 6, TO_VALUE_FROM_STRICT>(sorts[StringIndex(3)]) );
-    CPPUNIT_ASSERT_EQUAL( 0, TO_VALUE_FROM_STRICT>(sorts[StringIndex(4)]) );
-    CPPUNIT_ASSERT_EQUAL( 1, TO_VALUE_FROM_STRICT>(sorts[StringIndex(5)]) );
-    CPPUNIT_ASSERT_EQUAL( 2, TO_VALUE_FROM_STRICT>(sorts[StringIndex(6)]) );
+    CPPUNIT_ASSERT_EQUAL( 3, TO_VALUE_FROM_STRICT(sorts[StringIndex(0)]) );
+    CPPUNIT_ASSERT_EQUAL( 4, TO_VALUE_FROM_STRICT(sorts[StringIndex(1)]) );
+    CPPUNIT_ASSERT_EQUAL( 5, TO_VALUE_FROM_STRICT(sorts[StringIndex(2)]) );
+    CPPUNIT_ASSERT_EQUAL( 6, TO_VALUE_FROM_STRICT(sorts[StringIndex(3)]) );
+    CPPUNIT_ASSERT_EQUAL( 0, TO_VALUE_FROM_STRICT(sorts[StringIndex(4)]) );
+    CPPUNIT_ASSERT_EQUAL( 1, TO_VALUE_FROM_STRICT(sorts[StringIndex(5)]) );
+    CPPUNIT_ASSERT_EQUAL( 2, TO_VALUE_FROM_STRICT(sorts[StringIndex(6)]) );
+
+    CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
     CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(testee.checkDataIntegrity()) );
     CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(testee.checkSortIntegrity()) );
