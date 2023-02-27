@@ -564,7 +564,7 @@ void  StrictTypesTest::testOutStream()
         <<  ","
         <<  testee3;
 
-    CPPUNIT_ASSERT_EQUAL( "15,2,3", ss.str() );
+    CPPUNIT_ASSERT_EQUAL( std::string("15,2,3"), ss.str() );
 
     return;
 }
