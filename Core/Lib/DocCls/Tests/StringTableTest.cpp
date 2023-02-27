@@ -43,6 +43,7 @@ class  StringTableTest : public  TestFixture
     CPPUNIT_TEST(testSearchEntry);
     CPPUNIT_TEST(testSortIndex);
     CPPUNIT_TEST(testSortTable1);
+    CPPUNIT_TEST(testSortTable2);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -55,6 +56,7 @@ private:
     void  testSearchEntry();
     void  testSortIndex();
     void  testSortTable1();
+    void  testSortTable2();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( StringTableTest );
@@ -388,6 +390,68 @@ void  StringTableTest::testSortTable1()
     CPPUNIT_ASSERT_EQUAL( 0, TO_VALUE_FROM_STRICT(sorts[StringIndex(4)]) );
     CPPUNIT_ASSERT_EQUAL( 1, TO_VALUE_FROM_STRICT(sorts[StringIndex(5)]) );
     CPPUNIT_ASSERT_EQUAL( 2, TO_VALUE_FROM_STRICT(sorts[StringIndex(6)]) );
+
+    CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
+
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(testee.checkDataIntegrity()) );
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(testee.checkSortIntegrity()) );
+
+    return;
+}
+
+void  StringTableTest::testSortTable2()
+{
+    StringTable     testee;
+
+    const  StringIndex  num = static_cast<StringIndex>(16);
+    testee.reserveBuffer(num);
+    for ( StringIndex i = static_cast<StringIndex>(0); i < num; ++ i )
+    {
+        testee.setSortIndex(i, i);
+    }
+
+    testee.appendString("AW");
+    testee.appendString("AX");
+    testee.appendString("AY");
+    testee.appendString("AZ");
+    testee.appendString("AA");
+    testee.appendString("AB");
+    testee.appendString("AC");
+    testee.appendString("AD");
+
+    testee.appendString("CA");
+    testee.appendString("CB");
+    testee.appendString("CC");
+    testee.appendString("CD");
+    testee.appendString("CW");
+    testee.appendString("CX");
+    testee.appendString("CY");
+    testee.appendString("CZ");
+
+    CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(testee.checkDataIntegrity()) );
+    CPPUNIT_ASSERT( ! TO_BOOL_FROM_STRICT(testee.checkSortIntegrity()) );
+
+    const  int  retCode = static_cast<int>(testee.sortTable());
+
+    const  StringTable::IndexArray  & sorts = testee.m_sortedIndex;
+
+    CPPUNIT_ASSERT_EQUAL(  4, TO_VALUE_FROM_STRICT(sorts[StringIndex( 0)]) );
+    CPPUNIT_ASSERT_EQUAL(  5, TO_VALUE_FROM_STRICT(sorts[StringIndex( 1)]) );
+    CPPUNIT_ASSERT_EQUAL(  6, TO_VALUE_FROM_STRICT(sorts[StringIndex( 2)]) );
+    CPPUNIT_ASSERT_EQUAL(  7, TO_VALUE_FROM_STRICT(sorts[StringIndex( 3)]) );
+    CPPUNIT_ASSERT_EQUAL(  0, TO_VALUE_FROM_STRICT(sorts[StringIndex( 4)]) );
+    CPPUNIT_ASSERT_EQUAL(  1, TO_VALUE_FROM_STRICT(sorts[StringIndex( 5)]) );
+    CPPUNIT_ASSERT_EQUAL(  2, TO_VALUE_FROM_STRICT(sorts[StringIndex( 6)]) );
+    CPPUNIT_ASSERT_EQUAL(  3, TO_VALUE_FROM_STRICT(sorts[StringIndex( 7)]) );
+
+    CPPUNIT_ASSERT_EQUAL(  8, TO_VALUE_FROM_STRICT(sorts[StringIndex( 8)]) );
+    CPPUNIT_ASSERT_EQUAL(  9, TO_VALUE_FROM_STRICT(sorts[StringIndex( 9)]) );
+    CPPUNIT_ASSERT_EQUAL( 10, TO_VALUE_FROM_STRICT(sorts[StringIndex(10)]) );
+    CPPUNIT_ASSERT_EQUAL( 11, TO_VALUE_FROM_STRICT(sorts[StringIndex(11)]) );
+    CPPUNIT_ASSERT_EQUAL( 12, TO_VALUE_FROM_STRICT(sorts[StringIndex(12)]) );
+    CPPUNIT_ASSERT_EQUAL( 13, TO_VALUE_FROM_STRICT(sorts[StringIndex(13)]) );
+    CPPUNIT_ASSERT_EQUAL( 14, TO_VALUE_FROM_STRICT(sorts[StringIndex(14)]) );
+    CPPUNIT_ASSERT_EQUAL( 15, TO_VALUE_FROM_STRICT(sorts[StringIndex(15)]) );
 
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
