@@ -359,7 +359,7 @@ void  StringTableTest::testSortTable1()
 {
     StringTable     testee;
 
-    for ( int i = 0; i < 7; ++ i )
+    for ( StringIndex i = 0; i < 7; ++ i )
     {
         testee.setSortIndex(i, i);
     }
@@ -377,16 +377,20 @@ void  StringTableTest::testSortTable1()
 
     CPPUNIT_ASSERT_EQUAL( ErrCode::SUCCESS, testee.sortTable() );
 
-    CPPUNIT_ASSERT_EQUAL( 3, static_cast<int>(testee.m_sortedIndex[0]) );
-    CPPUNIT_ASSERT_EQUAL( 4, static_cast<int>(testee.m_sortedIndex[1]) );
-    CPPUNIT_ASSERT_EQUAL( 5, static_cast<int>(testee.m_sortedIndex[2]) );
-    CPPUNIT_ASSERT_EQUAL( 6, static_cast<int>(testee.m_sortedIndex[3]) );
-    CPPUNIT_ASSERT_EQUAL( 0, static_cast<int>(testee.m_sortedIndex[4]) );
-    CPPUNIT_ASSERT_EQUAL( 1, static_cast<int>(testee.m_sortedIndex[5]) );
-    CPPUNIT_ASSERT_EQUAL( 2, static_cast<int>(testee.m_sortedIndex[6]) );
+    const  StringTable::IndexArray  & sorts = testee.m_sortedIndex;
+
+    CPPUNIT_ASSERT_EQUAL( 3, TO_VALUE_FROM_STRICT>(sorts[StringIndex(0)]) );
+    CPPUNIT_ASSERT_EQUAL( 4, TO_VALUE_FROM_STRICT>(sorts[StringIndex(1)]) );
+    CPPUNIT_ASSERT_EQUAL( 5, TO_VALUE_FROM_STRICT>(sorts[StringIndex(2)]) );
+    CPPUNIT_ASSERT_EQUAL( 6, TO_VALUE_FROM_STRICT>(sorts[StringIndex(3)]) );
+    CPPUNIT_ASSERT_EQUAL( 0, TO_VALUE_FROM_STRICT>(sorts[StringIndex(4)]) );
+    CPPUNIT_ASSERT_EQUAL( 1, TO_VALUE_FROM_STRICT>(sorts[StringIndex(5)]) );
+    CPPUNIT_ASSERT_EQUAL( 2, TO_VALUE_FROM_STRICT>(sorts[StringIndex(6)]) );
 
     CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(testee.checkDataIntegrity()) );
     CPPUNIT_ASSERT( TO_BOOL_FROM_STRICT(testee.checkSortIntegrity()) );
+
+    return;
 }
 
 }   //  End of namespace  DocCls
