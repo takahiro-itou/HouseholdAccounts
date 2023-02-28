@@ -161,6 +161,9 @@ template <typename T, typename Id, class Allocator>
 inline  typename  StrictVector<T, Id, Allocator>::reference
 StrictVector<T, Id, Allocator>::operator [] (const Id n)
 {
+#if defined( _DEBUG )
+    checkIndexRange(n);
+#endif
     return ( Super::operator [] (getValueFromStrict(n)) );
 }
 
@@ -168,6 +171,9 @@ template <typename T, typename Id, class Allocator>
 inline  typename  StrictVector<T, Id, Allocator>::const_reference
 StrictVector<T, Id, Allocator>::operator [] (const Id n) const
 {
+#if defined( _DEBUG )
+    checkIndexRange(n);
+#endif
     return ( Super::operator [] (getValueFromStrict(n)) );
 }
 
