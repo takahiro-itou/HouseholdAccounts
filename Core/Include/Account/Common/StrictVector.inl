@@ -36,6 +36,11 @@
 #    define   HACORE_SYS_INCLUDED_IOSTREAM
 #endif
 
+#if !defined( HACORE_SYS_INCLUDED_SSTREAM )
+#    include    <sstream>
+#    define   HACORE_SYS_INCLUDED_SSTREAM
+#endif
+
 #if !defined( HACORE_SYS_INCLUDED_STD_EXCEPT )
 #    include    <stdexcept>
 #    define   HACORE_SYS_INCLUDED_STD_EXCEPT
