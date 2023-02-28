@@ -1,9 +1,9 @@
-﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
+﻿S//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -29,6 +29,11 @@
 
 #if !defined( HACORE_COMMON_INCLUDED_STRICT_TYPES_H )
 #    include    "StrictTypes.h"
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_STD_EXCEPT )
+#    include    <stdexcept>
+#    define   HACORE_SYS_INCLUDED_STD_EXCEPT
 #endif
 
 
