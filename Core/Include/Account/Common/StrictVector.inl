@@ -190,6 +190,28 @@ StrictVector<T, Id, Allocator>::at(const Id n) const
 //    For Internal Use Only.
 //
 
+//----------------------------------------------------------------
+//    インデックスの範囲を確認する。
+//
+
+template <typename T, typename Id, class Allocator>
+inline  void
+StrictVector<T, Id, Allocator>::checkIndexRange(const Id n)  const
+{
+    if ( Super::size() <= getValueFromStrict(n) ) {
+        //  範囲外アクセス。    //
+        std::stringstream   ss;
+        ss  <<  "Out of Range : id = "  <<  n
+            <<  ", Size = " <<  Super::size()
+            <<  ", Cap = "  <<  Super::capacity();
+#if !defined( HACORE_DISABLE_STDIO )
+        std::cerr   <<  ss.str();
+#endif
+        throw  std::out_of_range(ss.str());
+    }
+    return;
+}
+
 }   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
