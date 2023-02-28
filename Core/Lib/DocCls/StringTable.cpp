@@ -300,7 +300,7 @@ StringTable::sortTable()
     //  原則としてほとんど整列しているデータが  //
     //  対象なので、シェーカーソートを行う。    //
     StringIndex idxHead = static_cast<StringIndex>(0);
-    StringIndex idxTail = this->m_numEntries;
+    StringIndex idxTail = this->m_numEntries - 1;
 
     while ( idxHead < idxTail ) {
         StringIndex idxLastSwap;
