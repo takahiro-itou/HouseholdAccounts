@@ -128,7 +128,6 @@
   </ItemDefinitionGroup>
 
   <ItemGroup>
-    <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h" />
     <ClInclude Include="..\Wrapper\PreCompile.h" />
     <ClInclude Include="..\Wrapper\Resource.h" />
 
@@ -154,7 +153,6 @@
 
   <ItemGroup>
     <ClCompile Include="..\Wrapper\AssemblyInfo.cpp" />
-    <ClCompile Include="..\Wrapper\HouseholdAccountsWrapper.cpp" />
     <ClCompile Include="..\Wrapper\PreCompile.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
