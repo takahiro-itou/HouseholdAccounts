@@ -9,7 +9,7 @@ Module BookSettings
 ' 家計簿を管理する
 '
 ' Copyright (c) Itou Takahiro, All rights reserved.
-' This file is written in 2006/09/23 - 2008/01/06
+' This file is written in 2006/09/23 - 2023/02
 '*****************************************************************************
 
 '=========================================================================
@@ -76,7 +76,7 @@ Dim startBalance As Wrapper.Common.DecimalCurrency
 
         'ヘッダ用の文字列テーブルを読み込む
         Seek(lngTempFileNumber, lngStartPos + lngTablePos + 1)
-        ReadStringTable(.utSettingsStringTable, lngTempFileNumber)
+        ReadStringTable(.ConfigStringTable, lngTempFileNumber)
 
         '項目データ
         Seek(lngTempFileNumber, lngStartPos + lngDataPos + 1)
@@ -89,7 +89,7 @@ Dim startBalance As Wrapper.Common.DecimalCurrency
             FileGet(lngTempFileNumber, lngReserved)
             FileGet(lngTempFileNumber, lngReserved)
             FileGet(lngTempFileNumber, lngReserved)
-            strTemp = .utSettingsStringTable.sTableEntries(lngNameID)
+            strTemp = .ConfigStringTable.TableEntry(lngNameID)
 
             If (i < lngRootItemCount) Then
                 startBalance = New Wrapper.Common.DecimalCurrency(lngStartBalance)
@@ -179,7 +179,7 @@ Dim blnResult As Boolean
         'ヘッダ用の文字列テーブルを書き込む
         lngTablePos = 256
         Seek(lngTempFileNumber, lngStartPos + lngTablePos + 1)
-        lngTableSize = WriteStringTable(.utSettingsStringTable, lngTempFileNumber)
+        lngTableSize = WriteStringTable(.ConfigStringTable, lngTempFileNumber)
         lngDataPos = lngTablePos + lngTableSize
 
         '項目データ
@@ -194,7 +194,7 @@ Dim blnResult As Boolean
                 lngReserved = 0
             End With
 
-            lngNameID = utBook.utSettingsStringTable.findString(strTemp)
+            lngNameID = utBook.ConfigStringTable.findString(strTemp)
 
             FilePut(lngTempFileNumber, lngHandle)
             FilePut(lngTempFileNumber, lngFlags)

@@ -80,6 +80,7 @@
       <AdditionalIncludeDirectories>..\..\Core\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ConformanceMode>true</ConformanceMode>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ObjectFileName>$(IntDir)\View\Wrap\%(RelativeDir)\</ObjectFileName>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>Account/pch/PreCompile.h</PrecompiledHeaderFile>
       <SDLCheck>true</SDLCheck>
@@ -139,10 +140,10 @@
     <ClCompile Include="..\..\Core\Lib\Common\DecimalCurrency.cpp" />
     <ClCompile Include="..\..\Core\Lib\Common\TextParser.cpp" />
 
-    <ClCompile Include="..\..\Core\Lib\Documents\BookCategory.cpp" />
-    <ClCompile Include="..\..\Core\Lib\Documents\BookDocument.cpp" />
-    <ClCompile Include="..\..\Core\Lib\Documents\CategoryManager.cpp" />
-    <ClCompile Include="..\..\Core\Lib\Documents\StringTable.cpp" />
+    <ClCompile Include="..\..\Core\Lib\DocCls\BookCategory.cpp" />
+    <ClCompile Include="..\..\Core\Lib\DocCls\BookDocument.cpp" />
+    <ClCompile Include="..\..\Core\Lib\DocCls\CategoryManager.cpp" />
+    <ClCompile Include="..\..\Core\Lib\DocCls\StringTable.cpp" />
 
     <ClCompile Include="..\..\Core\Lib\FileFormat\BookFile.cpp" />
 
@@ -164,10 +165,10 @@
     <ClInclude Include="..\..\Core\Include\Account\Common\StrictVector.inl" />
     <ClInclude Include="..\..\Core\Include\Account\Common\TextParser.h" />
 
-    <ClInclude Include="..\..\Core\Include\Account\Documents\BookCategory.h" />
-    <ClInclude Include="..\..\Core\Include\Account\Documents\BookDocument.h" />
-    <ClInclude Include="..\..\Core\Include\Account\Documents\CategoryManager.h" />
-    <ClInclude Include="..\..\Core\Include\Account\Documents\StringTable.h" />
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\BookCategory.h" />
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\BookDocument.h" />
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\CategoryManager.h" />
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\StringTable.h" />
 
     <ClInclude Include="..\..\Core\Include\Account\FileFormat\BookFile.h" />
 

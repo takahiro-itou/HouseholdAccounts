@@ -8,12 +8,13 @@ TESTS                   =  \
         BookCategoryTest       \
         BookDocumentTest       \
         CategoryManagerTest    \
+        StringTableTest        \
         ${EXTRATESTS}
 ##
 ##    Test Configurations.
 ##
 
-TARGET_TESTEE_LIBRARY       +=  -lhacDocuments
+TARGET_TESTEE_LIBRARY       +=  -lhacDocCls
 
 DIST_NOINST_DATA_FILES      +=
 DIST_NOINST_HEADER_FILES    +=
@@ -35,4 +36,5 @@ TEST_LDFLAGS_COMMON         +=
 BookCategoryTest_SOURCES     =  BookCategoryTest.cpp
 BookDocumentTest_SOURCES     =  BookDocumentTest.cpp
 CategoryManagerTest_SOURCES  =  CategoryManagerTest.cpp
+StringTableTest_SOURCES      =  StringTableTest.cpp
 

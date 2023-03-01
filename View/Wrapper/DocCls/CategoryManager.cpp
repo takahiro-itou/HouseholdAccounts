@@ -15,21 +15,20 @@
 /**
 **      An Implementation of CategoryManager class.
 **
-**      @file       Documents/CategoryManager.cpp
+**      @file       DocCls/CategoryManager.cpp
 **/
 
 #include    "PreCompile.h"
-
-#include    "Account/Documents/CategoryManager.h"
-
 #include    "CategoryManager.h"
+
+#include    <Account/DocCls/CategoryManager.h>
 
 #include    <msclr/marshal_cppstd.h>
 using       namespace   msclr::interop;
 
 
 namespace  Wrapper  {
-namespace  Documents  {
+namespace  DocCls  {
 
 namespace  {
 
@@ -112,9 +111,9 @@ CategoryFlags
 CategoryManager::getCategoryType(
         const   CategoryHandle  hCate)
 {
-    return ( static_cast<CategoryFlags>(
-                     this->m_ptrObj->getCategoryType(hCate)
-    ) );
+    return  static_cast<CategoryFlags>(
+                this->m_ptrObj->getCategoryType(hCate)
+    );
 }
 
 //----------------------------------------------------------------
@@ -125,7 +124,7 @@ CategoryHandle
 CategoryManager::getRootCategoryHandle(
         const   CategoryHandle  idxCate)
 {
-    return ( this->m_ptrObj->getRootCategoryHandle(idxCate) );
+    return  this->m_ptrObj->getRootCategoryHandle(idxCate);
 }
 
 //----------------------------------------------------------------
@@ -209,7 +208,7 @@ const   CategoryManager::CoreBookCategory  &
 CategoryManager::getRawBookCategory(
         const   CategoryHandle  hCate)
 {
-    return ( this->m_ptrObj->getBookCategory(hCate) );
+    return  this->m_ptrObj->getBookCategory(hCate);
 }
 
 //========================================================================
@@ -225,17 +224,17 @@ CategoryManager::getRawBookCategory(
 BookCategory ^
 CategoryManager::default::get(CategoryHandle hCate)
 {
-    return ( getBookCategory(hCate) );
+    return  getBookCategory(hCate);
 }
 
 //----------------------------------------------------------------
-//    項目用のバッファのサイズを得る。
+//    項目用のバッファのサイズ。
 //
 
 CategoryHandle
 CategoryManager::BufferCapacity::get()
 {
-    return ( this->m_ptrObj->getBufferCapacity() );
+    return  this->m_ptrObj->getBufferCapacity();
 }
 
 //----------------------------------------------------------------
@@ -245,7 +244,7 @@ CategoryManager::BufferCapacity::get()
 CategoryHandle
 CategoryManager::InnerTaxHandle::get()
 {
-    return ( this->m_ptrObj->getInnerTaxCategoryHandle() );
+    return  this->m_ptrObj->getInnerTaxCategoryHandle();
 }
 
 void
@@ -261,7 +260,7 @@ CategoryManager::InnerTaxHandle::set(CategoryHandle hCate)
 BookCategory ^
 CategoryManager::Items::get(CategoryHandle hCate)
 {
-    return ( getBookCategory(hCate) );
+    return  getBookCategory(hCate);
 }
 
 //----------------------------------------------------------------
@@ -271,7 +270,7 @@ CategoryManager::Items::get(CategoryHandle hCate)
 CategoryHandle
 CategoryManager::OuterTaxHandle::get()
 {
-    return ( this->m_ptrObj->getOuterTaxCategoryHandle() );
+    return  this->m_ptrObj->getOuterTaxCategoryHandle();
 }
 
 void
@@ -287,7 +286,7 @@ CategoryManager::OuterTaxHandle::set(CategoryHandle hCate)
 CategoryHandle
 CategoryManager::RegisteredCategoryCount::get()
 {
-    return ( this->m_ptrObj->getRegisteredCategoryCount() );
+    return  this->m_ptrObj->getRegisteredCategoryCount();
 }
 
 //----------------------------------------------------------------
@@ -297,7 +296,7 @@ CategoryManager::RegisteredCategoryCount::get()
 CategoryHandle
 CategoryManager::RootCategoryCount::get()
 {
-    return ( this->m_ptrObj->getRootCategoryCount() );
+    return  this->m_ptrObj->getRootCategoryCount();
 }
 
 //========================================================================
@@ -310,5 +309,5 @@ CategoryManager::RootCategoryCount::get()
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 }   //  End of namespace  Wrapper

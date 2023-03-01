@@ -87,6 +87,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\Core\Include;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)\Cli.Net6.0\%(RelativeDir)\</ObjectFileName>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PreCompile.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
@@ -140,9 +141,10 @@
     <ClInclude Include="..\Wrapper\Common\StringTable.h" />
     <ClInclude Include="..\Wrapper\Common\TextOperation.h" />
 
-    <ClInclude Include="..\Wrapper\Documents\BookCategory.h" />
-    <ClInclude Include="..\Wrapper\Documents\CategoryManager.h" />
-    <ClInclude Include="..\Wrapper\Documents\CategoryWiseAggregates.h" />
+    <ClInclude Include="..\Wrapper\DocCls\BookCategory.h" />
+    <ClInclude Include="..\Wrapper\DocCls\CategoryManager.h" />
+    <ClInclude Include="..\Wrapper\DocCls\CategoryWiseAggregates.h" />
+    <ClInclude Include="..\Wrapper\DocCls\StringTable.h" />
 
     <ClInclude Include="..\Wrapper\Interface\AccountBook.h" />
     <ClInclude Include="..\Wrapper\Interface\AggregateData.h" />
@@ -163,9 +165,10 @@
     <ClCompile Include="..\Wrapper\Common\StringTable.cpp" />
     <ClCompile Include="..\Wrapper\Common\TextOperation.cpp" />
 
-    <ClCompile Include="..\Wrapper\Documents\BookCategory.cpp" />
-    <ClCompile Include="..\Wrapper\Documents\CategoryManager.cpp" />
-    <ClCompile Include="..\Wrapper\Documents\CategoryWiseAggregates.cpp" />
+    <ClCompile Include="..\Wrapper\DocCls\BookCategory.cpp" />
+    <ClCompile Include="..\Wrapper\DocCls\CategoryManager.cpp" />
+    <ClCompile Include="..\Wrapper\DocCls\CategoryWiseAggregates.cpp" />
+    <ClCompile Include="..\Wrapper\DocCls\StringTable.cpp" />
 
     <ClCompile Include="..\Wrapper\Interface\AccountBook.cpp" />
     <ClCompile Include="..\Wrapper\Interface\AggregateData.cpp" />

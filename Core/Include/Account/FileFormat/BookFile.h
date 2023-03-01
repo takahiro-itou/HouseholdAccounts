@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -35,9 +35,9 @@
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
 //  クラスの前方宣言。  //
-namespace  Documents  {
+namespace  DocCls  {
 class   BookDocument;
-}   //  End of namespace  Documents.
+}   //  End of namespace  DocCls.
 
 namespace  FileFormat  {
 
@@ -116,8 +116,8 @@ public:
     **/
     static  ErrCode
     readFromTextStream(
-            std::istream            &inStr,
-            Documents::BookDocument *ptrDoc);
+            std::istream          & inStr,
+            DocCls::BookDocument  * ptrDoc);
 
     //----------------------------------------------------------------
     /**   データをテキストストリームに書き込む。
@@ -131,8 +131,8 @@ public:
     **/
     static  ErrCode
     saveToTextStream(
-            const   Documents::BookDocument &objDoc,
-            std::ostream                    &outStr);
+            const   DocCls::BookDocument  & objDoc,
+            std::ostream                  & outStr);
 
 //========================================================================
 //
@@ -158,7 +158,7 @@ public:
     friend  class   BookFileTest;
 };
 
-}   //  End of namespace  Documents
+}   //  End of namespace  FileFormat
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif

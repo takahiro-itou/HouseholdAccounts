@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -35,6 +35,11 @@
 #
 #else
 #    error  "Neither _DEBUG nor NDEBUG defined"
+#endif
+
+//  非コンソール版では、標準入出力の利用は避ける。  //
+#if defined( WIN32 )
+#    define     HACORE_DISABLE_STDIO
 #endif
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN

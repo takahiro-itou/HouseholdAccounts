@@ -9,7 +9,7 @@ Module StringTable
 ' 家計簿内の文字列テーブルを管理する
 '
 ' Copyright (c) Itou Takahiro, All rights reserved.
-' This file is written in 2006/09/23 - 2008/01/06
+' This file is written in 2006/09/23 - 2023/02
 '*****************************************************************************
 
 '*****************************************************************************
@@ -22,7 +22,7 @@ Public Const STRINGSORTNONE As Integer = 0         'ソートなし
 Public Const STRINGSORTASCENDING As Integer = 1    '昇順
 
 Public Function ReadStringTable(
-        ByRef utStringTable As Wrapper.StringTable,
+        ByRef utStringTable As Wrapper.DocCls.StringTable,
         ByVal lngFileNumber As Integer) As Integer
 '---------------------------------------------------------------------
 'ファイルから、文字列テーブルを読み込む
@@ -36,6 +36,7 @@ Dim lngFlags As Integer, lngLength As Integer
 Dim lngFirstPos As Integer, lngEndPos As Integer
 Dim strTemp As String
 Dim bytBuffer() As Byte
+Dim sortIndex() As Integer
 
     '現在の位置を保存しておく
     lngFirstPos = Seek(lngFileNumber) - 1
@@ -47,19 +48,22 @@ Dim bytBuffer() As Byte
     FileGet(lngFileNumber, lngFlags)      '予約
 
     With utStringTable
-        .nTableBufferSize = (lngCount + 15) And &H7FFFFFF0
-        .nNumEntry = 0
-        .nSorted = lngSorted
+        ' .nTableBufferSize = (lngCount + 15) And &H7FFFFFF0
+        ' .nNumEntry = 0
+        ' .nSorted = lngSorted
 
-        If (.nTableBufferSize > 0) Then
-            ReDim .nEntryFlags(0 To .nTableBufferSize - 1)
-            ReDim .sTableEntries(0 To .nTableBufferSize - 1)
-            ReDim .nSortIndex(0 To .nTableBufferSize - 1)
-        End If
+        ' If (.nTableBufferSize > 0) Then
+        '     ReDim .nEntryFlags(0 To .nTableBufferSize - 1)
+        '     ReDim .sTableEntries(0 To .nTableBufferSize - 1)
+        '     ReDim .nSortIndex(0 To .nTableBufferSize - 1)
+        ' End If
+        .reserveBuffer(lngCount)
 
         'ソートインデックステーブルを読み込む
-        If (lngSorted <> STRINGSORTNONE) And (.nTableBufferSize > 0) Then
-            FileGet(lngFileNumber, .nSortIndex)
+        If (lngSorted <> STRINGSORTNONE) And (.BufferCapacity > 0) Then
+            ReDim sortIndex(0 To .BufferCapacity - 1)
+            FileGet(lngFileNumber, sortIndex)
+            .setSortIndexArray(sortIndex)
         End If
 
         '各レコードを読み込む
@@ -77,19 +81,26 @@ Dim bytBuffer() As Byte
                 .insertString(strTemp)
             Else
                 'データがソートされている場合は、単純に最後に追加していく
-                .sTableEntries(i) = strTemp
+                .appendString(strTemp)
             End If
-            .nEntryFlags(i) = lngFlags
+            .EntryFlag(i) = lngFlags
         Next i
 
-        .nNumEntry = lngCount
-        .nSorted = STRINGSORTASCENDING
-    End With
+        If (.NumEntries <> lngCount) Then
+            MessageBox.Show(
+                "文字列テーブルのエントリ数が一致しません。" & vbCrLf & _
+                "NumEntries = " & .NumEntries & vbCrLf & _
+                "ファイル中の記録値 = " & lngCount)
+        End If
+        .SortFlag = STRINGSORTASCENDING
 
-    If (utStringTable.checkIntegrity() = False) Then
-        MessageBox.Show("文字列テーブルが正しくソートされていません。" & vbCrLf & "ソートしなおします。")
-        SortStringTable(utStringTable)
-    End If
+        If (.checkSortIntegrity() = False) Then
+            MessageBox.Show(
+                "文字列テーブルが正しくソートされていません。" & vbCrLf & _
+                "ソートしなおします。")
+            .sortTable()
+        End If
+    End With
 
     'アライメント調整
     lngCount = Seek(lngFileNumber) - 1
@@ -102,19 +113,8 @@ Dim bytBuffer() As Byte
     ReadStringTable = (lngEndPos - lngFirstPos)
 End Function
 
-Public Sub SortStringTable(
-        ByRef utStringTable As Wrapper.StringTable)
-'---------------------------------------------------------------------
-'文字列テーブルを昇順にソートする
-'[I/O] utStringTable: 文字列テーブル
-'---------------------------------------------------------------------
-
-    With utStringTable
-    End With
-End Sub
-
 Public Function WriteStringTable(
-        ByRef utStringTable As Wrapper.StringTable,
+        ByRef utStringTable As Wrapper.DocCls.StringTable,
         ByVal lngFileNumber As Integer) As Integer
 '---------------------------------------------------------------------
 'ファイルに、文字列テーブルを書き込む
@@ -124,7 +124,7 @@ Public Function WriteStringTable(
 '  書き込んだバイト数
 '---------------------------------------------------------------------
 Dim i As Integer, lngCount As Integer
-Dim lngSorted As Integer, lngIndex As Integer
+Dim lngSorted As Integer
 Dim lngFlags As Integer, lngLength As Integer, lngRecordSize As Integer
 Dim lngFirstPos As Integer, lngEndPos As Integer
 Dim strTemp As String
@@ -134,8 +134,8 @@ Dim bytBuffer() As Byte
     lngFirstPos = Seek(lngFileNumber) - 1
 
     With utStringTable
-        lngCount = .nNumEntry
-        lngSorted = .nSorted
+        lngCount  = .NumEntries
+        lngSorted = .SortFlag
         lngLength = 0
 
         FilePut(lngFileNumber, lngCount)
@@ -145,13 +145,12 @@ Dim bytBuffer() As Byte
 
         'ソートインデックステーブルを書き込む
         If (lngSorted <> STRINGSORTNONE) Then
-            FilePut(lngFileNumber, .nSortIndex)
+            FilePut(lngFileNumber, .SortIndex)
         End If
 
         For i = 0 To lngCount - 1
-            lngFlags = .nEntryFlags(i)
-            lngIndex = .nSortIndex(i)
-            strTemp = .sTableEntries(i)
+            lngFlags = .EntryFlag(i)
+            strTemp = .TableEntry(i)
 
             ReDim bytBuffer(0 To 255)
             lngLength = Wrapper.TextOperation.toBytesFromString(

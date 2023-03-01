@@ -1,9 +1,9 @@
 ﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
-**                  ---  Household Accounts Core.  ---                  **
+**              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -13,25 +13,25 @@
 *************************************************************************/
 
 /**
-**      An Implementation of BookDocument class.
+**      An Implementation of CategoryWiseAggregates class.
 **
-**      @file       Documents/BookDocument.cpp
+**      @file       DocCls/CategoryWiseAggregates.cpp
 **/
 
-#include    "Account/pch/PreCompile.h"
+#include    "PreCompile.h"
 
-#include    "Account/Documents/BookDocument.h"
+#include    "CategoryWiseAggregates.h"
 
-
-HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  Wrapper  {
+namespace  DocCls  {
 
 namespace  {
-}   //  End of (Unnamed) namespace.
+
+}   //  End of (Unnamed) namespace
 
 //========================================================================
 //
-//    BookDocument  class.
+//    CategoryWiseAggregates  class.
 //
 
 //========================================================================
@@ -44,16 +44,29 @@ namespace  {
 //  （デフォルトコンストラクタ）。
 //
 
-BookDocument::BookDocument()
+CategoryWiseAggregates::CategoryWiseAggregates()
 {
 }
 
 //----------------------------------------------------------------
-//    インスタンスを破棄する
+//    インスタンスを破棄する。
 //  （デストラクタ）。
 //
 
-BookDocument::~BookDocument()
+CategoryWiseAggregates::~CategoryWiseAggregates()
+{
+    //  マネージドリソースを破棄する。              //
+
+    //  続いて、アンマネージドリソースも破棄する。  //
+    this->!CategoryWiseAggregates();
+}
+
+//----------------------------------------------------------------
+//    アンマネージドリソースを破棄する。
+//  （ファイナライザ）。
+//
+
+CategoryWiseAggregates::!CategoryWiseAggregates()
 {
 }
 
@@ -84,6 +97,23 @@ BookDocument::~BookDocument()
 
 //========================================================================
 //
+//    Accessors.
+//
+
+//========================================================================
+//
+//    Properties.
+//
+
+Common::DecimalCurrency
+CategoryWiseAggregates::categoryValue::get(
+        CategoryHandle  idxCategory)
+{
+    return ( this->m_aggregateResult[idxCategory] );
+}
+
+//========================================================================
+//
 //    Protected Member Functions.
 //
 
@@ -92,5 +122,5 @@ BookDocument::~BookDocument()
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Documents
-HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+}   //  End of namespace  DocCls
+}   //  End of namespace  Wrapper

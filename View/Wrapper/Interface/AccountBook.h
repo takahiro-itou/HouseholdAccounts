@@ -29,7 +29,8 @@
 #include    "AnnualRecords.h"
 #include    "Wrapper/Common/ManagedDate.h"
 #include    "Wrapper/Common/StringTable.h"
-#include    "Wrapper/Documents/CategoryManager.h"
+#include    "Wrapper/DocCls/CategoryManager.h"
+#include    "Wrapper/DocCls/StringTable.h"
 
 
 namespace  Wrapper  {
@@ -52,7 +53,7 @@ public ref  class  AccountBook
 //
 private:
 
-    typedef     Documents::CategoryFlags        CategoryFlags;
+    typedef     DocCls::CategoryFlags       CategoryFlags;
 
 //========================================================================
 //
@@ -234,10 +235,30 @@ public:
     /**   項目データを一元管理するインスタンス。
     **
     **/
-    property    Documents::CategoryManager ^
+    property    DocCls::CategoryManager ^
     BookCategories
     {
-        Documents::CategoryManager ^    get();
+        DocCls::CategoryManager ^   get();
+    }
+
+    //----------------------------------------------------------------
+    /**   設定データ用文字列テーブル。
+    **
+    **/
+    property    DocCls::StringTable ^
+    ConfigStringTable
+    {
+        DocCls::StringTable ^   get();
+    }
+
+    //----------------------------------------------------------------
+    /**   レコード用文字列テーブル。
+    **
+    **/
+    property    DocCls::StringTable ^
+    RecordStringTable
+    {
+        DocCls::StringTable ^   get();
     }
 
     /**   家計簿データが有効か。    **/
@@ -245,12 +266,6 @@ public:
 
     /**   テンポラリファイルのディレクトリ。    **/
     System::String^     sTempFileDir;
-
-    /**   設定データ用文字列テーブル。  **/
-    StringTable         utSettingsStringTable;
-
-    /**   レコード用文字列テーブル。    **/
-    StringTable         utRecordsStringTable;
 
     /**   開始西暦年。  **/
     int     nStartYear;
@@ -294,11 +309,17 @@ public:
 //
 private:
 
-    /**   項目用バッファサイズ。    **/
-    CategoryHandle                  m_cateBufferSize;
-
     /**   項目データ。              **/
-    Documents::CategoryManager ^    m_cateManager;
+    DocCls::CategoryManager ^   m_cateManager;
+
+    /**   項目用バッファサイズ。    **/
+    CategoryHandle              m_cateBufferSize;
+
+    /**   設定データ用文字列テーブル。  **/
+    DocCls::StringTable ^       m_strtblForConfig;
+
+    /**   レコード用文字列テーブル。    **/
+    DocCls::StringTable ^       m_strtblForRecord;
 
 };
 

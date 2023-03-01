@@ -15,14 +15,13 @@
 /**
 **      An Implementation of CategoryManager class.
 **
-**      @file       Documents/CategoryManager.cpp
+**      @file       DocCls/CategoryManager.cpp
 **/
 
 #include    "Account/pch/PreCompile.h"
+#include    "Account/DocCls/CategoryManager.h"
 
-#include    "Account/Documents/CategoryManager.h"
-
-#include    "Account/Documents/BookCategory.h"
+#include    "Account/DocCls/BookCategory.h"
 
 #include    "Account/Common/EnumBitFlag.h"
 
@@ -30,7 +29,7 @@
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  DocCls  {
 
 namespace  {
 }   //  End of (Unnamed) namespace.
@@ -366,5 +365,5 @@ CategoryManager::getRootCategoryCount()  const
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END

@@ -19,7 +19,6 @@
 **/
 
 #include    "PreCompile.h"
-
 #include    "AccountBook.h"
 
 namespace  Wrapper  {
@@ -46,8 +45,6 @@ namespace  {
 AccountBook::AccountBook()
     : bEnabled(false),
       sTempFileDir(nullptr),
-      utSettingsStringTable(),
-      utRecordsStringTable(),
       nStartYear(0),
       nStartDayIndex(0),
       nNumYears(0),
@@ -58,9 +55,13 @@ AccountBook::AccountBook()
       nStartWeekday(0),
       nPreviousDays(0),
       m_cateManager(nullptr),
-      m_cateBufferSize(0)
+      m_cateBufferSize(0),
+      m_strtblForConfig(nullptr),
+      m_strtblForRecord(nullptr)
 {
-    this->m_cateManager = gcnew Documents::CategoryManager ();
+    this->m_cateManager = gcnew DocCls::CategoryManager ();
+    this->m_strtblForConfig = gcnew DocCls::StringTable ();
+    this->m_strtblForRecord = gcnew DocCls::StringTable ();
 }
 
 //----------------------------------------------------------------
@@ -138,20 +139,20 @@ AccountBook::addDataToItemTotal(
 
     AnnualRecords  % ar = this->utAnnualRecords;
 
-    Documents::CategoryManager ^ cm = this->BookCategories;
+    DocCls::CategoryManager ^   cm  = this->BookCategories;
 
     int itemHandle  = lngItemIndex;
     while ( itemHandle >= 0 ) {
-        const   HouseholdAccounts::Documents::BookCategory  &
+        const   HABook::DocCls::BookCategory  &
             cbc = cm->getRawBookCategory(itemHandle);
         parentItem  = cbc.getParentHandle();
         const int  flag = static_cast<int>(cbc.getFlags());
 
-        if ( flag & static_cast<int>(Documents::CategoryFlags::CFLAG_NOCOUNT_PARENT) ) {
+        if ( flag & static_cast<int>(DocCls::CategoryFlags::CFLAG_NOCOUNT_PARENT) ) {
             blnAddToParent  = false;
             blnAddToRoot    = false;
         }
-        if ( flag & static_cast<int>(Documents::CategoryFlags::CFLAG_NOCOUNT_ROOT) ) {
+        if ( flag & static_cast<int>(DocCls::CategoryFlags::CFLAG_NOCOUNT_ROOT) ) {
             blnAddToRoot    = false;
         }
         if ( (parentItem == -1) && (blnAddToRoot == false) ) {
@@ -211,7 +212,7 @@ AccountBook::insertNewCategory(
     const   CategoryHandle
         cateNew = this->BookCategories->insertNewCategory(
                         cateParent, cateName,
-                        static_cast<Documents::CategoryFlags>(cateFlags),
+                        static_cast<DocCls::CategoryFlags>(cateFlags),
                         startDate,
                         Common::DecimalCurrency(startBalance) );
 
@@ -340,10 +341,30 @@ AccountBook::getStartYear()
 //    項目データを一元管理するインスタンス。
 //
 
-Documents::CategoryManager ^
+DocCls::CategoryManager ^
 AccountBook::BookCategories::get()
 {
     return ( this->m_cateManager );
+}
+
+//----------------------------------------------------------------
+//    設定データ用文字列テーブル。
+//
+
+DocCls::StringTable ^
+AccountBook::ConfigStringTable::get()
+{
+    return ( this->m_strtblForConfig );
+}
+
+//----------------------------------------------------------------
+//    レコード用文字列テーブル。
+//
+
+DocCls::StringTable ^
+AccountBook::RecordStringTable::get()
+{
+    return ( this->m_strtblForRecord );
 }
 
 //========================================================================

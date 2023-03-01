@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -13,32 +13,32 @@
 *************************************************************************/
 
 /**
-**      An Implementation of Test Case 'BookCategory'.
+**      An Implementation of Test Case 'BookDocument'.
 **
-**      @file       Documents/Tests/BookCategoryTest.cpp
+**      @file       DocCls/Tests/BookDocumentTest.cpp
 **/
 
 #include    "TestDriver.h"
-#include    "Account/Documents/BookCategory.h"
+#include    "Account/DocCls/BookDocument.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  DocCls  {
 
 //  クラスの前方宣言。  //
 
 //========================================================================
 //
-//    BookCategoryTest  class.
+//    BookDocumentTest  class.
 //
 /**
-**    クラス BookCategory の単体テスト。
+**    クラス BookDocument の単体テスト。
 **/
 
-class  BookCategoryTest : public  TestFixture
+class  BookDocumentTest : public  TestFixture
 {
-    CPPUNIT_TEST_SUITE(BookCategoryTest);
-    CPPUNIT_TEST(testBookCategory);
+    CPPUNIT_TEST_SUITE(BookDocumentTest);
+    CPPUNIT_TEST(testBookDocument);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -46,23 +46,23 @@ public:
     virtual  void   tearDown()  override    { }
 
 private:
-    void  testBookCategory();
+    void  testBookDocument();
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION( BookCategoryTest );
+CPPUNIT_TEST_SUITE_REGISTRATION( BookDocumentTest );
 
 //========================================================================
 //
 //    Tests.
 //
 
-void  BookCategoryTest::testBookCategory()
+void  BookDocumentTest::testBookDocument()
 {
-    BookCategory    testee;
+    BookDocument    docFile;
     return;
 }
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 //========================================================================

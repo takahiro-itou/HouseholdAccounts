@@ -1,9 +1,9 @@
 ﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
-**              ---  Household Accounts  Wrapper Lib.  ---              **
+**                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -13,62 +13,61 @@
 *************************************************************************/
 
 /**
-**      An Implementation of CategoryWiseAggregates class.
+**      An Interface of BookDocument class.
 **
-**      @file       Documents/CategoryWiseAggregates.cpp
+**      @file       DocCls/BookDocument.h
 **/
 
-#include    "PreCompile.h"
+#if !defined( HACORE_DOCCLS_INCLUDED_BOOK_DOCUMENT_H )
+#    define   HACORE_DOCCLS_INCLUDED_BOOK_DOCUMENT_H
 
-#include    "CategoryWiseAggregates.h"
 
-namespace  Wrapper  {
-namespace  Documents  {
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    include    "Account/Common/AccountsTypes.h"
+#endif
 
-namespace  {
 
-}   //  End of (Unnamed) namespace
+HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
+namespace  DocCls  {
+
+//  クラスの前方宣言。  //
 
 //========================================================================
 //
-//    CategoryWiseAggregates  class.
+//    BookDocument  class.
 //
+/**
+**
+**/
+
+class  BookDocument
+{
+
+//========================================================================
+//
+//    Internal Type Definitions.
+//
+public:
 
 //========================================================================
 //
 //    Constructor(s) and Destructor.
 //
+public:
 
-//----------------------------------------------------------------
-//    インスタンスを初期化する
-//  （デフォルトコンストラクタ）。
-//
+    //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （デフォルトコンストラクタ）。
+    **
+    **/
+    BookDocument();
 
-CategoryWiseAggregates::CategoryWiseAggregates()
-{
-}
-
-//----------------------------------------------------------------
-//    インスタンスを破棄する。
-//  （デストラクタ）。
-//
-
-CategoryWiseAggregates::~CategoryWiseAggregates()
-{
-    //  マネージドリソースを破棄する。              //
-
-    //  続いて、アンマネージドリソースも破棄する。  //
-    this->!CategoryWiseAggregates();
-}
-
-//----------------------------------------------------------------
-//    アンマネージドリソースを破棄する。
-//  （ファイナライザ）。
-//
-
-CategoryWiseAggregates::!CategoryWiseAggregates()
-{
-}
+    //----------------------------------------------------------------
+    /**   インスタンスを破棄する
+    **  （デストラクタ）。
+    **
+    **/
+    virtual  ~BookDocument();
 
 //========================================================================
 //
@@ -97,23 +96,6 @@ CategoryWiseAggregates::!CategoryWiseAggregates()
 
 //========================================================================
 //
-//    Accessors.
-//
-
-//========================================================================
-//
-//    Properties.
-//
-
-Common::DecimalCurrency
-CategoryWiseAggregates::categoryValue::get(
-        CategoryHandle  idxCategory)
-{
-    return ( this->m_aggregateResult[idxCategory] );
-}
-
-//========================================================================
-//
 //    Protected Member Functions.
 //
 
@@ -122,5 +104,21 @@ CategoryWiseAggregates::categoryValue::get(
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Documents
-}   //  End of namespace  Wrapper
+//========================================================================
+//
+//    Member Variables.
+//
+
+//========================================================================
+//
+//    Other Features.
+//
+public:
+    //  テストクラス。  //
+    friend  class   BookDocumentTest;
+};
+
+}   //  End of namespace  DocCls
+HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+
+#endif

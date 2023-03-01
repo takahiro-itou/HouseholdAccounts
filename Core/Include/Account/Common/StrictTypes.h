@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -24,6 +24,12 @@
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUNTS_PROJECT_H )
 #    include    "Account/Common/AccountsProject.h"
+#endif
+
+
+#if !defined( HACORE_SYS_INCLUDED_OSTREAM )
+#    include    <ostream>
+#    define   HACORE_SYS_INCLUDED_OSTREAM
 #endif
 
 
@@ -75,6 +81,10 @@ ST_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, >);
 ST_FWD_DECLARE_FRIEND_BIN_CMP_OP(bool, >=);
 
 #undef  ST_FWD_DECLARE_FRIEND_BIN_CMP_OP
+
+template <typename T, typename Tag>     std::ostream  &
+operator << (std::ostream & os, const StrictTypes<T, Tag> val);
+
 //----------------------------------------------------------------
 
 //========================================================================

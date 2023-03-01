@@ -26,6 +26,13 @@
 
 #include    "Wrapper/Common/AccountsTypes.h"
 
+#if !defined( HACORE_SYS_INCLUDED_STL_VECTOR )
+#    if !defined( HAWRAPPER_SYS_INCLUDED_STL_VECTOR )
+#        include    <vector>
+#        define   HAWRAPPER_SYS_INCLUDED_STL_VECTOR
+#    endif
+#endif
+
 
 namespace  Wrapper  {
 
