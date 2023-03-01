@@ -51,9 +51,6 @@
     <ClCompile Include="..\Wrapper\AssemblyInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Wrapper\HouseholdAccountsWrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Wrapper\PreCompile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -100,9 +97,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ClInclude Include="..\Wrapper\HouseholdAccountsWrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Wrapper\PreCompile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
