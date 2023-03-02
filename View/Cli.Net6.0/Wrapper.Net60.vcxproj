@@ -159,7 +159,6 @@
     <ClCompile Include="..\Wrapper\Common\DecimalCurrency.cpp" />
     <ClCompile Include="..\Wrapper\Common\FilePathUtils.cpp" />
     <ClCompile Include="..\Wrapper\Common\ManagedDate.cpp" />
-    <ClCompile Include="..\Wrapper\Common\StringTable.cpp" />
     <ClCompile Include="..\Wrapper\Common\TextOperation.cpp" />
 
     <ClCompile Include="..\Wrapper\DocCls\BookCategory.cpp" />
