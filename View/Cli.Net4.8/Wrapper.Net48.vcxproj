@@ -137,7 +137,6 @@
     <ClInclude Include="..\Wrapper\Common\DecimalCurrency.h" />
     <ClInclude Include="..\Wrapper\Common\FilePathUtils.h" />
     <ClInclude Include="..\Wrapper\Common\ManagedDate.h" />
-    <ClInclude Include="..\Wrapper\Common\StringTable.h" />
     <ClInclude Include="..\Wrapper\Common\TextOperation.h" />
 
     <ClInclude Include="..\Wrapper\DocCls\BookCategory.h" />
