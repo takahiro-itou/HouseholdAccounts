@@ -15,11 +15,11 @@
 /**
 **      An Interface of BookCategory class.
 **
-**      @file       Documents/BookCategory.h
+**      @file       DocCls/BookCategory.h
 **/
 
-#if !defined( HACORE_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H )
-#    define   HACORE_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H
+#if !defined( HACORE_DOCCLS_INCLUDED_BOOK_CATEGORY_H )
+#    define   HACORE_DOCCLS_INCLUDED_BOOK_CATEGORY_H
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
@@ -41,7 +41,7 @@
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  DocCls  {
 
 //  クラスの前方宣言。  //
 class   CategoryManager;
@@ -110,6 +110,8 @@ private:
     );
 
     typedef     Common::DecimalCurrency     DecimalCurrency;
+
+    typedef     BookCategory                This;
 
 //========================================================================
 //
@@ -214,6 +216,22 @@ public:
 //
 //    Public Member Functions.
 //
+
+//========================================================================
+//
+//    Public Member Functions (Operators).
+//
+public:
+
+    //----------------------------------------------------------------
+    /**   インスタンスを指定した内容に設定する
+    **  （代入演算子 =  ）。
+    **
+    **  @param [in] rhs   右辺。
+    **/
+    This  &
+    operator =  (
+            const  This  & rhs)  = default;
 
 //========================================================================
 //
@@ -398,7 +416,7 @@ public:
     friend  class   BookCategoryTest;
 };
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif

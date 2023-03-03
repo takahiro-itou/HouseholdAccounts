@@ -80,7 +80,7 @@ Include (${COMMON_CMAKE_DIR}/CheckOverride.cmake)
 ##    Project Name Space.
 ##
 
-set(HOUSEHOLD_ACCOUNTS_CNF_NAMESPACE    HouseholdAccounts)
+set(HOUSEHOLD_ACCOUNTS_CNF_NAMESPACE    HABook)
 
 ##----------------------------------------------------------------
 ##

@@ -1,9 +1,9 @@
 ﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
-**                  ---  Household Accounts Core.  ---                  **
+**              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -13,44 +13,32 @@
 *************************************************************************/
 
 /**
-**      An Interface of StringTable class.
+**      An Interface of CategoryWiseAggregates class.
 **
-**      @file       Documents/StringTable.h
+**      @file       DocCls/CategoryWiseAggregates.h
 **/
 
-#if !defined( HACORE_DOCUMENTS_INCLUDED_STRING_TABLE_H )
-#    define   HACORE_DOCUMENTS_INCLUDED_STRING_TABLE_H
+#if !defined( HAWRAPPER_DOCCLS_INCLUDED_CATEGORY_WISE_AGGREGATES_H )
+#    define   HAWRAPPER_DOCCLS_INCLUDED_CATEGORY_WISE_AGGREGATES_H
 
+#pragma     once
 
-#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
-#    include    "Account/Common/AccountsTypes.h"
-#endif
+#include    "Wrapper/Common/AccountsTypes.h"
+#include    "Wrapper/Common/DecimalCurrency.h"
 
-#if !defined( HACORE_SYS_INCLUDED_STL_STRING )
-#    include    <string>
-#    define   HACORE_SYS_INCLUDED_STL_STRING
-#endif
-
-#if !defined( HACORE_SYS_INCLUDED_STL_VECTOR )
-#    include    <vector>
-#    define   HACORE_SYS_INCLUDED_STL_VECTOR
-#endif
-
-
-HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
-
-//  クラスの前方宣言。  //
+namespace  Wrapper  {
+namespace  DocCls  {
 
 //========================================================================
 //
-//    StringTable  class.
+//    CategoryWiseAggregates  class.
 //
+
 /**
-**
+**    項目ごとの集計した結果を管理するクラス。
 **/
 
-class  StringTable
+public ref  class  CategoryWiseAggregates
 {
 
 //========================================================================
@@ -59,17 +47,9 @@ class  StringTable
 //
 public:
 
-    enum  class  StringTableSort
-    {
-        TABLE_SORT_NONE         = 0,
-        TABLE_SORT_ASCENDING    = 1,
-    };
-
-public:
-
-    typedef     std::vector<std::string>        StringArray;
-
-    typedef     std::vector<StringIndex>        IndexArray;
+    /**   集計結果を保存する配列型。    **/
+    typedef     cli::array<Common::DecimalCurrency, 1>
+    AggregatesList;
 
 //========================================================================
 //
@@ -82,14 +62,21 @@ public:
     **  （デフォルトコンストラクタ）。
     **
     **/
-    StringTable();
+    CategoryWiseAggregates();
 
     //----------------------------------------------------------------
-    /**   インスタンスを破棄する
+    /**   インスタンスを破棄する。
     **  （デストラクタ）。
     **
     **/
-    virtual  ~StringTable();
+    ~CategoryWiseAggregates();
+
+    //----------------------------------------------------------------
+    /**   アンマネージドリソースを破棄する。
+    **  （ファイナライザ）。
+    **
+    **/
+    !CategoryWiseAggregates();
 
 //========================================================================
 //
@@ -118,6 +105,23 @@ public:
 
 //========================================================================
 //
+//    Accessors.
+//
+
+//========================================================================
+//
+//    Properties.
+//
+public:
+
+    property    Common::DecimalCurrency
+    categoryValue[int]
+    {
+        Common::DecimalCurrency     get(CategoryHandle  idxCategory);
+    }
+
+//========================================================================
+//
 //    Protected Member Functions.
 //
 
@@ -132,34 +136,17 @@ public:
 //
 private:
 
-    /**   テーブル用のバッファサイズ。  **/
-    BufferSize          m_tableBufferSize;
-
-    /**   実際に格納されているデータ数。    **/
-    StringIndex         m_numEntries;
-
-    /**   ソート状態。  **/
-    StringTableSort     m_flagSorted;
-
-    /**   各エントリのフラグ。  **/
-    std::vector<int>    m_entryFlags;
-
-    /**   文字列テーブル。      **/
-    StringArray         m_tableEntry;
-
-    /**   昇順にソートした時の、インデックステーブル。  **/
-    IndexArray          m_sortedIndex;
+    /**   集計した結果を格納する配列。  **/
+    AggregatesList^     m_aggregateResult;
 
 //========================================================================
 //
 //    Other Features.
 //
-public:
-    //  テストクラス。  //
-    friend  class   StringTableTest;
+
 };
 
-}   //  End of namespace  Documents
-HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+}   //  End of namespace  DocCls
+}   //  End of namespace  Wrapper
 
 #endif

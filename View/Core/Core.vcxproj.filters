@@ -16,7 +16,7 @@
     <Filter Include="Header Files\Common">
       <UniqueIdentifier>{91199b76-4f43-45a4-9f65-c829f582ae5c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Documents">
+    <Filter Include="Header Files\DocCls">
       <UniqueIdentifier>{65df1ba1-b37e-452d-a846-b8ecf1a94a45}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\FileFormat">
@@ -25,7 +25,7 @@
     <Filter Include="Source Files\Common">
       <UniqueIdentifier>{e7436e7f-c1b0-4777-8737-aedba59c2515}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Documents">
+    <Filter Include="Source Files\DocCls">
       <UniqueIdentifier>{ae79ec88-6397-4054-ac0d-3f0fb77f5172}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\FileFormat">
@@ -41,17 +41,17 @@
       <Filter>Source Files\Common</Filter>
     </ClCompile>
 
-    <ClCompile Include="..\..\Core\Lib\Documents\BookCategory.cpp">
-      <Filter>Source Files\Documents</Filter>
+    <ClCompile Include="..\..\Core\Lib\DocCls\BookCategory.cpp">
+      <Filter>Source Files\DocCls</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Core\Lib\Documents\BookDocument.cpp">
-      <Filter>Source Files\Documents</Filter>
+    <ClCompile Include="..\..\Core\Lib\DocCls\BookDocument.cpp">
+      <Filter>Source Files\DocCls</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Core\Lib\Documents\CategoryManager.cpp">
-      <Filter>Source Files\Documents</Filter>
+    <ClCompile Include="..\..\Core\Lib\DocCls\CategoryManager.cpp">
+      <Filter>Source Files\DocCls</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Core\Lib\Documents\StringTable.cpp">
-      <Filter>Source Files\Documents</Filter>
+    <ClCompile Include="..\..\Core\Lib\DocCls\StringTable.cpp">
+      <Filter>Source Files\DocCls</Filter>
     </ClCompile>
 
     <ClCompile Include="..\..\Core\Lib\FileFormat\BookFile.cpp">
@@ -95,17 +95,17 @@
       <Filter>Header Files\Common</Filter>
     </ClInclude>
 
-    <ClInclude Include="..\..\Core\Include\Account\Documents\BookCategory.h">
-      <Filter>Header Files\Documents</Filter>
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\BookCategory.h">
+      <Filter>Header Files\DocCls</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Core\Include\Account\Documents\BookDocument.h">
-      <Filter>Header Files\Documents</Filter>
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\BookDocument.h">
+      <Filter>Header Files\DocCls</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Core\Include\Account\Documents\CategoryManager.h">
-      <Filter>Header Files\Documents</Filter>
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\CategoryManager.h">
+      <Filter>Header Files\DocCls</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Core\Include\Account\Documents\StringTable.h">
-      <Filter>Header Files\Documents</Filter>
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\StringTable.h">
+      <Filter>Header Files\DocCls</Filter>
     </ClInclude>
 
     <ClInclude Include="..\..\Core\Include\Account\FileFormat\BookFile.h">

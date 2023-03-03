@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -13,61 +13,49 @@
 *************************************************************************/
 
 /**
-**      An Interface of BookDocument class.
+**      An Implementation of BookDocument class.
 **
-**      @file       Documents/BookDocument.h
+**      @file       DocCls/BookDocument.cpp
 **/
 
-#if !defined( HACORE_DOCUMENTS_INCLUDED_BOOK_DOCUMENT_H )
-#    define   HACORE_DOCUMENTS_INCLUDED_BOOK_DOCUMENT_H
+#include    "Account/pch/PreCompile.h"
 
-
-#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
-#    include    "Account/Common/AccountsTypes.h"
-#endif
+#include    "Account/DocCls/BookDocument.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Documents  {
+namespace  DocCls  {
 
-//  クラスの前方宣言。  //
+namespace  {
+}   //  End of (Unnamed) namespace.
 
 //========================================================================
 //
 //    BookDocument  class.
 //
-/**
-**
-**/
-
-class  BookDocument
-{
-
-//========================================================================
-//
-//    Internal Type Definitions.
-//
-public:
 
 //========================================================================
 //
 //    Constructor(s) and Destructor.
 //
-public:
 
-    //----------------------------------------------------------------
-    /**   インスタンスを初期化する
-    **  （デフォルトコンストラクタ）。
-    **
-    **/
-    BookDocument();
+//----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （デフォルトコンストラクタ）。
+//
 
-    //----------------------------------------------------------------
-    /**   インスタンスを破棄する
-    **  （デストラクタ）。
-    **
-    **/
-    virtual  ~BookDocument();
+BookDocument::BookDocument()
+{
+}
+
+//----------------------------------------------------------------
+//    インスタンスを破棄する
+//  （デストラクタ）。
+//
+
+BookDocument::~BookDocument()
+{
+}
 
 //========================================================================
 //
@@ -104,21 +92,5 @@ public:
 //    For Internal Use Only.
 //
 
-//========================================================================
-//
-//    Member Variables.
-//
-
-//========================================================================
-//
-//    Other Features.
-//
-public:
-    //  テストクラス。  //
-    friend  class   BookDocumentTest;
-};
-
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
-
-#endif

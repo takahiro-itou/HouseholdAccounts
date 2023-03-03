@@ -3,7 +3,7 @@
 **                                                                      **
 **              ---  Household Accounts  Wrapper Lib.  ---              **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -27,15 +27,15 @@
 
 namespace  Wrapper  {
 
-typedef     HouseholdAccounts::ErrCode  WrapTargetErrCode;
+typedef     HABook::ErrCode     CoreErrCode;
 
 public  enum class  ErrCode
 {
-    SUCCESS             = WrapTargetErrCode::SUCCESS,
-    FAILURE             = WrapTargetErrCode::FAILURE,
-    FILE_OPEN_ERROR     = WrapTargetErrCode::FILE_OPEN_ERROR,
-    FILE_IO_ERROR       = WrapTargetErrCode::FILE_IO_ERROR,
-    INDEX_OUT_OF_RANGE  = WrapTargetErrCode::INDEX_OUT_OF_RANGE
+    SUCCESS             = CoreErrCode::SUCCESS,
+    FAILURE             = CoreErrCode::FAILURE,
+    FILE_OPEN_ERROR     = CoreErrCode::FILE_OPEN_ERROR,
+    FILE_IO_ERROR       = CoreErrCode::FILE_IO_ERROR,
+    INDEX_OUT_OF_RANGE  = CoreErrCode::INDEX_OUT_OF_RANGE
 };
 
 //================================================================
@@ -43,7 +43,7 @@ public  enum class  ErrCode
 //    ブール型。
 //
 
-typedef     HouseholdAccounts::Boolean          Boolean;
+typedef     HABook::Boolean             Boolean;
 
 inline  Boolean
 toNativeBoolean(
@@ -75,9 +75,9 @@ typedef     cli::array<System::String^, 1>      StringArray;
 
 //========================================================================
 
-typedef     HouseholdAccounts::CategoryHandle   CategoryHandle;
-typedef     HouseholdAccounts::DateSerial       DateSerial;
-typedef     HouseholdAccounts::StringIndex      StringIndex;
+typedef     HABook::CategoryHandle      CategoryHandle;
+typedef     HABook::DateSerial          DateSerial;
+typedef     HABook::StringIndex         StringIndex;
 
 //========================================================================
 //

@@ -15,14 +15,14 @@
 /**
 **      An Interface of CategoryManager class.
 **
-**      @file       Documents/CategoryManager.h
+**      @file       DocCls/CategoryManager.h
 **/
 
-#if !defined( HACORE_DOCUMENTS_INCLUDED_CATEGORY_MANAGER_H )
-#    define   HACORE_DOCUMENTS_INCLUDED_CATEGORY_MANAGER_H
+#if !defined( HACORE_DOCCLS_INCLUDED_CATEGORY_MANAGER_H )
+#    define   HACORE_DOCCLS_INCLUDED_CATEGORY_MANAGER_H
 
 
-#if !defined( HACORE_DOCUMENTS_INCLUDED_BOOK_CATEGORY_H )
+#if !defined( HACORE_DOCCLS_INCLUDED_BOOK_CATEGORY_H )
 #    include    "BookCategory.h"
 #endif
 
@@ -38,7 +38,7 @@ namespace  Common  {
 class   DecimalCurrency;
 }   //  End of namespace  Common
 
-namespace  Documents  {
+namespace  DocCls  {
 
 //  クラスの前方宣言。  //
 
@@ -309,12 +309,16 @@ private:
 //
 //    Other Features.
 //
+private:
+    typedef     CategoryManager     This;
+    CategoryManager     (const  This  &);
+    This &  operator =  (const  This  &);
 public:
     //  テストクラス。  //
     friend  class   CategoryManagerTest;
 };
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif

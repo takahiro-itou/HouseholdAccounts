@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -15,11 +15,11 @@
 /**
 **      スクリプトによる設定値が書き込まれるヘッダファイル。
 **
-**      @file       .Config/ConfiguredHouseholdAccounts.h.in
+**      @file       .Config/ConfiguredProject.h.in
 **/
 
-#if !defined( HACORE_CONFIG_INCLUDED_CONFIGURED_HOUSEHOLD_ACCOUNTS_H )
-#    define   HACORE_CONFIG_INCLUDED_CONFIGURED_HOUSEHOLD_ACCOUNTS_H
+#if !defined( HACORE_CONFIG_INCLUDED_CONFIGURED_PROJECT_H )
+#    define   HACORE_CONFIG_INCLUDED_CONFIGURED_PROJECT_H
 
 //========================================================================
 //

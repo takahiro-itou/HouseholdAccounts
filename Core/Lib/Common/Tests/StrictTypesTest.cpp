@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -61,6 +61,7 @@ class  StrictTypesTest : public  TestFixture
     CPPUNIT_TEST(testOpeCmpLe);
     CPPUNIT_TEST(testOpeCmpGt);
     CPPUNIT_TEST(testOpeCmpGe);
+    CPPUNIT_TEST(testOutStream);
     CPPUNIT_TEST_SUITE_END();
 
 private:
@@ -93,6 +94,7 @@ private:
     void  testOpeCmpLe();
     void  testOpeCmpGt();
     void  testOpeCmpGe();
+    void  testOutStream();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( StrictTypesTest );
@@ -544,6 +546,25 @@ void  StrictTypesTest::testOpeCmpGe()
     CPPUNIT_ASSERT_EQUAL(false, 299 >= testee1);
     CPPUNIT_ASSERT_EQUAL(true , 300 >= testee1);
     CPPUNIT_ASSERT_EQUAL(true , 301 >= testee1);
+
+    return;
+}
+
+void  StrictTypesTest::testOutStream()
+{
+    TestTarget  testee1(15);
+    TestTarget  testee2( 2);
+    TestTarget  testee3( 3);
+
+    std::stringstream   ss;
+
+    ss  <<  testee1
+        <<  ","
+        <<  testee2
+        <<  ","
+        <<  testee3;
+
+    CPPUNIT_ASSERT_EQUAL( std::string("15,2,3"), ss.str() );
 
     return;
 }

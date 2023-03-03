@@ -7,7 +7,7 @@
 ##    List of Directories.
 ##
 
-MODULE_DIR_NAME         =  Documents
+MODULE_DIR_NAME         =  DocCls
 SUBDIRS                 =  .  Tests
 
 include  $(top_srcdir)/.M4/Makefile.DirList.inc
@@ -58,7 +58,7 @@ LIBRARY_COMPILE_SRCFILES    =  \
 ##    List of Libraries.
 ##
 
-STATIC_LIBRARIES_LIST   =  libhacDocuments.a
+STATIC_LIBRARIES_LIST   =  libhacDocCls.a
 SHARED_LIBRARIES_LIST   =
 
 ##
@@ -84,5 +84,5 @@ include  $(top_srcdir)/.M4/Makefile.Install.inc
 ##    Build Libraries.
 ##
 
-libhacDocuments_a_SOURCES   =  ${LIBRARY_SOURCE_FILES}
+libhacDocCls_a_SOURCES   =  ${LIBRARY_SOURCE_FILES}
 

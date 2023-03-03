@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -29,6 +29,21 @@
 
 #if !defined( HACORE_COMMON_INCLUDED_STRICT_TYPES_H )
 #    include    "StrictTypes.h"
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_IOSTREAM )
+#    include    <iostream>
+#    define   HACORE_SYS_INCLUDED_IOSTREAM
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_SSTREAM )
+#    include    <sstream>
+#    define   HACORE_SYS_INCLUDED_SSTREAM
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_STD_EXCEPT )
+#    include    <stdexcept>
+#    define   HACORE_SYS_INCLUDED_STD_EXCEPT
 #endif
 
 
@@ -146,6 +161,9 @@ template <typename T, typename Id, class Allocator>
 inline  typename  StrictVector<T, Id, Allocator>::reference
 StrictVector<T, Id, Allocator>::operator [] (const Id n)
 {
+#if defined( _DEBUG )
+    checkIndexRange(n);
+#endif
     return ( Super::operator [] (getValueFromStrict(n)) );
 }
 
@@ -153,6 +171,9 @@ template <typename T, typename Id, class Allocator>
 inline  typename  StrictVector<T, Id, Allocator>::const_reference
 StrictVector<T, Id, Allocator>::operator [] (const Id n) const
 {
+#if defined( _DEBUG )
+    checkIndexRange(n);
+#endif
     return ( Super::operator [] (getValueFromStrict(n)) );
 }
 
@@ -184,6 +205,28 @@ StrictVector<T, Id, Allocator>::at(const Id n) const
 //
 //    For Internal Use Only.
 //
+
+//----------------------------------------------------------------
+//    インデックスの範囲を確認する。
+//
+
+template <typename T, typename Id, class Allocator>
+inline  void
+StrictVector<T, Id, Allocator>::checkIndexRange(const Id n)  const
+{
+    if ( (static_cast<Id>(Super::size()) <= n) || (n < 0) ) {
+        //  範囲外アクセス。    //
+        std::stringstream   ss;
+        ss  <<  "Out of Range : id = "  <<  n
+            <<  ", Size = " <<  Super::size()
+            <<  ", Cap = "  <<  Super::capacity();
+#if !defined( HACORE_DISABLE_STDIO )
+        std::cerr   <<  ss.str();
+#endif
+        throw  std::out_of_range(ss.str());
+    }
+    return;
+}
 
 }   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END

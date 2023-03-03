@@ -15,23 +15,22 @@
 /**
 **      An Implementation of BookCategory class.
 **
-**      @file       Documents/BookCategory.cpp
+**      @file       DocCls/BookCategory.cpp
 **/
 
 #include    "PreCompile.h"
-
 #include    "BookCategory.h"
 
 #include    "Wrapper/Common/ArrayUtils.h"
 
-#include    "Account/Documents/CategoryManager.h"
+#include    <Account/DocCls/CategoryManager.h>
 
 #include    <msclr/marshal_cppstd.h>
 using       namespace   msclr::interop;
 
 
 namespace  Wrapper  {
-namespace  Documents  {
+namespace  DocCls  {
 
 namespace  {
 
@@ -131,10 +130,10 @@ System::Boolean
 BookCategory::expandCategory(
         const  System::Boolean  blnExpanded)
 {
-    return ( fromNativeBoolean(
-                     this->m_ptrObj->expandCategory(
-                             toNativeBoolean(blnExpanded)
-    ) ) );
+    return  fromNativeBoolean(
+                this->m_ptrObj->expandCategory(
+                        toNativeBoolean(blnExpanded)
+    ) );
 }
 
 //========================================================================
@@ -149,7 +148,7 @@ BookCategory::expandCategory(
 CategoryFlags
 BookCategory::getCategoryType()
 {
-    return ( static_cast<CategoryFlags>(this->m_ptrObj->getCategoryType()) );
+    return  static_cast<CategoryFlags>(this->m_ptrObj->getCategoryType());
 }
 
 //----------------------------------------------------------------
@@ -159,7 +158,7 @@ BookCategory::getCategoryType()
 CategoryFlags
 BookCategory::getFlags()
 {
-    return ( static_cast<CategoryFlags>(this->m_ptrObj->getFlags()) );
+    return  static_cast<CategoryFlags>(this->m_ptrObj->getFlags());
 }
 
 //----------------------------------------------------------------
@@ -169,7 +168,7 @@ BookCategory::getFlags()
 BookCategory::CategoryHandleArray ^
 BookCategory::getSubCategories()
 {
-    return ( toManageFromVector(this->m_ptrObj->getSubCategories()) );
+    return  toManageFromVector(this->m_ptrObj->getSubCategories());
 }
 
 //----------------------------------------------------------------
@@ -179,7 +178,7 @@ BookCategory::getSubCategories()
 System::Boolean
 BookCategory::isExpanded()
 {
-    return ( fromNativeBoolean(this->m_ptrObj->isExpanded()) );
+    return  fromNativeBoolean(this->m_ptrObj->isExpanded());
 }
 
 //========================================================================
@@ -194,7 +193,7 @@ BookCategory::isExpanded()
 CategoryFlags
 BookCategory::Flags::get()
 {
-    return ( static_cast<CategoryFlags>(this->m_ptrObj->getFlags()) );
+    return  static_cast<CategoryFlags>(this->m_ptrObj->getFlags());
 }
 
 //----------------------------------------------------------------
@@ -204,7 +203,7 @@ BookCategory::Flags::get()
 CategoryHandle
 BookCategory::ParentHandle::get()
 {
-    return ( this->m_ptrObj->getParentHandle() );
+    return  this->m_ptrObj->getParentHandle();
 }
 
 //----------------------------------------------------------------
@@ -214,7 +213,7 @@ BookCategory::ParentHandle::get()
 System::String^
 BookCategory::CategoryName::get()
 {
-    return ( marshal_as<System::String^>(this->m_ptrObj->getCategoryName()) );
+    return  marshal_as<System::String^>(this->m_ptrObj->getCategoryName());
 }
 
 //----------------------------------------------------------------
@@ -224,7 +223,7 @@ BookCategory::CategoryName::get()
 CategoryHandle
 BookCategory::NumSubCategories::get()
 {
-    return ( this->m_ptrObj->getNumSubCategories() );
+    return  this->m_ptrObj->getNumSubCategories();
 }
 
 //----------------------------------------------------------------
@@ -234,7 +233,7 @@ BookCategory::NumSubCategories::get()
 Common::DecimalCurrency
 BookCategory::StartBalance::get()
 {
-    return ( DecimalCurrency(this->m_ptrObj->getStartBalance()) );
+    return  DecimalCurrency(this->m_ptrObj->getStartBalance());
 }
 
 //----------------------------------------------------------------
@@ -244,7 +243,7 @@ BookCategory::StartBalance::get()
 DateSerial
 BookCategory::StartDate::get()
 {
-    return ( this->m_ptrObj->getStartDate() );
+    return  this->m_ptrObj->getStartDate();
 }
 
 //----------------------------------------------------------------
@@ -255,7 +254,7 @@ CategoryHandle
 BookCategory::SubCategory::get(
         CategoryHandle  idxSub)
 {
-    return ( this->m_ptrObj->getSubCategory(idxSub) );
+    return  this->m_ptrObj->getSubCategory(idxSub);
 }
 
 //========================================================================
@@ -268,5 +267,5 @@ BookCategory::SubCategory::get(
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Documents
+}   //  End of namespace  DocCls
 }   //  End of namespace  Wrapper
