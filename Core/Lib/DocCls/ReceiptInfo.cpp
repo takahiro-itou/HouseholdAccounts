@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Implementation of Receipt class.
+**      An Implementation of ReceiptInfo class.
 **
-**      @file       DocCls/Receipt.cpp
+**      @file       DocCls/ReceiptInfo.cpp
 **/
 
 #include    "Account/pch/PreCompile.h"
-#include    "Account/DocCls/Receipt.h"
+#include    "Account/DocCls/ReceiptInfo.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
@@ -30,7 +30,7 @@ namespace  {
 
 //========================================================================
 //
-//    Receipt  class.
+//    ReceiptInfo  class.
 //
 
 //========================================================================
@@ -43,7 +43,7 @@ namespace  {
 //  （デフォルトコンストラクタ）。
 //
 
-Receipt::Receipt()
+ReceiptInfo::ReceiptInfo()
 {
 }
 
@@ -52,7 +52,7 @@ Receipt::Receipt()
 //  （デストラクタ）。
 //
 
-Receipt::~Receipt()
+ReceiptInfo::~ReceiptInfo()
 {
 }
 

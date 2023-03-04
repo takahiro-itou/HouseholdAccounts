@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Interface of Receipt class.
+**      An Interface of ReceiptInfo class.
 **
-**      @file       DocCls/Receipt.h
+**      @file       DocCls/ReceiptInfo.h
 **/
 
-#if !defined( HACORE_DOCCLS_INCLUDED_RECEIPT_H )
-#    define   HACORE_DOCCLS_INCLUDED_RECEIPT_H
+#if !defined( HACORE_DOCCLS_INCLUDED_RECEIPT_INFO_H )
+#    define   HACORE_DOCCLS_INCLUDED_RECEIPT_INFO_H
 
 
 #if !defined( HACORE_DOCCLS_INCLUDED_MERCHANDISE_H )
@@ -38,13 +38,13 @@ namespace  DocCls  {
 
 //========================================================================
 //
-//    Receipt  class.
+//    ReceiptInfo  class.
 //
 /**
 **    一回の買い物 (レシート一枚分) のデータ。
 **/
 
-class  Receipt
+class  ReceiptInfo
 {
 //========================================================================
 //
@@ -62,14 +62,14 @@ public:
     **  （デフォルトコンストラクタ）。
     **
     **/
-    Receipt();
+    ReceiptInfo();
 
     //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
     **/
-    ~Receipt();
+    ~ReceiptInfo();
 
 //========================================================================
 //
@@ -165,7 +165,7 @@ private:
 //
 public:
     //  テストクラス。  //
-    friend  class   ReceiptTest;
+    friend  class   ReceiptInfoTest;
 };
 
 }   //  End of namespace  DocCls
