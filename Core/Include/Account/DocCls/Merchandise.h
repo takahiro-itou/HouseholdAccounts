@@ -118,17 +118,17 @@ public:
 //
 public:
 
-    /**   ルート項目インデックス。  **/
-    CategoryHandle  hRootCate;
+    /**   勘定科目。    **/
+    CategoryHandle  accountHeadings;
 
-    /**   項目インデックス。        **/
-    CategoryHandle  hCategory;
+    /**   分類 (内訳) 。    **/
+    CategoryHandle  accountCategory;
 
     /**   商品名の ID  (文字列テーブル内のインデックス) 。  **/
     StringIndex     siGoodsId;
 
     /**   商品名。  **/
-    std::string     goodsName;
+    std::string     productName;
 
     /**   単価。    **/
     int             unitPrice;
@@ -141,6 +141,20 @@ public:
 
     /**   小計。    **/
     int             cSubTotal;
+
+    /**
+    **    内税額。
+    **
+    **  税込み価格ではなく税金額そのもの。
+    **/
+    int             inclusiveTaxVal;
+
+    /**
+    **    外税額。
+    **
+    **  税抜き価格ではなく税金額そのもの。
+    **/
+    int             exclusiveTaxVal;
 
 private:
 
