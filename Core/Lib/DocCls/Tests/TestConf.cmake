@@ -25,8 +25,8 @@ add_test(
 )
 
 add_test(
-    NAME        ReceiptTest
-    COMMAND     $<TARGET_FILE:ReceiptTest>
+    NAME        ReceiptInfoTest
+    COMMAND     $<TARGET_FILE:ReceiptInfoTest>
 )
 
 add_test(
@@ -43,6 +43,6 @@ add_executable(BookCategoryTest     BookCategoryTest.cpp)
 add_executable(BookDocumentTest     BookDocumentTest.cpp)
 add_executable(CategoryManagerTest  CategoryManagerTest.cpp)
 add_executable(MerchandiseTest      MerchandiseTest.cpp)
-add_executable(ReceiptTest          ReceiptTest.cpp)
+add_executable(ReceiptInfoTest      ReceiptInfoTest.cpp)
 add_executable(StringTableTest      StringTableTest.cpp)
 

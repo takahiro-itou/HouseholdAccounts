@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Implementation of Test Case 'Receipt'.
+**      An Implementation of Test Case 'ReceiptInfo'.
 **
-**      @file       DocCls/Tests/ReceiptTest.cpp
+**      @file       DocCls/Tests/ReceiptInfoTest.cpp
 **/
 
 #include    "TestDriver.h"
-#include    "Account/DocCls/Receipt.h"
+#include    "Account/DocCls/ReceiptInfo.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
@@ -29,16 +29,16 @@ namespace  DocCls  {
 
 //========================================================================
 //
-//    ReceiptTest  class.
+//    ReceiptInfoTest  class.
 //
 /**
-**    クラス Receipt  の単体テスト。
+**    クラス ReceiptInfo  の単体テスト。
 **/
 
-class  ReceiptTest : public  TestFixture
+class  ReceiptInfoTest : public  TestFixture
 {
-    CPPUNIT_TEST_SUITE(ReceiptTest);
-    CPPUNIT_TEST(testReceipt);
+    CPPUNIT_TEST_SUITE(ReceiptInfoTest);
+    CPPUNIT_TEST(testReceiptInfo);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -46,19 +46,19 @@ public:
     virtual  void   tearDown()  override    { }
 
 private:
-    void  testReceipt();
+    void  testReceiptInfo();
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptTest );
+CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptInfoTest );
 
 //========================================================================
 //
 //    Tests.
 //
 
-void  ReceiptTest::testReceipt()
+void  ReceiptInfoTest::testReceiptInfo()
 {
-    Receipt     testee;
+    ReceiptInfo     testee;
 
     return;
 }

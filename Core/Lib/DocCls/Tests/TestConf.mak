@@ -9,7 +9,7 @@ TESTS                   =  \
         BookDocumentTest       \
         CategoryManagerTest    \
         MerchandiseTest        \
-        ReceiptTest            \
+        ReceiptInfoTest        \
         StringTableTest        \
         ${EXTRATESTS}
 ##
@@ -39,6 +39,6 @@ BookCategoryTest_SOURCES     =  BookCategoryTest.cpp
 BookDocumentTest_SOURCES     =  BookDocumentTest.cpp
 CategoryManagerTest_SOURCES  =  CategoryManagerTest.cpp
 MerchandiseTest_SOURCES      =  MerchandiseTest.cpp
-ReceiptTest_SOURCES          =  ReceiptTest.cpp
+ReceiptInfoTest_SOURCES      =  ReceiptInfoTest.cpp
 StringTableTest_SOURCES      =  StringTableTest.cpp
 
