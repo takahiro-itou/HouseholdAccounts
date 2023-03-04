@@ -50,6 +50,12 @@
     <ClCompile Include="..\..\Core\Lib\DocCls\CategoryManager.cpp">
       <Filter>Source Files\DocCls</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Core\Lib\DocCls\Merchandise.cpp">
+      <Filter>Source Files\DocCls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Core\Lib\DocCls\Receipt.cpp">
+      <Filter>Source Files\DocCls</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Core\Lib\DocCls\StringTable.cpp">
       <Filter>Source Files\DocCls</Filter>
     </ClCompile>
@@ -102,6 +108,12 @@
       <Filter>Header Files\DocCls</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Core\Include\Account\DocCls\CategoryManager.h">
+      <Filter>Header Files\DocCls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\Merchandise.h">
+      <Filter>Header Files\DocCls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\Receipt.h">
       <Filter>Header Files\DocCls</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Core\Include\Account\DocCls\StringTable.h">
