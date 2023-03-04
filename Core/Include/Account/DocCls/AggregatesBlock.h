@@ -50,6 +50,20 @@ struct  AggregatesBlock
 //
 //    Internal Type Definitions.
 //
+public:
+
+    /**   収支フラグ。  **/
+    enum class  BlockInOutFlags
+    {
+        DOUBLE_ENTRY,
+        INCOME,
+        OUTLAY,
+        BANK_WITHDRAW,
+        BANK_DEPOSIT,
+        BANK_TRANSFER,
+    };
+
+    typedef     std::vector<Merchandise>    MerchandiseList;
 
 //========================================================================
 //
@@ -122,6 +136,18 @@ public:
 //    Member Variables.
 //
 public:
+
+    /**   収支フラグ。  **/
+    BlockInOutFlags     blockFlags;
+
+    /**   借方口座。    **/
+    CategoryHandle      chAccount1;
+
+    /**   貸方口座。    **/
+    CategoryHandle      chAccount2;
+
+    /**   商品リスト。  **/
+    MerchandiseList     merchandises;
 
 //========================================================================
 //
