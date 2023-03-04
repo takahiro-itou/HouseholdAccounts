@@ -131,20 +131,20 @@ private:
     /**   小計。    **/
     int     m_subTotal;
 
-    /**   内税。    **/
-    int     m_taxInside;
+    /**   内税の合計。  **/
+    int     m_sumInnerTax;
 
-    /**   外税。    **/
-    int     m_taxOutside;
+    /**   外税の合計。  **/
+    int     m_sumOuterTax;
 
-    /**   合計。    **/
+    /**   合計の金額。  **/
     int     m_totalPrice;
 
     /**   内税を加える項目のハンドル。  **/
-    CategoryHandle      m_hCateInsideTax;
+    CategoryHandle      m_chInnerTax;
 
     /**   外税を加える項目のハンドル。  **/
-    CategoryHandle      m_hCateOutsideTax;
+    CategoryHandle      m_chOuterTax;
 
 //========================================================================
 //
