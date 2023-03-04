@@ -20,6 +20,8 @@ set(LIBRARY_SOURCE_FILES
         BookCategory.cpp
         BookDocument.cpp
         CategoryManager.cpp
+        Merchandise.cpp
+        Receipt.cpp
         StringTable.cpp
 )
 
@@ -27,6 +29,8 @@ set(INCLIB_HEADER_FILES
         ${INCLIB_SOURCE_DIR}/BookCategory.h
         ${INCLIB_SOURCE_DIR}/BookDocument.h
         ${INCLIB_SOURCE_DIR}/CategoryManager.h
+        ${INCLIB_SOURCE_DIR}/Merchandise.h
+        ${INCLIB_SOURCE_DIR}/Receipt.h
         ${INCLIB_SOURCE_DIR}/StringTable.h
 )
 
