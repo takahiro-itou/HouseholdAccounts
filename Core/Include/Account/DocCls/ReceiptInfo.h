@@ -22,8 +22,8 @@
 #    define   HACORE_DOCCLS_INCLUDED_RECEIPT_INFO_H
 
 
-#if !defined( HACORE_DOCCLS_INCLUDED_MERCHANDISE_H )
-#    include    "Merchandise.h"
+#if !defined( HACORE_DOCCLS_INCLUDED_AGGREGATES_BLOCK_H )
+#    include    "AggregatesBlock.h"
 #endif
 
 #if !defined( HACORE_COMMON_INCLUDED_STRICT_VECTOR_H )
@@ -123,14 +123,20 @@ public:
 //
 private:
 
-    /**   店舗コード。      **/
-    int                 m_shopIdx;
-
     /**   レシートの日付。  **/
     int                 m_receiptDate;
 
     /**   レシートの時刻。  **/
-    int                 m_receiptTime;
+    std::string         m_receiptTime;
+
+    /**   店名コード。      **/
+    int                 m_shopIdx;
+
+    /**   店名。            **/
+    std::string         m_shopName;
+
+    /**   レコード。        **/
+    std::vector<AggregatesBlock>    m_records;
 
     /**   購入した商品の数。    **/
     int                 m_numMerchandise;
