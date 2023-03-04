@@ -22,8 +22,12 @@
 #    define   HACORE_DOCCLS_INCLUDED_RECEIPT_H
 
 
-#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
-#    include    "Account/Common/AccountsTypes.h"
+#if !defined( HACORE_DOCCLS_INCLUDED_MERCHANDISE_H )
+#    include    "Merchandise.h"
+#endif
+
+#if !defined( HACORE_COMMON_INCLUDED_STRICT_VECTOR_H )
+#    include    "Account/Common/StrictVector.h"
 #endif
 
 
@@ -117,6 +121,30 @@ public:
 //    Member Variables.
 //
 private:
+
+    /**   購入した商品の数。    **/
+    int     m_numMerchandise;
+
+    /**   購入した商品のデータ。    **/
+    std::vector<Merchandise>    m_goodsArray;
+
+    /**   小計。    **/
+    int     m_subTotal;
+
+    /**   内税。    **/
+    int     m_taxInside;
+
+    /**   外税。    **/
+    int     m_taxOutside;
+
+    /**   合計。    **/
+    int     m_totalPrice;
+
+    /**   内税を加える項目のハンドル。  **/
+    CategoryHandle      m_hCateInsideTax;
+
+    /**   外税を加える項目のハンドル。  **/
+    CategoryHandle      m_hCateOutsideTax;
 
 //========================================================================
 //
