@@ -95,6 +95,7 @@ public:
 //
 //    Public Member Functions.
 //
+public:
 
 //========================================================================
 //
@@ -122,8 +123,17 @@ public:
 //
 private:
 
+    /**   店舗コード。      **/
+    int                 m_shopIdx;
+
+    /**   レシートの日付。  **/
+    int                 m_receiptDate;
+
+    /**   レシートの時刻。  **/
+    int                 m_receiptTime;
+
     /**   購入した商品の数。    **/
-    int     m_numMerchandise;
+    int                 m_numMerchandise;
 
     /**   購入した商品のデータ。    **/
     std::vector<Merchandise>    m_goodsArray;
@@ -132,16 +142,16 @@ private:
     Boolean             m_totalCached;
 
     /**   小計。    **/
-    int     m_subTotal;
+    int                 m_subTotal;
 
     /**   内税の合計。  **/
-    int     m_sumInnerTax;
+    int                 m_sumInnerTax;
 
     /**   外税の合計。  **/
-    int     m_sumOuterTax;
+    int                 m_sumOuterTax;
 
     /**   合計の金額。  **/
-    int     m_totalPrice;
+    int                 m_totalPrice;
 
     /**   内税を加える項目のハンドル。  **/
     CategoryHandle      m_chInnerTax;
