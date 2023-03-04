@@ -22,6 +22,7 @@ EXTRA_NOINST_DATA_FILES     =
 EXTRA_NOINST_HEADER_FILES   =
 
 LIBRARY_SOURCE_FILES        =  \
+        AggregatesBlock.cpp            \
         BookCategory.cpp               \
         BookDocument.cpp               \
         CategoryManager.cpp            \
@@ -41,6 +42,7 @@ DIST_NOINST_HEADER_FILES    =  \
         ${EXTRA_NOINST_HEADER_FILES}
 
 INCLIB_HEADER_FILES         =  \
+        ${INCLIB_SOURCE_DIR}/AggregatesBlock.h         \
         ${INCLIB_SOURCE_DIR}/BookCategory.h            \
         ${INCLIB_SOURCE_DIR}/BookDocument.h            \
         ${INCLIB_SOURCE_DIR}/CategoryManager.h         \

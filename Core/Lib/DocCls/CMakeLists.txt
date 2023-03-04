@@ -17,6 +17,7 @@ set(INCLIB_BINARY_DIR       "${INCLUDE_BINARY_DIR}/${MODULE_DIR_NAME}")
 ##
 
 set(LIBRARY_SOURCE_FILES
+        AggregatesBlock.cpp
         BookCategory.cpp
         BookDocument.cpp
         CategoryManager.cpp
@@ -26,6 +27,7 @@ set(LIBRARY_SOURCE_FILES
 )
 
 set(INCLIB_HEADER_FILES
+        ${INCLIB_SOURCE_DIR}/AggregatesBlock.h
         ${INCLIB_SOURCE_DIR}/BookCategory.h
         ${INCLIB_SOURCE_DIR}/BookDocument.h
         ${INCLIB_SOURCE_DIR}/CategoryManager.h
