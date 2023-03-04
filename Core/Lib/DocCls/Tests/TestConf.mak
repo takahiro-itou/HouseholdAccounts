@@ -8,6 +8,8 @@ TESTS                   =  \
         BookCategoryTest       \
         BookDocumentTest       \
         CategoryManagerTest    \
+        MerchandiseTest        \
+        ReceiptTest            \
         StringTableTest        \
         ${EXTRATESTS}
 ##
@@ -36,5 +38,7 @@ TEST_LDFLAGS_COMMON         +=
 BookCategoryTest_SOURCES     =  BookCategoryTest.cpp
 BookDocumentTest_SOURCES     =  BookDocumentTest.cpp
 CategoryManagerTest_SOURCES  =  CategoryManagerTest.cpp
+MerchandiseTest_SOURCES      =  MerchandiseTest.cpp
+ReceiptTest_SOURCES          =  ReceiptTest.cpp
 StringTableTest_SOURCES      =  StringTableTest.cpp
 
