@@ -5,6 +5,7 @@
 
 EXTRATESTS              =
 TESTS                   =  \
+        AggregatesBlockTest    \
         BookCategoryTest       \
         BookDocumentTest       \
         CategoryManagerTest    \
@@ -35,6 +36,7 @@ TEST_LDFLAGS_COMMON         +=
 ##    Test Programs.
 ##
 
+AggregatesBlockTest_SOURCES  =  AggregatesBlockTest.cpp
 BookCategoryTest_SOURCES     =  BookCategoryTest.cpp
 BookDocumentTest_SOURCES     =  BookDocumentTest.cpp
 CategoryManagerTest_SOURCES  =  CategoryManagerTest.cpp

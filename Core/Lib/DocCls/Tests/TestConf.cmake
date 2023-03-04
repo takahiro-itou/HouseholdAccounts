@@ -5,6 +5,11 @@
 ##
 
 add_test(
+    NAME        AggregatesBlockTest
+    COMMAND     $<TARGET_FILE:AggregatesBlockTest>
+)
+
+add_test(
     NAME        BookCategoryTest
     COMMAND     $<TARGET_FILE:BookCategoryTest>
 )
@@ -39,6 +44,7 @@ add_test(
 ##    テストプログラムのビルド。
 ##
 
+add_executable(AggregatesBlockTest  AggregatesBlockTest.cpp)
 add_executable(BookCategoryTest     BookCategoryTest.cpp)
 add_executable(BookDocumentTest     BookDocumentTest.cpp)
 add_executable(CategoryManagerTest  CategoryManagerTest.cpp)
