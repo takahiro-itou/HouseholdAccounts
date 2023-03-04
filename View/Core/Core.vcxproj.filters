@@ -53,7 +53,7 @@
     <ClCompile Include="..\..\Core\Lib\DocCls\Merchandise.cpp">
       <Filter>Source Files\DocCls</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Core\Lib\DocCls\Receipt.cpp">
+    <ClCompile Include="..\..\Core\Lib\DocCls\ReceiptInfo.cpp">
       <Filter>Source Files\DocCls</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Core\Lib\DocCls\StringTable.cpp">
@@ -113,7 +113,7 @@
     <ClInclude Include="..\..\Core\Include\Account\DocCls\Merchandise.h">
       <Filter>Header Files\DocCls</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Core\Include\Account\DocCls\Receipt.h">
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\ReceiptInfo.h">
       <Filter>Header Files\DocCls</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Core\Include\Account\DocCls\StringTable.h">
