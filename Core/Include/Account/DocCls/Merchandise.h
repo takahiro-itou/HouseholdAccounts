@@ -116,6 +116,32 @@ public:
 //
 //    Member Variables.
 //
+public:
+
+    /**   ルート項目インデックス。  **/
+    CategoryHandle  hRootCate;
+
+    /**   項目インデックス。        **/
+    CategoryHandle  hCategory;
+
+    /**   商品名の ID  (文字列テーブル内のインデックス) 。  **/
+    StringIndex     siGoodsId;
+
+    /**   商品名。  **/
+    std::string     goodsName;
+
+    /**   単価。    **/
+    int             unitPrice;
+
+    /**   数量。    **/
+    int             nQuantity;
+
+    /**   値引額。  **/
+    int             cDiscount;
+
+    /**   小計。    **/
+    int             cSubTotal;
+
 private:
 
 //========================================================================
