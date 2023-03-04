@@ -140,6 +140,7 @@
     <ClCompile Include="..\..\Core\Lib\Common\DecimalCurrency.cpp" />
     <ClCompile Include="..\..\Core\Lib\Common\TextParser.cpp" />
 
+    <ClCompile Include="..\..\Core\Lib\DocCls\AggregatesBlock.cpp" />
     <ClCompile Include="..\..\Core\Lib\DocCls\BookCategory.cpp" />
     <ClCompile Include="..\..\Core\Lib\DocCls\BookDocument.cpp" />
     <ClCompile Include="..\..\Core\Lib\DocCls\CategoryManager.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="..\..\Core\Include\Account\Common\StrictVector.inl" />
     <ClInclude Include="..\..\Core\Include\Account\Common\TextParser.h" />
 
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\AggregatesBlock.h" />
     <ClInclude Include="..\..\Core\Include\Account\DocCls\BookCategory.h" />
     <ClInclude Include="..\..\Core\Include\Account\DocCls\BookDocument.h" />
     <ClInclude Include="..\..\Core\Include\Account\DocCls\CategoryManager.h" />
