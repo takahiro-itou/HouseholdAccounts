@@ -141,9 +141,6 @@ private:
     /**   レコード。        **/
     BlockArray          m_records;
 
-    /**   購入した商品のデータ。    **/
-    std::vector<Merchandise>    m_goodsArray;
-
     /**   合計の計算状態。  **/
     Boolean             m_totalCached;
 
