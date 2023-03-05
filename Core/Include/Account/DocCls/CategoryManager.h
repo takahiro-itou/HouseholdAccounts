@@ -227,7 +227,7 @@ public:
     **  @return     項目のハンドル。
     **/
     const   CategoryHandle
-    getInnerTaxCategoryHandle()  const;
+    getInclusiveTaxCategoryHandle()  const;
 
     //----------------------------------------------------------------
     /**   内税項目のハンドルを設定する。
@@ -235,7 +235,7 @@ public:
     **  @param [in] hCate   項目ハンドル。
     **/
     void
-    setInnerTaxCategoryHandle(
+    setInclusiveTaxCategoryHandle(
             const   CategoryHandle  hCate);
 
     //----------------------------------------------------------------
@@ -244,7 +244,7 @@ public:
     **  @return     項目のハンドル。
     **/
     const   CategoryHandle
-    getOuterTaxCategoryHandle()  const;
+    getExclusiveTaxCategoryHandle()  const;
 
     //----------------------------------------------------------------
     /**   外税項目のハンドルを設定する。
@@ -252,7 +252,7 @@ public:
     **  @param [in] hCate   項目ハンドル。
     **/
     void
-    setOuterTaxCategoryHandle(
+    setExclusiveTaxCategoryHandle(
             const   CategoryHandle  hCate);
 
     //----------------------------------------------------------------

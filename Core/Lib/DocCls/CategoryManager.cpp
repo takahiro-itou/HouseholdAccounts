@@ -298,7 +298,7 @@ CategoryManager::getBufferCapacity()  const
 //
 
 const   CategoryHandle
-CategoryManager::getInnerTaxCategoryHandle()  const
+CategoryManager::getInclusiveTaxCategoryHandle()  const
 {
     return ( this->m_chInclusiveTax );
 }
@@ -308,7 +308,7 @@ CategoryManager::getInnerTaxCategoryHandle()  const
 //
 
 void
-CategoryManager::setInnerTaxCategoryHandle(
+CategoryManager::setInclusiveTaxCategoryHandle(
         const   CategoryHandle  hCate)
 {
     this->m_chInclusiveTax  = hCate;
@@ -319,7 +319,7 @@ CategoryManager::setInnerTaxCategoryHandle(
 //
 
 const   CategoryHandle
-CategoryManager::getOuterTaxCategoryHandle()  const
+CategoryManager::getExclusiveTaxCategoryHandle()  const
 {
     return ( this->m_chExclusiveTax );
 }
@@ -329,7 +329,7 @@ CategoryManager::getOuterTaxCategoryHandle()  const
 //
 
 void
-CategoryManager::setOuterTaxCategoryHandle(
+CategoryManager::setExclusiveTaxCategoryHandle(
         const   CategoryHandle  hCate)
 {
     this->m_chExclusiveTax  = hCate;
