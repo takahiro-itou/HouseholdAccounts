@@ -50,6 +50,9 @@ class  ReceiptInfo
 //
 //    Internal Type Definitions.
 //
+private:
+
+    typedef     std::vector<AggregatesBlock>    BlockArray;
 
 //========================================================================
 //
@@ -136,7 +139,7 @@ private:
     std::string         m_shopName;
 
     /**   レコード。        **/
-    std::vector<AggregatesBlock>    m_records;
+    BlockArray          m_records;
 
     /**   購入した商品の数。    **/
     int                 m_numMerchandise;
