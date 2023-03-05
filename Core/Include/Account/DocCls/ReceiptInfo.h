@@ -26,6 +26,10 @@
 #    include    "AggregatesBlock.h"
 #endif
 
+#if !defined( HACORE_COMMON_INCLUDED_DATE_TIME_FORMAT_H )
+#    include    "Account/Common/DateTimeFormat.h"
+#endif
+
 #if !defined( HACORE_COMMON_INCLUDED_STRICT_VECTOR_H )
 #    include    "Account/Common/StrictVector.h"
 #endif
@@ -53,6 +57,8 @@ class  ReceiptInfo
 private:
 
     typedef     std::vector<AggregatesBlock>    BlockArray;
+
+    typedef     Common::DateTimeFormat          DateTimeFormat;
 
 //========================================================================
 //
