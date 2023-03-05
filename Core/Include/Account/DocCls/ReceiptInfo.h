@@ -151,19 +151,19 @@ private:
     int                 m_subTotal;
 
     /**   内税の合計。  **/
-    int                 m_sumInnerTax;
+    int                 m_sumInclusiveTax;
 
     /**   外税の合計。  **/
-    int                 m_sumOuterTax;
+    int                 m_sumExclusiveTax;
 
     /**   合計の金額。  **/
     int                 m_totalPrice;
 
     /**   内税を加える項目のハンドル。  **/
-    CategoryHandle      m_chInnerTax;
+    CategoryHandle      m_chInclusiveTax;
 
     /**   外税を加える項目のハンドル。  **/
-    CategoryHandle      m_chOuterTax;
+    CategoryHandle      m_chExclusiveTax;
 
 //========================================================================
 //
