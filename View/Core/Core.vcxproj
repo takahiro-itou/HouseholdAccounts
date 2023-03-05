@@ -137,6 +137,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ClCompile Include="..\..\Core\Lib\Common\DateTimeFormat.cpp" />
     <ClCompile Include="..\..\Core\Lib\Common\DecimalCurrency.cpp" />
     <ClCompile Include="..\..\Core\Lib\Common\TextParser.cpp" />
 
@@ -160,6 +161,7 @@
     <ClInclude Include="..\..\Core\Include\Account\Common\AccountsProject.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\AccountsTypes.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\BookInterface.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Common\DateTimeFormat.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\DecimalCurrency.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\EnumBitFlag.h" />
     <ClInclude Include="..\..\Core\Include\Account\Common\StrictTypes.h" />
