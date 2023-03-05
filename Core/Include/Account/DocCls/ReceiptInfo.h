@@ -141,9 +141,6 @@ private:
     /**   レコード。        **/
     BlockArray          m_records;
 
-    /**   購入した商品の数。    **/
-    int                 m_numMerchandise;
-
     /**   購入した商品のデータ。    **/
     std::vector<Merchandise>    m_goodsArray;
 
