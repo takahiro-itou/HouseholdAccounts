@@ -247,7 +247,7 @@ public:
     **
     **/
     property    CategoryHandle
-    InnerTaxHandle
+    InclusiveTaxHandle
     {
         CategoryHandle  get();
         void set(CategoryHandle hCate);
@@ -270,7 +270,7 @@ public:
     **
     **/
     property    CategoryHandle
-    OuterTaxHandle
+    ExclusiveTaxHandle
     {
         CategoryHandle  get();
         void set(CategoryHandle hCate);
