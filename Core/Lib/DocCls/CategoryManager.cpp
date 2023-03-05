@@ -54,8 +54,8 @@ CategoryManager::CategoryManager()
       m_numUsedCategory(0),
       m_numRootCategory(0),
       m_bufCategory(),
-      m_chInnerTax(-1),
-      m_chOuterTax(-1)
+      m_chInclusiveTax(-1),
+      m_chExclusiveTax(-1)
 {
 }
 
@@ -300,7 +300,7 @@ CategoryManager::getBufferCapacity()  const
 const   CategoryHandle
 CategoryManager::getInnerTaxCategoryHandle()  const
 {
-    return ( this->m_chInnerTax );
+    return ( this->m_chInclusiveTax );
 }
 
 //----------------------------------------------------------------
@@ -311,7 +311,7 @@ void
 CategoryManager::setInnerTaxCategoryHandle(
         const   CategoryHandle  hCate)
 {
-    this->m_chInnerTax  = hCate;
+    this->m_chInclusiveTax  = hCate;
 }
 
 //----------------------------------------------------------------
@@ -321,7 +321,7 @@ CategoryManager::setInnerTaxCategoryHandle(
 const   CategoryHandle
 CategoryManager::getOuterTaxCategoryHandle()  const
 {
-    return ( this->m_chOuterTax );
+    return ( this->m_chExclusiveTax );
 }
 
 //----------------------------------------------------------------
@@ -332,7 +332,7 @@ void
 CategoryManager::setOuterTaxCategoryHandle(
         const   CategoryHandle  hCate)
 {
-    this->m_chOuterTax  = hCate;
+    this->m_chExclusiveTax  = hCate;
 }
 
 //----------------------------------------------------------------

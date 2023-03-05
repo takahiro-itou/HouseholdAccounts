@@ -300,10 +300,10 @@ private:
     CategoryArray       m_bufCategory;
 
     /**   「内税」項目のハンドル。  **/
-    CategoryHandle      m_chInnerTax;
+    CategoryHandle      m_chInclusiveTax;
 
     /**   「外税」項目のハンドル。  **/
-    CategoryHandle      m_chOuterTax;
+    CategoryHandle      m_chExclusiveTax;
 
 //========================================================================
 //
