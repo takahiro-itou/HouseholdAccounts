@@ -6,6 +6,7 @@
 EXTRATESTS              =
 TESTS                   =  \
         AccountsProjectTest     \
+        DateTimeFormatTest      \
         DecimalCurrencyTest     \
         EnumBitFlagTest         \
         StrictTypesTest         \
@@ -36,6 +37,7 @@ TEST_LDFLAGS_COMMON         +=
 ##
 
 AccountsProjectTest_SOURCES     =  AccountsProjectTest.cpp
+DateTimeFormatTest_SOURCES      =  DateTimeFormatTest.cpp
 DecimalCurrencyTest_SOURCES     =  DecimalCurrencyTest.cpp
 EnumBitFlagTest_SOURCES         =  EnumBitFlagTest.cpp
 StrictTypesTest_SOURCES         =  StrictTypesTest.cpp

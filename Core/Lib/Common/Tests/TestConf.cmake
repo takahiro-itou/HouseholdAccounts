@@ -10,6 +10,11 @@ add_test(
 )
 
 add_test(
+    NAME        DateTimeFormatTest
+    COMMAND     $<TARGET_FILE:DateTimeFormatTest>
+)
+
+add_test(
     NAME        DecimalCurrencyTest
     COMMAND     $<TARGET_FILE:DecimalCurrencyTest>
 )
@@ -40,6 +45,7 @@ add_test(
 ##
 
 add_executable(AccountsProjectTest  AccountsProjectTest.cpp)
+add_executable(DateTimeFormatTest   DateTimeFormatTest.cpp)
 add_executable(DecimalCurrencyTest  DecimalCurrencyTest.cpp)
 add_executable(EnumBitFlagTest      EnumBitFlagTest.cpp)
 add_executable(StrictTypesTest      StrictTypesTest.cpp)
