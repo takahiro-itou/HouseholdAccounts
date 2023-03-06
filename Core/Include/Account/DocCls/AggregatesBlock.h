@@ -65,7 +65,7 @@ public:
 
 private:
 
-    typedef     std::vector<Merchandise>    MerchandiseList;
+    DECLARE_STRICT_VECTOR(Merchandise, MerchandiseIdx, MerchandiseList);
 
 //========================================================================
 //
