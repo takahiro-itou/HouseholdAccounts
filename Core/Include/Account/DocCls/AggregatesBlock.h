@@ -63,6 +63,8 @@ public:
         BANK_TRANSFER,
     };
 
+private:
+
     typedef     std::vector<Merchandise>    MerchandiseList;
 
 //========================================================================
