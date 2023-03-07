@@ -145,7 +145,7 @@
     <ClCompile Include="..\..\Core\Lib\DocCls\BookCategory.cpp" />
     <ClCompile Include="..\..\Core\Lib\DocCls\BookDocument.cpp" />
     <ClCompile Include="..\..\Core\Lib\DocCls\CategoryManager.cpp" />
-    <ClCompile Include="..\..\Core\Lib\DocCls\Merchandise.cpp" />
+    <ClCompile Include="..\..\Core\Lib\DocCls\PurchasedGoods.cpp" />
     <ClCompile Include="..\..\Core\Lib\DocCls\ReceiptInfo.cpp" />
     <ClCompile Include="..\..\Core\Lib\DocCls\StringTable.cpp" />
 
@@ -174,7 +174,7 @@
     <ClInclude Include="..\..\Core\Include\Account\DocCls\BookCategory.h" />
     <ClInclude Include="..\..\Core\Include\Account\DocCls\BookDocument.h" />
     <ClInclude Include="..\..\Core\Include\Account\DocCls\CategoryManager.h" />
-    <ClInclude Include="..\..\Core\Include\Account\DocCls\Merchandise.h" />
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\PurchasedGoods.h" />
     <ClInclude Include="..\..\Core\Include\Account\DocCls\ReceiptInfo.h" />
     <ClInclude Include="..\..\Core\Include\Account\DocCls\StringTable.h" />
 
