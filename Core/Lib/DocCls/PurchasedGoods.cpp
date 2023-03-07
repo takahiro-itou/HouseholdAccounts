@@ -43,7 +43,7 @@ namespace  {
 //  （デフォルトコンストラクタ）。
 //
 
-Merchandise::Merchandise()
+PurchasedGoods::PurchasedGoods()
 {
 }
 
@@ -52,7 +52,7 @@ Merchandise::Merchandise()
 //  （デストラクタ）。
 //
 
-Merchandise::~Merchandise()
+PurchasedGoods::~PurchasedGoods()
 {
 }
 

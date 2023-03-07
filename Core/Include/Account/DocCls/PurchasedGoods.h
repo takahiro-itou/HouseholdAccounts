@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Interface of Merchandise struct.
+**      An Interface of PurchasedGoods struct.
 **
-**      @file       DocCls/Merchandise.h
+**      @file       DocCls/PurchasedGoods.h
 **/
 
-#if !defined( HACORE_DOCCLS_INCLUDED_MERCHANDISE_H )
-#    define   HACORE_DOCCLS_INCLUDED_MERCHANDISE_H
+#if !defined( HACORE_DOCCLS_INCLUDED_PURCHASED_GOODS_H )
+#    define   HACORE_DOCCLS_INCLUDED_PURCHASED_GOODS_H
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
@@ -34,13 +34,16 @@ namespace  DocCls  {
 
 //========================================================================
 //
-//    Merchandise  struct.
+//    PurchasedGoods  struct.
 //
 /**
-**    一個の商品。
+**    商品の一個分のデータ。
+**
+**    購入した商品やサービス、または
+**  収入や資金振替の場合は財源等を管理する。
 **/
 
-struct  Merchandise
+struct  PurchasedGoods
 {
 //========================================================================
 //
@@ -58,14 +61,14 @@ public:
     **  （デフォルトコンストラクタ）。
     **
     **/
-    Merchandise();
+    PurchasedGoods();
 
     //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
     **/
-    ~Merchandise();
+    ~PurchasedGoods();
 
 //========================================================================
 //
@@ -164,7 +167,7 @@ private:
 //
 public:
     //  テストクラス。  //
-    friend  class   MerchandiseTest;
+    friend  class   PurchasedGoodsTest;
 };
 
 }   //  End of namespace  DocCls

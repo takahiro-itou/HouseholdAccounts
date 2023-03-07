@@ -25,8 +25,8 @@ add_test(
 )
 
 add_test(
-    NAME        MerchandiseTest
-    COMMAND     $<TARGET_FILE:MerchandiseTest>
+    NAME        PurchasedGoodsTest
+    COMMAND     $<TARGET_FILE:PurchasedGoodsTest>
 )
 
 add_test(
@@ -48,7 +48,7 @@ add_executable(AggregatesBlockTest  AggregatesBlockTest.cpp)
 add_executable(BookCategoryTest     BookCategoryTest.cpp)
 add_executable(BookDocumentTest     BookDocumentTest.cpp)
 add_executable(CategoryManagerTest  CategoryManagerTest.cpp)
-add_executable(MerchandiseTest      MerchandiseTest.cpp)
+add_executable(PurchasedGoodsTest   PurchasedGoodsTest.cpp)
 add_executable(ReceiptInfoTest      ReceiptInfoTest.cpp)
 add_executable(StringTableTest      StringTableTest.cpp)
 

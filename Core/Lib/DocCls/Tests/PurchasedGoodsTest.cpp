@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Implementation of Test Case 'Merchandise'.
+**      An Implementation of Test Case 'PurchasedGoods'.
 **
-**      @file       DocCls/Tests/MerchandiseTest.cpp
+**      @file       DocCls/Tests/PurchasedGoodsTest.cpp
 **/
 
 #include    "TestDriver.h"
-#include    "Account/DocCls/Merchandise.h"
+#include    "Account/DocCls/PurchasedGoods.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
