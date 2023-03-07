@@ -44,6 +44,10 @@ namespace  {
 //
 
 AggregatesBlock::AggregatesBlock()
+    : blockFlags(),
+      chAccount1(-1),
+      chAccount2(-1),
+      goodsList()
 {
 }
 
