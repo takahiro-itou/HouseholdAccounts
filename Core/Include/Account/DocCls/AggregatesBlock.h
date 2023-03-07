@@ -65,7 +65,10 @@ public:
 
 private:
 
-    DECLARE_STRICT_VECTOR(PurchasedGoods, MerchandiseIdx, MerchandiseList);
+    DECLARE_STRICT_VECTOR(
+            PurchasedGoods,     PurchaseNumber,
+            PurchasingList
+    );
 
 //========================================================================
 //
@@ -149,7 +152,7 @@ public:
     CategoryHandle      chAccount2;
 
     /**   商品リスト。  **/
-    MerchandiseList     merchandises;
+    PurchasingList      goodsList;
 
 //========================================================================
 //
