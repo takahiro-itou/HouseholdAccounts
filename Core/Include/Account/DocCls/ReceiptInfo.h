@@ -54,6 +54,13 @@ class  ReceiptInfo
 //
 //    Internal Type Definitions.
 //
+public:
+
+    /**
+    **    集計ブロックのインデックス型。
+    **/
+    DECLARE_STRICT_TYPE(int,    BlockIndex);
+
 private:
 
     typedef     std::vector<AggregatesBlock>    BlockArray;
