@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Implementation of Merchandise class.
+**      An Implementation of PurchasedGoods class.
 **
-**      @file       DocCls/Merchandise.cpp
+**      @file       DocCls/PurchasedGoods.cpp
 **/
 
 #include    "Account/pch/PreCompile.h"
-#include    "Account/DocCls/Merchandise.h"
+#include    "Account/DocCls/PurchasedGoods.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
@@ -30,7 +30,7 @@ namespace  {
 
 //========================================================================
 //
-//    Merchandise  class.
+//    PurchasedGoods  class.
 //
 
 //========================================================================

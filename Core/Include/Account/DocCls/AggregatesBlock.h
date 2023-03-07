@@ -22,8 +22,8 @@
 #    define   HACORE_DOCCLS_INCLUDED_AGGREGATES_BLOCK_H
 
 
-#if !defined( HACORE_DOCCLS_INCLUDED_MERCHANDISE_H )
-#    include    "Merchandise.h"
+#if !defined( HACORE_DOCCLS_INCLUDED_PURCHASED_GOODS_H )
+#    include    "PurchasedGoods.h"
 #endif
 
 #if !defined( HACORE_COMMON_INCLUDED_STRICT_VECTOR_H )
