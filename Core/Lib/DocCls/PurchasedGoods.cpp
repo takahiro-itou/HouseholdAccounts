@@ -44,6 +44,14 @@ namespace  {
 //
 
 PurchasedGoods::PurchasedGoods()
+    : accountHeadings(-1),
+      accountCategory(-1),
+      siGoodsId(-1),
+      productName(),
+      unitPrice(0),
+      nQuantity(0),
+      cDiscount(0),
+      cSubTotal(0)
 {
 }
 
