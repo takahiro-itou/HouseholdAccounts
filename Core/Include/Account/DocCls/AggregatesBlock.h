@@ -65,7 +65,7 @@ public:
 
 private:
 
-    DECLARE_STRICT_VECTOR(Merchandise, MerchandiseIdx, MerchandiseList);
+    DECLARE_STRICT_VECTOR(PurchasedGoods, MerchandiseIdx, MerchandiseList);
 
 //========================================================================
 //

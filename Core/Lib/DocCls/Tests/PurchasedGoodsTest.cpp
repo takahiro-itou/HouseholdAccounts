@@ -29,16 +29,16 @@ namespace  DocCls  {
 
 //========================================================================
 //
-//    MerchandiseTest  class.
+//    PurchasedGoodsTest  class.
 //
 /**
-**    クラス Merchandise  の単体テスト。
+**    クラス PurchasedGoods の単体テスト。
 **/
 
-class  MerchandiseTest : public  TestFixture
+class  PurchasedGoodsTest : public  TestFixture
 {
-    CPPUNIT_TEST_SUITE(MerchandiseTest);
-    CPPUNIT_TEST(testMerchandise);
+    CPPUNIT_TEST_SUITE(PurchasedGoodsTest);
+    CPPUNIT_TEST(testPurchasedGoods);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -46,19 +46,19 @@ public:
     virtual  void   tearDown()  override    { }
 
 private:
-    void  testMerchandise();
+    void  testPurchasedGoods();
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION( MerchandiseTest );
+CPPUNIT_TEST_SUITE_REGISTRATION( PurchasedGoodsTest );
 
 //========================================================================
 //
 //    Tests.
 //
 
-void  MerchandiseTest::testMerchandise()
+void  PurchasedGoodsTest::testPurchasedGoods()
 {
-    Merchandise     testee;
+    PurchasedGoods  testee;
 
     return;
 }
