@@ -63,7 +63,7 @@ public:
 
 private:
 
-    typedef     std::vector<AggregatesBlock>    BlockArray;
+    DECLARE_STRICT_VECTOR(AggregatesBlock, BlockIndex, BlockArray);
 
     typedef     Common::DateTimeFormat          DateTimeFormat;
 
