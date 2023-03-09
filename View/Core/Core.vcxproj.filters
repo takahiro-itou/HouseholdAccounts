@@ -44,7 +44,7 @@
       <Filter>Source Files\Common</Filter>
     </ClCompile>
 
-    <ClCompile Include="..\..\Core\Lib\DocCls\AggregatesBlock.cpp">
+    <ClCompile Include="..\..\Core\Lib\DocCls\ReceiptEntriesChunk.cpp">
       <Filter>Source Files\DocCls</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Core\Lib\DocCls\BookCategory.cpp">
@@ -110,7 +110,7 @@
       <Filter>Header Files\Common</Filter>
     </ClInclude>
 
-    <ClInclude Include="..\..\Core\Include\Account\DocCls\AggregatesBlock.h">
+    <ClInclude Include="..\..\Core\Include\Account\DocCls\ReceiptEntriesChunk.h">
       <Filter>Header Files\DocCls</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Core\Include\Account\DocCls\BookCategory.h">
