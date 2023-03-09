@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Interface of AggregatesBlock class.
+**      An Interface of ReceiptEntriesChunk class.
 **
-**      @file       DocCls/AggregatesBlock.h
+**      @file       DocCls/ReceiptEntriesChunk.h
 **/
 
-#if !defined( HACORE_DOCCLS_INCLUDED_AGGREGATES_BLOCK_H )
-#    define   HACORE_DOCCLS_INCLUDED_AGGREGATES_BLOCK_H
+#if !defined( HACORE_DOCCLS_INCLUDED_RECEIPT_ENTRIES_CHUNK_H )
+#    define   HACORE_DOCCLS_INCLUDED_RECEIPT_ENTRIES_CHUNK_H
 
 
 #if !defined( HACORE_DOCCLS_INCLUDED_PURCHASED_GOODS_H )
@@ -38,13 +38,13 @@ namespace  DocCls  {
 
 //========================================================================
 //
-//    AggregatesBlock  struct.
+//    ReceiptEntriesChunk  struct.
 //
 /**
 **    集計ブロック。
 **/
 
-struct  AggregatesBlock
+struct  ReceiptEntriesChunk
 {
 //========================================================================
 //
@@ -81,14 +81,14 @@ public:
     **  （デフォルトコンストラクタ）。
     **
     **/
-    AggregatesBlock();
+    ReceiptEntriesChunk();
 
     //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
     **/
-    ~AggregatesBlock();
+    ~ReceiptEntriesChunk();
 
 //========================================================================
 //
@@ -160,7 +160,7 @@ public:
 //
 public:
     //  テストクラス。  //
-    friend  class   AggregatesBlockTest;
+    friend  class   ReceiptEntriesChunkTest;
 };
 
 }   //  End of namespace  DocCls

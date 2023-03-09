@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Implementation of AggregatesBlock class.
+**      An Implementation of ReceiptEntriesChunk class.
 **
-**      @file       DocCls/AggregatesBlock.cpp
+**      @file       DocCls/ReceiptEntriesChunk.cpp
 **/
 
 #include    "Account/pch/PreCompile.h"
-#include    "Account/DocCls/AggregatesBlock.h"
+#include    "Account/DocCls/ReceiptEntriesChunk.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
@@ -30,7 +30,7 @@ namespace  {
 
 //========================================================================
 //
-//    AggregatesBlock  struct.
+//    ReceiptEntriesChunk  struct.
 //
 
 //========================================================================
@@ -43,7 +43,7 @@ namespace  {
 //  （デフォルトコンストラクタ）。
 //
 
-AggregatesBlock::AggregatesBlock()
+ReceiptEntriesChunk::ReceiptEntriesChunk()
     : blockFlags(),
       chAccount1(-1),
       chAccount2(-1),
@@ -56,7 +56,7 @@ AggregatesBlock::AggregatesBlock()
 //  （デストラクタ）。
 //
 
-AggregatesBlock::~AggregatesBlock()
+ReceiptEntriesChunk::~ReceiptEntriesChunk()
 {
 }
 
