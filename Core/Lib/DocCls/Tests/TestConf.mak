@@ -5,13 +5,13 @@
 
 EXTRATESTS              =
 TESTS                   =  \
-        AggregatesBlockTest    \
-        BookCategoryTest       \
-        BookDocumentTest       \
-        CategoryManagerTest    \
-        PurchasedGoodsTest     \
-        ReceiptInfoTest        \
-        StringTableTest        \
+        BookCategoryTest           \
+        BookDocumentTest           \
+        CategoryManagerTest        \
+        PurchasedGoodsTest         \
+        ReceiptEntriesChunkTest    \
+        ReceiptInfoTest            \
+        StringTableTest            \
         ${EXTRATESTS}
 ##
 ##    Test Configurations.
@@ -36,11 +36,11 @@ TEST_LDFLAGS_COMMON         +=
 ##    Test Programs.
 ##
 
-AggregatesBlockTest_SOURCES  =  AggregatesBlockTest.cpp
-BookCategoryTest_SOURCES     =  BookCategoryTest.cpp
-BookDocumentTest_SOURCES     =  BookDocumentTest.cpp
-CategoryManagerTest_SOURCES  =  CategoryManagerTest.cpp
-PurchasedGoodsTest_SOURCES   =  PurchasedGoodsTest.cpp
-ReceiptInfoTest_SOURCES      =  ReceiptInfoTest.cpp
-StringTableTest_SOURCES      =  StringTableTest.cpp
+BookCategoryTest_SOURCES         =  BookCategoryTest.cpp
+BookDocumentTest_SOURCES         =  BookDocumentTest.cpp
+CategoryManagerTest_SOURCES      =  CategoryManagerTest.cpp
+PurchasedGoodsTest_SOURCES       =  PurchasedGoodsTest.cpp
+ReceiptEntriesChunkTest_SOURCES  =  ReceiptEntriesChunkTest.cpp
+ReceiptInfoTest_SOURCES          =  ReceiptInfoTest.cpp
+StringTableTest_SOURCES          =  StringTableTest.cpp
 
