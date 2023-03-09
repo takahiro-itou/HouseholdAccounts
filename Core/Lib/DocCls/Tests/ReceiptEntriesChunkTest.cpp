@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Implementation of Test Case 'AggregatesBlock'.
+**      An Implementation of Test Case 'ReceiptEntriesChunk'.
 **
-**      @file       DocCls/Tests/AggregatesBlockTest.cpp
+**      @file       DocCls/Tests/ReceiptEntriesChunkTest.cpp
 **/
 
 #include    "TestDriver.h"
-#include    "Account/DocCls/AggregatesBlock.h"
+#include    "Account/DocCls/ReceiptEntriesChunk.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
@@ -29,16 +29,16 @@ namespace  DocCls  {
 
 //========================================================================
 //
-//    AggregatesBlockTest  class.
+//    ReceiptEntriesChunkTest  class.
 //
 /**
-**    クラス AggregatesBlock  の単体テスト。
+**    クラス ReceiptEntriesChunk  の単体テスト。
 **/
 
-class  AggregatesBlockTest : public  TestFixture
+class  ReceiptEntriesChunkTest : public  TestFixture
 {
-    CPPUNIT_TEST_SUITE(AggregatesBlockTest);
-    CPPUNIT_TEST(testAggregatesBlock);
+    CPPUNIT_TEST_SUITE(ReceiptEntriesChunkTest);
+    CPPUNIT_TEST(testReceiptEntriesChunk);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -46,19 +46,19 @@ public:
     virtual  void   tearDown()  override    { }
 
 private:
-    void  testAggregatesBlock();
+    void  testReceiptEntriesChunk();
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION( AggregatesBlockTest );
+CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptEntriesChunkTest );
 
 //========================================================================
 //
 //    Tests.
 //
 
-void  AggregatesBlockTest::testAggregatesBlock()
+void  ReceiptEntriesChunkTest::testReceiptEntriesChunk()
 {
-    AggregatesBlock     testee;
+    ReceiptEntriesChunk     testee;
 
     return;
 }
