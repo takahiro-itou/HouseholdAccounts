@@ -59,13 +59,13 @@ public:
     /**
     **    集計ブロックのインデックス型。
     **/
-    DECLARE_STRICT_TYPE(int,    BlockIndex);
+    DECLARE_STRICT_TYPE(int,    ChunkIndex);
 
 private:
 
     DECLARE_STRICT_VECTOR(
-            ReceiptEntriesChunk,    BlockIndex,
-            BlockArray
+            ReceiptEntriesChunk,    ChunkIndex,
+            ChunkArray
     );
 
     typedef     Common::DateTimeFormat          DateTimeFormat;
@@ -155,7 +155,7 @@ private:
     std::string         m_shopName;
 
     /**   レコード。        **/
-    BlockArray          m_records;
+    ChunkArray          m_records;
 
     /**   合計の計算状態。  **/
     Boolean             m_totalCached;
