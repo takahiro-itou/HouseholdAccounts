@@ -22,8 +22,8 @@
 #    define   HACORE_DOCCLS_INCLUDED_RECEIPT_INFO_H
 
 
-#if !defined( HACORE_DOCCLS_INCLUDED_AGGREGATES_BLOCK_H )
-#    include    "AggregatesBlock.h"
+#if !defined( HACORE_DOCCLS_INCLUDED_RECEIPT_ENTRIES_CHUNK_H )
+#    include    "ReceiptEntriesChunk.h"
 #endif
 
 #if !defined( HACORE_COMMON_INCLUDED_DATE_TIME_FORMAT_H )
@@ -63,7 +63,10 @@ public:
 
 private:
 
-    DECLARE_STRICT_VECTOR(AggregatesBlock, BlockIndex, BlockArray);
+    DECLARE_STRICT_VECTOR(
+            ReceiptEntriesChunk,    BlockIndex,
+            BlockArray
+    );
 
     typedef     Common::DateTimeFormat          DateTimeFormat;
 
