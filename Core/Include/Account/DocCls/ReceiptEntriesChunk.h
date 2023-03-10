@@ -53,7 +53,7 @@ struct  ReceiptEntriesChunk
 public:
 
     /**   収支フラグ。  **/
-    enum class  BlockInOutFlags
+    enum class  ChunkInOutFlags
     {
         DOUBLE_ENTRY,
         INCOME,
@@ -143,7 +143,7 @@ public:
 public:
 
     /**   収支フラグ。  **/
-    BlockInOutFlags     blockFlags;
+    ChunkInOutFlags     blockFlags;
 
     /**   借方口座。    **/
     CategoryHandle      chAccount1;
