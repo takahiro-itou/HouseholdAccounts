@@ -70,6 +70,8 @@ private:
 
     typedef     Common::DateTimeFormat          DateTimeFormat;
 
+    typedef     int                             ReceiptDate;
+
 //========================================================================
 //
 //    Constructor(s) and Destructor.
@@ -125,6 +127,7 @@ public:
 //
 //    Accessors.
 //
+public:
 
 //========================================================================
 //
