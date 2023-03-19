@@ -64,7 +64,7 @@ LIBRARY_COMPILE_SRCFILES    =  \
 ##    List of Libraries.
 ##
 
-STATIC_LIBRARIES_LIST   =  libhacDocCls.a
+STATIC_LIBRARIES_LIST   =  libhabDocCls.a
 SHARED_LIBRARIES_LIST   =
 
 ##
@@ -90,5 +90,5 @@ include  $(top_srcdir)/.M4/Makefile.Install.inc
 ##    Build Libraries.
 ##
 
-libhacDocCls_a_SOURCES   =  ${LIBRARY_SOURCE_FILES}
+libhabDocCls_a_SOURCES      =  ${LIBRARY_SOURCE_FILES}
 
