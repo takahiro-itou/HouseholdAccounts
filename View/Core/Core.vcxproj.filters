@@ -19,7 +19,7 @@
     <Filter Include="Header Files\DocCls">
       <UniqueIdentifier>{65df1ba1-b37e-452d-a846-b8ecf1a94a45}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\FileFormat">
+    <Filter Include="Header Files\Format">
       <UniqueIdentifier>{d5b8740a-4656-42c0-8955-b81f4652156d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Common">
@@ -28,7 +28,7 @@
     <Filter Include="Source Files\DocCls">
       <UniqueIdentifier>{ae79ec88-6397-4054-ac0d-3f0fb77f5172}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FileFormat">
+    <Filter Include="Source Files\Format">
       <UniqueIdentifier>{58b6fcc8-2f51-4075-a0c5-76a7e25d5fff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -66,8 +66,8 @@
       <Filter>Source Files\DocCls</Filter>
     </ClCompile>
 
-    <ClCompile Include="..\..\Core\Lib\FileFormat\BookFile.cpp">
-      <Filter>Source Files\FileFormat</Filter>
+    <ClCompile Include="..\..\Core\Lib\Format\BookFile.cpp">
+      <Filter>Source Files\Format</Filter>
     </ClCompile>
 
     <ClCompile Include="..\..\Core\Lib\pch\PreCompile.cpp">
@@ -132,8 +132,8 @@
       <Filter>Header Files\DocCls</Filter>
     </ClInclude>
 
-    <ClInclude Include="..\..\Core\Include\Account\FileFormat\BookFile.h">
-      <Filter>Header Files\FileFormat</Filter>
+    <ClInclude Include="..\..\Core\Include\Account\Format\BookFile.h">
+      <Filter>Header Files\Format</Filter>
     </ClInclude>
 
     <ClInclude Include="..\..\Core\Include\Account\pch\PreCompile.h">
