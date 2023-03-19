@@ -1,6 +1,6 @@
 
 /*  Linker Script.  */
-INPUT( AS_NEEDED(DocCls/libhacDocCls.a) )
+INPUT( AS_NEEDED(DocCls/libhabDocCls.a) )
 
-INPUT( AS_NEEDED(-lhacCommon) )
+INPUT( AS_NEEDED(-lhabCommon) )
 
