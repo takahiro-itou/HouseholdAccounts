@@ -23,6 +23,7 @@ EXTRA_NOINST_HEADER_FILES   =
 
 LIBRARY_SOURCE_FILES        =  \
         BookFile.cpp                   \
+        ReceiptFile.cpp                \
         ${EXTRA_LIBRARY_SOURCE_FILES}
 
 LIBRARY_INSTANTIATIONS      =
@@ -36,7 +37,8 @@ DIST_NOINST_HEADER_FILES    =  \
         ${EXTRA_NOINST_HEADER_FILES}
 
 INCLIB_HEADER_FILES         =  \
-        ${INCLIB_SOURCE_DIR}/BookFile.h  \
+        ${INCLIB_SOURCE_DIR}/BookFile.h     \
+        ${INCLIB_SOURCE_DIR}/ReceiptFile.h  \
         ${EXTRA_LIBRARY_HEADER_FILES}
 
 INCLIB_NODIST_HEADER_FILES  =
