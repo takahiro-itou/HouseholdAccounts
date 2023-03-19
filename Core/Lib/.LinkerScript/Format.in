@@ -1,6 +1,6 @@
 
 /*  Linker Script.  */
-INPUT( AS_NEEDED(Format/libhacFileFormat.a) )
+INPUT( AS_NEEDED(Format/libhacFormat.a) )
 
 INPUT( AS_NEEDED(-lhacDocCls) )
 

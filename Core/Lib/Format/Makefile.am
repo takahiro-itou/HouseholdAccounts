@@ -52,7 +52,7 @@ LIBRARY_COMPILE_SRCFILES    =  \
 ##    List of Libraries.
 ##
 
-STATIC_LIBRARIES_LIST   =  libhacFileFormat.a
+STATIC_LIBRARIES_LIST   =  libhacFormat.a
 SHARED_LIBRARIES_LIST   =
 
 ##
