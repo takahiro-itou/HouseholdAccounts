@@ -15,11 +15,11 @@
 /**
 **      An Interface of BookFile class.
 **
-**      @file       FileFormat/BookFile.h
+**      @file       Format/BookFile.h
 **/
 
-#if !defined( HACORE_FILEFORMAT_INCLUDED_BOOK_FILE_H )
-#    define   HACORE_FILEFORMAT_INCLUDED_BOOK_FILE_H
+#if !defined( HACORE_FORMAT_INCLUDED_BOOK_FILE_H )
+#    define   HACORE_FORMAT_INCLUDED_BOOK_FILE_H
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
@@ -39,7 +39,7 @@ namespace  DocCls  {
 class   BookDocument;
 }   //  End of namespace  DocCls.
 
-namespace  FileFormat  {
+namespace  Format  {
 
 //========================================================================
 //
@@ -158,7 +158,7 @@ public:
     friend  class   BookFileTest;
 };
 
-}   //  End of namespace  FileFormat
+}   //  End of namespace  Format
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif

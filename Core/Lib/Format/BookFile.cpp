@@ -23,7 +23,7 @@
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  FileFormat  {
+namespace  Format  {
 
 namespace  {
 }   //  End of (Unnamed) namespace.
@@ -115,5 +115,5 @@ BookFile::saveToTextStream(
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  FileFormat
+}   //  End of namespace  Format
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
