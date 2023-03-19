@@ -15,11 +15,11 @@
 /**
 **      An Implementation of BookFile class.
 **
-**      @file       FileFormat/BookFile.cpp
+**      @file       Format/BookFile.cpp
 **/
 
 #include    "Account/pch/PreCompile.h"
-#include    "Account/FileFormat/BookFile.h"
+#include    "Account/Format/BookFile.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN

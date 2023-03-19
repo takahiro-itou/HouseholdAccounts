@@ -7,7 +7,7 @@
 ##    List of Directories.
 ##
 
-MODULE_DIR_NAME         =  FileFormat
+MODULE_DIR_NAME         =  Format
 SUBDIRS                 =  .  Tests
 
 include  $(top_srcdir)/.M4/Makefile.DirList.inc
