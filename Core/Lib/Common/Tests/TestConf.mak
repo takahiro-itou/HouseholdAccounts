@@ -17,7 +17,7 @@ TESTS                   =  \
 ##    Test Configurations.
 ##
 
-TARGET_TESTEE_LIBRARY       +=  -lhacCommon
+TARGET_TESTEE_LIBRARY       +=  -lhabCommon
 
 DIST_NOINST_DATA_FILES      +=
 DIST_NOINST_HEADER_FILES    +=
