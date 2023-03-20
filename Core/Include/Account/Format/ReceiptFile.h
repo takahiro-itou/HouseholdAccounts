@@ -36,7 +36,7 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
 //  クラスの前方宣言。  //
 namespace  DocCls  {
-class   BookDocument;
+class   ReceiptInfo;
 }   //  End of namespace  DocCls.
 
 namespace  Format  {
@@ -97,6 +97,37 @@ public:
 //
 //    Public Member Functions (Virtual Functions).
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   データをテキストストリームから読み込む。
+    **
+    **  @param [in,out] inStr     入力ストリーム。
+    **  @param    [out] ptrDoc    ドキュメントを格納する変数。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
+    **/
+    virtual  ErrCode
+    readFromTextStream(
+            std::istream          & inStr,
+            DocCls::ReceiptInfo   * ptrDoc);
+
+    //----------------------------------------------------------------
+    /**   データをテキストストリームに書き込む。
+    **
+    **  @param [in] objDoc    ドキュメント。
+    **  @param[out] outStr    出力ストリーム。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
+    **/
+    virtual  ErrCode
+    saveToTextStream(
+            const   DocCls::ReceiptInfo   & objDoc,
+            std::ostream                  & outStr);
 
 //========================================================================
 //

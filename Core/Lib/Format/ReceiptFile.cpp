@@ -76,6 +76,30 @@ ReceiptFile::~ReceiptFile()
 //    Public Member Functions (Virtual Functions).
 //
 
+//----------------------------------------------------------------
+//    データをテキストストリームから読み込む。
+//
+
+ErrCode
+ReceiptFile::readFromTextStream(
+        std::istream          & inStr,
+        DocCls::ReceiptInfo   * ptrDoc)
+{
+    return ( ErrCode::FAILURE ):
+}
+
+//----------------------------------------------------------------
+//    データをテキストストリームに書き込む。
+//
+
+ErrCode
+ReceiptFile::saveToTextStream(
+        const   DocCls::ReceiptInfo   & objDoc,
+        std::ostream                  & outStr)
+{
+    return ( ErrCode::FAILURE ):
+}
+
 //========================================================================
 //
 //    Public Member Functions.
