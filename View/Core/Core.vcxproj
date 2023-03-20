@@ -150,6 +150,7 @@
     <ClCompile Include="..\..\Core\Lib\DocCls\StringTable.cpp" />
 
     <ClCompile Include="..\..\Core\Lib\Format\BookFile.cpp" />
+    <ClCompile Include="..\..\Core\Lib\Format\ReceiptFile.cpp" />
 
     <ClCompile Include="..\..\Core\Lib\pch\PreCompile.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -179,6 +180,7 @@
     <ClInclude Include="..\..\Core\Include\Account\DocCls\StringTable.h" />
 
     <ClInclude Include="..\..\Core\Include\Account\Format\BookFile.h" />
+    <ClInclude Include="..\..\Core\Include\Account\Format\ReceiptFile.h" />
 
     <ClInclude Include="..\..\Core\Include\Account\pch\PreCompile.h" />
   </ItemGroup>

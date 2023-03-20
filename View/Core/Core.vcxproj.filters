@@ -69,6 +69,9 @@
     <ClCompile Include="..\..\Core\Lib\Format\BookFile.cpp">
       <Filter>Source Files\Format</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Core\Lib\Format\ReceiptFile.cpp">
+      <Filter>Source Files\Format</Filter>
+    </ClCompile>
 
     <ClCompile Include="..\..\Core\Lib\pch\PreCompile.cpp">
       <Filter>Source Files</Filter>
@@ -133,6 +136,9 @@
     </ClInclude>
 
     <ClInclude Include="..\..\Core\Include\Account\Format\BookFile.h">
+      <Filter>Header Files\Format</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Core\Include\Account\Format\ReceiptFile.h">
       <Filter>Header Files\Format</Filter>
     </ClInclude>
 
