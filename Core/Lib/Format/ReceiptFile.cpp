@@ -85,7 +85,7 @@ ReceiptFile::readFromTextStream(
         std::istream          & inStr,
         DocCls::ReceiptInfo   * ptrDoc)
 {
-    return ( ErrCode::FAILURE ):
+    return ( ErrCode::FAILURE );
 }
 
 //----------------------------------------------------------------
@@ -97,7 +97,7 @@ ReceiptFile::saveToTextStream(
         const   DocCls::ReceiptInfo   & objDoc,
         std::ostream                  & outStr)
 {
-    return ( ErrCode::FAILURE ):
+    return ( ErrCode::FAILURE );
 }
 
 //========================================================================
