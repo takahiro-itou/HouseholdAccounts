@@ -77,6 +77,18 @@ ReceiptFile::~ReceiptFile()
 //
 
 //----------------------------------------------------------------
+//    データをテキストファイルから読み込む。
+//
+
+ErrCode
+ReceiptFile::readFromTextFile(
+        const   std::string   & fileName,
+        DocCls::ReceiptInfo   * ptrDoc)
+{
+    return ( ErrCode::FAILURE );
+}
+
+//----------------------------------------------------------------
 //    データをテキストストリームから読み込む。
 //
 
