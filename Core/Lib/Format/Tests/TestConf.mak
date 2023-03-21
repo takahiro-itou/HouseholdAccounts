@@ -6,6 +6,7 @@
 EXTRATESTS              =
 TESTS                   =  \
         BookFileTest       \
+        ReceiptFileTest    \
         ${EXTRATESTS}
 
 ##
@@ -31,5 +32,6 @@ TEST_LDFLAGS_COMMON         +=
 ##    Test Programs.
 ##
 
-BookFileTest_SOURCES  =  BookFileTest.cpp
+BookFileTest_SOURCES        =  BookFileTest.cpp
+ReceiptFileTest_SOURCES     =  ReceiptFileTest.cpp
 
