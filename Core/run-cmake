@@ -1,0 +1,15 @@
+#! /bin/bash  -xue
+
+script_dir=$(readlink -f $(dirname $0))
+
+time  cmake ${script_dir} ; echo $?
+
+target_script='build.sh'
+
+cat << __EOF__  | tee ${target_script}
+#!/bin/bash  -xue
+
+time  make && ctest . ; echo \$?
+__EOF__
+
+chmod  755  ${target_script}
