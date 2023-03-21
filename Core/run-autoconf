@@ -9,7 +9,7 @@ target_script='build.sh'
 cat << __EOF__  | tee ${target_script}
 #!/bin/bash  -xue
 
-time  make  &&  make  -s ; echo $?
+time  make && make -s check ; echo \$?
 __EOF__
 
 chmod  755  ${target_script}
