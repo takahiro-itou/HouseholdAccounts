@@ -112,7 +112,8 @@ ReceiptFile::saveToTextFile(
         const  DocCls::ReceiptInfo  & objDoc,
         const  std::string          & fileName)
 {
-    return ( ErrCode::FAILURE );
+    std::ofstream   ofs(fileName.c_str());
+    return  saveToTextStream(objDoc, ofs);
 }
 
 //----------------------------------------------------------------
