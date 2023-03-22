@@ -85,7 +85,8 @@ ReceiptFile::readFromTextFile(
         const   std::string   & fileName,
         DocCls::ReceiptInfo   * ptrDoc)
 {
-    return ( ErrCode::FAILURE );
+    std::ifstream   ifs(fileName.c_str());
+    return  readFromTextStream(ifs, ptrDoc);
 }
 
 //----------------------------------------------------------------
