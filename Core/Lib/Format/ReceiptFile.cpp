@@ -106,9 +106,21 @@ ReceiptFile::readFromTextStream(
 //
 
 ErrCode
+ReceiptFile::saveToTextFile(
+        const  DocCls::ReceiptInfo  & objDoc,
+        const  std::string          & fileName)
+{
+    return ( ErrCode::FAILURE );
+}
+
+//----------------------------------------------------------------
+//    データをテキストストリームに書き込む。
+//
+
+ErrCode
 ReceiptFile::saveToTextStream(
-        const   DocCls::ReceiptInfo   & objDoc,
-        std::ostream                  & outStr)
+        const  DocCls::ReceiptInfo  & objDoc,
+        std::ostream                & outStr)
 {
     return ( ErrCode::FAILURE );
 }

@@ -132,6 +132,21 @@ public:
     //----------------------------------------------------------------
     /**   データをテキストストリームに書き込む。
     **
+    **  @param [in] objDoc      ドキュメント。
+    **  @param [in] fileName    ファイル名。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
+    **/
+    virtual  ErrCode
+    saveToTextFile(
+            const  DocCls::ReceiptInfo  & objDoc,
+            const  std::string          & fileName);
+
+    //----------------------------------------------------------------
+    /**   データをテキストストリームに書き込む。
+    **
     **  @param [in] objDoc    ドキュメント。
     **  @param[out] outStr    出力ストリーム。
     **  @return     エラーコードを返す。
@@ -141,8 +156,8 @@ public:
     **/
     virtual  ErrCode
     saveToTextStream(
-            const   DocCls::ReceiptInfo   & objDoc,
-            std::ostream                  & outStr);
+            const  DocCls::ReceiptInfo  & objDoc,
+            std::ostream                & outStr);
 
 //========================================================================
 //
