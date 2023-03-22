@@ -21,6 +21,8 @@
 #include    "Account/pch/PreCompile.h"
 #include    "Account/Format/ReceiptFile.h"
 
+#include    <fstream>
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Format  {
