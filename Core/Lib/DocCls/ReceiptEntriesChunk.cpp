@@ -45,8 +45,10 @@ namespace  {
 
 ReceiptEntriesChunk::ReceiptEntriesChunk()
     : blockFlags(),
-      chAccount1(-1),
-      chAccount2(-1),
+      chlDebitAccount (-1),
+      chrCreditAccount(-1),
+      cnlDebitAmount  ( 0),
+      cnrCreditAmount ( 0),
       goodsList()
 {
 }
