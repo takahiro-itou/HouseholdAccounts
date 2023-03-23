@@ -122,42 +122,42 @@ public:
 public:
 
     /**   勘定科目。    **/
-    CategoryHandle  accountHeadings;
+    CategoryHandle      accountHeadings;
 
     /**   分類 (内訳) 。    **/
-    CategoryHandle  accountCategory;
+    CategoryHandle      accountCategory;
 
     /**   商品名の ID  (文字列テーブル内のインデックス) 。  **/
-    StringIndex     siGoodsId;
+    StringIndex         siGoodsId;
 
     /**   商品名。  **/
-    std::string     productName;
+    std::string         productName;
 
     /**   単価。    **/
-    int             unitPrice;
+    CurrencyNumerator   unitPrice;
 
     /**   数量。    **/
-    int             nQuantity;
+    int                 nQuantity;
 
     /**   値引額。  **/
-    int             cDiscount;
+    CurrencyNumerator   cDiscount;
 
     /**   小計。    **/
-    int             cSubTotal;
+    CurrencyNumerator   cSubTotal;
 
     /**
     **    内税額。
     **
     **  税込み価格ではなく税金額そのもの。
     **/
-    int             inclusiveTaxVal;
+    CurrencyNumerator   inclusiveTaxVal;
 
     /**
     **    外税額。
     **
     **  税抜き価格ではなく税金額そのもの。
     **/
-    int             exclusiveTaxVal;
+    CurrencyNumerator   exclusiveTaxVal;
 
 private:
 
