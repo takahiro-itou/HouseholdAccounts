@@ -167,10 +167,10 @@ private:
     int                 m_subTotal;
 
     /**   内税の合計。  **/
-    int                 m_sumInclusiveTax;
+    CurrencyNumerator   m_sumInclusiveTax;
 
     /**   外税の合計。  **/
-    int                 m_sumExclusiveTax;
+    CurrencyNumerator   m_sumExclusiveTax;
 
     /**   合計の金額。  **/
     int                 m_totalPrice;
