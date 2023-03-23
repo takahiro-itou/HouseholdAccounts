@@ -158,7 +158,7 @@ private:
     std::string         m_shopName;
 
     /**   レコード。        **/
-    ChunkArray          m_records;
+    ChunkArray          m_recordChunk;
 
     /**   合計の計算状態。  **/
     Boolean             m_totalCached;
