@@ -146,19 +146,19 @@ public:
     ChunkInOutFlags     blockFlags;
 
     /**   借方口座。    **/
-    CategoryHandle      chAccount1;
+    CategoryHandle      chlDebitAccount;
 
     /**   貸方口座。    **/
-    CategoryHandle      chAccount2;
+    CategoryHandle      chrCreditAccount;
+
+    /**   借方金額。    **/
+    CurrencyNumerator   cnlDebitAmount;
+
+    /**   貸方金額。    */
+    CurrencyNumerator   cnrCreditAmount;
 
     /**   商品リスト。  **/
     PurchasingList      goodsList;
-
-    /**   借方金額。    **/
-    CurrencyNumerator   cnDebitAmount;
-
-    /**   貸方金額。    */
-    CurrencyNumerator   cnCreditAmount;
 
 //========================================================================
 //
