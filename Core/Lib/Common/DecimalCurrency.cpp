@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -56,8 +56,8 @@ DecimalCurrency::DecimalCurrency()
 //
 
 DecimalCurrency::DecimalCurrency(
-        const   TInternalValue  intValue,
-        const   TInternalValue  intScale)
+        const  CurrencyNumerator    intValue,
+        const  CurrencyDenominator  intScale)
     : m_internValue(intValue),
       m_scaleFactor(intScale)
 {
@@ -130,7 +130,7 @@ DecimalCurrency::~DecimalCurrency()
 //    現在の内部表現の値を取得する。
 //
 
-const   DecimalCurrency::TInternalValue
+const   CurrencyNumerator
 DecimalCurrency::getInternalValue()  const
 {
     return ( this->m_internValue );
@@ -142,7 +142,7 @@ DecimalCurrency::getInternalValue()  const
 
 DecimalCurrency  &
 DecimalCurrency::setInternalValue(
-        const   TInternalValue  intValue)
+        const   CurrencyNumerator   intValue)
 {
     this->m_internValue = intValue;
     return  ( *this );
@@ -154,8 +154,8 @@ DecimalCurrency::setInternalValue(
 
 DecimalCurrency  &
 DecimalCurrency::setInternalValue(
-        const   TInternalValue  intValue,
-        const   TInternalValue  intScale)
+        const  CurrencyNumerator    intValue,
+        const  CurrencyDenominator  intScale)
 {
     this->m_internValue = intValue;
     this->m_scaleFactor = intScale;
@@ -166,7 +166,7 @@ DecimalCurrency::setInternalValue(
 //    現在のスケールファクタを取得する。
 //
 
-const   DecimalCurrency::TInternalValue
+const   CurrencyDenominator
 DecimalCurrency::getScaleFactor()  const
 {
     return ( this->m_scaleFactor );

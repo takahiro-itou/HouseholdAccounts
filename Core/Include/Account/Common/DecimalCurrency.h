@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -74,8 +74,8 @@ public:
     **  @param [in] intScale    スケール。
     **/
     DecimalCurrency(
-            const   TInternalValue  intValue,
-            const   TInternalValue  intScale);
+            const  CurrencyNumerator    intValue,
+            const  CurrencyDenominator  intScale);
 
     //----------------------------------------------------------------
     /**   インスタンスを初期化する
@@ -138,7 +138,7 @@ public:
     **
     **  @return     内部表現の値。
     **/
-    const   TInternalValue
+    const   CurrencyNumerator
     getInternalValue()  const;
 
     //----------------------------------------------------------------
@@ -149,7 +149,7 @@ public:
     **/
     DecimalCurrency  &
     setInternalValue(
-            const   TInternalValue  intValue);
+            const   CurrencyNumerator   intValue);
 
     //----------------------------------------------------------------
     /**   値を設定する。
@@ -160,15 +160,15 @@ public:
     **/
     DecimalCurrency  &
     setInternalValue(
-            const   TInternalValue  intValue,
-            const   TInternalValue  intScale);
+            const  CurrencyNumerator    intValue,
+            const  CurrencyDenominator  intScale);
 
     //----------------------------------------------------------------
     /**   現在のスケールファクタを取得する。
     **
     **  @return     現在のスケールファクタの値。
     **/
-    const   TInternalValue
+    const   CurrencyDenominator
     getScaleFactor()  const;
 
 //========================================================================
@@ -187,9 +187,9 @@ public:
 //
 private:
 
-    TInternalValue      m_internValue;
+    CurrencyNumerator       m_internValue;
 
-    TInternalValue      m_scaleFactor;
+    CurrencyDenominator     m_scaleFactor;
 
 //========================================================================
 //
