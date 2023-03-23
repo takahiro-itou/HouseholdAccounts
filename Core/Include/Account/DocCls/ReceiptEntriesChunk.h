@@ -154,6 +154,12 @@ public:
     /**   商品リスト。  **/
     PurchasingList      goodsList;
 
+    /**   借方金額。    **/
+    CurrencyNumerator   cnDebitAmount;
+
+    /**   貸方金額。    */
+    CurrencyNumerator   cnCreditAmount;
+
 //========================================================================
 //
 //    Other Features.
