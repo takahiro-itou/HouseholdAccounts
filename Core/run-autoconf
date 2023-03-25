@@ -1,10 +1,11 @@
 #! /bin/bash  -xue
 
 script_dir=$(readlink -f $(dirname $0))
+target_script='build.sh'
+
+rm -f ${target_script}
 
 time  ${script_dir}/configure ; echo $?
-
-target_script='build.sh'
 
 cat << __EOF__  | tee ${target_script}
 #!/bin/bash  -xue
@@ -12,4 +13,4 @@ cat << __EOF__  | tee ${target_script}
 time  make && make -s check ; echo \$?
 __EOF__
 
-chmod  755  ${target_script}
+chmod 755 ${target_script}
