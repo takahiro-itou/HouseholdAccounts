@@ -39,6 +39,7 @@ class  ReceiptFileTest : public  TestFixture
 {
     CPPUNIT_TEST_SUITE(ReceiptFileTest);
     CPPUNIT_TEST(testReceiptFile);
+    CPPUNIT_TEST(testReadFromTextStream);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -47,6 +48,7 @@ public:
 
 private:
     void  testReceiptFile();
+    void  testReadFromTextStream();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptFileTest );
@@ -57,6 +59,13 @@ CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptFileTest );
 //
 
 void  ReceiptFileTest::testReceiptFile()
+{
+    ReceiptFile     testee;
+
+    return;
+}
+
+void  ReceiptFileTest::testReadFromTextStream()
 {
     ReceiptFile     testee;
 
