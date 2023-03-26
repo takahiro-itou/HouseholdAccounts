@@ -48,7 +48,8 @@ public:
 
 private:
     void  testReceiptFile();
-    void  testReadFromTextStream();
+    void  testReadFromTextStream1();
+    void  testReadFromTextStream2();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptFileTest );
@@ -65,7 +66,14 @@ void  ReceiptFileTest::testReceiptFile()
     return;
 }
 
-void  ReceiptFileTest::testReadFromTextStream()
+void  ReceiptFileTest::testReadFromTextStream1()
+{
+    ReceiptFile     testee;
+
+    return;
+}
+
+void  ReceiptFileTest::testReadFromTextStream2()
 {
     ReceiptFile     testee;
 
