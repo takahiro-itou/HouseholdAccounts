@@ -39,7 +39,8 @@ class  ReceiptFileTest : public  TestFixture
 {
     CPPUNIT_TEST_SUITE(ReceiptFileTest);
     CPPUNIT_TEST(testReceiptFile);
-    CPPUNIT_TEST(testReadFromTextStream);
+    CPPUNIT_TEST(testReadFromTextStream1);
+    CPPUNIT_TEST(testReadFromTextStream2);
     CPPUNIT_TEST_SUITE_END();
 
 public:
