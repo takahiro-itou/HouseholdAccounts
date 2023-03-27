@@ -85,7 +85,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
         <<  "Head3;Cate3;Points;10;1;0;0;0;;\n";
 
     DocCls::ReceiptInfo data;
-    const  int  retCode = static_cast<int>(testee.readFromTextStream(ss, &dataA));
+    const  int  retCode = static_cast<int>(testee.readFromTextStream(ss, &data));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
     return;
