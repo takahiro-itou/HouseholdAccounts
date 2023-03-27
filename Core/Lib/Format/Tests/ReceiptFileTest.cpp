@@ -21,6 +21,10 @@
 #include    "TestDriver.h"
 #include    "Account/Format/ReceiptFile.h"
 
+#include    "Account/DocCls/ReceiptInfo.h"
+
+#include    <sstream>
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Format  {
@@ -70,6 +74,19 @@ void  ReceiptFileTest::testReceiptFile()
 void  ReceiptFileTest::testReadFromTextStream1()
 {
     ReceiptFile     testee;
+
+    std::stringstream   ss;
+
+    ss  <<  "NEW;1;2023/03/01;09:00;SHOP A;支出;現金;;"
+        <<  "Head1;Cate1;Product1;128;2;0;0;0;;\n";
+    ss  <<  ";;;;;;;;"
+        <<  "Head2;Cate2;Product2;200;1;10;0;0;;\n";
+    ss  <<  ";;;;;収入;ポイント;;"
+        <<  "Head3;Cate3;Points;10;1;0;0;0;;\n";
+
+    DocCls::ReceiptInfo data;
+    const  int  retCode = static_cast<int>(testee.readFromTextStream(ss, &dataA));
+    CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
     return;
 }
