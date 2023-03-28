@@ -135,6 +135,22 @@ ReceiptFile::saveToTextStream(
 
 //========================================================================
 //
+//    Accessors.
+//
+
+//----------------------------------------------------------------
+//    読み飛ばすカラム数を設定する。
+//
+
+ErrCode
+ReceiptFile::setNumSkipColumns(
+        const  int  numSkipCols)
+{
+    return ( ErrCode::FAILURE );
+}
+
+//========================================================================
+//
 //    Protected Member Functions.
 //
 
