@@ -46,6 +46,7 @@ namespace  {
 //
 
 ReceiptFile::ReceiptFile()
+    : m_numSkipCols(0)
 {
 }
 
