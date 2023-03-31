@@ -147,7 +147,8 @@ ErrCode
 ReceiptFile::setNumSkipColumns(
         const  int  numSkipCols)
 {
-    return ( ErrCode::FAILURE );
+    this->m_numSkipCols = numSkipCols;
+    return ( ErrCode::SUCCESS );
 }
 
 //========================================================================
