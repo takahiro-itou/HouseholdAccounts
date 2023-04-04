@@ -91,6 +91,28 @@ ReceiptInfo::~ReceiptInfo()
 //    Accessors.
 //
 
+//----------------------------------------------------------------
+//    店名を取得する。
+//
+
+const  std::string  &
+ReceiptInfo::getShopName()  const
+{
+    return ( this->m_shopName );
+}
+
+//----------------------------------------------------------------
+//    店名を設定する。
+//
+
+ReceiptInfo  &
+ReceiptInfo::setShopName(
+        const  std::string  &shopName)
+{
+    this->m_shopName    = shopName;
+    return ( *this );
+}
+
 //========================================================================
 //
 //    Protected Member Functions.
