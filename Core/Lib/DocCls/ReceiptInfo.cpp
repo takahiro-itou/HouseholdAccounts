@@ -92,6 +92,16 @@ ReceiptInfo::~ReceiptInfo()
 //
 
 //----------------------------------------------------------------
+//    レコードを取得する。
+//
+
+const   ReceiptInfo::ChunkArray  &
+ReceiptInfo::getRecordChunks()  const
+{
+    return ( this->m_recordChunk );
+}
+
+//----------------------------------------------------------------
 //    店名を取得する。
 //
 
