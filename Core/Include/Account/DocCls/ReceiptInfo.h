@@ -61,12 +61,12 @@ public:
     **/
     DECLARE_STRICT_TYPE(int,    ChunkIndex);
 
-private:
-
     DECLARE_STRICT_VECTOR(
             ReceiptEntriesChunk,    ChunkIndex,
             ChunkArray
     );
+
+private:
 
     typedef     Common::DateTimeFormat          DateTimeFormat;
 
