@@ -225,6 +225,13 @@ public:
 DECLARE_STRICT_TYPE(int,    ReceiptArrayId);
 
 
+/**
+**    レシートの配列。
+**/
+
+DECLARE_STRICT_VECTOR(ReceiptInfo,  ReceiptArrayId,     ReceiptList);
+
+
 }   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
