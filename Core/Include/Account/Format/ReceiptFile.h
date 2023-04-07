@@ -141,7 +141,7 @@ public:
     **/
     virtual  ErrCode
     saveToTextFile(
-            const  DocCls::ReceiptInfo  & objDoc,
+            const  DocCls::ReceiptList  & objDoc,
             const  std::string          & fileName);
 
     //----------------------------------------------------------------
@@ -156,7 +156,7 @@ public:
     **/
     virtual  ErrCode
     saveToTextStream(
-            const  DocCls::ReceiptInfo  & objDoc,
+            const  DocCls::ReceiptList  & objDoc,
             std::ostream                & outStr);
 
 //========================================================================

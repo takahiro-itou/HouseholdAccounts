@@ -110,7 +110,7 @@ ReceiptFile::readFromTextStream(
 
 ErrCode
 ReceiptFile::saveToTextFile(
-        const  DocCls::ReceiptInfo  & objDoc,
+        const  DocCls::ReceiptList  & objDoc,
         const  std::string          & fileName)
 {
     std::ofstream   ofs(fileName.c_str());
@@ -123,7 +123,7 @@ ReceiptFile::saveToTextFile(
 
 ErrCode
 ReceiptFile::saveToTextStream(
-        const  DocCls::ReceiptInfo  & objDoc,
+        const  DocCls::ReceiptList  & objDoc,
         std::ostream                & outStr)
 {
     return ( ErrCode::FAILURE );
