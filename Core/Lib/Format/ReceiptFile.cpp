@@ -86,7 +86,7 @@ ReceiptFile::~ReceiptFile()
 ErrCode
 ReceiptFile::readFromTextFile(
         const   std::string   & fileName,
-        DocCls::ReceiptInfo   * ptrDoc)
+        DocCls::ReceiptList   * ptrDoc)
 {
     std::ifstream   ifs(fileName.c_str());
     return  readFromTextStream(ifs, ptrDoc);
@@ -99,7 +99,7 @@ ReceiptFile::readFromTextFile(
 ErrCode
 ReceiptFile::readFromTextStream(
         std::istream          & inStr,
-        DocCls::ReceiptInfo   * ptrDoc)
+        DocCls::ReceiptList   * ptrDoc)
 {
     return ( ErrCode::FAILURE );
 }

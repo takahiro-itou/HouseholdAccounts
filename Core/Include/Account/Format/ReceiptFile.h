@@ -112,7 +112,7 @@ public:
     virtual  ErrCode
     readFromTextFile(
             const   std::string   & fileName,
-            DocCls::ReceiptInfo   * ptrDoc);
+            DocCls::ReceiptList   * ptrDoc);
 
     //----------------------------------------------------------------
     /**   データをテキストストリームから読み込む。
@@ -127,7 +127,7 @@ public:
     virtual  ErrCode
     readFromTextStream(
             std::istream          & inStr,
-            DocCls::ReceiptInfo   * ptrDoc);
+            DocCls::ReceiptList   * ptrDoc);
 
     //----------------------------------------------------------------
     /**   データをテキストストリームに書き込む。
