@@ -63,12 +63,12 @@ public:
         BANK_TRANSFER,
     };
 
-private:
-
     DECLARE_STRICT_VECTOR(
             PurchasedGoods,     PurchaseNumber,
             PurchasingList
     );
+
+private:
 
 //========================================================================
 //
