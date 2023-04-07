@@ -215,6 +215,16 @@ public:
     friend  class   ReceiptInfoTest;
 };
 
+
+//========================================================================
+
+/**
+**    レシートインデックス型。
+**/
+
+DECLARE_STRICT_TYPE(int,    ReceiptArrayId);
+
+
 }   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
