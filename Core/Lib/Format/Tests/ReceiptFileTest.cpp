@@ -124,6 +124,10 @@ void  ReceiptFileTest::testReadFromTextStream2()
     retCode = static_cast<int>(testee.readFromTextStream(ss, &data));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<DocCls::ReceiptArrayId>(2),
+            static_cast<DocCls::ReceiptArrayId>(data.size()) );
+
     return;
 }
 
