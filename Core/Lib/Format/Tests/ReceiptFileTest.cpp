@@ -111,7 +111,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
     ss  <<  ";NEW;2;2023/03/02;*****;SHOP B;複式;現金;Bank 1;"
         <<  "Head4;Cate4;Deposit;1000;1;0;0;0;;\n";
 
-    DocCls::ReceiptInfo data;
+    DocCls::ReceiptList data;
     int retCode;
 
     retCode = static_cast<int>(testee.setNumSkipColumns(1));
