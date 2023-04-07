@@ -22,8 +22,8 @@
 #    define   HACORE_FORMAT_INCLUDED_RECEIPT_FILE_H
 
 
-#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
-#    include    "Account/Common/AccountsTypes.h"
+#if !defined( HACORE_DOCCLS_INCLUDED_RECEIPT_INFO_H )
+#    include    "Account/DocCls/ReceiptInfo.h"
 #endif
 
 #if !defined( HACORE_SYS_INCLUDED_IOS_FWD )
