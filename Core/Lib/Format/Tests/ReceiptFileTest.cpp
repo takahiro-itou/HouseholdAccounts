@@ -84,7 +84,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
     ss  <<  ";;;;;収入;ポイント;;"
         <<  "Head3;Cate3;Points;10;1;0;0;0;;\n";
 
-    DocCls::ReceiptInfo data;
+    DocCls::ReceiptList data;
     int retCode;
 
     retCode = static_cast<int>(testee.setNumSkipColumns(0));
