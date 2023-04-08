@@ -182,7 +182,7 @@ DECLARE_STRICT_TYPE(int,        PurchaseNumber);
 **    レシートインデックス型。
 **/
 
-DECLARE_STRICT_TYPE(int,        ReceiptIndex);
+DECLARE_STRICT_TYPE(int,        ReceiptArrayId);
 
 //----------------------------------------------------------------
 /**
