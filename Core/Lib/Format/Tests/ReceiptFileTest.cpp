@@ -97,6 +97,13 @@ void  ReceiptFileTest::testReadFromTextStream1()
             static_cast<DocCls::ReceiptArrayId>(1),
             static_cast<DocCls::ReceiptArrayId>(data.size()) );
 
+    const DocCls::ReceiptInfo &
+        ri0 = data.at(static_cast<DocCls::ReceiptArrayId>(0));
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("SHOP 1"),
+            ri0.getShopName() );
+
     return;
 }
 
