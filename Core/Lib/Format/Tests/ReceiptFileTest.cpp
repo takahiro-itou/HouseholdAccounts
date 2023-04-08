@@ -73,6 +73,8 @@ void  ReceiptFileTest::testReceiptFile()
 
 void  ReceiptFileTest::testReadFromTextStream1()
 {
+    typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
+
     ReceiptFile     testee;
 
     std::stringstream   ss;
@@ -108,8 +110,8 @@ void  ReceiptFileTest::testReadFromTextStream1()
         chunk0  = ri0.getRecordChunks();
 
     CPPUNIT_ASSERT_EQUAL(
-            static_cast<DocCls::ReceiptInfo::ChunkIndex>(2),
-            static_cast<DocCls::ReceiptInfo::ChunkIndex>(chunk0.size()) );
+            static_cast<ChunkIndex>(2),
+            static_cast<ChunkIndex>(chunk0.size()) );
 
     return;
 }
