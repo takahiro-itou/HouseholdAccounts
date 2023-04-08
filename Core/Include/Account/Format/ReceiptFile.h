@@ -36,6 +36,7 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
 //  クラスの前方宣言。  //
 namespace  DocCls  {
+class   CategoryManager;
 class   ReceiptInfo;
 }   //  End of namespace  DocCls.
 
