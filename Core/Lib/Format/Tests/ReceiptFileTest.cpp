@@ -104,6 +104,13 @@ void  ReceiptFileTest::testReadFromTextStream1()
             std::string("SHOP 1"),
             ri0.getShopName() );
 
+    const DocCls::ReceiptInfo::ChunkArray &
+        chunk0  = ri0.getRecordChunks();
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<DocCls::ReceiptInfo::ChunkIndex>(2),
+            static_cast<DocCls::ReceiptInfo::ChunkIndex>(chunk0.size()) );
+
     return;
 }
 
