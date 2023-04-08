@@ -132,8 +132,8 @@ void  ReceiptFileTest::testReadFromTextStream2()
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
     CPPUNIT_ASSERT_EQUAL(
-            static_cast<DocCls::ReceiptArrayId>(2),
-            static_cast<DocCls::ReceiptArrayId>(data.size()) );
+            static_cast<ReceiptNumber>(2),
+            static_cast<ReceiptNumber>(data.size()) );
 
     return;
 }
