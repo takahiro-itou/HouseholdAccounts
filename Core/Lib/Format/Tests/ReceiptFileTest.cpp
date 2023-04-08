@@ -94,11 +94,11 @@ void  ReceiptFileTest::testReadFromTextStream1()
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
     CPPUNIT_ASSERT_EQUAL(
-            static_cast<DocCls::ReceiptArrayId>(1),
-            static_cast<DocCls::ReceiptArrayId>(data.size()) );
+            static_cast<ReceiptNumber>(1),
+            static_cast<ReceiptNumber>(data.size()) );
 
     const DocCls::ReceiptInfo &
-        ri0 = data.at(static_cast<DocCls::ReceiptArrayId>(0));
+        ri0 = data.at(static_cast<ReceiptNumber>(0));
 
     CPPUNIT_ASSERT_EQUAL(
             std::string("SHOP 1"),
