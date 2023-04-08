@@ -113,6 +113,20 @@ void  ReceiptFileTest::testReadFromTextStream1()
             static_cast<ChunkIndex>(2),
             static_cast<ChunkIndex>(chunk0.size()) );
 
+    const DocCls::ReceiptEntriesChunk::PurchasingList &
+        goods1  = chunk0[static_cast<ChunkIndex>(0)].goodsList;
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<PurchaseNumber>(2),
+            static_cast<PurchaseNumber>(goods1.size()) );
+
+    const DocCls::ReceiptEntriesChunk::PurchasingList &
+        goods2  = chunk0[static_cast<ChunkIndex>(1)].goodsList;
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<PurchaseNumber>(1),
+            static_cast<PurchaseNumber>(goods2.size()) );
+
     return;
 }
 
