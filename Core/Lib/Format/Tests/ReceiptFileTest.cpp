@@ -107,21 +107,45 @@ void  ReceiptFileTest::testReadFromTextStream1()
             ri0.getShopName() );
 
     const DocCls::ReceiptInfo::ChunkArray &
-        chunk0  = ri0.getRecordChunks();
+        chunks  = ri0.getRecordChunks();
 
     CPPUNIT_ASSERT_EQUAL(
             static_cast<ChunkIndex>(2),
-            static_cast<ChunkIndex>(chunk0.size()) );
+            static_cast<ChunkIndex>(chunks.size()) );
+
+    const DocCls::ReceiptEntriesChunk &
+        chunk1  = chunks.at(static_cast<ChunkIndex>(0));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(-1),
+            chunk1.chrCreditAccount);
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CurrencyNumerator>(456),
+            chunk1.cnlDebitAmount);
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CurrencyNumerator>(0),
+            chunk1.cnrCreditAmount);
+
+    const DocCls::ReceiptEntriesChunk &
+        chunk2  = chunks.at(static_cast<ChunkIndex>(1));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(-1),
+            chunk2.chrCreditAccount);
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CurrencyNumerator>(10),
+            chunk2.cnlDebitAmount);
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CurrencyNumerator>(0),
+            chunk2.cnrCreditAmount);
 
     const DocCls::ReceiptEntriesChunk::PurchasingList &
-        goods1  = chunk0[static_cast<ChunkIndex>(0)].goodsList;
+        goods1  = chunk1.goodsList;
 
     CPPUNIT_ASSERT_EQUAL(
             static_cast<PurchaseNumber>(2),
             static_cast<PurchaseNumber>(goods1.size()) );
 
     const DocCls::ReceiptEntriesChunk::PurchasingList &
-        goods2  = chunk0[static_cast<ChunkIndex>(1)].goodsList;
+        goods2  = chunk2.goodsList;
 
     CPPUNIT_ASSERT_EQUAL(
             static_cast<PurchaseNumber>(1),
