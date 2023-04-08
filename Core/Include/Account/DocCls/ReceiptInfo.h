@@ -221,7 +221,7 @@ public:
 **    レシートの配列。
 **/
 
-DECLARE_STRICT_VECTOR(ReceiptInfo,  ReceiptArrayId,     ReceiptList);
+DECLARE_STRICT_VECTOR(ReceiptInfo,  ReceiptNumber,  ReceiptList);
 
 
 }   //  End of namespace  DocCls
