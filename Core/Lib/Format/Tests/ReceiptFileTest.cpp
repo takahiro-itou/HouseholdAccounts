@@ -78,17 +78,22 @@ void  ReceiptFileTest::testReadFromTextStream1()
 
     DocCls::CategoryManager cateMan;
     cateMan.setupRootCategory(
-            CategoryHandle(0), "支出",
+            CategoryHandle(0), "収入",
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
-            CategoryHandle(1), "収入",
+            CategoryHandle(1), "支出",
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
-            CategoryHandle(0), "現金",
+            CategoryHandle(0), "ポイント",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(1), "現金",
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
@@ -121,7 +126,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
         ri0 = data.at(static_cast<ReceiptNumber>(0));
 
     CPPUNIT_ASSERT_EQUAL(
-            std::string("SHOP 1"),
+            std::string("SHOP A"),
             ri0.getShopName() );
 
     const DocCls::ReceiptInfo::ChunkArray &
@@ -134,6 +139,9 @@ void  ReceiptFileTest::testReadFromTextStream1()
     const DocCls::ReceiptEntriesChunk &
         chunk1  = chunks.at(static_cast<ChunkIndex>(0));
     CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(3),
+            chunk1.chlDebitAccount);
+    CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(-1),
             chunk1.chrCreditAccount);
     CPPUNIT_ASSERT_EQUAL(
@@ -145,6 +153,9 @@ void  ReceiptFileTest::testReadFromTextStream1()
 
     const DocCls::ReceiptEntriesChunk &
         chunk2  = chunks.at(static_cast<ChunkIndex>(1));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(2),
+            chunk2.chlDebitAccount);
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(-1),
             chunk2.chrCreditAccount);
