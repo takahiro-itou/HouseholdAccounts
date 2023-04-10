@@ -21,6 +21,7 @@
 #include    "TestDriver.h"
 #include    "Account/Format/ReceiptFile.h"
 
+#include    "Account/DocCls/CategoryManager.h"
 #include    "Account/DocCls/ReceiptInfo.h"
 
 #include    <sstream>
@@ -74,6 +75,23 @@ void  ReceiptFileTest::testReceiptFile()
 void  ReceiptFileTest::testReadFromTextStream1()
 {
     typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
+
+    DocCls::CategoryManager cateMan;
+    cateMan.setupRootCategory(
+            CategoryHandle(0), "支出",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.setupRootCategory(
+            CategoryHandle(1), "収入",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(0), "現金",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
 
     ReceiptFile     testee;
 
