@@ -185,6 +185,28 @@ void  ReceiptFileTest::testReadFromTextStream1()
 
 void  ReceiptFileTest::testReadFromTextStream2()
 {
+    DocCls::CategoryManager cateMan;
+    cateMan.setupRootCategory(
+            CategoryHandle(0), "収入",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.setupRootCategory(
+            CategoryHandle(1), "支出",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(0), "ポイント",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(1), "現金",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
     ReceiptFile     testee;
 
     std::stringstream   ss;
