@@ -77,6 +77,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
     typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
 
     DocCls::CategoryManager cateMan;
+    cateMan.reserveRootCategories(CategoryHandle(2));
     cateMan.setupRootCategory(
             CategoryHandle(0), "収入",
             DocCls::CategoryFlags(0),
@@ -186,6 +187,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
 void  ReceiptFileTest::testReadFromTextStream2()
 {
     DocCls::CategoryManager cateMan;
+    cateMan.reserveRootCategories(CategoryHandle(2));
     cateMan.setupRootCategory(
             CategoryHandle(0), "収入",
             DocCls::CategoryFlags(0),
