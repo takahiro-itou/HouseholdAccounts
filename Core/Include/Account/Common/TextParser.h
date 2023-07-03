@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -25,6 +25,9 @@
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
 #    include    "AccountsTypes.h"
 #endif
+
+#include    <string>
+#include    <vector>
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
@@ -49,6 +52,10 @@ class  TextParser
 //    Internal Type Definitions.
 //
 public:
+
+    typedef     std::vector<char>           TextBuffer;
+
+    typedef     std::vector<const char *>   TokenArray;
 
 //========================================================================
 //
