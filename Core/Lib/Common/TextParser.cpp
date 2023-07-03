@@ -22,6 +22,9 @@
 
 #include    "Account/Common/TextParser.h"
 
+#include    <stdlib.h>
+#include    <string.h>
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {
@@ -93,7 +96,33 @@ TextParser::splitText(
         TextBuffer          &bufText,
         TokenArray          &vTokens)
 {
-    return ( ErrCode::FAILURE );
+    const   size_t  szText  = inText.size();
+    bufText.clear();
+    bufText.resize(szText + 1);
+    char  *  const  ptrBuf  = &(bufText[0]);
+
+    ::memcpy(ptrBuf, inText.c_str(), szText);
+    ptrBuf[szText]  = '\0';
+
+    char  *         pSaved  = nullptr;
+    const  char  *  pToken  = nullptr;
+
+#if defined( _WIN32 )
+    pToken  = strtok_s(ptrBuf, sepChrs, &pSaved);
+#else
+    pToken  = strtok_r(ptrBuf, sepChrs, &pSaved);
+#endif
+
+    while ( pToken != nullptr ) {
+        vTokens.push_back(pToken);
+#if defined( _WIN32 )
+        pToken  = strtok_s(nullptr, sepChrs, &pSaved);
+#else
+        pToken  = strtok_r(nullptr, sepChrs, &pSaved);
+#endif
+    }
+
+    return ( ErrCode::SUCCESS );
 }
 
 //========================================================================
