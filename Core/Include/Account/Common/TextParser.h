@@ -101,6 +101,27 @@ public:
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   文字列を指定した文字で分割する。
+    **
+    **  @param [in] inText    入力テキスト。
+    **  @param [in] sepChar   区切り文字。
+    **  @param[out] bufText   テキストバッファ。
+    **  @param[out] vTokens   分割結果を追記する変数。
+    **      必要なら呼び出す前に内容をクリアする。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
+    **/
+    static  ErrCode
+    splitText(
+            const  std::string  &inText,
+            const  char  *      sepChrs,
+            TextBuffer          &bufText,
+            TokenArray          &vTokens);
 
 //========================================================================
 //

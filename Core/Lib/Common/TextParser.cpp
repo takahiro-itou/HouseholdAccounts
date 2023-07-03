@@ -82,6 +82,20 @@ TextParser::~TextParser()
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    文字列を指定した文字で分割する。
+//
+
+ErrCode
+TextParser::splitText(
+        const  std::string  &inText,
+        const  char  *      sepChrs,
+        TextBuffer          &bufText,
+        TokenArray          &vTokens)
+{
+    return ( ErrCode::FAILURE );
+}
+
 //========================================================================
 //
 //    Protected Member Functions.
