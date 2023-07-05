@@ -104,6 +104,29 @@ TextParser::splitText(
     ::memcpy(ptrBuf, inText.c_str(), szText);
     ptrBuf[szText]  = '\0';
 
+    return  splitTextSub(ptrBuf, sepChrs, vTokens);
+}
+
+//========================================================================
+//
+//    Protected Member Functions.
+//
+
+//========================================================================
+//
+//    For Internal Use Only.
+//
+
+//----------------------------------------------------------------
+//    文字列を指定した文字で分割する。
+//
+
+ErrCode
+TextParser::splitTextSub(
+        char  *  const  ptrBuf,
+        const  char  *  sepChrs,
+        TokenArray     &vTokens)
+{
     char  *         pSaved  = nullptr;
     const  char  *  pToken  = nullptr;
 
@@ -124,16 +147,6 @@ TextParser::splitText(
 
     return ( ErrCode::SUCCESS );
 }
-
-//========================================================================
-//
-//    Protected Member Functions.
-//
-
-//========================================================================
-//
-//    For Internal Use Only.
-//
 
 }   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END

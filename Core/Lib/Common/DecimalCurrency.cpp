@@ -145,7 +145,7 @@ DecimalCurrency::setInternalValue(
         const   CurrencyNumerator   intValue)
 {
     this->m_internValue = intValue;
-    return  ( *this );
+    return ( *this );
 }
 
 //----------------------------------------------------------------
