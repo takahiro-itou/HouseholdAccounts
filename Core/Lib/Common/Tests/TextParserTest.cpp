@@ -38,6 +38,7 @@ class  TextParserTest : public  TestFixture
     CPPUNIT_TEST_SUITE(TextParserTest);
     CPPUNIT_TEST(testTextParser);
     CPPUNIT_TEST(testSplitText1);
+    CPPUNIT_TEST(testSplitText2);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -47,6 +48,7 @@ public:
 private:
     void  testTextParser();
     void  testSplitText1();
+    void  testSplitText2();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( TextParserTest );
@@ -90,6 +92,32 @@ void  TextParserTest::testSplitText1()
     return;
 }
 
+void  TextParserTest::testSplitText2()
+{
+    TextParser::TextBuffer  bufText;
+    TextParser::TokenArray  vTokens;
+
+    ErrCode retCode;
+    retCode = TextParser::splitText(
+                    "abc,\"123,456\",,def,,h", ",", bufText, vTokens);
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<int>(ErrCode::SUCCESS),
+            static_cast<int>(retCode) );
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<size_t>(6),
+            static_cast<size_t>(vTokens.size()) );
+
+    CPPUNIT_ASSERT_EQUAL( std::string("abc"), std::string(vTokens[0]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("123,456"), std::string(vTokens[1]) );
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[2]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("def"), std::string(vTokens[3]) );
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[4]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("h"),   std::string(vTokens[5]) );
+
+    return;
+}
 
 }   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
