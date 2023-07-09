@@ -39,6 +39,10 @@ class  TextParserTest : public  TestFixture
     CPPUNIT_TEST(testTextParser);
     CPPUNIT_TEST(testSplitText1);
     CPPUNIT_TEST(testSplitText2);
+    CPPUNIT_TEST(testSplitText3);
+    CPPUNIT_TEST(testSplitText4);
+    CPPUNIT_TEST(testSplitText5);
+    CPPUNIT_TEST(testSplitText6);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -49,6 +53,10 @@ private:
     void  testTextParser();
     void  testSplitText1();
     void  testSplitText2();
+    void  testSplitText3();
+    void  testSplitText4();
+    void  testSplitText5();
+    void  testSplitText6();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( TextParserTest );
@@ -71,14 +79,14 @@ void  TextParserTest::testSplitText1()
 
     ErrCode retCode;
     retCode = TextParser::splitText(
-                    "abc;def;;g;h;i;", ";", bufText, vTokens);
+                    "abc;def;;g;h;i", ";", bufText, vTokens);
 
     CPPUNIT_ASSERT_EQUAL(
             static_cast<int>(ErrCode::SUCCESS),
             static_cast<int>(retCode) );
 
     CPPUNIT_ASSERT_EQUAL(
-            static_cast<size_t>(7),
+            static_cast<size_t>(6),
             static_cast<size_t>(vTokens.size()) );
 
     CPPUNIT_ASSERT_EQUAL( std::string("abc"), std::string(vTokens[0]) );
@@ -87,7 +95,6 @@ void  TextParserTest::testSplitText1()
     CPPUNIT_ASSERT_EQUAL( std::string("g"),   std::string(vTokens[3]) );
     CPPUNIT_ASSERT_EQUAL( std::string("h"),   std::string(vTokens[4]) );
     CPPUNIT_ASSERT_EQUAL( std::string("i"),   std::string(vTokens[5]) );
-    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[6]) );
 
     return;
 }
@@ -115,6 +122,119 @@ void  TextParserTest::testSplitText2()
     CPPUNIT_ASSERT_EQUAL( std::string("def"), std::string(vTokens[3]) );
     CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[4]) );
     CPPUNIT_ASSERT_EQUAL( std::string("h"),   std::string(vTokens[5]) );
+
+    return;
+}
+
+void  TextParserTest::testSplitText3()
+{
+    TextParser::TextBuffer  bufText;
+    TextParser::TokenArray  vTokens;
+
+    ErrCode retCode;
+    retCode = TextParser::splitText(
+                    "abc;def;;g;h;i;", ";", bufText, vTokens);
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<int>(ErrCode::SUCCESS),
+            static_cast<int>(retCode) );
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<size_t>(7),
+            static_cast<size_t>(vTokens.size()) );
+
+    CPPUNIT_ASSERT_EQUAL( std::string("abc"), std::string(vTokens[0]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("def"), std::string(vTokens[1]) );
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[2]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("g"),   std::string(vTokens[3]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("h"),   std::string(vTokens[4]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("i"),   std::string(vTokens[5]) );
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[6]) );
+
+    return;
+}
+
+void  TextParserTest::testSplitText4()
+{
+    TextParser::TextBuffer  bufText;
+    TextParser::TokenArray  vTokens;
+
+    ErrCode retCode;
+    retCode = TextParser::splitText(
+                    "abc,\"123,456\",,def,,h,", ",", bufText, vTokens);
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<int>(ErrCode::SUCCESS),
+            static_cast<int>(retCode) );
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<size_t>(7),
+            static_cast<size_t>(vTokens.size()) );
+
+    CPPUNIT_ASSERT_EQUAL( std::string("abc"), std::string(vTokens[0]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("123,456"), std::string(vTokens[1]) );
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[2]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("def"), std::string(vTokens[3]) );
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[4]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("h"),   std::string(vTokens[5]) );
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[6]) );
+
+    return;
+}
+
+void  TextParserTest::testSplitText5()
+{
+    TextParser::TextBuffer  bufText;
+    TextParser::TokenArray  vTokens;
+
+    ErrCode retCode;
+    retCode = TextParser::splitText(
+                    ";abc;def;;g;h;i", ";", bufText, vTokens);
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<int>(ErrCode::SUCCESS),
+            static_cast<int>(retCode) );
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<size_t>(7),
+            static_cast<size_t>(vTokens.size()) );
+
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[0]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("abc"), std::string(vTokens[1]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("def"), std::string(vTokens[2]) );
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[3]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("g"),   std::string(vTokens[4]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("h"),   std::string(vTokens[5]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("i"),   std::string(vTokens[6]) );
+
+    return;
+}
+
+void  TextParserTest::testSplitText6()
+{
+    TextParser::TextBuffer  bufText;
+    TextParser::TokenArray  vTokens;
+
+    ErrCode retCode;
+    retCode = TextParser::splitText(
+                    ",abc,\"123,456\",,def,,h,", ",", bufText, vTokens);
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<int>(ErrCode::SUCCESS),
+            static_cast<int>(retCode) );
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<size_t>(8),
+            static_cast<size_t>(vTokens.size()) );
+
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[0]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("abc"), std::string(vTokens[1]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("123,456"), std::string(vTokens[2]) );
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[3]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("def"), std::string(vTokens[4]) );
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[5]) );
+    CPPUNIT_ASSERT_EQUAL( std::string("h"),   std::string(vTokens[6]) );
+    CPPUNIT_ASSERT_EQUAL( std::string(""),    std::string(vTokens[7]) );
 
     return;
 }
