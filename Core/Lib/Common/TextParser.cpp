@@ -143,6 +143,12 @@ TextParser::splitTextSub(
             continue;
         }
         if ( ch == cqBegin ) {
+            if ( p == pToken ) {
+                //  トークンの先頭にクォートがある場合は、  //
+                //  そのクォートを削除するため、            //
+                //  トークンの開始位置を調整する。          //
+                pToken  = p + 1;
+            }
             ++ cqLevel;
         }
         if ( strchr(sepChrs, ch) != NULL ) {
