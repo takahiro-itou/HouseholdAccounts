@@ -128,7 +128,6 @@ TextParser::splitTextSub(
         const  char  *  sepChrs,
         TokenArray     &vTokens)
 {
-    char  *         pSaved  = nullptr;
     char  *         pWrite  = nullptr;
     const  char  *  pToken  = ptrBuf;
     const  int      cqBegin = '"';
