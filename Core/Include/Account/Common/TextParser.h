@@ -138,6 +138,7 @@ private:
     /**   文字列を指定した文字で分割する。
     **
     **  @param [in,out] ptrBuf    入力テキスト。
+    **  @param [in]     ptrEnd
     **  @param [in]     sepChar   区切り文字。
     **  @param    [out] vTokens   分割結果を追記する変数。
     **      必要なら呼び出す前に内容をクリアする。
@@ -149,6 +150,7 @@ private:
     static  ErrCode
     splitTextSub(
             char  *  const  ptrBuf,
+            char  *  const  ptrEnd,
             const  char  *  sepChrs,
             TokenArray     &vTokens);
 

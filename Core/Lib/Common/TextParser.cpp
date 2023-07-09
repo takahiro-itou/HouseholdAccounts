@@ -104,7 +104,7 @@ TextParser::splitText(
     ::memcpy(ptrBuf, inText.c_str(), szText);
     ptrBuf[szText]  = '\0';
 
-    return  splitTextSub(ptrBuf, sepChrs, vTokens);
+    return  splitTextSub(ptrBuf, ptrBuf + szText, sepChrs, vTokens);
 }
 
 //========================================================================
@@ -124,6 +124,7 @@ TextParser::splitText(
 ErrCode
 TextParser::splitTextSub(
         char  *  const  ptrBuf,
+        char  *  const  ptrEnd,
         const  char  *  sepChrs,
         TokenArray     &vTokens)
 {
