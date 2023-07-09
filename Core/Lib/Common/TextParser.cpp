@@ -129,6 +129,7 @@ TextParser::splitTextSub(
         TokenArray     &vTokens)
 {
     char  *         pSaved  = nullptr;
+    char  *         pWrite  = nullptr;
     const  char  *  pToken  = ptrBuf;
     const  int      cqBegin = '"';
     const  int      cqEnd   = '"';
@@ -138,6 +139,9 @@ TextParser::splitTextSub(
         const  int  ch  = static_cast<unsigned char>(*p);
         if ( cqLevel > 0 ) {
             if ( ch == cqEnd ) {
+                if ( pWrite == nullptr ) {
+                    pWrite  = p;
+                }
                 -- cqLevel;
             }
             continue;
@@ -151,11 +155,16 @@ TextParser::splitTextSub(
             }
             ++ cqLevel;
         }
+        if ( pWrite != nullptr ) {
+            *pWrite = *p;
+            ++ pWrite;
+        }
         if ( strchr(sepChrs, ch) != NULL ) {
             //  区切り文字 (のいずれか) なので、ここで区切る。  //
             *p  = '\0';
             vTokens.push_back(pToken);
             pToken  = p + 1;
+            pWrite  = nullptr;
         }
     }
 
