@@ -129,21 +129,31 @@ TextParser::splitTextSub(
         TokenArray     &vTokens)
 {
     char  *         pSaved  = nullptr;
-    const  char  *  pToken  = nullptr;
+    const  char  *  pToken  = ptrBuf;
+    const  int      cqBegin = '"';
+    const  int      cqEnd   = '"';
+    int             cqLevel = 0;
 
-#if defined( _WIN32 )
-    pToken  = strtok_s(ptrBuf, sepChrs, &pSaved);
-#else
-    pToken  = strtok_r(ptrBuf, sepChrs, &pSaved);
-#endif
-
-    while ( pToken != nullptr ) {
+    for ( char * p = ptrBuf; p < ptrEnd; ++ p ) {
+        const  int  ch  = static_cast<unsigned char>(*p);
+        if ( cqLevel > 0 ) {
+            if ( ch == cqEnd ) {
+                -- cqLevel;
+            }
+            continue;
+        }
+        if ( ch == cqBegin ) {
+            ++ cqLevel;
+        }
+        if ( strchr(sepChrs, ch) != NULL ) {
+            //  区切り文字 (のいずれか) なので、ここで区切る。  //
+            *p  = '\0';
+            vTokens.push_back(pToken);
+            pToken  = p + 1;
+        }
+    }
+    if ( pToken < ptrEnd ) {
         vTokens.push_back(pToken);
-#if defined( _WIN32 )
-        pToken  = strtok_s(nullptr, sepChrs, &pSaved);
-#else
-        pToken  = strtok_r(nullptr, sepChrs, &pSaved);
-#endif
     }
 
     return ( ErrCode::SUCCESS );
