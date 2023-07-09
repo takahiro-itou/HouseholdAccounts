@@ -152,9 +152,11 @@ TextParser::splitTextSub(
             pToken  = p + 1;
         }
     }
-    if ( pToken < ptrEnd ) {
-        vTokens.push_back(pToken);
-    }
+
+    //  最後の区切り文字以降の分があるのでそれを追加する。  //
+    //  ちょうど文字列の末尾が区切り文字だった場合は、      //
+    //  最後に空文字列があるものとして追加する必要がある。  //
+    vTokens.push_back(pToken);
 
     return ( ErrCode::SUCCESS );
 }
