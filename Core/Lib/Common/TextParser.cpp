@@ -152,19 +152,25 @@ TextParser::splitTextSub(
                 //  そのクォートを削除するため、            //
                 //  トークンの開始位置を調整する。          //
                 pToken  = p + 1;
+            } else if ( pWrite == nullptr ) {
+                pWrite  = p;
             }
             ++ cqLevel;
-        }
-        if ( pWrite != nullptr ) {
-            *pWrite = *p;
-            ++ pWrite;
+            continue;
         }
         if ( strchr(sepChrs, ch) != NULL ) {
             //  区切り文字 (のいずれか) なので、ここで区切る。  //
             *p  = '\0';
+            if ( pWrite != nullptr ) {
+                *pWrite = '\0';
+            }
             vTokens.push_back(pToken);
             pToken  = p + 1;
             pWrite  = nullptr;
+        }
+        if ( pWrite != nullptr ) {
+            *pWrite = *p;
+            ++ pWrite;
         }
     }
 
