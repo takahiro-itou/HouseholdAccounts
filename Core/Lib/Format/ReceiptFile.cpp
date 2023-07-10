@@ -140,6 +140,17 @@ ReceiptFile::saveToTextStream(
 //
 
 //----------------------------------------------------------------
+//    項目を管理するインスタンスを設定する。
+//
+
+ErrCode
+ReceiptFile::setCategoryManager(
+        const  DocCls::CategoryManager  &cateManager)
+{
+    return ( ErrCode::FAILURE );
+}
+
+//----------------------------------------------------------------
 //    読み飛ばすカラム数を設定する。
 //
 
