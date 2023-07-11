@@ -44,6 +44,18 @@ namespace  {
 //
 
 ReceiptInfo::ReceiptInfo()
+    : m_receiptDate(0),
+      m_receiptTime(),
+      m_shopIdx(-1),
+      m_shopName(),
+      m_recordChunk(),
+      m_totalCached(Boolean::BOOL_FALSE),
+      m_subTotal(),
+      m_sumInclusiveTax(0),
+      m_sumExclusiveTax(0),
+      m_totalPrice(0),
+      m_chInclusiveTax(-1),
+      m_chExclusiveTax(-1)
 {
 }
 
@@ -91,6 +103,10 @@ ReceiptInfo::initializeReceiptInfo(
         const  std::string  &recTime,
         const  std::string  &shopName)
 {
+    this->m_receiptDate = 0;
+    this->m_receiptTime = recTime;
+    this->m_shopName    = shopName;
+
     return ( ErrCode::SUCCESS );
 }
 
