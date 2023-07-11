@@ -118,6 +118,23 @@ public:
 //
 public:
 
+    //----------------------------------------------------------------
+    /**   レシート情報を初期化する。
+    **
+    **  @param [in] recDate     レシートの日付
+    **  @param [in] recTime     レシートの時刻
+    **  @param [in] shopName    店名
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
+    **/
+    ErrCode
+    initializeReceiptInfo(
+            const  std::string  &recDate,
+            const  std::string  &recTime,
+            const  std::string  &shopName);
+
 //========================================================================
 //
 //    Public Member Functions (Operators).

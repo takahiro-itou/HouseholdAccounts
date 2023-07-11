@@ -81,6 +81,18 @@ ReceiptInfo::~ReceiptInfo()
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    レシート情報を初期化する。
+//
+
+ErrCode
+ReceiptInfo::initializeReceiptInfo(
+        const  std::string  &recDate,
+        const  std::string  &recTime,
+        const  std::string  &shopName)
+{
+}
+
 //========================================================================
 //
 //    Public Member Functions (Operators).
