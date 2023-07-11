@@ -102,7 +102,16 @@ ReceiptFile::readFromTextStream(
         std::istream          & inStr,
         DocCls::ReceiptList   * ptrDoc)
 {
-    return ( ErrCode::FAILURE );
+    std::string     strLine;
+
+    for (;;) {
+        if ( !inStr ) {
+            break;
+        }
+        std::getline(inStr, strLine);
+    }
+
+    return ( ErrCode::SUCCESS );
 }
 
 //----------------------------------------------------------------
