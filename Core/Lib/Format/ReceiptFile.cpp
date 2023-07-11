@@ -21,6 +21,8 @@
 #include    "Account/pch/PreCompile.h"
 #include    "Account/Format/ReceiptFile.h"
 
+#include    "Account/Common/TextParser.h"
+
 #include    <fstream>
 
 
