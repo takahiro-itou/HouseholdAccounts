@@ -116,6 +116,9 @@ void  ReceiptFileTest::testReadFromTextStream1()
     retCode = static_cast<int>(testee.setNumSkipColumns(0));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
+    retCode = static_cast<int>(testee.setCategoryManager(cateMan));
+    CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
+
     retCode = static_cast<int>(testee.readFromTextStream(ss, &data));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
@@ -226,6 +229,9 @@ void  ReceiptFileTest::testReadFromTextStream2()
     int retCode;
 
     retCode = static_cast<int>(testee.setNumSkipColumns(1));
+    CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
+
+    retCode = static_cast<int>(testee.setCategoryManager(cateMan));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
     retCode = static_cast<int>(testee.readFromTextStream(ss, &data));
