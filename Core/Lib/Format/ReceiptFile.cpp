@@ -102,13 +102,24 @@ ReceiptFile::readFromTextStream(
         std::istream          & inStr,
         DocCls::ReceiptList   * ptrDoc)
 {
-    std::string     strLine;
+    std::string             strLine;
+    TextParser::TextBuffer  bufText;
+    TextParser::TokenArray  vTokens;
+    ErrCode                 retErr;
 
     for (;;) {
         if ( !inStr ) {
             break;
         }
         std::getline(inStr, strLine);
+
+        if ( strLine.empty() ) {
+            //  空行スキップ。  //
+            continue;
+        }
+
+        vTokens.clear();
+        TextParser::splitText(strLine, ";,", bufText, vTokens);
     }
 
     return ( ErrCode::SUCCESS );
