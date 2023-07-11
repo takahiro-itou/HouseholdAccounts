@@ -91,6 +91,7 @@ ReceiptInfo::initializeReceiptInfo(
         const  std::string  &recTime,
         const  std::string  &shopName)
 {
+    return ( ErrCode::SUCCESS );
 }
 
 //========================================================================

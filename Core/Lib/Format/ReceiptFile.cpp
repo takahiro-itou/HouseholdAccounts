@@ -106,7 +106,7 @@ ReceiptFile::readFromTextStream(
 {
     std::string         strLine;
     ErrCode             retErr;
-    DocCls::ReceptInfo  recInfo;
+    DocCls::ReceiptInfo recInfo;
 
     Common::TextParser::TextBuffer  bufText;
     Common::TextParser::TokenArray  vTokens;
