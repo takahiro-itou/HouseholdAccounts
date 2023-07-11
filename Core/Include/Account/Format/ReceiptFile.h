@@ -218,7 +218,7 @@ private:
     int     m_numSkipCols;
 
     /**   項目を管理するインスタンス。  **/
-    DocCls::CategoryManager *   m_pCatMan;
+    const   DocCls::CategoryManager *   m_pCatMan;
 
 //========================================================================
 //

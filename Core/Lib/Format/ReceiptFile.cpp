@@ -46,7 +46,8 @@ namespace  {
 //
 
 ReceiptFile::ReceiptFile()
-    : m_numSkipCols(0)
+    : m_numSkipCols(0),
+      m_pCatMan(nullptr)
 {
 }
 
@@ -147,7 +148,8 @@ ErrCode
 ReceiptFile::setCategoryManager(
         const  DocCls::CategoryManager  &cateManager)
 {
-    return ( ErrCode::FAILURE );
+    this->m_pCatMan = &cateManager;
+    return ( ErrCode::SUCCESS );
 }
 
 //----------------------------------------------------------------
