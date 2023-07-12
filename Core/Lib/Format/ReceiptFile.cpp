@@ -104,12 +104,15 @@ ReceiptFile::readFromTextStream(
         std::istream          & inStr,
         DocCls::ReceiptList   * ptrDoc)
 {
-    std::string         strLine;
-    ErrCode             retErr;
-    DocCls::ReceiptInfo recInfo;
+    std::string     strLine;
+    ErrCode         retErr;
+
+    DocCls::ReceiptInfo *   ptrRecInfo;
 
     Common::TextParser::TextBuffer  bufText;
     Common::TextParser::TokenArray  vTokens;
+
+    const  int  numSkipCols = this->m_numSkipCols;
 
     for (;;) {
         if ( !inStr ) {
@@ -125,9 +128,16 @@ ReceiptFile::readFromTextStream(
         vTokens.clear();
         Common::TextParser::splitText(strLine, ";,", bufText, vTokens);
 
-        if ( vTokens[this->m_numSkipCols][0] != '\0' ) {
+        if ( vTokens[numSkipCols][0] != '\0' ) {
             //  先頭のカラムが空文字列でなければ新しいデータ。  //
+            DocCls::ReceiptInfo     recInfo;
+            recInfo.initializeReceiptInfo(
+                    (vTokens[numSkipCols + 1]),
+                    (vTokens[numSkipCols + 2]),
+                    (vTokens[numSkipCols + 3]) );
             ptrDoc->push_back(recInfo);
+
+            ptrRecInfo  = &(ptrDoc->back());
         }
     }
 
