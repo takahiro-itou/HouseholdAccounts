@@ -132,9 +132,9 @@ ReceiptFile::readFromTextStream(
             //  先頭のカラムが空文字列でなければ新しいデータ。  //
             DocCls::ReceiptInfo     recInfo;
             recInfo.initializeReceiptInfo(
-                    (vTokens[numSkipCols + 1]),
                     (vTokens[numSkipCols + 2]),
-                    (vTokens[numSkipCols + 3]) );
+                    (vTokens[numSkipCols + 3]),
+                    (vTokens[numSkipCols + 4]) );
             ptrDoc->push_back(recInfo);
 
             ptrRecInfo  = &(ptrDoc->back());
