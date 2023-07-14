@@ -189,6 +189,8 @@ void  ReceiptFileTest::testReadFromTextStream1()
 
 void  ReceiptFileTest::testReadFromTextStream2()
 {
+    typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
+
     DocCls::CategoryManager cateMan;
     cateMan.reserveRootCategories(CategoryHandle(2));
     cateMan.setupRootCategory(
@@ -208,6 +210,11 @@ void  ReceiptFileTest::testReadFromTextStream2()
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(1), "現金",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(1), "Bank 1",
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
@@ -240,6 +247,104 @@ void  ReceiptFileTest::testReadFromTextStream2()
     CPPUNIT_ASSERT_EQUAL(
             static_cast<ReceiptNumber>(2),
             static_cast<ReceiptNumber>(data.size()) );
+
+    {
+        const DocCls::ReceiptInfo &
+            ri0 = data.at(static_cast<ReceiptNumber>(0));
+
+        CPPUNIT_ASSERT_EQUAL(
+                std::string("SHOP A"),
+                ri0.getShopName() );
+
+        const DocCls::ReceiptInfo::ChunkArray &
+            chunks0 = ri0.getRecordChunks();
+
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<ChunkIndex>(2),
+                static_cast<ChunkIndex>(chunks0.size()) );
+
+        const DocCls::ReceiptEntriesChunk &
+            chunk1  = chunks0.at(static_cast<ChunkIndex>(0));
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CategoryHandle>(3),
+                chunk1.chlDebitAccount);
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CategoryHandle>(-1),
+                chunk1.chrCreditAccount);
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CurrencyNumerator>(768),
+                chunk1.cnlDebitAmount);
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CurrencyNumerator>(0),
+                chunk1.cnrCreditAmount);
+
+        const DocCls::ReceiptEntriesChunk &
+            chunk2  = chunks0.at(static_cast<ChunkIndex>(1));
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CategoryHandle>(2),
+                chunk2.chlDebitAccount);
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CategoryHandle>(-1),
+                chunk2.chrCreditAccount);
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CurrencyNumerator>(20),
+                chunk2.cnlDebitAmount);
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CurrencyNumerator>(0),
+                chunk2.cnrCreditAmount);
+
+        const DocCls::ReceiptEntriesChunk::PurchasingList &
+            goods1  = chunk1.goodsList;
+
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<PurchaseNumber>(2),
+                static_cast<PurchaseNumber>(goods1.size()) );
+
+        const DocCls::ReceiptEntriesChunk::PurchasingList &
+            goods2  = chunk2.goodsList;
+
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<PurchaseNumber>(1),
+                static_cast<PurchaseNumber>(goods2.size()) );
+    }
+
+    {
+        const DocCls::ReceiptInfo &
+            ri1 = data.at(static_cast<ReceiptNumber>(1));
+
+        CPPUNIT_ASSERT_EQUAL(
+                std::string("SHOP B"),
+                ri1.getShopName() );
+
+        const DocCls::ReceiptInfo::ChunkArray &
+            chunks1 = ri1.getRecordChunks();
+
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<ChunkIndex>(2),
+                static_cast<ChunkIndex>(chunks1.size()) );
+
+        const DocCls::ReceiptEntriesChunk &
+            chunk2  = chunks1.at(static_cast<ChunkIndex>(0));
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CategoryHandle>(3),
+                chunk2.chlDebitAccount);
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CategoryHandle>(4),
+                chunk2.chrCreditAccount);
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CurrencyNumerator>(1000),
+                chunk2.cnlDebitAmount);
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<CurrencyNumerator>(1000),
+                chunk2.cnrCreditAmount);
+
+        const DocCls::ReceiptEntriesChunk::PurchasingList &
+            goods3  = chunk2.goodsList;
+
+        CPPUNIT_ASSERT_EQUAL(
+                static_cast<PurchaseNumber>(1),
+                static_cast<PurchaseNumber>(goods3.size()) );
+    }
 
     return;
 }
