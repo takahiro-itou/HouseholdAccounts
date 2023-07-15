@@ -80,22 +80,22 @@ void  ReceiptFileTest::testReadFromTextStream1()
     cateMan.reserveRootCategories(CategoryHandle(4));
     cateMan.setupRootCategory(
             CategoryHandle(0), "収入",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags(17),
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
             CategoryHandle(1), "支出",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags(18),
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
-            CategoryHandle(2), "収入",
-            DocCls::CategoryFlags(0),
+            CategoryHandle(2), "現金",
+            DocCls::CategoryFlags(9),
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
-            CategoryHandle(3), "支出",
-            DocCls::CategoryFlags(0),
+            CategoryHandle(3), "ポイント",
+            DocCls::CategoryFlags(9),
             DateSerial(0),
             Common::DecimalCurrency(0));
 
