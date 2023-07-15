@@ -223,30 +223,70 @@ void  ReceiptFileTest::testReadFromTextStream2()
     typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
 
     DocCls::CategoryManager cateMan;
-    cateMan.reserveRootCategories(CategoryHandle(2));
+    cateMan.reserveRootCategories(CategoryHandle(5));
     cateMan.setupRootCategory(
             CategoryHandle(0), "収入",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags(17),
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
             CategoryHandle(1), "支出",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags(18),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.setupRootCategory(
+            CategoryHandle(2), "現金",
+            DocCls::CategoryFlags(9),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.setupRootCategory(
+            CategoryHandle(3), "ポイント",
+            DocCls::CategoryFlags(9),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.setupRootCategory(
+            CategoryHandle(4), "Back 1",
+            DocCls::CategoryFlags(25),
             DateSerial(0),
             Common::DecimalCurrency(0));
 
     cateMan.insertNewCategory(
-            CategoryHandle(0), "ポイント",
+            CategoryHandle(1), "Head1",
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
-            CategoryHandle(1), "現金",
+            CategoryHandle(5), "Cate1",
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
-            CategoryHandle(1), "Bank 1",
+            CategoryHandle(1), "Head2",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(7), "Cate2",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(0), "Head3",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(9), "Cate3",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(1), "Head4",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(11), "Cate4",
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
