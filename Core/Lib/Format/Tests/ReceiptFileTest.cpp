@@ -370,7 +370,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
     ss  <<  ";NEW;1;2023/03/01;09:00;SHOP A;支出;現金;;"
         <<  "Head1;Cate1;Product1;234;2;0;0;0;;\n";
     ss  <<  ";;;;;;;;;"
-        <<  "Head2;Cate2;Product2;300;1;10;0;0;;\n";
+        <<  "Head2;Cate2;Product2;300;1;10;3;7;;\n";
     ss  <<  ";;;;;;収入;ポイント;;"
         <<  "Head3;Cate3;Points;20;1;0;0;0;;\n";
     ss  <<  ";NEW;2;2023/03/02;*****;SHOP B;複式;現金;Bank 1;"
@@ -416,7 +416,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
                 static_cast<CategoryHandle>(-1),
                 chunk1.chrCreditAccount);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(768),
+                static_cast<CurrencyNumerator>(761),
                 chunk1.cnlDebitAmount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(0),
@@ -447,11 +447,49 @@ void  ReceiptFileTest::testReadFromTextStream2()
         {
             const DocCls::PurchasedGoods &
                 pg0 = goods1.at(static_cast<PurchaseNumber>(0));
+
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CategoryHandle>(5),
+                    pg0.accountHeadings);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CategoryHandle>(6),
+                    pg0.accountCategory);
+            CPPUNIT_ASSERT_EQUAL(std::string("Product1"), pg0.productName);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(234), pg0.unitPrice);
+            CPPUNIT_ASSERT_EQUAL(2, pg0.nQuantity);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(0), pg0.cDiscount);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(468), pg0.cSubTotal);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(0), pg0.inclusiveTaxVal);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(0), pg0.exclusiveTaxVal);
         }
 
         {
             const DocCls::PurchasedGoods &
                 pg1 = goods1.at(static_cast<PurchaseNumber>(1));
+
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CategoryHandle>(7),
+                    pg1.accountHeadings);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CategoryHandle>(8),
+                    pg1.accountCategory);
+            CPPUNIT_ASSERT_EQUAL(std::string("Product2"), pg1.productName);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(300), pg1.unitPrice);
+            CPPUNIT_ASSERT_EQUAL(1, pg1.nQuantity);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(10), pg1.cDiscount);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(290), pg1.cSubTotal);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(7), pg1.inclusiveTaxVal);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(3), pg1.exclusiveTaxVal);
         }
 
         const DocCls::ReceiptEntriesChunk::PurchasingList &
