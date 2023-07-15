@@ -208,12 +208,27 @@ void  ReceiptFileTest::testReadFromTextStream1()
             static_cast<PurchaseNumber>(2),
             static_cast<PurchaseNumber>(goods1.size()) );
 
+    {
+        const DocCls::PurchasedGoods &
+            pg0 = goods1.at(static_cast<PurchaseNumber>(0));
+    }
+
+    {
+        const DocCls::PurchasedGoods &
+            pg1 = goods1.at(static_cast<PurchaseNumber>(1));
+    }
+
     const DocCls::ReceiptEntriesChunk::PurchasingList &
         goods2  = chunk2.goodsList;
 
     CPPUNIT_ASSERT_EQUAL(
             static_cast<PurchaseNumber>(1),
             static_cast<PurchaseNumber>(goods2.size()) );
+
+    {
+        const DocCls::PurchasedGoods &
+            pg2 = goods1.at(static_cast<PurchaseNumber>(0));
+    }
 
     return;
 }
@@ -372,12 +387,27 @@ void  ReceiptFileTest::testReadFromTextStream2()
                 static_cast<PurchaseNumber>(2),
                 static_cast<PurchaseNumber>(goods1.size()) );
 
+        {
+            const DocCls::PurchasedGoods &
+                pg0 = goods1.at(static_cast<PurchaseNumber>(0));
+        }
+
+        {
+            const DocCls::PurchasedGoods &
+                pg１ = goods1.at(static_cast<PurchaseNumber>(１));
+        }
+
         const DocCls::ReceiptEntriesChunk::PurchasingList &
             goods2  = chunk2.goodsList;
 
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<PurchaseNumber>(1),
                 static_cast<PurchaseNumber>(goods2.size()) );
+
+        {
+            const DocCls::PurchasedGoods &
+                pg2 = goods1.at(static_cast<PurchaseNumber>(0));
+        }
     }
 
     {
@@ -392,30 +422,34 @@ void  ReceiptFileTest::testReadFromTextStream2()
             chunks1 = ri1.getRecordChunks();
 
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<ChunkIndex>(2),
+                static_cast<ChunkIndex>(1),
                 static_cast<ChunkIndex>(chunks1.size()) );
 
         const DocCls::ReceiptEntriesChunk &
-            chunk2  = chunks1.at(static_cast<ChunkIndex>(0));
+            chunk3  = chunks1.at(static_cast<ChunkIndex>(0));
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CategoryHandle>(3),
-                chunk2.chlDebitAccount);
+                chunk3.chlDebitAccount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CategoryHandle>(4),
-                chunk2.chrCreditAccount);
+                chunk3.chrCreditAccount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(1000),
-                chunk2.cnlDebitAmount);
+                chunk3.cnlDebitAmount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(1000),
-                chunk2.cnrCreditAmount);
+                chunk3.cnrCreditAmount);
 
         const DocCls::ReceiptEntriesChunk::PurchasingList &
-            goods3  = chunk2.goodsList;
+            goods3  = chunk3.goodsList;
 
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<PurchaseNumber>(1),
                 static_cast<PurchaseNumber>(goods3.size()) );
+        {
+            const DocCls::PurchasedGoods &
+                pg3 = goods3.at(static_cast<PurchaseNumber>(0));
+        }
     }
 
     return;
