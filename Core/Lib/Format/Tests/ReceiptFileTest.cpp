@@ -77,7 +77,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
     typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
 
     DocCls::CategoryManager cateMan;
-    cateMan.reserveRootCategories(CategoryHandle(2));
+    cateMan.reserveRootCategories(CategoryHandle(4));
     cateMan.setupRootCategory(
             CategoryHandle(0), "収入",
             DocCls::CategoryFlags(0),
@@ -88,16 +88,17 @@ void  ReceiptFileTest::testReadFromTextStream1()
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
-    cateMan.insertNewCategory(
-            CategoryHandle(0), "ポイント",
+    cateMan.setupRootCategory(
+            CategoryHandle(2), "収入",
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
-    cateMan.insertNewCategory(
-            CategoryHandle(1), "現金",
+    cateMan.setupRootCategory(
+            CategoryHandle(3), "支出",
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
+
     cateMan.insertNewCategory(
             CategoryHandle(1), "Head1",
             DocCls::CategoryFlags(0),
@@ -119,7 +120,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
-            CategoryHandle(1), "Head3",
+            CategoryHandle(0), "Head3",
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
@@ -233,6 +234,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
+
     cateMan.insertNewCategory(
             CategoryHandle(0), "ポイント",
             DocCls::CategoryFlags(0),
