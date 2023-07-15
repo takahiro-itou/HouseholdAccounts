@@ -394,7 +394,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
 
         {
             const DocCls::PurchasedGoods &
-                pg１ = goods1.at(static_cast<PurchaseNumber>(１));
+                pg1 = goods1.at(static_cast<PurchaseNumber>(1));
         }
 
         const DocCls::ReceiptEntriesChunk::PurchasingList &
