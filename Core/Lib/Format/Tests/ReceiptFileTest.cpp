@@ -98,6 +98,36 @@ void  ReceiptFileTest::testReadFromTextStream1()
             DocCls::CategoryFlags(0),
             DateSerial(0),
             Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(1), "Head1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(4), "Cate1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(1), "Head2",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(6), "Cate2",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(1), "Head3",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(8), "Cate3",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
 
     ReceiptFile     testee;
 
