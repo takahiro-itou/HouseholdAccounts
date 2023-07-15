@@ -502,6 +502,25 @@ void  ReceiptFileTest::testReadFromTextStream2()
         {
             const DocCls::PurchasedGoods &
                 pg2 = goods1.at(static_cast<PurchaseNumber>(0));
+
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CategoryHandle>(9),
+                    pg2.accountHeadings);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CategoryHandle>(10),
+                    pg2.accountCategory);
+            CPPUNIT_ASSERT_EQUAL(std::string("Product2"), pg2.productName);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(300), pg2.unitPrice);
+            CPPUNIT_ASSERT_EQUAL(1, pg1.nQuantity);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(10), pg2.cDiscount);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(290), pg2.cSubTotal);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(7), pg2.inclusiveTaxVal);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(3), pg2.exclusiveTaxVal);
         }
     }
 
@@ -544,6 +563,25 @@ void  ReceiptFileTest::testReadFromTextStream2()
         {
             const DocCls::PurchasedGoods &
                 pg3 = goods3.at(static_cast<PurchaseNumber>(0));
+
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CategoryHandle>(11),
+                    pg3.accountHeadings);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CategoryHandle>(12),
+                    pg3.accountCategory);
+            CPPUNIT_ASSERT_EQUAL(std::string("Product2"), pg3.productName);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(300), pg3.unitPrice);
+            CPPUNIT_ASSERT_EQUAL(1, pg3.nQuantity);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(10), pg3.cDiscount);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(290), pg3.cSubTotal);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(7), pg3.inclusiveTaxVal);
+            CPPUNIT_ASSERT_EQUAL(
+                    static_cast<CurrencyNumerator>(3), pg3.exclusiveTaxVal);
         }
     }
 
