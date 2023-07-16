@@ -148,6 +148,21 @@ CategoryManager::findCategory(
 {
     CategoryHandle  retCate = static_cast<CategoryHandle>(-1);
 
+    const   CategoryHandle  bufSize = this->m_cateBufferSize;
+    for ( CategoryHandle
+            i = static_cast<CategoryHandle>(0); i < bufSize; ++ i )
+    {
+        const  BookCategory &bc = this->m_bufCategory.at(i);
+        if ( bc.getFlags() == CategoryFlags::CTYPE_NOTUSED ) {
+            continue;
+        }
+        if ( bc.getCategoryName() != cateName ) {
+            continue;
+        }
+        retCate = i;
+        break;
+    }
+
     return ( retCate );
 }
 
