@@ -163,6 +163,10 @@ void  CategoryManagerTest::testFindCategory1()
             static_cast<CategoryHandle>(9),
             testee.findCategory("Cate3"));
 
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(-1),
+            testee.findCategory("BadCategory"));
+
     return;
 }
 
@@ -315,6 +319,22 @@ void  CategoryManagerTest::testFindCategory2()
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(11),
             testee.findCategory("Cate1", static_cast<CategoryHandle>(10)));
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(-1),
+            testee.findCategory("BadCategory"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(-1),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(5)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(-1),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(7)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(-1),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(9)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(-1),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(11)));
 
     return;
 }
