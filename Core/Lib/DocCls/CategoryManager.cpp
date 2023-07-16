@@ -138,6 +138,20 @@ CategoryManager::allocNewCategory()
 }
 
 //----------------------------------------------------------------
+//    名前から項目を検索する。
+//
+
+const  CategoryHandle
+CategoryManager::findCategory(
+        const   std::string    &cateName,
+        const   CategoryHandle  cateParent)  const
+{
+    CategoryHandle  retCate = static_cast<CategoryHandle>(-1);
+
+    return ( retCate );
+}
+
+//----------------------------------------------------------------
 //    項目の種類を取得する。
 //
 

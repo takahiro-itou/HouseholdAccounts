@@ -122,6 +122,18 @@ public:
     allocNewCategory();
 
     //----------------------------------------------------------------
+    /**   名前から項目を検索する。
+    **
+    **  @param [in] cateName      項目名。
+    **  @param [in] cateParent    検索を開始する親ハンドル。
+    **  @return     項目名に対応する項目のハンドル。
+    **/
+    virtual  const  CategoryHandle
+    findCategory(
+            const   std::string    &cateName,
+            const   CategoryHandle  cateParent = CategoryHandle(-1)) const;
+
+    //----------------------------------------------------------------
     /**   項目の種類を取得する。
     **
     **  @param [in] hCate   項目のハンドル。
