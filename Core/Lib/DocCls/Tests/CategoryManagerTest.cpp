@@ -39,6 +39,8 @@ class  CategoryManagerTest : public  TestFixture
 {
     CPPUNIT_TEST_SUITE(CategoryManagerTest);
     CPPUNIT_TEST(testCategoryManager);
+    CPPUNIT_TEST(testFindCategory1);
+    CPPUNIT_TEST(testFindCategory2);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -47,6 +49,8 @@ public:
 
 private:
     void  testCategoryManager();
+    void  testFindCategory1();
+    void  testFindCategory2();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( CategoryManagerTest );
@@ -57,6 +61,112 @@ CPPUNIT_TEST_SUITE_REGISTRATION( CategoryManagerTest );
 //
 
 void  CategoryManagerTest::testCategoryManager()
+{
+    CategoryManager     testee;
+    return;
+}
+
+void  CategoryManagerTest::testFindCategory1()
+{
+    CategoryManager     testee;
+
+    testee.reserveRootCategories(CategoryHandle(4));
+
+    testee.setupRootCategory(
+            CategoryHandle(0), "収入",
+            DocCls::CategoryFlags(17),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.setupRootCategory(
+            CategoryHandle(1), "支出",
+            DocCls::CategoryFlags(18),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.setupRootCategory(
+            CategoryHandle(2), "現金",
+            DocCls::CategoryFlags(9),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.setupRootCategory(
+            CategoryHandle(3), "ポイント",
+            DocCls::CategoryFlags(9),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    testee.insertNewCategory(
+            CategoryHandle(1), "Head1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(4), "Cate1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(1), "Head2",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(6), "Cate2",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(0), "Head3",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(8), "Cate3",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(10),
+            testee.getRegisteredCategoryCount());
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(4),
+            testee.getRootCategoryCount());
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(0),
+            testee.findCategory("収入"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(1),
+            testee.findCategory("支出"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(2),
+            testee.findCategory("現金"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(3),
+            testee.findCategory("ポイント"));
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(4),
+            testee.findCategory("Head1"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(5),
+            testee.findCategory("Cate1"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(6),
+            testee.findCategory("Head2"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(7),
+            testee.findCategory("Cate2"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(8),
+            testee.findCategory("Head3"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(9),
+            testee.findCategory("Cate3"));
+
+    return;
+}
+
+void  CategoryManagerTest::testFindCategory2()
 {
     CategoryManager     testee;
     return;
