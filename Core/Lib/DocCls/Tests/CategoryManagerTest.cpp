@@ -130,6 +130,9 @@ void  CategoryManagerTest::testFindCategory1()
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(4),
             testee.getRootCategoryCount());
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(16),
+            testee.getBufferCapacity());
 
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(0),
@@ -247,6 +250,9 @@ void  CategoryManagerTest::testFindCategory2()
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(4),
             testee.getRootCategoryCount());
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(16),
+            testee.getBufferCapacity());
 
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(0),
