@@ -244,6 +244,78 @@ void  CategoryManagerTest::testFindCategory2()
             static_cast<CategoryHandle>(4),
             testee.getRootCategoryCount());
 
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(0),
+            testee.findCategory("Root1"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(1),
+            testee.findCategory("Root2"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(2),
+            testee.findCategory("Balance1"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(3),
+            testee.findCategory("Balance2"));
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(4),
+            testee.findCategory("Head1"));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(5),
+            testee.findCategory("Cate1"));
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(4),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(0)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(5),
+            testee.findCategory("Cate1", static_cast<CategoryHandle>(0)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(4),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(4)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(5),
+            testee.findCategory("Cate1", static_cast<CategoryHandle>(4)));
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(6),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(1)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(7),
+            testee.findCategory("Cate1", static_cast<CategoryHandle>(1)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(6),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(6)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(7),
+            testee.findCategory("Cate1", static_cast<CategoryHandle>(6)));
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(8),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(2)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(9),
+            testee.findCategory("Cate1", static_cast<CategoryHandle>(2)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(8),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(8)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(9),
+            testee.findCategory("Cate1", static_cast<CategoryHandle>(8)));
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(10),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(3)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(11),
+            testee.findCategory("Cate1", static_cast<CategoryHandle>(3)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(10),
+            testee.findCategory("Head1", static_cast<CategoryHandle>(10)));
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(11),
+            testee.findCategory("Cate1", static_cast<CategoryHandle>(10)));
+
     return;
 }
 
