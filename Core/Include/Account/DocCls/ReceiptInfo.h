@@ -185,7 +185,7 @@ public:
 //
 //    Member Variables.
 //
-private:
+public:
 
     /**   レシートの日付。  **/
     ReceiptDate         m_receiptDate;

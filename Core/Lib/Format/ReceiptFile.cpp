@@ -107,7 +107,8 @@ ReceiptFile::readFromTextStream(
     std::string     strLine;
     ErrCode         retErr;
 
-    DocCls::ReceiptInfo *   ptrRecInfo;
+    DocCls::ReceiptInfo *           ptrRecInfo  = nullptr;
+    DocCls::ReceiptEntriesChunk *   ptrRecChunk = nullptr;
 
     Common::TextParser::TextBuffer  bufText;
     Common::TextParser::TokenArray  vTokens;
@@ -138,6 +139,14 @@ ReceiptFile::readFromTextStream(
             ptrDoc->push_back(recInfo);
 
             ptrRecInfo  = &(ptrDoc->back());
+        }
+        if ( (vTokens[numSkipCols + 5][0] != '\0')
+                || (vTokens[numSkipCols + 6][0] != '\0') )
+        {
+            //  収支フラグおよび口座が異なる。  //
+            DocCls::ReceiptEntriesChunk chunk;
+            ptrRecInfo->m_recordChunk.push_back(chunk);
+            ptrRecChunk = &(ptrRecInfo->m_recordChunk.back());
         }
     }
 
