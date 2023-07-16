@@ -224,6 +224,10 @@ private:
 //
 //    Other Features.
 //
+private:
+    typedef     ReceiptFile         This;
+    ReceiptFile         (const  This  &);
+    This &  operator =  (const  This  &);
 public:
     //  テストクラス。  //
     friend  class   ReceiptFileTest;
