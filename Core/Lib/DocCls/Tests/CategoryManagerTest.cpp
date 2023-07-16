@@ -169,6 +169,81 @@ void  CategoryManagerTest::testFindCategory1()
 void  CategoryManagerTest::testFindCategory2()
 {
     CategoryManager     testee;
+
+    testee.reserveRootCategories(CategoryHandle(4));
+
+    testee.setupRootCategory(
+            CategoryHandle(0), "Root1",
+            DocCls::CategoryFlags(17),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.setupRootCategory(
+            CategoryHandle(1), "Root2",
+            DocCls::CategoryFlags(18),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.setupRootCategory(
+            CategoryHandle(2), "Balance1",
+            DocCls::CategoryFlags(9),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.setupRootCategory(
+            CategoryHandle(3), "Balance2",
+            DocCls::CategoryFlags(9),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    testee.insertNewCategory(
+            CategoryHandle(0), "Head1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(4), "Cate1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    testee.insertNewCategory(
+            CategoryHandle(1), "Head1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(6), "Cate1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    testee.insertNewCategory(
+            CategoryHandle(2), "Head1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(8), "Cate1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    testee.insertNewCategory(
+            CategoryHandle(3), "Head1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(10), "Cate1",
+            DocCls::CategoryFlags(0),
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(12),
+            testee.getRegisteredCategoryCount());
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(4),
+            testee.getRootCategoryCount());
+
     return;
 }
 
