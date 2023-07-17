@@ -255,6 +255,17 @@ BookCategory::getCategoryType()  const
 }
 
 //----------------------------------------------------------------
+//    指定した項目のサブ（子孫）項目か判定する。
+//
+
+const   Boolean
+BookCategory::isDescendantOf(
+        const   CategoryHandle  cateOther)
+{
+    return ( Boolean::BOOL_FALSE );
+}
+
+//----------------------------------------------------------------
 //    サブ項目が展開されているか調べる。
 //
 
