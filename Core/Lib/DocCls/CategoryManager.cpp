@@ -261,14 +261,10 @@ CategoryManager::isDescendantCategory(
         const   CategoryHandle  cateUpstream)  const
 {
     CategoryHandle  catePar;
-    CategoryHandle  cateCur = cateToCheck;
 
-    if ( cateCur == cateUpstream ) {
-        return ( Boolean::BOOL_TRUE );
-    }
-    catePar = this->m_bufCategory.at(cateCur).getParentHandle();
-    while( catePar >= 0 ) {
-        cateCur = catePar;
+    for ( CategoryHandle
+            cateCur = cateToCheck; catePar >= 0; cateCur = catePar )
+    {
         if ( cateCur == cateUpstream ) {
             return ( Boolean::BOOL_TRUE );
         }
