@@ -262,7 +262,8 @@ const   Boolean
 BookCategory::isDescendantOf(
         const   CategoryHandle  cateOther)  const
 {
-    return ( Boolean::BOOL_FALSE );
+    return ( this->m_ptrManager->isDescendantCategory(
+                     this->m_selfCateHandle, cateOther) );
 }
 
 //----------------------------------------------------------------
