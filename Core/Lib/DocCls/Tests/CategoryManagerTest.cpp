@@ -74,53 +74,54 @@ void  CategoryManagerTest::testFindCategory1()
 
     testee.setupRootCategory(
             CategoryHandle(0), "収入",
-            DocCls::CategoryFlags(17),
+            DocCls::CategoryFlags::CTYPE_INCOME,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.setupRootCategory(
             CategoryHandle(1), "支出",
-            DocCls::CategoryFlags(18),
+            DocCls::CategoryFlags::CTYPE_OUTLAY,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.setupRootCategory(
             CategoryHandle(2), "現金",
-            DocCls::CategoryFlags(9),
+            DocCls::CategoryFlags::CTYPE_BALANCE,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.setupRootCategory(
             CategoryHandle(3), "ポイント",
-            DocCls::CategoryFlags(9),
+            DocCls::CategoryFlags::CTYPE_BALANCE,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
     testee.insertNewCategory(
             CategoryHandle(1), "Head1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.insertNewCategory(
             CategoryHandle(4), "Cate1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.insertNewCategory(
             CategoryHandle(1), "Head2",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.insertNewCategory(
             CategoryHandle(6), "Cate2",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
+
     testee.insertNewCategory(
             CategoryHandle(0), "Head3",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.insertNewCategory(
             CategoryHandle(8), "Cate3",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
@@ -181,66 +182,66 @@ void  CategoryManagerTest::testFindCategory2()
 
     testee.setupRootCategory(
             CategoryHandle(0), "Root1",
-            DocCls::CategoryFlags(17),
+            DocCls::CategoryFlags::CTYPE_INCOME,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.setupRootCategory(
             CategoryHandle(1), "Root2",
-            DocCls::CategoryFlags(18),
+            DocCls::CategoryFlags::CTYPE_OUTLAY,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.setupRootCategory(
             CategoryHandle(2), "Balance1",
-            DocCls::CategoryFlags(9),
+            DocCls::CategoryFlags::CTYPE_BALANCE,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.setupRootCategory(
             CategoryHandle(3), "Balance2",
-            DocCls::CategoryFlags(9),
+            DocCls::CategoryFlags::CTYPE_BALANCE,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
     testee.insertNewCategory(
             CategoryHandle(0), "Head1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.insertNewCategory(
             CategoryHandle(4), "Cate1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
     testee.insertNewCategory(
             CategoryHandle(1), "Head1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.insertNewCategory(
             CategoryHandle(6), "Cate1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
     testee.insertNewCategory(
             CategoryHandle(2), "Head1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.insertNewCategory(
             CategoryHandle(8), "Cate1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
     testee.insertNewCategory(
             CategoryHandle(3), "Head1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     testee.insertNewCategory(
             CategoryHandle(10), "Cate1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
