@@ -227,7 +227,10 @@ ReceiptFile::findCategory(
         const   char *   const  cateName,
         const   CategoryHandle  cateParent)  const
 {
-    return ( static_cast<CategoryHandle>(-1) );
+    if ( (cateName == nullptr) || (cateName[0] == '\0') ) {
+        return ( static_cast<CategoryHandle>(-1) );
+    }
+    return  this->m_pCatMan->findCategory(cateName, cateParent);
 }
 
 //========================================================================
