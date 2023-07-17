@@ -13,25 +13,24 @@
 *************************************************************************/
 
 /**
-**      An Implementation of DecimalCurrency class.
+**      An Implementation of BookFile class.
 **
-**      @file       Common/DecimalCurrency.cpp
+**      @file       Format/BookFile.cpp
 **/
 
 #include    "Account/pch/PreCompile.h"
-
-#include    "Account/Common/DecimalCurrency.h"
+#include    "Account/Format/BookFile.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Common  {
+namespace  Format  {
 
 namespace  {
 }   //  End of (Unnamed) namespace.
 
 //========================================================================
 //
-//    DecimalCurrency  class.
+//    BookFile  class.
 //
 
 //========================================================================
@@ -44,46 +43,7 @@ namespace  {
 //  （デフォルトコンストラクタ）。
 //
 
-DecimalCurrency::DecimalCurrency()
-    : m_internValue(0),
-      m_scaleFactor(1)
-{
-}
-
-//----------------------------------------------------------------
-//    インスタンスを初期化する
-//  （コンストラクタ）。
-//
-
-DecimalCurrency::DecimalCurrency(
-        const  CurrencyNumerator    intValue,
-        const  CurrencyDenominator  intScale)
-    : m_internValue(intValue),
-      m_scaleFactor(intScale)
-{
-}
-
-//----------------------------------------------------------------
-//    インスタンスを初期化する
-//  （コンストラクタ）。
-//
-
-DecimalCurrency::DecimalCurrency(
-        const   TInternalValue  intValue)
-    : m_internValue(intValue),
-      m_scaleFactor(1)
-{
-}
-
-//----------------------------------------------------------------
-//    別のインスタンスと同じ内容で初期化する。
-//  （コピーコンストラクタ）。
-//
-
-DecimalCurrency::DecimalCurrency(
-        const  DecimalCurrency  &src)
-    : m_internValue(src.m_internValue),
-      m_scaleFactor(src.m_scaleFactor)
+BookFile::BookFile()
 {
 }
 
@@ -92,7 +52,7 @@ DecimalCurrency::DecimalCurrency(
 //  （デストラクタ）。
 //
 
-DecimalCurrency::~DecimalCurrency()
+BookFile::~BookFile()
 {
 }
 
@@ -121,55 +81,28 @@ DecimalCurrency::~DecimalCurrency()
 //    Public Member Functions.
 //
 
-//========================================================================
-//
-//    Accessors.
-//
-
 //----------------------------------------------------------------
-//    現在の内部表現の値を取得する。
+//    データをテキストストリームから読み込む。
 //
 
-const   CurrencyNumerator
-DecimalCurrency::getInternalValue()  const
+ErrCode
+BookFile::readFromTextStream(
+        std::istream          & inStr,
+        DocCls::BookDocument  * ptrDoc)
 {
-    return ( this->m_internValue );
+    return ( ErrCode::FAILURE );
 }
 
 //----------------------------------------------------------------
-//    値を設定する。
+//    データをテキストストリームに書き込む。
 //
 
-DecimalCurrency  &
-DecimalCurrency::setInternalValue(
-        const   CurrencyNumerator   intValue)
+ErrCode
+BookFile::saveToTextStream(
+        const   DocCls::BookDocument  & objDoc,
+        std::ostream                  & outStr)
 {
-    this->m_internValue = intValue;
-    return ( *this );
-}
-
-//----------------------------------------------------------------
-//    値を設定する。
-//
-
-DecimalCurrency  &
-DecimalCurrency::setInternalValue(
-        const  CurrencyNumerator    intValue,
-        const  CurrencyDenominator  intScale)
-{
-    this->m_internValue = intValue;
-    this->m_scaleFactor = intScale;
-    return ( *this );
-}
-
-//----------------------------------------------------------------
-//    現在のスケールファクタを取得する。
-//
-
-const   CurrencyDenominator
-DecimalCurrency::getScaleFactor()  const
-{
-    return ( this->m_scaleFactor );
+    return ( ErrCode::FAILURE );
 }
 
 //========================================================================
@@ -182,5 +115,5 @@ DecimalCurrency::getScaleFactor()  const
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Common
+}   //  End of namespace  Format
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END

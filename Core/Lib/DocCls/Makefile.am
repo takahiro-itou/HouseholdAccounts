@@ -25,6 +25,9 @@ LIBRARY_SOURCE_FILES        =  \
         BookCategory.cpp               \
         BookDocument.cpp               \
         CategoryManager.cpp            \
+        PurchasedGoods.cpp             \
+        ReceiptEntriesChunk.cpp        \
+        ReceiptInfo.cpp                \
         StringTable.cpp                \
         ${EXTRA_LIBRARY_SOURCE_FILES}
 
@@ -42,6 +45,9 @@ INCLIB_HEADER_FILES         =  \
         ${INCLIB_SOURCE_DIR}/BookCategory.h            \
         ${INCLIB_SOURCE_DIR}/BookDocument.h            \
         ${INCLIB_SOURCE_DIR}/CategoryManager.h         \
+        ${INCLIB_SOURCE_DIR}/PurchasedGoods.h          \
+        ${INCLIB_SOURCE_DIR}/ReceiptEntriesChunk.h     \
+        ${INCLIB_SOURCE_DIR}/ReceiptInfo.h             \
         ${INCLIB_SOURCE_DIR}/StringTable.h             \
         ${EXTRA_LIBRARY_HEADER_FILES}
 
@@ -58,7 +64,7 @@ LIBRARY_COMPILE_SRCFILES    =  \
 ##    List of Libraries.
 ##
 
-STATIC_LIBRARIES_LIST   =  libhacDocCls.a
+STATIC_LIBRARIES_LIST   =  libhabDocCls.a
 SHARED_LIBRARIES_LIST   =
 
 ##
@@ -84,5 +90,5 @@ include  $(top_srcdir)/.M4/Makefile.Install.inc
 ##    Build Libraries.
 ##
 
-libhacDocCls_a_SOURCES   =  ${LIBRARY_SOURCE_FILES}
+libhabDocCls_a_SOURCES      =  ${LIBRARY_SOURCE_FILES}
 

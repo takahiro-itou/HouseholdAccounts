@@ -255,11 +255,23 @@ BookCategory::getCategoryType()  const
 }
 
 //----------------------------------------------------------------
+//    指定した項目のサブ（子孫）項目か判定する。
+//
+
+const   Boolean
+BookCategory::isDescendantOf(
+        const   CategoryHandle  cateOther)  const
+{
+    return ( this->m_ptrManager->isDescendantCategory(
+                     this->m_selfCateHandle, cateOther) );
+}
+
+//----------------------------------------------------------------
 //    サブ項目が展開されているか調べる。
 //
 
 const   Boolean
-BookCategory::isExpanded()
+BookCategory::isExpanded()  const
 {
     const   CategoryFlags   cFlags  = this->m_categoryFlags;
     return ( TO_SBOOLEAN_FROM_INT(cFlags & CategoryFlags::CFLAG_EXPANDED) );

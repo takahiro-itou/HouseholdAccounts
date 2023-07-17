@@ -70,8 +70,8 @@ Dim startBalance As Wrapper.Common.DecimalCurrency
         'バッファを確保する
         With utBook.BookCategories
             .reserveRootCategories(lngRootItemCount)
-            .InnerTaxHandle = lngHeader(36)
-            .OuterTaxHandle = lngHeader(37)
+            .InclusiveTaxHandle = lngHeader(36)
+            .ExclusiveTaxHandle = lngHeader(37)
         End With
 
         'ヘッダ用の文字列テーブルを読み込む
@@ -161,8 +161,8 @@ Dim blnResult As Boolean
             lngHeader(32) = lngItemCount
             lngHeader(33) = .RootCategoryCount
 
-            lngHeader(36) = .InnerTaxHandle
-            lngHeader(37) = .OuterTaxHandle
+            lngHeader(36) = .InclusiveTaxHandle
+            lngHeader(37) = .ExclusiveTaxHandle
         End With
 
         'テンポラリファイルのディレクトリを取得する

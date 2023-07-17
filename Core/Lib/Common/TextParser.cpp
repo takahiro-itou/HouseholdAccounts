@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -21,6 +21,9 @@
 #include    "Account/pch/PreCompile.h"
 
 #include    "Account/Common/TextParser.h"
+
+#include    <stdlib.h>
+#include    <string.h>
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
@@ -82,6 +85,28 @@ TextParser::~TextParser()
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    文字列を指定した文字で分割する。
+//
+
+ErrCode
+TextParser::splitText(
+        const  std::string  &inText,
+        const  char  *      sepChrs,
+        TextBuffer          &bufText,
+        TokenArray          &vTokens)
+{
+    const   size_t  szText  = inText.size();
+    bufText.clear();
+    bufText.resize(szText + 1);
+    char  *  const  ptrBuf  = &(bufText[0]);
+
+    ::memcpy(ptrBuf, inText.c_str(), szText);
+    ptrBuf[szText]  = '\0';
+
+    return  splitTextSub(ptrBuf, ptrBuf + szText, sepChrs, vTokens);
+}
+
 //========================================================================
 //
 //    Protected Member Functions.
@@ -91,6 +116,70 @@ TextParser::~TextParser()
 //
 //    For Internal Use Only.
 //
+
+//----------------------------------------------------------------
+//    文字列を指定した文字で分割する。
+//
+
+ErrCode
+TextParser::splitTextSub(
+        char  *  const  ptrBuf,
+        char  *  const  ptrEnd,
+        const  char  *  sepChrs,
+        TokenArray     &vTokens)
+{
+    char  *         pWrite  = nullptr;
+    const  char  *  pToken  = ptrBuf;
+    const  int      cqBegin = '"';
+    const  int      cqEnd   = '"';
+    int             cqLevel = 0;
+
+    for ( char * p = ptrBuf; p < ptrEnd; ++ p ) {
+        const  int  ch  = static_cast<unsigned char>(*p);
+        if ( cqLevel > 0 ) {
+            if ( ch == cqEnd ) {
+                if ( pWrite == nullptr ) {
+                    pWrite  = p;
+                }
+                -- cqLevel;
+            }
+            continue;
+        }
+        if ( ch == cqBegin ) {
+            if ( p == pToken ) {
+                //  トークンの先頭にクォートがある場合は、  //
+                //  そのクォートを削除するため、            //
+                //  トークンの開始位置を調整する。          //
+                pToken  = p + 1;
+            } else if ( pWrite == nullptr ) {
+                pWrite  = p;
+            }
+            ++ cqLevel;
+            continue;
+        }
+        if ( strchr(sepChrs, ch) != NULL ) {
+            //  区切り文字 (のいずれか) なので、ここで区切る。  //
+            *p  = '\0';
+            if ( pWrite != nullptr ) {
+                *pWrite = '\0';
+            }
+            vTokens.push_back(pToken);
+            pToken  = p + 1;
+            pWrite  = nullptr;
+        }
+        if ( pWrite != nullptr ) {
+            *pWrite = *p;
+            ++ pWrite;
+        }
+    }
+
+    //  最後の区切り文字以降の分があるのでそれを追加する。  //
+    //  ちょうど文字列の末尾が区切り文字だった場合は、      //
+    //  最後に空文字列があるものとして追加する必要がある。  //
+    vTokens.push_back(pToken);
+
+    return ( ErrCode::SUCCESS );
+}
 
 }   //  End of namespace  Common
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END

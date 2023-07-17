@@ -13,45 +13,42 @@
 *************************************************************************/
 
 /**
-**      An Interface of DecimalCurrency class.
+**      An Interface of PurchasedGoods struct.
 **
-**      @file       Common/DecimalCurrency.h
+**      @file       DocCls/PurchasedGoods.h
 **/
 
-#if !defined( HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H )
-#    define   HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H
+#if !defined( HACORE_DOCCLS_INCLUDED_PURCHASED_GOODS_H )
+#    define   HACORE_DOCCLS_INCLUDED_PURCHASED_GOODS_H
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
-#    include    "AccountsTypes.h"
+#    include    "Account/Common/AccountsTypes.h"
 #endif
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Common  {
+namespace  DocCls  {
 
 //  クラスの前方宣言。  //
 
 //========================================================================
 //
-//    DecimalCurrency  class.
+//    PurchasedGoods  struct.
 //
 /**
-**    固定小数点型の通貨クラス。
+**    商品の一個分のデータ。
+**
+**    購入した商品やサービス、または
+**  収入や資金振替の場合は財源等を管理する。
 **/
 
-class  DecimalCurrency
+struct  PurchasedGoods
 {
-
 //========================================================================
 //
 //    Internal Type Definitions.
 //
-public:
-
-    typedef     int64_t     TInternalValue;
-
-    typedef     double      DecimalType;
 
 //========================================================================
 //
@@ -64,43 +61,14 @@ public:
     **  （デフォルトコンストラクタ）。
     **
     **/
-    DecimalCurrency();
-
-    //----------------------------------------------------------------
-    /**   インスタンスを初期化する
-    **  （コンストラクタ）。
-    **
-    **  @param [in] intValue    内部の値。
-    **  @param [in] intScale    スケール。
-    **/
-    DecimalCurrency(
-            const  CurrencyNumerator    intValue,
-            const  CurrencyDenominator  intScale);
-
-    //----------------------------------------------------------------
-    /**   インスタンスを初期化する
-    **  （コンストラクタ）。
-    **
-    **  @param [in] intValue    内部の値。
-    **/
-    DecimalCurrency(
-            const   TInternalValue  intValue);
-
-    //----------------------------------------------------------------
-    /**   別のインスタンスと同じ内容で初期化する。
-    **  （コピーコンストラクタ）。
-    **
-    **  @param [in] src   コピー元インスタンス。
-    **/
-    DecimalCurrency(
-            const  DecimalCurrency  &src);
+    PurchasedGoods();
 
     //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
     **/
-    virtual  ~DecimalCurrency();
+    ~PurchasedGoods();
 
 //========================================================================
 //
@@ -129,47 +97,13 @@ public:
 
 //========================================================================
 //
+//    Public Member Functions (Operators).
+//
+
+//========================================================================
+//
 //    Accessors.
 //
-public:
-
-    //----------------------------------------------------------------
-    /**   現在の内部表現の値を取得する。
-    **
-    **  @return     内部表現の値。
-    **/
-    const   CurrencyNumerator
-    getInternalValue()  const;
-
-    //----------------------------------------------------------------
-    /**   値を設定する。
-    **
-    **  @param [in] intValue    内部表現の数値。
-    **  @return     インスタンス自身の参照。
-    **/
-    DecimalCurrency  &
-    setInternalValue(
-            const   CurrencyNumerator   intValue);
-
-    //----------------------------------------------------------------
-    /**   値を設定する。
-    **
-    **  @param [in] intValue    内部表現の数値。
-    **  @param [in] intScale    スケール。
-    **  @return     インスタンス自身の参照。
-    **/
-    DecimalCurrency  &
-    setInternalValue(
-            const  CurrencyNumerator    intValue,
-            const  CurrencyDenominator  intScale);
-
-    //----------------------------------------------------------------
-    /**   現在のスケールファクタを取得する。
-    **
-    **  @return     現在のスケールファクタの値。
-    **/
-    const   CurrencyDenominator
-    getScaleFactor()  const;
 
 //========================================================================
 //
@@ -185,11 +119,47 @@ public:
 //
 //    Member Variables.
 //
+public:
+
+    /**   勘定科目。    **/
+    CategoryHandle      accountHeadings;
+
+    /**   分類 (内訳) 。    **/
+    CategoryHandle      accountCategory;
+
+    /**   商品名の ID  (文字列テーブル内のインデックス) 。  **/
+    StringIndex         siGoodsId;
+
+    /**   商品名。  **/
+    std::string         productName;
+
+    /**   単価。    **/
+    CurrencyNumerator   unitPrice;
+
+    /**   数量。    **/
+    int                 nQuantity;
+
+    /**   値引額。  **/
+    CurrencyNumerator   cDiscount;
+
+    /**   小計。    **/
+    CurrencyNumerator   cSubTotal;
+
+    /**
+    **    内税額。
+    **
+    **  税込み価格ではなく税金額そのもの。
+    **/
+    CurrencyNumerator   inclusiveTaxVal;
+
+    /**
+    **    外税額。
+    **
+    **  税抜き価格ではなく税金額そのもの。
+    **/
+    CurrencyNumerator   exclusiveTaxVal;
+
 private:
-
-    CurrencyNumerator       m_internValue;
-
-    CurrencyDenominator     m_scaleFactor;
 
 //========================================================================
 //
@@ -197,10 +167,10 @@ private:
 //
 public:
     //  テストクラス。  //
-    friend  class   DecimalCurrencyTest;
+    friend  class   PurchasedGoodsTest;
 };
 
-}   //  End of namespace  Common
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif

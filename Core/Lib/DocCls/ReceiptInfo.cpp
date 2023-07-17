@@ -13,25 +13,24 @@
 *************************************************************************/
 
 /**
-**      An Implementation of DecimalCurrency class.
+**      An Implementation of ReceiptInfo class.
 **
-**      @file       Common/DecimalCurrency.cpp
+**      @file       DocCls/ReceiptInfo.cpp
 **/
 
 #include    "Account/pch/PreCompile.h"
-
-#include    "Account/Common/DecimalCurrency.h"
+#include    "Account/DocCls/ReceiptInfo.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Common  {
+namespace  DocCls  {
 
 namespace  {
 }   //  End of (Unnamed) namespace.
 
 //========================================================================
 //
-//    DecimalCurrency  class.
+//    ReceiptInfo  class.
 //
 
 //========================================================================
@@ -44,46 +43,19 @@ namespace  {
 //  （デフォルトコンストラクタ）。
 //
 
-DecimalCurrency::DecimalCurrency()
-    : m_internValue(0),
-      m_scaleFactor(1)
-{
-}
-
-//----------------------------------------------------------------
-//    インスタンスを初期化する
-//  （コンストラクタ）。
-//
-
-DecimalCurrency::DecimalCurrency(
-        const  CurrencyNumerator    intValue,
-        const  CurrencyDenominator  intScale)
-    : m_internValue(intValue),
-      m_scaleFactor(intScale)
-{
-}
-
-//----------------------------------------------------------------
-//    インスタンスを初期化する
-//  （コンストラクタ）。
-//
-
-DecimalCurrency::DecimalCurrency(
-        const   TInternalValue  intValue)
-    : m_internValue(intValue),
-      m_scaleFactor(1)
-{
-}
-
-//----------------------------------------------------------------
-//    別のインスタンスと同じ内容で初期化する。
-//  （コピーコンストラクタ）。
-//
-
-DecimalCurrency::DecimalCurrency(
-        const  DecimalCurrency  &src)
-    : m_internValue(src.m_internValue),
-      m_scaleFactor(src.m_scaleFactor)
+ReceiptInfo::ReceiptInfo()
+    : m_receiptDate(0),
+      m_receiptTime(),
+      m_shopIdx(-1),
+      m_shopName(),
+      m_recordChunk(),
+      m_totalCached(Boolean::BOOL_FALSE),
+      m_subTotal(),
+      m_sumInclusiveTax(0),
+      m_sumExclusiveTax(0),
+      m_totalPrice(0),
+      m_chInclusiveTax(-1),
+      m_chExclusiveTax(-1)
 {
 }
 
@@ -92,7 +64,7 @@ DecimalCurrency::DecimalCurrency(
 //  （デストラクタ）。
 //
 
-DecimalCurrency::~DecimalCurrency()
+ReceiptInfo::~ReceiptInfo()
 {
 }
 
@@ -121,55 +93,63 @@ DecimalCurrency::~DecimalCurrency()
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    レシート情報を初期化する。
+//
+
+ErrCode
+ReceiptInfo::initializeReceiptInfo(
+        const  std::string  &recDate,
+        const  std::string  &recTime,
+        const  std::string  &shopName)
+{
+    this->m_receiptDate = 0;
+    this->m_receiptTime = recTime;
+    this->m_shopName    = shopName;
+
+    return ( ErrCode::SUCCESS );
+}
+
+//========================================================================
+//
+//    Public Member Functions (Operators).
+//
+
 //========================================================================
 //
 //    Accessors.
 //
 
 //----------------------------------------------------------------
-//    現在の内部表現の値を取得する。
+//    レコードを取得する。
 //
 
-const   CurrencyNumerator
-DecimalCurrency::getInternalValue()  const
+const   ReceiptInfo::ChunkArray  &
+ReceiptInfo::getRecordChunks()  const
 {
-    return ( this->m_internValue );
+    return ( this->m_recordChunk );
 }
 
 //----------------------------------------------------------------
-//    値を設定する。
+//    店名を取得する。
 //
 
-DecimalCurrency  &
-DecimalCurrency::setInternalValue(
-        const   CurrencyNumerator   intValue)
+const  std::string  &
+ReceiptInfo::getShopName()  const
 {
-    this->m_internValue = intValue;
+    return ( this->m_shopName );
+}
+
+//----------------------------------------------------------------
+//    店名を設定する。
+//
+
+ReceiptInfo  &
+ReceiptInfo::setShopName(
+        const  std::string  &shopName)
+{
+    this->m_shopName    = shopName;
     return ( *this );
-}
-
-//----------------------------------------------------------------
-//    値を設定する。
-//
-
-DecimalCurrency  &
-DecimalCurrency::setInternalValue(
-        const  CurrencyNumerator    intValue,
-        const  CurrencyDenominator  intScale)
-{
-    this->m_internValue = intValue;
-    this->m_scaleFactor = intScale;
-    return ( *this );
-}
-
-//----------------------------------------------------------------
-//    現在のスケールファクタを取得する。
-//
-
-const   CurrencyDenominator
-DecimalCurrency::getScaleFactor()  const
-{
-    return ( this->m_scaleFactor );
 }
 
 //========================================================================
@@ -182,5 +162,5 @@ DecimalCurrency::getScaleFactor()  const
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Common
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END

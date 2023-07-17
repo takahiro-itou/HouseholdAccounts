@@ -54,8 +54,8 @@ CategoryManager::CategoryManager()
       m_numUsedCategory(0),
       m_numRootCategory(0),
       m_bufCategory(),
-      m_chInnerTax(-1),
-      m_chOuterTax(-1)
+      m_chInclusiveTax(-1),
+      m_chExclusiveTax(-1)
 {
 }
 
@@ -138,6 +138,35 @@ CategoryManager::allocNewCategory()
 }
 
 //----------------------------------------------------------------
+//    名前から項目を検索する。
+//
+
+const  CategoryHandle
+CategoryManager::findCategory(
+        const   std::string    &cateName,
+        const   CategoryHandle  cateParent)  const
+{
+    CategoryHandle  retCate = static_cast<CategoryHandle>(-1);
+
+    const   CategoryHandle  bufSize = this->m_cateBufferSize;
+    for ( CategoryHandle
+            i = static_cast<CategoryHandle>(0); i < bufSize; ++ i )
+    {
+        const  BookCategory &bc = this->m_bufCategory.at(i);
+        if ( bc.getFlags() == CategoryFlags::CTYPE_NOTUSED ) {
+            continue;
+        }
+        if ( bc.getCategoryName() != cateName ) {
+            continue;
+        }
+        retCate = i;
+        break;
+    }
+
+    return ( retCate );
+}
+
+//----------------------------------------------------------------
 //    項目の種類を取得する。
 //
 
@@ -211,6 +240,35 @@ CategoryManager::insertNewCategory(
 
     //  追加した新しい項目のハンドルを返す。    //
     return ( cateNew );
+}
+
+//----------------------------------------------------------------
+//    指定した項目のサブ項目（子孫）にあたるか判定する。
+//
+//  サブ項目のさらにサブ項目等、いわゆる子孫も含む。
+//
+
+const   Boolean
+CategoryManager::isDescendantCategory(
+        const   CategoryHandle  cateToCheck,
+        const   CategoryHandle  cateUpstream)  const
+{
+    CategoryHandle  catePar;
+    CategoryHandle  cateCur = cateToCheck;
+
+    if ( cateCur == cateUpstream ) {
+        return ( Boolean::BOOL_TRUE );
+    }
+    catePar = this->m_bufCategory.at(cateCur).getParentHandle();
+    while( catePar >= 0 ) {
+        cateCur = catePar;
+        if ( cateCur == cateUpstream ) {
+            return ( Boolean::BOOL_TRUE );
+        }
+        catePar = this->m_bufCategory.at(cateCur).getParentHandle();
+    }
+
+    return ( Boolean::BOOL_FALSE );
 }
 
 //----------------------------------------------------------------
@@ -298,9 +356,9 @@ CategoryManager::getBufferCapacity()  const
 //
 
 const   CategoryHandle
-CategoryManager::getInnerTaxCategoryHandle()  const
+CategoryManager::getInclusiveTaxCategoryHandle()  const
 {
-    return ( this->m_chInnerTax );
+    return ( this->m_chInclusiveTax );
 }
 
 //----------------------------------------------------------------
@@ -308,10 +366,10 @@ CategoryManager::getInnerTaxCategoryHandle()  const
 //
 
 void
-CategoryManager::setInnerTaxCategoryHandle(
+CategoryManager::setInclusiveTaxCategoryHandle(
         const   CategoryHandle  hCate)
 {
-    this->m_chInnerTax  = hCate;
+    this->m_chInclusiveTax  = hCate;
 }
 
 //----------------------------------------------------------------
@@ -319,9 +377,9 @@ CategoryManager::setInnerTaxCategoryHandle(
 //
 
 const   CategoryHandle
-CategoryManager::getOuterTaxCategoryHandle()  const
+CategoryManager::getExclusiveTaxCategoryHandle()  const
 {
-    return ( this->m_chOuterTax );
+    return ( this->m_chExclusiveTax );
 }
 
 //----------------------------------------------------------------
@@ -329,10 +387,10 @@ CategoryManager::getOuterTaxCategoryHandle()  const
 //
 
 void
-CategoryManager::setOuterTaxCategoryHandle(
+CategoryManager::setExclusiveTaxCategoryHandle(
         const   CategoryHandle  hCate)
 {
-    this->m_chOuterTax  = hCate;
+    this->m_chExclusiveTax  = hCate;
 }
 
 //----------------------------------------------------------------

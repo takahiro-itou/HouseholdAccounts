@@ -15,15 +15,15 @@
 /**
 **      An Implementation of Test Case 'BookFile'.
 **
-**      @file       FileFormat/Tests/BookFileTest.cpp
+**      @file       Format/Tests/BookFileTest.cpp
 **/
 
 #include    "TestDriver.h"
-#include    "Account/FileFormat/BookFile.h"
+#include    "Account/Format/BookFile.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  FileFormat  {
+namespace  Format  {
 
 //  クラスの前方宣言。  //
 
@@ -62,7 +62,7 @@ void  BookFileTest::testBookFile()
     return;
 }
 
-}   //  End of namespace  FileFormat
+}   //  End of namespace  Format
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 //========================================================================

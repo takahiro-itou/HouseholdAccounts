@@ -13,24 +13,24 @@
 *************************************************************************/
 
 /**
-**      An Implementation of BookFile class.
+**      An Implementation of PurchasedGoods class.
 **
-**      @file       FileFormat/BookFile.cpp
+**      @file       DocCls/PurchasedGoods.cpp
 **/
 
 #include    "Account/pch/PreCompile.h"
-#include    "Account/FileFormat/BookFile.h"
+#include    "Account/DocCls/PurchasedGoods.h"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  FileFormat  {
+namespace  DocCls  {
 
 namespace  {
 }   //  End of (Unnamed) namespace.
 
 //========================================================================
 //
-//    BookFile  class.
+//    PurchasedGoods  class.
 //
 
 //========================================================================
@@ -43,7 +43,17 @@ namespace  {
 //  （デフォルトコンストラクタ）。
 //
 
-BookFile::BookFile()
+PurchasedGoods::PurchasedGoods()
+    : accountHeadings(-1),
+      accountCategory(-1),
+      siGoodsId(-1),
+      productName(),
+      unitPrice(0),
+      nQuantity(0),
+      cDiscount(0),
+      cSubTotal(0),
+      inclusiveTaxVal(0),
+      exclusiveTaxVal(0)
 {
 }
 
@@ -52,7 +62,7 @@ BookFile::BookFile()
 //  （デストラクタ）。
 //
 
-BookFile::~BookFile()
+PurchasedGoods::~PurchasedGoods()
 {
 }
 
@@ -81,29 +91,15 @@ BookFile::~BookFile()
 //    Public Member Functions.
 //
 
-//----------------------------------------------------------------
-//    データをテキストストリームから読み込む。
+//========================================================================
+//
+//    Public Member Functions (Operators).
 //
 
-ErrCode
-BookFile::readFromTextStream(
-        std::istream          & inStr,
-        DocCls::BookDocument  * ptrDoc)
-{
-    return ( ErrCode::FAILURE );
-}
-
-//----------------------------------------------------------------
-//    データをテキストストリームに書き込む。
+//========================================================================
 //
-
-ErrCode
-BookFile::saveToTextStream(
-        const   DocCls::BookDocument  & objDoc,
-        std::ostream                  & outStr)
-{
-    return ( ErrCode::FAILURE );
-}
+//    Accessors.
+//
 
 //========================================================================
 //
@@ -115,5 +111,5 @@ BookFile::saveToTextStream(
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  FileFormat
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END

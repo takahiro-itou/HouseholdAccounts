@@ -280,11 +280,22 @@ public:
     getCategoryType()  const;
 
     //----------------------------------------------------------------
+    /**   指定した項目のサブ（子孫）項目か判定する。
+    **
+    **  @param [in] cateOther   別の項目のハンドル。
+    **  @retval     BOOL_TRUE   : この項目は cateOther  の子孫。
+    **  @retval     BOOL_FALSE  : 上記以外の場合。
+    **/
+    const   Boolean
+    isDescendantOf(
+            const   CategoryHandle  cateOther)  const;
+
+    //----------------------------------------------------------------
     /**   サブ項目が展開されているか調べる。
     **
     **/
     const   Boolean
-    isExpanded();
+    isExpanded()  const;
 
     //----------------------------------------------------------------
     /**   サブ項目の個数を取得する。

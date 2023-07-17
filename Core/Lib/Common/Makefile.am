@@ -22,6 +22,7 @@ EXTRA_NOINST_DATA_FILES     =
 EXTRA_NOINST_HEADER_FILES   =
 
 LIBRARY_SOURCE_FILES        =  \
+        DateTimeFormat.cpp             \
         DecimalCurrency.cpp            \
         TextParser.cpp                 \
         ${EXTRA_LIBRARY_SOURCE_FILES}
@@ -40,6 +41,7 @@ INCLIB_HEADER_FILES         =  \
         ${INCLIB_SOURCE_DIR}/AccountsProject.h      \
         ${INCLIB_SOURCE_DIR}/AccountsTypes.h        \
         ${INCLIB_SOURCE_DIR}/BookInterface.h        \
+        ${INCLIB_SOURCE_DIR}/DateTimeFormat.h       \
         ${INCLIB_SOURCE_DIR}/DecimalCurrency.h      \
         ${INCLIB_SOURCE_DIR}/EnumBitFlag.h          \
         ${INCLIB_SOURCE_DIR}/StrictTypes.h          \
@@ -62,7 +64,7 @@ LIBRARY_COMPILE_SRCFILES    =  \
 ##    List of Libraries.
 ##
 
-STATIC_LIBRARIES_LIST   =  libhacCommon.a
+STATIC_LIBRARIES_LIST   =  libhabCommon.a
 SHARED_LIBRARIES_LIST   =
 
 ##
@@ -88,5 +90,5 @@ include  $(top_srcdir)/.M4/Makefile.Install.inc
 ##    Build Libraries.
 ##
 
-libhacCommon_a_SOURCES      =  ${LIBRARY_SOURCE_FILES}
+libhabCommon_a_SOURCES      =  ${LIBRARY_SOURCE_FILES}
 

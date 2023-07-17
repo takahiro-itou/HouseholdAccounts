@@ -242,15 +242,15 @@ CategoryManager::BufferCapacity::get()
 //
 
 CategoryHandle
-CategoryManager::InnerTaxHandle::get()
+CategoryManager::InclusiveTaxHandle::get()
 {
-    return  this->m_ptrObj->getInnerTaxCategoryHandle();
+    return  this->m_ptrObj->getInclusiveTaxCategoryHandle();
 }
 
 void
-CategoryManager::InnerTaxHandle::set(CategoryHandle hCate)
+CategoryManager::InclusiveTaxHandle::set(CategoryHandle hCate)
 {
-    this->m_ptrObj->setInnerTaxCategoryHandle(hCate);
+    this->m_ptrObj->setInclusiveTaxCategoryHandle(hCate);
 }
 
 //----------------------------------------------------------------
@@ -268,15 +268,15 @@ CategoryManager::Items::get(CategoryHandle hCate)
 //
 
 CategoryHandle
-CategoryManager::OuterTaxHandle::get()
+CategoryManager::ExclusiveTaxHandle::get()
 {
-    return  this->m_ptrObj->getOuterTaxCategoryHandle();
+    return  this->m_ptrObj->getExclusiveTaxCategoryHandle();
 }
 
 void
-CategoryManager::OuterTaxHandle::set(CategoryHandle hCate)
+CategoryManager::ExclusiveTaxHandle::set(CategoryHandle hCate)
 {
-    this->m_ptrObj->setOuterTaxCategoryHandle(hCate);
+    this->m_ptrObj->setExclusiveTaxCategoryHandle(hCate);
 }
 
 //----------------------------------------------------------------

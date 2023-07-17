@@ -13,13 +13,13 @@
 *************************************************************************/
 
 /**
-**      An Interface of DecimalCurrency class.
+**      An Interface of DateTimeFormat class.
 **
-**      @file       Common/DecimalCurrency.h
+**      @file       Common/DateTimeFormat.h
 **/
 
-#if !defined( HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H )
-#    define   HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H
+#if !defined( HACORE_COMMON_INCLUDED_DATE_TIME_FORMAT_H )
+#    define   HACORE_COMMON_INCLUDED_DATE_TIME_FORMAT_H
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
@@ -30,28 +30,21 @@
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {
 
-//  クラスの前方宣言。  //
 
 //========================================================================
 //
-//    DecimalCurrency  class.
+//    DateTimeFormat  class.
 //
 /**
-**    固定小数点型の通貨クラス。
+**
 **/
 
-class  DecimalCurrency
+class  DateTimeFormat
 {
-
 //========================================================================
 //
 //    Internal Type Definitions.
 //
-public:
-
-    typedef     int64_t     TInternalValue;
-
-    typedef     double      DecimalType;
 
 //========================================================================
 //
@@ -64,43 +57,14 @@ public:
     **  （デフォルトコンストラクタ）。
     **
     **/
-    DecimalCurrency();
-
-    //----------------------------------------------------------------
-    /**   インスタンスを初期化する
-    **  （コンストラクタ）。
-    **
-    **  @param [in] intValue    内部の値。
-    **  @param [in] intScale    スケール。
-    **/
-    DecimalCurrency(
-            const  CurrencyNumerator    intValue,
-            const  CurrencyDenominator  intScale);
-
-    //----------------------------------------------------------------
-    /**   インスタンスを初期化する
-    **  （コンストラクタ）。
-    **
-    **  @param [in] intValue    内部の値。
-    **/
-    DecimalCurrency(
-            const   TInternalValue  intValue);
-
-    //----------------------------------------------------------------
-    /**   別のインスタンスと同じ内容で初期化する。
-    **  （コピーコンストラクタ）。
-    **
-    **  @param [in] src   コピー元インスタンス。
-    **/
-    DecimalCurrency(
-            const  DecimalCurrency  &src);
+    DateTimeFormat();
 
     //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
     **/
-    virtual  ~DecimalCurrency();
+    ~DateTimeFormat();
 
 //========================================================================
 //
@@ -129,47 +93,13 @@ public:
 
 //========================================================================
 //
+//    Public Member Functions (Operators).
+//
+
+//========================================================================
+//
 //    Accessors.
 //
-public:
-
-    //----------------------------------------------------------------
-    /**   現在の内部表現の値を取得する。
-    **
-    **  @return     内部表現の値。
-    **/
-    const   CurrencyNumerator
-    getInternalValue()  const;
-
-    //----------------------------------------------------------------
-    /**   値を設定する。
-    **
-    **  @param [in] intValue    内部表現の数値。
-    **  @return     インスタンス自身の参照。
-    **/
-    DecimalCurrency  &
-    setInternalValue(
-            const   CurrencyNumerator   intValue);
-
-    //----------------------------------------------------------------
-    /**   値を設定する。
-    **
-    **  @param [in] intValue    内部表現の数値。
-    **  @param [in] intScale    スケール。
-    **  @return     インスタンス自身の参照。
-    **/
-    DecimalCurrency  &
-    setInternalValue(
-            const  CurrencyNumerator    intValue,
-            const  CurrencyDenominator  intScale);
-
-    //----------------------------------------------------------------
-    /**   現在のスケールファクタを取得する。
-    **
-    **  @return     現在のスケールファクタの値。
-    **/
-    const   CurrencyDenominator
-    getScaleFactor()  const;
 
 //========================================================================
 //
@@ -185,19 +115,18 @@ public:
 //
 //    Member Variables.
 //
-private:
-
-    CurrencyNumerator       m_internValue;
-
-    CurrencyDenominator     m_scaleFactor;
 
 //========================================================================
 //
 //    Other Features.
 //
+private:
+    typedef     DateTimeFormat      This;
+    DateTimeFormat      (const  This  &);
+    This &  operator =  (const  This  &);
 public:
     //  テストクラス。  //
-    friend  class   DecimalCurrencyTest;
+    friend  class   DateTimeFormatTest;
 };
 
 }   //  End of namespace  Common

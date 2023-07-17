@@ -6,6 +6,7 @@
 EXTRATESTS              =
 TESTS                   =  \
         AccountsProjectTest     \
+        DateTimeFormatTest      \
         DecimalCurrencyTest     \
         EnumBitFlagTest         \
         StrictTypesTest         \
@@ -16,7 +17,7 @@ TESTS                   =  \
 ##    Test Configurations.
 ##
 
-TARGET_TESTEE_LIBRARY       +=  -lhacCommon
+TARGET_TESTEE_LIBRARY       +=  -lhabCommon
 
 DIST_NOINST_DATA_FILES      +=
 DIST_NOINST_HEADER_FILES    +=
@@ -36,6 +37,7 @@ TEST_LDFLAGS_COMMON         +=
 ##
 
 AccountsProjectTest_SOURCES     =  AccountsProjectTest.cpp
+DateTimeFormatTest_SOURCES      =  DateTimeFormatTest.cpp
 DecimalCurrencyTest_SOURCES     =  DecimalCurrencyTest.cpp
 EnumBitFlagTest_SOURCES         =  EnumBitFlagTest.cpp
 StrictTypesTest_SOURCES         =  StrictTypesTest.cpp
