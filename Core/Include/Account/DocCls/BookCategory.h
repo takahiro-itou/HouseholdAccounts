@@ -288,14 +288,14 @@ public:
     **/
     const   Boolean
     isDescendantOf(
-            const   CategoryHandle  cateOther);
+            const   CategoryHandle  cateOther)  const;
 
     //----------------------------------------------------------------
     /**   サブ項目が展開されているか調べる。
     **
     **/
     const   Boolean
-    isExpanded();
+    isExpanded()  const;
 
     //----------------------------------------------------------------
     /**   サブ項目の個数を取得する。

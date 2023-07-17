@@ -260,7 +260,7 @@ BookCategory::getCategoryType()  const
 
 const   Boolean
 BookCategory::isDescendantOf(
-        const   CategoryHandle  cateOther)
+        const   CategoryHandle  cateOther)  const
 {
     return ( Boolean::BOOL_FALSE );
 }
@@ -270,7 +270,7 @@ BookCategory::isDescendantOf(
 //
 
 const   Boolean
-BookCategory::isExpanded()
+BookCategory::isExpanded()  const
 {
     const   CategoryFlags   cFlags  = this->m_categoryFlags;
     return ( TO_SBOOLEAN_FROM_INT(cFlags & CategoryFlags::CFLAG_EXPANDED) );
