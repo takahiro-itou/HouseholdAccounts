@@ -41,6 +41,7 @@ class  CategoryManagerTest : public  TestFixture
     CPPUNIT_TEST(testCategoryManager);
     CPPUNIT_TEST(testFindCategory1);
     CPPUNIT_TEST(testFindCategory2);
+    CPPUNIT_TEST(testIsDescendantCategory);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -51,6 +52,7 @@ private:
     void  testCategoryManager();
     void  testFindCategory1();
     void  testFindCategory2();
+    void  testIsDescendantCategory();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( CategoryManagerTest );
@@ -342,6 +344,115 @@ void  CategoryManagerTest::testFindCategory2()
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(-1),
             testee.findCategory("Head1", static_cast<CategoryHandle>(11)));
+
+    return;
+}
+
+void  CategoryManagerTest::testIsDescendantCategory()
+{
+    CategoryManager     testee;
+
+    testee.reserveRootCategories(CategoryHandle(4));
+
+    testee.setupRootCategory(
+            CategoryHandle(0), "Root1",
+            DocCls::CategoryFlags::CTYPE_INCOME,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.setupRootCategory(
+            CategoryHandle(1), "Root2",
+            DocCls::CategoryFlags::CTYPE_OUTLAY,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.setupRootCategory(
+            CategoryHandle(2), "Balance1",
+            DocCls::CategoryFlags::CTYPE_BALANCE,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.setupRootCategory(
+            CategoryHandle(3), "Balance2",
+            DocCls::CategoryFlags::CTYPE_BALANCE,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    testee.insertNewCategory(
+            CategoryHandle(0), "Head1",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(4), "Cate1",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    testee.insertNewCategory(
+            CategoryHandle(1), "Head1",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(6), "Cate1",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    testee.insertNewCategory(
+            CategoryHandle(2), "Head1",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(8), "Cate1",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    testee.insertNewCategory(
+            CategoryHandle(3), "Head1",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    testee.insertNewCategory(
+            CategoryHandle(10), "Cate1",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(12),
+            testee.getRegisteredCategoryCount());
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(4),
+            testee.getRootCategoryCount());
+    CPPUNIT_ASSERT_EQUAL(
+            static_cast<CategoryHandle>(16),
+            testee.getBufferCapacity());
+
+    const  int  pattern[12][12] = {
+        { 1, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 1, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 1, 0,   0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 1,   0, 0, 0, 0, 0, 0, 0, 0 },
+        { 1, 0, 0, 0,   1, 0, 0, 0, 0, 0, 0, 0 },
+        { 1, 0, 0, 0,   1, 1, 0, 0, 0, 0, 0, 0 },
+        { 0, 1, 0, 0,   0, 0, 1, 0, 0, 0, 0, 0 },
+        { 0, 1, 0, 0,   0, 0, 1, 1, 0, 0, 0, 0 },
+        { 0, 0, 1, 0,   0, 0, 0, 0, 1, 0, 0, 0 },
+        { 0, 0, 1, 0,   0, 0, 0, 0, 1, 1, 0, 0 },
+        { 0, 0, 0, 1,   0, 0, 0, 0, 0, 0, 1, 0 },
+        { 0, 0, 0, 1,   0, 0, 0, 0, 0, 0, 1, 1 }
+    };
+
+    for ( int i = 0; i < 12; ++ i ) {
+        for ( int j = 0; j < 12; ++ j ) {
+            Boolean retCode = testee.isDescendantCategory(
+                    static_cast<CategoryHandle>(i),
+                    static_cast<CategoryHandle>(j));
+            CPPUNIT_ASSERT_EQUAL(
+                    pattern[i][j], static_cast<int>(retCode));
+        }
+    }
 
     return;
 }
