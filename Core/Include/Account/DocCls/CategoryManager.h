@@ -187,7 +187,7 @@ public:
     virtual  const  Boolean
     isDescendantCategory(
             const   CategoryHandle  cateToCheck,
-            const   CategoryHandle  cateUpstream);
+            const   CategoryHandle  cateUpstream)  const;
 
     //----------------------------------------------------------------
     /**   ルート項目データ用の領域を確保する。

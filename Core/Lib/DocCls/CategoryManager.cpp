@@ -251,7 +251,7 @@ CategoryManager::insertNewCategory(
 const   Boolean
 CategoryManager::isDescendantCategory(
         const   CategoryHandle  cateToCheck,
-        const   CategoryHandle  cateUpstream)
+        const   CategoryHandle  cateUpstream)  const
 {
     CategoryHandle  catePar;
     CategoryHandle  cateCur = cateToCheck;
