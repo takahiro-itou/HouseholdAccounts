@@ -202,6 +202,19 @@ public:
 //
 //    Protected Member Functions.
 //
+protected:
+
+    //----------------------------------------------------------------
+    /**   名前から項目を検索する。
+    **
+    **  @param [in] cateName      項目名。
+    **  @param [in] cateParent    検索を開始する親ハンドル。
+    **  @return     項目名に対応する項目のハンドル。
+    **/
+    const   CategoryHandle
+    findCategory(
+            const   std::string    &cateName,
+            const   CategoryHandle  cateParent)  const;
 
 //========================================================================
 //

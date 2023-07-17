@@ -218,6 +218,18 @@ ReceiptFile::setNumSkipColumns(
 //    Protected Member Functions.
 //
 
+//----------------------------------------------------------------
+//    名前から項目を検索する。
+//
+
+const   CategoryHandle
+ReceiptFile::findCategory(
+        const   std::string    &cateName,
+        const   CategoryHandle  cateParent)  const
+{
+    return ( static_cast<CategoryHandle>(-1) );
+}
+
 //========================================================================
 //
 //    For Internal Use Only.
