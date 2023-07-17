@@ -213,7 +213,7 @@ protected:
     **/
     const   CategoryHandle
     findCategory(
-            const   std::string    &cateName,
+            const   char *   const  cateName,
             const   CategoryHandle  cateParent)  const;
 
 //========================================================================

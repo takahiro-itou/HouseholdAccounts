@@ -224,7 +224,7 @@ ReceiptFile::setNumSkipColumns(
 
 const   CategoryHandle
 ReceiptFile::findCategory(
-        const   std::string    &cateName,
+        const   char *   const  cateName,
         const   CategoryHandle  cateParent)  const
 {
     return ( static_cast<CategoryHandle>(-1) );
