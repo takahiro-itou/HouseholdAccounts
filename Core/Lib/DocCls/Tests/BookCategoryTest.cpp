@@ -95,69 +95,66 @@ void  BookCategoryTest::testIsDescendantOf()
             DateSerial(0),
             Common::DecimalCurrency(0));
 
-    const  BookCategory  &
-        bc0 = cateMan.getBookCategory(static_cast<CategoryHandle>(0));
+    CONSTEXPR_VAR   CategoryHandle  ch0 = static_cast<CategoryHandle>(0);
+    CONSTEXPR_VAR   CategoryHandle  ch1 = static_cast<CategoryHandle>(1);
+    CONSTEXPR_VAR   CategoryHandle  ch2 = static_cast<CategoryHandle>(2);
+    CONSTEXPR_VAR   CategoryHandle  ch3 = static_cast<CategoryHandle>(3);
 
-    const  BookCategory  &
-        bc1 = cateMan.getBookCategory(static_cast<CategoryHandle>(1));
-
-    const  BookCategory  &
-        bc2 = cateMan.getBookCategory(static_cast<CategoryHandle>(2));
-
-    const  BookCategory  &
-        bc3 = cateMan.getBookCategory(static_cast<CategoryHandle>(3));
-
+    const  BookCategory  &  bc0 = cateMan.getBookCategory(ch0);
+    const  BookCategory  &  bc1 = cateMan.getBookCategory(ch1);
+    const  BookCategory  &  bc2 = cateMan.getBookCategory(ch2);
+    const  BookCategory  &  bc3 = cateMan.getBookCategory(ch3);
 
     CPPUNIT_ASSERT_EQUAL(
-            1,  static_cast<int>(bc0.isDescendantOf(0))
+            1,  static_cast<int>(bc0.isDescendantOf(ch0))
     );
     CPPUNIT_ASSERT_EQUAL(
-            0,  static_cast<int>(bc0.isDescendantOf(1))
+            0,  static_cast<int>(bc0.isDescendantOf(ch1))
     );
     CPPUNIT_ASSERT_EQUAL(
-            0,  static_cast<int>(bc0.isDescendantOf(2))
+            0,  static_cast<int>(bc0.isDescendantOf(ch2))
     );
     CPPUNIT_ASSERT_EQUAL(
-            0,  static_cast<int>(bc0.isDescendantOf(3))
+            0,  static_cast<int>(bc0.isDescendantOf(ch3))
     );
 
     CPPUNIT_ASSERT_EQUAL(
-            0,  static_cast<int>(bc1.isDescendantOf(0))
+            0,  static_cast<int>(bc1.isDescendantOf(ch0))
     );
     CPPUNIT_ASSERT_EQUAL(
-            1,  static_cast<int>(bc1.isDescendantOf(1))
+            1,  static_cast<int>(bc1.isDescendantOf(ch1))
     );
     CPPUNIT_ASSERT_EQUAL(
-            0,  static_cast<int>(bc1.isDescendantOf(2))
+            0,  static_cast<int>(bc1.isDescendantOf(ch2))
     );
     CPPUNIT_ASSERT_EQUAL(
-            0,  static_cast<int>(bc1.isDescendantOf(3))
-    );
-
-    CPPUNIT_ASSERT_EQUAL(
-            1,  static_cast<int>(bc2.isDescendantOf(0))
-    );
-    CPPUNIT_ASSERT_EQUAL(
-            0,  static_cast<int>(bc2.isDescendantOf(1))
-    );
-    CPPUNIT_ASSERT_EQUAL(
-            1,  static_cast<int>(bc2.isDescendantOf(2))
-    );
-    CPPUNIT_ASSERT_EQUAL(
-            0,  static_cast<int>(bc2.isDescendantOf(3))
+            0,  static_cast<int>(bc1.isDescendantOf(ch3))
     );
 
     CPPUNIT_ASSERT_EQUAL(
-            1,  static_cast<int>(bc3.isDescendantOf(0))
+            1,  static_cast<int>(bc2.isDescendantOf(ch0))
     );
     CPPUNIT_ASSERT_EQUAL(
-            0,  static_cast<int>(bc3.isDescendantOf(1))
+            0,  static_cast<int>(bc2.isDescendantOf(ch1))
     );
     CPPUNIT_ASSERT_EQUAL(
-            1,  static_cast<int>(bc3.isDescendantOf(2))
+            1,  static_cast<int>(bc2.isDescendantOf(ch2))
     );
     CPPUNIT_ASSERT_EQUAL(
-            1,  static_cast<int>(bc3.isDescendantOf(3))
+            0,  static_cast<int>(bc2.isDescendantOf(ch3))
+    );
+
+    CPPUNIT_ASSERT_EQUAL(
+            1,  static_cast<int>(bc3.isDescendantOf(ch0))
+    );
+    CPPUNIT_ASSERT_EQUAL(
+            0,  static_cast<int>(bc3.isDescendantOf(ch1))
+    );
+    CPPUNIT_ASSERT_EQUAL(
+            1,  static_cast<int>(bc3.isDescendantOf(ch2))
+    );
+    CPPUNIT_ASSERT_EQUAL(
+            1,  static_cast<int>(bc3.isDescendantOf(ch3))
     );
 
     return;
