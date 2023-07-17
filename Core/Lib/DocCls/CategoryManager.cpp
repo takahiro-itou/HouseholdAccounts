@@ -243,6 +243,20 @@ CategoryManager::insertNewCategory(
 }
 
 //----------------------------------------------------------------
+//    指定した項目のサブ項目（子孫）にあたるか判定する。
+//
+//  サブ項目のさらにサブ項目等、いわゆる子孫も含む。
+//
+
+const   Boolean
+CategoryManager::isDescendantCategory(
+        const   CategoryHandle  cateToCheck,
+        const   CategoryHandle  cateUpstream)
+{
+    return ( Boolean::BOOL_FALSE );
+}
+
+//----------------------------------------------------------------
 //    ルート項目データ用の領域を確保する。
 //
 

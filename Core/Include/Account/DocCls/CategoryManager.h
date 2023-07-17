@@ -173,6 +173,23 @@ public:
             const  DecimalCurrency &startBalance);
 
     //----------------------------------------------------------------
+    /**   指定した項目のサブ項目（子孫）にあたるか判定する。
+    **
+    **  サブ項目のさらにサブ項目等、いわゆる子孫も含む。
+    **
+    **  @param [in] cateToCheck     検査する項目のハンドル。
+    **  @param [in] cateUpstream    先祖と期待される項目。
+    **  @retval     BOOL_TRUE   : 子孫に該当。
+    **      項目 cateCheck  は cateUpstream の子孫の項目。
+    **      なお両者が等しい場合を含む。
+    **  @retval     BOOL_FALSE  : 上記以外の場合。
+    **/
+    virtual  const  Boolean
+    isDescendantCategory(
+            const   CategoryHandle  cateToCheck,
+            const   CategoryHandle  cateUpstream);
+
+    //----------------------------------------------------------------
     /**   ルート項目データ用の領域を確保する。
     **
     **  @param [in] numRoot   確保する項目数。
