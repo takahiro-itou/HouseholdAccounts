@@ -159,8 +159,10 @@ CategoryManager::findCategory(
         if ( bc.getCategoryName() != cateName ) {
             continue;
         }
-        retCate = i;
-        break;
+        if ( TO_BOOL_FROM_STRICT(bc.isDescendantOf(cateParent)) ) {
+            retCate = i;
+            break;
+        }
     }
 
     return ( retCate );
