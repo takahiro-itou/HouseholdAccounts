@@ -141,8 +141,9 @@ ReceiptFile::readFromTextStream(
             ptrRecInfo  = &(ptrDoc->back());
         }
         if ( (vTokens[numSkipCols + 5][0] != '\0')
-                || (vTokens[numSkipCols + 6][0] != '\0') )
-        {
+                || (vTokens[numSkipCols + 6][0] != '\0')
+                || (vTokens[numSkipCols + 7][0] != '\0')
+        ) {
             //  収支フラグおよび口座が異なる。  //
             DocCls::ReceiptEntriesChunk chunk;
             ptrRecInfo->m_recordChunk.push_back(chunk);
