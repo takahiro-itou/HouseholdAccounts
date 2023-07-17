@@ -256,6 +256,9 @@ CategoryManager::isDescendantCategory(
     CategoryHandle  catePar;
     CategoryHandle  cateCur = cateToCheck;
 
+    if ( cateCur == cateUpstream ) {
+        return ( Boolean::BOOL_TRUE );
+    }
     catePar = this->m_bufCategory.at(cateCur).getParentHandle();
     while( catePar >= 0 ) {
         cateCur = catePar;
