@@ -41,7 +41,7 @@ class  BookCategoryTest : public  TestFixture
 {
     CPPUNIT_TEST_SUITE(BookCategoryTest);
     CPPUNIT_TEST(testBookCategory);
-    CPPUNIT_TEST(testIsDescendantOf)
+    CPPUNIT_TEST(testIsDescendantOf);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -95,10 +95,10 @@ void  BookCategoryTest::testIsDescendantOf()
             DateSerial(0),
             Common::DecimalCurrency(0));
 
-    CONSTEXPR_VAR   CategoryHandle  ch0 = static_cast<CategoryHandle>(0);
-    CONSTEXPR_VAR   CategoryHandle  ch1 = static_cast<CategoryHandle>(1);
-    CONSTEXPR_VAR   CategoryHandle  ch2 = static_cast<CategoryHandle>(2);
-    CONSTEXPR_VAR   CategoryHandle  ch3 = static_cast<CategoryHandle>(3);
+    const   CategoryHandle  ch0 = static_cast<CategoryHandle>(0);
+    const   CategoryHandle  ch1 = static_cast<CategoryHandle>(1);
+    const   CategoryHandle  ch2 = static_cast<CategoryHandle>(2);
+    const   CategoryHandle  ch3 = static_cast<CategoryHandle>(3);
 
     const  BookCategory  &  bc0 = cateMan.getBookCategory(ch0);
     const  BookCategory  &  bc1 = cateMan.getBookCategory(ch1);
