@@ -22,6 +22,7 @@
 #include    "Account/Format/ReceiptFile.h"
 
 #include    "Account/Common/TextParser.h"
+#include    "Account/DocCls/CategoryManager.h"
 
 #include    <fstream>
 
