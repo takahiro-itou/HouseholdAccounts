@@ -153,6 +153,9 @@ ReceiptFile::readFromTextStream(
             ptrRecChunk->chlDebitAccount    = findCategory(
                     vTokens[numSkipCols + 6],
                     static_cast<CategoryHandle>(-1) );
+            ptrRecChunk->chrCreditAccount   = findCategory(
+                    vTokens[numSkipCols + 7],
+                    static_cast<CategoryHandle>(-1) );
         }
     }
 
