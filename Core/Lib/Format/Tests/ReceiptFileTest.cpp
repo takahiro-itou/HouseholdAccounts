@@ -174,7 +174,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
     const DocCls::ReceiptEntriesChunk &
         chunk1  = chunks.at(static_cast<ChunkIndex>(0));
     CPPUNIT_ASSERT_EQUAL(
-            static_cast<CategoryHandle>(3),
+            static_cast<CategoryHandle>(2),
             chunk1.chlDebitAccount);
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(-1),
@@ -410,7 +410,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
         const DocCls::ReceiptEntriesChunk &
             chunk1  = chunks0.at(static_cast<ChunkIndex>(0));
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(3),
+                static_cast<CategoryHandle>(2),
                 chunk1.chlDebitAccount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CategoryHandle>(-1),
@@ -425,7 +425,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
         const DocCls::ReceiptEntriesChunk &
             chunk2  = chunks0.at(static_cast<ChunkIndex>(1));
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(2),
+                static_cast<CategoryHandle>(3),
                 chunk2.chlDebitAccount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CategoryHandle>(-1),
@@ -542,7 +542,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
         const DocCls::ReceiptEntriesChunk &
             chunk3  = chunks1.at(static_cast<ChunkIndex>(0));
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(3),
+                static_cast<CategoryHandle>(2),
                 chunk3.chlDebitAccount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CategoryHandle>(4),
