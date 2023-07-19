@@ -149,6 +149,10 @@ ReceiptFile::readFromTextStream(
             DocCls::ReceiptEntriesChunk chunk;
             ptrRecInfo->m_recordChunk.push_back(chunk);
             ptrRecChunk = &(ptrRecInfo->m_recordChunk.back());
+
+            ptrRecChunk->chlDebitAccount    = findCategory(
+                    vTokens[numSkipCols + 6],
+                    static_cast<CategoryHandle>(-1) );
         }
     }
 
