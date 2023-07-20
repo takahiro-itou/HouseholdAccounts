@@ -157,6 +157,14 @@ ReceiptFile::readFromTextStream(
                     vTokens[numSkipCols + 7],
                     static_cast<CategoryHandle>(-1) );
         }
+        DocCls::PurchasedGoods  pg;
+        pg.unitPrice    = static_cast<CurrencyNumerator>(
+                                atol(vTokens[numSkipCols + 11]));
+        pg.nQuantity    = atoi(vTokens[numSkipCols + 12]);
+        ptrRecChunk->goodsList.push_back(pg);
+
+        ptrRecChunk->cnlDebitAmount     = pg.unitPrice;
+        ptrRecChunk->cnrCreditAmount    = pg.unitPrice;
     }
 
     return ( ErrCode::SUCCESS );
