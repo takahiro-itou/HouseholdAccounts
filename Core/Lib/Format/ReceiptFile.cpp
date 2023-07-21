@@ -161,10 +161,12 @@ ReceiptFile::readFromTextStream(
         pg.unitPrice    = static_cast<CurrencyNumerator>(
                                 atol(vTokens[numSkipCols + 11]));
         pg.nQuantity    = atoi(vTokens[numSkipCols + 12]);
+        pg.cSubTotal    = pg.unitPrice * pg.nQuantity;
+
         ptrRecChunk->goodsList.push_back(pg);
 
-        ptrRecChunk->cnlDebitAmount     = pg.unitPrice;
-        ptrRecChunk->cnrCreditAmount    = pg.unitPrice;
+        ptrRecChunk->cnlDebitAmount     += pg.cSubTotal;
+        ptrRecChunk->cnrCreditAmount    += pg.cSubTotal;
     }
 
     return ( ErrCode::SUCCESS );
