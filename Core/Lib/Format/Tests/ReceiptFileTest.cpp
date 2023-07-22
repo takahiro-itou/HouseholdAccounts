@@ -189,7 +189,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
     const DocCls::ReceiptEntriesChunk &
         chunk2  = chunks.at(static_cast<ChunkIndex>(1));
     CPPUNIT_ASSERT_EQUAL(
-            static_cast<CategoryHandle>(2),
+            static_cast<CategoryHandle>(3),
             chunk2.chlDebitAccount);
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(-1),
