@@ -172,8 +172,12 @@ ReceiptFile::readFromTextStream(
                            - pg.cDiscount + pg.exclusiveTaxVal);
         ptrRecChunk->goodsList.push_back(pg);
 
-        ptrRecChunk->cnlDebitAmount     += pg.cSubTotal;
-        ptrRecChunk->cnrCreditAmount    += pg.cSubTotal;
+        if ( ptrRecChunk->chlDebitAccount >= 0 ) {
+            ptrRecChunk->cnlDebitAmount     += pg.cSubTotal;
+        }
+        if ( ptrRecChunk->chrCreditAccount >= 0 ) {
+            ptrRecChunk->cnrCreditAmount    += pg.cSubTotal;
+        }
     }
 
     return ( ErrCode::SUCCESS );
