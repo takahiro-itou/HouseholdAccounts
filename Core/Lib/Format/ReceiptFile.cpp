@@ -158,12 +158,18 @@ ReceiptFile::readFromTextStream(
                     static_cast<CategoryHandle>(-1) );
         }
         DocCls::PurchasedGoods  pg;
-        pg.unitPrice    = static_cast<CurrencyNumerator>(
-                                atol(vTokens[numSkipCols + 11]));
-        pg.nQuantity    = atoi(vTokens[numSkipCols + 12]);
-        pg.cDiscount    = static_cast<CurrencyNumerator>(
-                                atoi(vTokens[numSkipCols + 13]));
+        pg.unitPrice        = static_cast<CurrencyNumerator>(
+                atol(vTokens[numSkipCols + 11]));
+        pg.nQuantity        = atoi(vTokens[numSkipCols + 12]);
+        pg.cDiscount        = static_cast<CurrencyNumerator>(
+                atoi(vTokens[numSkipCols + 13]));
+        pg.exclusiveTaxVal  = static_cast<CurrencyNumerator>(
+                atoi(vTokens[numSkipCols + 14]));
+        pg.inclusiveTaxVal  = static_cast<CurrencyNumerator>(
+                atoi(vTokens[numSkipCols + 15]));
+
         pg.cSubTotal    = pg.unitPrice * pg.nQuantity - pg.cDiscount;
+        pg.cSubTotal    += pg.exclusiveTaxVal;
 
         ptrRecChunk->goodsList.push_back(pg);
 
