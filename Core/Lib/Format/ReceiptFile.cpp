@@ -157,7 +157,12 @@ ReceiptFile::readFromTextStream(
                     vTokens[numSkipCols + 7],
                     static_cast<CategoryHandle>(-1) );
         }
+
         DocCls::PurchasedGoods  pg;
+        pg.accountHeadings  = findCategory(
+                vTokens[numSkipCols + 8],
+                static_cast<CategoryHandle>(-1));
+
         pg.unitPrice        = static_cast<CurrencyNumerator>(
                 atol(vTokens[numSkipCols + 11]));
         pg.nQuantity        = atoi(vTokens[numSkipCols + 12]);
