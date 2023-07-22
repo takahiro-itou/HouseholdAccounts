@@ -161,7 +161,9 @@ ReceiptFile::readFromTextStream(
         pg.unitPrice    = static_cast<CurrencyNumerator>(
                                 atol(vTokens[numSkipCols + 11]));
         pg.nQuantity    = atoi(vTokens[numSkipCols + 12]);
-        pg.cSubTotal    = pg.unitPrice * pg.nQuantity;
+        pg.cDiscount    = static_cast<CurrencyNumerator>(
+                                atoi(vTokens[numSkipCols + 13]));
+        pg.cSubTotal    = pg.unitPrice * pg.nQuantity - pg.cDiscount;
 
         ptrRecChunk->goodsList.push_back(pg);
 
