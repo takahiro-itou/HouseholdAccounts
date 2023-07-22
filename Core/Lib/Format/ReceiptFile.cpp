@@ -168,9 +168,8 @@ ReceiptFile::readFromTextStream(
         pg.inclusiveTaxVal  = static_cast<CurrencyNumerator>(
                 atoi(vTokens[numSkipCols + 15]));
 
-        pg.cSubTotal    = pg.unitPrice * pg.nQuantity - pg.cDiscount;
-        pg.cSubTotal    += pg.exclusiveTaxVal;
-
+        pg.cSubTotal    = (pg.unitPrice * pg.nQuantity
+                           - pg.cDiscount + pg.exclusiveTaxVal);
         ptrRecChunk->goodsList.push_back(pg);
 
         ptrRecChunk->cnlDebitAmount     += pg.cSubTotal;
