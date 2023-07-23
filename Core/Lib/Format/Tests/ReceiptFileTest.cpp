@@ -509,14 +509,14 @@ void  ReceiptFileTest::testReadFromTextStream2()
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CategoryHandle>(10),
                     pg2.accountCategory);
-            CPPUNIT_ASSERT_EQUAL(std::string("Product2"), pg2.productName);
+            CPPUNIT_ASSERT_EQUAL(std::string("Points"), pg2.productName);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(300), pg2.unitPrice);
+                    static_cast<CurrencyNumerator>(20), pg2.unitPrice);
             CPPUNIT_ASSERT_EQUAL(1, pg2.nQuantity);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(10), pg2.cDiscount);
+                    static_cast<CurrencyNumerator>(0), pg2.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(290), pg2.cSubTotal);
+                    static_cast<CurrencyNumerator>(20), pg2.cSubTotal);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(7), pg2.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
