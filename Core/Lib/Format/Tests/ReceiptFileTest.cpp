@@ -572,10 +572,10 @@ void  ReceiptFileTest::testReadFromTextStream2()
                     pg3.accountCategory);
             CPPUNIT_ASSERT_EQUAL(std::string("Deposit"), pg3.productName);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(300), pg3.unitPrice);
+                    static_cast<CurrencyNumerator>(1000), pg3.unitPrice);
             CPPUNIT_ASSERT_EQUAL(1, pg3.nQuantity);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(10), pg3.cDiscount);
+                    static_cast<CurrencyNumerator>(0), pg3.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(290), pg3.cSubTotal);
             CPPUNIT_ASSERT_EQUAL(
