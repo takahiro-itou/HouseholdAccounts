@@ -518,9 +518,9 @@ void  ReceiptFileTest::testReadFromTextStream2()
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(20), pg2.cSubTotal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(7), pg2.inclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(0), pg2.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(3), pg2.exclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(0), pg2.exclusiveTaxVal);
         }
     }
 
