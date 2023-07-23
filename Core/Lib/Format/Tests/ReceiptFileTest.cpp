@@ -265,7 +265,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
 
     {
         const DocCls::PurchasedGoods &
-            pg2 = goods1.at(static_cast<PurchaseNumber>(0));
+            pg2 = goods2.at(static_cast<PurchaseNumber>(0));
 
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CategoryHandle>(8),
