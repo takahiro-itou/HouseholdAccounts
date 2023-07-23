@@ -165,6 +165,7 @@ ReceiptFile::readFromTextStream(
         pg.accountCategory  = findCategory(
                 vTokens[numSkipCols + 9],
                 pg.accountHeadings);
+        pg.productName      = vTokens[numSkipCols + 10];
 
         pg.unitPrice        = static_cast<CurrencyNumerator>(
                 atol(vTokens[numSkipCols + 11]));
