@@ -251,7 +251,7 @@ BookCategory::getCategoryType()  const
     {
         return ( this->m_categoryFlags & CategoryFlags::CTYPE_MASK );
     }
-    return ( this->m_ptrManager->getCategoryType(this->m_selfCateHandle) );
+    return  this->m_ptrManager->getCategoryType(this->m_selfCateHandle);
 }
 
 //----------------------------------------------------------------
@@ -262,8 +262,8 @@ const   Boolean
 BookCategory::isDescendantOf(
         const   CategoryHandle  cateOther)  const
 {
-    return ( this->m_ptrManager->isDescendantCategory(
-                     this->m_selfCateHandle, cateOther) );
+    return  this->m_ptrManager->isDescendantCategory(
+                    this->m_selfCateHandle, cateOther);
 }
 
 //----------------------------------------------------------------

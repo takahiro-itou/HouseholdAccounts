@@ -80,53 +80,53 @@ void  ReceiptFileTest::testReadFromTextStream1()
     cateMan.reserveRootCategories(CategoryHandle(4));
     cateMan.setupRootCategory(
             CategoryHandle(0), "収入",
-            DocCls::CategoryFlags(17),
+            DocCls::CategoryFlags::CTYPE_INCOME,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
             CategoryHandle(1), "支出",
-            DocCls::CategoryFlags(18),
+            DocCls::CategoryFlags::CTYPE_OUTLAY,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
             CategoryHandle(2), "現金",
-            DocCls::CategoryFlags(9),
+            DocCls::CategoryFlags::CTYPE_BALANCE,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
             CategoryHandle(3), "ポイント",
-            DocCls::CategoryFlags(9),
+            DocCls::CategoryFlags::CTYPE_BALANCE,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
     cateMan.insertNewCategory(
             CategoryHandle(1), "Head1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(4), "Cate1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(1), "Head2",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(6), "Cate2",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(0), "Head3",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(8), "Cate3",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
@@ -174,7 +174,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
     const DocCls::ReceiptEntriesChunk &
         chunk1  = chunks.at(static_cast<ChunkIndex>(0));
     CPPUNIT_ASSERT_EQUAL(
-            static_cast<CategoryHandle>(3),
+            static_cast<CategoryHandle>(2),
             chunk1.chlDebitAccount);
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(-1),
@@ -189,7 +189,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
     const DocCls::ReceiptEntriesChunk &
         chunk2  = chunks.at(static_cast<ChunkIndex>(1));
     CPPUNIT_ASSERT_EQUAL(
-            static_cast<CategoryHandle>(2),
+            static_cast<CategoryHandle>(3),
             chunk2.chlDebitAccount);
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CategoryHandle>(-1),
@@ -265,7 +265,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
 
     {
         const DocCls::PurchasedGoods &
-            pg2 = goods1.at(static_cast<PurchaseNumber>(0));
+            pg2 = goods2.at(static_cast<PurchaseNumber>(0));
 
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CategoryHandle>(8),
@@ -298,68 +298,68 @@ void  ReceiptFileTest::testReadFromTextStream2()
     cateMan.reserveRootCategories(CategoryHandle(5));
     cateMan.setupRootCategory(
             CategoryHandle(0), "収入",
-            DocCls::CategoryFlags(17),
+            DocCls::CategoryFlags::CTYPE_INCOME,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
             CategoryHandle(1), "支出",
-            DocCls::CategoryFlags(18),
+            DocCls::CategoryFlags::CTYPE_OUTLAY,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
             CategoryHandle(2), "現金",
-            DocCls::CategoryFlags(9),
+            DocCls::CategoryFlags::CTYPE_BALANCE,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
             CategoryHandle(3), "ポイント",
-            DocCls::CategoryFlags(9),
+            DocCls::CategoryFlags::CTYPE_BALANCE,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
-            CategoryHandle(4), "Back 1",
-            DocCls::CategoryFlags(25),
+            CategoryHandle(4), "Bank 1",
+            DocCls::CategoryFlags::CTYPE_BALANCE,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
     cateMan.insertNewCategory(
             CategoryHandle(1), "Head1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(5), "Cate1",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(1), "Head2",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(7), "Cate2",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(0), "Head3",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(9), "Cate3",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(1), "Head4",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(11), "Cate4",
-            DocCls::CategoryFlags(0),
+            DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
@@ -410,7 +410,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
         const DocCls::ReceiptEntriesChunk &
             chunk1  = chunks0.at(static_cast<ChunkIndex>(0));
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(3),
+                static_cast<CategoryHandle>(2),
                 chunk1.chlDebitAccount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CategoryHandle>(-1),
@@ -425,7 +425,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
         const DocCls::ReceiptEntriesChunk &
             chunk2  = chunks0.at(static_cast<ChunkIndex>(1));
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(2),
+                static_cast<CategoryHandle>(3),
                 chunk2.chlDebitAccount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CategoryHandle>(-1),
@@ -485,7 +485,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(10), pg1.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(290), pg1.cSubTotal);
+                    static_cast<CurrencyNumerator>(293), pg1.cSubTotal);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(7), pg1.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
@@ -501,7 +501,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
 
         {
             const DocCls::PurchasedGoods &
-                pg2 = goods1.at(static_cast<PurchaseNumber>(0));
+                pg2 = goods2.at(static_cast<PurchaseNumber>(0));
 
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CategoryHandle>(9),
@@ -509,18 +509,18 @@ void  ReceiptFileTest::testReadFromTextStream2()
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CategoryHandle>(10),
                     pg2.accountCategory);
-            CPPUNIT_ASSERT_EQUAL(std::string("Product2"), pg2.productName);
+            CPPUNIT_ASSERT_EQUAL(std::string("Points"), pg2.productName);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(300), pg2.unitPrice);
+                    static_cast<CurrencyNumerator>(20), pg2.unitPrice);
             CPPUNIT_ASSERT_EQUAL(1, pg2.nQuantity);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(10), pg2.cDiscount);
+                    static_cast<CurrencyNumerator>(0), pg2.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(290), pg2.cSubTotal);
+                    static_cast<CurrencyNumerator>(20), pg2.cSubTotal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(7), pg2.inclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(0), pg2.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(3), pg2.exclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(0), pg2.exclusiveTaxVal);
         }
     }
 
@@ -542,7 +542,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
         const DocCls::ReceiptEntriesChunk &
             chunk3  = chunks1.at(static_cast<ChunkIndex>(0));
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(3),
+                static_cast<CategoryHandle>(2),
                 chunk3.chlDebitAccount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CategoryHandle>(4),
@@ -570,18 +570,18 @@ void  ReceiptFileTest::testReadFromTextStream2()
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CategoryHandle>(12),
                     pg3.accountCategory);
-            CPPUNIT_ASSERT_EQUAL(std::string("Product2"), pg3.productName);
+            CPPUNIT_ASSERT_EQUAL(std::string("Deposit"), pg3.productName);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(300), pg3.unitPrice);
+                    static_cast<CurrencyNumerator>(1000), pg3.unitPrice);
             CPPUNIT_ASSERT_EQUAL(1, pg3.nQuantity);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(10), pg3.cDiscount);
+                    static_cast<CurrencyNumerator>(0), pg3.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(290), pg3.cSubTotal);
+                    static_cast<CurrencyNumerator>(1000), pg3.cSubTotal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(7), pg3.inclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(0), pg3.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(3), pg3.exclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(0), pg3.exclusiveTaxVal);
         }
     }
 

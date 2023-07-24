@@ -22,6 +22,7 @@
 #include    "Account/Format/ReceiptFile.h"
 
 #include    "Account/Common/TextParser.h"
+#include    "Account/DocCls/CategoryManager.h"
 
 #include    <fstream>
 
@@ -141,12 +142,50 @@ ReceiptFile::readFromTextStream(
             ptrRecInfo  = &(ptrDoc->back());
         }
         if ( (vTokens[numSkipCols + 5][0] != '\0')
-                || (vTokens[numSkipCols + 6][0] != '\0') )
-        {
+                || (vTokens[numSkipCols + 6][0] != '\0')
+                || (vTokens[numSkipCols + 7][0] != '\0')
+        ) {
             //  収支フラグおよび口座が異なる。  //
             DocCls::ReceiptEntriesChunk chunk;
             ptrRecInfo->m_recordChunk.push_back(chunk);
             ptrRecChunk = &(ptrRecInfo->m_recordChunk.back());
+
+            ptrRecChunk->chlDebitAccount    = findCategory(
+                    vTokens[numSkipCols + 6],
+                    static_cast<CategoryHandle>(-1) );
+            ptrRecChunk->chrCreditAccount   = findCategory(
+                    vTokens[numSkipCols + 7],
+                    static_cast<CategoryHandle>(-1) );
+        }
+
+        DocCls::PurchasedGoods  pg;
+        pg.accountHeadings  = findCategory(
+                vTokens[numSkipCols + 8],
+                static_cast<CategoryHandle>(-1));
+        pg.accountCategory  = findCategory(
+                vTokens[numSkipCols + 9],
+                pg.accountHeadings);
+        pg.productName      = vTokens[numSkipCols + 10];
+
+        pg.unitPrice        = static_cast<CurrencyNumerator>(
+                atol(vTokens[numSkipCols + 11]));
+        pg.nQuantity        = atoi(vTokens[numSkipCols + 12]);
+        pg.cDiscount        = static_cast<CurrencyNumerator>(
+                atoi(vTokens[numSkipCols + 13]));
+        pg.exclusiveTaxVal  = static_cast<CurrencyNumerator>(
+                atoi(vTokens[numSkipCols + 14]));
+        pg.inclusiveTaxVal  = static_cast<CurrencyNumerator>(
+                atoi(vTokens[numSkipCols + 15]));
+
+        pg.cSubTotal    = (pg.unitPrice * pg.nQuantity
+                           - pg.cDiscount + pg.exclusiveTaxVal);
+        ptrRecChunk->goodsList.push_back(pg);
+
+        if ( ptrRecChunk->chlDebitAccount >= 0 ) {
+            ptrRecChunk->cnlDebitAmount     += pg.cSubTotal;
+        }
+        if ( ptrRecChunk->chrCreditAccount >= 0 ) {
+            ptrRecChunk->cnrCreditAmount    += pg.cSubTotal;
         }
     }
 
@@ -216,6 +255,21 @@ ReceiptFile::setNumSkipColumns(
 //
 //    Protected Member Functions.
 //
+
+//----------------------------------------------------------------
+//    名前から項目を検索する。
+//
+
+const   CategoryHandle
+ReceiptFile::findCategory(
+        const   char *   const  cateName,
+        const   CategoryHandle  cateParent)  const
+{
+    if ( (cateName == nullptr) || (cateName[0] == '\0') ) {
+        return ( static_cast<CategoryHandle>(-1) );
+    }
+    return  this->m_pCatMan->findCategory(cateName, cateParent);
+}
 
 //========================================================================
 //

@@ -1,24 +1,24 @@
 #! /bin/bash  -xue
 
-script_dir=$(readlink -f $(dirname $0))
+script_dir=$(readlink -f "$(dirname "$0")")
 build_script='build.sh'
 rebuild_script='rebuild.sh'
 
-rm -f ${build_script} ${rebuild_script}
+rm -f "${build_script}" "${rebuild_script}"
 
-time  cmake ${script_dir} ; echo $?
+time  cmake "${script_dir}" ; echo $?
 
-cat << __EOF__  | tee ${build_script}
+cat << __EOF__  | tee "${build_script}"
 #!/bin/bash  -xue
 
 time  make && ctest . ; echo \$?
 __EOF__
 
-cat << __EOF__  | tee ${rebuild_script}
+cat << __EOF__  | tee "${rebuild_script}"
 #!/bin/bash  -xue
 
 make clean
 time  make && ctest . ; echo \$?
 __EOF__
 
-chmod 755 ${build_script} ${rebuild_script}
+chmod 755 "${build_script}" "${rebuild_script}"
