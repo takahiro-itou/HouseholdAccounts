@@ -260,7 +260,7 @@ CategoryManager::isDescendantCategory(
         const   CategoryHandle  cateToCheck,
         const   CategoryHandle  cateUpstream)  const
 {
-    CategoryHandle  catePar;
+    CategoryHandle  catePar = static_cast<CategoryHandle>(-1);
 
     for ( CategoryHandle
             cateCur = cateToCheck; catePar >= 0; cateCur = catePar )
