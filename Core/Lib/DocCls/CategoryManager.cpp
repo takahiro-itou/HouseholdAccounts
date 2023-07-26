@@ -263,7 +263,7 @@ CategoryManager::isDescendantCategory(
     CategoryHandle  catePar = static_cast<CategoryHandle>(-1);
 
     for ( CategoryHandle
-            cateCur = cateToCheck; catePar >= 0; cateCur = catePar )
+            cateCur = cateToCheck; cateCur >= 0; cateCur = catePar )
     {
         if ( cateCur == cateUpstream ) {
             return ( Boolean::BOOL_TRUE );
