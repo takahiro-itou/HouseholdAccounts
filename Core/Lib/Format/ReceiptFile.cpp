@@ -106,7 +106,7 @@ ReceiptFile::readFromTextStream(
         DocCls::ReceiptList   * ptrDoc)
 {
     std::string     strLine;
-    ErrCode         retErr;
+    ErrCode         retErr  = ErrCode::SUCCESS;
 
     DocCls::ReceiptInfo *           ptrRecInfo  = nullptr;
     DocCls::ReceiptEntriesChunk *   ptrRecChunk = nullptr;
@@ -189,7 +189,7 @@ ReceiptFile::readFromTextStream(
         }
     }
 
-    return ( ErrCode::SUCCESS );
+    return ( retErr );
 }
 
 //----------------------------------------------------------------
