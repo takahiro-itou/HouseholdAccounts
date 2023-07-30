@@ -1,4 +1,4 @@
 
 /*  Linker Script.  */
-INPUT( AS_NEEDED(Common/libhacCommon.a) )
+INPUT( AS_NEEDED(Common/libhabCommon.a) )
 

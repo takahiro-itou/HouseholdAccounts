@@ -13,34 +13,43 @@
 *************************************************************************/
 
 /**
-**      An Interface of DecimalCurrency class.
+**      An Interface of BookFile class.
 **
-**      @file       Common/DecimalCurrency.h
+**      @file       Format/BookFile.h
 **/
 
-#if !defined( HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H )
-#    define   HACORE_COMMON_INCLUDED_DECIMAL_CURRENCY_H
+#if !defined( HACORE_FORMAT_INCLUDED_BOOK_FILE_H )
+#    define   HACORE_FORMAT_INCLUDED_BOOK_FILE_H
 
 
 #if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
-#    include    "AccountsTypes.h"
+#    include    "Account/Common/AccountsTypes.h"
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_IOS_FWD )
+#    include    <iosfwd>
+#    define   HACORE_SYS_INCLUDED_IOS_FWD
 #endif
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Common  {
 
 //  クラスの前方宣言。  //
+namespace  DocCls  {
+class   BookDocument;
+}   //  End of namespace  DocCls.
+
+namespace  Format  {
 
 //========================================================================
 //
-//    DecimalCurrency  class.
+//    BookFile  class.
 //
 /**
-**    固定小数点型の通貨クラス。
+**
 **/
 
-class  DecimalCurrency
+class  BookFile
 {
 
 //========================================================================
@@ -48,10 +57,6 @@ class  DecimalCurrency
 //    Internal Type Definitions.
 //
 public:
-
-    typedef     int64_t     TInternalValue;
-
-    typedef     double      DecimalType;
 
 //========================================================================
 //
@@ -64,43 +69,14 @@ public:
     **  （デフォルトコンストラクタ）。
     **
     **/
-    DecimalCurrency();
-
-    //----------------------------------------------------------------
-    /**   インスタンスを初期化する
-    **  （コンストラクタ）。
-    **
-    **  @param [in] intValue    内部の値。
-    **  @param [in] intScale    スケール。
-    **/
-    DecimalCurrency(
-            const  CurrencyNumerator    intValue,
-            const  CurrencyDenominator  intScale);
-
-    //----------------------------------------------------------------
-    /**   インスタンスを初期化する
-    **  （コンストラクタ）。
-    **
-    **  @param [in] intValue    内部の値。
-    **/
-    DecimalCurrency(
-            const   TInternalValue  intValue);
-
-    //----------------------------------------------------------------
-    /**   別のインスタンスと同じ内容で初期化する。
-    **  （コピーコンストラクタ）。
-    **
-    **  @param [in] src   コピー元インスタンス。
-    **/
-    DecimalCurrency(
-            const  DecimalCurrency  &src);
+    BookFile();
 
     //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
     **/
-    virtual  ~DecimalCurrency();
+    virtual  ~BookFile();
 
 //========================================================================
 //
@@ -126,50 +102,37 @@ public:
 //
 //    Public Member Functions.
 //
-
-//========================================================================
-//
-//    Accessors.
-//
 public:
 
     //----------------------------------------------------------------
-    /**   現在の内部表現の値を取得する。
+    /**   データをテキストストリームから読み込む。
     **
-    **  @return     内部表現の値。
+    **  @param [in,out] inStr     入力ストリーム。
+    **  @param    [out] ptrDoc    ドキュメントを格納する変数。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
     **/
-    const   CurrencyNumerator
-    getInternalValue()  const;
+    static  ErrCode
+    readFromTextStream(
+            std::istream          & inStr,
+            DocCls::BookDocument  * ptrDoc);
 
     //----------------------------------------------------------------
-    /**   値を設定する。
+    /**   データをテキストストリームに書き込む。
     **
-    **  @param [in] intValue    内部表現の数値。
-    **  @return     インスタンス自身の参照。
+    **  @param [in] objDoc    ドキュメント。
+    **  @param[out] outStr    出力ストリーム。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
     **/
-    DecimalCurrency  &
-    setInternalValue(
-            const   CurrencyNumerator   intValue);
-
-    //----------------------------------------------------------------
-    /**   値を設定する。
-    **
-    **  @param [in] intValue    内部表現の数値。
-    **  @param [in] intScale    スケール。
-    **  @return     インスタンス自身の参照。
-    **/
-    DecimalCurrency  &
-    setInternalValue(
-            const  CurrencyNumerator    intValue,
-            const  CurrencyDenominator  intScale);
-
-    //----------------------------------------------------------------
-    /**   現在のスケールファクタを取得する。
-    **
-    **  @return     現在のスケールファクタの値。
-    **/
-    const   CurrencyDenominator
-    getScaleFactor()  const;
+    static  ErrCode
+    saveToTextStream(
+            const   DocCls::BookDocument  & objDoc,
+            std::ostream                  & outStr);
 
 //========================================================================
 //
@@ -185,11 +148,6 @@ public:
 //
 //    Member Variables.
 //
-private:
-
-    CurrencyNumerator       m_internValue;
-
-    CurrencyDenominator     m_scaleFactor;
 
 //========================================================================
 //
@@ -197,10 +155,10 @@ private:
 //
 public:
     //  テストクラス。  //
-    friend  class   DecimalCurrencyTest;
+    friend  class   BookFileTest;
 };
 
-}   //  End of namespace  Common
+}   //  End of namespace  Format
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif

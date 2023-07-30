@@ -122,6 +122,18 @@ public:
     allocNewCategory();
 
     //----------------------------------------------------------------
+    /**   名前から項目を検索する。
+    **
+    **  @param [in] cateName      項目名。
+    **  @param [in] cateParent    検索を開始する親ハンドル。
+    **  @return     項目名に対応する項目のハンドル。
+    **/
+    virtual  const  CategoryHandle
+    findCategory(
+            const   std::string    &cateName,
+            const   CategoryHandle  cateParent = CategoryHandle(-1)) const;
+
+    //----------------------------------------------------------------
     /**   項目の種類を取得する。
     **
     **  @param [in] hCate   項目のハンドル。
@@ -159,6 +171,23 @@ public:
             const  CategoryFlags    cateFlags,
             const  DateSerial       startDate,
             const  DecimalCurrency &startBalance);
+
+    //----------------------------------------------------------------
+    /**   指定した項目のサブ項目（子孫）にあたるか判定する。
+    **
+    **  サブ項目のさらにサブ項目等、いわゆる子孫も含む。
+    **
+    **  @param [in] cateToCheck     検査する項目のハンドル。
+    **  @param [in] cateUpstream    先祖と期待される項目。
+    **  @retval     BOOL_TRUE   : 子孫に該当。
+    **      項目 cateCheck  は cateUpstream の子孫の項目。
+    **      なお両者が等しい場合を含む。
+    **  @retval     BOOL_FALSE  : 上記以外の場合。
+    **/
+    virtual  const  Boolean
+    isDescendantCategory(
+            const   CategoryHandle  cateToCheck,
+            const   CategoryHandle  cateUpstream)  const;
 
     //----------------------------------------------------------------
     /**   ルート項目データ用の領域を確保する。
@@ -227,7 +256,7 @@ public:
     **  @return     項目のハンドル。
     **/
     const   CategoryHandle
-    getInnerTaxCategoryHandle()  const;
+    getInclusiveTaxCategoryHandle()  const;
 
     //----------------------------------------------------------------
     /**   内税項目のハンドルを設定する。
@@ -235,7 +264,7 @@ public:
     **  @param [in] hCate   項目ハンドル。
     **/
     void
-    setInnerTaxCategoryHandle(
+    setInclusiveTaxCategoryHandle(
             const   CategoryHandle  hCate);
 
     //----------------------------------------------------------------
@@ -244,7 +273,7 @@ public:
     **  @return     項目のハンドル。
     **/
     const   CategoryHandle
-    getOuterTaxCategoryHandle()  const;
+    getExclusiveTaxCategoryHandle()  const;
 
     //----------------------------------------------------------------
     /**   外税項目のハンドルを設定する。
@@ -252,7 +281,7 @@ public:
     **  @param [in] hCate   項目ハンドル。
     **/
     void
-    setOuterTaxCategoryHandle(
+    setExclusiveTaxCategoryHandle(
             const   CategoryHandle  hCate);
 
     //----------------------------------------------------------------
@@ -300,10 +329,10 @@ private:
     CategoryArray       m_bufCategory;
 
     /**   「内税」項目のハンドル。  **/
-    CategoryHandle      m_chInnerTax;
+    CategoryHandle      m_chInclusiveTax;
 
     /**   「外税」項目のハンドル。  **/
-    CategoryHandle      m_chOuterTax;
+    CategoryHandle      m_chExclusiveTax;
 
 //========================================================================
 //

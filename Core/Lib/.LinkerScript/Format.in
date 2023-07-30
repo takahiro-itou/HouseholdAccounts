@@ -1,0 +1,6 @@
+
+/*  Linker Script.  */
+INPUT( AS_NEEDED(Format/libhabFormat.a) )
+
+INPUT( AS_NEEDED(-lhabDocCls) )
+

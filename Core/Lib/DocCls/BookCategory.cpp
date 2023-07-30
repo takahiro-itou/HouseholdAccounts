@@ -251,7 +251,19 @@ BookCategory::getCategoryType()  const
     {
         return ( this->m_categoryFlags & CategoryFlags::CTYPE_MASK );
     }
-    return ( this->m_ptrManager->getCategoryType(this->m_selfCateHandle) );
+    return  this->m_ptrManager->getCategoryType(this->m_selfCateHandle);
+}
+
+//----------------------------------------------------------------
+//    指定した項目のサブ（子孫）項目か判定する。
+//
+
+const   Boolean
+BookCategory::isDescendantOf(
+        const   CategoryHandle  cateOther)  const
+{
+    return  this->m_ptrManager->isDescendantCategory(
+                    this->m_selfCateHandle, cateOther);
 }
 
 //----------------------------------------------------------------
@@ -259,7 +271,7 @@ BookCategory::getCategoryType()  const
 //
 
 const   Boolean
-BookCategory::isExpanded()
+BookCategory::isExpanded()  const
 {
     const   CategoryFlags   cFlags  = this->m_categoryFlags;
     return ( TO_SBOOLEAN_FROM_INT(cFlags & CategoryFlags::CFLAG_EXPANDED) );

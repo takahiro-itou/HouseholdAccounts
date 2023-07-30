@@ -20,6 +20,21 @@ add_test(
 )
 
 add_test(
+    NAME        PurchasedGoodsTest
+    COMMAND     $<TARGET_FILE:PurchasedGoodsTest>
+)
+
+add_test(
+    NAME        ReceiptEntriesChunkTest
+    COMMAND     $<TARGET_FILE:ReceiptEntriesChunkTest>
+)
+
+add_test(
+    NAME        ReceiptInfoTest
+    COMMAND     $<TARGET_FILE:ReceiptInfoTest>
+)
+
+add_test(
     NAME        StringTableTest
     COMMAND     $<TARGET_FILE:StringTableTest>
 )
@@ -29,8 +44,11 @@ add_test(
 ##    テストプログラムのビルド。
 ##
 
-add_executable(BookCategoryTest     BookCategoryTest.cpp)
-add_executable(BookDocumentTest     BookDocumentTest.cpp)
-add_executable(CategoryManagerTest  CategoryManagerTest.cpp)
-add_executable(StringTableTest      StringTableTest.cpp)
+add_executable(BookCategoryTest         BookCategoryTest.cpp)
+add_executable(BookDocumentTest         BookDocumentTest.cpp)
+add_executable(CategoryManagerTest      CategoryManagerTest.cpp)
+add_executable(PurchasedGoodsTest       PurchasedGoodsTest.cpp)
+add_executable(ReceiptEntriesChunkTest  ReceiptEntriesChunkTest.cpp)
+add_executable(ReceiptInfoTest          ReceiptInfoTest.cpp)
+add_executable(StringTableTest          StringTableTest.cpp)
 

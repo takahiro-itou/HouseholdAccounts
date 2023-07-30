@@ -13,49 +13,62 @@
 *************************************************************************/
 
 /**
-**      An Interface of TextParser class.
+**      An Interface of ReceiptEntriesChunk class.
 **
-**      @file       Common/TextParser.h
+**      @file       DocCls/ReceiptEntriesChunk.h
 **/
 
-#if !defined( HACORE_COMMON_INCLUDED_TEXT_PARSER_H )
-#    define   HACORE_COMMON_INCLUDED_TEXT_PARSER_H
+#if !defined( HACORE_DOCCLS_INCLUDED_RECEIPT_ENTRIES_CHUNK_H )
+#    define   HACORE_DOCCLS_INCLUDED_RECEIPT_ENTRIES_CHUNK_H
 
 
-#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
-#    include    "AccountsTypes.h"
+#if !defined( HACORE_DOCCLS_INCLUDED_PURCHASED_GOODS_H )
+#    include    "PurchasedGoods.h"
 #endif
 
-#include    <string>
-#include    <vector>
+#if !defined( HACORE_COMMON_INCLUDED_STRICT_VECTOR_H )
+#    include    "Account/Common/StrictVector.h"
+#endif
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
-namespace  Common  {
+namespace  DocCls  {
 
 //  クラスの前方宣言。  //
 
-
 //========================================================================
 //
-//    TextParser  class.
+//    ReceiptEntriesChunk  struct.
 //
 /**
-**
+**    集計ブロック。
 **/
 
-class  TextParser
+struct  ReceiptEntriesChunk
 {
-
 //========================================================================
 //
 //    Internal Type Definitions.
 //
 public:
 
-    typedef     std::vector<char>           TextBuffer;
+    /**   収支フラグ。  **/
+    enum class  ChunkInOutFlags
+    {
+        DOUBLE_ENTRY,
+        INCOME,
+        OUTLAY,
+        BANK_WITHDRAW,
+        BANK_DEPOSIT,
+        BANK_TRANSFER,
+    };
 
-    typedef     std::vector<const char *>   TokenArray;
+    DECLARE_STRICT_VECTOR(
+            PurchasedGoods,     PurchaseNumber,
+            PurchasingList
+    );
+
+private:
 
 //========================================================================
 //
@@ -68,14 +81,14 @@ public:
     **  （デフォルトコンストラクタ）。
     **
     **/
-    TextParser();
+    ReceiptEntriesChunk();
 
     //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
     **/
-    virtual  ~TextParser();
+    ~ReceiptEntriesChunk();
 
 //========================================================================
 //
@@ -103,25 +116,15 @@ public:
 //
 public:
 
-    //----------------------------------------------------------------
-    /**   文字列を指定した文字で分割する。
-    **
-    **  @param [in] inText    入力テキスト。
-    **  @param [in] sepChar   区切り文字。
-    **  @param[out] bufText   テキストバッファ。
-    **  @param[out] vTokens   分割結果を追記する変数。
-    **      必要なら呼び出す前に内容をクリアする。
-    **  @return     エラーコードを返す。
-    **      -   異常終了の場合は、
-    **          エラーの種類を示す非ゼロ値を返す。
-    **      -   正常終了の場合は、ゼロを返す。
-    **/
-    static  ErrCode
-    splitText(
-            const  std::string  &inText,
-            const  char  *      sepChrs,
-            TextBuffer          &bufText,
-            TokenArray          &vTokens);
+//========================================================================
+//
+//    Public Member Functions (Operators).
+//
+
+//========================================================================
+//
+//    Accessors.
+//
 
 //========================================================================
 //
@@ -132,32 +135,30 @@ public:
 //
 //    For Internal Use Only.
 //
-private:
-
-    //----------------------------------------------------------------
-    /**   文字列を指定した文字で分割する。
-    **
-    **  @param [in,out] ptrBuf    入力テキスト。
-    **  @param [in]     ptrEnd
-    **  @param [in]     sepChar   区切り文字。
-    **  @param    [out] vTokens   分割結果を追記する変数。
-    **      必要なら呼び出す前に内容をクリアする。
-    **  @return     エラーコードを返す。
-    **      -   異常終了の場合は、
-    **          エラーの種類を示す非ゼロ値を返す。
-    **      -   正常終了の場合は、ゼロを返す。
-    **/
-    static  ErrCode
-    splitTextSub(
-            char  *  const  ptrBuf,
-            char  *  const  ptrEnd,
-            const  char  *  sepChrs,
-            TokenArray     &vTokens);
 
 //========================================================================
 //
 //    Member Variables.
 //
+public:
+
+    /**   収支フラグ。  **/
+    ChunkInOutFlags     blockFlags;
+
+    /**   借方口座。    **/
+    CategoryHandle      chlDebitAccount;
+
+    /**   貸方口座。    **/
+    CategoryHandle      chrCreditAccount;
+
+    /**   借方金額。    **/
+    CurrencyNumerator   cnlDebitAmount;
+
+    /**   貸方金額。    */
+    CurrencyNumerator   cnrCreditAmount;
+
+    /**   商品リスト。  **/
+    PurchasingList      goodsList;
 
 //========================================================================
 //
@@ -165,10 +166,10 @@ private:
 //
 public:
     //  テストクラス。  //
-    friend  class   TextParserTest;
+    friend  class   ReceiptEntriesChunkTest;
 };
 
-}   //  End of namespace  Common
+}   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #endif
