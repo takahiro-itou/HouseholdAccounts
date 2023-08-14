@@ -143,6 +143,15 @@ public:
     const   std::string
     toString()  const;
 
+    //----------------------------------------------------------------
+    /**   インスタンスの文字列表現をストリームに書き込む。
+    **
+    **  @param [in,out] os    出力ストリーム。
+    **  @return     出力後のストリームの参照を返す。
+    **/
+    std::ostream  &
+    toStream(std::ostream  &os)  const;
+
 //========================================================================
 //
 //    Public Member Functions (Operators).
@@ -240,6 +249,13 @@ public:
     friend  class   ReceiptInfoTest;
 };
 
+//========================================================================
+//
+//    Functions (Operators).
+//
+
+inline  std::ostream  &
+operator << (std::ostream & os, const ReceiptInfo & rhs);
 
 //========================================================================
 /**

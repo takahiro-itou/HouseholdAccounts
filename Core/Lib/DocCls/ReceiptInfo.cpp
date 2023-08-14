@@ -121,6 +121,16 @@ ReceiptInfo::toString()  const
     return  ss.str();
 }
 
+//----------------------------------------------------------------
+//    インスタンスの文字列表現をストリームに書き込む。
+//
+
+std::ostream  &
+ReceiptInfo::toStream(std::ostream  &os)  const
+{
+    return ( os );
+}
+
 //========================================================================
 //
 //    Public Member Functions (Operators).
