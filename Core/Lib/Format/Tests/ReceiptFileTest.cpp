@@ -57,7 +57,7 @@ private:
     void  testReceiptFile();
     void  testReadFromTextStream1();
     void  testReadFromTextStream2();
-    void  testSaveToTextStream1;()
+    void  testSaveToTextStream1();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptFileTest );
