@@ -214,7 +214,14 @@ ReceiptFile::saveToTextStream(
         const  DocCls::ReceiptList  & objDoc,
         std::ostream                & outStr)
 {
-    return ( ErrCode::FAILURE );
+    const   ReceiptNumber   numReceipts = objDoc.size();
+    for ( ReceiptNumber
+            i = static_cast<ReceiptNumber>(0); i < numReceipts; ++ i )
+    {
+        outStr  <<  objDoc.at(i);
+    }
+
+    return ( ErrCode::SUCCESS );
 }
 
 //========================================================================
