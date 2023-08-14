@@ -649,7 +649,26 @@ void  ReceiptFileTest::testReadFromTextStream2()
 
 void  ReceiptFileTest::testSaveToTextStream1()
 {
-    return;
+    typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
+
+    DocCls::CategoryManager cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptFile     testee;
+    std::stringstream   ss;
+    prepareTextStream1(ss);
+
+    DocCls::ReceiptList data;
+    int retCode;
+
+    retCode = static_cast<int>(testee.setNumSkipColumns(0));
+    CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
+
+    retCode = static_cast<int>(testee.setCategoryManager(cateMan));
+    CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
+
+    retCode = static_cast<int>(testee.readFromTextStream(ss, &data));
+    CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 }
 
 void  ReceiptFileTest::testSaveToTextStream2()
