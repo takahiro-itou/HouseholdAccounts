@@ -57,6 +57,10 @@ public:
 private:
     typedef     DocCls::CategoryManager     CategoryManager;
 
+    std::ostream  &
+    prepareTextStream1(
+            std::ostream  &outStr);
+
     Boolean
     setupCategoryManager1(
             CategoryManager &cateMan);
@@ -79,6 +83,19 @@ CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptFileTest );
 //
 //    For Internal Use Only.
 //
+
+std::ostream  &
+ReceiptFileTest::prepareTextStream1(
+        std::ostream  &outStr)
+{
+    outStr  <<  "NEW;1;2023/03/01;09:00;SHOP A;支出;現金;;"
+            <<  "Head1;Cate1;Product1;128;2;0;0;0;;\n";
+    outStr  <<  ";;;;;;;;"
+            <<  "Head2;Cate2;Product2;200;1;10;1;2;;\n";
+    outStr  <<  ";;;;;収入;ポイント;;"
+            <<  "Head3;Cate3;Points;10;1;0;0;0;;\n";
+    return ( outStr );
+}
 
 Boolean
 ReceiptFileTest::setupCategoryManager1(
@@ -236,13 +253,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
 
     ReceiptFile     testee;
     std::stringstream   ss;
-
-    ss  <<  "NEW;1;2023/03/01;09:00;SHOP A;支出;現金;;"
-        <<  "Head1;Cate1;Product1;128;2;0;0;0;;\n";
-    ss  <<  ";;;;;;;;"
-        <<  "Head2;Cate2;Product2;200;1;10;1;2;;\n";
-    ss  <<  ";;;;;収入;ポイント;;"
-        <<  "Head3;Cate3;Points;10;1;0;0;0;;\n";
+    prepareTextStream1(ss);
 
     DocCls::ReceiptList data;
     int retCode;
