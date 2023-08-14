@@ -46,6 +46,7 @@ class  ReceiptFileTest : public  TestFixture
     CPPUNIT_TEST(testReceiptFile);
     CPPUNIT_TEST(testReadFromTextStream1);
     CPPUNIT_TEST(testReadFromTextStream2);
+    CPPUNIT_TEST(testSaveToTextStream1);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -56,6 +57,7 @@ private:
     void  testReceiptFile();
     void  testReadFromTextStream1();
     void  testReadFromTextStream2();
+    void  testSaveToTextStream1;()
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptFileTest );
@@ -584,6 +586,13 @@ void  ReceiptFileTest::testReadFromTextStream2()
                     static_cast<CurrencyNumerator>(0), pg3.exclusiveTaxVal);
         }
     }
+
+    return;
+}
+
+void  ReceiptFileTest::testSaveToTextStream1()
+{
+    typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
 
     return;
 }
