@@ -54,6 +54,9 @@ public:
     virtual  void   tearDown()  override    { }
 
 private:
+    typedef     DocCls::CategoryManager     CategoryManager;
+
+private:
     void  testReceiptFile();
     void  testReadFromTextStream1();
     void  testReadFromTextStream2();
