@@ -47,6 +47,7 @@ class  ReceiptFileTest : public  TestFixture
     CPPUNIT_TEST(testReadFromTextStream1);
     CPPUNIT_TEST(testReadFromTextStream2);
     CPPUNIT_TEST(testSaveToTextStream1);
+    CPPUNIT_TEST(testSaveToTextStream2);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -69,6 +70,7 @@ private:
     void  testReadFromTextStream1();
     void  testReadFromTextStream2();
     void  testSaveToTextStream1();
+    void  testSaveToTextStream2();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptFileTest );
@@ -625,8 +627,11 @@ void  ReceiptFileTest::testReadFromTextStream2()
 
 void  ReceiptFileTest::testSaveToTextStream1()
 {
-    typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
+    return;
+}
 
+void  ReceiptFileTest::testSaveToTextStream2()
+{
     return;
 }
 
