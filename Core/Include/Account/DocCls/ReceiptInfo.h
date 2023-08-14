@@ -255,7 +255,10 @@ public:
 //
 
 inline  std::ostream  &
-operator << (std::ostream & os, const ReceiptInfo & rhs);
+operator << (std::ostream & os, const ReceiptInfo & rhs)
+{
+    return  rhs.toStream(os);
+}
 
 //========================================================================
 /**
