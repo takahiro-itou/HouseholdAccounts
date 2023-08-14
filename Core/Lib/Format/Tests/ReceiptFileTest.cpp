@@ -668,6 +668,10 @@ void  ReceiptFileTest::testSaveToTextStream1()
 
     retCode = static_cast<int>(testee.readFromTextStream(ss, &data));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
+
+    std::stringstream   ssOut;
+    retCode = static_cast<int>(testee.saveToTextStream(data, ssOut));
+    CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 }
 
 void  ReceiptFileTest::testSaveToTextStream2()
@@ -693,6 +697,9 @@ void  ReceiptFileTest::testSaveToTextStream2()
     retCode = static_cast<int>(testee.readFromTextStream(ss, &data));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
+    std::stringstream   ssOut;
+    retCode = static_cast<int>(testee.saveToTextStream(data, ssOut));
+    CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
     return;
 }
