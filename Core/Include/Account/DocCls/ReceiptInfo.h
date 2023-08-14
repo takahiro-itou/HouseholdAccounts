@@ -135,6 +135,14 @@ public:
             const  std::string  &recTime,
             const  std::string  &shopName);
 
+    //----------------------------------------------------------------
+    /**   インスタンスを文字列表現に変換する。
+    **
+    **  @return     文字列表現を返す。
+    **/
+    const   std::string
+    toString()  const;
+
 //========================================================================
 //
 //    Public Member Functions (Operators).

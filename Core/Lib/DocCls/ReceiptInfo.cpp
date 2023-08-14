@@ -110,6 +110,17 @@ ReceiptInfo::initializeReceiptInfo(
     return ( ErrCode::SUCCESS );
 }
 
+//----------------------------------------------------------------
+//    インスタンスを文字列表現に変換する。
+//
+
+const   std::string
+ReceiptInfo::toString()  const
+{
+    std::stringstream   ss;
+    return  ss.str();
+}
+
 //========================================================================
 //
 //    Public Member Functions (Operators).
