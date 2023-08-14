@@ -705,6 +705,8 @@ void  ReceiptFileTest::testSaveToTextStream2()
     retCode = static_cast<int>(testee.saveToTextStream(data, ssOut));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
+    CPPUNIT_ASSERT_EQUAL( ss.str(), ssOut.str() );
+
     return;
 }
 
