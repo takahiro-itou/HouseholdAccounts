@@ -56,6 +56,10 @@ public:
 private:
     typedef     DocCls::CategoryManager     CategoryManager;
 
+    Boolean
+    setupCategoryManager1(
+            CategoryManager &cateMan);
+
 private:
     void  testReceiptFile();
     void  testReadFromTextStream1();
@@ -67,21 +71,13 @@ CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptFileTest );
 
 //========================================================================
 //
-//    Tests.
+//    For Internal Use Only.
 //
 
-void  ReceiptFileTest::testReceiptFile()
+Boolean
+ReceiptFileTest::setupCategoryManager1(
+        CategoryManager &cateMan)
 {
-    ReceiptFile     testee;
-
-    return;
-}
-
-void  ReceiptFileTest::testReadFromTextStream1()
-{
-    typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
-
-    DocCls::CategoryManager cateMan;
     cateMan.reserveRootCategories(CategoryHandle(4));
     cateMan.setupRootCategory(
             CategoryHandle(0), "収入",
@@ -135,8 +131,30 @@ void  ReceiptFileTest::testReadFromTextStream1()
             DateSerial(0),
             Common::DecimalCurrency(0));
 
+    return ( Boolean::BOOL_TRUE );
+}
+
+
+//========================================================================
+//
+//    Tests.
+//
+
+void  ReceiptFileTest::testReceiptFile()
+{
     ReceiptFile     testee;
 
+    return;
+}
+
+void  ReceiptFileTest::testReadFromTextStream1()
+{
+    typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
+
+    DocCls::CategoryManager cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptFile     testee;
     std::stringstream   ss;
 
     ss  <<  "NEW;1;2023/03/01;09:00;SHOP A;支出;現金;;"
