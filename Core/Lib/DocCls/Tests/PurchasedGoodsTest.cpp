@@ -135,7 +135,29 @@ void  PurchasedGoodsTest::testToString()
 
 void  PurchasedGoodsTest::testWriteToString()
 {
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
     PurchasedGoods  testee;
+
+    testee.accountHeadings  = static_cast<CategoryHandle>(1);
+    testee.accountCategory  = static_cast<CategoryHandle>(2);
+    testee.productName      = "Product1";
+    testee.unitPrice        = static_cast<CurrencyNumerator>(3000);
+    testee.nQuantity        = static_cast<int>(1);
+    testee.cDiscount        = static_cast<CurrencyNumerator>(10);
+    testee.exclusiveTaxVal  = static_cast<CurrencyNumerator>(3);
+    testee.inclusiveTaxVal  = static_cast<CurrencyNumerator>(7);
+    testee.cSubTotal        = static_cast<CurrencyNumerator>(3000 - 10 + 3);
+    testee.pCatMan          = &cateMan;
+
+    std::stringstream   ss;
+    testee.writeToStream(ss);
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("Head1;Cate1;Product1;3000;1;10;3;7"),
+            ss.str()
+    );
 
     return;
 }
