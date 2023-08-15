@@ -358,11 +358,11 @@ void  ReceiptFileTest::testReadFromTextStream1()
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(0), pg0.cDiscount);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(256), pg0.cSubTotal);
+                static_cast<CurrencyNumerator>(0), pg0.exclusiveTaxVal);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(0), pg0.inclusiveTaxVal);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(0), pg0.exclusiveTaxVal);
+                static_cast<CurrencyNumerator>(256), pg0.cSubTotal);
     }
 
     {
@@ -382,11 +382,11 @@ void  ReceiptFileTest::testReadFromTextStream1()
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(10), pg1.cDiscount);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(191), pg1.cSubTotal);
+                static_cast<CurrencyNumerator>(1), pg1.exclusiveTaxVal);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(2), pg1.inclusiveTaxVal);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(1), pg1.exclusiveTaxVal);
+                static_cast<CurrencyNumerator>(191), pg1.cSubTotal);
     }
 
     const DocCls::ReceiptEntriesChunk::PurchasingList &
@@ -519,11 +519,11 @@ void  ReceiptFileTest::testReadFromTextStream2()
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(0), pg0.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(468), pg0.cSubTotal);
+                    static_cast<CurrencyNumerator>(0), pg0.exclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(0), pg0.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg0.exclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(468), pg0.cSubTotal);
         }
 
         {
@@ -543,11 +543,11 @@ void  ReceiptFileTest::testReadFromTextStream2()
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(10), pg1.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(293), pg1.cSubTotal);
+                    static_cast<CurrencyNumerator>(3), pg1.exclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(7), pg1.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(3), pg1.exclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(293), pg1.cSubTotal);
         }
 
         const DocCls::ReceiptEntriesChunk::PurchasingList &
@@ -574,11 +574,11 @@ void  ReceiptFileTest::testReadFromTextStream2()
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(0), pg2.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(20), pg2.cSubTotal);
+                    static_cast<CurrencyNumerator>(0), pg2.exclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(0), pg2.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg2.exclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(20), pg2.cSubTotal);
         }
     }
 
@@ -635,11 +635,11 @@ void  ReceiptFileTest::testReadFromTextStream2()
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(0), pg3.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(1000), pg3.cSubTotal);
+                    static_cast<CurrencyNumerator>(0), pg3.exclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(0), pg3.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg3.exclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(1000), pg3.cSubTotal);
         }
     }
 
