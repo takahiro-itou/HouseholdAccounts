@@ -49,6 +49,7 @@ public:
 private:
     void  testPurchasedGoods();
     void  testToString();
+    void  testWriteToString();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( PurchasedGoodsTest );
@@ -66,6 +67,13 @@ void  PurchasedGoodsTest::testPurchasedGoods()
 }
 
 void  PurchasedGoodsTest::testToString()
+{
+    PurchasedGoods  testee;
+
+    return;
+}
+
+void  PurchasedGoodsTest::testWriteToString()
 {
     PurchasedGoods  testee;
 

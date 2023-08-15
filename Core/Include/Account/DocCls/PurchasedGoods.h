@@ -200,7 +200,6 @@ operator << (std::ostream & os, const PurchasedGoods & rhs)
     return  rhs.writeToStream(os);
 }
 
-
 }   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
