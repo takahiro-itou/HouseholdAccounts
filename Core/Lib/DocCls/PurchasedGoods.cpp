@@ -69,9 +69,10 @@ PurchasedGoods::PurchasedGoods()
       unitPrice(0),
       nQuantity(0),
       cDiscount(0),
-      cSubTotal(0),
+      exclusiveTaxVal(0),
       inclusiveTaxVal(0),
-      exclusiveTaxVal(0)
+      cSubTotal(0),
+      pCatMan(nullptr)
 {
 }
 
