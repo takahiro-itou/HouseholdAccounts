@@ -91,6 +91,15 @@ PurchasedGoods::~PurchasedGoods()
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    インスタンスを文字列表現に変換する。
+//
+
+const   std::string
+PurchasedGoods::toString()  const
+{
+}
+
 //========================================================================
 //
 //    Public Member Functions (Operators).
