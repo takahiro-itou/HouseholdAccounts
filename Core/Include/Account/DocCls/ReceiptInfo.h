@@ -150,7 +150,8 @@ public:
     **  @return     出力後のストリームの参照を返す。
     **/
     std::ostream  &
-    toStream(std::ostream  &os)  const;
+    writeToStream(
+            std::ostream  & os)  const;
 
 //========================================================================
 //
@@ -257,7 +258,7 @@ public:
 inline  std::ostream  &
 operator << (std::ostream & os, const ReceiptInfo & rhs)
 {
-    return  rhs.toStream(os);
+    return  rhs.writeToStream(os);
 }
 
 //========================================================================

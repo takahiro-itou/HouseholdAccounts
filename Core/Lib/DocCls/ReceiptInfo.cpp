@@ -118,7 +118,7 @@ const   std::string
 ReceiptInfo::toString()  const
 {
     std::stringstream   ss;
-    this->toStream(ss);
+    this->writeToStream(ss);
     return  ss.str();
 }
 
@@ -127,7 +127,8 @@ ReceiptInfo::toString()  const
 //
 
 std::ostream  &
-ReceiptInfo::toStream(std::ostream  &os)  const
+ReceiptInfo::writeToStream(
+        std::ostream  & os)  const
 {
     os  <<  this->m_receiptDate <<  ";"
         <<  this->m_receiptTime <<  ";"
