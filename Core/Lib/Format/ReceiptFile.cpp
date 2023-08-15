@@ -218,7 +218,7 @@ ReceiptFile::saveToTextStream(
     for ( ReceiptNumber
             i = static_cast<ReceiptNumber>(0); i < numReceipts; ++ i )
     {
-        outStr  <<  objDoc.at(i);
+        outStr  <<  objDoc.at(i)    <<  std::endl;
     }
 
     return ( ErrCode::SUCCESS );
