@@ -180,7 +180,7 @@ public:
     CurrencyNumerator   exclusiveTaxVal;
 
     /**   項目を管理するインスタンス。  **/
-    const   DocCls::CategoryManager *   m_pCatMan;
+    const   DocCls::CategoryManager *   pCatMan;
 
 private:
 

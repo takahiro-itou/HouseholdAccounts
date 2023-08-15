@@ -107,7 +107,28 @@ void  PurchasedGoodsTest::testPurchasedGoods()
 
 void  PurchasedGoodsTest::testToString()
 {
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
     PurchasedGoods  testee;
+
+    testee.accountHeadings  = static_cast<CategoryHandle>(1);
+    testee.accountCategory  = static_cast<CategoryHandle>(2);
+    testee.productName      = "Product1";
+    testee.unitPrice        = 128;
+    testee.nQuantity        = 2;
+    testee.cDiscount        = 10;
+    testee.exclusiveTaxVal  = 1;
+    testee.inclusiveTaxVal  = 2;
+    testee.cSubTotal        = 128 * 2 - 10 + 1;
+    testee.pCatMan          = &cateMan;
+
+    const  std::string  ret = testee.toString();
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("Head1;Cate1;Product1;128;2;10;1;2"),
+            ret
+    );
 
     return;
 }
