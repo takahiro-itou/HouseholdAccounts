@@ -100,6 +100,17 @@ PurchasedGoods::toString()  const
 {
 }
 
+//----------------------------------------------------------------
+//    インスタンスの文字列表現をストリームに書き込む。
+//
+
+std::ostream  &
+PurchasedGoods::writeToStream(
+        std::ostream  & os)  const
+{
+    return ( os );
+}
+
 //========================================================================
 //
 //    Public Member Functions (Operators).
