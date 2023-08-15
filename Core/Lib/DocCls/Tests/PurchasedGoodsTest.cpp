@@ -115,12 +115,12 @@ void  PurchasedGoodsTest::testToString()
     testee.accountHeadings  = static_cast<CategoryHandle>(1);
     testee.accountCategory  = static_cast<CategoryHandle>(2);
     testee.productName      = "Product1";
-    testee.unitPrice        = 128;
-    testee.nQuantity        = 2;
-    testee.cDiscount        = 10;
-    testee.exclusiveTaxVal  = 1;
-    testee.inclusiveTaxVal  = 2;
-    testee.cSubTotal        = 128 * 2 - 10 + 1;
+    testee.unitPrice        = static_cast<CurrencyNumerator>(128);
+    testee.nQuantity        = static_cast<int>(2);
+    testee.cDiscount        = static_cast<CurrencyNumerator>(10);
+    testee.exclusiveTaxVal  = static_cast<CurrencyNumerator>(1);
+    testee.inclusiveTaxVal  = static_cast<CurrencyNumerator>(2);
+    testee.cSubTotal        = static_cast<CurrencyNumerator>(256 - 10 + 1);
     testee.pCatMan          = &cateMan;
 
     const  std::string  ret = testee.toString();
