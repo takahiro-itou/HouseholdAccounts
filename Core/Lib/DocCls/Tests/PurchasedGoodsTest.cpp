@@ -21,6 +21,8 @@
 #include    "TestDriver.h"
 #include    "Account/DocCls/PurchasedGoods.h"
 
+#include    "Account/DocCls/CategoryManager.h"
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
@@ -47,12 +49,49 @@ public:
     virtual  void   tearDown()  override    { }
 
 private:
+    typedef     DocCls::CategoryManager     CategoryManager;
+
+    Boolean
+    setupCategoryManager1(
+            CategoryManager &cateMan);
+
+private:
     void  testPurchasedGoods();
     void  testToString();
     void  testWriteToString();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( PurchasedGoodsTest );
+
+//========================================================================
+//
+//    For Internal Use Only.
+//
+
+Boolean
+PurchasedGoodsTest::setupCategoryManager1(
+        CategoryManager &cateMan)
+{
+    cateMan.reserveRootCategories(CategoryHandle(1));
+    cateMan.setupRootCategory(
+            CategoryHandle(0), "支出",
+            DocCls::CategoryFlags::CTYPE_OUTLAY,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    cateMan.insertNewCategory(
+            CategoryHandle(0), "Head1",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(1), "Cate1",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+
+    return ( Boolean::BOOL_TRUE );
+}
 
 //========================================================================
 //
