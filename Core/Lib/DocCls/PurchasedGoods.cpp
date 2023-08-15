@@ -98,6 +98,9 @@ PurchasedGoods::~PurchasedGoods()
 const   std::string
 PurchasedGoods::toString()  const
 {
+    std::stringstream   ss;
+    this->writeToStream(ss);
+    return  ss.str();
 }
 
 //----------------------------------------------------------------
