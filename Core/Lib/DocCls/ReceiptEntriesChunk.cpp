@@ -87,6 +87,16 @@ ReceiptEntriesChunk::~ReceiptEntriesChunk()
 //    Public Member Functions.
 //
 
+//----------------------------------------------------------------
+//    インスタンスの文字列表現をストリームに書き込む。
+//
+
+std::ostream  &
+ReceiptEntriesChunk::toStream(std::ostream  &os)  const
+{
+    return ( os );
+}
+
 //========================================================================
 //
 //    Public Member Functions (Operators).
