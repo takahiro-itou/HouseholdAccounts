@@ -30,6 +30,20 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
 
 namespace  {
+
+//----------------------------------------------------------------
+/** 　　項目ハンドルから項目名を取得する
+**
+**/
+
+const  std::string  &
+getCategoryName(
+        const   CategoryManager  *  pCatMan,
+        const   CategoryHandle      hCate)
+{
+    return  pCatMan->getBookCategory(hCate).getCategoryName();
+}
+
 }   //  End of (Unnamed) namespace.
 
 //========================================================================
@@ -116,16 +130,16 @@ PurchasedGoods::writeToStream(
         std::ostream  & os)  const
 {
     if ( pCatMan != nullptr ) {
-        os  <<  pCatMan->getBookCategory(this->accountHeadings).getCategoryName()
-            <<  ";"
-            <<  pCatMan->getBookCategory(this->accountCategory).getCategoryName()
-            <<  ";";
+        os  <<  getCategoryName(pCatMan, this->accountHeadings)
+            <<  ';'
+            <<  getCategoryName(pCatMan, this->accountCategory)
+            <<  ';';
     } else {
         os  <<  this->accountHeadings   <<  ';'
             <<  this->accountCategory   <<  ';';
     }
 
-    os  <<  this->productName   <<  ";"
+    os  <<  this->productName   <<  ';'
         <<  this->unitPrice     <<  ';'
         <<  this->nQuantity     <<  ';'
         <<  this->cDiscount     <<  ';'
