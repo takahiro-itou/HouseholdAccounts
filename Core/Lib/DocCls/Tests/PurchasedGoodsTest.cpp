@@ -39,6 +39,7 @@ class  PurchasedGoodsTest : public  TestFixture
 {
     CPPUNIT_TEST_SUITE(PurchasedGoodsTest);
     CPPUNIT_TEST(testPurchasedGoods);
+    CPPUNIT_TEST(testToString);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -47,6 +48,7 @@ public:
 
 private:
     void  testPurchasedGoods();
+    void  testToString();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( PurchasedGoodsTest );
@@ -57,6 +59,13 @@ CPPUNIT_TEST_SUITE_REGISTRATION( PurchasedGoodsTest );
 //
 
 void  PurchasedGoodsTest::testPurchasedGoods()
+{
+    PurchasedGoods  testee;
+
+    return;
+}
+
+void  PurchasedGoodsTest::testToString()
 {
     PurchasedGoods  testee;
 
