@@ -94,6 +94,9 @@ ReceiptEntriesChunk::~ReceiptEntriesChunk()
 const   std::string
 ReceiptEntriesChunk::toString()  const
 {
+    std::stringstream   ss;
+    this->writeToStream(ss);
+    return  ss.str();
 }
 
 //----------------------------------------------------------------
