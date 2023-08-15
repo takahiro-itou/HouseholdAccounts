@@ -42,6 +42,7 @@ class  PurchasedGoodsTest : public  TestFixture
     CPPUNIT_TEST_SUITE(PurchasedGoodsTest);
     CPPUNIT_TEST(testPurchasedGoods);
     CPPUNIT_TEST(testToString);
+    CPPUNIT_TEST(testWriteToString);
     CPPUNIT_TEST_SUITE_END();
 
 public:
