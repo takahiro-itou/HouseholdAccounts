@@ -162,8 +162,12 @@ public:
     /**   値引額。  **/
     CurrencyNumerator   cDiscount;
 
-    /**   小計。    **/
-    CurrencyNumerator   cSubTotal;
+    /**
+    **    外税額。
+    **
+    **  税抜き価格ではなく税金額そのもの。
+    **/
+    CurrencyNumerator   exclusiveTaxVal;
 
     /**
     **    内税額。
@@ -172,12 +176,8 @@ public:
     **/
     CurrencyNumerator   inclusiveTaxVal;
 
-    /**
-    **    外税額。
-    **
-    **  税抜き価格ではなく税金額そのもの。
-    **/
-    CurrencyNumerator   exclusiveTaxVal;
+    /**   小計。    **/
+    CurrencyNumerator   cSubTotal;
 
     /**   項目を管理するインスタンス。  **/
     const   DocCls::CategoryManager *   pCatMan;
