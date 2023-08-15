@@ -50,7 +50,7 @@ public:
     virtual  void   tearDown()  override    { }
 
 private:
-    typedef     DocCls::CategoryManager     CategoryManager;
+    typedef     CategoryManager     CategoryManager;
 
     Boolean
     setupCategoryManager1(
@@ -76,18 +76,18 @@ PurchasedGoodsTest::setupCategoryManager1(
     cateMan.reserveRootCategories(CategoryHandle(1));
     cateMan.setupRootCategory(
             CategoryHandle(0), "支出",
-            DocCls::CategoryFlags::CTYPE_OUTLAY,
+            CategoryFlags::CTYPE_OUTLAY,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
     cateMan.insertNewCategory(
             CategoryHandle(0), "Head1",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
+            CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(1), "Cate1",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
+            CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
 

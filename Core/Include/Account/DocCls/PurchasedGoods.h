@@ -180,7 +180,7 @@ public:
     CurrencyNumerator   cSubTotal;
 
     /**   項目を管理するインスタンス。  **/
-    const   DocCls::CategoryManager *   pCatMan;
+    const   CategoryManager *   pCatMan;
 
 private:
 
