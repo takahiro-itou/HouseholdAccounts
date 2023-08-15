@@ -21,6 +21,8 @@
 #include    "Account/pch/PreCompile.h"
 #include    "Account/DocCls/PurchasedGoods.h"
 
+#include    "Account/DocCls/CategoryManager.h"
+
 #include    <sstream>
 
 
@@ -113,6 +115,23 @@ std::ostream  &
 PurchasedGoods::writeToStream(
         std::ostream  & os)  const
 {
+    if ( pCatMan != nullptr ) {
+        os  <<  pCatMan->getBookCategory(this->accountCategory).getCategoryName()
+            <<  ";"
+            <<  pCatMan->getBookCategory(this->accountHeadings).getCategoryName()
+            <<  ";";
+    } else {
+        os  <<  this->accountCategory   <<  ';'
+            <<  this->accountHeadings   <<  ';';
+    }
+
+    os  <<  this->productName   <<  ";"
+        <<  this->unitPrice     <<  ';'
+        <<  this->nQuantity     <<  ';'
+        <<  this->cDiscount     <<  ';'
+        <<  this->inclusiveTaxVal   <<  ';'
+        <<  this->exclusiveTaxVal;
+
     return ( os );
 }
 
