@@ -129,8 +129,8 @@ PurchasedGoods::writeToStream(
         <<  this->unitPrice     <<  ';'
         <<  this->nQuantity     <<  ';'
         <<  this->cDiscount     <<  ';'
-        <<  this->inclusiveTaxVal   <<  ';'
-        <<  this->exclusiveTaxVal;
+        <<  this->exclusiveTaxVal   <<  ';'
+        <<  this->inclusiveTaxVal;
 
     return ( os );
 }
