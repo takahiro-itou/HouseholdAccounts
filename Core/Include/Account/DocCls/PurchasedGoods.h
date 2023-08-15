@@ -189,6 +189,10 @@ private:
 //    Other Features.
 //
 public:
+    typedef     PurchasedGoods      This;
+    PurchasedGoods      (const  This  &)    = default;
+    This &  operator =  (const  This  &)    = default;
+public:
     //  テストクラス。  //
     friend  class   PurchasedGoodsTest;
 };
