@@ -116,13 +116,13 @@ PurchasedGoods::writeToStream(
         std::ostream  & os)  const
 {
     if ( pCatMan != nullptr ) {
-        os  <<  pCatMan->getBookCategory(this->accountCategory).getCategoryName()
+        os  <<  pCatMan->getBookCategory(this->accountHeadings).getCategoryName()
             <<  ";"
-            <<  pCatMan->getBookCategory(this->accountHeadings).getCategoryName()
+            <<  pCatMan->getBookCategory(this->accountCategory).getCategoryName()
             <<  ";";
     } else {
-        os  <<  this->accountCategory   <<  ';'
-            <<  this->accountHeadings   <<  ';';
+        os  <<  this->accountHeadings   <<  ';'
+            <<  this->accountCategory   <<  ';';
     }
 
     os  <<  this->productName   <<  ";"
