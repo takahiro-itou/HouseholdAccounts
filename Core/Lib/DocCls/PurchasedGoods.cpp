@@ -21,6 +21,8 @@
 #include    "Account/pch/PreCompile.h"
 #include    "Account/DocCls/PurchasedGoods.h"
 
+#include    <sstream>
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
