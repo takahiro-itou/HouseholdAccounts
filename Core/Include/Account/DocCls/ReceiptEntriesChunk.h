@@ -187,6 +187,17 @@ public:
     friend  class   ReceiptEntriesChunkTest;
 };
 
+//========================================================================
+//
+//    Functions (Operators).
+//
+
+inline  std::ostream  &
+operator << (std::ostream & os, const ReceiptEntriesChunk & rhs)
+{
+    return  rhs.writeToStream(os);
+}
+
 }   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
