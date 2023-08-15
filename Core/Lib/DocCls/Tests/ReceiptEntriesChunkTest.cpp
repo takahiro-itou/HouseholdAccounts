@@ -39,6 +39,8 @@ class  ReceiptEntriesChunkTest : public  TestFixture
 {
     CPPUNIT_TEST_SUITE(ReceiptEntriesChunkTest);
     CPPUNIT_TEST(testReceiptEntriesChunk);
+    CPPUNIT_TEST(testToString);
+    CPPUNIT_TEST(testWriteToString);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -47,6 +49,8 @@ public:
 
 private:
     void  testReceiptEntriesChunk();
+    void  testToString();
+    void  testWriteToString();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptEntriesChunkTest );
@@ -57,6 +61,20 @@ CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptEntriesChunkTest );
 //
 
 void  ReceiptEntriesChunkTest::testReceiptEntriesChunk()
+{
+    ReceiptEntriesChunk     testee;
+
+    return;
+}
+
+void  ReceiptEntriesChunkTest::testToString()
+{
+    ReceiptEntriesChunk     testee;
+
+    return;
+}
+
+void  ReceiptEntriesChunkTest::testWriteToString()
 {
     ReceiptEntriesChunk     testee;
 
