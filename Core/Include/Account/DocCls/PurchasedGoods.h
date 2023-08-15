@@ -31,6 +31,7 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
 
 //  クラスの前方宣言。  //
+class   CategoryManager;
 
 //========================================================================
 //
@@ -177,6 +178,9 @@ public:
     **  税抜き価格ではなく税金額そのもの。
     **/
     CurrencyNumerator   exclusiveTaxVal;
+
+    /**   項目を管理するインスタンス。  **/
+    const   DocCls::CategoryManager *   m_pCatMan;
 
 private:
 
