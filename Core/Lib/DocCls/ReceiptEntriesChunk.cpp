@@ -88,11 +88,21 @@ ReceiptEntriesChunk::~ReceiptEntriesChunk()
 //
 
 //----------------------------------------------------------------
+//    インスタンスを文字列表現に変換する。
+//
+
+const   std::string
+ReceiptEntriesChunk::toString()  const
+{
+}
+
+//----------------------------------------------------------------
 //    インスタンスの文字列表現をストリームに書き込む。
 //
 
 std::ostream  &
-ReceiptEntriesChunk::toStream(std::ostream  &os)  const
+ReceiptEntriesChunk::writeToStream(
+        std::ostream  & os)  const
 {
     return ( os );
 }
