@@ -178,6 +178,9 @@ public:
     /**   商品リスト。  **/
     PurchasingList      goodsList;
 
+    /**   項目を管理するインスタンス。  **/
+    const   CategoryManager *   pCatMan;
+
 //========================================================================
 //
 //    Other Features.
