@@ -250,6 +250,7 @@ void  ReceiptEntriesChunkTest::testToString1()
 
     ReceiptEntriesChunk     testee;
     prepareTestData1(&testee);
+    testee.pCatMan  = &cateMan;
 
     const  std::string  ret = testee.toString();
 
@@ -271,6 +272,7 @@ void  ReceiptEntriesChunkTest::testToString2()
 
     ReceiptEntriesChunk     testee;
     prepareTestData2(&testee);
+    testee.pCatMan  = &cateMan;
 
     const  std::string  ret = testee.toString();
 
@@ -289,6 +291,7 @@ void  ReceiptEntriesChunkTest::testWriteToString1()
 
     ReceiptEntriesChunk     testee;
     prepareTestData1(&testee);
+    testee.pCatMan  = &cateMan;
 
     std::stringstream   ss;
     testee.writeToStream(ss);
