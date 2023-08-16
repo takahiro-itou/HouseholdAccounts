@@ -308,6 +308,26 @@ void  ReceiptEntriesChunkTest::testWriteToString1()
     return;
 }
 
+void  ReceiptEntriesChunkTest::testWriteToString2()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptEntriesChunk     testee;
+    prepareTestData2(&testee);
+    testee.pCatMan  = &cateMan;
+
+    std::stringstream   ss;
+    testee.writeToStream(ss);
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("複式;現金;Bank 1;Head4;Cate4;Deposit;1000;1;0;0;0"),
+            ss.str()
+    );
+
+    return;
+}
+
 }   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
