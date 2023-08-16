@@ -186,6 +186,10 @@ public:
 //    Other Features.
 //
 public:
+    typedef     ReceiptEntriesChunk     This;
+    ReceiptEntriesChunk (const  This  &)    = default;
+    This &  operator =  (const  This  &)    = default;
+public:
     //  テストクラス。  //
     friend  class   ReceiptEntriesChunkTest;
 };
