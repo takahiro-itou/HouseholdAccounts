@@ -125,7 +125,7 @@ ReceiptEntriesChunkTest::prepareTestData1(
 }
 
 Boolean
-ReceiptEntriesChunk::prepareTestData2(
+ReceiptEntriesChunkTest::prepareTestData2(
         ReceiptEntriesChunk *   chunk)
 {
     chunk->blockFlags       = ReceiptEntriesChunk::ChunkInOutFlags::DOUBLE_ENTRY;
