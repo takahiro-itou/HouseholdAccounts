@@ -70,7 +70,7 @@ CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptEntriesChunkTest );
 //
 
 Boolean
-ReceiptFileTest::setupCategoryManager1(
+ReceiptEntriesChunkTest::setupCategoryManager1(
         CategoryManager &cateMan)
 {
     cateMan.reserveRootCategories(CategoryHandle(4));
