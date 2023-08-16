@@ -57,13 +57,19 @@ private:
             ReceiptEntriesChunk *   chunk);
 
     Boolean
+    prepareTestData2(
+            ReceiptEntriesChunk *   chunk);
+
+    Boolean
     setupCategoryManager1(
             CategoryManager &cateMan);
 
 private:
     void  testReceiptEntriesChunk();
     void  testToString1();
+    void  testToString2();
     void  testWriteToString1();
+    void  testWriteToString2();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptEntriesChunkTest );
@@ -113,6 +119,38 @@ ReceiptEntriesChunkTest::prepareTestData1(
         pg1.exclusiveTaxVal = static_cast<CurrencyNumerator>(1);
         pg1.inclusiveTaxVal = static_cast<CurrencyNumerator>(2);
         pg1.cSubTotal       = static_cast<CurrencyNumerator>(191);
+    }
+
+    return ( Boolean::BOOL_TRUE );
+}
+
+Boolean
+ReceiptEntriesChunk::prepareTestData2(
+        ReceiptEntriesChunk *   chunk)
+{
+    chunk->blockFlags       = ReceiptEntriesChunk::ChunkInOutFlags::DOUBLE_ENTRY;
+    chunk->chlDebitAccount  = static_cast<CategoryHandle>(2);
+    chunk->chrCreditAccount = static_cast<CategoryHandle>(4);
+    chunk->cnlDebitAmount   = static_cast<CurrencyNumerator>(0);
+    chunk->cnrCreditAmount  = static_cast<CurrencyNumerator>(0);
+
+    chunk->goodsList.clear();
+    chunk->goodsList.resize(static_cast<PurchaseNumber>(1));
+
+    ReceiptEntriesChunk::PurchasingList  &
+            goods1  = chunk->goodsList;
+
+    {
+        PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
+        pg0.accountHeadings = static_cast<CategoryHandle>(11);
+        pg0.accountCategory = static_cast<CategoryHandle>(12);
+        pg0.productName     = "Deposit";
+        pg0.unitPrice       = static_cast<CurrencyNumerator>(1000);
+        pg0.nQuantity       = 1;
+        pg0.cDiscount       = static_cast<CurrencyNumerator>(0);
+        pg0.exclusiveTaxVal = static_cast<CurrencyNumerator>(0);
+        pg0.inclusiveTaxVal = static_cast<CurrencyNumerator>(0);
+        pg0.cSubTotal       = static_cast<CurrencyNumerator>(1000);
     }
 
     return ( Boolean::BOOL_TRUE );
@@ -222,6 +260,12 @@ void  ReceiptEntriesChunkTest::testToString1()
             ),
             ret
     );
+
+    return;
+}
+
+void  ReceiptEntriesChunkTest::testToString2()
+{
 
     return;
 }
