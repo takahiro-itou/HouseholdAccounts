@@ -91,8 +91,8 @@ ReceiptEntriesChunkTest::prepareTestData1(
 
     {
         PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
-        pg0.accountHeadings = static_cast<CategoryHandle>(4);
-        pg0.accountCategory = static_cast<CategoryHandle>(5);
+        pg0.accountHeadings = static_cast<CategoryHandle>(5);
+        pg0.accountCategory = static_cast<CategoryHandle>(6);
         pg0.productName     = "Product1";
         pg0.unitPrice       = static_cast<CurrencyNumerator>(128);
         pg0.nQuantity       = 2;
@@ -109,7 +109,7 @@ Boolean
 ReceiptEntriesChunkTest::setupCategoryManager1(
         CategoryManager &cateMan)
 {
-    cateMan.reserveRootCategories(CategoryHandle(4));
+    cateMan.reserveRootCategories(CategoryHandle(5));
     cateMan.setupRootCategory(
             CategoryHandle(0), "収入",
             DocCls::CategoryFlags::CTYPE_INCOME,
@@ -130,6 +130,11 @@ ReceiptEntriesChunkTest::setupCategoryManager1(
             DocCls::CategoryFlags::CTYPE_BALANCE,
             DateSerial(0),
             Common::DecimalCurrency(0));
+    cateMan.setupRootCategory(
+            CategoryHandle(4), "Bank 1",
+            DocCls::CategoryFlags::CTYPE_BALANCE,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
 
     cateMan.insertNewCategory(
             CategoryHandle(1), "Head1",
@@ -137,7 +142,7 @@ ReceiptEntriesChunkTest::setupCategoryManager1(
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
-            CategoryHandle(4), "Cate1",
+            CategoryHandle(5), "Cate1",
             DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
@@ -147,7 +152,7 @@ ReceiptEntriesChunkTest::setupCategoryManager1(
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
-            CategoryHandle(6), "Cate2",
+            CategoryHandle(7), "Cate2",
             DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
@@ -157,7 +162,17 @@ ReceiptEntriesChunkTest::setupCategoryManager1(
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
-            CategoryHandle(8), "Cate3",
+            CategoryHandle(9), "Cate3",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(1), "Head4",
+            DocCls::CategoryFlags::CTYPE_INHERIT,
+            DateSerial(0),
+            Common::DecimalCurrency(0));
+    cateMan.insertNewCategory(
+            CategoryHandle(11), "Cate4",
             DocCls::CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
@@ -179,14 +194,37 @@ void  ReceiptEntriesChunkTest::testReceiptEntriesChunk()
 
 void  ReceiptEntriesChunkTest::testToString1()
 {
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
     ReceiptEntriesChunk     testee;
+    prepareTestData1(&testee);
+
+    const  std::string  ret = testee.toString();
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("支出;現金;;Head1;Cate1;Product1;128;2;0;0;0"),
+            ret
+    );
 
     return;
 }
 
 void  ReceiptEntriesChunkTest::testWriteToString1()
 {
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
     ReceiptEntriesChunk     testee;
+    prepareTestData1(&testee);
+
+    std::stringstream   ss;
+    testee.writeToStream(ss);
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("支出;現金;;Head1;Cate1;Product1;128;2;0;0;0"),
+            ss.str()
+    );
 
     return;
 }
