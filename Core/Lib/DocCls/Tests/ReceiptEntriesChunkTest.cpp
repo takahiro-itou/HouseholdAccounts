@@ -266,6 +266,18 @@ void  ReceiptEntriesChunkTest::testToString1()
 
 void  ReceiptEntriesChunkTest::testToString2()
 {
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptEntriesChunk     testee;
+    prepareTestData2(&testee);
+
+    const  std::string  ret = testee.toString();
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("複式;現金;Bank 1;Head4;Cate4;Deposit;1000;1;0;0;0"),
+            ret
+    );
 
     return;
 }
