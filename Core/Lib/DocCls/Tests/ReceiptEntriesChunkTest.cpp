@@ -102,6 +102,19 @@ ReceiptEntriesChunkTest::prepareTestData1(
         pg0.cSubTotal       = static_cast<CurrencyNumerator>(256);
     }
 
+    {
+        PurchasedGoods &pg1 = goods1[static_cast<PurchaseNumber>(1)];
+        pg1.accountHeadings = static_cast<CategoryHandle>(7);
+        pg1.accountCategory = static_cast<CategoryHandle>(8);
+        pg1.productName     = "Product2";
+        pg1.unitPrice       = static_cast<CurrencyNumerator>(200);
+        pg1.nQuantity       = 1;
+        pg1.cDiscount       = static_cast<CurrencyNumerator>(10);
+        pg1.exclusiveTaxVal = static_cast<CurrencyNumerator>(1);
+        pg1.inclusiveTaxVal = static_cast<CurrencyNumerator>(2);
+        pg1.cSubTotal       = static_cast<CurrencyNumerator>(191);
+    }
+
     return ( Boolean::BOOL_TRUE );
 }
 
@@ -203,7 +216,10 @@ void  ReceiptEntriesChunkTest::testToString1()
     const  std::string  ret = testee.toString();
 
     CPPUNIT_ASSERT_EQUAL(
-            std::string("支出;現金;;Head1;Cate1;Product1;128;2;0;0;0"),
+            std::string(
+                    "支出;現金;;Head1;Cate1;Product1;128;2;0;0;0\n"
+                    ";;;Head2;Cate2;Product2;200;1;10;1;2"
+            ),
             ret
     );
 
@@ -222,7 +238,10 @@ void  ReceiptEntriesChunkTest::testWriteToString1()
     testee.writeToStream(ss);
 
     CPPUNIT_ASSERT_EQUAL(
-            std::string("支出;現金;;Head1;Cate1;Product1;128;2;0;0;0"),
+            std::string(
+                    "支出;現金;;Head1;Cate1;Product1;128;2;0;0;0\n"
+                    ";;;Head2;Cate2;Product2;200;1;10;1;2"
+            ),
             ss.str()
     );
 
