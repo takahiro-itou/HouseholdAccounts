@@ -42,6 +42,7 @@ class  ReceiptEntriesChunkTest : public  TestFixture
     CPPUNIT_TEST_SUITE(ReceiptEntriesChunkTest);
     CPPUNIT_TEST(testReceiptEntriesChunk);
     CPPUNIT_TEST(testToString1);
+    CPPUNIT_TEST(testToString2);
     CPPUNIT_TEST(testWriteToString1);
     CPPUNIT_TEST_SUITE_END();
 
