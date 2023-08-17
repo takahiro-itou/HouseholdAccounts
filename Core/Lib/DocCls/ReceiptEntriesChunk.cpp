@@ -49,7 +49,8 @@ ReceiptEntriesChunk::ReceiptEntriesChunk()
       chrCreditAccount(-1),
       cnlDebitAmount  ( 0),
       cnrCreditAmount ( 0),
-      goodsList()
+      goodsList(),
+      pCatMan(nullptr)
 {
 }
 
