@@ -295,8 +295,8 @@ void  ReceiptEntriesChunkTest::testWriteToString1()
     setupCategoryManager1(cateMan);
 
     ReceiptEntriesChunk     testee;
-    prepareTestData1(&testee);
     testee.pCatMan  = &cateMan;
+    prepareTestData1(&testee);
 
     std::stringstream   ss;
     testee.writeToStream(ss);
@@ -318,8 +318,8 @@ void  ReceiptEntriesChunkTest::testWriteToString2()
     setupCategoryManager1(cateMan);
 
     ReceiptEntriesChunk     testee;
-    prepareTestData2(&testee);
     testee.pCatMan  = &cateMan;
+    prepareTestData2(&testee);
 
     std::stringstream   ss;
     testee.writeToStream(ss);
