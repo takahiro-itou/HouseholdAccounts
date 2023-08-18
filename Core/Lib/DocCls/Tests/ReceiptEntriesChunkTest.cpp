@@ -108,6 +108,7 @@ ReceiptEntriesChunkTest::prepareTestData1(
         pg0.exclusiveTaxVal = static_cast<CurrencyNumerator>(0);
         pg0.inclusiveTaxVal = static_cast<CurrencyNumerator>(0);
         pg0.cSubTotal       = static_cast<CurrencyNumerator>(256);
+        pg0.pCatMan         = chunk->pCatMan;
     }
 
     {
@@ -121,6 +122,7 @@ ReceiptEntriesChunkTest::prepareTestData1(
         pg1.exclusiveTaxVal = static_cast<CurrencyNumerator>(1);
         pg1.inclusiveTaxVal = static_cast<CurrencyNumerator>(2);
         pg1.cSubTotal       = static_cast<CurrencyNumerator>(191);
+        pg1.pCatMan         = chunk->pCatMan;
     }
 
     return ( Boolean::BOOL_TRUE );
@@ -153,6 +155,7 @@ ReceiptEntriesChunkTest::prepareTestData2(
         pg0.exclusiveTaxVal = static_cast<CurrencyNumerator>(0);
         pg0.inclusiveTaxVal = static_cast<CurrencyNumerator>(0);
         pg0.cSubTotal       = static_cast<CurrencyNumerator>(1000);
+        pg0.pCatMan         = chunk->pCatMan;
     }
 
     return ( Boolean::BOOL_TRUE );
@@ -251,8 +254,8 @@ void  ReceiptEntriesChunkTest::testToString1()
     setupCategoryManager1(cateMan);
 
     ReceiptEntriesChunk     testee;
-    prepareTestData1(&testee);
     testee.pCatMan  = &cateMan;
+    prepareTestData1(&testee);
 
     const  std::string  ret = testee.toString();
 
@@ -273,8 +276,8 @@ void  ReceiptEntriesChunkTest::testToString2()
     setupCategoryManager1(cateMan);
 
     ReceiptEntriesChunk     testee;
-    prepareTestData2(&testee);
     testee.pCatMan  = &cateMan;
+    prepareTestData2(&testee);
 
     const  std::string  ret = testee.toString();
 
