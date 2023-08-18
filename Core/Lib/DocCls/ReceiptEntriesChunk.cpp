@@ -21,6 +21,10 @@
 #include    "Account/pch/PreCompile.h"
 #include    "Account/DocCls/ReceiptEntriesChunk.h"
 
+#include    "Account/DocCls/CategoryManager.h"
+
+#include    <sstream>
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
