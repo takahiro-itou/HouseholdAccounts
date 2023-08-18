@@ -120,6 +120,11 @@ ReceiptEntriesChunk::writeToStream(
         const  std::string  & sep,
         std::ostream        & os)  const
 {
+    const   PurchaseNumber  num = this->goodsList.size();
+    for ( PurchaseNumber i = 0; i < num; ++ i ) {
+        this->goodsList[i].writeToStream(os);
+    }
+
     return ( os );
 }
 
