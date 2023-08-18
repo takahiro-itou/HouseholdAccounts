@@ -120,6 +120,32 @@ ReceiptEntriesChunk::writeToStream(
         const  std::string  & sep,
         std::ostream        & os)  const
 {
+    switch ( this->blockFlags ) {
+    case  ChunkInOutFlags::DOUBLE_ENTRY:
+        os  <<  "複式";
+        break;
+    case  ChunkInOutFlags::INCOME:
+        os  <<  "収入";
+        break;
+    case  ChunkInOutFlags::OUTLAY:
+        os  <<  "支出";
+        break;
+    case  ChunkInOutFlags::BANK_WITHDRAW:
+        os  <<  "口座引出";
+        break;
+    case  ChunkInOutFlags::BANK_DEPOSIT:
+        os  <<  "口座預入";
+        break;
+    case  ChunkInOutFlags::BANK_TRANSFER:
+        os  <<  "口座振替";
+        break;
+    }
+
+    os  <<  ";"
+        <<  chlDebitAccount
+        <<  ";"
+        <<  cnrCreditAmount
+        <<  ";";
     const   PurchaseNumber  num = this->goodsList.size();
     for ( PurchaseNumber i = static_cast<PurchaseNumber>(0); i < num; ++ i )
     {
