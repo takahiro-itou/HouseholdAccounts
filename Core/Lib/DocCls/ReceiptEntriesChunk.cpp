@@ -118,7 +118,7 @@ ReceiptEntriesChunk::writeToStream(
 std::ostream  &
 ReceiptEntriesChunk::writeToStream(
         const  std::string  & sep,
-        std::ostream        & os)  const;
+        std::ostream        & os)  const
 {
     return ( os );
 }
