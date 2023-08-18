@@ -111,6 +111,18 @@ ReceiptEntriesChunk::writeToStream(
     return ( os );
 }
 
+//----------------------------------------------------------------
+//    インスタンスの文字列表現をストリームに書き込む。
+//
+
+std::ostream  &
+ReceiptEntriesChunk::writeToStream(
+        const  std::string  & sep,
+        std::ostream        & os)  const;
+{
+    return ( os );
+}
+
 //========================================================================
 //
 //    Public Member Functions (Operators).
