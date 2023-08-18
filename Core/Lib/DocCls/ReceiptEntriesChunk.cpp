@@ -142,10 +142,11 @@ ReceiptEntriesChunk::writeToStream(
     }
 
     os  <<  ";"
-        <<  chlDebitAccount
+        <<  this->pCatMan->getBookCategory(chlDebitAccount).getCategoryName()
         <<  ";"
-        <<  cnrCreditAmount
+        <<  this->pCatMan->getBookCategory(chrCreditAccount).getCategoryName()
         <<  ";";
+
     const   PurchaseNumber  num = this->goodsList.size();
     for ( PurchaseNumber i = static_cast<PurchaseNumber>(0); i < num; ++ i )
     {
