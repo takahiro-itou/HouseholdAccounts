@@ -62,10 +62,6 @@ private:
     prepareTestData2(
             ReceiptEntriesChunk *   chunk);
 
-    Boolean
-    setupCategoryManager1(
-            CategoryManager &cateMan);
-
 private:
     void  testReceiptEntriesChunk();
     void  testToString1();
@@ -157,81 +153,6 @@ ReceiptEntriesChunkTest::prepareTestData2(
         pg0.cSubTotal       = static_cast<CurrencyNumerator>(1000);
         pg0.pCatMan         = chunk->pCatMan;
     }
-
-    return ( Boolean::BOOL_TRUE );
-}
-
-Boolean
-ReceiptEntriesChunkTest::setupCategoryManager1(
-        CategoryManager &cateMan)
-{
-    cateMan.reserveRootCategories(CategoryHandle(5));
-    cateMan.setupRootCategory(
-            CategoryHandle(0), "収入",
-            DocCls::CategoryFlags::CTYPE_INCOME,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-    cateMan.setupRootCategory(
-            CategoryHandle(1), "支出",
-            DocCls::CategoryFlags::CTYPE_OUTLAY,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-    cateMan.setupRootCategory(
-            CategoryHandle(2), "現金",
-            DocCls::CategoryFlags::CTYPE_BALANCE,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-    cateMan.setupRootCategory(
-            CategoryHandle(3), "ポイント",
-            DocCls::CategoryFlags::CTYPE_BALANCE,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-    cateMan.setupRootCategory(
-            CategoryHandle(4), "Bank 1",
-            DocCls::CategoryFlags::CTYPE_BALANCE,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-
-    cateMan.insertNewCategory(
-            CategoryHandle(1), "Head1",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-    cateMan.insertNewCategory(
-            CategoryHandle(5), "Cate1",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-    cateMan.insertNewCategory(
-            CategoryHandle(1), "Head2",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-    cateMan.insertNewCategory(
-            CategoryHandle(7), "Cate2",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-    cateMan.insertNewCategory(
-            CategoryHandle(0), "Head3",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-    cateMan.insertNewCategory(
-            CategoryHandle(9), "Cate3",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-    cateMan.insertNewCategory(
-            CategoryHandle(1), "Head4",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
-    cateMan.insertNewCategory(
-            CategoryHandle(11), "Cate4",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
-            DateSerial(0),
-            Common::DecimalCurrency(0));
 
     return ( Boolean::BOOL_TRUE );
 }
