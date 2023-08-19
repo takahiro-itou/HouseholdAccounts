@@ -22,7 +22,9 @@
 #    define   HACORE_DOCCLS_TESTS_INCLUDED_SETUP_TEST_DATA_INL
 
 
-#include    "Account/DocCls/CategoryManager.h"
+#if !defined( HACORE_DOCCLS_INCLUDED_CATEGORY_MANAGER_H )
+#    include    "Account/DocCls/CategoryManager.h"
+#endif
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
