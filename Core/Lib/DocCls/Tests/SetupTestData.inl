@@ -17,3 +17,21 @@
 **
 **      @file       DocCls/Tests/SetupTestData.inl
 **/
+
+#if !defined( HACORE_DOCCLS_TESTS_INCLUDED_SETUP_TEST_DATA_INL )
+#    define   HACORE_DOCCLS_TESTS_INCLUDED_SETUP_TEST_DATA_INL
+
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
+namespace  DocCls  {
+
+inline  Boolean
+Boolean
+setupCategoryManager1(
+        CategoryManager &cateMan)
+{
+    return ( Boolean::BOOL_TRUE );
+}
+
+}   //  End of namespace  DocCls
+HOUSEHOLD_ACCOUNTS_NAMESPACE_END
