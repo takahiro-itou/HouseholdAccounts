@@ -206,7 +206,7 @@ public:
 public:
 
     /**   レシートの日付。  **/
-    ReceiptDate         m_receiptDate;
+    std::string         m_receiptDate;
 
     /**   レシートの時刻。  **/
     std::string         m_receiptTime;

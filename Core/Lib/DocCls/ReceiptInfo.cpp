@@ -103,7 +103,7 @@ ReceiptInfo::initializeReceiptInfo(
         const  std::string  &recTime,
         const  std::string  &shopName)
 {
-    this->m_receiptDate = 0;
+    this->m_receiptDate = recDate;
     this->m_receiptTime = recTime;
     this->m_shopName    = shopName;
 
