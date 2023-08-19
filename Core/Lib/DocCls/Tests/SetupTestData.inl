@@ -111,8 +111,48 @@ setupCategoryManager1(
 
 inline  Boolean
 setupReceiptEntriesChunk1(
-        ReceiptEntriesChunk *   chunk)
+        ReceiptEntriesChunk &chunk)
 {
+    chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::OUTLAY;
+    chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
+    chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
+    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
+    chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
+
+    chunk.goodsList.clear();
+    chunk.goodsList.resize(static_cast<PurchaseNumber>(2));
+
+    ReceiptEntriesChunk::PurchasingList  &
+            goods1  = chunk.goodsList;
+
+    {
+        PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
+        pg0.accountHeadings = static_cast<CategoryHandle>(5);
+        pg0.accountCategory = static_cast<CategoryHandle>(6);
+        pg0.productName     = "Product1";
+        pg0.unitPrice       = static_cast<CurrencyNumerator>(128);
+        pg0.nQuantity       = 2;
+        pg0.cDiscount       = static_cast<CurrencyNumerator>(0);
+        pg0.exclusiveTaxVal = static_cast<CurrencyNumerator>(0);
+        pg0.inclusiveTaxVal = static_cast<CurrencyNumerator>(0);
+        pg0.cSubTotal       = static_cast<CurrencyNumerator>(256);
+        pg0.pCatMan         = chunk.pCatMan;
+    }
+
+    {
+        PurchasedGoods &pg1 = goods1[static_cast<PurchaseNumber>(1)];
+        pg1.accountHeadings = static_cast<CategoryHandle>(7);
+        pg1.accountCategory = static_cast<CategoryHandle>(8);
+        pg1.productName     = "Product2";
+        pg1.unitPrice       = static_cast<CurrencyNumerator>(200);
+        pg1.nQuantity       = 1;
+        pg1.cDiscount       = static_cast<CurrencyNumerator>(10);
+        pg1.exclusiveTaxVal = static_cast<CurrencyNumerator>(1);
+        pg1.inclusiveTaxVal = static_cast<CurrencyNumerator>(2);
+        pg1.cSubTotal       = static_cast<CurrencyNumerator>(191);
+        pg1.pCatMan         = chunk.pCatMan;
+    }
+
     return ( Boolean::BOOL_TRUE );
 }
 
