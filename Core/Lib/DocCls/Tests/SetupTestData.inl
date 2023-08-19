@@ -30,6 +30,8 @@
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
 
+//----------------------------------------------------------------
+
 inline  Boolean
 setupCategoryManager1(
         CategoryManager &cateMan)
@@ -102,6 +104,15 @@ setupCategoryManager1(
             DateSerial(0),
             Common::DecimalCurrency(0));
 
+    return ( Boolean::BOOL_TRUE );
+}
+
+//----------------------------------------------------------------
+
+inline  Boolean
+setupReceiptEntriesChunk1(
+        ReceiptEntriesChunk *   chunk)
+{
     return ( Boolean::BOOL_TRUE );
 }
 
