@@ -145,14 +145,17 @@ ReceiptEntriesChunk::writeToStream(
         break;
     }
 
-    os  <<  ";"
-        <<  this->pCatMan->getBookCategory(chlDebitAccount).getCategoryName()
-        <<  ";"
-        <<  this->pCatMan->getBookCategory(chrCreditAccount).getCategoryName()
-        <<  ";";
+    os  <<  ";";
+    if ( this->chlDebitAccount >= 0 ) {
+        os  <<  this->pCatMan->getBookCategory(chlDebitAccount).getCategoryName();
+    }
+    os  <<  ";";
+    if ( this->chrCreditAccount >= 0 ) {
+        os  <<  this->pCatMan->getBookCategory(chrCreditAccount).getCategoryName();
+    }
+    os  <<  ";";
 
     const   PurchaseNumber  num = this->goodsList.size();
-
     if ( num > 0 ) {
         this->goodsList[static_cast<PurchaseNumber>(0)].writeToStream(os);
     }
