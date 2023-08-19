@@ -95,16 +95,7 @@ void  PurchasedGoodsTest::testWriteToString4()
 
     PurchasedGoods      testee;
     testee.pCatMan  = &cateMan;
-
-    testee.accountHeadings  = static_cast<CategoryHandle>(11);
-    testee.accountCategory  = static_cast<CategoryHandle>(12);
-    testee.productName      = "Deposit";
-    testee.unitPrice        = static_cast<CurrencyNumerator>(30000);
-    testee.nQuantity        = static_cast<int>(1);
-    testee.cDiscount        = static_cast<CurrencyNumerator>(0);
-    testee.exclusiveTaxVal  = static_cast<CurrencyNumerator>(0);
-    testee.inclusiveTaxVal  = static_cast<CurrencyNumerator>(0);
-    testee.cSubTotal        = static_cast<CurrencyNumerator>(30000);
+    setupPurchasedGoods4(testee);
 
     std::stringstream   ss;
     testee.writeToStream(ss);
