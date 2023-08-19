@@ -44,7 +44,7 @@ namespace  {
 //
 
 ReceiptInfo::ReceiptInfo()
-    : m_receiptDate(0),
+    : m_receiptDate(),
       m_receiptTime(),
       m_shopIdx(-1),
       m_shopName(),
