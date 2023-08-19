@@ -29,7 +29,6 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
 
 inline  Boolean
-Boolean
 setupCategoryManager1(
         CategoryManager &cateMan)
 {
@@ -38,3 +37,5 @@ setupCategoryManager1(
 
 }   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
+
+#endif
