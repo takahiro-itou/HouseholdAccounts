@@ -22,6 +22,9 @@
 #    define   HACORE_DOCCLS_TESTS_INCLUDED_SETUP_TEST_DATA_INL
 
 
+#include    "Account/DocCls/CategoryManager.h"
+
+
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
 

@@ -21,7 +21,7 @@
 #include    "TestDriver.h"
 #include    "Account/DocCls/ReceiptEntriesChunk.h"
 
-#include    "Account/DocCls/CategoryManager.h"
+#include    "SetupTestData.inl"
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
