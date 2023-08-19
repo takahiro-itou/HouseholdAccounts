@@ -110,6 +110,25 @@ setupCategoryManager1(
 //----------------------------------------------------------------
 
 inline  Boolean
+setupPurchasedGoods1(
+        PurchasedGoods  &pg)
+{
+    pg.accountHeadings  = static_cast<CategoryHandle>(5);
+    pg.accountCategory  = static_cast<CategoryHandle>(6);
+    pg.productName      = "Product1";
+    pg.unitPrice        = static_cast<CurrencyNumerator>(1280);
+    pg.nQuantity        = static_cast<int>(2);
+    pg.cDiscount        = static_cast<CurrencyNumerator>(10);
+    pg.exclusiveTaxVal  = static_cast<CurrencyNumerator>(1);
+    pg.inclusiveTaxVal  = static_cast<CurrencyNumerator>(2);
+    pg.cSubTotal        = static_cast<CurrencyNumerator>(2560 - 10 + 1);
+
+    return ( Boolean::BOOL_TRUE );
+}
+
+//----------------------------------------------------------------
+
+inline  Boolean
 setupReceiptEntriesChunk1(
         ReceiptEntriesChunk &chunk)
 {
