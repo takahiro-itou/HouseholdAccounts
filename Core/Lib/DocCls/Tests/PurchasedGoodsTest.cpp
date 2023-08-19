@@ -41,8 +41,8 @@ class  PurchasedGoodsTest : public  TestFixture
 {
     CPPUNIT_TEST_SUITE(PurchasedGoodsTest);
     CPPUNIT_TEST(testPurchasedGoods);
-    CPPUNIT_TEST(testToString);
-    CPPUNIT_TEST(testWriteToString);
+    CPPUNIT_TEST(testToString1);
+    CPPUNIT_TEST(testWriteToString4);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -51,8 +51,8 @@ public:
 
 private:
     void  testPurchasedGoods();
-    void  testToString();
-    void  testWriteToString();
+    void  testToString1();
+    void  testWriteToString4();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( PurchasedGoodsTest );
@@ -69,56 +69,48 @@ void  PurchasedGoodsTest::testPurchasedGoods()
     return;
 }
 
-void  PurchasedGoodsTest::testToString()
+void  PurchasedGoodsTest::testToString1()
 {
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
 
     PurchasedGoods      testee;
-    testee.accountHeadings  = static_cast<CategoryHandle>(1);
-    testee.accountCategory  = static_cast<CategoryHandle>(2);
-    testee.productName      = "Product1";
-    testee.unitPrice        = static_cast<CurrencyNumerator>(128);
-    testee.nQuantity        = static_cast<int>(2);
-    testee.cDiscount        = static_cast<CurrencyNumerator>(10);
-    testee.exclusiveTaxVal  = static_cast<CurrencyNumerator>(1);
-    testee.inclusiveTaxVal  = static_cast<CurrencyNumerator>(2);
-    testee.cSubTotal        = static_cast<CurrencyNumerator>(256 - 10 + 1);
-    testee.pCatMan          = &cateMan;
+    testee.pCatMan  = &cateMan;
+    setupPurchasedGoods1(testee);
 
     const  std::string  ret = testee.toString();
 
     CPPUNIT_ASSERT_EQUAL(
-            std::string("Head1;Cate1;Product1;128;2;10;1;2"),
+            std::string("Head1;Cate1;Product1;1280;2;10;1;2"),
             ret
     );
 
     return;
 }
 
-void  PurchasedGoodsTest::testWriteToString()
+void  PurchasedGoodsTest::testWriteToString4()
 {
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
 
-    PurchasedGoods  testee;
+    PurchasedGoods      testee;
+    testee.pCatMan  = &cateMan;
 
-    testee.accountHeadings  = static_cast<CategoryHandle>(1);
-    testee.accountCategory  = static_cast<CategoryHandle>(2);
-    testee.productName      = "Product1";
-    testee.unitPrice        = static_cast<CurrencyNumerator>(3000);
+    testee.accountHeadings  = static_cast<CategoryHandle>(11);
+    testee.accountCategory  = static_cast<CategoryHandle>(12);
+    testee.productName      = "Deposit";
+    testee.unitPrice        = static_cast<CurrencyNumerator>(30000);
     testee.nQuantity        = static_cast<int>(1);
-    testee.cDiscount        = static_cast<CurrencyNumerator>(10);
-    testee.exclusiveTaxVal  = static_cast<CurrencyNumerator>(3);
-    testee.inclusiveTaxVal  = static_cast<CurrencyNumerator>(7);
-    testee.cSubTotal        = static_cast<CurrencyNumerator>(3000 - 10 + 3);
-    testee.pCatMan          = &cateMan;
+    testee.cDiscount        = static_cast<CurrencyNumerator>(0);
+    testee.exclusiveTaxVal  = static_cast<CurrencyNumerator>(0);
+    testee.inclusiveTaxVal  = static_cast<CurrencyNumerator>(0);
+    testee.cSubTotal        = static_cast<CurrencyNumerator>(30000);
 
     std::stringstream   ss;
     testee.writeToStream(ss);
 
     CPPUNIT_ASSERT_EQUAL(
-            std::string("Head1;Cate1;Product1;3000;1;10;3;7"),
+            std::string("Head4;Cate4;Deposit;30000;1;0;0;0"),
             ss.str()
     );
 
