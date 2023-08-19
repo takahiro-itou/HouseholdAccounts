@@ -161,7 +161,7 @@ ReceiptEntriesChunk::writeToStream(
     }
     for ( PurchaseNumber i = static_cast<PurchaseNumber>(1); i < num; ++ i )
     {
-        os  <<  std::endl;
+        os  <<  std::endl   <<  ";;;";
         this->goodsList[i].writeToStream(os);
     }
 
