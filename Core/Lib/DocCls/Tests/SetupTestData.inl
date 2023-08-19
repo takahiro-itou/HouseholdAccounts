@@ -26,6 +26,10 @@
 #    include    "Account/DocCls/CategoryManager.h"
 #endif
 
+#if !defined( HACORE_DOCCLS_INCLUDED_RECEIPT_ENTRIES_CHUNK_H )
+#    include    "Account/DocCls/ReceiptEntriesChunk.h"
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
