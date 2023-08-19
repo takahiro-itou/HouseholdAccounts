@@ -154,7 +154,8 @@ ReceiptEntriesChunk::writeToStream(
     const   PurchaseNumber  num = this->goodsList.size();
     for ( PurchaseNumber i = static_cast<PurchaseNumber>(0); i < num; ++ i )
     {
-        this->goodsList[i].writeToStream(os)    <<  std::endl;
+        os  <<  std::endl;
+        this->goodsList[i].writeToStream(os);
     }
 
     return ( os );
