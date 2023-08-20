@@ -21,6 +21,8 @@
 #include    "TestDriver.h"
 #include    "Account/DocCls/ReceiptEntriesChunk.h"
 
+#include    <sstream>
+
 #include    "SetupTestData.inl"
 
 

@@ -21,6 +21,8 @@
 #include    "TestDriver.h"
 #include    "Account/DocCls/PurchasedGoods.h"
 
+#include    <sstream>
+
 #include    "SetupTestData.inl"
 
 
