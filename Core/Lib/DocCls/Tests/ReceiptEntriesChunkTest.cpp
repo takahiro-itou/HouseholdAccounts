@@ -46,6 +46,7 @@ class  ReceiptEntriesChunkTest : public  TestFixture
     CPPUNIT_TEST(testToString3);
     CPPUNIT_TEST(testWriteToString1);
     CPPUNIT_TEST(testWriteToString2);
+    CPPUNIT_TEST(testWriteToString3);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -64,6 +65,7 @@ private:
     void  testToString3();
     void  testWriteToString1();
     void  testWriteToString2();
+    void  testWriteToString3();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptEntriesChunkTest );
@@ -215,6 +217,26 @@ void  ReceiptEntriesChunkTest::testWriteToString2()
 
     CPPUNIT_ASSERT_EQUAL(
             std::string("複式;現金;Bank 1;Head4;Cate4;Deposit;1000;1;0;0;0"),
+            ss.str()
+    );
+
+    return;
+}
+
+void  ReceiptEntriesChunkTest::testWriteToString3()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptEntriesChunk     testee;
+    testee.pCatMan  = &cateMan;
+    setupReceiptEntriesChunk3(testee);
+
+    std::stringstream   ss;
+    testee.writeToStream(ss);
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("複式;現金;Bank 1;Head4;Cate4;Deposit;30000;1;0;0;0"),
             ss.str()
     );
 
