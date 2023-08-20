@@ -210,13 +210,13 @@ void  ReceiptEntriesChunkTest::testWriteToString2()
 
     ReceiptEntriesChunk     testee;
     testee.pCatMan  = &cateMan;
-    prepareTestData2(&testee);
+    setupReceiptEntriesChunk2(testee);
 
     std::stringstream   ss;
     testee.writeToStream(ss);
 
     CPPUNIT_ASSERT_EQUAL(
-            std::string("複式;現金;Bank 1;Head4;Cate4;Deposit;1000;1;0;0;0"),
+            std::string("収入;ポイント;;Head3;Cate3;Points;10;1;0;0;0"),
             ss.str()
     );
 
