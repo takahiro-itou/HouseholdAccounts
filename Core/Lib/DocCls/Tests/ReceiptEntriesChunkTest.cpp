@@ -131,8 +131,8 @@ void  ReceiptEntriesChunkTest::testToString1()
 
     CPPUNIT_ASSERT_EQUAL(
             std::string(
-                    "支出;現金;;Head1;Cate1;Product1;128;2;0;0;0\n"
-                    ";;;Head2;Cate2;Product2;200;1;10;1;2"
+                    "支出;現金;;Head1;Cate1;Product1;1280;2;10;1;2\n"
+                    ";;;Head2;Cate2;Product2;200;1;20;3;7"
             ),
             ret
     );
@@ -173,8 +173,8 @@ void  ReceiptEntriesChunkTest::testWriteToString1()
 
     CPPUNIT_ASSERT_EQUAL(
             std::string(
-                    "支出;現金;;Head1;Cate1;Product1;128;2;0;0;0\n"
-                    ";;;Head2;Cate2;Product2;200;1;10;1;2"
+                    "支出;現金;;Head1;Cate1;Product1;1280;2;10;1;2\n"
+                    ";;;Head2;Cate2;Product2;200;1;20;3;7"
             ),
             ss.str()
     );
