@@ -300,6 +300,29 @@ setupReceiptInfo1(
     return ( Boolean::BOOL_TRUE );
 }
 
+//----------------------------------------------------------------
+
+inline  Boolean
+setupReceiptInfo2(
+        ReceiptInfo &ri)
+{
+    typedef     ReceiptInfo::ChunkIndex     ChunkIndex;
+
+    ri.m_receiptDate    = "2023/03/02";
+    ri.m_receiptTime    = "*****";
+    ri.m_shopName       = "SHOP B";
+
+    ReceiptInfo::ChunkArray &chunks = ri.m_recordChunk;
+    chunks.clear();
+    chunks.resize(static_cast<ChunkIndex>(1));
+
+    ReceiptEntriesChunk &chunk0 = chunks[static_cast<ChunkIndex>(0)];
+    chunk0.pCatMan  = ri.pCatMan;
+    setupReceiptEntriesChunk3(chunk0);
+
+    return ( Boolean::BOOL_TRUE );
+}
+
 }   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
