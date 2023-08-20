@@ -47,10 +47,10 @@ class  PurchasedGoodsTest : public  TestFixture
     CPPUNIT_TEST(testToString2);
     CPPUNIT_TEST(testToString3);
     CPPUNIT_TEST(testToString4);
-    CPPUNIT_TEST(testWriteToString1);
-    CPPUNIT_TEST(testWriteToString2);
-    CPPUNIT_TEST(testWriteToString3);
-    CPPUNIT_TEST(testWriteToString4);
+    CPPUNIT_TEST(testWriteToStream1);
+    CPPUNIT_TEST(testWriteToStream2);
+    CPPUNIT_TEST(testWriteToStream3);
+    CPPUNIT_TEST(testWriteToStream4);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -63,10 +63,10 @@ private:
     void  testToString2();
     void  testToString3();
     void  testToString4();
-    void  testWriteToString1();
-    void  testWriteToString2();
-    void  testWriteToString3();
-    void  testWriteToString4();
+    void  testWriteToStream1();
+    void  testWriteToStream2();
+    void  testWriteToStream3();
+    void  testWriteToStream4();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( PurchasedGoodsTest );
@@ -159,7 +159,7 @@ void  PurchasedGoodsTest::testToString4()
     return;
 }
 
-void  PurchasedGoodsTest::testWriteToString1()
+void  PurchasedGoodsTest::testWriteToStream1()
 {
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
@@ -179,7 +179,7 @@ void  PurchasedGoodsTest::testWriteToString1()
     return;
 }
 
-void  PurchasedGoodsTest::testWriteToString2()
+void  PurchasedGoodsTest::testWriteToStream2()
 {
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
@@ -199,7 +199,7 @@ void  PurchasedGoodsTest::testWriteToString2()
     return;
 }
 
-void  PurchasedGoodsTest::testWriteToString3()
+void  PurchasedGoodsTest::testWriteToStream3()
 {
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
@@ -219,7 +219,7 @@ void  PurchasedGoodsTest::testWriteToString3()
     return;
 }
 
-void  PurchasedGoodsTest::testWriteToString4()
+void  PurchasedGoodsTest::testWriteToStream4()
 {
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);

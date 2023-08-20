@@ -46,9 +46,9 @@ class  ReceiptEntriesChunkTest : public  TestFixture
     CPPUNIT_TEST(testToString1);
     CPPUNIT_TEST(testToString2);
     CPPUNIT_TEST(testToString3);
-    CPPUNIT_TEST(testWriteToString1);
-    CPPUNIT_TEST(testWriteToString2);
-    CPPUNIT_TEST(testWriteToString3);
+    CPPUNIT_TEST(testWriteToStream1);
+    CPPUNIT_TEST(testWriteToStream2);
+    CPPUNIT_TEST(testWriteToStream3);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -60,9 +60,9 @@ private:
     void  testToString1();
     void  testToString2();
     void  testToString3();
-    void  testWriteToString1();
-    void  testWriteToString2();
-    void  testWriteToString3();
+    void  testWriteToStream1();
+    void  testWriteToStream2();
+    void  testWriteToStream3();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptEntriesChunkTest );
@@ -144,7 +144,7 @@ void  ReceiptEntriesChunkTest::testToString3()
     return;
 }
 
-void  ReceiptEntriesChunkTest::testWriteToString1()
+void  ReceiptEntriesChunkTest::testWriteToStream1()
 {
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
@@ -167,7 +167,7 @@ void  ReceiptEntriesChunkTest::testWriteToString1()
     return;
 }
 
-void  ReceiptEntriesChunkTest::testWriteToString2()
+void  ReceiptEntriesChunkTest::testWriteToStream2()
 {
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
@@ -187,7 +187,7 @@ void  ReceiptEntriesChunkTest::testWriteToString2()
     return;
 }
 
-void  ReceiptEntriesChunkTest::testWriteToString3()
+void  ReceiptEntriesChunkTest::testWriteToStream3()
 {
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
