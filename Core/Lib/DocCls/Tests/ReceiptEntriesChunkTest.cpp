@@ -60,6 +60,7 @@ private:
     void  testReceiptEntriesChunk();
     void  testToString1();
     void  testToString2();
+    void  testToString3();
     void  testWriteToString1();
     void  testWriteToString2();
 };
@@ -146,6 +147,25 @@ void  ReceiptEntriesChunkTest::testToString2()
     ReceiptEntriesChunk     testee;
     testee.pCatMan  = &cateMan;
     prepareTestData2(&testee);
+
+    const  std::string  ret = testee.toString();
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("複式;現金;Bank 1;Head4;Cate4;Deposit;1000;1;0;0;0"),
+            ret
+    );
+
+    return;
+}
+
+void  ReceiptEntriesChunkTest::testToString3()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptEntriesChunk     testee;
+    testee.pCatMan  = &cateMan;
+    setupReceiptEntriesChunk3(testee);
 
     const  std::string  ret = testee.toString();
 
