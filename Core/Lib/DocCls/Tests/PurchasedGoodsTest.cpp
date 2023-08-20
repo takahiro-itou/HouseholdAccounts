@@ -52,6 +52,7 @@ public:
 private:
     void  testPurchasedGoods();
     void  testToString1();
+    void  testToString2();
     void  testWriteToString4();
 };
 
@@ -82,6 +83,25 @@ void  PurchasedGoodsTest::testToString1()
 
     CPPUNIT_ASSERT_EQUAL(
             std::string("Head1;Cate1;Product1;1280;2;10;1;2"),
+            ret
+    );
+
+    return;
+}
+
+void  PurchasedGoodsTest::testToString2()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    PurchasedGoods      testee;
+    testee.pCatMan  = &cateMan;
+    setupPurchasedGoods1(testee);
+
+    const  std::string  ret = testee.toString();
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("Head2;Cate2;Product2;200;1;20;3;7"),
             ret
     );
 
