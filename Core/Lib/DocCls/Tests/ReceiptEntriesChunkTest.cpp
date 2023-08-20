@@ -52,8 +52,6 @@ public:
     virtual  void   tearDown()  override    { }
 
 private:
-    typedef     CategoryManager     CategoryManager;
-
     Boolean
     prepareTestData2(
             ReceiptEntriesChunk *   chunk);
