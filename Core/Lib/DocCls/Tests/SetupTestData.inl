@@ -133,6 +133,26 @@ setupPurchasedGoods1(
 //----------------------------------------------------------------
 
 inline  Boolean
+setupPurchasedGoods2(
+        PurchasedGoods  &pg)
+{
+    pg.accountHeadings  = static_cast<CategoryHandle>(7);
+    pg.accountCategory  = static_cast<CategoryHandle>(8);
+    pg.productName      = "Product2";
+    pg.unitPrice        = static_cast<CurrencyNumerator>(200);
+    pg.nQuantity        = static_cast<int>(1);
+    pg.cDiscount        = static_cast<CurrencyNumerator>(20);
+    pg.exclusiveTaxVal  = static_cast<CurrencyNumerator>(3);
+    pg.inclusiveTaxVal  = static_cast<CurrencyNumerator>(7);
+    pg.cSubTotal        = static_cast<CurrencyNumerator>(183);
+
+    return ( Boolean::BOOL_TRUE );
+
+}
+
+//----------------------------------------------------------------
+
+inline  Boolean
 setupPurchasedGoods4(
         PurchasedGoods  &pg)
 {
