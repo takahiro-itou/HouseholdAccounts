@@ -47,6 +47,7 @@ class  PurchasedGoodsTest : public  TestFixture
     CPPUNIT_TEST(testToString4);
     CPPUNIT_TEST(testWriteToString1);
     CPPUNIT_TEST(testWriteToString2);
+    CPPUNIT_TEST(testWriteToString3);
     CPPUNIT_TEST(testWriteToString4);
     CPPUNIT_TEST_SUITE_END();
 
@@ -62,6 +63,7 @@ private:
     void  testToString4();
     void  testWriteToString1();
     void  testWriteToString2();
+    void  testWriteToString3();
     void  testWriteToString4();
 };
 
@@ -189,6 +191,26 @@ void  PurchasedGoodsTest::testWriteToString2()
 
     CPPUNIT_ASSERT_EQUAL(
             std::string("Head2;Cate2;Product2;200;1;20;3;7"),
+            ss.str()
+    );
+
+    return;
+}
+
+void  PurchasedGoodsTest::testWriteToString3()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    PurchasedGoods      testee;
+    testee.pCatMan  = &cateMan;
+    setupPurchasedGoods3(testee);
+
+    std::stringstream   ss;
+    testee.writeToStream(ss);
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("Head3;Cate3;Points;10;1;0;0;0"),
             ss.str()
     );
 
