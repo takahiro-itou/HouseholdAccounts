@@ -243,6 +243,32 @@ setupReceiptEntriesChunk2(
     return ( Boolean::BOOL_TRUE );
 }
 
+//----------------------------------------------------------------
+
+inline  Boolean
+setupReceiptEntriesChunk3(
+        ReceiptEntriesChunk &chunk)
+{
+    chunk.blockFlags
+            = ReceiptEntriesChunk::ChunkInOutFlags::DOUBLE_ENTRY;
+    chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
+    chunk.chrCreditAccount  = static_cast<CategoryHandle>(4);
+    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
+    chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
+
+    chunk.goodsList.clear();
+    chunk.goodsList.resize(static_cast<PurchaseNumber>(1));
+
+    ReceiptEntriesChunk::PurchasingList  &
+            goods1  = chunk.goodsList;
+
+    PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
+    pg0.pCatMan = chunk.pCatMan;
+    setupPurchasedGoods4(pg0);
+
+    return ( Boolean::BOOL_TRUE );
+}
+
 }   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
