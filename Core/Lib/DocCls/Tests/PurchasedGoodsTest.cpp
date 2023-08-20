@@ -42,6 +42,9 @@ class  PurchasedGoodsTest : public  TestFixture
     CPPUNIT_TEST_SUITE(PurchasedGoodsTest);
     CPPUNIT_TEST(testPurchasedGoods);
     CPPUNIT_TEST(testToString1);
+    CPPUNIT_TEST(testToString2);
+    CPPUNIT_TEST(testToString3);
+    CPPUNIT_TEST(testToString4);
     CPPUNIT_TEST(testWriteToString4);
     CPPUNIT_TEST_SUITE_END();
 
@@ -98,7 +101,7 @@ void  PurchasedGoodsTest::testToString2()
 
     PurchasedGoods      testee;
     testee.pCatMan  = &cateMan;
-    setupPurchasedGoods1(testee);
+    setupPurchasedGoods2(testee);
 
     const  std::string  ret = testee.toString();
 
@@ -117,7 +120,7 @@ void  PurchasedGoodsTest::testToString3()
 
     PurchasedGoods      testee;
     testee.pCatMan  = &cateMan;
-    setupPurchasedGoods1(testee);
+    setupPurchasedGoods3(testee);
 
     const  std::string  ret = testee.toString();
 
@@ -136,7 +139,7 @@ void  PurchasedGoodsTest::testToString4()
 
     PurchasedGoods      testee;
     testee.pCatMan  = &cateMan;
-    setupPurchasedGoods1(testee);
+    setupPurchasedGoods4(testee);
 
     const  std::string  ret = testee.toString();
 
