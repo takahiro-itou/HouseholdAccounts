@@ -196,7 +196,7 @@ setupReceiptEntriesChunk1(
         ReceiptEntriesChunk &chunk)
 {
     chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::OUTLAY;
-    chunk.chlDebitAccount   = static_cast<CategoryHandle>(3);
+    chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
     chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
     chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
     chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
@@ -225,7 +225,7 @@ setupReceiptEntriesChunk2(
         ReceiptEntriesChunk &chunk)
 {
     chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::INCOME;
-    chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
+    chunk.chlDebitAccount   = static_cast<CategoryHandle>(3);
     chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
     chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
     chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
