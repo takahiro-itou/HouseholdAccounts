@@ -202,14 +202,18 @@ setupReceiptEntriesChunk1(
     chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
 
     chunk.goodsList.clear();
-    chunk.goodsList.resize(static_cast<PurchaseNumber>(1));
+    chunk.goodsList.resize(static_cast<PurchaseNumber>(2));
 
     ReceiptEntriesChunk::PurchasingList  &
             goods1  = chunk.goodsList;
 
     PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
     pg0.pCatMan = chunk.pCatMan;
-    setupPurchasedGoods3(pg0);
+    setupPurchasedGoods1(pg0);
+
+    PurchasedGoods &pg1 = goods1[static_cast<PurchaseNumber>(1)];
+    pg1.pCatMan         = chunk.pCatMan;
+    setupPurchasedGoods2(pg1);
 
     return ( Boolean::BOOL_TRUE );
 }
@@ -227,18 +231,14 @@ setupReceiptEntriesChunk2(
     chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
 
     chunk.goodsList.clear();
-    chunk.goodsList.resize(static_cast<PurchaseNumber>(2));
+    chunk.goodsList.resize(static_cast<PurchaseNumber>(1));
 
     ReceiptEntriesChunk::PurchasingList  &
             goods1  = chunk.goodsList;
 
     PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
     pg0.pCatMan = chunk.pCatMan;
-    setupPurchasedGoods1(pg0);
-
-    PurchasedGoods &pg1 = goods1[static_cast<PurchaseNumber>(1)];
-    pg1.pCatMan         = chunk.pCatMan;
-    setupPurchasedGoods2(pg1);
+    setupPurchasedGoods3(pg0);
 
     return ( Boolean::BOOL_TRUE );
 }
