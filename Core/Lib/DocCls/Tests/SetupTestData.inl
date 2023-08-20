@@ -279,6 +279,24 @@ inline  Boolean
 setupReceiptInfo1(
         ReceiptInfo &ri)
 {
+    typedef     ReceiptInfo::ChunkIndex     ChunkIndex;
+
+    ri.m_receiptDate    = "2023/03/01";
+    ri.m_receiptTime    = "09:00";
+    ri.m_shopName       = "SHOP A";
+
+    ReceiptInfo::ChunkArray &chunks = ri.m_recordChunk;
+    chunks.clear();
+    chunks.resize(static_cast<ChunkIndex>(2));
+
+    ReceiptEntriesChunk &chunk0 = chunks[static_cast<ChunkIndex>(0)];
+    chunk0.pCatMan  = ri.pCatMan;
+    setupReceiptEntriesChunk1(chunk0);
+
+    ReceiptEntriesChunk &chunk1 = chunks[static_cast<ChunkIndex>(1)];
+    chunk1.pCatMan  = ri.pCatMan;
+    setupReceiptEntriesChunk2(chunk1);
+
     return ( Boolean::BOOL_TRUE );
 }
 
