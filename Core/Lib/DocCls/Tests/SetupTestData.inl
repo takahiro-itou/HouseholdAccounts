@@ -196,6 +196,31 @@ setupReceiptEntriesChunk1(
         ReceiptEntriesChunk &chunk)
 {
     chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::OUTLAY;
+    chunk.chlDebitAccount   = static_cast<CategoryHandle>(3);
+    chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
+    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
+    chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
+
+    chunk.goodsList.clear();
+    chunk.goodsList.resize(static_cast<PurchaseNumber>(1));
+
+    ReceiptEntriesChunk::PurchasingList  &
+            goods1  = chunk.goodsList;
+
+    PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
+    pg0.pCatMan = chunk.pCatMan;
+    setupPurchasedGoods3(pg0);
+
+    return ( Boolean::BOOL_TRUE );
+}
+
+//----------------------------------------------------------------
+
+inline  Boolean
+setupReceiptEntriesChunk2(
+        ReceiptEntriesChunk &chunk)
+{
+    chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::INCOME;
     chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
     chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
     chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
