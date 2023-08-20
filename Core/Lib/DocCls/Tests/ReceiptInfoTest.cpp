@@ -44,7 +44,9 @@ class  ReceiptInfoTest : public  TestFixture
     CPPUNIT_TEST_SUITE(ReceiptInfoTest);
     CPPUNIT_TEST(testReceiptInfo);
     CPPUNIT_TEST(testToString1);
+    CPPUNIT_TEST(testToString2);
     CPPUNIT_TEST(testWriteToStream1);
+    CPPUNIT_TEST(testWriteToStream2);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -54,7 +56,9 @@ public:
 private:
     void  testReceiptInfo();
     void  testToString1();
+    void  testToString2();
     void  testWriteToStream1();
+    void  testWriteToStream2();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptInfoTest );
@@ -100,6 +104,28 @@ void  ReceiptInfoTest::testToString1()
     return;
 }
 
+void  ReceiptInfoTest::testToString2()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptInfo     testee;
+    testee.pCatMan  = &cateMan;
+    setupReceiptInfo2(testee);
+
+    const  std::string  ret = testee.toString();
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string(
+                    "2023/03/02;*****;SHOP B;"
+                    "複式;現金;Bank 1;Head4;Cate4;Deposit;30000;1;0;0;0"
+            ),
+            ret
+    );
+
+    return;
+}
+
 void  ReceiptInfoTest::testWriteToStream1()
 {
     CategoryManager     cateMan;
@@ -118,6 +144,29 @@ void  ReceiptInfoTest::testWriteToStream1()
                     "支出;現金;;Head1;Cate1;Product1;1280;2;10;1;2\n"
                     ";;;;;;Head2;Cate2;Product2;200;1;20;3;7\n"
                     ";;;収入;ポイント;;Head3;Cate3;Points;10;1;0;0;0"
+            ),
+            ss.str()
+    );
+
+    return;
+}
+
+void  ReceiptInfoTest::testWriteToStream2()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptInfo     testee;
+    testee.pCatMan  = &cateMan;
+    setupReceiptInfo2(testee);
+
+    std::stringstream   ss;
+    testee.writeToStream(ss);
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string(
+                    "2023/03/02;*****;SHOP B;"
+                    "複式;現金;Bank 1;Head4;Cate4;Deposit;30000;1;0;0;0"
             ),
             ss.str()
     );
