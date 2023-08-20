@@ -241,6 +241,9 @@ public:
     /**   外税を加える項目のハンドル。  **/
     CategoryHandle      m_chExclusiveTax;
 
+    /**   項目を管理するインスタンス。  **/
+    const   CategoryManager *   pCatMan;
+
 //========================================================================
 //
 //    Other Features.
