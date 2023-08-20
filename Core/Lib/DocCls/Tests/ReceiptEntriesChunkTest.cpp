@@ -43,6 +43,7 @@ class  ReceiptEntriesChunkTest : public  TestFixture
     CPPUNIT_TEST(testReceiptEntriesChunk);
     CPPUNIT_TEST(testToString1);
     CPPUNIT_TEST(testToString2);
+    CPPUNIT_TEST(testToString3);
     CPPUNIT_TEST(testWriteToString1);
     CPPUNIT_TEST(testWriteToString2);
     CPPUNIT_TEST_SUITE_END();
@@ -151,7 +152,7 @@ void  ReceiptEntriesChunkTest::testToString2()
     const  std::string  ret = testee.toString();
 
     CPPUNIT_ASSERT_EQUAL(
-            std::string("収入;ポイント;;Head3;Cate3;Points;10;0;0;0"),
+            std::string("収入;ポイント;;Head3;Cate3;Points;10;1;0;0;0"),
             ret
     );
 
