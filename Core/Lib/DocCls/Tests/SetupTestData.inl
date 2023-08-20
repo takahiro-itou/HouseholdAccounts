@@ -153,6 +153,26 @@ setupPurchasedGoods2(
 //----------------------------------------------------------------
 
 inline  Boolean
+setupPurchasedGoods3(
+        PurchasedGoods  &pg)
+{
+    pg.accountHeadings  = static_cast<CategoryHandle>(9);
+    pg.accountCategory  = static_cast<CategoryHandle>(10);
+    pg.productName      = "Points";
+    pg.unitPrice        = static_cast<CurrencyNumerator>(10);
+    pg.nQuantity        = static_cast<int>(1);
+    pg.cDiscount        = static_cast<CurrencyNumerator>(0);
+    pg.exclusiveTaxVal  = static_cast<CurrencyNumerator>(0);
+    pg.inclusiveTaxVal  = static_cast<CurrencyNumerator>(0);
+    pg.cSubTotal        = static_cast<CurrencyNumerator>(10);
+
+    return ( Boolean::BOOL_TRUE );
+
+}
+
+//----------------------------------------------------------------
+
+inline  Boolean
 setupPurchasedGoods4(
         PurchasedGoods  &pg)
 {
