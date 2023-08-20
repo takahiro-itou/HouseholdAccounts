@@ -30,6 +30,10 @@
 #    include    "Account/DocCls/ReceiptEntriesChunk.h"
 #endif
 
+#if !defined( HACORE_DOCCLS_INCLUDED_RECEIPT_INFO_H )
+#    include    "Account/DocCls/ReceiptInfo.h"
+#endif
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
@@ -266,6 +270,15 @@ setupReceiptEntriesChunk3(
     pg0.pCatMan = chunk.pCatMan;
     setupPurchasedGoods4(pg0);
 
+    return ( Boolean::BOOL_TRUE );
+}
+
+//----------------------------------------------------------------
+
+inline  Boolean
+setupReceiptInfo1(
+        ReceiptInfo &ri)
+{
     return ( Boolean::BOOL_TRUE );
 }
 
