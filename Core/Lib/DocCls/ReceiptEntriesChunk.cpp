@@ -158,15 +158,15 @@ ReceiptEntriesChunk::writeToStream(
         break;
     }
 
-    os  <<  ";";
+    os  <<  ';';
     if ( this->chlDebitAccount >= 0 ) {
         os  <<  getCategoryName(this->pCatMan, chlDebitAccount);
     }
-    os  <<  ";";
+    os  <<  ';';
     if ( this->chrCreditAccount >= 0 ) {
         os  <<  getCategoryName(this->pCatMan, chrCreditAccount);
     }
-    os  <<  ";";
+    os  <<  ';';
 
     const   PurchaseNumber  num = this->goodsList.size();
     if ( num > 0 ) {
