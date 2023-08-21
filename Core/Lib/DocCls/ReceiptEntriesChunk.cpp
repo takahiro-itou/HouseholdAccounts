@@ -164,7 +164,7 @@ ReceiptEntriesChunk::writeToStream(
     }
     os  <<  ";";
     if ( this->chrCreditAccount >= 0 ) {
-        os  <<  this->pCatMan->getBookCategory(chrCreditAccount).getCategoryName();
+        os  <<  getCategoryName(this->pCatMan, chrCreditAccount);
     }
     os  <<  ";";
 
