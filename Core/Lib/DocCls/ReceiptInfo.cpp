@@ -135,7 +135,11 @@ ReceiptInfo::writeToStream(
         <<  this->m_shopName    <<  ';';
 
     const   ChunkIndex  num = this->m_recordChunk.size();
+    if ( num > 0 ) {
+        this->m_recordChunk[static_cast<ChunkIndex>(0)].writeToStream(os);
+    }
     for ( ChunkIndex i = static_cast<ChunkIndex>(0); i < num; ++ i ) {
+        os  <<  std::endl;
         this->m_recordChunk.at(i).writeToStream(os);
     }
 
