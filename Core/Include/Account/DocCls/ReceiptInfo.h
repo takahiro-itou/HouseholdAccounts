@@ -249,6 +249,10 @@ public:
 //    Other Features.
 //
 public:
+    typedef     ReceiptInfo     This;
+    ReceiptInfo         (const  This  &)    = default;
+    This &  operator =  (const  This  &)    = default;
+public:
     //  テストクラス。  //
     friend  class   ReceiptInfoTest;
 };
