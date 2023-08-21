@@ -133,6 +133,12 @@ ReceiptInfo::writeToStream(
     os  <<  this->m_receiptDate <<  ";"
         <<  this->m_receiptTime <<  ";"
         <<  this->m_shopName;
+
+    const   ChunkIndex  num = this->m_recordChunk.size();
+    for ( ChunkIndex i = static_cast<ChunkIndex>(0); i < num; ++ i ) {
+        this->m_recordChunk.at(i).writeToStream(os);
+    }
+
     return ( os );
 }
 
