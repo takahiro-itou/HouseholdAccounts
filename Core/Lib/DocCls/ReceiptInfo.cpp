@@ -130,9 +130,9 @@ std::ostream  &
 ReceiptInfo::writeToStream(
         std::ostream  & os)  const
 {
-    os  <<  this->m_receiptDate <<  ";"
-        <<  this->m_receiptTime <<  ";"
-        <<  this->m_shopName    <<  ";";
+    os  <<  this->m_receiptDate <<  ';'
+        <<  this->m_receiptTime <<  ';'
+        <<  this->m_shopName    <<  ';';
 
     const   ChunkIndex  num = this->m_recordChunk.size();
     for ( ChunkIndex i = static_cast<ChunkIndex>(0); i < num; ++ i ) {
