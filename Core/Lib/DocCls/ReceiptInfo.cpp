@@ -139,7 +139,7 @@ ReceiptInfo::writeToStream(
         this->m_recordChunk[static_cast<ChunkIndex>(0)].writeToStream(os);
     }
     for ( ChunkIndex i = static_cast<ChunkIndex>(1); i < num; ++ i ) {
-        os  <<  std::endl;
+        os  <<  std::endl   <<  ";;;";
         this->m_recordChunk.at(i).writeToStream(os);
     }
 
