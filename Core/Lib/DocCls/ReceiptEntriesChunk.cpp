@@ -29,6 +29,19 @@
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
 
+//----------------------------------------------------------------
+/** 　　項目ハンドルから項目名を取得する
+**
+**/
+
+const  std::string  &
+getCategoryName(
+        const   CategoryManager  *  pCatMan,
+        const   CategoryHandle      hCate)
+{
+    return  pCatMan->getBookCategory(hCate).getCategoryName();
+}
+
 namespace  {
 }   //  End of (Unnamed) namespace.
 
@@ -147,7 +160,7 @@ ReceiptEntriesChunk::writeToStream(
 
     os  <<  ";";
     if ( this->chlDebitAccount >= 0 ) {
-        os  <<  this->pCatMan->getBookCategory(chlDebitAccount).getCategoryName();
+        os  <<  getCategoryName(this->pCatMan, chlDebitAccount);
     }
     os  <<  ";";
     if ( this->chrCreditAccount >= 0 ) {
