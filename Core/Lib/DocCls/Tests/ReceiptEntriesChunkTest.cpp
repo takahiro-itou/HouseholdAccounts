@@ -37,6 +37,12 @@ TEST_CASE_1_EXPECTED_STRING(
         ";;;Head2;Cate2;Product2;200;1;20;3;7"
 );
 
+static  const   std::string
+TEST_CASE_2_EXPECTED_STRING(
+        "収入;ポイント;;Head3;Cate3;Points;10;1;0;0;0\n"
+        ";;;Head1;Cate1;Discounts;20;1;0;0;0"
+);
+
 }   //  End of (Unnamed) namespace.
 
 //  クラスの前方宣言。  //
@@ -119,14 +125,7 @@ void  ReceiptEntriesChunkTest::testToString2()
     setupReceiptEntriesChunk2(testee);
 
     const  std::string  ret = testee.toString();
-
-    CPPUNIT_ASSERT_EQUAL(
-            std::string(
-                    "収入;ポイント;;Head3;Cate3;Points;10;1;0;0;0\n"
-                    ";;;Head1;Cate1;Discounts;20;1;0;0;0"
-            ),
-            ret
-    );
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_2_EXPECTED_STRING, ret);
 
     return;
 }
@@ -177,14 +176,7 @@ void  ReceiptEntriesChunkTest::testWriteToStream2()
 
     std::stringstream   ss;
     testee.writeToStream(ss);
-
-    CPPUNIT_ASSERT_EQUAL(
-            std::string(
-                    "収入;ポイント;;Head3;Cate3;Points;10;1;0;0;0\n"
-                    ";;;Head1;Cate1;Discounts;20;1;0;0;0"
-            ),
-            ss.str()
-    );
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_2_EXPECTED_STRING, ss.str());
 
     return;
 }
