@@ -29,6 +29,16 @@
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
 
+namespace  {
+
+static  const   std::string
+TEST_CASE_1_EXPECTED_STRING(
+        "支出;現金;;Head1;Cate1;Product1;1280;2;10;1;2\n"
+        ";;;Head2;Cate2;Product2;200;1;20;3;7"
+);
+
+}   //  End of (Unnamed) namespace.
+
 //  クラスの前方宣言。  //
 
 //========================================================================
@@ -94,14 +104,7 @@ void  ReceiptEntriesChunkTest::testToString1()
     setupReceiptEntriesChunk1(testee);
 
     const  std::string  ret = testee.toString();
-
-    CPPUNIT_ASSERT_EQUAL(
-            std::string(
-                    "支出;現金;;Head1;Cate1;Product1;1280;2;10;1;2\n"
-                    ";;;Head2;Cate2;Product2;200;1;20;3;7"
-            ),
-            ret
-    );
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_1_EXPECTED_STRING, ret);
 
     return;
 }
@@ -158,14 +161,7 @@ void  ReceiptEntriesChunkTest::testWriteToStream1()
 
     std::stringstream   ss;
     testee.writeToStream(ss);
-
-    CPPUNIT_ASSERT_EQUAL(
-            std::string(
-                    "支出;現金;;Head1;Cate1;Product1;1280;2;10;1;2\n"
-                    ";;;Head2;Cate2;Product2;200;1;20;3;7"
-            ),
-            ss.str()
-    );
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_1_EXPECTED_STRING, ss.str());
 
     return;
 }
