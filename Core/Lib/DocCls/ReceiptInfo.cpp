@@ -136,7 +136,8 @@ ReceiptInfo::writeToStream(
 
     const   ChunkIndex  num = this->m_recordChunk.size();
     if ( num > 0 ) {
-        this->m_recordChunk[static_cast<ChunkIndex>(0)].writeToStream(os);
+        this->m_recordChunk[static_cast<ChunkIndex>(0)].writeToStream(
+                "\n;;;", os);
     }
     for ( ChunkIndex i = static_cast<ChunkIndex>(1); i < num; ++ i ) {
         os  <<  std::endl   <<  ";;;";
