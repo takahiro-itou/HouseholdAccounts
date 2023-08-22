@@ -96,7 +96,8 @@ void  ReceiptInfoTest::testToString1()
                     "2023/03/01;09:00;SHOP A;"
                     "支出;現金;;Head1;Cate1;Product1;1280;2;10;1;2\n"
                     ";;;;;;Head2;Cate2;Product2;200;1;20;3;7\n"
-                    ";;;収入;ポイント;;Head3;Cate3;Points;10;1;0;0;0"
+                    ";;;収入;ポイント;;Head3;Cate3;Points;10;1;0;0;0\n"
+                    ";;;;;;Head1;Cate1;Discounts;20;1;0;0;0"
             ),
             ret
     );
@@ -143,7 +144,8 @@ void  ReceiptInfoTest::testWriteToStream1()
                     "2023/03/01;09:00;SHOP A;"
                     "支出;現金;;Head1;Cate1;Product1;1280;2;10;1;2\n"
                     ";;;;;;Head2;Cate2;Product2;200;1;20;3;7\n"
-                    ";;;収入;ポイント;;Head3;Cate3;Points;10;1;0;0;0"
+                    ";;;収入;ポイント;;Head3;Cate3;Points;10;1;0;0;0\n"
+                    ";;;;;;Head1;Cate1;Discounts;20;1;0;0;0"
             ),
             ss.str()
     );
