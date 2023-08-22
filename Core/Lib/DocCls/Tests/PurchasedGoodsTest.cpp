@@ -32,7 +32,11 @@ namespace  DocCls  {
 namespace  {
 
 static  const   std::string
-TEST_CASE1_EXPECTED_STRING("Head1;Cate1;Product1;1280;2;10;1;2");
+TEST_CASE_1_EXPECTED_STRING("Head1;Cate1;Product1;1280;2;10;1;2");
+
+static  const   std::string
+TEST_CASE_2_EXPECTED_STRING("Head2;Cate2;Product2;200;1;20;3;7");
+
 
 }   //  End of (Unnamed) namespace.
 
@@ -104,7 +108,7 @@ void  PurchasedGoodsTest::testToString1()
     setupPurchasedGoods1(testee);
 
     const  std::string  ret = testee.toString();
-    CPPUNIT_ASSERT_EQUAL(TEST_CASE1_EXPECTED_STRING, ret);
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_1_EXPECTED_STRING, ret);
 
     return;
 }
@@ -119,11 +123,7 @@ void  PurchasedGoodsTest::testToString2()
     setupPurchasedGoods2(testee);
 
     const  std::string  ret = testee.toString();
-
-    CPPUNIT_ASSERT_EQUAL(
-            std::string("Head2;Cate2;Product2;200;1;20;3;7"),
-            ret
-    );
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_2_EXPECTED_STRING, ret);
 
     return;
 }
@@ -196,7 +196,7 @@ void  PurchasedGoodsTest::testWriteToStream1()
 
     std::stringstream   ss;
     testee.writeToStream(ss);
-    CPPUNIT_ASSERT_EQUAL(TEST_CASE1_EXPECTED_STRING, ss.str());
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_1_EXPECTED_STRING, ss.str());
 
     return;
 }
@@ -212,11 +212,8 @@ void  PurchasedGoodsTest::testWriteToStream2()
 
     std::stringstream   ss;
     testee.writeToStream(ss);
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_2_EXPECTED_STRING, ss.str());
 
-    CPPUNIT_ASSERT_EQUAL(
-            std::string("Head2;Cate2;Product2;200;1;20;3;7"),
-            ss.str()
-    );
 
     return;
 }
