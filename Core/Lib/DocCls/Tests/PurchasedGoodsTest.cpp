@@ -226,11 +226,7 @@ void  PurchasedGoodsTest::testWriteToStream3()
 
     std::stringstream   ss;
     testee.writeToStream(ss);
-
-    CPPUNIT_ASSERT_EQUAL(
-            std::string("Head3;Cate3;Points;10;1;0;0;0"),
-            ss.str()
-    );
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_3_EXPECTED_STRING, ss.str());
 
     return;
 }
