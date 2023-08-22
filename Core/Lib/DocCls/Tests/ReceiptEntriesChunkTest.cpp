@@ -48,7 +48,6 @@ TEST_CASE_3_EXPECTED_STRING(
         "複式;現金;Bank 1;Head4;Cate4;Deposit;30000;1;0;0;0"
 );
 
-
 }   //  End of (Unnamed) namespace.
 
 //  クラスの前方宣言。  //
