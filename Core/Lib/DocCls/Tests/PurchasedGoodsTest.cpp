@@ -47,10 +47,12 @@ class  PurchasedGoodsTest : public  TestFixture
     CPPUNIT_TEST(testToString2);
     CPPUNIT_TEST(testToString3);
     CPPUNIT_TEST(testToString4);
+    CPPUNIT_TEST(testToString5);
     CPPUNIT_TEST(testWriteToStream1);
     CPPUNIT_TEST(testWriteToStream2);
     CPPUNIT_TEST(testWriteToStream3);
     CPPUNIT_TEST(testWriteToStream4);
+    CPPUNIT_TEST(testWriteToStream5);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -63,10 +65,12 @@ private:
     void  testToString2();
     void  testToString3();
     void  testToString4();
+    void  testToString5();
     void  testWriteToStream1();
     void  testWriteToStream2();
     void  testWriteToStream3();
     void  testWriteToStream4();
+    void  testWriteToStream5();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( PurchasedGoodsTest );
@@ -152,6 +156,25 @@ void  PurchasedGoodsTest::testToString4()
     const  std::string  ret = testee.toString();
 
     CPPUNIT_ASSERT_EQUAL(
+            std::string("Head1;Cate1;Discounts;20;1;0;0;0"),
+            ret
+    );
+
+    return;
+}
+
+void  PurchasedGoodsTest::testToString5()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    PurchasedGoods      testee;
+    testee.pCatMan  = &cateMan;
+    setupPurchasedGoods5(testee);
+
+    const  std::string  ret = testee.toString();
+
+    CPPUNIT_ASSERT_EQUAL(
             std::string("Head4;Cate4;Deposit;30000;1;0;0;0"),
             ret
     );
@@ -227,6 +250,26 @@ void  PurchasedGoodsTest::testWriteToStream4()
     PurchasedGoods      testee;
     testee.pCatMan  = &cateMan;
     setupPurchasedGoods4(testee);
+
+    std::stringstream   ss;
+    testee.writeToStream(ss);
+
+    CPPUNIT_ASSERT_EQUAL(
+            std::string("Head1;Cate1;Discounts;20;1;0;0;0"),
+            ss.str()
+    );
+
+    return;
+}
+
+void  PurchasedGoodsTest::testWriteToStream5()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    PurchasedGoods      testee;
+    testee.pCatMan  = &cateMan;
+    setupPurchasedGoods5(testee);
 
     std::stringstream   ss;
     testee.writeToStream(ss);
