@@ -29,6 +29,8 @@
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
 
+namespace  {
+
 //----------------------------------------------------------------
 /** 　　項目ハンドルから項目名を取得する
 **
@@ -42,7 +44,6 @@ getCategoryName(
     return  pCatMan->getBookCategory(hCate).getCategoryName();
 }
 
-namespace  {
 }   //  End of (Unnamed) namespace.
 
 //========================================================================
