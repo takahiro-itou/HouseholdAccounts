@@ -174,10 +174,31 @@ setupPurchasedGoods3(
 
 }
 
+
 //----------------------------------------------------------------
 
 inline  Boolean
 setupPurchasedGoods4(
+        PurchasedGoods  &pg)
+{
+    pg.accountHeadings  = static_cast<CategoryHandle>(5);
+    pg.accountCategory  = static_cast<CategoryHandle>(6);
+    pg.productName      = "Discounts";
+    pg.unitPrice        = static_cast<CurrencyNumerator>(20);
+    pg.nQuantity        = static_cast<int>(1);
+    pg.cDiscount        = static_cast<CurrencyNumerator>(0);
+    pg.exclusiveTaxVal  = static_cast<CurrencyNumerator>(0);
+    pg.inclusiveTaxVal  = static_cast<CurrencyNumerator>(0);
+    pg.cSubTotal        = static_cast<CurrencyNumerator>(20);
+
+    return ( Boolean::BOOL_TRUE );
+
+}
+
+//----------------------------------------------------------------
+
+inline  Boolean
+setupPurchasedGoods5(
         PurchasedGoods  &pg)
 {
     pg.accountHeadings  = static_cast<CategoryHandle>(11);
@@ -235,7 +256,7 @@ setupReceiptEntriesChunk2(
     chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
 
     chunk.goodsList.clear();
-    chunk.goodsList.resize(static_cast<PurchaseNumber>(1));
+    chunk.goodsList.resize(static_cast<PurchaseNumber>(2));
 
     ReceiptEntriesChunk::PurchasingList  &
             goods1  = chunk.goodsList;
@@ -243,6 +264,10 @@ setupReceiptEntriesChunk2(
     PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
     pg0.pCatMan = chunk.pCatMan;
     setupPurchasedGoods3(pg0);
+
+    PurchasedGoods &pg1 = goods1[static_cast<PurchaseNumber>(1)];
+    pg1.pCatMan = chunk.pCatMan;
+    setupPurchasedGoods4(pg1);
 
     return ( Boolean::BOOL_TRUE );
 }
@@ -268,7 +293,7 @@ setupReceiptEntriesChunk3(
 
     PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
     pg0.pCatMan = chunk.pCatMan;
-    setupPurchasedGoods4(pg0);
+    setupPurchasedGoods5(pg0);
 
     return ( Boolean::BOOL_TRUE );
 }
