@@ -153,6 +153,18 @@ public:
     writeToStream(
             std::ostream  & os)  const;
 
+    //----------------------------------------------------------------
+    /**   インスタンスの文字列表現をストリームに書き込む。
+    **
+    **  @param [in]     sep   データ間の区切り。
+    **  @param [in,out] os    出力ストリーム。
+    **  @return     出力後のストリームの参照を返す。
+    **/
+    std::ostream  &
+    writeToStream(
+            const  std::string  & sep,
+            std::ostream        & os)  const;
+
 //========================================================================
 //
 //    Public Member Functions (Operators).

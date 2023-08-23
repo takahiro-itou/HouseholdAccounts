@@ -147,6 +147,18 @@ ReceiptInfo::writeToStream(
     return ( os );
 }
 
+//----------------------------------------------------------------
+//    インスタンスの文字列表現をストリームに書き込む。
+//
+
+std::ostream  &
+ReceiptInfo::writeToStream(
+        const  std::string  & sep,
+        std::ostream        & os)  const
+{
+    return ( os );
+}
+
 //========================================================================
 //
 //    Public Member Functions (Operators).
