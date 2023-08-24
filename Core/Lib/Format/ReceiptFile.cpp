@@ -146,7 +146,7 @@ ReceiptFile::readFromTextStream(
                 || (vTokens[numSkipCols + 7][0] != '\0')
         ) {
             //  収支フラグおよび口座が異なる。  //
-            DocCls::ReceiptEntriesChunk chunk;
+            DocCls::ReceiptEntriesChunk chunk(*this->m_pCatMan);
             ptrRecInfo->m_recordChunk.push_back(chunk);
             ptrRecChunk = &(ptrRecInfo->m_recordChunk.back());
 
