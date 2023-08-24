@@ -73,6 +73,23 @@ ReceiptEntriesChunk::ReceiptEntriesChunk()
 }
 
 //----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （コンストラクタ）。
+//
+
+ReceiptEntriesChunk::ReceiptEntriesChunk(
+        const  CategoryManager  &cateManager)
+    : blockFlags(),
+      chlDebitAccount (-1),
+      chrCreditAccount(-1),
+      cnlDebitAmount  ( 0),
+      cnrCreditAmount ( 0),
+      goodsList(),
+      pCatMan(&cateManager)
+{
+}
+
+//----------------------------------------------------------------
 //    インスタンスを破棄する
 //  （デストラクタ）。
 //
