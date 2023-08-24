@@ -284,10 +284,10 @@ void  ReceiptFileTest::testReadFromTextStream1()
             pg0 = goods1.at(static_cast<PurchaseNumber>(0));
 
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(4),
+                static_cast<CategoryHandle>(5),
                 pg0.accountHeadings);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(5),
+                static_cast<CategoryHandle>(6),
                 pg0.accountCategory);
         CPPUNIT_ASSERT_EQUAL(std::string("Product1"), pg0.productName);
         CPPUNIT_ASSERT_EQUAL(
@@ -308,10 +308,10 @@ void  ReceiptFileTest::testReadFromTextStream1()
             pg1 = goods1.at(static_cast<PurchaseNumber>(1));
 
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(6),
+                static_cast<CategoryHandle>(7),
                 pg1.accountHeadings);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(7),
+                static_cast<CategoryHandle>(8),
                 pg1.accountCategory);
         CPPUNIT_ASSERT_EQUAL(std::string("Product2"), pg1.productName);
         CPPUNIT_ASSERT_EQUAL(
@@ -339,10 +339,10 @@ void  ReceiptFileTest::testReadFromTextStream1()
             pg2 = goods2.at(static_cast<PurchaseNumber>(0));
 
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(8),
+                static_cast<CategoryHandle>(9),
                 pg2.accountHeadings);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(9),
+                static_cast<CategoryHandle>(10),
                 pg2.accountCategory);
         CPPUNIT_ASSERT_EQUAL(std::string("Points"), pg2.productName);
         CPPUNIT_ASSERT_EQUAL(
