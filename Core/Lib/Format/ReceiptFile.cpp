@@ -158,7 +158,7 @@ ReceiptFile::readFromTextStream(
                     static_cast<CategoryHandle>(-1) );
         }
 
-        DocCls::PurchasedGoods  pg;
+        DocCls::PurchasedGoods  pg(*this->m_pCatMan);
         pg.accountHeadings  = findCategory(
                 vTokens[numSkipCols + 8],
                 static_cast<CategoryHandle>(-1));
