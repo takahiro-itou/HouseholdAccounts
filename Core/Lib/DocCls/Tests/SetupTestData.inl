@@ -226,19 +226,19 @@ setupReceiptEntriesChunk1(
     chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
     chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
 
+    chunk.goodsList.clear();
+    chunk.goodsList.resize(static_cast<PurchaseNumber>(2));
+
     ReceiptEntriesChunk::PurchasingList  &
             goods1  = chunk.goodsList;
 
-    goods1.clear();
-    goods1.reserve(static_cast<PurchaseNumber>(2));
-
-    PurchasedGoods  pg0(*(chunk.pCatMan));
+    PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
+    pg0.pCatMan = chunk.pCatMan;
     setupPurchasedGoods1(pg0);
-    goods1.push_back(pg0);
 
-    PurchasedGoods  pg1(*(chunk.pCatMan));
+    PurchasedGoods &pg1 = goods1[static_cast<PurchaseNumber>(1)];
+    pg1.pCatMan         = chunk.pCatMan;
     setupPurchasedGoods2(pg1);
-    goods1.push_back(pg1);
 
     return ( Boolean::BOOL_TRUE );
 }
