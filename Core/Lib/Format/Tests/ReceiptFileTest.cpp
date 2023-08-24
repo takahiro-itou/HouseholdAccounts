@@ -534,7 +534,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
             CPPUNIT_ASSERT_EQUAL(std::string("Discounts"), pg4.productName);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(20), pg4.unitPrice);
-            CPPUNIT_ASSERT_EQUAL(1, pg2.nQuantity);
+            CPPUNIT_ASSERT_EQUAL(1, pg4.nQuantity);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(0), pg4.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
