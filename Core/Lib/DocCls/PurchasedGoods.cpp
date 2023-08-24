@@ -77,6 +77,27 @@ PurchasedGoods::PurchasedGoods()
 }
 
 //----------------------------------------------------------------
+//    インスタンスを初期化する
+//  （コンストラクタ）。
+//
+
+PurchasedGoods::PurchasedGoods(
+        const  CategoryManager  &cateManager)
+    : accountHeadings(-1),
+      accountCategory(-1),
+      siGoodsId(-1),
+      productName(),
+      unitPrice(0),
+      nQuantity(0),
+      cDiscount(0),
+      exclusiveTaxVal(0),
+      inclusiveTaxVal(0),
+      cSubTotal(0),
+      pCatMan(&cateManager)
+{
+}
+
+//----------------------------------------------------------------
 //    インスタンスを破棄する
 //  （デストラクタ）。
 //
