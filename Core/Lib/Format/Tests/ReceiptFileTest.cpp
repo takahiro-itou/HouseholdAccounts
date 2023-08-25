@@ -90,11 +90,11 @@ std::ostream  &
 ReceiptFileTest::prepareTextStream1(
         std::ostream  &outStr)
 {
-    outStr  <<  ";NEW;1;2023/03/01;09:00;SHOP A;支出;現金;;"
+    outStr  <<  "NEW;1;2023/03/01;09:00;SHOP A;支出;現金;;"
             <<  "Head1;Cate1;Product1;234;2;0;0;0;;\n";
-    outStr  <<  ";;;;;;;;;"
+    outStr  <<  ";;;;;;;;"
             <<  "Head2;Cate2;Product2;300;1;10;3;7;;\n";
-    outStr  <<  ";;;;;;収入;ポイント;;"
+    outStr  <<  ";;;;;収入;ポイント;;"
             <<  "Head3;Cate3;Points;20;1;0;0;0;;\n";
     return ( outStr );
 }
@@ -103,13 +103,13 @@ std::ostream  &
 ReceiptFileTest::prepareTextStream2(
         std::ostream  &outStr)
 {
-    outStr  <<  "NEW;1;2023/03/01;09:00;SHOP A;支出;現金;;"
+    outStr  <<  ";NEW;1;2023/03/01;09:00;SHOP A;支出;現金;;"
             <<  "Head1;Cate1;Product1;1280;2;10;1;2;;\n";
-    outStr  <<  ";;;;;;;;"
+    outStr  <<  ";;;;;;;;;"
             <<  "Head2;Cate2;Product2;200;1;20;3;7;;\n";
-    outStr  <<  ";;;;;収入;ポイント;;"
+    outStr  <<  ";;;;;;収入;ポイント;;"
             <<  "Head3;Cate3;Points;10;1;0;0;0;;\n";
-    outStr  <<  ";;;;;;;;"
+    outStr  <<  ";;;;;;;;;"
             <<  "Head1;Cate1;Discounts;20;1;0;0;0;;\n";
     outStr  <<  ";NEW;2;2023/03/02;*****;SHOP B;複式;現金;Bank 1;"
             <<  "Head4;Cate4;Deposit;30000;1;0;0;0;;\n";
