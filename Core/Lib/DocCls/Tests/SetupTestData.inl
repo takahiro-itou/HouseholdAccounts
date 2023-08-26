@@ -405,11 +405,11 @@ setupReceiptInfo1(
 
     ReceiptEntriesChunk &chunk0 = chunks[static_cast<ChunkIndex>(0)];
     chunk0.pCatMan  = ri.pCatMan;
-    setupReceiptEntriesChunk4(chunk0);
+    setupReceiptEntriesChunk1(chunk0);
 
     ReceiptEntriesChunk &chunk1 = chunks[static_cast<ChunkIndex>(1)];
     chunk1.pCatMan  = ri.pCatMan;
-    setupReceiptEntriesChunk5(chunk1);
+    setupReceiptEntriesChunk2(chunk1);
 
     return ( Boolean::BOOL_TRUE );
 }
@@ -432,11 +432,11 @@ setupReceiptInfo2(
 
     ReceiptEntriesChunk &chunk0 = chunks[static_cast<ChunkIndex>(0)];
     chunk0.pCatMan  = ri.pCatMan;
-    setupReceiptEntriesChunk1(chunk0);
+    setupReceiptEntriesChunk3(chunk0);
 
     ReceiptEntriesChunk &chunk1 = chunks[static_cast<ChunkIndex>(1)];
     chunk1.pCatMan  = ri.pCatMan;
-    setupReceiptEntriesChunk2(chunk1);
+    setupReceiptEntriesChunk4(chunk1);
 
     return ( Boolean::BOOL_TRUE );
 }
@@ -459,7 +459,7 @@ setupReceiptInfo3(
 
     ReceiptEntriesChunk &chunk0 = chunks[static_cast<ChunkIndex>(0)];
     chunk0.pCatMan  = ri.pCatMan;
-    setupReceiptEntriesChunk3(chunk0);
+    setupReceiptEntriesChunk5(chunk0);
 
     return ( Boolean::BOOL_TRUE );
 }
