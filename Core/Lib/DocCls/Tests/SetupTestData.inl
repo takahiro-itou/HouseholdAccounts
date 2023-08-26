@@ -118,7 +118,7 @@ setupCategoryManager1(
 //----------------------------------------------------------------
 
 inline  Boolean
-setupPurchasedGoods1(
+setupPurchasedGoods3(
         PurchasedGoods  &pg)
 {
     pg.accountHeadings  = static_cast<CategoryHandle>(5);
@@ -137,7 +137,7 @@ setupPurchasedGoods1(
 //----------------------------------------------------------------
 
 inline  Boolean
-setupPurchasedGoods2(
+setupPurchasedGoods4(
         PurchasedGoods  &pg)
 {
     pg.accountHeadings  = static_cast<CategoryHandle>(7);
@@ -156,7 +156,7 @@ setupPurchasedGoods2(
 //----------------------------------------------------------------
 
 inline  Boolean
-setupPurchasedGoods3(
+setupPurchasedGoods5(
         PurchasedGoods  &pg)
 {
     pg.accountHeadings  = static_cast<CategoryHandle>(9);
@@ -175,7 +175,7 @@ setupPurchasedGoods3(
 //----------------------------------------------------------------
 
 inline  Boolean
-setupPurchasedGoods4(
+setupPurchasedGoods6(
         PurchasedGoods  &pg)
 {
     pg.accountHeadings  = static_cast<CategoryHandle>(5);
@@ -194,7 +194,7 @@ setupPurchasedGoods4(
 //----------------------------------------------------------------
 
 inline  Boolean
-setupPurchasedGoods5(
+setupPurchasedGoods7(
         PurchasedGoods  &pg)
 {
     pg.accountHeadings  = static_cast<CategoryHandle>(11);
@@ -213,7 +213,7 @@ setupPurchasedGoods5(
 //----------------------------------------------------------------
 
 inline  Boolean
-setupPurchasedGoods6(
+setupPurchasedGoods1(
         PurchasedGoods  &pg)
 {
     pg.accountHeadings  = static_cast<CategoryHandle>(5);
@@ -232,7 +232,7 @@ setupPurchasedGoods6(
 //----------------------------------------------------------------
 
 inline  Boolean
-setupPurchasedGoods7(
+setupPurchasedGoods2(
         PurchasedGoods  &pg)
 {
     pg.accountHeadings  = static_cast<CategoryHandle>(7);
