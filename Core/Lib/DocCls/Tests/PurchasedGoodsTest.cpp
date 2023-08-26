@@ -49,6 +49,9 @@ TEST_CASE_5_EXPECTED_STRING("Head4;Cate4;Deposit;30000;1;0;0;0");
 static  const   std::string
 TEST_CASE_6_EXPECTED_STRING("Head1;Cate1;Product1;234;2;0;0;0");
 
+static  const   std::string
+TEST_CASE_7_EXPECTED_STRING("Head2;Cate2;Product2;300;1;10;3;7");
+
 }   //  End of (Unnamed) namespace.
 
 //  クラスの前方宣言。  //
@@ -71,12 +74,14 @@ class  PurchasedGoodsTest : public  TestFixture
     CPPUNIT_TEST(testToString4);
     CPPUNIT_TEST(testToString5);
     CPPUNIT_TEST(testToString6);
+    CPPUNIT_TEST(testToString7);
     CPPUNIT_TEST(testWriteToStream1);
     CPPUNIT_TEST(testWriteToStream2);
     CPPUNIT_TEST(testWriteToStream3);
     CPPUNIT_TEST(testWriteToStream4);
     CPPUNIT_TEST(testWriteToStream5);
     CPPUNIT_TEST(testWriteToStream6);
+    CPPUNIT_TEST(testWriteToStream7);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -91,12 +96,14 @@ private:
     void  testToString4();
     void  testToString5();
     void  testToString6();
+    void  testToString7();
     void  testWriteToStream1();
     void  testWriteToStream2();
     void  testWriteToStream3();
     void  testWriteToStream4();
     void  testWriteToStream5();
     void  testWriteToStream6();
+    void  testWriteToStream7();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( PurchasedGoodsTest );
@@ -202,6 +209,20 @@ void  PurchasedGoodsTest::testToString6()
     return;
 }
 
+void  PurchasedGoodsTest::testToString7()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    PurchasedGoods      testee(cateMan);
+    setupPurchasedGoods7(testee);
+
+    const  std::string  ret = testee.toString();
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_7_EXPECTED_STRING, ret);
+
+    return;
+}
+
 void  PurchasedGoodsTest::testWriteToStream1()
 {
     CategoryManager     cateMan;
@@ -293,6 +314,21 @@ void  PurchasedGoodsTest::testWriteToStream6()
     std::stringstream   ss;
     testee.writeToStream(ss);
     CPPUNIT_ASSERT_EQUAL(TEST_CASE_6_EXPECTED_STRING, ss.str());
+
+    return;
+}
+
+void  PurchasedGoodsTest::testWriteToStream7()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    PurchasedGoods      testee(cateMan);
+    setupPurchasedGoods7(testee);
+
+    std::stringstream   ss;
+    testee.writeToStream(ss);
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_7_EXPECTED_STRING, ss.str());
 
     return;
 }
