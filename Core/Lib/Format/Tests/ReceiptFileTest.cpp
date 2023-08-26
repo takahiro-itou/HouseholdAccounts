@@ -34,6 +34,16 @@ namespace  Format  {
 
 namespace  {
 
+static  const   std::string
+TEST_CASE_1_EXPECTED_STRING(
+        "NEW;1;2023/03/01;09:00;SHOP A;支出;現金;;"
+        "Head1;Cate1;Product1;234;2;0;0;0;;\n"
+        ";;;;;;;;"
+        "Head2;Cate2;Product2;300;1;10;3;7;;\n"
+        ";;;;;収入;ポイント;;"
+        "Head3;Cate3;Points;20;1;0;0;0;;\n"
+);
+
 //----------------------------------------------------------------
 
 inline  void
@@ -110,12 +120,7 @@ std::ostream  &
 ReceiptFileTest::prepareTextStream1(
         std::ostream  &outStr)
 {
-    outStr  <<  "NEW;1;2023/03/01;09:00;SHOP A;支出;現金;;"
-            <<  "Head1;Cate1;Product1;234;2;0;0;0;;\n";
-    outStr  <<  ";;;;;;;;"
-            <<  "Head2;Cate2;Product2;300;1;10;3;7;;\n";
-    outStr  <<  ";;;;;収入;ポイント;;"
-            <<  "Head3;Cate3;Points;20;1;0;0;0;;\n";
+    outStr  <<  TEST_CASE_1_EXPECTED_STRING;
     return ( outStr );
 }
 
