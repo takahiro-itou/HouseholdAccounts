@@ -32,6 +32,12 @@ namespace  DocCls  {
 namespace  {
 
 static  const   std::string
+TEST_CASE_1_EXPECTED_STRING(
+        "支出;現金;;Head1;Cate1;Product1;234;2;0;0;0\n"
+        ";;;Head2;Cate2;Product2;300;1;10;3;7"
+);
+
+static  const   std::string
 TEST_CASE_3_EXPECTED_STRING(
         "支出;現金;;Head1;Cate1;Product1;1280;2;10;1;2\n"
         ";;;Head2;Cate2;Product2;200;1;20;3;7"
@@ -46,12 +52,6 @@ TEST_CASE_4_EXPECTED_STRING(
 static  const   std::string
 TEST_CASE_5_EXPECTED_STRING(
         "複式;現金;Bank 1;Head4;Cate4;Deposit;30000;1;0;0;0"
-);
-
-static  const   std::string
-TEST_CASE_1_EXPECTED_STRING(
-        "支出;現金;;Head1;Cate1;Product1;234;2;0;0;0\n"
-        ";;;Head2;Cate2;Product2;300;1;10;3;7"
 );
 
 }   //  End of (Unnamed) namespace.
