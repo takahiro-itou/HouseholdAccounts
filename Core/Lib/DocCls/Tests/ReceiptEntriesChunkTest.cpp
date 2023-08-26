@@ -48,6 +48,12 @@ TEST_CASE_3_EXPECTED_STRING(
         "複式;現金;Bank 1;Head4;Cate4;Deposit;30000;1;0;0;0"
 );
 
+static  const   std::string
+TEST_CASE_4_EXPECTED_STRING(
+        "支出;現金;;Head1;Cate1;Product1;234;2;0;0;0\n"
+        ";;;Head2;Cate2;Product2;300;1;10;3;7"
+);
+
 }   //  End of (Unnamed) namespace.
 
 //  クラスの前方宣言。  //
@@ -67,9 +73,11 @@ class  ReceiptEntriesChunkTest : public  TestFixture
     CPPUNIT_TEST(testToString1);
     CPPUNIT_TEST(testToString2);
     CPPUNIT_TEST(testToString3);
+    CPPUNIT_TEST(testToString4);
     CPPUNIT_TEST(testWriteToStream1);
     CPPUNIT_TEST(testWriteToStream2);
     CPPUNIT_TEST(testWriteToStream3);
+    CPPUNIT_TEST(testWriteToStream4);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -81,9 +89,11 @@ private:
     void  testToString1();
     void  testToString2();
     void  testToString3();
+    void  testToString4();
     void  testWriteToStream1();
     void  testWriteToStream2();
     void  testWriteToStream3();
+    void  testWriteToStream4();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptEntriesChunkTest );
@@ -150,6 +160,20 @@ void  ReceiptEntriesChunkTest::testToString3()
     return;
 }
 
+void  ReceiptEntriesChunkTest::testToString4()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptEntriesChunk     testee(cateMan);
+    setupReceiptEntriesChunk4(testee);
+
+    const  std::string  ret = testee.toString();
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_4_EXPECTED_STRING, ret);
+
+    return;
+}
+
 void  ReceiptEntriesChunkTest::testWriteToStream1()
 {
     CategoryManager     cateMan;
@@ -194,6 +218,21 @@ void  ReceiptEntriesChunkTest::testWriteToStream3()
     std::stringstream   ss;
     testee.writeToStream(ss);
     CPPUNIT_ASSERT_EQUAL(TEST_CASE_3_EXPECTED_STRING, ss.str());
+
+    return;
+}
+
+void  ReceiptEntriesChunkTest::testWriteToStream4()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptEntriesChunk     testee(cateMan);
+    setupReceiptEntriesChunk4(testee);
+
+    std::stringstream   ss;
+    testee.writeToStream(ss);
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_4_EXPECTED_STRING, ss.str());
 
     return;
 }
