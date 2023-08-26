@@ -32,7 +32,7 @@ namespace  DocCls  {
 namespace  {
 
 static  const   std::string
-TEST_CASE_1_EXPECTED_STRING(
+TEST_CASE_2_EXPECTED_STRING(
         "2023/03/01;09:00;SHOP A;"
         "支出;現金;;Head1;Cate1;Product1;1280;2;10;1;2\n"
         ";;;;;;Head2;Cate2;Product2;200;1;20;3;7\n"
@@ -41,7 +41,7 @@ TEST_CASE_1_EXPECTED_STRING(
 );
 
 static  const   std::string
-TEST_CASE_2_EXPECTED_STRING(
+TEST_CASE_3_EXPECTED_STRING(
         "2023/03/02;*****;SHOP B;"
         "複式;現金;Bank 1;Head4;Cate4;Deposit;30000;1;0;0;0"
 );
@@ -62,10 +62,10 @@ class  ReceiptInfoTest : public  TestFixture
 {
     CPPUNIT_TEST_SUITE(ReceiptInfoTest);
     CPPUNIT_TEST(testReceiptInfo);
-    CPPUNIT_TEST(testToString1);
     CPPUNIT_TEST(testToString2);
-    CPPUNIT_TEST(testWriteToStream1);
+    CPPUNIT_TEST(testToString3);
     CPPUNIT_TEST(testWriteToStream2);
+    CPPUNIT_TEST(testWriteToStream3);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -74,10 +74,10 @@ public:
 
 private:
     void  testReceiptInfo();
-    void  testToString1();
     void  testToString2();
-    void  testWriteToStream1();
+    void  testToString3();
     void  testWriteToStream2();
+    void  testWriteToStream3();
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION( ReceiptInfoTest );
@@ -99,21 +99,6 @@ void  ReceiptInfoTest::testReceiptInfo()
     return;
 }
 
-void  ReceiptInfoTest::testToString1()
-{
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
-
-    ReceiptInfo     testee;
-    testee.pCatMan  = &cateMan;
-    setupReceiptInfo1(testee);
-
-    const  std::string  ret = testee.toString();
-    CPPUNIT_ASSERT_EQUAL(TEST_CASE_1_EXPECTED_STRING, ret);
-
-    return;
-}
-
 void  ReceiptInfoTest::testToString2()
 {
     CategoryManager     cateMan;
@@ -129,18 +114,17 @@ void  ReceiptInfoTest::testToString2()
     return;
 }
 
-void  ReceiptInfoTest::testWriteToStream1()
+void  ReceiptInfoTest::testToString3()
 {
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
 
     ReceiptInfo     testee;
     testee.pCatMan  = &cateMan;
-    setupReceiptInfo1(testee);
+    setupReceiptInfo3(testee);
 
-    std::stringstream   ss;
-    testee.writeToStream(ss);
-    CPPUNIT_ASSERT_EQUAL(TEST_CASE_1_EXPECTED_STRING, ss.str());
+    const  std::string  ret = testee.toString();
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_3_EXPECTED_STRING, ret);
 
     return;
 }
@@ -157,6 +141,22 @@ void  ReceiptInfoTest::testWriteToStream2()
     std::stringstream   ss;
     testee.writeToStream(ss);
     CPPUNIT_ASSERT_EQUAL(TEST_CASE_2_EXPECTED_STRING, ss.str());
+
+    return;
+}
+
+void  ReceiptInfoTest::testWriteToStream3()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptInfo     testee;
+    testee.pCatMan  = &cateMan;
+    setupReceiptInfo3(testee);
+
+    std::stringstream   ss;
+    testee.writeToStream(ss);
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_3_EXPECTED_STRING, ss.str());
 
     return;
 }
