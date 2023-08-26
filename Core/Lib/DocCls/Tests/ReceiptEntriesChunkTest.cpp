@@ -38,6 +38,11 @@ TEST_CASE_1_EXPECTED_STRING(
 );
 
 static  const   std::string
+TEST_CASE_2_EXPECTED_STRING(
+        "収入;ポイント;;Head3;Cate3;Points;10;1;0;0;0"
+);
+
+static  const   std::string
 TEST_CASE_3_EXPECTED_STRING(
         "支出;現金;;Head1;Cate1;Product1;1280;2;10;1;2\n"
         ";;;Head2;Cate2;Product2;200;1;20;3;7"
@@ -71,10 +76,12 @@ class  ReceiptEntriesChunkTest : public  TestFixture
     CPPUNIT_TEST_SUITE(ReceiptEntriesChunkTest);
     CPPUNIT_TEST(testReceiptEntriesChunk);
     CPPUNIT_TEST(testToString1);
+    CPPUNIT_TEST(testToString2);
     CPPUNIT_TEST(testToString3);
     CPPUNIT_TEST(testToString4);
     CPPUNIT_TEST(testToString5);
     CPPUNIT_TEST(testWriteToStream1);
+    CPPUNIT_TEST(testWriteToStream2);
     CPPUNIT_TEST(testWriteToStream3);
     CPPUNIT_TEST(testWriteToStream4);
     CPPUNIT_TEST(testWriteToStream5);
@@ -87,10 +94,12 @@ public:
 private:
     void  testReceiptEntriesChunk();
     void  testToString1();
+    void  testToString2();
     void  testToString3();
     void  testToString4();
     void  testToString5();
     void  testWriteToStream1();
+    void  testWriteToStream2();
     void  testWriteToStream3();
     void  testWriteToStream4();
     void  testWriteToStream5();
@@ -126,6 +135,20 @@ void  ReceiptEntriesChunkTest::testToString1()
 
     const  std::string  ret = testee.toString();
     CPPUNIT_ASSERT_EQUAL(TEST_CASE_1_EXPECTED_STRING, ret);
+
+    return;
+}
+
+void  ReceiptEntriesChunkTest::testToString2()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptEntriesChunk     testee(cateMan);
+    setupReceiptEntriesChunk2(testee);
+
+    const  std::string  ret = testee.toString();
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_2_EXPECTED_STRING, ret);
 
     return;
 }
@@ -186,6 +209,21 @@ void  ReceiptEntriesChunkTest::testWriteToStream1()
     std::stringstream   ss;
     testee.writeToStream(ss);
     CPPUNIT_ASSERT_EQUAL(TEST_CASE_1_EXPECTED_STRING, ss.str());
+
+    return;
+}
+
+void  ReceiptEntriesChunkTest::testWriteToStream2()
+{
+    CategoryManager     cateMan;
+    setupCategoryManager1(cateMan);
+
+    ReceiptEntriesChunk     testee(cateMan);
+    setupReceiptEntriesChunk2(testee);
+
+    std::stringstream   ss;
+    testee.writeToStream(ss);
+    CPPUNIT_ASSERT_EQUAL(TEST_CASE_2_EXPECTED_STRING, ss.str());
 
     return;
 }
