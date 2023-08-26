@@ -32,6 +32,30 @@
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Format  {
 
+namespace  {
+
+//----------------------------------------------------------------
+
+inline  void
+comparePurchasedGoods(
+        const   DocCls::PurchasedGoods  &expect,
+        const   DocCls::PurchasedGoods  &actual)
+{
+    CPPUNIT_ASSERT_EQUAL(expect.accountHeadings,  actual.accountHeadings);
+    CPPUNIT_ASSERT_EQUAL(expect.accountCategory,  actual.accountCategory);
+    CPPUNIT_ASSERT_EQUAL(expect.productName,      actual.productName);
+    CPPUNIT_ASSERT_EQUAL(expect.unitPrice,        actual.unitPrice);
+    CPPUNIT_ASSERT_EQUAL(expect.nQuantity,        actual.nQuantity);
+    CPPUNIT_ASSERT_EQUAL(expect.cDiscount,        actual.cDiscount);
+    CPPUNIT_ASSERT_EQUAL(expect.exclusiveTaxVal,  actual.exclusiveTaxVal);
+    CPPUNIT_ASSERT_EQUAL(expect.inclusiveTaxVal,  actual.inclusiveTaxVal);
+    CPPUNIT_ASSERT_EQUAL(expect.cSubTotal,        actual.cSubTotal);
+
+    return;
+}
+
+}   //  End of (Unnamed) namespace.
+
 //  クラスの前方宣言。  //
 
 //========================================================================
