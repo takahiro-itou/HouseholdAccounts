@@ -251,6 +251,90 @@ setupPurchasedGoods2(
 //----------------------------------------------------------------
 
 inline  Boolean
+setupReceiptEntriesChunk3(
+        ReceiptEntriesChunk &chunk)
+{
+    chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::OUTLAY;
+    chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
+    chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
+    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
+    chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
+
+    chunk.goodsList.clear();
+    chunk.goodsList.resize(static_cast<PurchaseNumber>(2));
+
+    ReceiptEntriesChunk::PurchasingList  &
+            goods1  = chunk.goodsList;
+
+    PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
+    pg0.pCatMan = chunk.pCatMan;
+    setupPurchasedGoods3(pg0);
+
+    PurchasedGoods &pg1 = goods1[static_cast<PurchaseNumber>(1)];
+    pg1.pCatMan         = chunk.pCatMan;
+    setupPurchasedGoods4(pg1);
+
+    return ( Boolean::BOOL_TRUE );
+}
+
+//----------------------------------------------------------------
+
+inline  Boolean
+setupReceiptEntriesChunk4(
+        ReceiptEntriesChunk &chunk)
+{
+    chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::INCOME;
+    chunk.chlDebitAccount   = static_cast<CategoryHandle>(3);
+    chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
+    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
+    chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
+
+    chunk.goodsList.clear();
+    chunk.goodsList.resize(static_cast<PurchaseNumber>(2));
+
+    ReceiptEntriesChunk::PurchasingList  &
+            goods1  = chunk.goodsList;
+
+    PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
+    pg0.pCatMan = chunk.pCatMan;
+    setupPurchasedGoods5(pg0);
+
+    PurchasedGoods &pg1 = goods1[static_cast<PurchaseNumber>(1)];
+    pg1.pCatMan = chunk.pCatMan;
+    setupPurchasedGoods6(pg1);
+
+    return ( Boolean::BOOL_TRUE );
+}
+
+//----------------------------------------------------------------
+
+inline  Boolean
+setupReceiptEntriesChunk5(
+        ReceiptEntriesChunk &chunk)
+{
+    chunk.blockFlags
+            = ReceiptEntriesChunk::ChunkInOutFlags::DOUBLE_ENTRY;
+    chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
+    chunk.chrCreditAccount  = static_cast<CategoryHandle>(4);
+    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
+    chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
+
+    chunk.goodsList.clear();
+    chunk.goodsList.resize(static_cast<PurchaseNumber>(1));
+
+    ReceiptEntriesChunk::PurchasingList  &
+            goods1  = chunk.goodsList;
+
+    PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
+    pg0.pCatMan = chunk.pCatMan;
+    setupPurchasedGoods7(pg0);
+
+    return ( Boolean::BOOL_TRUE );
+}
+
+//----------------------------------------------------------------
+
+inline  Boolean
 setupReceiptEntriesChunk1(
         ReceiptEntriesChunk &chunk)
 {
@@ -290,36 +374,6 @@ setupReceiptEntriesChunk2(
     chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
 
     chunk.goodsList.clear();
-    chunk.goodsList.resize(static_cast<PurchaseNumber>(2));
-
-    ReceiptEntriesChunk::PurchasingList  &
-            goods1  = chunk.goodsList;
-
-    PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
-    pg0.pCatMan = chunk.pCatMan;
-    setupPurchasedGoods3(pg0);
-
-    PurchasedGoods &pg1 = goods1[static_cast<PurchaseNumber>(1)];
-    pg1.pCatMan = chunk.pCatMan;
-    setupPurchasedGoods4(pg1);
-
-    return ( Boolean::BOOL_TRUE );
-}
-
-//----------------------------------------------------------------
-
-inline  Boolean
-setupReceiptEntriesChunk3(
-        ReceiptEntriesChunk &chunk)
-{
-    chunk.blockFlags
-            = ReceiptEntriesChunk::ChunkInOutFlags::DOUBLE_ENTRY;
-    chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
-    chunk.chrCreditAccount  = static_cast<CategoryHandle>(4);
-    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
-    chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
-
-    chunk.goodsList.clear();
     chunk.goodsList.resize(static_cast<PurchaseNumber>(1));
 
     ReceiptEntriesChunk::PurchasingList  &
@@ -328,60 +382,6 @@ setupReceiptEntriesChunk3(
     PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
     pg0.pCatMan = chunk.pCatMan;
     setupPurchasedGoods5(pg0);
-
-    return ( Boolean::BOOL_TRUE );
-}
-
-//----------------------------------------------------------------
-
-inline  Boolean
-setupReceiptEntriesChunk4(
-        ReceiptEntriesChunk &chunk)
-{
-    chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::OUTLAY;
-    chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
-    chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
-    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
-    chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
-
-    chunk.goodsList.clear();
-    chunk.goodsList.resize(static_cast<PurchaseNumber>(2));
-
-    ReceiptEntriesChunk::PurchasingList  &
-            goods1  = chunk.goodsList;
-
-    PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
-    pg0.pCatMan = chunk.pCatMan;
-    setupPurchasedGoods6(pg0);
-
-    PurchasedGoods &pg1 = goods1[static_cast<PurchaseNumber>(1)];
-    pg1.pCatMan         = chunk.pCatMan;
-    setupPurchasedGoods7(pg1);
-
-    return ( Boolean::BOOL_TRUE );
-}
-
-//----------------------------------------------------------------
-
-inline  Boolean
-setupReceiptEntriesChunk5(
-        ReceiptEntriesChunk &chunk)
-{
-    chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::INCOME;
-    chunk.chlDebitAccount   = static_cast<CategoryHandle>(3);
-    chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
-    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
-    chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
-
-    chunk.goodsList.clear();
-    chunk.goodsList.resize(static_cast<PurchaseNumber>(1));
-
-    ReceiptEntriesChunk::PurchasingList  &
-            goods1  = chunk.goodsList;
-
-    PurchasedGoods &pg0 = goods1[static_cast<PurchaseNumber>(0)];
-    pg0.pCatMan = chunk.pCatMan;
-    setupPurchasedGoods3(pg0);
 
     return ( Boolean::BOOL_TRUE );
 }
