@@ -232,7 +232,7 @@ setupPurchasedGoods6(
 //----------------------------------------------------------------
 
 inline  Boolean
-setupPurchasedGoods2(
+setupPurchasedGoods7(
         PurchasedGoods  &pg)
 {
     pg.accountHeadings  = static_cast<CategoryHandle>(7);
