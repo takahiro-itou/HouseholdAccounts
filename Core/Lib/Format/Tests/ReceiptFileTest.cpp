@@ -340,7 +340,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
             const DocCls::PurchasedGoods &
                 pg0 = goods1.at(static_cast<PurchaseNumber>(0));
             DocCls::PurchasedGoods  expect0(catMan);
-            setupPurchasedGoods1(expect0);
+            setupPurchasedGoods3(expect0);
             comparePurchasedGoods(expect0, pg0);
         }
 
@@ -348,7 +348,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
             const DocCls::PurchasedGoods &
                 pg1 = goods1.at(static_cast<PurchaseNumber>(1));
             DocCls::PurchasedGoods  expect1(catMan);
-            setupPurchasedGoods1(expect1);
+            setupPurchasedGoods4(expect1);
             comparePurchasedGoods(expect1, pg1);
         }
 
@@ -363,7 +363,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
             const DocCls::PurchasedGoods &
                 pg2 = goods2.at(static_cast<PurchaseNumber>(0));
             DocCls::PurchasedGoods  expect2(catMan);
-            setupPurchasedGoods1(expect2);
+            setupPurchasedGoods5(expect2);
             comparePurchasedGoods(expect2, pg2);
         }
 
@@ -371,7 +371,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
             const DocCls::PurchasedGoods &
                 pg3 = goods2.at(static_cast<PurchaseNumber>(1));
             DocCls::PurchasedGoods  expect3(catMan);
-            setupPurchasedGoods1(expect3);
+            setupPurchasedGoods6(expect3);
             comparePurchasedGoods(expect3, pg3);
         }
     }
