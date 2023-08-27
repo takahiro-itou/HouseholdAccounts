@@ -248,7 +248,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
                 pg0.accountCategory);
         CPPUNIT_ASSERT_EQUAL(std::string("Product1"), pg0.productName);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(128), pg0.unitPrice);
+                static_cast<CurrencyNumerator>(234), pg0.unitPrice);
         CPPUNIT_ASSERT_EQUAL(2, pg0.nQuantity);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(0), pg0.cDiscount);
@@ -257,7 +257,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(0), pg0.inclusiveTaxVal);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(256), pg0.cSubTotal);
+                static_cast<CurrencyNumerator>(468), pg0.cSubTotal);
     }
 
     {
@@ -272,16 +272,16 @@ void  ReceiptFileTest::testReadFromTextStream1()
                 pg1.accountCategory);
         CPPUNIT_ASSERT_EQUAL(std::string("Product2"), pg1.productName);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(200), pg1.unitPrice);
+                static_cast<CurrencyNumerator>(300), pg1.unitPrice);
         CPPUNIT_ASSERT_EQUAL(1, pg1.nQuantity);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(10), pg1.cDiscount);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(1), pg1.exclusiveTaxVal);
+                static_cast<CurrencyNumerator>(3), pg1.exclusiveTaxVal);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(2), pg1.inclusiveTaxVal);
+                static_cast<CurrencyNumerator>(7), pg1.inclusiveTaxVal);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(191), pg1.cSubTotal);
+                static_cast<CurrencyNumerator>(293), pg1.cSubTotal);
     }
 
     const DocCls::ReceiptEntriesChunk::PurchasingList &
@@ -384,7 +384,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
                 static_cast<CategoryHandle>(-1),
                 chunk2.chrCreditAccount);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(20),
+                static_cast<CurrencyNumerator>(30),
                 chunk2.cnlDebitAmount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(0),
@@ -409,16 +409,16 @@ void  ReceiptFileTest::testReadFromTextStream2()
                     pg0.accountCategory);
             CPPUNIT_ASSERT_EQUAL(std::string("Product1"), pg0.productName);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(234), pg0.unitPrice);
+                    static_cast<CurrencyNumerator>(1280), pg0.unitPrice);
             CPPUNIT_ASSERT_EQUAL(2, pg0.nQuantity);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg0.cDiscount);
+                    static_cast<CurrencyNumerator>(10), pg0.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg0.exclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(1), pg0.exclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg0.inclusiveTaxVal);
+                    static_cast<CurrencyNumerator>(2), pg0.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(468), pg0.cSubTotal);
+                    static_cast<CurrencyNumerator>(2551), pg0.cSubTotal);
         }
 
         {
@@ -433,16 +433,16 @@ void  ReceiptFileTest::testReadFromTextStream2()
                     pg1.accountCategory);
             CPPUNIT_ASSERT_EQUAL(std::string("Product2"), pg1.productName);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(300), pg1.unitPrice);
+                    static_cast<CurrencyNumerator>(200), pg1.unitPrice);
             CPPUNIT_ASSERT_EQUAL(1, pg1.nQuantity);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(10), pg1.cDiscount);
+                    static_cast<CurrencyNumerator>(20), pg1.cDiscount);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(3), pg1.exclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(7), pg1.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(293), pg1.cSubTotal);
+                    static_cast<CurrencyNumerator>(183), pg1.cSubTotal);
         }
 
         const DocCls::ReceiptEntriesChunk::PurchasingList &
@@ -464,7 +464,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
                     pg2.accountCategory);
             CPPUNIT_ASSERT_EQUAL(std::string("Points"), pg2.productName);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(20), pg2.unitPrice);
+                    static_cast<CurrencyNumerator>(10), pg2.unitPrice);
             CPPUNIT_ASSERT_EQUAL(1, pg2.nQuantity);
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(0), pg2.cDiscount);
@@ -473,7 +473,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CurrencyNumerator>(0), pg2.inclusiveTaxVal);
             CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(20), pg2.cSubTotal);
+                    static_cast<CurrencyNumerator>(10), pg2.cSubTotal);
         }
 
         {
