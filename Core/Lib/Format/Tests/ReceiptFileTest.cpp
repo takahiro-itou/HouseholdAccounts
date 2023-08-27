@@ -395,7 +395,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
             chunk3  = chunks1.at(static_cast<ChunkIndex>(0));
         {
             DocCls::ReceiptEntriesChunk expect3(catMan);
-            setupReceiptEntriesChunk4(expect3);
+            setupReceiptEntriesChunk5(expect3);
             compareReceiptEntriesChunk(expect3, chunk3);
         }
 
