@@ -393,18 +393,11 @@ void  ReceiptFileTest::testReadFromTextStream2()
 
         const DocCls::ReceiptEntriesChunk &
             chunk3  = chunks1.at(static_cast<ChunkIndex>(0));
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(2),
-                chunk3.chlDebitAccount);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(4),
-                chunk3.chrCreditAccount);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(30000),
-                chunk3.cnlDebitAmount);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(30000),
-                chunk3.cnrCreditAmount);
+        {
+            DocCls::ReceiptEntriesChunk expect3(catMan);
+            setupReceiptEntriesChunk4(expect3);
+            compareReceiptEntriesChunk(expect3, chunk3);
+        }
 
         const DocCls::ReceiptEntriesChunk::PurchasingList &
             goods3  = chunk3.goodsList;
