@@ -25,6 +25,7 @@
 #include    "Account/DocCls/CategoryManager.h"
 
 #include    <fstream>
+#include    <string.h>
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
