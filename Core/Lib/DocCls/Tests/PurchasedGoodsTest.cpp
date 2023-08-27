@@ -125,8 +125,7 @@ void  PurchasedGoodsTest::testToString1()
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
 
-    PurchasedGoods      testee;
-    testee.pCatMan  = &cateMan;
+    PurchasedGoods      testee(cateMan);
     setupPurchasedGoods1(testee);
 
     const  std::string  ret = testee.toString();
@@ -140,8 +139,7 @@ void  PurchasedGoodsTest::testToString2()
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
 
-    PurchasedGoods      testee;
-    testee.pCatMan  = &cateMan;
+    PurchasedGoods      testee(cateMan);
     setupPurchasedGoods2(testee);
 
     const  std::string  ret = testee.toString();
@@ -155,8 +153,7 @@ void  PurchasedGoodsTest::testToString3()
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
 
-    PurchasedGoods      testee;
-    testee.pCatMan  = &cateMan;
+    PurchasedGoods      testee(cateMan);
     setupPurchasedGoods3(testee);
 
     const  std::string  ret = testee.toString();
@@ -170,8 +167,7 @@ void  PurchasedGoodsTest::testToString4()
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
 
-    PurchasedGoods      testee;
-    testee.pCatMan  = &cateMan;
+    PurchasedGoods      testee(cateMan);
     setupPurchasedGoods4(testee);
 
     const  std::string  ret = testee.toString();
@@ -185,8 +181,7 @@ void  PurchasedGoodsTest::testToString5()
     CategoryManager     cateMan;
     setupCategoryManager1(cateMan);
 
-    PurchasedGoods      testee;
-    testee.pCatMan  = &cateMan;
+    PurchasedGoods      testee(cateMan);
     setupPurchasedGoods5(testee);
 
     const  std::string  ret = testee.toString();
