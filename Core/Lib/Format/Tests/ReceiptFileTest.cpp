@@ -41,7 +41,7 @@ TEST_CASE_1_EXPECTED_STRING(
         ";;;;;;;;"
         "Head2;Cate2;Product2;300;1;10;3;7;;\n"
         ";;;;;収入;ポイント;;"
-        "Head3;Cate3;Points;20;1;0;0;0;;\n"
+        "Head3;Cate3;Points;10;1;0;0;0;;\n"
 );
 
 static  const   std::string
@@ -208,7 +208,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
             static_cast<CategoryHandle>(-1),
             chunk1.chrCreditAccount);
     CPPUNIT_ASSERT_EQUAL(
-            static_cast<CurrencyNumerator>(447),
+            static_cast<CurrencyNumerator>(761),
             chunk1.cnlDebitAmount);
     CPPUNIT_ASSERT_EQUAL(
             static_cast<CurrencyNumerator>(0),
@@ -369,7 +369,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
                 static_cast<CategoryHandle>(-1),
                 chunk1.chrCreditAccount);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(761),
+                static_cast<CurrencyNumerator>(2734),
                 chunk1.cnlDebitAmount);
         CPPUNIT_ASSERT_EQUAL(
                 static_cast<CurrencyNumerator>(0),
