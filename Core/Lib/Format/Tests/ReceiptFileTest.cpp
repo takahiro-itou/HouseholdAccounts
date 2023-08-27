@@ -339,49 +339,17 @@ void  ReceiptFileTest::testReadFromTextStream2()
         {
             const DocCls::PurchasedGoods &
                 pg0 = goods1.at(static_cast<PurchaseNumber>(0));
-
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CategoryHandle>(5),
-                    pg0.accountHeadings);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CategoryHandle>(6),
-                    pg0.accountCategory);
-            CPPUNIT_ASSERT_EQUAL(std::string("Product1"), pg0.productName);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(1280), pg0.unitPrice);
-            CPPUNIT_ASSERT_EQUAL(2, pg0.nQuantity);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(10), pg0.cDiscount);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(1), pg0.exclusiveTaxVal);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(2), pg0.inclusiveTaxVal);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(2551), pg0.cSubTotal);
+            DocCls::PurchasedGoods  expect0(catMan);
+            setupPurchasedGoods1(expect0);
+            comparePurchasedGoods(expect0, pg0);
         }
 
         {
             const DocCls::PurchasedGoods &
                 pg1 = goods1.at(static_cast<PurchaseNumber>(1));
-
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CategoryHandle>(7),
-                    pg1.accountHeadings);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CategoryHandle>(8),
-                    pg1.accountCategory);
-            CPPUNIT_ASSERT_EQUAL(std::string("Product2"), pg1.productName);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(200), pg1.unitPrice);
-            CPPUNIT_ASSERT_EQUAL(1, pg1.nQuantity);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(20), pg1.cDiscount);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(3), pg1.exclusiveTaxVal);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(7), pg1.inclusiveTaxVal);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(183), pg1.cSubTotal);
+            DocCls::PurchasedGoods  expect1(catMan);
+            setupPurchasedGoods1(expect1);
+            comparePurchasedGoods(expect1, pg1);
         }
 
         const DocCls::ReceiptEntriesChunk::PurchasingList &
@@ -394,49 +362,17 @@ void  ReceiptFileTest::testReadFromTextStream2()
         {
             const DocCls::PurchasedGoods &
                 pg2 = goods2.at(static_cast<PurchaseNumber>(0));
-
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CategoryHandle>(9),
-                    pg2.accountHeadings);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CategoryHandle>(10),
-                    pg2.accountCategory);
-            CPPUNIT_ASSERT_EQUAL(std::string("Points"), pg2.productName);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(10), pg2.unitPrice);
-            CPPUNIT_ASSERT_EQUAL(1, pg2.nQuantity);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg2.cDiscount);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg2.exclusiveTaxVal);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg2.inclusiveTaxVal);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(10), pg2.cSubTotal);
+            DocCls::PurchasedGoods  expect2(catMan);
+            setupPurchasedGoods1(expect2);
+            comparePurchasedGoods(expect2, pg2);
         }
 
         {
             const DocCls::PurchasedGoods &
-                pg4 = goods2.at(static_cast<PurchaseNumber>(1));
-
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CategoryHandle>(5),
-                    pg4.accountHeadings);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CategoryHandle>(6),
-                    pg4.accountCategory);
-            CPPUNIT_ASSERT_EQUAL(std::string("Discounts"), pg4.productName);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(20), pg4.unitPrice);
-            CPPUNIT_ASSERT_EQUAL(1, pg4.nQuantity);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg4.cDiscount);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg4.exclusiveTaxVal);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(0), pg4.inclusiveTaxVal);
-            CPPUNIT_ASSERT_EQUAL(
-                    static_cast<CurrencyNumerator>(20), pg4.cSubTotal);
+                pg3 = goods2.at(static_cast<PurchaseNumber>(1));
+            DocCls::PurchasedGoods  expect3(catMan);
+            setupPurchasedGoods1(expect3);
+            comparePurchasedGoods(expect3, pg3);
         }
     }
 
