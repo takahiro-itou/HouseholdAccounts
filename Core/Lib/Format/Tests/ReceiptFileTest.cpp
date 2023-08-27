@@ -409,7 +409,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
             const DocCls::PurchasedGoods &
                 pg4 = goods3.at(static_cast<PurchaseNumber>(0));
             DocCls::PurchasedGoods  expect4(catMan);
-            setupPurchasedGoods3(expect4);
+            setupPurchasedGoods7(expect4);
             comparePurchasedGoods(expect4, pg4);
         }
     }
