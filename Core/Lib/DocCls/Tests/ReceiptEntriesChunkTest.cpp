@@ -196,11 +196,10 @@ void  ReceiptEntriesChunkTest::testToString5()
 
 void  ReceiptEntriesChunkTest::testWriteToStream1()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    ReceiptEntriesChunk     testee;
-    testee.pCatMan  = &cateMan;
+    ReceiptEntriesChunk     testee(catMan);
     setupReceiptEntriesChunk1(testee);
 
     std::stringstream   ss;
@@ -212,10 +211,10 @@ void  ReceiptEntriesChunkTest::testWriteToStream1()
 
 void  ReceiptEntriesChunkTest::testWriteToStream2()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    ReceiptEntriesChunk     testee(cateMan);
+    ReceiptEntriesChunk     testee(catMan);
     setupReceiptEntriesChunk2(testee);
 
     std::stringstream   ss;
@@ -227,11 +226,10 @@ void  ReceiptEntriesChunkTest::testWriteToStream2()
 
 void  ReceiptEntriesChunkTest::testWriteToStream3()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    ReceiptEntriesChunk     testee;
-    testee.pCatMan  = &cateMan;
+    ReceiptEntriesChunk     testee(catMan);
     setupReceiptEntriesChunk3(testee);
 
     std::stringstream   ss;
@@ -243,10 +241,10 @@ void  ReceiptEntriesChunkTest::testWriteToStream3()
 
 void  ReceiptEntriesChunkTest::testWriteToStream4()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    ReceiptEntriesChunk     testee(cateMan);
+    ReceiptEntriesChunk     testee(catMan);
     setupReceiptEntriesChunk4(testee);
 
     std::stringstream   ss;
@@ -258,11 +256,10 @@ void  ReceiptEntriesChunkTest::testWriteToStream4()
 
 void  ReceiptEntriesChunkTest::testWriteToStream5()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    ReceiptEntriesChunk     testee;
-    testee.pCatMan  = &cateMan;
+    ReceiptEntriesChunk     testee(catMan);
     setupReceiptEntriesChunk5(testee);
 
     std::stringstream   ss;
