@@ -238,26 +238,10 @@ void  ReceiptFileTest::testReadFromTextStream1()
 
     {
         const DocCls::PurchasedGoods &
-            pg0 = goods1.at(static_cast<PurchaseNumber>(0));
-
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(5),
-                pg0.accountHeadings);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(6),
-                pg0.accountCategory);
-        CPPUNIT_ASSERT_EQUAL(std::string("Product1"), pg0.productName);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(234), pg0.unitPrice);
-        CPPUNIT_ASSERT_EQUAL(2, pg0.nQuantity);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(0), pg0.cDiscount);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(0), pg0.exclusiveTaxVal);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(0), pg0.inclusiveTaxVal);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(468), pg0.cSubTotal);
+            actual0 = goods1.at(static_cast<PurchaseNumber>(0));
+        DocCls::PurchasedGoods  expect0(cateMan);
+        setupPurchasedGoods1(expect0);
+        comparePurchasedGoods(expect0, actual0);
     }
 
     {
