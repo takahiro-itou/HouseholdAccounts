@@ -78,6 +78,21 @@ comparePurchasedGoods(
     return;
 }
 
+//----------------------------------------------------------------
+
+inline  void
+compareReceiptEntriesChunk(
+        const  DocCls::ReceiptEntriesChunk  &expect,
+        const  DocCls::ReceiptEntriesChunk  &actual)
+{
+    CPPUNIT_ASSERT_EQUAL(expect.chlDebitAccount,  actual.chlDebitAccount);
+    CPPUNIT_ASSERT_EQUAL(expect.chrCreditAccount, actual.chrCreditAccount);
+    CPPUNIT_ASSERT_EQUAL(expect.cnlDebitAmount,   actual.cnlDebitAmount);
+    CPPUNIT_ASSERT_EQUAL(expect.cnrCreditAmount,  actual.cnrCreditAmount);
+
+    return;
+}
+
 }   //  End of (Unnamed) namespace.
 
 //  クラスの前方宣言。  //
