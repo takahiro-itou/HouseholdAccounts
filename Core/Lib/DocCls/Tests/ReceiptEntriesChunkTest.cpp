@@ -126,11 +126,10 @@ void  ReceiptEntriesChunkTest::testReceiptEntriesChunk()
 
 void  ReceiptEntriesChunkTest::testToString1()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    ReceiptEntriesChunk     testee;
-    testee.pCatMan  = &cateMan;
+    ReceiptEntriesChunk     testee(catMan);
     setupReceiptEntriesChunk1(testee);
 
     const  std::string  ret = testee.toString();
@@ -141,10 +140,10 @@ void  ReceiptEntriesChunkTest::testToString1()
 
 void  ReceiptEntriesChunkTest::testToString2()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    ReceiptEntriesChunk     testee(cateMan);
+    ReceiptEntriesChunk     testee(catMan);
     setupReceiptEntriesChunk2(testee);
 
     const  std::string  ret = testee.toString();
@@ -155,11 +154,10 @@ void  ReceiptEntriesChunkTest::testToString2()
 
 void  ReceiptEntriesChunkTest::testToString3()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    ReceiptEntriesChunk     testee;
-    testee.pCatMan  = &cateMan;
+    ReceiptEntriesChunk     testee(catMan);
     setupReceiptEntriesChunk3(testee);
 
     const  std::string  ret = testee.toString();
@@ -170,11 +168,10 @@ void  ReceiptEntriesChunkTest::testToString3()
 
 void  ReceiptEntriesChunkTest::testToString4()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    ReceiptEntriesChunk     testee;
-    testee.pCatMan  = &cateMan;
+    ReceiptEntriesChunk     testee(catMan);
     setupReceiptEntriesChunk4(testee);
 
     const  std::string  ret = testee.toString();
@@ -185,10 +182,10 @@ void  ReceiptEntriesChunkTest::testToString4()
 
 void  ReceiptEntriesChunkTest::testToString5()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    ReceiptEntriesChunk     testee(cateMan);
+    ReceiptEntriesChunk     testee(catMan);
     setupReceiptEntriesChunk5(testee);
 
     const  std::string  ret = testee.toString();
