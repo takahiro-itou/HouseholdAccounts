@@ -122,10 +122,10 @@ void  PurchasedGoodsTest::testPurchasedGoods()
 
 void  PurchasedGoodsTest::testToString1()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee(cateMan);
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods1(testee);
 
     const  std::string  ret = testee.toString();
@@ -136,10 +136,10 @@ void  PurchasedGoodsTest::testToString1()
 
 void  PurchasedGoodsTest::testToString2()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee(cateMan);
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods2(testee);
 
     const  std::string  ret = testee.toString();
@@ -150,10 +150,10 @@ void  PurchasedGoodsTest::testToString2()
 
 void  PurchasedGoodsTest::testToString3()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee(cateMan);
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods3(testee);
 
     const  std::string  ret = testee.toString();
@@ -164,10 +164,10 @@ void  PurchasedGoodsTest::testToString3()
 
 void  PurchasedGoodsTest::testToString4()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee(cateMan);
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods4(testee);
 
     const  std::string  ret = testee.toString();
@@ -178,10 +178,10 @@ void  PurchasedGoodsTest::testToString4()
 
 void  PurchasedGoodsTest::testToString5()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee(cateMan);
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods5(testee);
 
     const  std::string  ret = testee.toString();
@@ -192,10 +192,10 @@ void  PurchasedGoodsTest::testToString5()
 
 void  PurchasedGoodsTest::testToString6()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee(cateMan);
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods6(testee);
 
     const  std::string  ret = testee.toString();
@@ -206,10 +206,10 @@ void  PurchasedGoodsTest::testToString6()
 
 void  PurchasedGoodsTest::testToString7()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee(cateMan);
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods7(testee);
 
     const  std::string  ret = testee.toString();
@@ -220,11 +220,10 @@ void  PurchasedGoodsTest::testToString7()
 
 void  PurchasedGoodsTest::testWriteToStream1()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee;
-    testee.pCatMan  = &cateMan;
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods1(testee);
 
     std::stringstream   ss;
@@ -236,11 +235,10 @@ void  PurchasedGoodsTest::testWriteToStream1()
 
 void  PurchasedGoodsTest::testWriteToStream2()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee;
-    testee.pCatMan  = &cateMan;
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods2(testee);
 
     std::stringstream   ss;
@@ -252,11 +250,10 @@ void  PurchasedGoodsTest::testWriteToStream2()
 
 void  PurchasedGoodsTest::testWriteToStream3()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee;
-    testee.pCatMan  = &cateMan;
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods3(testee);
 
     std::stringstream   ss;
@@ -268,11 +265,10 @@ void  PurchasedGoodsTest::testWriteToStream3()
 
 void  PurchasedGoodsTest::testWriteToStream4()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee;
-    testee.pCatMan  = &cateMan;
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods4(testee);
 
     std::stringstream   ss;
@@ -284,11 +280,10 @@ void  PurchasedGoodsTest::testWriteToStream4()
 
 void  PurchasedGoodsTest::testWriteToStream5()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee;
-    testee.pCatMan  = &cateMan;
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods5(testee);
 
     std::stringstream   ss;
@@ -300,10 +295,10 @@ void  PurchasedGoodsTest::testWriteToStream5()
 
 void  PurchasedGoodsTest::testWriteToStream6()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee(cateMan);
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods6(testee);
 
     std::stringstream   ss;
@@ -315,10 +310,10 @@ void  PurchasedGoodsTest::testWriteToStream6()
 
 void  PurchasedGoodsTest::testWriteToStream7()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
-    PurchasedGoods      testee(cateMan);
+    PurchasedGoods      testee(catMan);
     setupPurchasedGoods7(testee);
 
     std::stringstream   ss;
