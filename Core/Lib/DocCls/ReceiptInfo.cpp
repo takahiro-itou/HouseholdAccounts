@@ -130,6 +130,18 @@ std::ostream  &
 ReceiptInfo::writeToStream(
         std::ostream  & os)  const
 {
+    return  writeToStream("\n", os);
+}
+
+//----------------------------------------------------------------
+//    インスタンスの文字列表現をストリームに書き込む。
+//
+
+std::ostream  &
+ReceiptInfo::writeToStream(
+        const  std::string  & sep,
+        std::ostream        & os)  const
+{
     os  <<  this->m_receiptDate <<  ';'
         <<  this->m_receiptTime <<  ';'
         <<  this->m_shopName    <<  ';';
@@ -144,18 +156,6 @@ ReceiptInfo::writeToStream(
         this->m_recordChunk.at(i).writeToStream("\n;;;", os);
     }
 
-    return ( os );
-}
-
-//----------------------------------------------------------------
-//    インスタンスの文字列表現をストリームに書き込む。
-//
-
-std::ostream  &
-ReceiptInfo::writeToStream(
-        const  std::string  & sep,
-        std::ostream        & os)  const
-{
     return ( os );
 }
 
