@@ -275,8 +275,8 @@ void  ReceiptFileTest::testReadFromTextStream2()
 {
     typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
 
-    DocCls::CategoryManager cateMan;
-    setupCategoryManager1(cateMan);
+    DocCls::CategoryManager catMan;
+    setupCategoryManager1(catMan);
 
     ReceiptFile     testee;
     std::stringstream   ss;
@@ -288,7 +288,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
     retCode = static_cast<int>(testee.setNumSkipColumns(1));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
-    retCode = static_cast<int>(testee.setCategoryManager(cateMan));
+    retCode = static_cast<int>(testee.setCategoryManager(catMan));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
     retCode = static_cast<int>(testee.readFromTextStream(ss, &data));
@@ -315,33 +315,19 @@ void  ReceiptFileTest::testReadFromTextStream2()
 
         const DocCls::ReceiptEntriesChunk &
             chunk1  = chunks0.at(static_cast<ChunkIndex>(0));
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(2),
-                chunk1.chlDebitAccount);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(-1),
-                chunk1.chrCreditAccount);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(2734),
-                chunk1.cnlDebitAmount);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(0),
-                chunk1.cnrCreditAmount);
+        {
+            DocCls::ReceiptEntriesChunk expect1(catMan);
+            setupReceiptEntriesChunk1(expect1);
+            compareReceiptEntriesChunk(expect1, chunk1);
+        }
 
         const DocCls::ReceiptEntriesChunk &
             chunk2  = chunks0.at(static_cast<ChunkIndex>(1));
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(3),
-                chunk2.chlDebitAccount);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CategoryHandle>(-1),
-                chunk2.chrCreditAccount);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(30),
-                chunk2.cnlDebitAmount);
-        CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(0),
-                chunk2.cnrCreditAmount);
+        {
+            DocCls::ReceiptEntriesChunk expect2(catMan);
+            setupReceiptEntriesChunk2(expect2);
+            compareReceiptEntriesChunk(expect2, chunk2);
+        }
 
         const DocCls::ReceiptEntriesChunk::PurchasingList &
             goods1  = chunk1.goodsList;
@@ -522,8 +508,8 @@ void  ReceiptFileTest::testSaveToTextStream1()
 {
     typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
 
-    DocCls::CategoryManager cateMan;
-    setupCategoryManager1(cateMan);
+    DocCls::CategoryManager catMan;
+    setupCategoryManager1(catMan);
 
     ReceiptFile     testee;
     std::stringstream   ss;
@@ -535,7 +521,7 @@ void  ReceiptFileTest::testSaveToTextStream1()
     retCode = static_cast<int>(testee.setNumSkipColumns(0));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
-    retCode = static_cast<int>(testee.setCategoryManager(cateMan));
+    retCode = static_cast<int>(testee.setCategoryManager(catMan));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
     retCode = static_cast<int>(testee.readFromTextStream(ss, &data));
@@ -554,8 +540,8 @@ void  ReceiptFileTest::testSaveToTextStream2()
 {
     typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
 
-    DocCls::CategoryManager cateMan;
-    setupCategoryManager1(cateMan);
+    DocCls::CategoryManager catMan;
+    setupCategoryManager1(catMan);
 
     ReceiptFile     testee;
     std::stringstream   ss;
@@ -567,7 +553,7 @@ void  ReceiptFileTest::testSaveToTextStream2()
     retCode = static_cast<int>(testee.setNumSkipColumns(1));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
-    retCode = static_cast<int>(testee.setCategoryManager(cateMan));
+    retCode = static_cast<int>(testee.setCategoryManager(catMan));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
     retCode = static_cast<int>(testee.readFromTextStream(ss, &data));
