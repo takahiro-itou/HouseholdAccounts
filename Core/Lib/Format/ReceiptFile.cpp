@@ -150,6 +150,20 @@ ReceiptFile::readFromTextStream(
             ptrRecInfo->m_recordChunk.push_back(chunk);
             ptrRecChunk = &(ptrRecInfo->m_recordChunk.back());
 
+            if ( ! strcmp(vTokens[numSkipCols + 5], "複式") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::DOUBLE_ENTRY;
+            } else if ( ! strcmp(vTokens[numSkipCols + 5], "収入") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::INCOME;
+            } else if ( ! strcmp(vTokens[numSkipCols + 5], "支出") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::OUTLAY;
+            } else if ( ! strcmp(vTokens[numSkipCols + 5], "口座引出") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::BANK_WITHDRAW;
+            } else if ( ! strcmp(vTokens[numSkipCols + 5], "口座預入") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::BANK_DEPOSIT;
+            } else if ( ! strcmp(vTokens[numSkipCols + 5], "口座振替") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::BANK_TRANSFER;
+            }
+
             ptrRecChunk->chlDebitAccount    = findCategory(
                     vTokens[numSkipCols + 6],
                     static_cast<CategoryHandle>(-1) );
