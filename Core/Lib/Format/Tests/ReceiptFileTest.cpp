@@ -478,7 +478,7 @@ void  ReceiptFileTest::testReadFromTextStream2()
 
         {
             const DocCls::PurchasedGoods &
-                pg4 = goods2.at(static_cast<PurchaseNumber>(0));
+                pg4 = goods2.at(static_cast<PurchaseNumber>(1));
 
             CPPUNIT_ASSERT_EQUAL(
                     static_cast<CategoryHandle>(5),
@@ -525,10 +525,10 @@ void  ReceiptFileTest::testReadFromTextStream2()
                 static_cast<CategoryHandle>(4),
                 chunk3.chrCreditAccount);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(1000),
+                static_cast<CurrencyNumerator>(30000),
                 chunk3.cnlDebitAmount);
         CPPUNIT_ASSERT_EQUAL(
-                static_cast<CurrencyNumerator>(1000),
+                static_cast<CurrencyNumerator>(30000),
                 chunk3.cnrCreditAmount);
 
         const DocCls::ReceiptEntriesChunk::PurchasingList &
