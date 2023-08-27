@@ -258,7 +258,7 @@ setupReceiptEntriesChunk1(
     chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::OUTLAY;
     chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
     chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
-    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
+    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(761);
     chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
 
     chunk.goodsList.clear();
@@ -287,7 +287,7 @@ setupReceiptEntriesChunk2(
     chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::INCOME;
     chunk.chlDebitAccount   = static_cast<CategoryHandle>(3);
     chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
-    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
+    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(10);
     chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
 
     chunk.goodsList.clear();
@@ -312,7 +312,7 @@ setupReceiptEntriesChunk3(
     chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::OUTLAY;
     chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
     chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
-    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
+    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(2734);
     chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
 
     chunk.goodsList.clear();
@@ -341,7 +341,7 @@ setupReceiptEntriesChunk4(
     chunk.blockFlags        = ReceiptEntriesChunk::ChunkInOutFlags::INCOME;
     chunk.chlDebitAccount   = static_cast<CategoryHandle>(3);
     chunk.chrCreditAccount  = static_cast<CategoryHandle>(-1);
-    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
+    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(30);
     chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
 
     chunk.goodsList.clear();
@@ -371,8 +371,8 @@ setupReceiptEntriesChunk5(
             = ReceiptEntriesChunk::ChunkInOutFlags::DOUBLE_ENTRY;
     chunk.chlDebitAccount   = static_cast<CategoryHandle>(2);
     chunk.chrCreditAccount  = static_cast<CategoryHandle>(4);
-    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(0);
-    chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(0);
+    chunk.cnlDebitAmount    = static_cast<CurrencyNumerator>(30000);
+    chunk.cnrCreditAmount   = static_cast<CurrencyNumerator>(30000);
 
     chunk.goodsList.clear();
     chunk.goodsList.resize(static_cast<PurchaseNumber>(1));
