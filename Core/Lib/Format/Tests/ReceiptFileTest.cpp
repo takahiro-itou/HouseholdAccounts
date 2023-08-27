@@ -177,8 +177,8 @@ void  ReceiptFileTest::testReadFromTextStream1()
 {
     typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
 
-    DocCls::CategoryManager cateMan;
-    setupCategoryManager1(cateMan);
+    DocCls::CategoryManager catMan;
+    setupCategoryManager1(catMan);
 
     ReceiptFile     testee;
     std::stringstream   ss;
@@ -190,7 +190,7 @@ void  ReceiptFileTest::testReadFromTextStream1()
     retCode = static_cast<int>(testee.setNumSkipColumns(0));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
-    retCode = static_cast<int>(testee.setCategoryManager(cateMan));
+    retCode = static_cast<int>(testee.setCategoryManager(catMan));
     CPPUNIT_ASSERT_EQUAL( static_cast<int>(ErrCode::SUCCESS), retCode );
 
     retCode = static_cast<int>(testee.readFromTextStream(ss, &data));
@@ -216,18 +216,11 @@ void  ReceiptFileTest::testReadFromTextStream1()
 
     const DocCls::ReceiptEntriesChunk &
         chunk1  = chunks.at(static_cast<ChunkIndex>(0));
-    CPPUNIT_ASSERT_EQUAL(
-            static_cast<CategoryHandle>(2),
-            chunk1.chlDebitAccount);
-    CPPUNIT_ASSERT_EQUAL(
-            static_cast<CategoryHandle>(-1),
-            chunk1.chrCreditAccount);
-    CPPUNIT_ASSERT_EQUAL(
-            static_cast<CurrencyNumerator>(761),
-            chunk1.cnlDebitAmount);
-    CPPUNIT_ASSERT_EQUAL(
-            static_cast<CurrencyNumerator>(0),
-            chunk1.cnrCreditAmount);
+    {
+        DocCls::ReceiptEntriesChunk expect1(catMan);
+        setupReceiptEntriesChunk1(expect1);
+        compareReceiptEntriesChunk(expect1, chunk1);
+    }
 
     const DocCls::ReceiptEntriesChunk &
         chunk2  = chunks.at(static_cast<ChunkIndex>(1));
@@ -253,10 +246,10 @@ void  ReceiptFileTest::testReadFromTextStream1()
 
     {
         const DocCls::PurchasedGoods &
-            actual0 = goods1.at(static_cast<PurchaseNumber>(0));
-        DocCls::PurchasedGoods  expect0(cateMan);
+            pg0 = goods1.at(static_cast<PurchaseNumber>(0));
+        DocCls::PurchasedGoods  expect0(catMan);
         setupPurchasedGoods1(expect0);
-        comparePurchasedGoods(expect0, actual0);
+        comparePurchasedGoods(expect0, pg0);
     }
 
     {
