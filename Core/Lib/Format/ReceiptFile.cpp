@@ -234,7 +234,7 @@ ReceiptFile::saveToTextStream(
             i = static_cast<ReceiptNumber>(0); i < numReceipts; ++ i )
     {
         outStr  <<  "NEW;"  <<  (i+1)   <<  ';';
-        objDoc.at(i).writeToStream(";;\n;;", outStr);
+        objDoc.at(i).writeToStream(";;\n;;", outStr)    <<  std::endl;
     }
 
     return ( ErrCode::SUCCESS );
