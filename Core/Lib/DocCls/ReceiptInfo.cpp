@@ -149,11 +149,11 @@ ReceiptInfo::writeToStream(
     const   ChunkIndex  num = this->m_recordChunk.size();
     if ( num > 0 ) {
         this->m_recordChunk[static_cast<ChunkIndex>(0)].writeToStream(
-                "\n;;;", os);
+                sep + ";;;", os);
     }
     for ( ChunkIndex i = static_cast<ChunkIndex>(1); i < num; ++ i ) {
         os  <<  sep  <<  ";;;";
-        this->m_recordChunk.at(i).writeToStream("\n;;;", os);
+        this->m_recordChunk.at(i).writeToStream(sep + ";;;", os);
     }
 
     return ( os );
