@@ -146,17 +146,17 @@ ReceiptInfo::writeToStream(
         <<  this->m_receiptTime <<  ';'
         <<  this->m_shopName    <<  ';';
 
-    const  std::string  sepWork(sep + ";;;");
+    const  std::string  lineSep(sep + ";;;");
 
     ChunkIndex          idx = static_cast<ChunkIndex>(0);
     const   ChunkIndex  num = this->m_recordChunk.size();
 
     if ( idx < num ) {
-        this->m_recordChunk[idx].writeToStream(sepWork, os);
+        this->m_recordChunk[idx].writeToStream(lineSep, os);
     }
     for ( ++ idx; idx < num; ++ idx ) {
-        os  <<  sepWork;
-        this->m_recordChunk.at(idx).writeToStream(sepWork, os);
+        os  <<  lineSep;
+        this->m_recordChunk.at(idx).writeToStream(lineSep, os);
     }
 
     return ( os );
