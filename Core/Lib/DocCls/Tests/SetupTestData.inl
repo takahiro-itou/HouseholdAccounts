@@ -419,7 +419,8 @@ setupReceiptInfo1(
 
 inline  Boolean
 setupReceiptInfo2(
-        ReceiptInfo &ri)
+        const  CategoryManager  &catMan,
+        ReceiptInfo             &ri)
 {
     typedef     ReceiptInfo::ChunkIndex     ChunkIndex;
 
@@ -432,11 +433,11 @@ setupReceiptInfo2(
     chunks.resize(static_cast<ChunkIndex>(2));
 
     ReceiptEntriesChunk &chunk0 = chunks[static_cast<ChunkIndex>(0)];
-    chunk0.pCatMan  = ri.pCatMan;
+    chunk0.pCatMan  = &catMan;
     setupReceiptEntriesChunk3(chunk0);
 
     ReceiptEntriesChunk &chunk1 = chunks[static_cast<ChunkIndex>(1)];
-    chunk1.pCatMan  = ri.pCatMan;
+    chunk1.pCatMan  = &catMan;
     setupReceiptEntriesChunk4(chunk1);
 
     return ( Boolean::BOOL_TRUE );

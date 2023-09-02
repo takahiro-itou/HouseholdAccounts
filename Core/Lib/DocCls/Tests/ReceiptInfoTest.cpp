@@ -127,12 +127,11 @@ void  ReceiptInfoTest::testToString1()
 
 void  ReceiptInfoTest::testToString2()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
     ReceiptInfo     testee;
-    testee.pCatMan  = &cateMan;
-    setupReceiptInfo2(testee);
+    setupReceiptInfo2(catMan, testee);
 
     const  std::string  ret = testee.toString();
     CPPUNIT_ASSERT_EQUAL(TEST_CASE_2_EXPECTED_STRING, ret);
@@ -172,12 +171,12 @@ void  ReceiptInfoTest::testWriteToStream1()
 
 void  ReceiptInfoTest::testWriteToStream2()
 {
-    CategoryManager     cateMan;
-    setupCategoryManager1(cateMan);
+    CategoryManager     catMan;
+    setupCategoryManager1(catMan);
 
     ReceiptInfo     testee;
-    testee.pCatMan  = &cateMan;
-    setupReceiptInfo2(testee);
+    testee.pCatMan  = &catMan;
+    setupReceiptInfo2(catMan, testee);
 
     std::stringstream   ss;
     testee.writeToStream(ss);
