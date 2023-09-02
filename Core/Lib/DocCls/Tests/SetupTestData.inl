@@ -461,7 +461,7 @@ setupReceiptInfo3(
     chunks.resize(static_cast<ChunkIndex>(1));
 
     ReceiptEntriesChunk &chunk0 = chunks[static_cast<ChunkIndex>(0)];
-    chunk0.pCatMan  = ri.pCatMan;
+    chunk0.pCatMan  = &catMan;
     setupReceiptEntriesChunk5(chunk0);
 
     return ( Boolean::BOOL_TRUE );
