@@ -186,9 +186,11 @@ ReceiptEntriesChunk::writeToStream(
     }
     os  <<  ';';
 
+    PurchaseNumber  idx = static_cast<PurchaseNumber>(0);
     const   PurchaseNumber  num = this->goodsList.size();
-    if ( num > 0 ) {
-        this->goodsList[static_cast<PurchaseNumber>(0)].writeToStream(os);
+
+    if ( idx < num ) {
+        this->goodsList[idx].writeToStream(os);
     }
     for ( PurchaseNumber i = static_cast<PurchaseNumber>(1); i < num; ++ i )
     {
