@@ -148,14 +148,15 @@ ReceiptInfo::writeToStream(
 
     const  std::string  sepWork(sep + ";;;");
 
+    ChunkIndex          idx = static_cast<ChunkIndex>(0);
     const   ChunkIndex  num = this->m_recordChunk.size();
-    if ( num > 0 ) {
-        this->m_recordChunk[static_cast<ChunkIndex>(0)].writeToStream(
-                sepWork, os);
+
+    if ( idx < num ) {
+        this->m_recordChunk[idx].writeToStream(sepWork, os);
     }
-    for ( ChunkIndex i = static_cast<ChunkIndex>(1); i < num; ++ i ) {
+    for ( ++ idx; idx < num; ++ idx ) {
         os  <<  sepWork;
-        this->m_recordChunk.at(i).writeToStream(sepWork, os);
+        this->m_recordChunk.at(idx).writeToStream(sepWork, os);
     }
 
     return ( os );
