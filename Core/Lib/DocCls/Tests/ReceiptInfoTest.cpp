@@ -174,7 +174,6 @@ void  ReceiptInfoTest::testWriteToStream2()
     setupCategoryManager1(catMan);
 
     ReceiptInfo     testee;
-    testee.pCatMan  = &catMan;
     setupReceiptInfo2(catMan, testee);
 
     std::stringstream   ss;
