@@ -173,6 +173,28 @@ ReceiptInfo::writeToStream(
 //
 
 //----------------------------------------------------------------
+//    項目を管理するインスタンスを取得する。
+//
+
+const   CategoryManager  &
+ReceiptInfo::getCategoryManager()  const
+{
+    return ( *(this->pCatMan) );
+}
+
+//----------------------------------------------------------------
+//    項目を管理するインスタンスを設定する。
+//
+
+ErrCode
+ReceiptInfo::setCategoryManager(
+        const  CategoryManager  &cateManager)
+{
+    this->pCatMan = &cateManager;
+    return ( ErrCode::SUCCESS );
+}
+
+//----------------------------------------------------------------
 //    レコードを取得する。
 //
 
