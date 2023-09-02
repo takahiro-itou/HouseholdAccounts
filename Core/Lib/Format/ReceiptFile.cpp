@@ -240,7 +240,7 @@ ReceiptFile::saveToTextStream(
     {
         outStr  <<  headCol
                 <<  "NEW;"  <<  (i+1)   <<  ';';
-        objDoc.at(i).writeToStream(";;\n;;", outStr)
+        objDoc.at(i).writeToStream(";;\n;;" + headCol, outStr)
                 <<  ";;\n";
     }
 
