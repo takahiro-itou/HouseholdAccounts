@@ -447,7 +447,8 @@ setupReceiptInfo2(
 
 inline  Boolean
 setupReceiptInfo3(
-        ReceiptInfo &ri)
+        const  CategoryManager  &catMan,
+        ReceiptInfo             &ri)
 {
     typedef     ReceiptInfo::ChunkIndex     ChunkIndex;
 
