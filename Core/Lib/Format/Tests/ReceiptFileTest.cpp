@@ -419,8 +419,6 @@ void  ReceiptFileTest::testReadFromTextStream2()
 
 void  ReceiptFileTest::testSaveToTextStream1()
 {
-    typedef     DocCls::ReceiptInfo::ChunkIndex     ChunkIndex;
-
     DocCls::CategoryManager catMan;
     setupCategoryManager1(catMan);
 
