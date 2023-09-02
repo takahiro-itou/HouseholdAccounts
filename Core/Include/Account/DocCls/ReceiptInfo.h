@@ -187,9 +187,13 @@ public:
     //----------------------------------------------------------------
     /**   項目を管理するインスタンスを設定する。
     **
-    **  @param [in] cateManager   インスタンス。
+    **  @param [in] cateManager   項目を管理するインスタンス。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
     **/
-    void
+    ErrCode
     setCategoryManager(
             const  CategoryManager  &cateManager);
 
