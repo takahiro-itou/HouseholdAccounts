@@ -192,10 +192,10 @@ ReceiptEntriesChunk::writeToStream(
     if ( idx < num ) {
         this->goodsList[idx].writeToStream(os);
     }
-    for ( PurchaseNumber i = static_cast<PurchaseNumber>(1); i < num; ++ i )
+    for ( ++ idx; idx < num; ++ idx )
     {
         os  << sep  <<  ";;;";
-        this->goodsList[i].writeToStream(os);
+        this->goodsList[idx].writeToStream(os);
     }
 
     return ( os );
