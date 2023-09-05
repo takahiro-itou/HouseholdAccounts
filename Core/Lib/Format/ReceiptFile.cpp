@@ -233,6 +233,7 @@ ReceiptFile::saveToTextStream(
     for ( int i = 0; i < m_numSkipCols; ++ i ) {
         headCol += ';';
     }
+    const   std::string     colTail(";;\n");
     const   std::string     lineSep(";;\n;;" + headCol);
 
     const   ReceiptNumber   numReceipts = objDoc.size();
@@ -242,7 +243,7 @@ ReceiptFile::saveToTextStream(
         outStr  <<  headCol
                 <<  "NEW;"  <<  (i+1)   <<  ';';
         objDoc.at(i).writeToStream(lineSep, outStr)
-                <<  ";;\n";
+                <<  colTail;
     }
 
     return ( ErrCode::SUCCESS );
