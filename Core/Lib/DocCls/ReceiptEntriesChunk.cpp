@@ -186,6 +186,8 @@ ReceiptEntriesChunk::writeToStream(
     }
     os  <<  ';';
 
+    const  std::string  lineSep(sep + ";;;");
+
     PurchaseNumber  idx = static_cast<PurchaseNumber>(0);
     const   PurchaseNumber  num = this->goodsList.size();
 
@@ -194,7 +196,7 @@ ReceiptEntriesChunk::writeToStream(
     }
     for ( ++ idx; idx < num; ++ idx )
     {
-        os  << sep  <<  ";;;";
+        os  <<  lineSep;
         this->goodsList[idx].writeToStream(os);
     }
 
