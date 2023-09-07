@@ -229,18 +229,18 @@ ReceiptFile::saveToTextStream(
         const  DocCls::ReceiptList  & objDoc,
         std::ostream                & outStr)
 {
-    std::string headCol = "";
+    std::string colHead = "";
     for ( int i = 0; i < m_numSkipCols; ++ i ) {
-        headCol += ';';
+        colHead += ';';
     }
     const   std::string     colTail(";;\n");
-    const   std::string     lineSep(";;\n;;" + headCol);
+    const   std::string     lineSep(";;\n;;" + colHead);
 
     const   ReceiptNumber   numReceipts = objDoc.size();
     for ( ReceiptNumber
             i = static_cast<ReceiptNumber>(0); i < numReceipts; ++ i )
     {
-        outStr  <<  headCol
+        outStr  <<  colHead
                 <<  "NEW;"  <<  (i+1)   <<  ';';
         objDoc.at(i).writeToStream(lineSep, outStr)
                 <<  colTail;
