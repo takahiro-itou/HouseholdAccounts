@@ -234,7 +234,7 @@ ReceiptFile::saveToTextStream(
         colHead += ';';
     }
     const   std::string     colTail(";;\n");
-    const   std::string     lineSep(";;\n;;" + colHead);
+    const   std::string     lineSep(colTail + ";;" + colHead);
 
     const   ReceiptNumber   numReceipts = objDoc.size();
     for ( ReceiptNumber
