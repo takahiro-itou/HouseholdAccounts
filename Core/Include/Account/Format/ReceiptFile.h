@@ -59,6 +59,10 @@ class  ReceiptFile
 //
 public:
 
+private:
+    typedef     DocCls::ReceiptEntriesChunk::ChunkInOutFlags
+    ChunkInOutFlags;
+
 //========================================================================
 //
 //    Constructor(s) and Destructor.

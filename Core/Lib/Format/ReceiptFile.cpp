@@ -25,6 +25,7 @@
 #include    "Account/DocCls/CategoryManager.h"
 
 #include    <fstream>
+#include    <string.h>
 
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
@@ -146,9 +147,23 @@ ReceiptFile::readFromTextStream(
                 || (vTokens[numSkipCols + 7][0] != '\0')
         ) {
             //  収支フラグおよび口座が異なる。  //
-            DocCls::ReceiptEntriesChunk chunk;
+            DocCls::ReceiptEntriesChunk chunk(*this->m_pCatMan);
             ptrRecInfo->m_recordChunk.push_back(chunk);
             ptrRecChunk = &(ptrRecInfo->m_recordChunk.back());
+
+            if ( ! strcmp(vTokens[numSkipCols + 5], "複式") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::DOUBLE_ENTRY;
+            } else if ( ! strcmp(vTokens[numSkipCols + 5], "収入") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::INCOME;
+            } else if ( ! strcmp(vTokens[numSkipCols + 5], "支出") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::OUTLAY;
+            } else if ( ! strcmp(vTokens[numSkipCols + 5], "口座引出") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::BANK_WITHDRAW;
+            } else if ( ! strcmp(vTokens[numSkipCols + 5], "口座預入") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::BANK_DEPOSIT;
+            } else if ( ! strcmp(vTokens[numSkipCols + 5], "口座振替") ) {
+                ptrRecChunk->blockFlags = ChunkInOutFlags::BANK_TRANSFER;
+            }
 
             ptrRecChunk->chlDebitAccount    = findCategory(
                     vTokens[numSkipCols + 6],
@@ -158,7 +173,7 @@ ReceiptFile::readFromTextStream(
                     static_cast<CategoryHandle>(-1) );
         }
 
-        DocCls::PurchasedGoods  pg;
+        DocCls::PurchasedGoods  pg(*this->m_pCatMan);
         pg.accountHeadings  = findCategory(
                 vTokens[numSkipCols + 8],
                 static_cast<CategoryHandle>(-1));
@@ -214,7 +229,24 @@ ReceiptFile::saveToTextStream(
         const  DocCls::ReceiptList  & objDoc,
         std::ostream                & outStr)
 {
-    return ( ErrCode::FAILURE );
+    std::string colHead = "";
+    for ( int i = 0; i < m_numSkipCols; ++ i ) {
+        colHead += ';';
+    }
+    const   std::string     colTail(";;\n");
+    const   std::string     lineSep(colTail + ";;" + colHead);
+
+    const   ReceiptNumber   numReceipts = objDoc.size();
+    for ( ReceiptNumber
+            i = static_cast<ReceiptNumber>(0); i < numReceipts; ++ i )
+    {
+        outStr  <<  colHead
+                <<  "NEW;"  <<  (i+1)   <<  ';';
+        objDoc.at(i).writeToStream(lineSep, outStr)
+                <<  colTail;
+    }
+
+    return ( ErrCode::SUCCESS );
 }
 
 //========================================================================

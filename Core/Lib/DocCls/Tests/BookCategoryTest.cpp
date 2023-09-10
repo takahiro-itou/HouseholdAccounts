@@ -75,23 +75,23 @@ void  BookCategoryTest::testIsDescendantOf()
 
     cateMan.setupRootCategory(
             CategoryHandle(0), "Root1",
-            DocCls::CategoryFlags::CTYPE_INCOME,
+            CategoryFlags::CTYPE_INCOME,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.setupRootCategory(
             CategoryHandle(1), "Root2",
-            DocCls::CategoryFlags::CTYPE_OUTLAY,
+            CategoryFlags::CTYPE_OUTLAY,
             DateSerial(0),
             Common::DecimalCurrency(0));
 
     cateMan.insertNewCategory(
             CategoryHandle(0), "Head1",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
+            CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
     cateMan.insertNewCategory(
             CategoryHandle(2), "Cate1",
-            DocCls::CategoryFlags::CTYPE_INHERIT,
+            CategoryFlags::CTYPE_INHERIT,
             DateSerial(0),
             Common::DecimalCurrency(0));
 

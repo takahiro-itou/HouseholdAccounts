@@ -30,16 +30,6 @@
 #    include    "Account/Common/StrictTypes.h"
 #endif
 
-#if !defined( HACORE_SYS_INCLUDED_STDDEF_H )
-#    include    <stddef.h>
-#    define   HACORE_SYS_INCLUDED_STDDEF_H
-#endif
-
-#if !defined( HACORE_SYS_INCLUDED_STDINT_H )
-#    include    <stdint.h>
-#    define   HACORE_SYS_INCLUDED_STDINT_H
-#endif
-
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
