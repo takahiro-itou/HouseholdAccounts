@@ -135,6 +135,36 @@ public:
             const  std::string  &recTime,
             const  std::string  &shopName);
 
+    //----------------------------------------------------------------
+    /**   インスタンスを文字列表現に変換する。
+    **
+    **  @return     文字列表現を返す。
+    **/
+    const   std::string
+    toString()  const;
+
+    //----------------------------------------------------------------
+    /**   インスタンスの文字列表現をストリームに書き込む。
+    **
+    **  @param [in,out] os    出力ストリーム。
+    **  @return     出力後のストリームの参照を返す。
+    **/
+    std::ostream  &
+    writeToStream(
+            std::ostream  & os)  const;
+
+    //----------------------------------------------------------------
+    /**   インスタンスの文字列表現をストリームに書き込む。
+    **
+    **  @param [in]     sep   データ間の区切り。
+    **  @param [in,out] os    出力ストリーム。
+    **  @return     出力後のストリームの参照を返す。
+    **/
+    std::ostream  &
+    writeToStream(
+            const  std::string  & sep,
+            std::ostream        & os)  const;
+
 //========================================================================
 //
 //    Public Member Functions (Operators).
@@ -188,7 +218,7 @@ public:
 public:
 
     /**   レシートの日付。  **/
-    ReceiptDate         m_receiptDate;
+    std::string         m_receiptDate;
 
     /**   レシートの時刻。  **/
     std::string         m_receiptTime;
@@ -228,10 +258,24 @@ public:
 //    Other Features.
 //
 public:
+    typedef     ReceiptInfo     This;
+    ReceiptInfo         (const  This  &)    = default;
+    This &  operator =  (const  This  &)    = default;
+public:
     //  テストクラス。  //
     friend  class   ReceiptInfoTest;
 };
 
+//========================================================================
+//
+//    Functions (Operators).
+//
+
+inline  std::ostream  &
+operator << (std::ostream & os, const ReceiptInfo & rhs)
+{
+    return  rhs.writeToStream(os);
+}
 
 //========================================================================
 /**

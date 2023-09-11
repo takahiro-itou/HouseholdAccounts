@@ -84,6 +84,15 @@ public:
     ReceiptEntriesChunk();
 
     //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （コンストラクタ）。
+    **
+    **  @param [in] cateManager   項目を管理するインスタンス。
+    **/
+    ReceiptEntriesChunk(
+            const  CategoryManager  &cateManager);
+
+    //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
@@ -115,6 +124,36 @@ public:
 //    Public Member Functions.
 //
 public:
+
+    //----------------------------------------------------------------
+    /**   インスタンスを文字列表現に変換する。
+    **
+    **  @return     文字列表現を返す。
+    **/
+    const   std::string
+    toString()  const;
+
+    //----------------------------------------------------------------
+    /**   インスタンスの文字列表現をストリームに書き込む。
+    **
+    **  @param [in,out] os    出力ストリーム。
+    **  @return     出力後のストリームの参照を返す。
+    **/
+    std::ostream  &
+    writeToStream(
+            std::ostream  & os)  const;
+
+    //----------------------------------------------------------------
+    /**   インスタンスの文字列表現をストリームに書き込む。
+    **
+    **  @param [in]     sep   データ間の区切り。
+    **  @param [in,out] os    出力ストリーム。
+    **  @return     出力後のストリームの参照を返す。
+    **/
+    std::ostream  &
+    writeToStream(
+            const  std::string  & sep,
+            std::ostream        & os)  const;
 
 //========================================================================
 //
@@ -160,14 +199,32 @@ public:
     /**   商品リスト。  **/
     PurchasingList      goodsList;
 
+    /**   項目を管理するインスタンス。  **/
+    const   CategoryManager *   pCatMan;
+
 //========================================================================
 //
 //    Other Features.
 //
 public:
+    typedef     ReceiptEntriesChunk     This;
+    ReceiptEntriesChunk (const  This  &)    = default;
+    This &  operator =  (const  This  &)    = default;
+public:
     //  テストクラス。  //
     friend  class   ReceiptEntriesChunkTest;
 };
+
+//========================================================================
+//
+//    Functions (Operators).
+//
+
+inline  std::ostream  &
+operator << (std::ostream & os, const ReceiptEntriesChunk & rhs)
+{
+    return  rhs.writeToStream(os);
+}
 
 }   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END

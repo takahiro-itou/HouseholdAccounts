@@ -31,6 +31,7 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  DocCls  {
 
 //  クラスの前方宣言。  //
+class   CategoryManager;
 
 //========================================================================
 //
@@ -64,6 +65,15 @@ public:
     PurchasedGoods();
 
     //----------------------------------------------------------------
+    /**   インスタンスを初期化する
+    **  （コンストラクタ）。
+    **
+    **  @param [in] cateManager   項目を管理するインスタンス。
+    **/
+    PurchasedGoods(
+            const  CategoryManager  &cateManager);
+
+    //----------------------------------------------------------------
     /**   インスタンスを破棄する
     **  （デストラクタ）。
     **
@@ -94,6 +104,25 @@ public:
 //
 //    Public Member Functions.
 //
+public:
+
+    //----------------------------------------------------------------
+    /**   インスタンスを文字列表現に変換する。
+    **
+    **  @return     文字列表現を返す。
+    **/
+    const   std::string
+    toString()  const;
+
+    //----------------------------------------------------------------
+    /**   インスタンスの文字列表現をストリームに書き込む。
+    **
+    **  @param [in,out] os    出力ストリーム。
+    **  @return     出力後のストリームの参照を返す。
+    **/
+    std::ostream  &
+    writeToStream(
+            std::ostream  & os)  const;
 
 //========================================================================
 //
@@ -142,8 +171,12 @@ public:
     /**   値引額。  **/
     CurrencyNumerator   cDiscount;
 
-    /**   小計。    **/
-    CurrencyNumerator   cSubTotal;
+    /**
+    **    外税額。
+    **
+    **  税抜き価格ではなく税金額そのもの。
+    **/
+    CurrencyNumerator   exclusiveTaxVal;
 
     /**
     **    内税額。
@@ -152,12 +185,11 @@ public:
     **/
     CurrencyNumerator   inclusiveTaxVal;
 
-    /**
-    **    外税額。
-    **
-    **  税抜き価格ではなく税金額そのもの。
-    **/
-    CurrencyNumerator   exclusiveTaxVal;
+    /**   小計。    **/
+    CurrencyNumerator   cSubTotal;
+
+    /**   項目を管理するインスタンス。  **/
+    const   CategoryManager *   pCatMan;
 
 private:
 
@@ -166,9 +198,24 @@ private:
 //    Other Features.
 //
 public:
+    typedef     PurchasedGoods      This;
+    PurchasedGoods      (const  This  &)    = default;
+    This &  operator =  (const  This  &)    = default;
+public:
     //  テストクラス。  //
     friend  class   PurchasedGoodsTest;
 };
+
+//========================================================================
+//
+//    Functions (Operators).
+//
+
+inline  std::ostream  &
+operator << (std::ostream & os, const PurchasedGoods & rhs)
+{
+    return  rhs.writeToStream(os);
+}
 
 }   //  End of namespace  DocCls
 HOUSEHOLD_ACCOUNTS_NAMESPACE_END

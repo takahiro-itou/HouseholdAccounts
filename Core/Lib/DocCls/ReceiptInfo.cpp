@@ -44,7 +44,7 @@ namespace  {
 //
 
 ReceiptInfo::ReceiptInfo()
-    : m_receiptDate(0),
+    : m_receiptDate(),
       m_receiptTime(),
       m_shopIdx(-1),
       m_shopName(),
@@ -103,11 +103,63 @@ ReceiptInfo::initializeReceiptInfo(
         const  std::string  &recTime,
         const  std::string  &shopName)
 {
-    this->m_receiptDate = 0;
+    this->m_receiptDate = recDate;
     this->m_receiptTime = recTime;
     this->m_shopName    = shopName;
 
     return ( ErrCode::SUCCESS );
+}
+
+//----------------------------------------------------------------
+//    インスタンスを文字列表現に変換する。
+//
+
+const   std::string
+ReceiptInfo::toString()  const
+{
+    std::stringstream   ss;
+    this->writeToStream(ss);
+    return  ss.str();
+}
+
+//----------------------------------------------------------------
+//    インスタンスの文字列表現をストリームに書き込む。
+//
+
+std::ostream  &
+ReceiptInfo::writeToStream(
+        std::ostream  & os)  const
+{
+    return  writeToStream("\n", os);
+}
+
+//----------------------------------------------------------------
+//    インスタンスの文字列表現をストリームに書き込む。
+//
+
+std::ostream  &
+ReceiptInfo::writeToStream(
+        const  std::string  & sep,
+        std::ostream        & os)  const
+{
+    os  <<  this->m_receiptDate <<  ';'
+        <<  this->m_receiptTime <<  ';'
+        <<  this->m_shopName    <<  ';';
+
+    const  std::string  lineSep(sep + ";;;");
+
+    ChunkIndex          idx = static_cast<ChunkIndex>(0);
+    const   ChunkIndex  num = this->m_recordChunk.size();
+
+    if ( idx < num ) {
+        this->m_recordChunk[idx].writeToStream(lineSep, os);
+    }
+    for ( ++ idx; idx < num; ++ idx ) {
+        os  <<  lineSep;
+        this->m_recordChunk.at(idx).writeToStream(lineSep, os);
+    }
+
+    return ( os );
 }
 
 //========================================================================

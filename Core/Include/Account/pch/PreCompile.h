@@ -3,7 +3,7 @@
 **                                                                      **
 **                  ---  Household Accounts Core.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2023, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -20,6 +20,22 @@
 
 #if !defined( HACORE_PCH_INCLUDED_PRE_COMPILE_H )
 #    define   HACORE_PCH_INCLUDED_PRE_COMPILE_H
+
+
+#if !defined( HACORE_SYS_INCLUDED_IOSFWD )
+#    include    <iosfwd>
+#    define   HACORE_SYS_INCLUDED_IOSFWD
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_STDDEF_H )
+#    include    <stddef.h>
+#    define   HACORE_SYS_INCLUDED_STDDEF_H
+#endif
+
+#if !defined( HACORE_SYS_INCLUDED_STDINT_H )
+#    include    <stdint.h>
+#    define   HACORE_SYS_INCLUDED_STDINT_H
+#endif
 
 
 #endif
