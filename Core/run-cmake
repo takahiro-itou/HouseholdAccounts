@@ -6,7 +6,7 @@ rebuild_script='rebuild.sh'
 
 rm -f "${build_script}" "${rebuild_script}"
 
-time  cmake "${script_dir}" ; echo $?
+time  cmake "$@" "${script_dir}" ; echo $?
 
 cat << __EOF__  | tee "${build_script}"
 #!/bin/bash  -xue
