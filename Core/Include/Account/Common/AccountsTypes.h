@@ -165,7 +165,7 @@ DECLARE_STRICT_TYPE(int,        SubCategoryIdx);
 **    商品インデックス型。
 **/
 
-DECLARE_STRICT_TYPE(int,        PurchaseNumber);
+DECLARE_STRICT_TYPE(size_t,     PurchaseNumber);
 
 //----------------------------------------------------------------
 /**
