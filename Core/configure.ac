@@ -67,8 +67,8 @@ else
      myac_cflags="${myac_cflags_release} ${myac_cflags_bae}"
 fi
 
-CXXFLAGS="${myac_cxxflags}"
-CFLAGS="${myac_cflags}"
+CXXFLAGS="${myac_cxxflags} ${myac_cxx_warning_flags}"
+CFLAGS="${myac_cflags} ${myac_c_warning_flags}"
 
 m4_include([.M4/CheckExtraFlags.m4])
 
