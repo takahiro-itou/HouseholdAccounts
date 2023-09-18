@@ -64,7 +64,7 @@ if test "X${myac_build_type}Y" = "XDebugY" ; then
      myac_cflags="${myac_cflags_debug}   ${myac_saved_CFLAGS}"
 else
      myac_cxxflags="${myac_cxxflags_release} ${myac_saved_CXXFLAGS}"
-     myac_cflags="${myac_cflags_release} ${myac_cflags_bae}"
+     myac_cflags="${myac_cflags_release} ${myac_saved_CFLAGS}"
 fi
 
 CXXFLAGS="${myac_cxxflags} ${myac_cxx_warning_flags}"
