@@ -72,10 +72,6 @@ CFLAGS="${myac_cflags} ${myac_c_warning_flags}"
 
 m4_include([.M4/CheckExtraFlags.m4])
 
-EXTRA_COMPILER_OPTIONS="-Wall"
-CFLAGS="${CFLAGS}  ${EXTRA_COMPILER_OPTIONS}"
-CXXFLAGS="${CXXFLAGS}  ${EXTRA_COMPILER_OPTIONS}  -Weffc++"
-
 dnl
 dnl   Project Name Space.
 dnl
