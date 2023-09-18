@@ -56,6 +56,12 @@ myac_cflags_release='-O3 -g -DNDEBUG'
 myac_cxxflags_base=${CXXFLAGS:-''}
 myac_cflags_base=${CFLAGS:-''}
 
+if test "X${myac_build_type}Y" = "XDebugY" ; then
+     myac_cxxflags="${myac_cxxflags_debug}   ${myac_cxxflags_base}"
+else
+     myac_cxxflags="${myac_cxxflags_release} ${myac_cxxflags_base}"
+fi
+
 : ${CFLAGS:='-O0  -g  -D_DEBUG'}
 : ${CXXFLAGS:='-O0  -g  -D_DEBUG'}
 
