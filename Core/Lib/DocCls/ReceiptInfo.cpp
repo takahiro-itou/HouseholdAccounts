@@ -149,7 +149,8 @@ ReceiptInfo::writeToStream(
     const  std::string  lineSep(sep + ";;;");
 
     ChunkIndex          idx = static_cast<ChunkIndex>(0);
-    const   ChunkIndex  num = this->m_recordChunk.size();
+    const   ChunkIndex
+        num = static_cast<ChunkIndex>(this->m_recordChunk.size());
 
     if ( idx < num ) {
         this->m_recordChunk[idx].writeToStream(lineSep, os);
