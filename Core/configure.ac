@@ -45,6 +45,8 @@ dnl
 dnl   デフォルトのコンパイルオプション
 dnl
 
+myac_build_type=${AUTOMAKE_BUILD_TYPE:-'Debug'}
+
 : ${CFLAGS:='-O0  -g  -D_DEBUG'}
 : ${CXXFLAGS:='-O0  -g  -D_DEBUG'}
 
