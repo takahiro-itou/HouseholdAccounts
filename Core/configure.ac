@@ -57,11 +57,11 @@ myac_cxxflags_release='-O3 -g -DNDEBUG'
 myac_cflags_release='-O3 -g -DNDEBUG'
 
 myac_saved_cxxflags=${CXXFLAGS:-''}
-myac_cflags_base=${CFLAGS:-''}
+myac_saved_cflags=${CFLAGS:-''}
 
 if test "X${myac_build_type}Y" = "XDebugY" ; then
      myac_cxxflags="${myac_cxxflags_debug}   ${myac_saved_cxxflags}"
-     myac_cflags="${myac_cflags_debug}   ${myac_cflags_base}"
+     myac_cflags="${myac_cflags_debug}   ${myac_saved_cflags}"
 else
      myac_cxxflags="${myac_cxxflags_release} ${myac_saved_cxxflags}"
      myac_cflags="${myac_cflags_release} ${myac_cflags_bae}"
