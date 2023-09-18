@@ -64,8 +64,8 @@ else
      myac_cflags="${myac_cflags_release} ${myac_cflags_bae}"
 fi
 
-: ${CFLAGS:='-O0  -g  -D_DEBUG'}
-: ${CXXFLAGS:='-O0  -g  -D_DEBUG'}
+CXXFLAGS="${myac_cxxflags}"
+CFLAGS="${myac_cflags}"
 
 m4_include([.M4/CheckExtraFlags.m4])
 
