@@ -47,6 +47,9 @@ dnl
 
 myac_build_type=${AUTOMAKE_BUILD_TYPE:-'Debug'}
 
+myac_cxxflags_debug='-O0 -g -D_DEBUG'
+myac_cflags_debug='-O0 -g -D_DEBUG'
+
 : ${CFLAGS:='-O0  -g  -D_DEBUG'}
 : ${CXXFLAGS:='-O0  -g  -D_DEBUG'}
 
