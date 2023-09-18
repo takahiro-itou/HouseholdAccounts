@@ -53,6 +53,9 @@ myac_cflags_debug='-O0 -g -D_DEBUG'
 myac_cxxflags_release='-O3 -g -DNDEBUG'
 myac_cflags_release='-O3 -g -DNDEBUG'
 
+myac_cxxflags_base=${CXXFLAGS:-''}
+myac_cflags_base=${CFLAGS:-''}
+
 : ${CFLAGS:='-O0  -g  -D_DEBUG'}
 : ${CXXFLAGS:='-O0  -g  -D_DEBUG'}
 
