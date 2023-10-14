@@ -139,6 +139,16 @@ MYAC_WITH_EXT_LIB(
     [CPPUNIT],  [cppunit],  [Path to cppunit],  [yes],
     [AMCNF_CPPUNIT_ENABLED])
 
+if test "x${cppunit_enabled}y" != 'xFALSEy' ; then
+    if test "x${cppunit_path}y" != 'xy' ; then
+        CPPUNIT_CPPFLAGS='-I${cppunit_path}/include'
+        CPPUNIT_LDFLAGS='-L${cppunit_path}/lib'
+    else
+        CPPUNIT_CPPFLAGS=''
+        CPPUNIT_LDFLAGS=''
+    fi
+fi
+
 dnl----------------------------------------------------------------
 dnl
 dnl   Linker Scripts.
