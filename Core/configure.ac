@@ -139,14 +139,12 @@ MYAC_WITH_EXT_LIB(
     [CPPUNIT],  [cppunit],  [Path to cppunit],  [yes],
     [AMCNF_CPPUNIT_ENABLED])
 
-if test "x${cppunit_enabled}y" != 'xFALSEy' ; then
-    if test "x${cppunit_path}y" != 'xy' ; then
-        CPPUNIT_CPPFLAGS='-I${cppunit_path}/include'
-        CPPUNIT_LDFLAGS='-L${cppunit_path}/lib'
-    else
-        CPPUNIT_CPPFLAGS=''
-        CPPUNIT_LDFLAGS=''
-    fi
+if test "x${CPPUNIT_LIBRARY_DIR}y" != 'xy' ; then
+  CPPUNIT_CPPFLAGS="-I${CPPUNIT_INCLUDE_DIR}"
+  CPPUNIT_LDFLAGS="-L${CPPUNIT_LIBRARY_DIR}"
+else
+  CPPUNIT_CPPFLAGS=''
+  CPPUNIT_LDFLAGS=''
 fi
 
 AC_SUBST([CPPUNIT_CPPFLAGS])
