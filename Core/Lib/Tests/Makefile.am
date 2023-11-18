@@ -64,6 +64,7 @@ AM_CPPFLAGS         =  \
         -I${TESTEE_SOURCE_DIR}  \
         -I${INCTOP_SOURCE_DIR}  \
         -I${DRIVER_SOURCE_DIR}  \
+        -I${DRIVER_BINARY_DIR}  \
         ${TEST_CPPFLAGS}
 
 AM_CFLAGS           =  ${TEST_CPPFLAGS_XUNIT}
