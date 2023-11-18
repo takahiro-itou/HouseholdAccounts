@@ -94,7 +94,7 @@ void  assertEqual(
     assertEqual(exp,  act,  __FILE__,  __LINE__)
 
 #define     CPPUNIT_ASSERT(act)                 \
-    assertEqual(true, act, __FILE__, __LINE__)
+    assertEqual(true, TO_BOOL_FROM_STRICT(act), __FILE__, __LINE__)
 
 #endif
 
