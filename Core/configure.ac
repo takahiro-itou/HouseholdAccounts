@@ -149,6 +149,9 @@ if test "x${cppunit_enabled}y" != 'xFALSEy' ; then
     fi
 fi
 
+AC_SUBST([CPPUNIT_CPPFLAGS])
+AC_SUBST([CPPUNIT_LDFLAGS])
+
 dnl----------------------------------------------------------------
 dnl
 dnl   Linker Scripts.
