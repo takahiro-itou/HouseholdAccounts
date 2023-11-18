@@ -20,6 +20,7 @@ set(TESTER_LINK_LIBRARIES
 )
 
 include_directories(${PROJECT_SOURCE_DIR}/Lib/Tests)
+include_directories(${PROJECT_BINARY_DIR}/Lib/Tests)
 link_libraries     (${TESTER_LINK_LIBRARIES})
 
 Include (TestConf.cmake)
