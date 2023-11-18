@@ -93,6 +93,9 @@ void  assertEqual(
 #define     CPPUNIT_ASSERT_EQUAL(exp, act)      \
     assertEqual(exp,  act,  __FILE__,  __LINE__)
 
+#define     CPPUNIT_ASSERT(act)                 \
+    assertEqual(true, act, __FILE__, __LINE__)
+
 #endif
 
 #endif
