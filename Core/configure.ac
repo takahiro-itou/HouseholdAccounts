@@ -152,6 +152,8 @@ fi
 AC_SUBST([CPPUNIT_CPPFLAGS])
 AC_SUBST([CPPUNIT_LDFLAGS])
 AC_SUBST([CPPUNIT_LINK_LDADD])
+AC_SUBST([CPPUNIT_INCLUDE_DIR])
+AC_SUBST([CPPUNIT_LIBRARY_DIR])
 
 dnl----------------------------------------------------------------
 dnl
