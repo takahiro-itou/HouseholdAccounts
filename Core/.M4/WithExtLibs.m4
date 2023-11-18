@@ -45,6 +45,8 @@ AM_CONDITIONAL(
   m4_bpatsubst([$1],-,_)[_INCLUDE_DIR="${myac_with_]m4_bpatsubst([$2],-,_)[_path}/include"]
   m4_bpatsubst([$1],-,_)[_LIBRARY_DIR="${myac_with_]m4_bpatsubst([$2],-,_)[_path}/lib"]
 [fi]
+AC_MSG_RESULT(m4_bpatsubst([$1],-,_)[_INCLUDE_DIR=${]m4_bpatsubst([$1],-,_)[_INCLUDE_DIR}])
+AC_MSG_RESULT(m4_bpatsubst([$1],-,_)[_LIBRARY_DIR=${]m4_bpatsubst([$1],-,_)[_LIBRARY_DIR}])
 ])dnl   End of AC_DEFUN(MYAC_WITH_EXT_LIB)
 dnl
 
