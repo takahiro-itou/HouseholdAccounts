@@ -95,11 +95,26 @@ void  assertEqual(
     return;
 }
 
+template  <typename  T>
+void  assertBool(
+        const  T  &     vAct,
+        const  char  *  szFile,
+        const  int      nLine)
+{
+    if ( (vAct) != (Boolean::BOOL_FALSE ) {
+        std::cerr   <<  "\nAssertion Failed."
+                    <<  "\n  Actual   : "   <<  vAct
+                    <<  std::endl;
+        exit ( 1 );
+    }
+    return;
+}
+
 #define     CPPUNIT_ASSERT_EQUAL(exp, act)      \
     assertEqual(exp,  act,  __FILE__,  __LINE__)
 
 #define     CPPUNIT_ASSERT(act)                 \
-    assertEqual(true, TO_BOOL_FROM_STRICT(act), __FILE__, __LINE__)
+    assert(act, __FILE__, __LINE__)
 
 #endif
 
