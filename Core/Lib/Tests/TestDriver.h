@@ -45,6 +45,11 @@ using   namespace   CPPUNIT_NS;
 #include    <iostream>
 #include    <stdlib.h>
 
+#if !defined( HACORE_COMMON_INCLUDED_ACCOUTNS_TYPES_H )
+#    include    "Account/Common/AccountsTypes.h"
+#endif
+
+
 class   TestFixture
 {
 public:
