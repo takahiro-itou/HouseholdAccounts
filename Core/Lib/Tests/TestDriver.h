@@ -101,7 +101,7 @@ void  assertBool(
         const  char  *  szFile,
         const  int      nLine)
 {
-    if ( (vAct) != (Boolean::BOOL_FALSE ) {
+    if ( (vAct) != (Boolean::BOOL_FALSE) ) {
         std::cerr   <<  "\nAssertion Failed."
                     <<  "\n  Actual   : "   <<  vAct
                     <<  std::endl;
