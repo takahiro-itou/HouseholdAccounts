@@ -70,8 +70,6 @@ fi
 CXXFLAGS="${myac_cxxflags} ${myac_cxx_warning_flags}"
 CFLAGS="${myac_cflags} ${myac_c_warning_flags}"
 
-m4_include([.M4/CheckExtraFlags.m4])
-
 dnl
 dnl   Project Name Space.
 dnl
@@ -120,6 +118,8 @@ dnl
 dnl
 dnl   Check Extra Compiler/Linker Options.
 dnl
+
+m4_include([.M4/CheckExtraFlags.m4])
 
 m4_include([.M4/EnableCxx11.m4])
 
