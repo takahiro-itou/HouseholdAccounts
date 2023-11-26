@@ -135,7 +135,7 @@ dnl
 
 m4_include([.M4/WithExtPkgs.m4])
 
-MYAC_WITH_EXT_LIB(
+MYAC_WITH_EXT_PKG(
     [CPPUNIT],  [cppunit],  [Path to cppunit],  [yes],
     [AMCNF_CPPUNIT_ENABLED])
 
