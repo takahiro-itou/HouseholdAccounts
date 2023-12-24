@@ -8,7 +8,7 @@ MYAC_CHECK_EXTRA_COMPILER_OPTION(
     [COMPILER_ACCEPTS_GNUXX14],
     [gnuplusplus14],  [-std=gnu++14])
 MYAC_CHECK_EXTRA_COMPILER_OPTION(
-    [COMPILER_ACCEPTS_GNU11],
+    [COMPILER_ACCEPTS_GNUXX11],
     [gnuplusplus11],  [-std=gnu++11])
 MYAC_CHECK_EXTRA_COMPILER_OPTION(
     [COMPILER_ACCEPTS_CXX11],
@@ -22,7 +22,7 @@ AC_MSG_CHECKING([Compiler Accepts c++11])
     [CXXFLAGS_ENABLE_STDCXX="${COMPILER_ACCEPTS_GNUXX14}"]
 [elif test "x${myac_cf_gnuplusplus11_enabled}y" = "xTRUEy" ; then]
     [myac_cf_stdcxx_enabled=TRUE]
-    [CXXFLAGS_ENABLE_STDCXX="${COMPILER_ACCEPTS_GNU11}"]
+    [CXXFLAGS_ENABLE_STDCXX="${COMPILER_ACCEPTS_GNUXX11}"]
 [elif test "x${myac_cf_cplusplus11_enabled}y" = "xTRUEy" ; then]
     [myac_cf_stdcxx_enabled=TRUE]
     [CXXFLAGS_ENABLE_STDCXX="${COMPILER_ACCEPTS_CXX11}"]
