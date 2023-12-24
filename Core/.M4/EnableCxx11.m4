@@ -5,7 +5,7 @@ dnl
 ##  Check -std=c++11 Compiler Option.
 ##
 MYAC_CHECK_EXTRA_COMPILER_OPTION(
-    [COMPILER_ACCEPTS_GNU14],
+    [COMPILER_ACCEPTS_GNUXX14],
     [gnuplusplus14],  [-std=gnu++14])
 MYAC_CHECK_EXTRA_COMPILER_OPTION(
     [COMPILER_ACCEPTS_GNU11],
@@ -19,7 +19,7 @@ MYAC_CHECK_EXTRA_COMPILER_OPTION(
 AC_MSG_CHECKING([Compiler Accepts c++11])
 [if test "x${myac_cf_gnuplusplus14_enabled}y" = "xTRUEy" ; then]
     [myac_cf_stdcxx_enabled=TRUE]
-    [CXXFLAGS_ENABLE_STDCXX="${COMPILER_ACCEPTS_GNU14}"]
+    [CXXFLAGS_ENABLE_STDCXX="${COMPILER_ACCEPTS_GNUXX14}"]
 [elif test "x${myac_cf_gnuplusplus11_enabled}y" = "xTRUEy" ; then]
     [myac_cf_stdcxx_enabled=TRUE]
     [CXXFLAGS_ENABLE_STDCXX="${COMPILER_ACCEPTS_GNU11}"]
