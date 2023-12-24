@@ -38,7 +38,7 @@ dnl    インストール先を変更。
 dnl    変数定義。
 BINTOP_DIR_NAME=[$1]
 AC_SUBST(BINTOP_DIR_NAME)
-])dnl   End of AC_DEFUN(MYAC_CUSTOMIZE_LIBRARY_DIR)
+])dnl   End of AC_DEFUN(MYAC_CUSTOMIZE_BINARY_DIR)
 dnl
 dnl----------------------------------------------------------------
 dnl
