@@ -161,7 +161,7 @@ dnl   Linker Scripts.
 dnl   リンカスクリプトを生成する。
 dnl
 
-m4_include([.M4/LinkerScripts.m4])
+m4_include([Lib/.LinkerScript/LinkerScripts.m4])
 
 dnl----------------------------------------------------------------
 dnl
