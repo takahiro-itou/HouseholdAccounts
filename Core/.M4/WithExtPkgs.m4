@@ -57,9 +57,9 @@ dnl   概要：オプション --with-XXX を作成する。
 dnl   引数：
 dnl     -  $1   外部ライブラリの名前
 dnl     -  $2   オプション名
-dnl     -  $3   ヘルプメッセージ
-dnl     -  $4   デフォルトの値
-dnl     -  $5   結果を格納する変数
+dnl     -  $3   ライブラリのディレクトリ名
+dnl     -  $4   ヘッダファイルのディレクトリ名
+dnl     -  $5   バイナリのディレクトリ名
 dnl
 AC_DEFUN([MYAC_SET_EXT_PKG_OPTIONS],[
 AC_MSG_CHECKING([[for ]$1[ Options]])
