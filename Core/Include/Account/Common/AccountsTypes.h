@@ -165,14 +165,14 @@ DECLARE_STRICT_TYPE(int,        SubCategoryIdx);
 **    商品インデックス型。
 **/
 
-DECLARE_STRICT_TYPE(int,        PurchaseNumber);
+DECLARE_STRICT_TYPE(size_t,     PurchaseNumber);
 
 //----------------------------------------------------------------
 /**
 **    レシートインデックス型。
 **/
 
-DECLARE_STRICT_TYPE(int,        ReceiptNumber);
+DECLARE_STRICT_TYPE(size_t,     ReceiptNumber);
 
 //----------------------------------------------------------------
 /**

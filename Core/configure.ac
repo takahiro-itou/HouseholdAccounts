@@ -45,14 +45,30 @@ dnl
 dnl   デフォルトのコンパイルオプション
 dnl
 
-: ${CFLAGS:='-O0  -g  -D_DEBUG'}
-: ${CXXFLAGS:='-O0  -g  -D_DEBUG'}
+myac_build_type=${AUTOMAKE_BUILD_TYPE:-'Debug'}
 
-m4_include([.M4/CheckExtraFlags.m4])
+myac_cxx_warning_flags='-Wall -Weffc++'
+myac_c_warning_flags='-Wall'
 
-EXTRA_COMPILER_OPTIONS="-Wall"
-CFLAGS="${CFLAGS}  ${EXTRA_COMPILER_OPTIONS}"
-CXXFLAGS="${CXXFLAGS}  ${EXTRA_COMPILER_OPTIONS}  -Weffc++"
+myac_cxxflags_debug='-O0 -g -D_DEBUG'
+myac_cflags_debug='-O0 -g -D_DEBUG'
+
+myac_cxxflags_release='-O3 -g -DNDEBUG'
+myac_cflags_release='-O3 -g -DNDEBUG'
+
+myac_saved_CXXFLAGS=${CXXFLAGS:-''}
+myac_saved_CFLAGS=${CFLAGS:-''}
+
+if test "X${myac_build_type}Y" = "XDebugY" ; then
+    myac_cxxflags="${myac_cxxflags_debug}   ${myac_saved_CXXFLAGS}"
+    myac_cflags="${myac_cflags_debug}   ${myac_saved_CFLAGS}"
+else
+    myac_cxxflags="${myac_cxxflags_release} ${myac_saved_CXXFLAGS}"
+    myac_cflags="${myac_cflags_release} ${myac_saved_CFLAGS}"
+fi
+
+CXXFLAGS="${myac_cxxflags} ${myac_cxx_warning_flags}"
+CFLAGS="${myac_cflags} ${myac_c_warning_flags}"
 
 dnl
 dnl   Project Name Space.
@@ -103,6 +119,8 @@ dnl
 dnl   Check Extra Compiler/Linker Options.
 dnl
 
+m4_include([.M4/CheckExtraFlags.m4])
+
 m4_include([.M4/EnableCxx11.m4])
 
 m4_include([.M4/CheckConstExpr.m4])
@@ -115,11 +133,27 @@ dnl   Additional Packages.
 dnl   外部パッケージの追加
 dnl
 
-m4_include([.M4/WithExtLibs.m4])
+m4_include([.M4/WithExtPkgs.m4])
 
-MYAC_WITH_EXT_LIB(
+MYAC_WITH_EXT_PKG(
     [CPPUNIT],  [cppunit],  [Path to cppunit],  [yes],
     [AMCNF_CPPUNIT_ENABLED])
+
+if test "x${CPPUNIT_LIBRARY_DIR}y" != "xy" ; then
+  CPPUNIT_CPPFLAGS="-I${CPPUNIT_INCLUDE_DIR}"
+  CPPUNIT_LDFLAGS=''
+  CPPUNIT_LINK_LDADD="${CPPUNIT_LIBRARY_DIR}/libcppunit.a"
+else
+  CPPUNIT_CPPFLAGS=''
+  CPPUNIT_LDFLAGS=''
+  CPPUNIT_LINK_LDADD='-lcppunit'
+fi
+
+AC_SUBST([CPPUNIT_CPPFLAGS])
+AC_SUBST([CPPUNIT_LDFLAGS])
+AC_SUBST([CPPUNIT_LINK_LDADD])
+AC_SUBST([CPPUNIT_INCLUDE_DIR])
+AC_SUBST([CPPUNIT_LIBRARY_DIR])
 
 dnl----------------------------------------------------------------
 dnl
@@ -127,7 +161,7 @@ dnl   Linker Scripts.
 dnl   リンカスクリプトを生成する。
 dnl
 
-m4_include([.M4/LinkerScripts.m4])
+m4_include([Lib/.LinkerScript/LinkerScripts.m4])
 
 dnl----------------------------------------------------------------
 dnl

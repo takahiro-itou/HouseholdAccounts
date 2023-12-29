@@ -1,0 +1,5 @@
+#! /bin/bash  -xue
+
+script_dir=$(readlink -f "$(dirname "$0")")
+
+"${script_dir}/run-cmake"  -DCMAKE_BUILD_TYPE=Release "$@"

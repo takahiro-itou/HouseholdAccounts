@@ -214,7 +214,8 @@ template <typename T, typename Id, class Allocator>
 inline  void
 StrictVector<T, Id, Allocator>::checkIndexRange(const Id n)  const
 {
-    if ( (static_cast<Id>(Super::size()) <= n) || (n < 0) ) {
+    if ( (static_cast<Id>(Super::size()) <= n) || (n < static_cast<Id>(0)) )
+    {
         //  範囲外アクセス。    //
         std::stringstream   ss;
         ss  <<  "Out of Range : id = "  <<  n

@@ -7,8 +7,6 @@
 ##    List of Directories.
 ##
 
-MODULE_DIR_NAME         =  Common
-
 include  $(top_srcdir)/.M4/Makefile.DirList.inc
 
 DRIVER_SOURCE_DIR       =  ${LIBTOP_SOURCE_DIR}/Tests
@@ -55,9 +53,9 @@ TEST_CPPFLAGS_COMMON        +=
 TEST_LDFLAGS_COMMON         +=
 
 if  AMCNF_CPPUNIT_ENABLED
-TEST_CPPFLAGS_XUNIT         =  -DHAVE_CPPUNIT=1
-TEST_LDFLAGS_XUNIT          =
-TEST_LINK_LDADD_XUNIT       =  -lcppunit
+TEST_CPPFLAGS_XUNIT         =  @CPPUNIT_CPPFLAGS@   -DHAVE_CPPUNIT=1
+TEST_LDFLAGS_XUNIT          =  @CPPUNIT_LDFLAGS@
+TEST_LINK_LDADD_XUNIT       =  @CPPUNIT_LINK_LDADD@
 else
 TEST_CPPFLAGS_XUNIT         =  -DHAVE_CPPUNIT=0
 TEST_LDFLAGS_XUNIT          =
@@ -69,6 +67,7 @@ AM_CPPFLAGS         =  \
         -I${INCTOP_SOURCE_DIR}  \
         -I${LIBTOP_SOURCE_DIR}  \
         -I${DRIVER_SOURCE_DIR}  \
+        -I${DRIVER_BINARY_DIR}  \
         ${TEST_CPPFLAGS}
 
 AM_CFLAGS           =  ${TEST_CPPFLAGS_XUNIT}
