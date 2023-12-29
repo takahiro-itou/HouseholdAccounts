@@ -75,5 +75,10 @@ dnl
     $1[_BINDIR='']
   [fi]
 [fi]
+dnl
+AC_MSG_RESULT([${myac_with_]m4_bpatsubst([$2],-,_)[_val}])
+AC_MSG_CHECKING([[for ]$1[ path]])
+AC_MSG_RESULT([${myac_with_]m4_bpatsubst([$2],-,_)[_path}])
+dnl
 ])dnl   End of AC_DEFUN(MYAC_SET_EXT_PKG_OPTIONS)
 dnl
