@@ -84,6 +84,15 @@ dnl
     $1[_CXXFLAGS='']
     $1[_LDFLAGS='']
   [fi]
+[else]
+  $1[_LIBDIR='']
+  $1[_INCDIR='']
+  $1[_BINDIR='']
+  $1[_CPPFLAGS='']
+  $1[_CPPFLAGS+=' -DHAVE_]$1[=0']
+  $1[_CFLAGS='']
+  $1[_CXXFLAGS='']
+  $1[_LDFLAGS='']
 [fi]
 dnl
 AC_MSG_RESULT([${myac_with_]m4_bpatsubst([$2],-,_)[_val}])
