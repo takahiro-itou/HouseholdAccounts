@@ -49,4 +49,20 @@ AC_MSG_RESULT(m4_bpatsubst([$1],-,_)[_INCLUDE_DIR=${]m4_bpatsubst([$1],-,_)[_INC
 AC_MSG_RESULT(m4_bpatsubst([$1],-,_)[_LIBRARY_DIR=${]m4_bpatsubst([$1],-,_)[_LIBRARY_DIR}])
 ])dnl   End of AC_DEFUN(MYAC_WITH_EXT_PKG)
 dnl
-
+dnl----------------------------------------------------------------
+dnl
+dnl   関数：MYAC_SET_EXT_PKG_OPTIONS
+dnl
+dnl   概要：オプション --with-XXX を作成する。
+dnl   引数：
+odnl     -  $1   外部ライブラリの名前（未使用／予約）
+dnl     -  $2   オプション名
+dnl     -  $3   ヘルプメッセージ
+dnl     -  $4   デフォルトの値
+dnl     -  $5   結果を格納する変数
+dnl
+AC_DEFUN([MYAC_SET_EXT_PKG_OPTIONS],[
+AC_MSG_CHECKING([[for ]$1[ Options]])
+dnl
+])dnl   End of AC_DEFUN(MYAC_SET_EXT_PKG_OPTIONS)
+dnl
