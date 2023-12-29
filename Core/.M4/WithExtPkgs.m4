@@ -80,5 +80,8 @@ AC_MSG_RESULT([${myac_with_]m4_bpatsubst([$2],-,_)[_val}])
 AC_MSG_CHECKING([[for ]$1[ path]])
 AC_MSG_RESULT([${myac_with_]m4_bpatsubst([$2],-,_)[_path}])
 dnl
+AC_SUBST($1[_LIBDIR])
+AC_SUBST($1[_INCDIR])
+AC_SUBST($1[_BINDIR])
 ])dnl   End of AC_DEFUN(MYAC_SET_EXT_PKG_OPTIONS)
 dnl
