@@ -90,6 +90,14 @@ AC_MSG_RESULT([${myac_with_]m4_bpatsubst([$2],-,_)[_val}])
 AC_MSG_CHECKING([[for ]$1[ path]])
 AC_MSG_RESULT([${myac_with_]m4_bpatsubst([$2],-,_)[_path}])
 dnl
+AC_MSG_CHECKING([[for ]$1[ PreProcessor Options]])
+AC_MSG_RESULT([$1[_CPPFLAGS = ${]$1[_CPPFLAGS}]])
+AC_MSG_CHECKING([[for ]$1[ Compiler Options]])
+AC_MSG_RESULT([$1[_CFLAGS   = ${]$1[_CFLAGS}]])
+AC_MSG_CHECKING([[for ]$1[ Compiler Options]])
+AC_MSG_RESULT([$1[_CXXFLAGS = ${]$1[_CXXFLAGS}]])
+dnl
+dnl
 AC_SUBST($1[_LIBDIR])
 AC_SUBST($1[_INCDIR])
 AC_SUBST($1[_BINDIR])
