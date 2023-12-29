@@ -55,7 +55,7 @@ dnl   関数：MYAC_SET_EXT_PKG_OPTIONS
 dnl
 dnl   概要：オプション --with-XXX を作成する。
 dnl   引数：
-odnl     -  $1   外部ライブラリの名前（未使用／予約）
+dnl     -  $1   外部ライブラリの名前
 dnl     -  $2   オプション名
 dnl     -  $3   ヘルプメッセージ
 dnl     -  $4   デフォルトの値
@@ -64,5 +64,16 @@ dnl
 AC_DEFUN([MYAC_SET_EXT_PKG_OPTIONS],[
 AC_MSG_CHECKING([[for ]$1[ Options]])
 dnl
+[if test  "x${myac_with_]m4_bpatsubst([$2],-,_)[_enable}y" = "xTRUEy" ; then]
+  [if test "x${myac_with_]m4_bpatsubst([$2],-,_)[path}y" != "xy" ; then]
+    $1[_LIBDIR="${myac_with_]m4_bpatsubst([$2],-,_)[_path}/]$3["]
+    $1[_INCDIR="${myac_with_]m4_bpatsubst([$2],-,_)[_path}/]$4["]
+    $1[_BINDIR="${myac_with_]m4_bpatsubst([$2],-,_)[_path}/]$5["]
+  [else]
+    $1[_LIBDIR='']
+    $1[_INCDIR='']
+    $1[_BINDIR='']
+  [fi]
+[fi]
 ])dnl   End of AC_DEFUN(MYAC_SET_EXT_PKG_OPTIONS)
 dnl
