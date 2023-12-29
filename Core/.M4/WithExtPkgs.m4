@@ -97,6 +97,8 @@ AC_MSG_RESULT([$1[_CFLAGS   = ${]$1[_CFLAGS}]])
 AC_MSG_CHECKING([[for ]$1[ Compiler Options]])
 AC_MSG_RESULT([$1[_CXXFLAGS = ${]$1[_CXXFLAGS}]])
 dnl
+AC_MSG_CHECKING([[for ]$1[ Linker Options  ]])
+AC_MSG_RESULT([$1[_LDFLAGS  = ${]$1[_LDFLAGS}]])
 dnl
 AC_SUBST($1[_LIBDIR])
 AC_SUBST($1[_INCDIR])
