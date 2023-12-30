@@ -49,4 +49,72 @@ AC_MSG_RESULT(m4_bpatsubst([$1],-,_)[_INCLUDE_DIR=${]m4_bpatsubst([$1],-,_)[_INC
 AC_MSG_RESULT(m4_bpatsubst([$1],-,_)[_LIBRARY_DIR=${]m4_bpatsubst([$1],-,_)[_LIBRARY_DIR}])
 ])dnl   End of AC_DEFUN(MYAC_WITH_EXT_PKG)
 dnl
-
+dnl----------------------------------------------------------------
+dnl
+dnl   関数：MYAC_SET_EXT_PKG_OPTIONS
+dnl
+dnl   概要：オプション --with-XXX を作成する。
+dnl   引数：
+dnl     -  $1   外部ライブラリの名前
+dnl     -  $2   オプション名
+dnl     -  $3   ライブラリのディレクトリ名
+dnl     -  $4   ヘッダファイルのディレクトリ名
+dnl     -  $5   バイナリのディレクトリ名
+dnl
+AC_DEFUN([MYAC_SET_EXT_PKG_OPTIONS],[
+AC_MSG_CHECKING([[for ]$1[ Options]])
+dnl
+[if test "x${myac_with_]m4_bpatsubst([$2],-,_)[_enable}y" = "xTRUEy" ; then]
+  [if test "x${myac_with_]m4_bpatsubst([$2],-,_)[_path}y" != "xy" ; then]
+    $1[_LIBDIR="${myac_with_]m4_bpatsubst([$2],-,_)[_path}/]$3["]
+    $1[_INCDIR="${myac_with_]m4_bpatsubst([$2],-,_)[_path}/]$4["]
+    $1[_BINDIR="${myac_with_]m4_bpatsubst([$2],-,_)[_path}/]$5["]
+    $1[_CPPFLAGS=-I"${]$1[_INCDIR}"]
+    $1[_CPPFLAGS+=' -DHAVE_]$1[=1']
+    $1[_CFLAGS='']
+    $1[_CXXFLAGS='']
+    $1[_LDFLAGS=-L"${]$1[_LIBDIR}"]
+  [else]
+    $1[_LIBDIR='']
+    $1[_INCDIR='']
+    $1[_BINDIR='']
+    $1[_CPPFLAGS='']
+    $1[_CPPFLAGS+=' -DHAVE_]$1[=1']
+    $1[_CFLAGS='']
+    $1[_CXXFLAGS='']
+    $1[_LDFLAGS='']
+  [fi]
+[else]
+  $1[_LIBDIR='']
+  $1[_INCDIR='']
+  $1[_BINDIR='']
+  $1[_CPPFLAGS='']
+  $1[_CPPFLAGS+=' -DHAVE_]$1[=0']
+  $1[_CFLAGS='']
+  $1[_CXXFLAGS='']
+  $1[_LDFLAGS='']
+[fi]
+dnl
+AC_MSG_RESULT([${myac_with_]m4_bpatsubst([$2],-,_)[_val}])
+AC_MSG_CHECKING([[for ]$1[ path]])
+AC_MSG_RESULT([${myac_with_]m4_bpatsubst([$2],-,_)[_path}])
+dnl
+AC_MSG_CHECKING([[for ]$1[ PreProcessor Options]])
+AC_MSG_RESULT([$1[_CPPFLAGS = ${]$1[_CPPFLAGS}]])
+AC_MSG_CHECKING([[for ]$1[ Compiler Options]])
+AC_MSG_RESULT([$1[_CFLAGS   = ${]$1[_CFLAGS}]])
+AC_MSG_CHECKING([[for ]$1[ Compiler Options]])
+AC_MSG_RESULT([$1[_CXXFLAGS = ${]$1[_CXXFLAGS}]])
+dnl
+AC_MSG_CHECKING([[for ]$1[ Linker Options  ]])
+AC_MSG_RESULT([$1[_LDFLAGS  = ${]$1[_LDFLAGS}]])
+dnl
+AC_SUBST($1[_LIBDIR])
+AC_SUBST($1[_INCDIR])
+AC_SUBST($1[_BINDIR])
+AC_SUBST($1[_CPPFLAGS])
+AC_SUBST($1[_CFLAGS])
+AC_SUBST($1[_CXXFLAGS])
+AC_SUBST($1[_LDFLAGS])
+])dnl   End of AC_DEFUN(MYAC_SET_EXT_PKG_OPTIONS)
+dnl

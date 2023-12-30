@@ -137,23 +137,18 @@ m4_include([.M4/WithExtPkgs.m4])
 
 MYAC_WITH_EXT_PKG(
     [CPPUNIT],  [cppunit],  [Path to cppunit],  [yes],
-    [AMCNF_CPPUNIT_ENABLED])
+    [AMCNF_CPPUNIT_ENABLED],dnl
+)
+MYAC_SET_EXT_PKG_OPTIONS(
+    [CPPUNIT], [cppunit], [lib], [include], [bin],dnl
+)
 
-if test "x${CPPUNIT_LIBRARY_DIR}y" != "xy" ; then
-  CPPUNIT_CPPFLAGS="-I${CPPUNIT_INCLUDE_DIR}"
-  CPPUNIT_LDFLAGS=''
-  CPPUNIT_LINK_LDADD="${CPPUNIT_LIBRARY_DIR}/libcppunit.a"
+if test "x${CPPUNIT_LIBDIR}y" != "xy" ; then
+    CPPUNIT_LINK_LDADD="${CPPUNIT_LIBDIR}/libcppunit.a"
 else
-  CPPUNIT_CPPFLAGS=''
-  CPPUNIT_LDFLAGS=''
-  CPPUNIT_LINK_LDADD='-lcppunit'
+    CPPUNIT_LINK_LDADD='-lcppunit'
 fi
-
-AC_SUBST([CPPUNIT_CPPFLAGS])
-AC_SUBST([CPPUNIT_LDFLAGS])
 AC_SUBST([CPPUNIT_LINK_LDADD])
-AC_SUBST([CPPUNIT_INCLUDE_DIR])
-AC_SUBST([CPPUNIT_LIBRARY_DIR])
 
 dnl----------------------------------------------------------------
 dnl
