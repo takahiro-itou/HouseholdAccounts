@@ -21,6 +21,8 @@
 #include    "TestDriver.h"
 #include    "Account/Common/StrictTypes.h"
 
+#include    <sstream>
+
 
 HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 namespace  Common  {

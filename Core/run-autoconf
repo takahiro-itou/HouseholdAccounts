@@ -6,7 +6,7 @@ rebuild_script='rebuild.sh'
 
 rm -f "${build_script}" "${rebuild_script}"
 
-time  "${script_dir}/configure" ; echo $?
+time  "${script_dir}/configure" "$@" ; echo $?
 
 cat << __EOF__  | tee "${build_script}"
 #!/bin/bash  -xue

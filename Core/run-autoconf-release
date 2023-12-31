@@ -1,0 +1,7 @@
+#! /bin/bash  -xue
+
+script_dir=$(readlink -f "$(dirname "$0")")
+
+env  \
+    AUTOMAKE_BUILD_TYPE=Release     \
+"${script_dir}/run-autoconf"  "$@"
