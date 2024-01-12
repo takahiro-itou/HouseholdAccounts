@@ -1,0 +1,3 @@
+[submodule "Core/.M4"]
+	path = Core/.M4
+	url = git@gitlab.com:takahiro-itou/InitM4.git
