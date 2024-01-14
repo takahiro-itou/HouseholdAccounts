@@ -1,3 +1,6 @@
 [submodule "Core/.M4"]
 	path = Core/.M4
 	url = ../InitM4.git
+[submodule "Core/.CMake"]
+	path = Core/.CMake
+	url = git@gitlab.com:takahiro-itou/InitCMake.git
