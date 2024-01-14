@@ -16,5 +16,6 @@ Config\.h\.in$
 ^Lib/.*/Tests/CMakeLists.txt
 ^Lib/.*/Tests/Makefile.am
 
+subinclude:.CMake/.hgignore
 subinclude:.M4/.hgignore
 
