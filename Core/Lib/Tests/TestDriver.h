@@ -103,9 +103,10 @@ void  assertBool(
         const  char  *  szFile,
         const  int      nLine)
 {
-    if ( (vAct) != (Boolean::BOOL_FALSE) ) {
+    if ( (vAct) == (Boolean::BOOL_FALSE) ) {
         std::cerr   <<  "\nAssertion Failed."
-                    <<  "\n  Actual   : "   <<  vAct
+                    <<  "\n  Actual   : "
+                    <<  static_cast<bool>(vAct)
                     <<  std::endl;
         exit ( 1 );
     }
@@ -118,7 +119,7 @@ HOUSEHOLD_ACCOUNTS_NAMESPACE_END
     assertEqual(exp,  act,  __FILE__,  __LINE__)
 
 #define     CPPUNIT_ASSERT(act)                 \
-    assert(act, __FILE__, __LINE__)
+    assertBool(TO_STRICT_FROM_BOOL(act), __FILE__, __LINE__)
 
 #endif
 
