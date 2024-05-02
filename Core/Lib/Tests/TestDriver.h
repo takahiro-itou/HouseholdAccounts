@@ -49,7 +49,6 @@ using   namespace   CPPUNIT_NS;
 #    include    "Account/Common/AccountsTypes.h"
 #endif
 
-
 class   TestFixture
 {
 public:
@@ -77,6 +76,9 @@ protected:                                      \
 
 #define     CPPUNIT_TEST_SUITE_REGISTRATION(classname)  \
     classname   g_ ## classname ## _Instance;
+
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_BEGIN
 
 template  <typename  T>
 void  assertEqual(
@@ -109,6 +111,8 @@ void  assertBool(
     }
     return;
 }
+
+HOUSEHOLD_ACCOUNTS_NAMESPACE_END
 
 #define     CPPUNIT_ASSERT_EQUAL(exp, act)      \
     assertEqual(exp,  act,  __FILE__,  __LINE__)
