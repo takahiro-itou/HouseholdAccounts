@@ -157,6 +157,7 @@ dnl
 
 AC_CONFIG_FILES([
     .CMake/Makefile
+    .CMake/Modules/Makefile
     .M4/Makefile
     Makefile
     Bin/Makefile
