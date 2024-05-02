@@ -165,6 +165,7 @@ AC_CONFIG_FILES([
     Lib/Common/Makefile
     Lib/DocCls/Makefile
     Lib/Format/Makefile
+    Lib/pch/Makefile
 ])
 
 AC_CONFIG_FILES([
