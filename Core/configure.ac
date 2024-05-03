@@ -39,7 +39,7 @@ dnl   プロジェクトの基本設定。
 dnl
 
 AC_CONFIG_SRCDIR([Makefile.am])
-AC_LANG_CPLUSPLUS
+AC_LANG([C++])
 
 dnl
 dnl   デフォルトのコンパイルオプション
@@ -157,6 +157,7 @@ dnl
 
 AC_CONFIG_FILES([
     .CMake/Makefile
+    .CMake/Modules/Makefile
     .M4/Makefile
     Makefile
     Bin/Makefile
@@ -165,6 +166,7 @@ AC_CONFIG_FILES([
     Lib/Common/Makefile
     Lib/DocCls/Makefile
     Lib/Format/Makefile
+    Lib/pch/Makefile
 ])
 
 AC_CONFIG_FILES([

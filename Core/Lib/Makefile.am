@@ -5,7 +5,7 @@
 
 SUBLIBS                 =  Common  DocCls  Format
 
-SUBDIRS                 =  Tests  .Config  $(SUBLIBS)  .
+SUBDIRS                 =  Tests  .Config  pch  $(SUBLIBS)  .
 
 ##
 ##    List of Installs.

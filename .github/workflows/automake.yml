@@ -1,0 +1,64 @@
+
+name: CI for Core
+
+on:
+  push:
+    branches: [ "master", "develop" ]
+  pull_request:
+    branches: [ "master", "develop" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy :
+      fail-fast : false
+
+      matrix :
+        build-type   : [ release, debug ]
+        with-cppunit : [ no, tools/cppunit ]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name : Install CppUnit
+        id   : install-cppunit
+        uses : takahiro-itou/install-cppunit-action@v1.1.0
+        with :
+          install-prefix : "${{ matrix.with-cppunit }}"
+
+      - name: Run bootstrap
+        run : |
+          pwd
+          cd Core
+          autoconf --version
+          ./bootstrap.sh
+          ls -aR
+        shell : bash
+
+      - name: Run configrue
+        run : |
+          mkdir -p build
+          cd build
+          ../Core/run-autoconf-${{ matrix.build-type }}  \
+            --with-cppunit=${cppunit_dir}
+        env :
+          cppunit_dir : ${{ steps.install-cppunit.outputs.real-install-dir }}
+        shell : bash
+
+      - name: Build
+        run : cd build && make
+
+      - name: Run Test
+        run : cd build && make check
+
+      - name: make distcheck
+        run : |
+          cd build
+          env DISTCHECK_CONFIGURE_FLAGS="--with-cppunit=${cppunit_dir}"  \
+            make distcheck
+        env :
+          cppunit_dir : ${{ steps.install-cppunit.outputs.real-install-dir }}
+        shell : bash

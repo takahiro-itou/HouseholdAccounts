@@ -20,7 +20,9 @@ TESTS                   =  \
 TARGET_TESTEE_LIBRARY       +=  -lhabDocCls
 
 DIST_NOINST_DATA_FILES      +=
-DIST_NOINST_HEADER_FILES    +=
+DIST_NOINST_HEADER_FILES    +=  \
+        SetupTestData.inl
+
 EXTRA_TEST_DRIVERS          +=
 LIBRARY_TEST_DRIVERS        +=
 SOURCE_TEST_DRIVERS         +=
