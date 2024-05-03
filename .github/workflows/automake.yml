@@ -43,7 +43,9 @@ jobs:
           mkdir -p build
           cd build
           ../Core/run-autoconf-${{ matrix.build-type }}  \
-            --with-cppunit=${{ steps.install-cppunit.outputs.real-install-dir }}
+            --with-cppunit=${cppunit_dir}
+        env :
+          cppunit_dir : ${{ steps.install-cppunit.outputs.real-install-dir }}
         shell : bash
 
       - name: Build
@@ -55,5 +57,8 @@ jobs:
       - name: make distcheck
         run : |
           cd build
-          env DISTCHECK_CONFIGURE_FLAGS='--without-cppunit'  make distcheck
+          env DISTCHECK_CONFIGURE_FLAGS="--with-cppunit=${cppunit_dir}"  \
+            make distcheck
+        env :
+          cppunit_dir : ${{ steps.install-cppunit.outputs.real-install-dir }}
         shell : bash
