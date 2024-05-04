@@ -1,0 +1,42 @@
+
+name : MSBuild
+
+env :
+  SOLUTION_FILE_PATH : View
+
+jobs :
+  build :
+    runs-on : windows-latest
+
+    strategy :
+      fail-fast : false
+
+      matrix :
+        build-type   : [ Release, Debug ]
+
+    steps :
+      - uses : actions/checkout@v4
+        with :
+          submodules : 'true'
+
+      - name : Setup MSBuild
+        uses : microsoft/setup-msbuild@v2
+        with :
+          msbuild-architecture : x64
+
+      - name : Check
+        run  : |
+          msbuild  --version
+        shell : pwsh
+
+      - name : Build
+        working-directory : ${{ github.workspace }}
+        run : >
+          msbuild -restore -t:Rebuild -p:Platform=x64 -p:Configuration="${{ matrix.build-type }}" "${{ env.SOLUTION_FILE_PATH }}"
+        shell : pwsh
+
+on :
+  push :
+    branches : [ "master", "develop" ]
+  pull_request :
+    branches : [ "master", "develop" ]
